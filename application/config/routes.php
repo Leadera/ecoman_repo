@@ -37,6 +37,8 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+$route['search'] = "search/search_pro";
+$route['search/(:any)'] = "search/search_pro/$1";
 
 $route['flow_and_component'] = "dataset/flow_and_component";
 $route['flow_and_component/new_flow'] = "dataset/new_flow";

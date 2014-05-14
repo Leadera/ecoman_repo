@@ -36,10 +36,10 @@
 		    <li><a href="#fakelink">Forum</a></li>
 		    <li><a href="#fakelink">Help</a></li>
 		  </ul> 		      
-		  <form class="navbar-form navbar-right" action="#" role="search">
+		  <form class="navbar-form navbar-right" action="<?php echo base_url('search') ?>" method="post" role="search">
 		    <div class="form-group">
 		      <div class="input-group">
-		        <input class="form-control" id="navbarInput-01" type="search" placeholder="Search">
+		        <input name="term" class="form-control" id="navbarInput-01" type="search" placeholder="Search">
 		        <span class="input-group-btn">
 		          <button type="submit" class="btn"><span class="fui-search"></span></button>
 		        </span>            
