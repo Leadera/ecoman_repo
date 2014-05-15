@@ -21,7 +21,7 @@ CREATE TABLE T_CMPNY
 	phone_num VARCHAR(50),
 	fax_num VARCHAR(50),
 	adress VARCHAR(255),
-	desc TEXT,
+	description TEXT,
 	email VARCHAR(100),
 	PRIMARY KEY (id)
 
@@ -32,7 +32,7 @@ CREATE TABLE T_CMPNY
 CREATE TABLE T_CMPNY_DATA
 (
 	cmpny_id INTEGER NOT NULL,
-	desc TEXT,
+	description TEXT,
 	PRIMARY KEY (cmpny_id)
 
 ) 
@@ -76,7 +76,7 @@ CREATE TABLE T_CNSLTNT
 (
 	user_id INTEGER NOT NULL,
 	company VARCHAR(200),
-	desc TEXT,
+	description TEXT,
 	PRIMARY KEY (user_id)
 
 ) 
@@ -87,7 +87,7 @@ CREATE TABLE T_DOC
 (
 	id INTEGER NOT NULL,
 	doc BLOB,
-	desc VARCHAR(255),
+	description VARCHAR(255),
 	PRIMARY KEY (id)
 
 ) 
@@ -228,7 +228,7 @@ CREATE TABLE T_PRJ
 	start_date DATE NOT NULL,
 	end_date DATE,
 	status_id INTEGER NOT NULL,
-	desc TEXT,
+	description TEXT,
 	PRIMARY KEY (id),
 	KEY (status_id)
 
@@ -240,9 +240,9 @@ CREATE TABLE T_PRJ_ACSS_CMPNY
 (
 	cmpny_id INTEGER NOT NULL,
 	prj_id INTEGER NOT NULL,
-	read NCHAR(10),
-	write NCHAR(10),
-	delete NCHAR(10),
+	read_acss NCHAR(10),
+	write_acss NCHAR(10),
+	delete_acss NCHAR(10),
 	PRIMARY KEY (cmpny_id, prj_id),
 	KEY (cmpny_id),
 	KEY (prj_id)
@@ -255,9 +255,9 @@ CREATE TABLE T_PRJ_ACSS_USER
 (
 	user_id INTEGER NOT NULL,
 	prj_id INTEGER NOT NULL,
-	read NCHAR(10),
-	write NCHAR(10),
-	delete NCHAR(10),
+	read_acss NCHAR(10),
+	write_acss NCHAR(10),
+	delete_acss NCHAR(10),
 	PRIMARY KEY (user_id, prj_id),
 	KEY (prj_id),
 	KEY (user_id)
@@ -294,7 +294,7 @@ CREATE TABLE T_PRJ_CNTCT_PRSNL
 (
 	prj_id INTEGER NOT NULL,
 	usr_id INTEGER NOT NULL,
-	desc TEXT,
+	description TEXT,
 	PRIMARY KEY (prj_id, usr_id),
 	KEY (usr_id)
 
@@ -361,7 +361,7 @@ CREATE TABLE T_USER
 	fax_num VARCHAR(50),
 	adress TEXT,
 	email VARCHAR(100),
-	desc TEXT,
+	description TEXT,
 	linkedin_user BOOL,
 	photo BLOB,
 	PRIMARY KEY (id),
