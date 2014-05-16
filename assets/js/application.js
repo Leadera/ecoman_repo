@@ -29,7 +29,7 @@ String.prototype.repeat = function(num) {
     // Custom Selects
     $("select[name='huge']").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
     $("select[name='large']").selectpicker({style: 'btn-lg btn-danger'});
-    $("select[name='info']").selectpicker({style: 'btn-info'});
+    $("select[id='info']").selectpicker({style: 'btn-inverse'});
     $("select[name='small']").selectpicker({style: 'btn-sm btn-warning'});
 
     // Tabs

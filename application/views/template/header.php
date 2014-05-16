@@ -61,9 +61,9 @@
 				</ul>
 			</div>
 			<div class="col-md-2">
-				<ul class="list-inline">
+				<ul class="list-inline text-right">
 				  <li class="head-li">Log In</li>
-				  <li class="head-li">Register</li>
+				  <li class="head-li"><a href="<?php echo base_url('register'); ?>">Register</a></li>
 				</ul>
 			</div>
 		</div>

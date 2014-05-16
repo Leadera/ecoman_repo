@@ -1,4 +1,5 @@
 
+
     <script src="<?php echo asset_url('js/flatui-fileinput.js'); ?>"></script>
     <script src="<?php echo asset_url('js/jquery-ui-1.10.3.custom.min.js'); ?>"></script>
     <script src="<?php echo asset_url('js/jquery.ui.touch-punch.min.js'); ?>"></script>
