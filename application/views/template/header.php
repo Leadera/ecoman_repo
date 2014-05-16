@@ -23,6 +23,7 @@
 
 <nav class="navbar navbar-lg navbar-static-top" role="navigation">
 	<div class="container">
+
 		<div class="navbar-header">
 		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
 		    <span class="sr-only">Toggle navigation</span>
@@ -47,8 +48,25 @@
 		    </div>	             
 		  </form>
 		</div><!-- /.navbar-collapse -->
+
+		<div class="row">
+			<div class="col-md-10">
+				<ul class="list-inline">
+				  <li class="head-li">Manage Projects</li>
+				  <li class="head-li">Dataset Management</li>
+				  <li class="head-li">CPIS Scoping</li>
+				  <li class="head-li">Ecotracking</li>
+				  <li class="head-li">IS Potentials</li>
+				  <li class="head-li">Cost Benefit Analysis</li>
+				</ul>
+			</div>
+			<div class="col-md-2">
+				<ul class="list-inline">
+				  <li class="head-li">Log In</li>
+				  <li class="head-li">Register</li>
+				</ul>
+			</div>
+		</div>
+
 	</div>
 </nav><!-- /navbar -->
-
-<div class="container">
-	<div class="row">

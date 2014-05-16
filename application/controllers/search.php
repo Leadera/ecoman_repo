@@ -16,7 +16,6 @@ class Search extends CI_Controller {
 		$data['search_result'] = $this->search_model->search_product($term);
 
 		$this->load->view('template/header');
-		$this->load->view('template/left');
 		$this->load->view('search/index',$data);
 		$this->load->view('template/footer');
 	}

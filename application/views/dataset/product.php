@@ -1,4 +1,6 @@
-<div class="col-md-9 sagbar">
+<div class="container">
+	<div class="row">
+<div class="col-md-12 ">
 	
 	<div class="row">
 		<div class="col-md-6"><div class="altbaslik">Manage products</div></div>
@@ -26,4 +28,7 @@
 	<?php endforeach ?>
 	</table>
 
+</div>
+
+</div>
 </div>

@@ -1,4 +1,6 @@
-<div class="col-md-9 sagbar">
+<div class="container">
+	<div class="row">
+<div class="col-md-12 ">
 	<table class="table table-hover table-bordered">
 	<tr>
 		<th>ID</th>
@@ -19,4 +21,6 @@
 			</tr>
 	<?php endforeach ?>
 	</table>
+</div>
+</div>
 </div>

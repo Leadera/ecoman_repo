@@ -1,12 +1,12 @@
 body{
-	background-color: #e7ebf2;
 	font-size:14px;
 }
 .altbaslik{
 	font-size:24px;
 }
-.sagbar{
-	background-color:white; 
-	border-radius:4px; 
-	padding:20px;
+.head-li{
+	font-size: 14px;
 }
+
+
+/* bootstrap üstüne

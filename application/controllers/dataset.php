@@ -10,7 +10,6 @@ class Dataset extends CI_Controller {
 		$data['product_list'] = $this->product_model->product_list();
 
 		$this->load->view('template/header');
-		$this->load->view('template/left');
 		$this->load->view('dataset/product',$data);
 		$this->load->view('template/footer');
 	}
@@ -32,7 +31,6 @@ class Dataset extends CI_Controller {
 
 		if($this->form_validation->run() == FALSE) {
 			$this->load->view('template/header');
-			$this->load->view('template/left');
 			$this->load->view('dataset/new_product');
 			$this->load->view('template/footer');
 		}
@@ -64,7 +62,6 @@ class Dataset extends CI_Controller {
 
 		if($this->form_validation->run() == FALSE) {
 			$this->load->view('template/header');
-			$this->load->view('template/left');
 			$this->load->view('dataset/new_flow');
 			$this->load->view('template/footer');
 		}
@@ -88,7 +85,6 @@ class Dataset extends CI_Controller {
 	
 		if($this->form_validation->run() == FALSE) {
 			$this->load->view('template/header');
-			$this->load->view('template/left');
 			$this->load->view('dataset/new_component');
 			$this->load->view('template/footer');
 		}
@@ -108,7 +104,6 @@ class Dataset extends CI_Controller {
 
 
 		$this->load->view('template/header');
-		$this->load->view('template/left');
 		$this->load->view('dataset/flow_and_component', $data);
 		$this->load->view('template/footer');
 	}

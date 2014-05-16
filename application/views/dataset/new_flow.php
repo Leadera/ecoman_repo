@@ -1,4 +1,6 @@
-<div class="col-md-9 sagbar">
+<div class="container">
+	<div class="row">
+<div class="col-md-12 ">
 	<div class="row">
 		<div class="col-md-6"><div class="altbaslik">New flow</div></div>
 		<div class="col-md-6"></div>			
@@ -30,4 +32,6 @@
 	  <button type="submit" class="btn btn-info">Save flow</button>
 	  <button class="btn btn-default">Cancel</button>
 	</form>
+</div>
+</div>
 </div>
