@@ -35,7 +35,7 @@
 		    <li><a href="#fakelink">Companies</a></li>
 		    <li><a href="#fakelink">Forum</a></li>
 		    <li><a href="#fakelink">Help</a></li>
-		  </ul> 		      
+		  </ul>
 		  <form class="navbar-form navbar-right" action="<?php echo base_url('search') ?>" method="post" role="search">
 		    <div class="form-group">
 		      <div class="input-group">
