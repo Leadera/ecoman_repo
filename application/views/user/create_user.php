@@ -54,8 +54,8 @@
 	    			<input type="text" class="form-control" id="workPhone" placeholder="Work Phone" name="workPhone">
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="fax">Work Phone</label>
-	    			<input type="text" class="form-control" id="fax" placeholder="Fax" name="fax">
+	    			<label for="fax">Fax Number</label>
+	    			<input type="text" class="form-control" id="fax" placeholder="Fax Number" name="fax">
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="address">Address</label>

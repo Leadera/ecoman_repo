@@ -13,5 +13,8 @@
     <script src="<?php echo asset_url('js/holder.js'); ?>"></script>
     <script src="<?php echo asset_url('js/application.js'); ?>"></script>
 
+    <script type="text/javascript">
+        $("#datepicker-01").datepicker().datepicker('setDate',new Date());
+    </script>
     </body>
 </html>
