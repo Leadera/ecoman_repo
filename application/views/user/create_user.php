@@ -4,7 +4,7 @@
 	<?php if(validation_errors() != NULL ): ?>
     <div class="alert">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <?php echo validation_errors(); ?>        
+      <?php echo validation_errors(); ?>
     </div>
     <?php endif ?>
 
@@ -21,7 +21,7 @@
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="company">Company</label>
-	    			
+
 	    			<select id="info" name="company" class="select-block">
 	  					<option>1</option>
 						<option>2</option>

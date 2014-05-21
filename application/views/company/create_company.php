@@ -1,11 +1,14 @@
+<script type="text/javascript" charset="utf-8">
+	<?php echo $map['javascript']; ?> 
+</script>
 <div class="container">
 	<p class="lead">Create Company</p>
-<?php echo $map['mapdiv']; ?>  
+<?php echo $map['mapdiv']; ?>
 
 	<?php if(validation_errors() != NULL ): ?>
     <div class="alert">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <?php echo validation_errors(); ?>        
+      <?php echo validation_errors(); ?>
     </div>
     <?php endif ?>
 
@@ -71,7 +74,7 @@
 	  				</div>
 				</div>
 				<div class="form-group">
-	    			<label for="assignedCompanies">Add Worker to Company</label>    			
+	    			<label for="assignedCompanies">Add Worker to Company</label>
 	    			<input name="tagsinput" class="tagsinput tagsinput-primary" value="" />
 	 			</div>
 			</div>

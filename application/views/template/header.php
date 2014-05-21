@@ -17,7 +17,6 @@
       <script src="js/html5shiv.js"></script>
     <![endif]-->
     <script src="<?php echo asset_url('js/jquery-1.10.2.min.js'); ?>"></script>
-    <?php echo $map['javascript']; ?> 
 
   </head>
 <body>
@@ -32,7 +31,7 @@
 		  <a class="navbar-brand" href="<?php echo base_url(); ?>">Ecoman</a>
 		</div>
 		<div class="collapse navbar-collapse" id="navbar-collapse-01">
-		  <ul class="nav navbar-nav">			      
+		  <ul class="nav navbar-nav">
 		    <li><a href="<?php echo base_url('newproject'); ?>">Projeler</a></li>
 		    <li><a href="<?php echo base_url('newcompany'); ?>">Companies</a></li>
 		    <li><a href="#fakelink">Forum</a></li>
@@ -44,9 +43,9 @@
 		        <input name="term" class="form-control" id="navbarInput-01" type="search" placeholder="Search">
 		        <span class="input-group-btn">
 		          <button type="submit" class="btn"><span class="fui-search"></span></button>
-		        </span>            
+		        </span>
 		      </div>
-		    </div>	             
+		    </div>
 		  </form>
 		</div><!-- /.navbar-collapse -->
 
