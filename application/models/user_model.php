@@ -7,11 +7,16 @@ class User_model extends CI_Model {
   }
 
   public function create_user($data){
-    $this->db->insert('T_USER', $data); 
+    $this->db->insert('T_USER', $data);
   }
-  
-  public function check_user($username,$password){
 
+  public function get_userinfo_by_username($username){
+    $this->db->from('T_USER');
+    $this->db->where('user_name',$username);
+    return $this->db->get()->row_array();
+  }
+
+  public function check_user($username,$password){
   	$this->db->from('T_USER');
   	$this->db->where('user_name',$username);
   	$this->db->where('psswrd',$password);
@@ -26,6 +31,7 @@ class User_model extends CI_Model {
   		return false;
   	}
   }
+
 
 }
 ?>

@@ -115,6 +115,13 @@ class User extends CI_Controller {
 		}
 	}
 
+	public function user_profile($username){
+		$data['userInfo']=$this->user_model->get_userinfo_by_username($username);
+		$this->load->view('template/header');
+		$this->load->view('user/profile',$data);
+		$this->load->view('template/footer');
+	}
+
 	public function user_logout(){
 		$this->session->sess_destroy();
 		redirect('', 'refresh');
