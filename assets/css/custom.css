@@ -9,4 +9,7 @@ body{
 }
 
 
-/* bootstrap üstüne
+/* bootstrap üstüne */
+.navbar-default{
+	background-color:#EEF4EF;
+}

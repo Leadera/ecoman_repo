@@ -20,69 +20,74 @@
     <script src="<?php echo asset_url('js/jquery-1.10.2.min.js'); ?>"></script>
 
   </head>
-<body>
+  <body>
 
-<nav class="navbar navbar-lg navbar-static-top" role="navigation">
-	<div class="container">
+  <nav class="navbar navbar-default navbar-lg" role="navigation">
+  	<div class="container">
 
-		<div class="navbar-header">
-		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
-		    <span class="sr-only">Toggle navigation</span>
-		  </button>
-		  <a class="navbar-brand" href="<?php echo base_url(); ?>">Ecoman</a>
-		</div>
-		<div class="collapse navbar-collapse" id="navbar-collapse-01">
-		  <ul class="nav navbar-nav">
-		    <li><a href="<?php echo base_url('newproject'); ?>">Projeler</a></li>
-		    <li><a href="<?php echo base_url('newcompany'); ?>">Companies</a></li>
-		    <li><a href="#fakelink">Forum</a></li>
-		    <li><a href="#fakelink">Help</a></li>
-		  </ul>
-		  <form class="navbar-form navbar-right" action="<?php echo base_url('search') ?>" method="post" role="search">
-		    <div class="form-group">
-		      <div class="input-group">
-		        <input name="term" class="form-control" id="navbarInput-01" type="search" placeholder="Search">
-		        <span class="input-group-btn">
-		          <button type="submit" class="btn"><span class="fui-search"></span></button>
-		        </span>
-		      </div>
-		    </div>
-		  </form>
-		</div><!-- /.navbar-collapse -->
+  		<div class="row">
+        <div class="col-md-8">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+            <span class="sr-only">Toggle navigation</span>
+          </button>
+          <a class="navbar-brand" href="<?php echo base_url(); ?>">Ecoman</a>
+          <div class="collapse navbar-collapse" id="navbar-collapse-01">
+            <ul class="nav navbar-nav">
+              <li><a href="<?php echo base_url('newproject'); ?>">Projeler</a></li>
+              <li><a href="<?php echo base_url('newcompany'); ?>">Companies</a></li>
+              <li><a href="#fakelink">Forum</a></li>
+              <li><a href="#fakelink">Help</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div>
+        <div class="col-md-4">
+          <form class="navbar-form navbar-right" action="<?php echo base_url('search') ?>" method="post" role="search">
+            <div class="form-group">
+              <div class="input-group">
+                <input name="term" class="form-control" id="navbarInput-01" type="search" placeholder="Search">
+                <span class="input-group-btn">
+                  <button type="submit" class="btn"><span class="fui-search"></span></button>
+                </span>
+              </div>
+            </div>
+          </form>
+        </div>
+  		</div>
 
-		<div class="row">
-			<div class="col-md-10">
-				<ul class="list-inline">
-				  <li class="head-li">Manage Projects</li>
-				  <li class="head-li">Dataset Management</li>
-				  <li class="head-li">CPIS Scoping</li>
-				  <li class="head-li">Ecotracking</li>
-				  <li class="head-li">IS Potentials</li>
-				  <li class="head-li">Cost Benefit Analysis</li>
-				</ul>
-			</div>
-			<div class="col-md-2">
-				<ul class="list-inline text-right">
-					<?php
-					if ($this->session->userdata('user_in') !== FALSE):
-  						$tmp = $this->session->userdata('user_in');
-  						echo $tmp['username'];
-  						?>
-  						<li class="head-li"><a href="<?php echo base_url('logout'); ?>">Log Out</a></li>
-  						<?php
-					else: ?>
-					<li class="head-li"><a href="<?php echo base_url('login'); ?>">Log In</a></li>
-				  	<li class="head-li"><a href="<?php echo base_url('register'); ?>">Register</a></li>
+  		<div class="row">
+  			<div class="col-md-10">
+          <?php
+            if ($this->session->userdata('user_in') !== FALSE):
+          ?>
+  				<ul class="list-inline">
+  				  <li class="head-li">Manage Projects</li>
+  				  <li class="head-li">Dataset Management</li>
+  				  <li class="head-li">CPIS Scoping</li>
+  				  <li class="head-li">Ecotracking</li>
+  				  <li class="head-li">IS Potentials</li>
+  				  <li class="head-li">Cost Benefit Analysis</li>
+  				</ul>
+          <?php else: ?>
+            <p style="font-size:14px;">
+              To use the extended features of this web site, please register.
+            </p>
+          <?php endif ?>
+  			</div>
+  			<div class="col-md-2">
+  				<ul class="list-inline text-right">
+  					<?php
+  					  if ($this->session->userdata('user_in') !== FALSE):
+                $tmp = $this->session->userdata('user_in');
+    				?>
+              <li class="head-li"><a href="<?php echo base_url('profile'); ?>" style="text-transform: capitalize;"><?php echo $tmp['username']; ?></a></li>
+              <li class="head-li"><a href="<?php echo base_url('logout'); ?>">Log Out</a></li>
+            <?php else: ?>
+  					  <li class="head-li"><a href="<?php echo base_url('login'); ?>">Log In</a></li>
+  				  	<li class="head-li"><a href="<?php echo base_url('register'); ?>">Register</a></li>
+  					<?php endif ?>
+  				</ul>
+  			</div>
+  		</div>
 
-					  
-					<?php 
-						endif
-					?>
-
-
-				</ul>
-			</div>
-		</div>
-
-	</div>
-</nav><!-- /navbar -->
+  	</div>
+  </nav><!-- /navbar -->
