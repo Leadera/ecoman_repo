@@ -54,6 +54,7 @@
 			</div>
 			<div class="col-md-4">
 				<div class="form-group">
+					<label for="image">İmage</label>
 	  				<div class="fileinput fileinput-new" data-provides="fileinput">
 	    				<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
 	      					<img data-src="holder.js/100%x100%" alt="...">
@@ -63,16 +64,12 @@
 	      					<span class="btn btn-primary btn-embossed btn-file">
 						        <span class="fileinput-new"><span class="fui-image"></span>  Select image</span>
 						        <span class="fileinput-exists"><span class="fui-gear"></span>  Change</span>
-						        <input type="file" name="...">
+						        <input type="file" name="companyfile">
 	      					</span>
 	      					<a href="#" class="btn btn-primary btn-embossed fileinput-exists" data-dismiss="fileinput"><span class="fui-trash"></span>  Remove</a>
 	    				</div>
 	  				</div>
 				</div>
-				<div class="form-group">
-	    			<label for="assignedCompanies">Add Worker to Company</label>
-	    			<input name="tagsinput" class="tagsinput tagsinput-primary" value="" />
-	 			</div>
 			</div>
 		</div>
 		<button type="submit" class="btn btn-primary">Create Company</button>
