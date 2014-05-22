@@ -8,7 +8,7 @@
     </div>
     <?php endif ?>
 
-	<?php echo form_open('newcompany'); ?>
+	<?php echo form_open_multipart('newcompany'); ?>
 		<div class="row">
 			<div class="col-md-4">
 				<div class="form-group">
@@ -64,7 +64,7 @@
 	      					<span class="btn btn-primary btn-embossed btn-file">
 						        <span class="fileinput-new"><span class="fui-image"></span>  Select image</span>
 						        <span class="fileinput-exists"><span class="fui-gear"></span>  Change</span>
-						        <input type="file" name="companyfile">
+						        <input type="file" name="userfile">
 	      					</span>
 	      					<a href="#" class="btn btn-primary btn-embossed fileinput-exists" data-dismiss="fileinput"><span class="fui-trash"></span>  Remove</a>
 	    				</div>

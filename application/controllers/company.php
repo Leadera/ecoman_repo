@@ -3,7 +3,7 @@
 	class Company extends CI_Controller{
 		function __construct(){
 			parent::__construct();
-			$this->load->model('user_model');
+			$this->load->model('company_model');
 		}
 		public function new_company(){
 			$this->load->library('form_validation');
@@ -36,8 +36,8 @@
 				$config['image_library'] = 'gd2';
 				$config['source_image']	= './assets/company_pictures/'.$this->input->post('companyName').'.jpg';
 				$config['maintain_ratio'] = TRUE;
-				$config['width']	 = 200;
-				$config['height']	 = 200;
+				$config['width'] = 200;
+				$config['height'] = 200;
 				$this->load->library('image_lib', $config);
 
 				$this->image_lib->resize();
@@ -45,15 +45,15 @@
 				$data = array(
 				'name'=>$this->input->post('companyName'),
 				'phone_num'=>$this->input->post('cellPhone'),
-				'phone_num(2)'=>$this->input->post('workPhone'),
+				//'phone_num(2)'=>$this->input->post('workPhone'),
 				'fax_num'=>$this->input->post('fax'),
 				'adress'=>$this->input->post('address'),
 				'description'=>$this->input->post('companyDescription'),
 				'email'=>$this->input->post('email'),
-				'logo'=>$this->input->post('companyName').'.jpg'
+				//'logo'=>$this->input->post('companyName').'.jpg'
 				);
-
-				$this->company_model->create_company($data);
+				$code = $this->input->post('naceCode');
+				$this->company_model->create_company($data,$code);
 
 				redirect('okoldu', 'refresh');
 			}
