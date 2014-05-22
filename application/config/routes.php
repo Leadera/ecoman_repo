@@ -38,6 +38,7 @@
 |
 */
 
+$route['user/(:any)'] = "user/user_profile/$1";
 $route['register'] = "user/user_register";
 $route['login'] = "user/user_login";
 $route['logout'] = "user/user_logout";
@@ -55,7 +56,6 @@ $route['flow_and_component/new_component'] = "dataset/new_component";
 
 $route['product/new_product'] = "dataset/new_product";
 $route['product'] = "dataset/product";
-
 
 $route['default_controller'] = "homepage";
 $route['(:any)'] = 'pages/view/$1';
