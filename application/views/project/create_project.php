@@ -41,40 +41,24 @@
 			<div class="col-md-4">
 	 			<div class="form-group">
 	    			<label for="assignedCompanies">Assign Company</label>    			
-	    			<input name="tagsinput" class="tagsinput tagsinput-primary" value="" />
+	    			<select multiple="multiple" class="" id="info" name='assignCompany[]'>
+						<?php foreach ($companies as $company): ?>
+							<option><?php echo $company['name']; ?></option>
+						<?php endforeach ?>
+					</select>
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="assignedConsultant">Assign Consultant</label>    			
-	    			<input name="tagsinput" class="tagsinput tagsinput-primary" value="" />
-	 			</div>
-	 			<div class="form-group">
-	    			<label for="assignedContactPerson">Assign Contact Person</label>    			
-	    			<input name="tagsinput" class="tagsinput tagsinput-primary" value="" />
+	    			<label for="assignedConsultant">Assign Consultant</label>   			
+	    			<select multiple="multiple" class="" id="info" name='assignConsultant'>
+						<?php foreach ($consultants as $consultant): ?>
+							<option><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name']; ?></option>
+						<?php endforeach ?>
+					</select>
 	 			</div>
 	 			
 			</div>
 			<div class="col-md-4">
-				<div class="form-group">
-					<label for="selectFile">Select File</label>
-				  	<div class="fileinput fileinput-new" data-provides="fileinput">
-				    	<div class="input-group">
-				      		<div class="form-control uneditable-input" data-trigger="fileinput">
-						        <span class="fui-clip fileinput-exists"></span>
-						    	<span class="fileinput-filename"></span>
-						    </div>
-				      		<span class="input-group-btn btn-file">					    	
-						        <span class="btn btn-default fileinput-new" data-role="select-file">Select file</span>
-						        <span class="btn btn-default fileinput-exists" data-role="change"><span class="fui-gear"></span>  Change</span>
-						        <input type="file" name="...">
-						        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput"><span class="fui-trash"></span>  Remove</a>					    	
-				      		</span>					    
-				    	</div>
-				  	</div>
-				</div>
-				<label for="accessRights">Access Rights</label>
-				<div class="jumbotron">
 
-				</div>
 			</div>
 		</div>
 		<button type="submit" class="btn btn-primary">Create Project</button>

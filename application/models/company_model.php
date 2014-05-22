@@ -33,5 +33,13 @@ class Company_model extends CI_Model {
     );
     $this->db->insert('T_CMPNY_NACE_CODE',$data3);
   }
+  
+  public function get_companies(){
+
+    $this->db->select('*');
+    $this->db->from('T_CMPNY');
+    $query = $this->db->get();
+    return $query->result_array();
+  }
 }
 ?>

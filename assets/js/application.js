@@ -27,10 +27,10 @@ String.prototype.repeat = function(num) {
   $(function() {
 
     // Custom Selects
-    $("select[name='huge']").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
-    $("select[name='large']").selectpicker({style: 'btn-lg btn-danger'});
+    $("select[id='huge']").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
+    $("select[id='large']").selectpicker({style: 'btn-lg btn-danger'});
     $("select[id='info']").selectpicker({style: 'btn-inverse'});
-    $("select[name='small']").selectpicker({style: 'btn-sm btn-warning'});
+    $("select[id='small']").selectpicker({style: 'btn-sm btn-warning'});
 
     // Tabs
     $(".nav-tabs a").on('click', function (e) {

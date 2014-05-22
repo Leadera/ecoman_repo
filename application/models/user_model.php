@@ -27,5 +27,17 @@ class User_model extends CI_Model {
   	}
   }
 
+  public function get_consultants(){
+
+
+    $this->db->select('T_USER.user_name as user_name,T_USER.name as name,T_USER.surname as surname');
+    $this->db->from('T_USER');
+    $this->db->join('T_ROLE', 'T_ROLE.id = T_USER.role_id');
+    $this->db->where('T_ROLE.short_name', 'CONS'); 
+    $query = $this->db->get();
+    return $query->result_array();
+
+  }
+
 }
 ?>
