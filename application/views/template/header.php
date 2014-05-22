@@ -63,8 +63,23 @@
 			</div>
 			<div class="col-md-2">
 				<ul class="list-inline text-right">
-				  <li class="head-li">Log In</li>
-				  <li class="head-li"><a href="<?php echo base_url('register'); ?>">Register</a></li>
+					<?php
+					if ($this->session->userdata('user_in') !== FALSE):
+  						$tmp = $this->session->userdata('user_in');
+  						echo $tmp['username'];
+  						?>
+  						<li class="head-li"><a href="<?php echo base_url('logout'); ?>">Log Out</a></li>
+  						<?php
+					else: ?>
+					<li class="head-li"><a href="<?php echo base_url('login'); ?>">Log In</a></li>
+				  	<li class="head-li"><a href="<?php echo base_url('register'); ?>">Register</a></li>
+
+					  
+					<?php 
+						endif
+					?>
+
+
 				</ul>
 			</div>
 		</div>

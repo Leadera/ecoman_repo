@@ -19,7 +19,7 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|numeric|min_length[11]|xss_clean');
 		$this->form_validation->set_rules('fax', 'Fax Number', 'required|numeric|min_length[11]|xss_clean');
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]|xss_clean|is_unique[T_USER.user_name]');
-		$this->form_validation->set_rules('password', 'Password', 'required|min_length[5]|matches[rePassword]');
+		$this->form_validation->set_rules('password', 'Password', 'required|min_length[5]|matches[rePassword]|trim|xss_clean');
 
 		if ($this->form_validation->run() !== FALSE)
 		{
@@ -72,5 +72,52 @@ class User extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function user_login(){
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|xss_clean');
+		$this->form_validation->set_rules('password', 'Password', 'required|xss_clean|trim|callback_check_user');
+
+
+		if ($this->form_validation->run() !== FALSE)
+		{
+			$username= $this->input->post('username');
+			$password=md5($this->input->post('password'));
+			$userInfo = $this->user_model->check_user($username,$password);
+
+			//session ayaları ve atama
+			$session_array= array(
+				'id' => $userInfo['id'],
+				'username' => $userInfo['user_name'],
+				'email' => $userInfo['email']
+				);
+			$this->session->set_userdata('user_in',$session_array);
+
+			//Redirect after login
+			redirect('newproject', 'refresh');
+		}
+
+		$this->load->view('template/header');
+		$this->load->view('user/login_user');
+		$this->load->view('template/footer');
+	}
+
+	public function check_user()
+	{
+		$username= $this->input->post('username');
+		$password=md5($this->input->post('password'));
+		$userInfo=$this->user_model->check_user($username,$password);
+
+		if($userInfo!== FALSE){
+			return true;
+		}else{
+			$this->form_validation->set_message('check_user', 'Şifre veya E-posta hatalı.');
+			return false;
+		}
+	}
+
+	public function user_logout(){
+		$this->session->sess_destroy();
+		redirect('', 'refresh');
+	}
 }
 ?>
