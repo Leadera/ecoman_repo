@@ -79,7 +79,7 @@
   					  if ($this->session->userdata('user_in') !== FALSE):
                 $tmp = $this->session->userdata('user_in');
     				?>
-              <li class="head-li"><a href="<?php echo base_url('profile/'.$tmp['username']); ?>" style="text-transform: capitalize;"><?php echo $tmp['username']; ?></a></li>
+              <li class="head-li"><a href="<?php echo base_url('user/'.$tmp['username']); ?>" style="text-transform: capitalize;"><?php echo $tmp['username']; ?></a></li>
               <li class="head-li"><a href="<?php echo base_url('logout'); ?>">Log Out</a></li>
             <?php else: ?>
   					  <li class="head-li"><a href="<?php echo base_url('login'); ?>">Log In</a></li>

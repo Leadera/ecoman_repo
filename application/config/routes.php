@@ -38,7 +38,7 @@
 |
 */
 
-$route['profile/(:any)'] = "user/user_profile/$1";
+$route['user/(:any)'] = "user/user_profile/$1";
 $route['register'] = "user/user_register";
 $route['login'] = "user/user_login";
 $route['logout'] = "user/user_logout";
