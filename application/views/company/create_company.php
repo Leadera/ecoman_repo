@@ -1,9 +1,5 @@
-<script type="text/javascript" charset="utf-8">
-	<?php echo $map['javascript']; ?> 
-</script>
 <div class="container">
 	<p class="lead">Create Company</p>
-<?php echo $map['mapdiv']; ?>
 
 	<?php if(validation_errors() != NULL ): ?>
     <div class="alert">
@@ -13,7 +9,7 @@
     <?php endif ?>
 
 	<?php echo form_open('newcompany'); ?>
-		<div class="row">VM63764
+		<div class="row">
 			<div class="col-md-4">
 				<div class="form-group">
 	    			<label for="companyName">Company Name</label>
