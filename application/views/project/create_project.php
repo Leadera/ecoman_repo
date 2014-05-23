@@ -40,7 +40,7 @@
 			<div class="col-md-4">
 	 			<div class="form-group">
 	    			<label for="assignedCompanies">Assign Company</label>    			
-	    			<select multiple="multiple"  title='Choose at least one' id="info" name="assignCompany[]">
+	    			<select multiple="multiple"  title="Choose at least one" class="info" id="assignCompany" name="assignCompany[]">
 	    				
 						<?php foreach ($companies as $company): ?>
 							<option value="<?php echo $company['id']; ?>"><?php echo $company['name']; ?></option>
@@ -49,7 +49,7 @@
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="assignedConsultant">Assign Consultant</label>   			
-	    			<select multiple="multiple"  class="selectpicker" title='Choose at least one' id="info" name="assignConsultant[]">
+	    			<select multiple="multiple"  title="Choose at least one" class="info" id="assignConsultant" name="assignConsultant[]">
 	    			
 						<?php foreach ($consultants as $consultant): ?>
 							<option value="<?php echo $consultant['id']; ?>"><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name'].')'; ?></option>

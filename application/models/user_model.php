@@ -44,5 +44,14 @@ class User_model extends CI_Model {
     return $query->result_array();
 
   }
+
+  public function get_company_user($cmpny_id){
+    $this->db->select('T_USER.name as name,T_USER.surname as surname');
+    $this->db->from('T_USER');
+    $this->db->join('T_CMPNY_PRSNL', 'T_CMPNY_PRSNL.user_id = T_USER.id');
+    $this->db->where('T_CMPNY_PRSNL.cmpny_id', $cmpny_id); 
+    $query = $this->db->get();
+    return $query->result_array();
+  }
 }
 ?>

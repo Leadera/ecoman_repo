@@ -44,6 +44,7 @@ $route['login'] = "user/user_login";
 $route['logout'] = "user/user_logout";
 
 $route['newproject'] = "project/new_project";
+$route['contactperson']="project/contact_person";
 
 $route['newcompany'] = "company/new_company";
 
