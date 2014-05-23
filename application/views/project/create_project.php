@@ -41,17 +41,17 @@
 			<div class="col-md-4">
 	 			<div class="form-group">
 	    			<label for="assignedCompanies">Assign Company</label>    			
-	    			<select multiple="multiple" class="" id="info" name='assignCompany[]'>
+	    			<select multiple="multiple" class="" id="info" name="assignCompany[]">
 						<?php foreach ($companies as $company): ?>
-							<option><?php echo $company['name']; ?></option>
+							<option value="0"><?php echo $company['name']; ?></option>
 						<?php endforeach ?>
 					</select>
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="assignedConsultant">Assign Consultant</label>   			
-	    			<select multiple="multiple" class="" id="info" name='assignConsultant'>
+	    			<select multiple="multiple" class="" id="info" name="assignConsultant">
 						<?php foreach ($consultants as $consultant): ?>
-							<option><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name']; ?></option>
+							<option><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name'].')'; ?></option>
 						<?php endforeach ?>
 					</select>
 	 			</div>

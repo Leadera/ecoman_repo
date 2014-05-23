@@ -93,7 +93,7 @@ class User extends CI_Controller {
 			$this->session->set_userdata('user_in',$session_array);
 
 			//Redirect after login
-			redirect('newproject', 'refresh');
+			redirect('user/'.$username, 'refresh');
 		}
 
 		$this->load->view('template/header');
