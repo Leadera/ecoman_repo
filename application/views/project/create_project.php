@@ -28,31 +28,31 @@
 	    			<label for="status">Status</label>	    			
 	    			<select id="info" name="status" class="select-block">
 	  					<?php foreach ($project_status as $status): ?>
-							<option value=<?php echo $status['id']; ?>><?php echo $status['name']; ?></option>
+							<option value="<?php echo $status['id']; ?>"><?php echo $status['name']; ?></option>
 						<?php endforeach ?>
 					</select>
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="description">Description</label>
-	    			<textarea class="form-control" rows="3" name="description" id="description" placeholder="Description"></textarea>
+	    			<textarea class="form-control" rows="3" name="description" id="description" placeholder="Description" value="<?php echo set_value('description'); ?>"></textarea>
 	 			</div>
 			</div>
 			<div class="col-md-4">
 	 			<div class="form-group">
 	    			<label for="assignedCompanies">Assign Company</label>    			
-	    			<select multiple="multiple" class="" id="info" name="assignCompany[]">
+	    			<select multiple="multiple"  title='Choose at least one' id="info" name="assignCompany[]">
 	    				
 						<?php foreach ($companies as $company): ?>
-							<option value=<?php echo $company['id']; ?>><?php echo $company['name']; ?></option>
+							<option value="<?php echo $company['id']; ?>"><?php echo $company['name']; ?></option>
 						<?php endforeach ?>
 					</select>
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="assignedConsultant">Assign Consultant</label>   			
-	    			<select multiple="multiple" class="" id="info" name="assignConsultant[]">
+	    			<select multiple="multiple"  class="selectpicker" title='Choose at least one' id="info" name="assignConsultant[]">
 	    			
 						<?php foreach ($consultants as $consultant): ?>
-							<option value=<?php echo $consultant['id']; ?>><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name'].')'; ?></option>
+							<option value="<?php echo $consultant['id']; ?>"><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name'].')'; ?></option>
 						<?php endforeach ?>
 					</select>
 	 			</div>
