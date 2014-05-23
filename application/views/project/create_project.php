@@ -21,16 +21,15 @@
 				    	<span class="input-group-btn">
 				      		<button class="btn" type="button"><span class="fui-calendar"></span></button>
 				    	</span>
-				    	<input type="text" class="form-control" value="" id="datepicker-01" />
+				    	<input type="text" class="form-control" value="" id="datepicker-01" name="datepicker" />
 				  	</div>
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="status">Status</label>	    			
 	    			<select id="info" name="status" class="select-block">
-	  					<option>status 1</option>
-						<option>status 2</option>
-						<option>status 3</option>
-						<option>status 4</option>
+	  					<?php foreach ($project_status as $status): ?>
+							<option value=<?php echo $status['id']; ?>><?php echo $status['name']; ?></option>
+						<?php endforeach ?>
 					</select>
 	 			</div>
 	 			<div class="form-group">
@@ -42,16 +41,18 @@
 	 			<div class="form-group">
 	    			<label for="assignedCompanies">Assign Company</label>    			
 	    			<select multiple="multiple" class="" id="info" name="assignCompany[]">
+	    				
 						<?php foreach ($companies as $company): ?>
-							<option value="0"><?php echo $company['name']; ?></option>
+							<option value=<?php echo $company['id']; ?>><?php echo $company['name']; ?></option>
 						<?php endforeach ?>
 					</select>
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="assignedConsultant">Assign Consultant</label>   			
-	    			<select multiple="multiple" class="" id="info" name="assignConsultant">
+	    			<select multiple="multiple" class="" id="info" name="assignConsultant[]">
+	    			
 						<?php foreach ($consultants as $consultant): ?>
-							<option><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name'].')'; ?></option>
+							<option value=<?php echo $consultant['id']; ?>><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name'].')'; ?></option>
 						<?php endforeach ?>
 					</select>
 	 			</div>

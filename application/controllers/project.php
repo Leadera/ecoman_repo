@@ -14,7 +14,7 @@
 
 			$data['companies']=$this->company_model->get_companies();
 			$data['consultants']=$this->user_model->get_consultants();
-
+			$data['project_status']=$this->project_model->get_active_project_status();
 
 			$this->load->library('form_validation');
 			
@@ -28,7 +28,43 @@
 			
 			if ($this->form_validation->run() !== FALSE)
 			{
+
+
+
+				$project = array(
+				'name'=>$this->input->post('projectName'),
+				'description'=>$this->input->post('description'),
+				'start_date'=>date('Y-m-d', strtotime(str_replace('-', '/', $this->input->post('datepicker')))),
+				'status_id'=>$this->input->post('status'),
+				'active'=>1 //default active:1 olarak kaydediyoruz.
+				);
+				$last_inserted_project_id = $this->project_model->create_project($project);
+
+				$companies = array ($_POST['assignCompany']);
+
+				foreach ($companies[0] as $company) {
+					$prj_cmpny=array(
+						'prj_id' => $last_inserted_project_id,
+						'cmpny_id' => $company
+						);
+					$this->project_model->insert_project_company($prj_cmpny);	 
+				}
+
+				$consultants = array ($_POST['assignConsultant']);
+				
+				foreach ($consultants[0] as $consultant) {
+					$prj_cnsltnt=array(
+						'prj_id' => $last_inserted_project_id,
+						'cnsltnt_id' => $consultant,
+						'active' => 1
+						);
+					$this->project_model->insert_project_consultant($prj_cnsltnt);
+				}
+
+
 				redirect('okoldu', 'refresh');
+
+
 			}
 
 
