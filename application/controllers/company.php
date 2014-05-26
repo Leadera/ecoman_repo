@@ -10,11 +10,11 @@ class Company extends CI_Controller{
 		$this->load->library('form_validation');
 		$this->load->library('googlemaps');
 //alert("1:" + event.latLng.lat() + " 2:" + event.latLng.lng());
-		$config['center'] = '39.97387252146563, 32.74577558040619';
-	    $config['zoom'] = '13';
-	    $config['onclick'] = '$("#coordinates").val("Lat:" + event.latLng.lat() + "  Long:" + event.latLng.lng())';
+		$config['center'] = '39.98280915242299, 32.73923635482788';
+	    $config['zoom'] = '15';
+	    $config['onclick'] = '$("#latId").val("Lat:" + event.latLng.lat()); $("#longId").val("Long:" + event.latLng.lng()); $("#lat").val(event.latLng.lat()); $("#long").val(event.latLng.lng());';
  	    $config['places'] = TRUE;
-	    $config['placesRadius'] = 1; 
+	    $config['placesRadius'] = 20; 
 	    $this->googlemaps->initialize($config);
 
 		$data['map'] = $this->googlemaps->create_map();

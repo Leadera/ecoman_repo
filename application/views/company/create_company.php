@@ -29,6 +29,8 @@
 	 			<div class="form-group">
 	    			<label for="coordinates">Coordinates</label>
 	    			<input type="text" data-toggle="modal" data-target="#myModal" class="form-control" id="coordinates" placeholder="Coordinates" name="coordinates">
+	    			<input type="text" class="form-control" id="lat" placeholder="Lat" name="lat">
+	    			<input type="text" class="form-control" id="long" placeholder="Long" name="long">
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="companyDescription">Company Description</label>
@@ -84,14 +86,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Click Map</h4>
+        <input type="text" class="form-control" id="latId" name="lat" readonly/>
+        <input type="text" class="form-control" id="longId" name="long" readonly/>
       </div>
       <div class="modal-body">
        <?php echo $map['html']; ?>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
