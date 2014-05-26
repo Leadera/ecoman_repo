@@ -25,6 +25,9 @@ class Project_model extends CI_Model {
   public function insert_project_consultant($prj_cnsltnt){
     $this->db->insert('T_PRJ_CNSLTNT', $prj_cnsltnt);
   }
+  public function insert_project_contact_person($prj_cntct_prsnl){
+     $this->db->insert('T_PRJ_CNTCT_PRSNL', $prj_cntct_prsnl);
+  }
 
 }
 ?>

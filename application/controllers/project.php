@@ -61,6 +61,16 @@
 					$this->project_model->insert_project_consultant($prj_cnsltnt);
 				}
 
+				$contactusers= array ($_POST['assignContactPerson']);
+				foreach ($contactusers[0] as $contactuser) {
+					$prj_cntct_prsnl=array(
+						'prj_id' => $last_inserted_project_id,
+						'usr_id' => $contactuser
+						
+						);
+					$this->project_model->insert_project_contact_person($prj_cntct_prsnl);
+				}
+
 
 				redirect('okoldu', 'refresh');
 
