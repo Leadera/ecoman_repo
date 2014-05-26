@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 23, 2014 at 12:19 PM
+-- Generation Time: May 26, 2014 at 06:43 AM
 -- Server version: 5.5.37-0ubuntu0.13.10.1
 -- PHP Version: 5.5.3-1ubuntu2.3
 
@@ -260,6 +260,15 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_PRSNL` (
   KEY `cmpny_id` (`cmpny_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `T_CMPNY_PRSNL`
+--
+
+INSERT INTO `T_CMPNY_PRSNL` (`user_id`, `cmpny_id`, `is_contact`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -709,7 +718,7 @@ CREATE TABLE IF NOT EXISTS `T_USER` (
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `role_id` (`role_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `T_USER`
@@ -717,7 +726,8 @@ CREATE TABLE IF NOT EXISTS `T_USER` (
 
 INSERT INTO `T_USER` (`id`, `name`, `surname`, `user_name`, `psswrd`, `role_id`, `title`, `phone_num_1`, `phone_num_2`, `fax_num`, `email`, `description`, `linkedin_user`, `photo`, `active`) VALUES
 (1, 'ertan', 'tolan', 'etolan', '31663bdaeeefb7ae67859c6413d58b39', 2, 'asdasdasdasdas', '123123123123', '123123123123123', '123123123123123', 'etolan.11@gmail.com', '234', NULL, 'etolan.jpg', 0),
-(2, 'ertan', 'tolan', 'etolan1', '31663bdaeeefb7ae67859c6413d58b39', 2, 'wqewe', '123123123123', '123123123123123', '123123123123123', 'etolan.011@gmail.com', '', NULL, 'etolan1.jpg', 0);
+(2, 'ertan', 'tolan', 'etolan1', '31663bdaeeefb7ae67859c6413d58b39', 2, 'wqewe', '123123123123', '123123123123123', '123123123123123', 'etolan.011@gmail.com', '', NULL, 'etolan1.jpg', 0),
+(3, '12312312', 'eolasd', '123444', '827ccb0eea8a706c4c34a16891f84e7b', 2, 'wqewe', '1123123123123123', '123123123123123', '123123123123123', 'st09112301031@etu.edu.tr', '12312312313', NULL, '123444.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -746,8 +756,8 @@ ALTER TABLE `T_CLSTR`
 -- Constraints for table `T_CMPNY_CLSTR`
 --
 ALTER TABLE `T_CMPNY_CLSTR`
-  ADD CONSTRAINT `FK_T_CMPNY_CLSTR_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`),
-  ADD CONSTRAINT `FK_T_CMPNY_CLSTR_T_CLSTR` FOREIGN KEY (`clstr_id`) REFERENCES `T_CLSTR` (`id`);
+  ADD CONSTRAINT `FK_T_CMPNY_CLSTR_T_CLSTR` FOREIGN KEY (`clstr_id`) REFERENCES `T_CLSTR` (`id`),
+  ADD CONSTRAINT `FK_T_CMPNY_CLSTR_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`);
 
 --
 -- Constraints for table `T_CMPNY_DATA`
@@ -759,75 +769,75 @@ ALTER TABLE `T_CMPNY_DATA`
 -- Constraints for table `T_CMPNY_EQPMNT`
 --
 ALTER TABLE `T_CMPNY_EQPMNT`
-  ADD CONSTRAINT `FK_T_EQPMNT_T_EQPMNT_NAME` FOREIGN KEY (`eqpmnt_id`) REFERENCES `T_EQPMNT` (`id`),
-  ADD CONSTRAINT `FK_T_EQPMNT_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY_DATA` (`cmpny_id`);
+  ADD CONSTRAINT `FK_T_EQPMNT_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY_DATA` (`cmpny_id`),
+  ADD CONSTRAINT `FK_T_EQPMNT_T_EQPMNT_NAME` FOREIGN KEY (`eqpmnt_id`) REFERENCES `T_EQPMNT` (`id`);
 
 --
 -- Constraints for table `T_CMPNY_EQPMNT_TYPE`
 --
 ALTER TABLE `T_CMPNY_EQPMNT_TYPE`
-  ADD CONSTRAINT `FK_T_CMPNY_EQPMNT_TYPE_T_EQPMNT_TYPE` FOREIGN KEY (`eqpmnt_type_id`) REFERENCES `T_EQPMNT_TYPE` (`id`),
-  ADD CONSTRAINT `FK_T_CMPNY_EQPMNT_TYPE_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY_DATA` (`cmpny_id`);
+  ADD CONSTRAINT `FK_T_CMPNY_EQPMNT_TYPE_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY_DATA` (`cmpny_id`),
+  ADD CONSTRAINT `FK_T_CMPNY_EQPMNT_TYPE_T_EQPMNT_TYPE` FOREIGN KEY (`eqpmnt_type_id`) REFERENCES `T_EQPMNT_TYPE` (`id`);
 
 --
 -- Constraints for table `T_CMPNY_FLOW`
 --
 ALTER TABLE `T_CMPNY_FLOW`
-  ADD CONSTRAINT `FK_T_FLOW_T_UNIT_EP` FOREIGN KEY (`ep_unit_id`) REFERENCES `T_UNIT` (`id`),
   ADD CONSTRAINT `FK_T_FLOW_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY_DATA` (`cmpny_id`),
   ADD CONSTRAINT `FK_T_FLOW_T_FLOW_NAME` FOREIGN KEY (`flow_id`) REFERENCES `T_FLOW` (`id`),
   ADD CONSTRAINT `FK_T_FLOW_T_FLOW_TYPE` FOREIGN KEY (`flow_type_id`) REFERENCES `T_FLOW_TYPE` (`id`),
   ADD CONSTRAINT `FK_T_FLOW_T_UNIT_COST` FOREIGN KEY (`cost_unit_id`) REFERENCES `T_UNIT` (`id`),
+  ADD CONSTRAINT `FK_T_FLOW_T_UNIT_EP` FOREIGN KEY (`ep_unit_id`) REFERENCES `T_UNIT` (`id`),
   ADD CONSTRAINT `FK_T_FLOW_T_UNIT_QNTTY` FOREIGN KEY (`qntty_unit_id`) REFERENCES `T_UNIT` (`id`);
 
 --
 -- Constraints for table `T_CMPNY_FLOW_CMPNNT`
 --
 ALTER TABLE `T_CMPNY_FLOW_CMPNNT`
-  ADD CONSTRAINT `FK_T_FLOW_CMPNNT_T_FLOW` FOREIGN KEY (`cmpny_flow_id`) REFERENCES `T_CMPNY_FLOW` (`id`),
-  ADD CONSTRAINT `FK_T_FLOW_CMPNNT_NAME_T_CMPNNT_NAME` FOREIGN KEY (`cmpnnt_id`) REFERENCES `T_CMPNNT` (`id`);
+  ADD CONSTRAINT `FK_T_FLOW_CMPNNT_NAME_T_CMPNNT_NAME` FOREIGN KEY (`cmpnnt_id`) REFERENCES `T_CMPNNT` (`id`),
+  ADD CONSTRAINT `FK_T_FLOW_CMPNNT_T_FLOW` FOREIGN KEY (`cmpny_flow_id`) REFERENCES `T_CMPNY_FLOW` (`id`);
 
 --
 -- Constraints for table `T_CMPNY_FLOW_PRCSS`
 --
 ALTER TABLE `T_CMPNY_FLOW_PRCSS`
-  ADD CONSTRAINT `FK_T_FLOW_PRCSS_T_PRCSS` FOREIGN KEY (`cmpny_prcss_id`) REFERENCES `T_CMPNY_PRCSS` (`id`),
-  ADD CONSTRAINT `FK_T_FLOW_PRCSS_T_FLOW` FOREIGN KEY (`cmpny_flow_id`) REFERENCES `T_CMPNY_FLOW` (`id`);
+  ADD CONSTRAINT `FK_T_FLOW_PRCSS_T_FLOW` FOREIGN KEY (`cmpny_flow_id`) REFERENCES `T_CMPNY_FLOW` (`id`),
+  ADD CONSTRAINT `FK_T_FLOW_PRCSS_T_PRCSS` FOREIGN KEY (`cmpny_prcss_id`) REFERENCES `T_CMPNY_PRCSS` (`id`);
 
 --
 -- Constraints for table `T_CMPNY_NACE_CODE`
 --
 ALTER TABLE `T_CMPNY_NACE_CODE`
-  ADD CONSTRAINT `FK_T_CMPNY_NACE_CODE_T_NACE_CODE` FOREIGN KEY (`nace_code_id`) REFERENCES `T_NACE_CODE` (`id`),
-  ADD CONSTRAINT `FK_T_CMPNY_NACE_CODE_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`);
+  ADD CONSTRAINT `FK_T_CMPNY_NACE_CODE_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`),
+  ADD CONSTRAINT `FK_T_CMPNY_NACE_CODE_T_NACE_CODE` FOREIGN KEY (`nace_code_id`) REFERENCES `T_NACE_CODE` (`id`);
 
 --
 -- Constraints for table `T_CMPNY_ORG_IND_REG`
 --
 ALTER TABLE `T_CMPNY_ORG_IND_REG`
-  ADD CONSTRAINT `FK_T_CMPNY_ORG_IND_REG_T_ORG_IND_REG` FOREIGN KEY (`org_ind_reg_id`) REFERENCES `T_ORG_IND_REG` (`id`),
-  ADD CONSTRAINT `FK_T_CMPNY_ORG_IND_REG_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`);
+  ADD CONSTRAINT `FK_T_CMPNY_ORG_IND_REG_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`),
+  ADD CONSTRAINT `FK_T_CMPNY_ORG_IND_REG_T_ORG_IND_REG` FOREIGN KEY (`org_ind_reg_id`) REFERENCES `T_ORG_IND_REG` (`id`);
 
 --
 -- Constraints for table `T_CMPNY_PRCSS`
 --
 ALTER TABLE `T_CMPNY_PRCSS`
-  ADD CONSTRAINT `FK_T_PRCSS_T_PRCSS_NAME` FOREIGN KEY (`prcss_id`) REFERENCES `T_PRCSS` (`id`),
-  ADD CONSTRAINT `FK_T_PRCSS_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY_DATA` (`cmpny_id`);
+  ADD CONSTRAINT `FK_T_PRCSS_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY_DATA` (`cmpny_id`),
+  ADD CONSTRAINT `FK_T_PRCSS_T_PRCSS_NAME` FOREIGN KEY (`prcss_id`) REFERENCES `T_PRCSS` (`id`);
 
 --
 -- Constraints for table `T_CMPNY_PRCSS_EQPMNT_TYPE`
 --
 ALTER TABLE `T_CMPNY_PRCSS_EQPMNT_TYPE`
-  ADD CONSTRAINT `FK_T_CMPNY_PRCSS_EQPMNT_TYPE_T_CMPNY_PRCSS` FOREIGN KEY (`cmpny_prcss_id`) REFERENCES `T_CMPNY_PRCSS` (`id`),
-  ADD CONSTRAINT `FK_T_CMPNY_PRCSS_EQPMNT_TYPE_T_CMPNY_EQPMNT_TYPE` FOREIGN KEY (`cmpny_eqpmnt_type_id`) REFERENCES `T_CMPNY_EQPMNT_TYPE` (`id`);
+  ADD CONSTRAINT `FK_T_CMPNY_PRCSS_EQPMNT_TYPE_T_CMPNY_EQPMNT_TYPE` FOREIGN KEY (`cmpny_eqpmnt_type_id`) REFERENCES `T_CMPNY_EQPMNT_TYPE` (`id`),
+  ADD CONSTRAINT `FK_T_CMPNY_PRCSS_EQPMNT_TYPE_T_CMPNY_PRCSS` FOREIGN KEY (`cmpny_prcss_id`) REFERENCES `T_CMPNY_PRCSS` (`id`);
 
 --
 -- Constraints for table `T_CMPNY_PRSNL`
 --
 ALTER TABLE `T_CMPNY_PRSNL`
-  ADD CONSTRAINT `FK_T_CMPNY_PRSNL_T_USER` FOREIGN KEY (`user_id`) REFERENCES `T_USER` (`id`),
-  ADD CONSTRAINT `FK_T_CMPNY_PRSNL_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`);
+  ADD CONSTRAINT `FK_T_CMPNY_PRSNL_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`),
+  ADD CONSTRAINT `FK_T_CMPNY_PRSNL_T_USER` FOREIGN KEY (`user_id`) REFERENCES `T_USER` (`id`);
 
 --
 -- Constraints for table `T_CNSLTNT`
@@ -863,29 +873,29 @@ ALTER TABLE `T_PRJ`
 -- Constraints for table `T_PRJ_ACSS_CMPNY`
 --
 ALTER TABLE `T_PRJ_ACSS_CMPNY`
-  ADD CONSTRAINT `FK_T_PRJ_ACSS_CMPNY_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`),
-  ADD CONSTRAINT `FK_T_PRJ_ACSS_CMPNY_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`);
+  ADD CONSTRAINT `FK_T_PRJ_ACSS_CMPNY_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`),
+  ADD CONSTRAINT `FK_T_PRJ_ACSS_CMPNY_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`);
 
 --
 -- Constraints for table `T_PRJ_ACSS_USER`
 --
 ALTER TABLE `T_PRJ_ACSS_USER`
-  ADD CONSTRAINT `FK_T_PRJ_ACSS_USER_T_USER` FOREIGN KEY (`user_id`) REFERENCES `T_USER` (`id`),
-  ADD CONSTRAINT `FK_T_PRJ_ACSS_USER_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`);
+  ADD CONSTRAINT `FK_T_PRJ_ACSS_USER_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`),
+  ADD CONSTRAINT `FK_T_PRJ_ACSS_USER_T_USER` FOREIGN KEY (`user_id`) REFERENCES `T_USER` (`id`);
 
 --
 -- Constraints for table `T_PRJ_CMPNY`
 --
 ALTER TABLE `T_PRJ_CMPNY`
-  ADD CONSTRAINT `FK_T_PRJ_CMPNY_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`),
-  ADD CONSTRAINT `FK_T_PRJ_CMPNY_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`);
+  ADD CONSTRAINT `FK_T_PRJ_CMPNY_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`),
+  ADD CONSTRAINT `FK_T_PRJ_CMPNY_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`);
 
 --
 -- Constraints for table `T_PRJ_CNSLTNT`
 --
 ALTER TABLE `T_PRJ_CNSLTNT`
-  ADD CONSTRAINT `FK_T_PRJ_CNSLTNT_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`),
-  ADD CONSTRAINT `FK_T_PRJ_CNSLTNT_T_CNSLTNT` FOREIGN KEY (`cnsltnt_id`) REFERENCES `T_CNSLTNT` (`user_id`);
+  ADD CONSTRAINT `FK_T_PRJ_CNSLTNT_T_CNSLTNT` FOREIGN KEY (`cnsltnt_id`) REFERENCES `T_CNSLTNT` (`user_id`),
+  ADD CONSTRAINT `FK_T_PRJ_CNSLTNT_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`);
 
 --
 -- Constraints for table `T_PRJ_CNTCT_PRSNL`
@@ -897,8 +907,8 @@ ALTER TABLE `T_PRJ_CNTCT_PRSNL`
 -- Constraints for table `T_PRJ_DOC`
 --
 ALTER TABLE `T_PRJ_DOC`
-  ADD CONSTRAINT `FK_T_PRJ_DOC_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`),
-  ADD CONSTRAINT `FK_T_PRJ_DOC_T_DOC` FOREIGN KEY (`doc_id`) REFERENCES `T_DOC` (`id`);
+  ADD CONSTRAINT `FK_T_PRJ_DOC_T_DOC` FOREIGN KEY (`doc_id`) REFERENCES `T_DOC` (`id`),
+  ADD CONSTRAINT `FK_T_PRJ_DOC_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`);
 
 --
 -- Constraints for table `T_USER`
@@ -911,251 +921,6 @@ ALTER TABLE `T_USER`
 --
 ALTER TABLE `T_USER_LOG`
   ADD CONSTRAINT `FK_T_USER_LOG_T_USER` FOREIGN KEY (`user_id`) REFERENCES `T_USER` (`id`);
---
--- Database: `phpmyadmin`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma_bookmark`
---
-
-CREATE TABLE IF NOT EXISTS `pma_bookmark` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `dbase` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `user` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `label` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
-  `query` text COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Bookmarks' AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma_column_info`
---
-
-CREATE TABLE IF NOT EXISTS `pma_column_info` (
-  `id` int(5) unsigned NOT NULL AUTO_INCREMENT,
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `column_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `comment` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
-  `mimetype` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
-  `transformation` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `transformation_options` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `db_name` (`db_name`,`table_name`,`column_name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Column information for phpMyAdmin' AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `pma_column_info`
---
-
-INSERT INTO `pma_column_info` (`id`, `db_name`, `table_name`, `column_name`, `comment`, `mimetype`, `transformation`, `transformation_options`) VALUES
-(1, 'ecoman_db', 'T_CMPNNT', 'id', '', '', '_', ''),
-(2, 'ecoman_db', 'T_USER', 'photo', '', '', '_', ''),
-(3, 'ecoman_db', 'T_ROLE', 'CONS', '', '', '_', ''),
-(4, 'ecoman_db', 'T_ROLE', 'short_name', '', '', '_', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma_designer_coords`
---
-
-CREATE TABLE IF NOT EXISTS `pma_designer_coords` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `x` int(11) DEFAULT NULL,
-  `y` int(11) DEFAULT NULL,
-  `v` tinyint(4) DEFAULT NULL,
-  `h` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`db_name`,`table_name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table coordinates for Designer';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma_history`
---
-
-CREATE TABLE IF NOT EXISTS `pma_history` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `db` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `table` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `timevalue` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `sqlquery` text COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `username` (`username`,`db`,`table`,`timevalue`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='SQL history for phpMyAdmin' AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma_pdf_pages`
---
-
-CREATE TABLE IF NOT EXISTS `pma_pdf_pages` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `page_nr` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `page_descr` varchar(50) CHARACTER SET utf8 NOT NULL DEFAULT '',
-  PRIMARY KEY (`page_nr`),
-  KEY `db_name` (`db_name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='PDF relation pages for phpMyAdmin' AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma_recent`
---
-
-CREATE TABLE IF NOT EXISTS `pma_recent` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `tables` text COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`username`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Recently accessed tables';
-
---
--- Dumping data for table `pma_recent`
---
-
-INSERT INTO `pma_recent` (`username`, `tables`) VALUES
-('root', '[{"db":"ecoman_db","table":"T_PRJ"},{"db":"ecoman_db","table":"T_PRJ_CNSLTNT"},{"db":"ecoman_db","table":"T_PRJ_ACSS_CMPNY"},{"db":"ecoman_db","table":"T_PRJ_ACSS_USER"},{"db":"ecoman_db","table":"T_PRJ_CMPNY"},{"db":"ecoman_db","table":"T_PRJ_CNTCT_PRSNL"},{"db":"ecoman_db","table":"T_PRJ_DOC"},{"db":"ecoman_db","table":"T_PRJ_STATUS"},{"db":"ecoman_db","table":"T_CLSTR"},{"db":"ecoman_db","table":"T_CNSLTNT"}]');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma_relation`
---
-
-CREATE TABLE IF NOT EXISTS `pma_relation` (
-  `master_db` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `master_table` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `master_field` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `foreign_db` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `foreign_table` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `foreign_field` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  PRIMARY KEY (`master_db`,`master_table`,`master_field`),
-  KEY `foreign_field` (`foreign_db`,`foreign_table`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Relation table';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma_table_coords`
---
-
-CREATE TABLE IF NOT EXISTS `pma_table_coords` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `pdf_page_number` int(11) NOT NULL DEFAULT '0',
-  `x` float unsigned NOT NULL DEFAULT '0',
-  `y` float unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`db_name`,`table_name`,`pdf_page_number`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table coordinates for phpMyAdmin PDF output';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma_table_info`
---
-
-CREATE TABLE IF NOT EXISTS `pma_table_info` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `display_field` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  PRIMARY KEY (`db_name`,`table_name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table information for phpMyAdmin';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma_table_uiprefs`
---
-
-CREATE TABLE IF NOT EXISTS `pma_table_uiprefs` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `prefs` text COLLATE utf8_bin NOT NULL,
-  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`username`,`db_name`,`table_name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Tables'' UI preferences';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma_tracking`
---
-
-CREATE TABLE IF NOT EXISTS `pma_tracking` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `version` int(10) unsigned NOT NULL,
-  `date_created` datetime NOT NULL,
-  `date_updated` datetime NOT NULL,
-  `schema_snapshot` text COLLATE utf8_bin NOT NULL,
-  `schema_sql` text COLLATE utf8_bin,
-  `data_sql` longtext COLLATE utf8_bin,
-  `tracking` set('UPDATE','REPLACE','INSERT','DELETE','TRUNCATE','CREATE DATABASE','ALTER DATABASE','DROP DATABASE','CREATE TABLE','ALTER TABLE','RENAME TABLE','DROP TABLE','CREATE INDEX','DROP INDEX','CREATE VIEW','ALTER VIEW','DROP VIEW') COLLATE utf8_bin DEFAULT NULL,
-  `tracking_active` int(1) unsigned NOT NULL DEFAULT '1',
-  PRIMARY KEY (`db_name`,`table_name`,`version`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT COMMENT='Database changes tracking for phpMyAdmin';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma_userconfig`
---
-
-CREATE TABLE IF NOT EXISTS `pma_userconfig` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `timevalue` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `config_data` text COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`username`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='User preferences storage for phpMyAdmin';
---
--- Database: `tutorial`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `T_CMPNNT`
---
-
-CREATE TABLE IF NOT EXISTS `T_CMPNNT` (
-  `id` int(11) NOT NULL,
-  `name` varchar(200) NOT NULL,
-  `name_tr` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(128) NOT NULL,
-  `password` varchar(128) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `username`, `password`) VALUES
-(1, 'Gandalf', 'iamwhite!'),
-(2, 'Bilbo', 'bagginses!'),
-(3, 'Gollum', 'precious'),
-(4, 'arwen', 'tolodannangalad');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
