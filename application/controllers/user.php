@@ -126,5 +126,28 @@ class User extends CI_Controller {
 		$this->session->sess_destroy();
 		redirect('', 'refresh');
 	}
+
+	// Database de kayıtlı olan user kullanıcısının bilgilerini view sayfasına gönderiliyor
+	// User önceden hangi bilgileri girdigini unutmus ise hatırlatma amaclida kullanilir
+	public function user_profile_update(){
+
+		$array = $this->user_model->update_profile();
+		$data = array(
+			'name' => $array['name'],
+			'surname' => $array['surname'],
+			'user_name' => $array['user_name'],
+			'title' => $array['title'],
+			'phone_num_1' => $array['phone_num_1'],
+			'phone_num_2' => $array['phone_num_2'],
+			'fax_num' => $array['fax_num'],
+			'email' => $array['email'],
+			'description' => $array['description']
+
+		);
+
+		$this->load->view('template/header');
+		$this->load->view('user/profile_update',$data);
+		$this->load->view('template/footer');
+	}
 }
 ?>

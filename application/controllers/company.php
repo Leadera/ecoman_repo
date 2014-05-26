@@ -45,13 +45,14 @@ class Company extends CI_Controller{
 
 			$data = array(
 			'name'=>$this->input->post('companyName'),
-			'phone_num'=>$this->input->post('cellPhone'),
-			//'phone_num(2)'=>$this->input->post('workPhone'),
+			'phone_num_1'=>$this->input->post('cellPhone'),
+			'phone_num_2'=>$this->input->post('workPhone'),
 			'fax_num'=>$this->input->post('fax'),
-			'adress'=>$this->input->post('address'),
+			'address'=>$this->input->post('address'),
 			'description'=>$this->input->post('companyDescription'),
 			'email'=>$this->input->post('email'),
-			//'logo'=>$this->input->post('companyName').'.jpg'
+			'logo'=>$this->input->post('companyName').'.jpg',
+			'active'=>'1'
 			);
 			$code = $this->input->post('naceCode');
 			$this->company_model->create_company($data,$code);

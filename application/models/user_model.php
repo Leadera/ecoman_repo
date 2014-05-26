@@ -32,7 +32,6 @@ class User_model extends CI_Model {
   	}
   }
 
-
   public function get_consultants(){
 
 
@@ -52,6 +51,27 @@ class User_model extends CI_Model {
     $this->db->where('T_CMPNY_PRSNL.cmpny_id', $cmpny_id); 
     $query = $this->db->get();
     return $query->result_array();
+  }
+
+  // Session dan acik olan kisinin username bilgisi aliniyor ve bu username e sahip
+  // kisinin butun bilgileri controller a return ediliyor.
+  public function update_profile(){
+    if ($this->session->userdata('user_in') !== FALSE){
+      $tmp = $this->session->userdata('user_in');
+
+      $this->db->from('T_USER');
+      $this->db->where('user_name',$tmp['username']);
+      $query = $this->db->get();
+
+      if($query -> num_rows() == 1)
+      {
+        return $query->row_array();
+      }
+      else
+      {
+        return false;
+      }
+    }
   }
 }
 ?>
