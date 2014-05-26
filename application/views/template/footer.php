@@ -15,6 +15,9 @@
 
     <script type="text/javascript">
         $("#datepicker-01").datepicker().datepicker('setDate',new Date());
+        $('#myModal').on('shown.bs.modal', function (e) {
+            google.maps.event.trigger(map, 'resize')
+        });
     </script>
 
     <script type="text/javascript">
