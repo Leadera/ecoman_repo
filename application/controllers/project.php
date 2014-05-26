@@ -75,12 +75,16 @@
 		public function contact_person(){
 			$cmpny_id=$this->input->post('company_id'); // 1,2,3 şeklinde company id ler alındı
 			$cmpny_id_arr = explode(",", $cmpny_id); // explode ile parse edildi. array icinde company id'ler tutuluyor.
+			$user = array();
 
-			$user = $this->user_model->get_company_user($cmpny_id_arr[0]); 
+			
+			foreach ($cmpny_id_arr as $cmpny_id) {
+				$user[] = $this->user_model->get_company_users($cmpny_id); 
+			}
 			//foreach dongusu icinde tek tek company id'ler gonderilip ilgili user'lar bulunacak.
 			//suanda sadece ilk company id ' yi alıp user ları donuyor.
 
-			print_r($user); // burada json arastirilabilir. 
+			echo json_encode($user); // burada json arastirilabilir. 
 		}
 
 

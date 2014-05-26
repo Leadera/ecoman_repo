@@ -27,12 +27,24 @@
                 async: false,
                 type: "POST",
                 data: "company_id="+company,
-                dataType: "html",
+                dataType: "json",
 
                 success: function(data) {
-                    alert(data);
-                    // data: project/contact_person methodun bize dondugu user arrayi olacak.
-                    // burada dinamik olarak multiple select olusturulacak. 
+                    // gelen data array'i : database'den cekilen companylerin user'ları. 
+                    $('#assignContactPerson option:not(:selected)').remove();
+                    for (var k = 0; k < data.length; k++) { 
+
+                        for (var i = 0; i < data[k].length; i++) { 
+                            var opt =data[k][i]['id'];
+                            if($("#assignContactPerson option[value='"+ opt +"']").length == 0)
+                            {
+                               $("#assignContactPerson").append(new Option(data[k][i]['name']+' '+data[k][i]['surname']+' - '+data[k][i]['cmpny_name'],data[k][i]['id']));
+                            
+                            }else{
+                               
+                            }
+                        }
+                    }                        
                     // aklima takilan: eger contact person sectikten sonra , company assign listesinden remove edilirse ne yapacagiz?
                 }
             })

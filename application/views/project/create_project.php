@@ -25,12 +25,14 @@
 				  	</div>
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="status">Status</label>	    			
-	    			<select id="status" class="info" name="status" class="select-block">
-	  					<?php foreach ($project_status as $status): ?>
-							<option value="<?php echo $status['id']; ?>"><?php echo $status['name']; ?></option>
-						<?php endforeach ?>
-					</select>
+	    			<label for="status">Status</label>
+	    			<div>	    			
+		    			<select id="status" class="info" name="status" class="select-block">
+		  					<?php foreach ($project_status as $status): ?>
+								<option value="<?php echo $status['id']; ?>"><?php echo $status['name']; ?></option>
+							<?php endforeach ?>
+						</select>
+					</div>
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="description">Description</label>
@@ -54,6 +56,13 @@
 						<?php foreach ($consultants as $consultant): ?>
 							<option value="<?php echo $consultant['id']; ?>"><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name'].')'; ?></option>
 						<?php endforeach ?>
+					</select>
+	 			</div>
+	 			<div class="form-group">
+	    			<label for="assignedConsultant">Assign Contact Person</label>   			
+	    			<select multiple="multiple"  title="Choose at least one" class="info" id="assignContactPerson" name="assignContactPerson[]">
+	    			
+						
 					</select>
 	 			</div>
 	 			
