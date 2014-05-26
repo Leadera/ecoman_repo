@@ -8,6 +8,17 @@ class Company extends CI_Controller{
 
 	public function new_company(){
 		$this->load->library('form_validation');
+		$this->load->library('googlemaps');
+//alert("1:" + event.latLng.lat() + " 2:" + event.latLng.lng());
+		$config['center'] = '39.97387252146563, 32.74577558040619';
+	    $config['zoom'] = '13';
+	    $config['onclick'] = '$("#coordinates").val("Lat:" + event.latLng.lat() + "  Long:" + event.latLng.lng())';
+ 	    $config['places'] = TRUE;
+	    $config['placesRadius'] = 1; 
+	    $this->googlemaps->initialize($config);
+
+		$data['map'] = $this->googlemaps->create_map();
+
 
 		$this->form_validation->set_rules('companyName', 'Company Name', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('naceCode', 'Nace Code', 'trim|required|xss_clean|regex_match[/^\d{2}\.\d{2}\.\d{2}$/]');
@@ -60,8 +71,8 @@ class Company extends CI_Controller{
 			redirect('okoldu', 'refresh');
 		}
 
-		$this->load->view('template/header');
-		$this->load->view('company/create_company');
+		$this->load->view('template/header',$data);
+		$this->load->view('company/create_company',$data);
 		$this->load->view('template/footer');
 	}
 }

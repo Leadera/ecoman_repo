@@ -1,3 +1,8 @@
+</body>
+<head>
+<?php echo $map['js']; ?>
+</head>
+<body>
 <div class="container">
 	<p class="lead">Create Company</p>
 
@@ -23,7 +28,7 @@
 
 	 			<div class="form-group">
 	    			<label for="coordinates">Coordinates</label>
-	    			<input type="text" class="form-control" id="coordinates" placeholder="Coordinates" name="coordinates">
+	    			<input type="text" data-toggle="modal" data-target="#myModal" class="form-control" id="coordinates" placeholder="Coordinates" name="coordinates">
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="companyDescription">Company Description</label>
@@ -74,4 +79,22 @@
 		</div>
 		<button type="submit" class="btn btn-primary">Create Company</button>
 	</form>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" rendered="<?php echo $map['js']; ?>">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+       <?php echo $map['html']; ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+	
 </div>
