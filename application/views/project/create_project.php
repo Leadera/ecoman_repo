@@ -26,7 +26,7 @@
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="status">Status</label>	    			
-	    			<select id="info" name="status" class="select-block">
+	    			<select id="status" class="info" name="status" class="select-block">
 	  					<?php foreach ($project_status as $status): ?>
 							<option value="<?php echo $status['id']; ?>"><?php echo $status['name']; ?></option>
 						<?php endforeach ?>
