@@ -149,5 +149,15 @@ class User extends CI_Controller {
 		$this->load->view('user/profile_update',$data);
 		$this->load->view('template/footer');
 	}
+
+	public function user_view($term){
+		
+		$data['user'] = $this->user_model->get_user($term);
+		$data['user'][0]['prjname'] = $this->user_model->get_proj_contact_person($term);
+
+		$this->load->view('template/header');
+		$this->load->view('user/profile_view',$data);
+		$this->load->view('template/footer');
+	}
 }
 ?>

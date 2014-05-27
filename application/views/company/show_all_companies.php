@@ -1,6 +1,6 @@
 <div class="container">
 	<p class="lead">Show All Companies</p>
-
+	
 	<div class="row">
 		<div class="col-md-8">
 

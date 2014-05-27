@@ -47,18 +47,25 @@
 				</tr>
 				<tr>
 					<td>
-					<p class = "text-left">Address:</p>
+					<p class = "text-left">Nace Code:</p>
 					</td>
 					<td>
-					<p class = "text-left"><?php echo $companies[0]['address']; ?></p>
+					<p class = "text-left"><?php 
+
+					foreach ($nacecode as $nace) {
+						echo $nace['code'].'-'.$nace['name']; 
+						echo '<br>';
+					}
+
+					?></p>
 					</td>
 				</tr>
 				<tr>
 					<td>
-					<p class = "text-left">Nace Code:</p>
+					<p class = "text-left">Address:</p>
 					</td>
 					<td>
-					<p class = "text-left"><?php echo $companies[0]['nacecode']; ?></p>
+					<p class = "text-left"><?php echo $companies[0]['address']; ?></p>
 					</td>
 				</tr>
 				<tr>
@@ -78,7 +85,7 @@
 			
 			<div class="form-group">
 				<p class = "text-left">Company project</p>
-				<?php foreach ($companies[0]['prjname'] as $prj) {
+				<?php foreach ($prjname as $prj) {
 					echo '<p class = "text-left">'.$prj["name"].'</p>';
 					echo "<br>";
 				} ?>
@@ -87,9 +94,11 @@
 
 			<div class="form-group">
 				<p class = "text-left">Company workers</p>
-				<?php foreach ($companies[0]['cmpnyperson'] as $prj) {
-					echo '<p class = "text-left">'.$prj["name"].' '.$prj["surname"].'</p>';
-					echo "<br>";
+				<?php foreach ($cmpnyperson as $cmpprsn) {
+					echo "<h6><a href =".base_url("user/".$cmpprsn["id"])." >";
+					echo $cmpprsn["name"].' '.$cmpprsn["surname"];
+					echo '<br>';
+					echo "</a>";
 				} ?>
 			</div>
 		</div>

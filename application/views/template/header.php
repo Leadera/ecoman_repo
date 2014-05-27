@@ -33,7 +33,7 @@
           <a class="navbar-brand" href="<?php echo base_url(); ?>">Ecoman</a>
           <div class="collapse navbar-collapse" id="navbar-collapse-01">
             <ul class="nav navbar-nav">
-              <li><a href="<?php echo base_url('newproject'); ?>">Projeler</a></li>
+              <li><a href="<?php echo base_url('projects'); ?>">Projeler</a></li>
               <li><a href="<?php echo base_url('company'); ?>">Companies</a></li>
               <li><a href="#fakelink">Forum</a></li>
               <li><a href="#fakelink">Help</a></li>

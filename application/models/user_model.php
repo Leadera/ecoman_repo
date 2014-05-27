@@ -74,5 +74,23 @@ class User_model extends CI_Model {
       }
     }
   }
+
+  public function get_user($id){
+    $this->db->select('*');
+    $this->db->from('T_USER');
+    $this->db->where('id', $id);
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
+  public function get_proj_contact_person($id){
+      $this->db->select('T_PRJ.name');
+      $this->db->from('T_PRJ');
+      $this->db->join('T_PRJ_CNTCT_PRSNL', 'T_PRJ_CNTCT_PRSNL.prj_id = T_PRJ.id');
+      $this->db->join('T_USER', 'T_USER.id = T_PRJ_CNTCT_PRSNL.usr_id');
+      $this->db->where('T_USER.id', $id); 
+      $query = $this->db->get();
+      return $query->result_array();
+  }
 }
 ?>

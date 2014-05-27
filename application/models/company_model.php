@@ -48,7 +48,7 @@ class Company_model extends CI_Model {
   }
 
   public function get_nace_code($id){
-      $this->db->select('code');
+      $this->db->select('T_NACE_CODE.code,T_NACE_CODE.name');
       $this->db->from('T_NACE_CODE');
       $this->db->join('T_CMPNY_NACE_CODE', 'T_CMPNY_NACE_CODE.nace_code_id = T_NACE_CODE.id');
       $this->db->join('T_CMPNY', 'T_CMPNY.id = T_CMPNY_NACE_CODE.cmpny_id');
@@ -68,7 +68,7 @@ class Company_model extends CI_Model {
   }
 
   public function get_company_workers($id){
-      $this->db->select('T_USER.name,T_USER.surname');
+      $this->db->select('T_USER.name,T_USER.surname,T_USER.id');
       $this->db->from('T_USER');
       $this->db->join('T_CMPNY_PRSNL', 'T_CMPNY_PRSNL.user_id = T_USER.id');
       $this->db->join('T_CMPNY', 'T_CMPNY.id = T_CMPNY_PRSNL.cmpny_id');

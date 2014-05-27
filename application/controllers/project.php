@@ -96,8 +96,25 @@
 
 			echo json_encode($user); // burada json arastirilabilir. 
 		}
+		
+		public function show_all_project(){
+			$data['projects'] = $this->project_model->get_projects();
 
+			$this->load->view('template/header');
+			$this->load->view('project/show_all_project',$data);
+			$this->load->view('template/footer');
+		}
 
+		public function view_project($prj_id){
+			$data['projects'] = $this->project_model->get_project($prj_id);
+			$data['status'] = $this->project_model->get_status($prj_id);
+			$data['constant'] = $this->project_model->get_prj_consaltnt($prj_id);
+			$data['companies'] = $this->project_model->get_prj_companies($prj_id);
+			$data['contact'] = $this->project_model->get_prj_cntct_prsnl($prj_id);
+
+			$this->load->view('template/header');
+			$this->load->view('project/project_show_detailed',$data);
+			$this->load->view('template/footer');
+		}
 	}
-
 ?>
