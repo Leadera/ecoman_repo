@@ -68,7 +68,21 @@ class Company extends CI_Controller{
 			'active'=>'1'
 			);
 			$code = $this->input->post('naceCode');
-			$this->company_model->create_company($data,$code);
+			$last_id = $this->company_model->insert_company($data);
+
+			$cmpny_data = array(
+		      'cmpny_id' => $last_id,
+		      'description' => $data['description']
+		    );
+
+		    $this->company_model->insert_cmpny_data($cmpny_data);
+		    $nace_code_id = $this->company_model->search_nace_code($code);
+
+		    $cmpny_nace_code = array(
+		      'cmpny_id' => $last_id,
+		      'nace_code_id' => $nace_code_id
+		    );
+		    $this->company_model->insert_cmpny_nace_code($cmpny_nace_code);
 
 			redirect('okoldu', 'refresh');
 		}
