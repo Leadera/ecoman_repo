@@ -14,10 +14,39 @@
     <script src="<?php echo asset_url('js/application.js'); ?>"></script>
 
     <script type="text/javascript">
+            var marker;
+            var lat,lon;
         $("#datepicker-01").datepicker().datepicker('setDate',new Date());
-        $('#myModal').on('shown.bs.modal', function (e) {
-            google.maps.event.trigger(map, 'resize')
+        $('#myModal').on('shown.bs.modal', function (e) { 
+            google.maps.event.trigger(map, 'resize'); // modal acildiktan sonra haritanın resize edilmesi gerekiyor.
+
+            map.setZoom(15);
+            if(!marker)
+                map.setCenter(new google.maps.LatLng(39.9738971871888, 32.745467126369476));
+            else
+                map.setCenter(marker.getPosition());
+
+            google.maps.event.addListener(map, 'click', function(event) {
+                $("#latId").val("Lat:" + event.latLng.lat()); $("#longId").val("Long:" + event.latLng.lng()); 
+                $("#lat").val(event.latLng.lat()); $("#long").val(event.latLng.lng());
+                placeMarker(event.latLng);
+            });
+
         });
+
+
+
+        function placeMarker(location) {
+          if ( marker ) {
+            marker.setPosition(location);
+          } else {
+            marker = new google.maps.Marker({
+              position: location,
+              map: map
+            });
+          }
+        }
+
     </script>
 
     <script type="text/javascript">
@@ -49,6 +78,8 @@
                         }
                     }                        
                     // aklima takilan: eger contact person sectikten sonra , company assign listesinden remove edilirse ne yapacagiz?
+                    //cevap: remove edilen company'nin user'ları da remove edilecek.sistem şuan bu şekilde çalışmıyor. 
+                    //company id'si ile kontrol yapılabilir.
                 }
             })
 
