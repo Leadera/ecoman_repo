@@ -57,7 +57,7 @@ class Company_model extends CI_Model {
       return $query->result_array();
   }
 
-  public function get_proj_company($id){
+  public function get_company_proj($id){
       $this->db->select('T_PRJ.name');
       $this->db->from('T_PRJ');
       $this->db->join('T_PRJ_CMPNY', 'T_PRJ_CMPNY.prj_id = T_PRJ.id');

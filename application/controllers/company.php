@@ -87,12 +87,26 @@ class Company extends CI_Controller{
 	}
 
 	public function companies($term){
+		$this->load->library('googlemaps');
+
+
 		$data['companies'] = $this->company_model->get_company($term);
+		$config['center'] = $data['companies'][0]['latitude'].','. $data['companies'][0]['longitude'];
+	    $config['zoom'] = '15';
+	    $config['places'] = TRUE;
+	    $config['placesRadius'] = 20; 
+	    $marker = array();
+		$marker['position'] = $data['companies'][0]['latitude'].','. $data['companies'][0]['longitude'];
+		$this->googlemaps->add_marker($marker);
+	    $this->googlemaps->initialize($config);
+
+		$data['map'] = $this->googlemaps->create_map();
+
 		
 		$array['company'] = $this->company_model->get_nace_code($term);
 		$data['companies'][0]['nacecode'] = $array['company'][0]['code'];
 		
-		$data['companies'][0]['prjname'] = $this->company_model->get_proj_company($term);
+		$data['companies'][0]['prjname'] = $this->company_model->get_company_proj($term);
 
 		$data['companies'][0]['cmpnyperson'] = $this->company_model->get_company_workers($term);
 

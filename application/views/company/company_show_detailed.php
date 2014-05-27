@@ -1,3 +1,4 @@
+<?php echo $map['js']; ?>
 <div class="container">
 	
 	<div class="row">
@@ -65,7 +66,7 @@
 					<p class = "text-left">Company on map:</p>
 					</td>
 					<td>
-					<p class = "text-left"></p>
+					<p class = "text-left"><?php echo $map['html']; ?></p>
 					</td>
 				</tr>
 			</table>
