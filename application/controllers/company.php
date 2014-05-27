@@ -12,7 +12,7 @@ class Company extends CI_Controller{
 //alert("1:" + event.latLng.lat() + " 2:" + event.latLng.lng());
 		$config['center'] = '39.98280915242299, 32.73923635482788';
 	    $config['zoom'] = '15';
-	    $config['onclick'] = '$("#latId").val("Lat:" + event.latLng.lat()); $("#longId").val("Long:" + event.latLng.lng()); $("#lat").val(event.latLng.lat()); $("#long").val(event.latLng.lng());';
+//	    $config['onclick'] = '$("#latId").val("Lat:" + event.latLng.lat()); $("#longId").val("Long:" + event.latLng.lng()); $("#lat").val(event.latLng.lat()); $("#long").val(event.latLng.lng());';
  	    $config['places'] = TRUE;
 	    $config['placesRadius'] = 20; 
 	    $this->googlemaps->initialize($config);
@@ -62,6 +62,8 @@ class Company extends CI_Controller{
 			'address'=>$this->input->post('address'),
 			'description'=>$this->input->post('companyDescription'),
 			'email'=>$this->input->post('email'),
+			'latitude'=>$this->input->post('lat'),
+			'longitude'=>$this->input->post('long'),
 			'logo'=>$this->input->post('companyName').'.jpg',
 			'active'=>'1'
 			);
@@ -71,8 +73,31 @@ class Company extends CI_Controller{
 			redirect('okoldu', 'refresh');
 		}
 
-		$this->load->view('template/header',$data);
+		$this->load->view('template/header');
 		$this->load->view('company/create_company',$data);
+		$this->load->view('template/footer');
+	}
+
+	public function show_all_companies(){
+		$data['companies'] = $this->company_model->get_companies();
+
+		$this->load->view('template/header');
+		$this->load->view('company/show_all_companies',$data);
+		$this->load->view('template/footer');
+	}
+
+	public function companies($term){
+		$data['companies'] = $this->company_model->get_company($term);
+		
+		$array['company'] = $this->company_model->get_nace_code($term);
+		$data['companies'][0]['nacecode'] = $array['company'][0]['code'];
+		
+		$data['companies'][0]['prjname'] = $this->company_model->get_proj_company($term);
+
+		$data['companies'][0]['cmpnyperson'] = $this->company_model->get_company_workers($term);
+
+		$this->load->view('template/header');
+		$this->load->view('company/company_show_detailed',$data);
 		$this->load->view('template/footer');
 	}
 }
