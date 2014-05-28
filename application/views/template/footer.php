@@ -66,7 +66,7 @@
                     $('#assignContactPerson option:not(:selected)').remove();
                     for (var k = 0; k < data.length; k++) { 
 
-                        for (var i = 0; i < data[k].length; i++) { 
+                        for (var i = 0; i < data[k].length; i++) {
                             var opt =data[k][i]['id'];
                             if($("#assignContactPerson option[value='"+ opt +"']").length == 0)
                             {
