@@ -117,6 +117,7 @@ class User extends CI_Controller {
 
 	public function user_profile($username){
 		$data['userInfo']=$this->user_model->get_userinfo_by_username($username);
+		$data['projects'] = $this->user_model->get_projects_from_userid($data['userInfo']['id']);
 		$this->load->view('template/header');
 		$this->load->view('user/profile',$data);
 		$this->load->view('template/footer');
@@ -147,16 +148,6 @@ class User extends CI_Controller {
 
 		$this->load->view('template/header');
 		$this->load->view('user/profile_update',$data);
-		$this->load->view('template/footer');
-	}
-
-	public function user_view($term){
-		
-		$data['user'] = $this->user_model->get_user($term);
-		$data['user'][0]['prjname'] = $this->user_model->get_proj_contact_person($term);
-
-		$this->load->view('template/header');
-		$this->load->view('user/profile_view',$data);
 		$this->load->view('template/footer');
 	}
 }

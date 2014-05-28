@@ -1,21 +1,19 @@
 <div class="container">
-
 	<div class="row">
 		<div class="col-md-8">
-			<p class="lead">Show All Projects</p>
-			<?php 
-				foreach ($projects as $pro) {
-					echo "<h6><a href =".base_url("project/".$pro["id"])." >";
-					echo ($pro['name']); 
-					echo '<br>';
-					echo "</a></h6>";
-				}
-			?>
-		</div>
-		<div class="col-md-4">
-			
-			<h4><a href = "<?php echo base_url("newproject"); ?>">Create Project</a></h4>
+			<div class="lead pull-left">Show All Projects</div>
+			<a class="pull-right btn btn-info btn-embossed btn-sm" href="<?php echo base_url("newproject"); ?>">Create Project</a>
 
+			<ul class="list-group" style="clear:both;">
+			<?php foreach ($projects as $pro): ?>
+				<li class="list-group-item">
+					<b><a href="<?php echo base_url('project/'.$pro['id']) ?>"><?php echo $pro['name']; ?></a></b>
+					<span style="color:#999999; font-size:12px;"><?php echo $pro['description']; ?></span>
+				</li>
+			<?php endforeach ?>
+			</ul>
+		</div>	
+		<div class="col-md-4">
 		</div>
 	</div>
 </div>
