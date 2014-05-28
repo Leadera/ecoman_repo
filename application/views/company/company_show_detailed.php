@@ -79,10 +79,11 @@
 				</tr>
 			</table>
 		</div>
-		<div>
-			<img class="" src="<?php echo asset_url('company_pictures/'.$companies['name'].'.jpg');?>" />
-		</div>
+
 		<div class="col-md-3">
+		<div>
+			<img class="img-responsive" src="<?php echo asset_url('company_pictures/'.$companies['name'].'.jpg');?>" />
+		</div>
 			<div class="form-group">
 				<ul class="nav nav-list">
 					<li class="nav-header" style="font-size:15px;">Company project</li>
