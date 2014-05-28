@@ -8,7 +8,7 @@
     </div>
     <?php endif ?>
 
-	<?php echo form_open_multipart('register'); ?>
+	<?php echo form_open_multipart('profile_update'); ?>
 		<div class="row">
 			<div class="col-md-4">
 
@@ -87,7 +87,7 @@
 				</div>
 				<div class="form-group">
 						<label for="jobDescription">Description</label>
-						<textarea class="form-control" rows="3" name="description" value="<?php echo set_value('description',$description); ?>" id="description" placeholder="Description"></textarea>
+						<textarea class="form-control" rows="3" name="description" id="description" placeholder="Description"><?php echo set_value('description',$description); ?></textarea>
 				</div>
 			</div>
 		</div>

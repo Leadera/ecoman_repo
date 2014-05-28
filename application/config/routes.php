@@ -37,13 +37,11 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-
+$route['profile_update'] = "user/user_profile_update";
 $route['user/(:any)'] = "user/user_profile/$1";
 $route['register'] = "user/user_register";
 $route['login'] = "user/user_login";
 $route['logout'] = "user/user_logout";
-$route['profile_update'] = "user/user_profile_update";
-$route['user/(:any)'] = "user/user_view/$1";
 
 $route['newproject'] = "project/new_project";
 $route['projects'] = "project/show_all_project";

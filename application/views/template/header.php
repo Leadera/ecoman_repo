@@ -33,7 +33,7 @@
           <a class="navbar-brand" href="<?php echo base_url(); ?>">Ecoman</a>
           <div class="collapse navbar-collapse" id="navbar-collapse-01">
             <ul class="nav navbar-nav">
-              <li><a href="<?php echo base_url('projects'); ?>">Projeler</a></li>
+              <li><a href="<?php echo base_url('projects'); ?>">Projects</a></li>
               <li><a href="<?php echo base_url('company'); ?>">Companies</a></li>
               <li><a href="#fakelink">Forum</a></li>
               <li><a href="#fakelink">Help</a></li>
@@ -79,7 +79,7 @@
   					  if ($this->session->userdata('user_in') !== FALSE):
                 $tmp = $this->session->userdata('user_in');
     				?>
-              <li class="head-li"><a href="<?php echo base_url('profile_update'); ?>" style="text-transform: capitalize;"><?php echo $tmp['username']; ?></a></li>
+              <li class="head-li"><a href="<?php echo base_url('user/'.$tmp['username']); ?>" style="text-transform: capitalize;"><?php echo $tmp['username']; ?></a></li>
               <li class="head-li"><a href="<?php echo base_url('logout'); ?>">Log Out</a></li>
             <?php else: ?>
   					  <li class="head-li"><a href="<?php echo base_url('login'); ?>">Log In</a></li>

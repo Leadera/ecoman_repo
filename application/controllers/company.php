@@ -12,6 +12,7 @@ class Company extends CI_Controller{
 //alert("1:" + event.latLng.lat() + " 2:" + event.latLng.lng());
 		$config['center'] = '39.98280915242299, 32.73923635482788';
 	    $config['zoom'] = '15';
+	    $config['map_type'] = "HYBRID";
 //	    $config['onclick'] = '$("#latId").val("Lat:" + event.latLng.lat()); $("#longId").val("Long:" + event.latLng.lng()); $("#lat").val(event.latLng.lat()); $("#long").val(event.latLng.lng());';
  	    $config['places'] = TRUE;
 	    $config['placesRadius'] = 20; 
@@ -108,6 +109,7 @@ class Company extends CI_Controller{
 	    $config['zoom'] = '15';
 	    $config['places'] = TRUE;
 	    $config['placesRadius'] = 20; 
+	    $config['map_type'] = "HYBRID";
 	    $marker = array();
 		$marker['position'] = $data['companies'][0]['latitude'].','. $data['companies'][0]['longitude'];
 		$this->googlemaps->add_marker($marker);
