@@ -30,8 +30,9 @@ String.prototype.repeat = function(num) {
     $("select[id='huge']").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
     $("select[id='large']").selectpicker({style: 'btn-lg btn-danger'});
     $("select[class='info']").selectpicker({style: 'btn-inverse'});
-    $("select[id='small']").selectpicker({style: 'btn-sm btn-warning'});
-    $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
+    $("select[id='status']").selectpicker({style: 'btn-default'});
+    $("select[id='small']").selectpicker({style: 'btn-sm btn-primary'});
+    $("select").selectpicker({style: 'btn btn-default', menuStyle: 'dropdown-inverse'});
 
 
     // Tabs

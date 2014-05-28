@@ -1,102 +1,70 @@
 <div class="container">
-	
 	<div class="row">
-		<div class="col-md-8">
-			<p class="lead"><?php echo $projects[0]['name']; ?></p>
-			<table class="table">
+		<div class="col-md-9">
+			<div class="lead pull-left"><?php echo $projects['name']; ?></div>
+			<a class="btn btn-info btn-sm pull-right" href="<?php echo base_url(""); ?>">Update Project Info</a>
+			<table class="table table-bordered">
 				<tr>
-					<td>
-					<p class = "text-left">Start Date:</p>
+					<td style="width:150px;">
+					Start Date
 					</td>
 					<td>
-					<p class = "text-left"><?php echo $projects[0]['start_date']; ?></p>
+					<?php echo $projects['start_date']; ?>
 					</td>
 				</tr>
 				<tr>
 					<td>
-					<p class = "text-left">End Date:</p>
+					End Date
 					</td>
 					<td>
-					<p class = "text-left"><?php echo $projects[0]['end_date']; ?></p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-					<p class = "text-left">Status:</p>
-					</td>
-					<td>
-					<p class = "text-left"><?php echo $status[0]['name']; ?></p>
+					<?php echo $projects['end_date']; ?>
 					</td>
 				</tr>
 				<tr>
 					<td>
-					<p class = "text-left">Description:</p>
+					Status
 					</td>
 					<td>
-					<p class = "text-left"><?php echo $projects[0]['description']; ?></p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-					<p class = "text-left">Consultant:</p>
-					</td>
-					<td>
-					<p class = "text-left">
-					
-					<?php 
-					foreach ($constant as $cons) {
-						echo "<h6><a href =".base_url("user/".$cons["id"])." >";
-						echo $cons['name'].' '.$cons['surname']; 
-						echo '<br>';
-						echo "</a>";
-					}
-					?>
-
-					</p>
+					<?php echo $status['name']; ?>
 					</td>
 				</tr>
 				<tr>
 					<td>
-					<p class = "text-left">Contact Person:</p>
+					Description
 					</td>
 					<td>
-					<p class = "text-left">
-						
-						<?php 
-						foreach ($contact as $con) {
-							echo "<h6><a href =".base_url("user/".$con["id"])." >";
-							echo $con['name'].' '.$con['surname']; 
-							echo '<br>';
-							echo "</a>";
-						}
-						?>
-
-					</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-					<p class = "text-left">Company:</p>
-					</td>
-					<td>
-					<p class = "text-left">
-						
-						<?php 
-						foreach ($companies as $company) {
-							echo "<h6><a href =".base_url("company/".$company["id"])." >";
-							echo $company['name']; 
-							echo '<br>';
-							echo "</a>";
-						}
-						?>
-
-					</p>
+					<?php echo $projects['description']; ?>
 					</td>
 				</tr>
 			</table>
 		</div>
-		<div class="col-md-4">
-			<h5><a href = "<?php echo base_url(""); ?>">Update Project Info</a></h5>
+		<div class="col-md-3">
+			<div class="form-group">
+				<ul class="nav nav-list">
+					<li class="nav-header" style="font-size:15px;">Consultants</li>
+				<?php foreach ($constant as $cons): ?>
+					<li><a style="text-transform:capitalize;" href="<?php echo base_url('user/'.$cons['user_name']); ?>"> <?php echo $cons['name'].' '.$cons['surname']; ?></a></li>
+				<?php endforeach ?>
+				</ul>
+			</div>
+
+			<div class="form-group">
+				<ul class="nav nav-list">
+					<li class="nav-header" style="font-size:15px;">Contact Person</li>
+				<?php foreach ($contact as $con): ?>
+					<li><a style="text-transform:capitalize;" href="<?php echo base_url('user/'.$con['user_name']); ?>"> <?php echo $con['name'].' '.$con['surname'];?></a></li>
+				<?php endforeach ?>
+				</ul>
+			</div>
+
+			<div class="form-group">
+				<ul class="nav nav-list">
+					<li class="nav-header" style="font-size:15px;">Company</li>
+				<?php foreach ($companies as $company): ?>
+					<li><a style="text-transform:capitalize;" href="<?php echo base_url('company/'.$company['id']); ?>"> <?php echo $company['name'];?></a></li>
+				<?php endforeach ?>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>

@@ -41,7 +41,7 @@ class Project_model extends CI_Model {
     $this->db->from('T_PRJ');
     $this->db->where('id',$prj_id);
     $query = $this->db->get();
-    return $query->result_array();
+    return $query->row_array();
   }
 
   public function get_status($prj_id){
@@ -50,11 +50,11 @@ class Project_model extends CI_Model {
     $this->db->join('T_PRJ', 'T_PRJ.status_id = T_PRJ_STATUS.id');
     $this->db->where('T_PRJ.id', $prj_id); 
     $query = $this->db->get();
-    return $query->result_array();
+    return $query->row_array();
   }
 
   public function get_prj_consaltnt($prj_id){
-    $this->db->select('T_USER.name,T_USER.surname,T_USER.id');
+    $this->db->select('T_USER.name,T_USER.surname,T_USER.id,T_USER.user_name');
     $this->db->from('T_USER');
     $this->db->join('T_PRJ_CNSLTNT', 'T_PRJ_CNSLTNT.cnsltnt_id = T_USER.id');
     $this->db->where('T_PRJ_CNSLTNT.prj_id', $prj_id); 
@@ -72,7 +72,7 @@ class Project_model extends CI_Model {
   }
 
   public function get_prj_cntct_prsnl($prj_id){
-    $this->db->select('T_USER.name,T_USER.surname,T_USER.id');
+    $this->db->select('T_USER.name,T_USER.surname,T_USER.id,T_USER.user_name');
     $this->db->from('T_USER');
     $this->db->join('T_PRJ_CNTCT_PRSNL', 'T_PRJ_CNTCT_PRSNL.usr_id = T_USER.id');
     $this->db->where('T_PRJ_CNTCT_PRSNL.prj_id', $prj_id); 

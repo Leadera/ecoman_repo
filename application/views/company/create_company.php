@@ -1,8 +1,6 @@
-</body>
-<head>
+
 <?php echo $map['js']; ?>
-</head>
-<body>
+
 <div class="container">
 	<p class="lead">Create Company</p>
 
@@ -17,25 +15,33 @@
 		<div class="row">
 			<div class="col-md-4">
 				<div class="form-group">
+	  				<div class="fileinput fileinput-new" data-provides="fileinput">
+	    				<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+	      					<img data-src="holder.js/100%x100%" alt="...">
+	    				</div>
+	    				<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+	    				<div>
+	      					<span class="btn btn-primary  btn-file">
+						        <span class="fileinput-new"><span class="fui-image"></span>  Select image</span>
+						        <span class="fileinput-exists"><span class="fui-gear"></span>  Change</span>
+						        <input type="file" name="userfile">
+	      					</span>
+	      					<a href="#" class="btn btn-primary fileinput-exists" data-dismiss="fileinput"><span class="fui-trash"></span>  Remove</a>
+	    				</div>
+	  				</div>
+				</div>
+				<div class="form-group">
 	    			<label for="companyName">Company Name</label>
 	    			<input type="text" class="form-control" id="companyName" placeholder="Enter Company Name" value="<?php echo set_value('companyName'); ?>" name="companyName">
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="naceCode">Nace Code</label>
 	    			<input type="text" class="form-control" id="naceCode" placeholder="XX.XX.XX" value="<?php echo set_value('naceCode'); ?>"  name="naceCode">
-	 				<a href="http://tobb.org.tr/faaliyet/Sayfalar/nace-sorgulama.php">Nace Codes</a>
+	 				<a target="_blank" href="http://tobb.org.tr/faaliyet/Sayfalar/nace-sorgulama.php">Nace Codes</a>
 	 			</div>
 
-	 			<div class="form-group">
-	    			<label for="coordinates">Coordinates</label>
-	    			<input type="text" data-toggle="modal" data-target="#myModal" class="form-control" id="coordinates" placeholder="Coordinates" name="coordinates">
-	    			<input type="text" class="form-control" id="lat" placeholder="Lat" name="lat">
-	    			<input type="text" class="form-control" id="long" placeholder="Long" name="long">
-	 			</div>
-	 			<div class="form-group">
-	    			<label for="companyDescription">Company Description</label>
-	    			<textarea class="form-control" rows="3" name="companyDescription" id="companyDescription" placeholder="Company Description"></textarea>
-	 			</div>
+	 			
+	 			
 			</div>
 			<div class="col-md-4">
 				<div class="form-group">
@@ -44,59 +50,67 @@
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="cellPhone">Cell Phone</label>
-	    			<input type="text" class="form-control" id="cellPhone" placeholder="Cell Phone" name="cellPhone">
+	    			<input type="text" class="form-control" id="cellPhone" placeholder="Cell Phone" value="<?php echo set_value('cellPhone'); ?>" name="cellPhone">
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="workPhone">Work Phone</label>
-	    			<input type="text" class="form-control" id="workPhone" placeholder="Work Phone" name="workPhone">
+	    			<input type="text" class="form-control" id="workPhone" placeholder="Work Phone" value="<?php echo set_value('workPhone'); ?>" name="workPhone">
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="fax">Fax Number</label>
-	    			<input type="text" class="form-control" id="fax" placeholder="Fax Number" name="fax">
+	    			<input type="text" class="form-control" id="fax" placeholder="Fax Number" value="<?php echo set_value('fax'); ?>" name="fax">
 	 			</div>
-	 			<div class="form-group">
-	    			<label for="address">Address</label>
-	    			<textarea class="form-control" rows="3" name="address" id="address" placeholder="Address"></textarea>
-	 			</div>
+
 			</div>
 			<div class="col-md-4">
 				<div class="form-group">
-					<label for="image">İmage</label>
-	  				<div class="fileinput fileinput-new" data-provides="fileinput">
-	    				<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-	      					<img data-src="holder.js/100%x100%" alt="...">
-	    				</div>
-	    				<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
-	    				<div>
-	      					<span class="btn btn-primary btn-embossed btn-file">
-						        <span class="fileinput-new"><span class="fui-image"></span>  Select image</span>
-						        <span class="fileinput-exists"><span class="fui-gear"></span>  Change</span>
-						        <input type="file" name="userfile">
-	      					</span>
-	      					<a href="#" class="btn btn-primary btn-embossed fileinput-exists" data-dismiss="fileinput"><span class="fui-trash"></span>  Remove</a>
-	    				</div>
-	  				</div>
-				</div>
+	    			<label for="coordinates">Coordinates</label>
+	    			<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-sm btn-primary pull-right" id="coordinates" >Select on Map</button>
+	    			<div class="row">	
+		    			<div class="col-md-6">
+		    				<input type="text" class="form-control" id="lat" placeholder="Lat" name="lat" style="color:#333333;" readonly/>
+		    			</div>
+		    			<div class="col-md-6">
+		    				<input type="text" class="form-control" id="long" placeholder="Long" name="long" style="color:#333333;" readonly/>
+		    			</div>
+	    			</div>
+	 			</div>
+				
+	 			<div class="form-group">
+	    			<label for="address">Address</label>
+	    			<textarea class="form-control" rows="3" name="address" id="address" placeholder="Address"><?php echo set_value('companyName'); ?></textarea>
+	 			</div>
+	 			<div class="form-group">
+	    			<label for="companyDescription">Company Description</label>
+	    			<textarea class="form-control" rows="3" name="companyDescription" id="companyDescription" placeholder="Company Description"><?php echo set_value('companyName'); ?></textarea>
+	 			</div>
 			</div>
 		</div>
-		<button type="submit" class="btn btn-primary">Create Company</button>
+		<button type="submit" class="btn btn-primary pull-right">Create Company</button>
 	</form>
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" rendered="<?php echo $map['js']; ?>">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Click Map</h4>
-        <input type="text" class="form-control" id="latId" name="lat" readonly/>
-        <input type="text" class="form-control" id="longId" name="long" readonly/>
-      </div>
-      <div class="modal-body">
-       <?php echo $map['html']; ?>
-      </div>
-      <div class="modal-footer">
-      </div>
-    </div>
-  </div>
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel">Click Map</h4>
+	        <hr>
+	        <div class="row">
+	        	<div class="col-md-6">
+	        		<input type="text" class="form-control" id="latId" name="lat" style="color:#333333;" readonly/>
+	        	</div>
+	        	<div class="col-md-6">
+	        		<input type="text" class="form-control" id="longId" name="long"  style="color:#333333;" readonly/>
+	        	</div>
+	        </div>
+	      </div>
+	      <div class="modal-body">
+	       <?php echo $map['html']; ?>
+	      </div>
+	      <div class="modal-footer">
+	      </div>
+	    </div>
+	  </div>
 </div>
 	
 </div>

@@ -7,13 +7,11 @@ class Company_model extends CI_Model {
   }
 
   public function insert_company($data){
-  	
     $this->db->insert('T_CMPNY',$data); 
     return $this->db->insert_id();
   }
 
   public function insert_cmpny_data($data){
-    
     $this->db->insert('T_CMPNY_DATA',$data);
   }
 
@@ -23,7 +21,6 @@ class Company_model extends CI_Model {
   }
 
   public function insert_cmpny_nace_code($data){
-    
     $this->db->insert('T_CMPNY_NACE_CODE',$data);
   }
   
@@ -37,7 +34,7 @@ class Company_model extends CI_Model {
   public function get_company($id){
     $this->db->select('*');
     $query = $this->db->get_where('T_CMPNY', array('id' => $id));
-    return $query->result_array();
+    return $query->row_array();
   }
 
   public function get_nace_code($id){
@@ -51,7 +48,7 @@ class Company_model extends CI_Model {
   }
 
   public function get_company_proj($id){
-      $this->db->select('T_PRJ.name');
+      $this->db->select('T_PRJ.name,T_PRJ.id as proje_id');
       $this->db->from('T_PRJ');
       $this->db->join('T_PRJ_CMPNY', 'T_PRJ_CMPNY.prj_id = T_PRJ.id');
       $this->db->join('T_CMPNY', 'T_CMPNY.id = T_PRJ_CMPNY.cmpny_id');
@@ -61,7 +58,7 @@ class Company_model extends CI_Model {
   }
 
   public function get_company_workers($id){
-      $this->db->select('T_USER.name,T_USER.surname,T_USER.id');
+      $this->db->select('T_USER.name,T_USER.surname,T_USER.id,T_USER.user_name');
       $this->db->from('T_USER');
       $this->db->join('T_CMPNY_PRSNL', 'T_CMPNY_PRSNL.user_id = T_USER.id');
       $this->db->join('T_CMPNY', 'T_CMPNY.id = T_CMPNY_PRSNL.cmpny_id');

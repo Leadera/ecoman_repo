@@ -47,7 +47,7 @@ class Company extends CI_Controller{
 			}
 
 			$config['image_library'] = 'gd2';
-			$config['source_image']	= './assets/company_pictures/'.$this->input->post('companyName').'.jpg';
+			$config['source_image']	= './assets/company_pictures/'.$this->input->post('id').'.jpg';
 			$config['maintain_ratio'] = TRUE;
 			$config['width'] = 200;
 			$config['height'] = 200;
@@ -56,17 +56,17 @@ class Company extends CI_Controller{
 			$this->image_lib->resize();
 
 			$data = array(
-			'name'=>$this->input->post('companyName'),
-			'phone_num_1'=>$this->input->post('cellPhone'),
-			'phone_num_2'=>$this->input->post('workPhone'),
-			'fax_num'=>$this->input->post('fax'),
-			'address'=>$this->input->post('address'),
-			'description'=>$this->input->post('companyDescription'),
-			'email'=>$this->input->post('email'),
-			'latitude'=>$this->input->post('lat'),
-			'longitude'=>$this->input->post('long'),
-			'logo'=>$this->input->post('companyName').'.jpg',
-			'active'=>'1'
+				'name'=>$this->input->post('companyName'),
+				'phone_num_1'=>$this->input->post('cellPhone'),
+				'phone_num_2'=>$this->input->post('workPhone'),
+				'fax_num'=>$this->input->post('fax'),
+				'address'=>$this->input->post('address'),
+				'description'=>$this->input->post('companyDescription'),
+				'email'=>$this->input->post('email'),
+				'latitude'=>$this->input->post('lat'),
+				'longitude'=>$this->input->post('long'),
+				'logo'=>$this->input->post('companyName').'.jpg',
+				'active'=>'1'
 			);
 			$code = $this->input->post('naceCode');
 			$last_id = $this->company_model->insert_company($data);
@@ -105,13 +105,12 @@ class Company extends CI_Controller{
 		$this->load->library('googlemaps');
 
 		$data['companies'] = $this->company_model->get_company($term);
-		$config['center'] = $data['companies'][0]['latitude'].','. $data['companies'][0]['longitude'];
+		$config['center'] = $data['companies']['latitude'].','. $data['companies']['longitude'];
 	    $config['zoom'] = '15';
 	    $config['places'] = TRUE;
 	    $config['placesRadius'] = 20; 
-	    $config['map_type'] = "HYBRID";
 	    $marker = array();
-		$marker['position'] = $data['companies'][0]['latitude'].','. $data['companies'][0]['longitude'];
+		$marker['position'] = $data['companies']['latitude'].','. $data['companies']['longitude'];
 		$this->googlemaps->add_marker($marker);
 	    $this->googlemaps->initialize($config);
 

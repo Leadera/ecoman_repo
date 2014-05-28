@@ -1,4 +1,4 @@
-    <div class="bottom-menu bottom-menu-inverse" style="margin-top:80px;">
+    <div class="bottom-menu  " style="margin-top:80px;">
       <div class="container">
         <div class="row">
           <div class="col-md-2 ">
@@ -92,7 +92,7 @@
 
                 success: function(data) {
                     // gelen data array'i : database'den cekilen companylerin user'ları. 
-                    $('#assignContactPerson option:not(:selected)').remove();
+                    $('#assignContactPerson option').remove();
                     for (var k = 0; k < data.length; k++) { 
 
                         for (var i = 0; i < data[k].length; i++) {

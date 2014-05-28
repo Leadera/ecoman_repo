@@ -27,7 +27,7 @@
 	 			<div class="form-group">
 	    			<label for="status">Status</label>
 	    			<div>	    			
-		    			<select id="status" class="info" name="status" class="select-block">
+		    			<select id="status" class="info select-block" name="status">
 		  					<?php foreach ($project_status as $status): ?>
 								<option value="<?php echo $status['id']; ?>"><?php echo $status['name']; ?></option>
 							<?php endforeach ?>
@@ -42,7 +42,7 @@
 			<div class="col-md-4">
 	 			<div class="form-group">
 	    			<label for="assignedCompanies">Assign Company</label>    			
-	    			<select multiple="multiple"  title="Choose at least one" class="info" id="assignCompany" name="assignCompany[]">
+	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignCompany" name="assignCompany[]">
 	    				
 						<?php foreach ($companies as $company): ?>
 							<option value="<?php echo $company['id']; ?>"><?php echo $company['name']; ?></option>
@@ -51,7 +51,7 @@
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="assignedConsultant">Assign Consultant</label>   			
-	    			<select multiple="multiple"  title="Choose at least one" class="info" id="assignConsultant" name="assignConsultant[]">
+	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignConsultant" name="assignConsultant[]">
 	    			
 						<?php foreach ($consultants as $consultant): ?>
 							<option value="<?php echo $consultant['id']; ?>"><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name'].')'; ?></option>
@@ -60,7 +60,7 @@
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="assignedConsultant">Assign Contact Person</label>   			
-	    			<select multiple="multiple"  title="Choose at least one" class="info" id="assignContactPerson" name="assignContactPerson[]">
+	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignContactPerson" name="assignContactPerson[]">
 	    			
 						
 					</select>
