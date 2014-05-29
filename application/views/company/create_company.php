@@ -6,10 +6,13 @@
 
 	<?php if(validation_errors() != NULL ): ?>
     <div class="alert">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <?php echo validation_errors(); ?>
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<h4>Form couldn't be saved</h4>
+      <p>
+      	<?php echo validation_errors(); ?>
+      </p>
     </div>
-    <?php endif ?>
+  <?php endif ?>
 
 	<?php echo form_open_multipart('newcompany'); ?>
 		<div class="row">
@@ -40,8 +43,8 @@
 	 				<a target="_blank" href="http://tobb.org.tr/faaliyet/Sayfalar/nace-sorgulama.php">Nace Codes</a>
 	 			</div>
 
-	 			
-	 			
+
+
 			</div>
 			<div class="col-md-4">
 				<div class="form-group">
@@ -66,23 +69,23 @@
 				<div class="form-group">
 	    			<label for="coordinates">Coordinates</label>
 	    			<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-sm btn-primary pull-right" id="coordinates" >Select on Map</button>
-	    			<div class="row">	
+	    			<div class="row">
 		    			<div class="col-md-6">
-		    				<input type="text" class="form-control" id="lat" placeholder="Lat" name="lat" style="color:#333333;" readonly/>
+		    				<input type="text" class="form-control" id="lat" placeholder="Lat" name="lat" style="color:#333333;" value="<?php echo set_value('lat'); ?>" readonly/>
 		    			</div>
 		    			<div class="col-md-6">
-		    				<input type="text" class="form-control" id="long" placeholder="Long" name="long" style="color:#333333;" readonly/>
+		    				<input type="text" class="form-control" id="long" placeholder="Long" name="long" style="color:#333333;" value="<?php echo set_value('long'); ?>" readonly/>
 		    			</div>
 	    			</div>
 	 			</div>
-				
+
 	 			<div class="form-group">
 	    			<label for="address">Address</label>
-	    			<textarea class="form-control" rows="3" name="address" id="address" placeholder="Address"><?php echo set_value('companyName'); ?></textarea>
+	    			<textarea class="form-control" rows="3" name="address" id="address" placeholder="Address"><?php echo set_value('address'); ?></textarea>
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="companyDescription">Company Description</label>
-	    			<textarea class="form-control" rows="3" name="companyDescription" id="companyDescription" placeholder="Company Description"><?php echo set_value('companyName'); ?></textarea>
+	    			<textarea class="form-control" rows="3" name="companyDescription" id="companyDescription" placeholder="Company Description"><?php echo set_value('companyDescription'); ?></textarea>
 	 			</div>
 			</div>
 		</div>
@@ -112,5 +115,5 @@
 	    </div>
 	  </div>
 </div>
-	
+
 </div>
