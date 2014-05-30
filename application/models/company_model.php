@@ -81,7 +81,8 @@ class Company_model extends CI_Model {
         $row_set[] = $new_row; //build an array
       }
       return json_encode($row_set); //format the array into json data
-
+    }
+  }
   public function update_company($data,$id){
     $this->db->where('id', $id);
     $this->db->update('T_CMPNY', $data); 
