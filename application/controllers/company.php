@@ -71,19 +71,20 @@ class Company extends CI_Controller{
 			$last_id = $this->company_model->insert_company($data);
 
 			$cmpny_data = array(
-	      'cmpny_id' => $last_id,
-	      'description' => $data['description']
-	    );
+				'cmpny_id' => $last_id,
+	      		'description' => $data['description']
+	    		);
 
-	    $this->company_model->insert_cmpny_data($cmpny_data);
-	    $nace_code_id = $this->company_model->search_nace_code($code);
+		    $this->company_model->insert_cmpny_data($cmpny_data);
+		    $nace_code_id = $this->company_model->search_nace_code($code);
 
-	    $cmpny_nace_code = array(
-	      'cmpny_id' => $last_id,
-	      'nace_code_id' => $nace_code_id
-	    );
-	    $this->company_model->insert_cmpny_nace_code($cmpny_nace_code);
+		    $cmpny_nace_code = array(
+		    	'cmpny_id' => $last_id,
+		    	'nace_code_id' => $nace_code_id
+		    );
 
+		    $this->company_model->insert_cmpny_prsnl($last_id);
+		    $this->company_model->insert_cmpny_nace_code($cmpny_nace_code);
 			redirect('okoldu', 'refresh');
 		}
 
@@ -96,11 +97,11 @@ class Company extends CI_Controller{
 	function alpha_dash_space($str_in = '')
 	{
 		if (! preg_match("/^([-a-z0-9_ ])+$/i", $str_in)){
-				$this->form_validation->set_message('_alpha_dash_space', 'The %s field may only contain alpha-numeric characters, spaces, underscores, and dashes.');
-				return FALSE;
+			$this->form_validation->set_message('_alpha_dash_space', 'The %s field may only contain alpha-numeric characters, spaces, underscores, and dashes.');
+			return FALSE;
 		}
 		else{
-				return TRUE;
+			return TRUE;
 		}
 	}
 

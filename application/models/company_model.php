@@ -100,5 +100,15 @@ class Company_model extends CI_Model {
 
     }
   }
+
+  public function insert_cmpny_prsnl($cmpny_id){
+    $tmp = $this->session->userdata('user_in');
+    $data = array(
+      'user_id' => $tmp['id'],
+      'cmpny_id' => $cmpny_id,
+      'is_contact' => '1'
+      );
+    $this->db->insert('T_CMPNY_PRSNL',$data); 
+  }
 }
 ?>
