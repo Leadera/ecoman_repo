@@ -135,5 +135,14 @@ class Company extends CI_Controller{
 		$this->load->view('company/company_show_detailed',$data);
 		$this->load->view('template/footer');
 	}
+
+	public function company_search(){
+		if (isset($_GET['term'])){
+      		$q = strtolower($_GET['term']);
+      		$results = $this->company_model->company_search($q);
+   		}
+		// and return to autocomplete
+		echo $results;
+	}
 }
 ?>

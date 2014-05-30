@@ -66,5 +66,21 @@ class Company_model extends CI_Model {
       $query = $this->db->get();
       return $query->result_array();
   }
+
+
+  public function company_search($q){
+    $this->db->select('T_CMPNY.name,T_CMPNY.id');
+    $this->db->from('T_CMPNY');
+    $this->db->like('name', $q); 
+    $query = $this->db->get();
+     if($query->num_rows > 0){
+      foreach ($query->result_array() as $row){
+        $new_row['label']=htmlentities(stripslashes($row['name']));
+        $new_row['value']=htmlentities(stripslashes($row['id']));
+        $row_set[] = $new_row; //build an array
+      }
+      return json_encode($row_set); //format the array into json data
+    }
+  }
 }
 ?>
