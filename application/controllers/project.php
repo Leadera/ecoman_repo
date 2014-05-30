@@ -34,7 +34,7 @@ class Project extends CI_Controller{
 			$last_inserted_project_id = $this->project_model->create_project($project);
 
 			$companies = array ($_POST['assignCompany']); // multiple select , secilen company'ler
-
+			
 			foreach ($companies[0] as $company) {
 				$prj_cmpny=array(
 					'prj_id' => $last_inserted_project_id,

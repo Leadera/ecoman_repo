@@ -14,7 +14,7 @@ $.widget("ui.autocomplete", $.ui.autocomplete, {
             console.log('multiselect true');
 
             self.selectedItems = {};           
-            self.multiselect = $("<div id='companies'></div>")
+            self.multiselect = $("<div class='form-control' id='companySearch'></div>")
                 .addClass("ui-autocomplete-multiselect ui-state-default ui-widget")
                 .css("width", self.element.width())
                 .insertBefore(self.element)
@@ -48,25 +48,31 @@ $.widget("ui.autocomplete", $.ui.autocomplete, {
 
             // TODO: There's a better way?
             o.select = o.select || function(e, ui) {
-                $("<div id="+ ui.item.value +"></div>")
-                    .addClass("ui-autocomplete-multiselect-item")
-                    .text(ui.item.label)
-                    .append(
-                        $("<span></span>")
-                            .addClass("ui-icon ui-icon-close")
-                            .click(function(){
-                                var item = $(this).parent();
-                                delete self.selectedItems[item.text()];
-                                item.remove();
-                                deleteOptions(ui.item.value);
-                            })
-                    )
-                    .insertBefore(self.element);
-                
-                self.selectedItems[ui.item.label] = ui.item;
-                self._value("");
-                createOption(ui.item.value);
-                return false;
+                if ($("#companySearch #"+ui.item.value).length > 0){
+                    //do nothing
+                    //item is selected already
+                }else{
+
+                    $("<div id="+ ui.item.value +"></div>")
+                        .addClass("ui-autocomplete-multiselect-item")
+                        .text(ui.item.label)
+                        .append(
+                            $("<span></span>")
+                                .addClass("ui-icon ui-icon-close")
+                                .click(function(){
+                                    var item = $(this).parent();
+                                    delete self.selectedItems[item.text()];
+                                    item.remove();
+                                    deleteOptions(ui.item.value);
+                                })
+                        )
+                        .insertBefore(self.element);
+                    
+                    self.selectedItems[ui.item.label] = ui.item;
+                    self._value("");
+                    createOption(ui.item.value);
+                    return false;
+                }
             }
 
             /*self.options.open = function(e, ui) {
