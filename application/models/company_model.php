@@ -66,5 +66,22 @@ class Company_model extends CI_Model {
       $query = $this->db->get();
       return $query->result_array();
   }
+
+  public function update_company($data,$id){
+    $this->db->where('id', $id);
+    $this->db->update('T_CMPNY', $data); 
+  }
+
+  public function unique_control_email($email,$id){
+    $this->db->like('email', $email);
+    $this->db->from('T_CMPNY');
+    $count = $this->db->count_all_results();
+    if($count == 1){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 }
 ?>

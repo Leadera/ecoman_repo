@@ -48,6 +48,7 @@ $route['projects'] = "project/show_all_project";
 $route['contactperson']="project/contact_person";
 $route['project/(:any)'] = "project/view_project/$1";
 
+$route['update_company/(:any)'] = "company/update_company/$1";
 $route['newcompany'] = "company/new_company";
 $route['company'] = "company/show_all_companies";
 $route['company/(:any)'] = "company/companies/$1";

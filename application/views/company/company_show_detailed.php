@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-md-9">
 			<div class="lead pull-left"><?php echo $companies['name']; ?></div>
-			<button class="btn btn-info pull-right btn-sm">Update Company</button>
+			<a class="btn btn-info btn-sm pull-right" href="<?php echo base_url("update_company/".$companies['id']); ?>">Update Company</a>
 
 			<table class="table table-bordered">
 				<tr>
