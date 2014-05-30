@@ -7,4 +7,6 @@ application/cache/*
 application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
-*.jpg
+
+assets/user_pictures
+assets/company_pictures
