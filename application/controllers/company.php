@@ -218,9 +218,10 @@ class Company extends CI_Controller{
 				'latitude'=>$this->input->post('lat'),
 				'longitude'=>$this->input->post('long')
 			);
-	    	$this->company_model->update_company($data2,$term);
+	    
+	    $this->company_model->update_company($data2,$term);
 
-	    	$code = $this->input->post('naceCode');
+	    $code = $this->input->post('naceCode');
 
 			$cmpny_data = array(
 				'cmpny_id' => $data['companies']['id'],
@@ -236,7 +237,7 @@ class Company extends CI_Controller{
 	    	'nace_code_id' => $nace_code_id
 	    );
 	    $this->company_model->update_cmpny_nace_code($cmpny_nace_code,$data['companies']['id']);
-	    }
+	  }
 
 		$this->load->view('template/header');
 		$this->load->view('company/update_company',$data);
