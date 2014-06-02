@@ -1,4 +1,3 @@
-
 <div class="container">
 	<p class="lead">Company Data</p>
 
@@ -30,12 +29,9 @@
 		    		<label for="status">Process Name</label>
 		    		<div>	    			
 			    		<select id="status" class="info select-block" name="status">
-			  			<!--<?php foreach ($project_status as $status): ?>
-								<option value="<?php echo $status['id']; ?>"><?php echo $status['name']; ?></option>
-							<?php endforeach ?>-->
-							<option>asd</option>
-							<option>qwe</option>
-							<option>zxc</option>
+			  			<?php foreach ($process as $pro): ?>
+							<option value="<?php echo $pro['id']; ?>"><?php echo $pro['name']; ?></option>
+						<?php endforeach ?>-->
 						</select>
 					</div>
 	 			</div>

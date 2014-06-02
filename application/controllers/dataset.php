@@ -5,6 +5,7 @@ class Dataset extends CI_Controller {
 		parent::__construct();
 		$this->load->model('product_model');
 		$this->load->model('flow_model');
+		$this->load->model('process_model');
 	}
 
 	public function product(){
@@ -123,8 +124,10 @@ class Dataset extends CI_Controller {
 
 
 	public function process(){
+		$data['process'] = $this->process_model->get_process();
+
 		$this->load->view('template/header');
-		$this->load->view('dataset/process');
+		$this->load->view('dataset/process',$data);
 		$this->load->view('template/footer');
 	}
 }
