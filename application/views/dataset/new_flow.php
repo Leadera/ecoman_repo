@@ -14,23 +14,39 @@
     </div>
     <?php endif ?>
 	  <div class="form-group">
-	    <label for="flowname">Flow name</label>
-	    <input class="form-control" id="flowname" name="flowname" placeholder="Enter flow name">
+	    <label for="flowname">Flow Name</label>
+    	<div>	    			
+				<select id="flowname" class="info select-block" name="flowname">
+					<?php foreach ($flownames as $flowname): ?>
+						<option value="<?php echo $flowname['id']; ?>"><?php echo $flowname['name']; ?></option>
+					<?php endforeach ?>
+				</select>
+			</div>
 	  </div>
 	  <div class="form-group">
-	    <label for="ei">Environmental impact</label>
-	    <input class="form-control" id="ei" name="ei" placeholder="Enter environmental impact of flow">
+	    <label for="flowtype">Flow Type</label>
+	    <div>	    			
+				<select id="flowtype" class="info select-block" name="flowtype">
+					<?php foreach ($flowtypes as $flowtype): ?>
+						<option value="<?php echo $flowtype['id']; ?>"><?php echo $flowtype['name']; ?></option>
+					<?php endforeach ?>
+				</select>
+			</div>
+
 	  </div>
 	  <div class="form-group">
-	    <label for="cost">Cost</label>
+	    <label for="quantity">Quantity(Annual)</label>
+	    <input class="form-control" id="quantity" name="quantity" placeholder="Enter Quantity of Flow">
+	  </div>
+	  <div class="form-group">
+	    <label for="cost">Cost(Annual)</label>
 	    <input class="form-control" id="cost" name="cost" placeholder="Cost of flow (number)">
 	  </div>
 	  <div class="form-group">
-	    <label for="amount">Amount</label>
-	    <input class="form-control" id="amount" name="amount" placeholder="Enter amount of flow (number)">
+	    <label for="amount">EP(Annual)</label>
+	    <input class="form-control" id="ep" name="ep" placeholder="Enter EP">
 	  </div>
-	  <button type="submit" class="btn btn-info">Save flow</button>
-	  <button class="btn btn-default">Cancel</button>
+	  <button type="submit" class="btn btn-info">Add as a new flow</button>
 	</form>
 </div>
 </div>
