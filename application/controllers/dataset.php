@@ -3,7 +3,8 @@ class Dataset extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		$this->load->model('product_model','',TRUE);
+		$this->load->model('product_model');
+		$this->load->model('flow_model');
 	}
 
 	public function product(){
@@ -49,32 +50,44 @@ class Dataset extends CI_Controller {
 
 	public function new_flow()
 	{
+		$data['flownames'] = $this->flow_model->get_flowname_list();
+		$data['flowtypes'] = $this->flow_model->get_flowtype_list();
+
 		$this->load->library('form_validation');
-		
-		$this->form_validation->set_rules('flowname', 'Flow name', 'trim|required|xss_clean|strip_tags');
-		
-		$this->form_validation->set_rules('ei', 'Environmental impact', 'trim|required|xss_clean|strip_tags');
-		
+		$this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean|strip_tags');
+		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|required|xss_clean|strip_tags');	
+		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|xss_clean|strip_tags|numeric');
 		$this->form_validation->set_rules('cost', 'Cost', 'trim|required|xss_clean|strip_tags|numeric');
-		
-		$this->form_validation->set_rules('amount', 'Amount', 'trim|required|xss_clean|strip_tags|numeric');
-		
+		$this->form_validation->set_rules('ep', 'EP', 'trim|required|xss_clean|strip_tags|numeric');
 
-		if($this->form_validation->run() == FALSE) {
-			$this->load->view('template/header');
-			$this->load->view('dataset/new_flow');
-			$this->load->view('template/footer');
-		}
-		else{
-			$flowname = $this->input->post('flowname');
-			$ei = $this->input->post('ei');
+		if($this->form_validation->run() !== FALSE) {
+
+			$flowID = $this->input->post('flowname');
+			$flowtypeID = $this->input->post('flowtype');
+			$ep = $this->input->post('ep');
 			$cost = $this->input->post('cost');
-			$amount = $this->input->post('amount');
+			$quantity = $this->input->post('quantity');
 
-			$this->product_model->register_flow($flowname,$ei,$cost,$amount);
+			$flow = array(
+			'cmpny_id'=>1, // bunu nerden alacagiz??
+			'flow_id'=>$flowID,
+			'qntty'=>$quantity,
+			'cost' =>$cost,
+			'ep' => $ep,
+			'flow_type_id'=> $flowtypeID
+			);
+			$this->flow_model->register_flow_to_company($flow);
+
 
 			redirect(base_url('flow_and_component'), 'refresh');
 		}
+
+		$this->load->view('template/header');
+		$this->load->view('dataset/new_flow',$data);
+		$this->load->view('template/footer');
+
+
+
 	}
 
 	public function new_component()
