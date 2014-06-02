@@ -100,5 +100,28 @@ class User_model extends CI_Model {
       $this->db->update('T_USER', $update);
     }
   }
+
+  public function check_user_email($email){
+    $this->db->from('T_USER');
+    $this->db->where('email',$email);
+    $query = $this->db->get();
+
+    if($query -> num_rows() == 1)
+      return true;
+    else
+      return false;
+  }
+
+  public function check_username($username){
+    $this->db->from('T_USER');
+    $this->db->where('user_name',$username);
+    $query = $this->db->get();
+
+    if($query -> num_rows() == 1)
+      return true;
+    else
+      return false;
+  }
+
 }
 ?>

@@ -40,7 +40,7 @@ class User extends CI_Controller {
 			);
 			$this->user_model->create_user($data);
 
-			
+
 			//file properties
 			$config['upload_path'] = './assets/user_pictures/';
 			$config['allowed_types'] = 'gif|jpg|png';
@@ -147,7 +147,7 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|numeric|min_length[11]|xss_clean');
 		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|numeric|min_length[11]|xss_clean');
 		$this->form_validation->set_rules('fax', 'Fax Number', 'required|numeric|min_length[11]|xss_clean');
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]|xss_clean');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]|xss_clean|callback_username_check');
 		
 		if ($this->form_validation->run() !== FALSE)
 		{
@@ -210,7 +210,35 @@ class User extends CI_Controller {
 	}
 
 	function email_check(){
-		$this->input->post('email');
+		$emailForm = $this->input->post('email'); // formdan gelen yeni girilen email
+
+		$tmp = $this->session->userdata('user_in');
+		$emailSession = $tmp['email']; // session'da tutulan önceki email, şuan database'de de bu var.
+		$check_user_email = $this->user_model->check_user_email($emailForm);  // email varsa true , yoksa false
+		if(($emailForm == $emailSession) || !$check_user_email ){
+			return true;
+		}
+		else{
+			$this->form_validation->set_message('email_check', 'Please provide an acceptable email address.');
+			return false;
+		} 
+
 	}
+	function username_check(){
+		$usernameForm = $this->input->post('username'); // formdan gelen yeni girilen username
+
+		$tmp = $this->session->userdata('user_in');
+		$usernameSession = $tmp['username']; // session'da tutulan önceki username, şuan database'de de bu var.
+		$check_username = $this->user_model->check_username($usernameForm);  // username varsa true , yoksa false
+		if(($usernameForm == $usernameSession) || !$check_username ){
+			return true;
+		}
+		else{
+			$this->form_validation->set_message('username_check', 'Please provide an acceptable username.');
+			return false;
+		} 
+
+	}
+
 }
 ?>
