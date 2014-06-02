@@ -56,12 +56,12 @@ class User_model extends CI_Model {
 
   // Session dan acik olan kisinin username bilgisi aliniyor ve bu username e sahip
   // kisinin butun bilgileri controller a return ediliyor.
-  public function update_profile(){
+  public function get_session_user(){
     if ($this->session->userdata('user_in') !== FALSE){
       $tmp = $this->session->userdata('user_in');
 
       $this->db->from('T_USER');
-      $this->db->where('user_name',$tmp['username']);
+      $this->db->where('id',$tmp['id']);
       $query = $this->db->get();
 
       if($query -> num_rows() == 1)
@@ -91,6 +91,14 @@ class User_model extends CI_Model {
       $this->db->where('T_USER.id', $id); 
       $query = $this->db->get();
       return $query->result_array();
+  }
+
+  public function update_user($update){
+    if ($this->session->userdata('user_in') !== FALSE){
+      $tmp = $this->session->userdata('user_in');
+      $this->db->where('id', $tmp['id']);
+      $this->db->update('T_USER', $update);
+    }
   }
 }
 ?>

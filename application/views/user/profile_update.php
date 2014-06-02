@@ -14,8 +14,9 @@
 
 				<div class="form-group">
 						<div class="fileinput fileinput-new" data-provides="fileinput">
-							<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-									<img data-src="holder.js/100%x100%" alt="...">
+							<div class="fileinput-new thumbnail">
+								<img class="img-rounded" style="width:120px;" src="<?php echo asset_url("user_pictures/".$user_name.".jpg"); ?>">
+							
 							</div>
 							<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
 							<div>
@@ -31,14 +32,6 @@
 				<div class="form-group">
 						<label for="username">Username</label>
 						<input type="text" class="form-control" id="username" value="<?php echo set_value('username',$user_name); ?>" placeholder="Username" name="username">
-				</div>
-				<div class="form-group">
-						<label for="password">Password</label>
-						<input type="password" class="form-control" id="password" placeholder="Password" name="password">
-				</div>
-				<div class="form-group">
-						<label for="rePassword">RePassword</label>
-						<input type="password" class="form-control" id="rePassword" placeholder="Retype password" name="rePassword">
 				</div>
 
 			</div>
