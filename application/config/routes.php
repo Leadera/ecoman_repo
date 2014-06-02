@@ -65,6 +65,8 @@ $route['flow_and_component/new_component'] = "dataset/new_component";
 $route['product/new_product'] = "dataset/new_product";
 $route['product'] = "dataset/product";
 
+$route['process'] = "dataset/process";
+
 $route['default_controller'] = "homepage";
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';

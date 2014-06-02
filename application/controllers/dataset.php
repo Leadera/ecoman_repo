@@ -108,4 +108,10 @@ class Dataset extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+
+	public function process(){
+		$this->load->view('template/header');
+		$this->load->view('dataset/process');
+		$this->load->view('template/footer');
+	}
 }
