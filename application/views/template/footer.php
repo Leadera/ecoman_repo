@@ -45,10 +45,10 @@
     <script src="<?php echo asset_url('js/jquery.autocomplete.multiselect.js'); ?>"></script>
 
     <script type="text/javascript">
-            var marker;
-            var lat,lon;
+        var marker;
+        var lat,lon;
+
         $("#datepicker-01").datepicker().datepicker('setDate',new Date());
-        
         $('#myModal').on('shown.bs.modal', function (e) { 
             google.maps.event.trigger(map, 'resize'); // modal acildiktan sonra haritanın resize edilmesi gerekiyor.
 

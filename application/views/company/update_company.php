@@ -15,13 +15,13 @@ print_r($nace_code);?>
     </div>
   <?php endif ?>
 
-	<?php echo form_open_multipart('update_company/'.$companies['id']); ?>
+	<?php echo form_open_multipart('update_company/'.$companies['id']);?>
 		<div class="row">
 			<div class="col-md-4">
 				<div class="form-group">
 	  				<div class="fileinput fileinput-new" data-provides="fileinput">
-	    				<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-	      					<img data-src="holder.js/100%x100%" alt="...">
+	    				<div class="fileinput-new thumbnail">
+	      					<img class="img-rounded" style="max-width: 200px; max-height: 150px;" src="<?php echo asset_url("company_pictures/".$companies['name'].".jpg");?>">
 	    				</div>
 	    				<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
 	    				<div>
