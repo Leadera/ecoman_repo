@@ -131,8 +131,14 @@ class Dataset extends CI_Controller {
 	}
 
 
-	public function process(){
+	public function new_process(){
 		$data['process'] = $this->process_model->get_process();
+
+		$companyID = 1; // bunu alamıyoruz şuan. static olarak 1
+
+		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
+
+
 
 		$this->load->view('template/header');
 		$this->load->view('dataset/process',$data);
