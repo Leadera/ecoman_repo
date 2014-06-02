@@ -52,12 +52,7 @@
 					</td>
 					<td>
 					<?php 
-
-					foreach ($nacecode as $nace) {
-						echo $nace['code'].'-'.$nace['name']; 
-						echo '<br>';
-					}
-
+							echo $nacecode['code'].'-'.$nacecode['name_tr']; 
 					?>
 					</td>
 				</tr>

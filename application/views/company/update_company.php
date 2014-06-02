@@ -1,6 +1,5 @@
 
-<?php echo $map['js']; 
-print_r($nace_code);?>
+<?php echo $map['js']; ?>
 
 <div class="container">
 	<p class="lead">Update Company</p>
@@ -40,7 +39,7 @@ print_r($nace_code);?>
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="naceCode">Nace Code</label>
-	    			<input type="text" class="form-control" id="naceCode" placeholder="XX.XX.XX" value="<?php echo set_value('naceCode',$nace_code[0]['code']); ?>"  name="naceCode">
+	    			<input type="text" class="form-control" id="naceCode" placeholder="XX.XX.XX" value="<?php echo set_value('naceCode',$nace_code['code']); ?>" name="naceCode">
 	 				<a target="_blank" href="http://tobb.org.tr/faaliyet/Sayfalar/nace-sorgulama.php">Nace Codes</a>
 	 			</div>
 

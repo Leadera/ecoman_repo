@@ -38,13 +38,13 @@ class Company_model extends CI_Model {
   }
 
   public function get_nace_code($id){
-      $this->db->select('T_NACE_CODE.code,T_NACE_CODE.name');
+      $this->db->select('T_NACE_CODE.code,T_NACE_CODE.name_tr');
       $this->db->from('T_NACE_CODE');
       $this->db->join('T_CMPNY_NACE_CODE', 'T_CMPNY_NACE_CODE.nace_code_id = T_NACE_CODE.id');
       $this->db->join('T_CMPNY', 'T_CMPNY.id = T_CMPNY_NACE_CODE.cmpny_id');
       $this->db->where('T_CMPNY.id', $id); 
       $query = $this->db->get();
-      return $query->result_array();
+      return $query->row_array();
   }
 
   public function get_company_proj($id){

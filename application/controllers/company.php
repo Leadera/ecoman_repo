@@ -74,19 +74,20 @@ class Company extends CI_Controller{
 
 			$cmpny_data = array(
 				'cmpny_id' => $last_id,
-	      		'description' => $data['description']
-	    		);
+				'description' => $data['description']
+			);
 
-		    $this->company_model->insert_cmpny_data($cmpny_data);
-		    $nace_code_id = $this->company_model->search_nace_code($code);
+	    $this->company_model->insert_cmpny_data($cmpny_data);
+	    $nace_code_id = $this->company_model->search_nace_code($code);
 
-		    $cmpny_nace_code = array(
-		    	'cmpny_id' => $last_id,
-		    	'nace_code_id' => $nace_code_id
-		    );
+	    $cmpny_nace_code = array(
+	    	'cmpny_id' => $last_id,
+	    	'nace_code_id' => $nace_code_id
+	    );
 
-		    $this->company_model->insert_cmpny_prsnl($last_id);
-		    $this->company_model->insert_cmpny_nace_code($cmpny_nace_code);
+	    //insert data
+	    $this->company_model->insert_cmpny_prsnl($last_id);
+	    $this->company_model->insert_cmpny_nace_code($cmpny_nace_code);
 			redirect('okoldu', 'refresh');
 		}
 
@@ -219,25 +220,26 @@ class Company extends CI_Controller{
 				'latitude'=>$this->input->post('lat'),
 				'longitude'=>$this->input->post('long')
 			);
-	    	$this->company_model->update_company($data2,$term);
+	    
+	    $this->company_model->update_company($data2,$term);
 
-	    	$code = $this->input->post('naceCode');
+	    $code = $this->input->post('naceCode');
 
 			$cmpny_data = array(
 				'cmpny_id' => $data['companies']['id'],
-	      		'description' => $data['companies']['description']
-	    		);
+      	'description' => $data['companies']['description']
+    	);
 
-		    $this->company_model->update_cmpny_data($cmpny_data,$data['companies']['id']);
+		  $this->company_model->update_cmpny_data($cmpny_data,$data['companies']['id']);
 		    
-		    $nace_code_id = $this->company_model->search_nace_code($code);
+		  $nace_code_id = $this->company_model->search_nace_code($code);
 
-		    $cmpny_nace_code = array(
-		    	'cmpny_id' => $data['companies']['id'],
-		    	'nace_code_id' => $nace_code_id
-		    );
-		    $this->company_model->update_cmpny_nace_code($cmpny_nace_code,$data['companies']['id']);
-	    }
+	    $cmpny_nace_code = array(
+	    	'cmpny_id' => $data['companies']['id'],
+	    	'nace_code_id' => $nace_code_id
+	    );
+	    $this->company_model->update_cmpny_nace_code($cmpny_nace_code,$data['companies']['id']);
+	  }
 
 		$this->load->view('template/header');
 		$this->load->view('company/update_company',$data);
