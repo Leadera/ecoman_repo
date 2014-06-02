@@ -59,7 +59,7 @@ $route['search'] = "search/search_pro";
 $route['search/(:any)'] = "search/search_pro/$1";
 
 $route['flow_and_component'] = "dataset/flow_and_component";
-$route['flow_and_component/new_flow'] = "dataset/new_flow";
+$route['new_flow'] = "dataset/new_flow";
 $route['flow_and_component/new_component'] = "dataset/new_component";
 
 $route['product/new_product'] = "dataset/new_product";
