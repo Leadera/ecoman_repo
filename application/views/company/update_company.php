@@ -21,7 +21,7 @@ print_r($nace_code);?>
 				<div class="form-group">
 	  				<div class="fileinput fileinput-new" data-provides="fileinput">
 	    				<div class="fileinput-new thumbnail">
-	      					<img class="img-rounded" style="max-width: 200px; max-height: 150px;" src="<?php echo asset_url("company_pictures/".$companies['name'].".jpg");?>">
+	      					<img class="img-rounded" style="max-width: 200px; max-height: 150px;" src="<?php echo asset_url("company_pictures/".$companies['logo']);?>">
 	    				</div>
 	    				<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
 	    				<div>

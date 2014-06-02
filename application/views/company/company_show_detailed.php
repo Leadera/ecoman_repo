@@ -82,7 +82,7 @@
 
 		<div class="col-md-3">
 		<div>
-			<img class="img-responsive" src="<?php echo asset_url('company_pictures/'.$companies['name'].'.jpg');?>" />
+			<img class="img-responsive" src="<?php echo asset_url('company_pictures/'.$companies['logo']);?>" />
 		</div>
 			<div class="form-group">
 				<ul class="nav nav-list">

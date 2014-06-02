@@ -127,5 +127,10 @@ class Company_model extends CI_Model {
     $query = $this->db->get();
     return $query->result_array();
   }
+
+  public function count_company_table(){
+    $count = $this->db->count_all('T_CMPNY');
+    return $count;
+  }
 }
 ?>

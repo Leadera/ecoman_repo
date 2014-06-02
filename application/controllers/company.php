@@ -36,7 +36,9 @@ class Company extends CI_Controller{
 			$config['upload_path'] = './assets/company_pictures/';
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size']	= '5000';
-			$config['file_name']	= $this->input->post('companyName').'.jpg';
+			$count = $this->company_model->count_company_table();
+			$count = $count + 1;
+			$config['file_name'] = $count.'.jpg';
 			$this->load->library('upload', $config);
 
 			if (!$this->upload->do_upload())
@@ -46,7 +48,7 @@ class Company extends CI_Controller{
 			}
 
 			$config['image_library'] = 'gd2';
-			$config['source_image']	= './assets/company_pictures/'.$this->input->post('id').'.jpg';
+			$config['source_image']	= './assets/company_pictures/'.$count.'.jpg';
 			$config['maintain_ratio'] = TRUE;
 			$config['width'] = 200;
 			$config['height'] = 200;
@@ -64,7 +66,7 @@ class Company extends CI_Controller{
 				'email'=>$this->input->post('email'),
 				'latitude'=>$this->input->post('lat'),
 				'longitude'=>$this->input->post('long'),
-				'logo'=>$this->input->post('companyName').'.jpg',
+				'logo'=> $count.'.jpg',
 				'active'=>'1'
 			);
 			$code = $this->input->post('naceCode');
@@ -180,22 +182,22 @@ class Company extends CI_Controller{
 		if ($this->form_validation->run() !== FALSE)
 		{
 			//file properties
-			@unlink('./assets/company_pictures/'.$data['companies']['name'].'.jpg'); //  once var olan resmi siliyoruz.
 			$config['upload_path'] = './assets/company_pictures/';
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size']	= '5000';
-			$config['file_name']	= $data['companies']['name'].'.jpg';
+			$config['file_name'] = $data['companies']['logo'];
 			$this->load->library('upload', $config);
-
+			$this->upload->overwrite = true;
 			//Resmi servera yükleme
 			if (!$this->upload->do_upload())
 			{
 				print_r($this->upload->display_errors());
 			}
+						
 
 			//Yüklenen resmi boyutlandırma ve çevirme
 			$config['image_library'] = 'gd2';
-			$config['source_image']	= './assets/company_pictures/'.$data['companies']['name'].'.jpg';
+			$config['source_image']	= './assets/company_pictures/'.$data['companies']['logo'];
 			$config['maintain_ratio'] = TRUE;
 			$config['width']	 = 200;
 			$config['height']	 = 200;
@@ -212,7 +214,7 @@ class Company extends CI_Controller{
 				'description'=>$this->input->post('companyDescription'),
 				'email'=>$this->input->post('email'),
 				'postal_code'=>'NULL',
-				'logo'=>$this->input->post('companyName').'.jpg',
+				'logo'=>$data['companies']['logo'],
 				'active'=>'1',
 				'latitude'=>$this->input->post('lat'),
 				'longitude'=>$this->input->post('long')
@@ -245,7 +247,7 @@ class Company extends CI_Controller{
 	public function is_unique_email($field,$term){
 		$newEmail = $this->input->post('email');
 		$oldEmail = $this->company_model->return_email((int)$term);
-		if(($newEmail == $oldEmail) || ($this->company_model->unique_control_email($newEmail))){
+		if(($newEmail == $oldEmail[0]['email']) || ($this->company_model->unique_control_email($newEmail))){
 			return true;
 		}else{
 			$this->form_validation->set_message('is_unique_email', 'Check email address.');
