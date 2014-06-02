@@ -67,8 +67,6 @@ class Company_model extends CI_Model {
       return $query->result_array();
   }
 
-
-
   public function company_search($q){
     $this->db->select('T_CMPNY.name,T_CMPNY.id');
     $this->db->from('T_CMPNY');
@@ -83,16 +81,27 @@ class Company_model extends CI_Model {
       return json_encode($row_set); //format the array into json data
     }
   }
+
   public function update_company($data,$id){
     $this->db->where('id', $id);
     $this->db->update('T_CMPNY', $data); 
   }
 
-  public function unique_control_email($email,$id){
+  public function update_cmpny_data($data,$id){
+    $this->db->where('cmpny_id', $id);
+    $this->db->update('T_CMPNY_DATA',$data);
+  }
+
+  public function update_cmpny_nace_code($data,$id){
+    $this->db->where('cmpny_id', $id);
+    $this->db->update('T_CMPNY_NACE_CODE',$data);
+  }
+
+  public function unique_control_email($email){
     $this->db->like('email', $email);
     $this->db->from('T_CMPNY');
     $count = $this->db->count_all_results();
-    if($count == 1){
+    if($count == 0){
       return true;
     }
     else{
@@ -109,6 +118,14 @@ class Company_model extends CI_Model {
       'is_contact' => '1'
       );
     $this->db->insert('T_CMPNY_PRSNL',$data); 
+  }
+
+  public function return_email($id){
+    $this->db->select('email');
+    $this->db->from('T_CMPNY');
+    $this->db->where('id', $id); 
+    $query = $this->db->get();
+    return $query->result_array();
   }
 }
 ?>

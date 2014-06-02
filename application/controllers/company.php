@@ -156,10 +156,13 @@ class Company extends CI_Controller{
 		$config['center'] = '39.98280915242299, 32.73923635482788';
 		$config['zoom'] = '15';
 		$config['map_type'] = "HYBRID";
-		$config['onclick'] = '$("#latId").val("Lat:" + event.latLng.lat()); $("#longId").val("Long:" + event.latLng.lng()); $("#lat").val(event.latLng.lat()); $("#long").val(event.latLng.lng());';
 		$config['places'] = TRUE;
 		$config['placesRadius'] = 20;
-		$this->googlemaps->initialize($config);
+
+		$marker = array();
+		$marker['position'] = $data['companies']['latitude'].','. $data['companies']['longitude'];
+		$this->googlemaps->add_marker($marker);
+   		$this->googlemaps->initialize($config);
 
 		$data['map'] = $this->googlemaps->create_map();
 
@@ -169,32 +172,34 @@ class Company extends CI_Controller{
 		$this->form_validation->set_rules('naceCode', 'Nace Code', 'trim|required|xss_clean|regex_match[/^\d{2}\.\d{2}\.\d{2}$/]');
 		$this->form_validation->set_rules('coordinates', 'Coordinates', 'trim|xss_clean');
 		$this->form_validation->set_rules('companyDescription', 'Company Description', 'trim|xss_clean');
-		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email|callback_is_unique_email');
-		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|callback_alpha_dash_space|min_length[11]|xss_clean');
-		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|callback_alpha_dash_space|min_length[11]|xss_clean');
-		$this->form_validation->set_rules('fax', 'Fax Number', 'required|callback_alpha_dash_space|min_length[11]|xss_clean');
+		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email|callback_is_unique_email['.$data['companies']['id'].']');
+		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
+		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
+		$this->form_validation->set_rules('fax', 'Fax Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
 		$this->form_validation->set_rules('address', 'Address', 'trim|xss_clean');
 
 		if ($this->form_validation->run() !== FALSE)
 		{
+			//file properties
+			@unlink('./assets/company_pictures/'.$data['companies']['name'].'.jpg'); //  once var olan resmi siliyoruz.
 			$config['upload_path'] = './assets/company_pictures/';
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size']	= '5000';
-			$config['file_name']	= $this->input->post('companyName').'.jpg';
+			$config['file_name']	= $data['companies']['name'].'.jpg';
 			$this->load->library('upload', $config);
 
+			//Resmi servera yükleme
 			if (!$this->upload->do_upload())
 			{
-				print_r("expression");
 				print_r($this->upload->display_errors());
-				exit;
 			}
 
+			//Yüklenen resmi boyutlandırma ve çevirme
 			$config['image_library'] = 'gd2';
-			$config['source_image']	= './assets/company_pictures/'.$this->input->post('id').'.jpg';
+			$config['source_image']	= './assets/company_pictures/'.$data['companies']['name'].'.jpg';
 			$config['maintain_ratio'] = TRUE;
-			$config['width'] = 200;
-			$config['height'] = 200;
+			$config['width']	 = 200;
+			$config['height']	 = 200;
 			$this->load->library('image_lib', $config);
 
 			$this->image_lib->resize();
@@ -214,6 +219,23 @@ class Company extends CI_Controller{
 				'longitude'=>$this->input->post('long')
 			);
 	    	$this->company_model->update_company($data2,$term);
+
+	    	$code = $this->input->post('naceCode');
+
+			$cmpny_data = array(
+				'cmpny_id' => $data['companies']['id'],
+      	'description' => $data['companies']['description']
+    	);
+
+		  $this->company_model->update_cmpny_data($cmpny_data,$data['companies']['id']);
+		    
+		  $nace_code_id = $this->company_model->search_nace_code($code);
+
+	    $cmpny_nace_code = array(
+	    	'cmpny_id' => $data['companies']['id'],
+	    	'nace_code_id' => $nace_code_id
+	    );
+	    $this->company_model->update_cmpny_nace_code($cmpny_nace_code,$data['companies']['id']);
 	    }
 
 		$this->load->view('template/header');
@@ -221,14 +243,16 @@ class Company extends CI_Controller{
 		$this->load->view('template/footer');
 	}
 
-/*	public function is_unique_email($term){
-		if($this->company_model->unique_control_email($term) == true){
+	public function is_unique_email($field,$term){
+		$newEmail = $this->input->post('email');
+		$oldEmail = $this->company_model->return_email((int)$term);
+		if(($newEmail == $oldEmail) || ($this->company_model->unique_control_email($newEmail))){
 			return true;
-		}		
-		else{
+		}else{
+			$this->form_validation->set_message('is_unique_email', 'Check email address.');
 			return false;
 		}
-	}*/
+	}
 
 }
 ?>

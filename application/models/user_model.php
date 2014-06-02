@@ -8,6 +8,7 @@ class User_model extends CI_Model {
 
   public function create_user($data){
     $this->db->insert('T_USER', $data);
+    return $this->db->insert_id();
   }
 
   public function get_userinfo_by_username($username){
@@ -121,6 +122,12 @@ class User_model extends CI_Model {
       return true;
     else
       return false;
+  }
+
+  public function set_user_image($userId,$photo){
+
+  $this->db->where('id', $userId);
+  $this->db->update('T_USER', $photo); 
   }
 
 }
