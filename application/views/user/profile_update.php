@@ -15,7 +15,7 @@
 				<div class="form-group">
 						<div class="fileinput fileinput-new" data-provides="fileinput">
 							<div class="fileinput-new thumbnail">
-								<img class="img-rounded" style="width:120px;" src="<?php echo asset_url("user_pictures/".$user_name.".jpg"); ?>">
+								<img class="img-rounded" style="width:120px;" src="<?php echo asset_url("user_pictures/".$photo); ?>">
 							
 							</div>
 							<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
