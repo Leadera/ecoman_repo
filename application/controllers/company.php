@@ -26,9 +26,9 @@ class Company extends CI_Controller{
 		$this->form_validation->set_rules('naceCode', 'Nace Code', 'trim|required|xss_clean|regex_match[/^\d{2}\.\d{2}\.\d{2}$/]');
 		$this->form_validation->set_rules('companyDescription', 'Company Description', 'trim|xss_clean');
 		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email|is_unique[T_CMPNY.email]');
-		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|callback_alpha_dash_space|min_length[11]|xss_clean');
-		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|callback_alpha_dash_space|min_length[11]|xss_clean');
-		$this->form_validation->set_rules('fax', 'Fax Number', 'required|callback_alpha_dash_space|min_length[11]|xss_clean');
+		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
+		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
+		$this->form_validation->set_rules('fax', 'Fax Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
 		$this->form_validation->set_rules('address', 'Address', 'trim|xss_clean');
 
 		if ($this->form_validation->run() !== FALSE)

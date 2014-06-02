@@ -10,7 +10,7 @@
 					User Info
 					</td>
 					<td>
-						<p><img class="img-rounded" style="width:120px;" src="<?php echo asset_url("user_pictures/".$userInfo['user_name'].".jpg"); ?>"></p>
+						<p><img class="img-rounded" style="width:120px;" src="<?php echo asset_url("user_pictures/".$userInfo['photo']); ?>"></p>
 						<div><?php echo $userInfo['description']; ?></div>
 					</td>
 				</tr>

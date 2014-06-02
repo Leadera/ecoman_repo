@@ -16,9 +16,9 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('jobTitle','Job Title','required|trim|xss_clean');
 		$this->form_validation->set_rules('description','Description','trim|xss_clean');
 		$this->form_validation->set_rules('email', 'e-mail' ,'trim|required|valid_email|is_unique[T_USER.email]');
-		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|numeric|min_length[11]|xss_clean');
-		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|numeric|min_length[11]|xss_clean');
-		$this->form_validation->set_rules('fax', 'Fax Number', 'required|numeric|min_length[11]|xss_clean');
+		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
+		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
+		$this->form_validation->set_rules('fax', 'Fax Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]|xss_clean|is_unique[T_USER.user_name]');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[5]|matches[rePassword]|trim|xss_clean');
 
@@ -35,17 +35,17 @@ class User extends CI_Controller {
 				'phone_num_2'=>$this->input->post('workPhone'),
 				'fax_num'=>$this->input->post('fax'),
 				'user_name'=>$this->input->post('username'),
-				'psswrd'=>md5($this->input->post('password')),
-				'photo'=>$this->input->post('username').'.jpg'
+				'psswrd'=>md5($this->input->post('password'))
+				//'photo'=>$this->input->post('username').'.jpg'
 			);
-			$this->user_model->create_user($data);
+			$last_inserted_user_id = $this->user_model->create_user($data);
 
 
 			//file properties
 			$config['upload_path'] = './assets/user_pictures/';
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size']	= '5000';
-			$config['file_name']	= $this->input->post('username').'.jpg';
+			$config['file_name']	= $last_inserted_user_id.'.jpg';
 			$this->load->library('upload', $config);
 
 			//Resmi servera yükleme
@@ -57,7 +57,7 @@ class User extends CI_Controller {
 
 			//Yüklenen resmi boyutlandırma ve çevirme
 			$config['image_library'] = 'gd2';
-			$config['source_image']	= './assets/user_pictures/'.$this->input->post('username').'.jpg';
+			$config['source_image']	= './assets/user_pictures/'.$last_inserted_user_id.'.jpg';
 			$config['maintain_ratio'] = TRUE;
 			$config['width']	 = 200;
 			$config['height']	 = 200;
@@ -65,7 +65,11 @@ class User extends CI_Controller {
 
 			$this->image_lib->resize();
 
-			
+
+			$photo = array(
+				'photo'=>$last_inserted_user_id.'.jpg'
+			);
+			$this->user_model->set_user_image($last_inserted_user_id,$photo);
 
 			//process completed
 			redirect('okoldu', 'refresh');
@@ -74,6 +78,19 @@ class User extends CI_Controller {
 		$this->load->view('template/header');
 		$this->load->view('user/create_user');
 		$this->load->view('template/footer');
+	}
+
+
+	//bu kod telefon numaralarına - boşluk ve _ koymaya yarar
+	function alpha_dash_space($str_in = '')
+	{
+		if (! preg_match("/^([-a-z0-9_ ])+$/i", $str_in)){
+			$this->form_validation->set_message('_alpha_dash_space', 'The %s field may only contain alpha-numeric characters, spaces, underscores, and dashes.');
+			return FALSE;
+		}
+		else{
+			return TRUE;
+		}
 	}
 
 	public function user_login(){
@@ -151,29 +168,6 @@ class User extends CI_Controller {
 		
 		if ($this->form_validation->run() !== FALSE)
 		{
-			//file properties
-			@unlink('./assets/user_pictures/'.$data['user_name'].'.jpg'); //  once var olan resmi siliyoruz.
-			$config['upload_path'] = './assets/user_pictures/';
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size']	= '5000';
-			$config['file_name']	= $data['user_name'].'.jpg';
-			$this->load->library('upload', $config);
-
-			//Resmi servera yükleme
-			if (!$this->upload->do_upload())
-			{
-				print_r($this->upload->display_errors());
-			}
-
-			//Yüklenen resmi boyutlandırma ve çevirme
-			$config['image_library'] = 'gd2';
-			$config['source_image']	= './assets/user_pictures/'.$data['user_name'].'.jpg';
-			$config['maintain_ratio'] = TRUE;
-			$config['width']	 = 200;
-			$config['height']	 = 200;
-			$this->load->library('image_lib', $config);
-
-			$this->image_lib->resize();
 
 			$update = array(
 				'name'=>$this->input->post('name'),
@@ -185,11 +179,38 @@ class User extends CI_Controller {
 				'phone_num_2'=>$this->input->post('workPhone'),
 				'fax_num'=>$this->input->post('fax'),
 				'user_name'=>$this->input->post('username'),
-				'psswrd'=>$data['psswrd'],
-				'photo'=>$this->input->post('username').'.jpg'
+				'psswrd'=>$data['psswrd']
 			);
 
 			$this->user_model->update_user($update);
+
+			//file properties
+
+			//@unlink('./assets/user_pictures/'.$data['photo']); //  silmeye gerek yok. overwrite true islemi bunu yapıyor zaten
+
+			$config['upload_path'] = './assets/user_pictures/';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']	= '5000';
+			$config['file_name']	= $data['photo'];
+			$this->load->library('upload', $config);
+			$this->upload->overwrite = true;
+
+			//Resmi servera yükleme
+			if (!$this->upload->do_upload())
+			{
+				//print_r($this->upload->display_errors());
+				//hata vermeye gerek yok , resim secmeyebilir.
+			}
+
+			//Yüklenen resmi boyutlandırma ve çevirme
+			$config['image_library'] = 'gd2';
+			$config['source_image']	= './assets/user_pictures/'.$data['photo'];
+			$config['maintain_ratio'] = TRUE;
+			$config['width']	 = 200;
+			$config['height']	 = 200;
+			$this->load->library('image_lib', $config);
+
+			$this->image_lib->resize();
 
 
 			//session ayaları ve atama 
