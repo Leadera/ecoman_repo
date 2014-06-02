@@ -53,6 +53,11 @@ class Dataset extends CI_Controller {
 		$data['flownames'] = $this->flow_model->get_flowname_list();
 		$data['flowtypes'] = $this->flow_model->get_flowtype_list();
 
+		$companyID = 1; // bunu alamıyoruz şuan. static olarak 1
+
+		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
+
+
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean|strip_tags');
 		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|required|xss_clean|strip_tags');	
@@ -69,7 +74,7 @@ class Dataset extends CI_Controller {
 			$quantity = $this->input->post('quantity');
 
 			$flow = array(
-			'cmpny_id'=>1, // bunu nerden alacagiz??
+			'cmpny_id'=>$companyID,
 			'flow_id'=>$flowID,
 			'qntty'=>$quantity,
 			'cost' =>$cost,
@@ -78,13 +83,16 @@ class Dataset extends CI_Controller {
 			);
 			$this->flow_model->register_flow_to_company($flow);
 
+			redirect(base_url('new_flow'), 'refresh'); // tablo olusurken ajax kullanılabilir. 
+			//şuan sayfa yenileniyor her seferinde database'den satırlar ekleniyor.
 
-			redirect(base_url('flow_and_component'), 'refresh');
+		}else{
+
+			$this->load->view('template/header');
+			$this->load->view('dataset/new_flow',$data);
+			$this->load->view('template/footer');
 		}
 
-		$this->load->view('template/header');
-		$this->load->view('dataset/new_flow',$data);
-		$this->load->view('template/footer');
 
 
 

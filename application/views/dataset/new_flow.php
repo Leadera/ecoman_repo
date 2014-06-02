@@ -24,7 +24,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="col-md-9">
+			<div class="col-md-4">
 				<div class="form-group">
 			    <label for="flowname">Flow Name</label>
 		    	<div>	    			
@@ -58,8 +58,32 @@
 			    <label for="amount">EP(Annual)</label>
 			    <input class="form-control" id="ep" name="ep" placeholder="Enter EP">
 			  </div>
-			</div>
+			  <button type="submit" class="btn btn-primary pull-right">Add Process</button>
+			
 		</div>
-		<button type="submit" class="btn btn-primary pull-right">Add Process</button>
 	</form>
+			<div class="col-md-4">
+				<table class="table table-striped table-bordered text-center">
+				<tr>
+					<td>Flow Name</td>
+					<td>Flow Type</td>
+					<td>Quantity</td>
+					<td>Cost</td>
+					<td>EP</td>
+				</tr>
+				<?php foreach ($company_flows as $flow): ?>
+				<tr>	
+						<td><?php echo $flow['flowname']; ?></td>
+						<td><?php echo $flow['flowtype']; ?></td>
+						<td><?php echo $flow['qntty']; ?></td>
+						<td><?php echo $flow['cost']; ?></td>
+						<td><?php echo $flow['ep']; ?></td>
+
+				</tr>
+				<?php endforeach ?>
+
+			</table>
+
+			</div>
+
 </div>
