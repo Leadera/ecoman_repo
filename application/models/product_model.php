@@ -6,11 +6,11 @@ class Product_model extends CI_Model {
 		$this->load->database();
 	}
 
-	public function register_pro($product){
+	public function register_product_to_company($product){
 		$this->db->insert('T_PRDCT', $product);
 	}
 
-	public function product_list(){
+	public function get_product_list(){
 		$this->db->select("*");
 		$this->db->from("T_PRDCT");
 		$query = $this->db->get();

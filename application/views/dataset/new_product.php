@@ -1,41 +1,21 @@
-<div class="container">
-	<div class="row">
-<div class="col-md-12 ">
-	<div class="row">
-		<div class="col-md-6"><div class="altbaslik">New product</div></div>
-		<div class="col-md-6"></div>			
-	</div>
-	<?php echo form_open('product/new_product','role="form"'); ?>
 
-		<?php if(validation_errors() != NULL ): ?>
-    <div class="alert">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <?php echo validation_errors(); ?>        
-    </div>
-    <?php endif ?>
-	  <div class="form-group">
-	    <label for="productname">Product name</label>
-	    <input class="form-control" id="productname" name="productname" placeholder="Enter product name">
-	  </div>
-	  <div class="form-group">
-	    <label for="producttype">Product type</label>
-	    <input class="form-control" id="producttype" name="producttype" placeholder="Enter type of product">
-	  </div>
-	  <div class="form-group">
-	    <label for="quan">Quantity</label>
-	    <input class="form-control" id="quan" name="quan" placeholder="Quantity (number)">
-	  </div>
-	  <div class="form-group">
-	    <label for="productunit">Product unit</label>
-	    <input class="form-control" id="productunit" name="productunit" placeholder="Enter unit of product">
-	  </div>
-	  <div class="form-group">
-	    <label for="productdesc">Product description</label>
-	    <input class="form-control" id="productdesc" name="productdesc" placeholder="Enter product description">
-	  </div>
-	  <button type="submit" class="btn btn-info">Save product</button>
-	  <button class="btn btn-default">Cancel</button>
+
+	<?php echo form_open_multipart('new_product'); ?>
+
+			<div class="col-md-4">
+				<div class="form-group">
+		    		<label for="product">Product Name</label>
+		    		<div>	    			
+			    		<select id="product" class="info select-block" name="product">
+			  			<?php foreach ($products as $pro): ?>
+							<option value="<?php echo $pro['id']; ?>"><?php echo $pro['name']; ?></option>
+						<?php endforeach ?>-->
+						</select>
+					</div>
+	 			</div>
+	 				<button type="submit" class="btn btn-primary pull-right">Add Product</button>
+			</div>
+		</div>
+
 	</form>
-</div>
-</div>
 </div>
