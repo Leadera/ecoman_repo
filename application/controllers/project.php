@@ -64,8 +64,7 @@ class Project extends CI_Controller{
 				$this->project_model->insert_project_contact_person($prj_cntct_prsnl);
 			}
 
-
-		redirect('okoldu', 'refresh');
+		redirect('projects', 'refresh');
 		}
 		$this->load->view('template/header');
 		$this->load->view('project/create_project',$data);

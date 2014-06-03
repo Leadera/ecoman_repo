@@ -19,33 +19,28 @@ class Dataset extends CI_Controller {
 
 	public function new_product()
 	{
-		
-		$this->form_validation->set_rules('productname', 'Product name', 'trim|required|xss_clean|strip_tags');
-		
-		$this->form_validation->set_rules('producttype', 'Product type', 'trim|required|xss_clean|strip_tags');
-		
-		$this->form_validation->set_rules('quan', 'Quantity', 'trim|required|xss_clean|strip_tags|numeric');
-		
-		$this->form_validation->set_rules('productunit', 'Product unit', 'trim|required|xss_clean|strip_tags');
-		
-		$this->form_validation->set_rules('productdesc', 'Product description', 'trim|required|xss_clean|strip_tags');
 
+
+		$data['products']=$this->product_model->get_product_list();
+
+		$this->load->library('form_validation');
+
+		
+		$this->form_validation->set_rules('product', 'Product name', 'trim|required|xss_clean|strip_tags');
 
 		if($this->form_validation->run() == FALSE) {
 			$this->load->view('template/header');
-			$this->load->view('dataset/new_product');
+			$this->load->view('dataset/dataSetLeftSide');
+			$this->load->view('dataset/new_product',$data);
 			$this->load->view('template/footer');
 		}
 		else{
-			$productname = $this->input->post('productname');
-			$producttype = $this->input->post('producttype');
-			$quan = $this->input->post('quan');
-			$productunit = $this->input->post('productunit');
-			$productdesc = $this->input->post('productdesc');
+			$product = $this->input->post('product');
 
-			$this->product_model->register_pro($productname,$producttype,$quan,$productunit,$productdesc);
+			
+			$this->product_model->register_product_to_company();
 
-			redirect(base_url('product'), 'refresh');
+			redirect(base_url('new_product'), 'refresh');
 		}
 	}
 
@@ -53,6 +48,7 @@ class Dataset extends CI_Controller {
 	{
 		$data['flownames'] = $this->flow_model->get_flowname_list();
 		$data['flowtypes'] = $this->flow_model->get_flowtype_list();
+
 		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
 		$data['companyID'] = $companyID;
 
@@ -135,6 +131,7 @@ class Dataset extends CI_Controller {
 		$data['companyID'] = $companyID;
 
 		$this->form_validation->set_rules('process','Process','required');
+
 
 		if ($this->form_validation->run() !== FALSE)
 		{

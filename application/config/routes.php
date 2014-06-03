@@ -62,7 +62,7 @@ $route['flow_and_component'] = "dataset/flow_and_component";
 $route['new_flow/(:any)'] = "dataset/new_flow/$1";
 $route['flow_and_component/new_component'] = "dataset/new_component";
 
-$route['product/new_product'] = "dataset/new_product";
+$route['new_product'] = "dataset/new_product";
 $route['product'] = "dataset/product";
 
 $route['new_process/(:any)'] = "dataset/new_process/$1";

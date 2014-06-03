@@ -42,7 +42,7 @@
 			<div class="col-md-4">
 	 			<div class="form-group">
 	    			<label for="assignedCompanies">Assign Company</label>    			
-	    			<input type="text" id="companySearch" />	
+	    			<!--  <input type="text" id="companySearch" />	-->
 
 	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignCompany" name="assignCompany[]">
 	    				
