@@ -6,6 +6,7 @@ class Dataset extends CI_Controller {
 		$this->load->model('product_model');
 		$this->load->model('flow_model');
 		$this->load->model('process_model');
+		$this->load->model('equipment_model');
 		$this->load->library('form_validation');
 	}
 
@@ -163,6 +164,7 @@ class Dataset extends CI_Controller {
 
 	public function new_equipment($companyID){
 		$data['companyID'] = $companyID;
+		$data['equipmentName'] = $this->equipment_model->get_equipment_name($companyID);
 		
 		$this->load->view('template/header');
 		$this->load->view('dataset/dataSetLeftSide',$data);
