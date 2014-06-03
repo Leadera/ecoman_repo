@@ -43,9 +43,9 @@ class Project extends CI_Controller{
 				$this->project_model->insert_project_company($prj_cmpny);	 
 			}
 
-			$consultants = array ($_POST['assignConsultant']); // multiple select , secilen consultant'lar
+			$consultants = $_POST['assignConsultant']; // multiple select , secilen consultant'lar
 			
-			foreach ($consultants[0] as $consultant) {
+			foreach ($consultants as $consultant) {
 				$prj_cnsltnt=array(
 					'prj_id' => $last_inserted_project_id,
 					'cnsltnt_id' => $consultant,
@@ -54,8 +54,8 @@ class Project extends CI_Controller{
 				$this->project_model->insert_project_consultant($prj_cnsltnt);
 			}
 
-			$contactusers= array ($_POST['assignContactPerson']);
-			foreach ($contactusers[0] as $contactuser) {
+			$contactusers= $_POST['assignContactPerson'];
+			foreach ($contactusers as $contactuser) {
 				$prj_cntct_prsnl=array(
 					'prj_id' => $last_inserted_project_id,
 					'usr_id' => $contactuser

@@ -1,5 +1,5 @@
 
-	<?php echo form_open_multipart('new_flow'); ?>
+	<?php echo form_open_multipart('new_flow/'.$companyID[0]); ?>
 
 			<div class="col-md-4">
 				<p class="lead">New flow</p>
