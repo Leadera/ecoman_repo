@@ -14,7 +14,7 @@
 				<ul class="nav nav-list">
 					<li><a style="text-transform:capitalize;" href="<?php echo base_url('new_flow/'.$companyID[0]); ?>">Flows</a></li>
 					<li><a style="text-transform:capitalize;" href="<?php echo base_url('new_process/'.$companyID[0]); ?>">Process</a></li>
-					<li><a style="text-transform:capitalize;" href="<?php echo base_url(''); ?>">Equipment</a></li>
+					<li><a style="text-transform:capitalize;" href="<?php echo base_url('new_equipment/'.$companyID[0]); ?>">Equipment</a></li>
 					<li><a style="text-transform:capitalize;" href="<?php echo base_url('new_product'); ?>">Product</a></li>
 					<li><a style="text-transform:capitalize;" href="<?php echo base_url(''); ?>">Component</a></li>
 					</ul>

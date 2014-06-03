@@ -163,4 +163,13 @@ class Dataset extends CI_Controller {
 		$this->load->view('dataset/new_process',$data);
 		$this->load->view('template/footer');
 	}
+
+	public function new_equipment($companyID){
+		$data['companyID'] = $companyID;
+		
+		$this->load->view('template/header');
+		$this->load->view('dataset/dataSetLeftSide',$data);
+		$this->load->view('dataset/new_equipment');
+		$this->load->view('template/footer');
+	}
 }

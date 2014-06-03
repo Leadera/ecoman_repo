@@ -67,6 +67,8 @@ $route['product'] = "dataset/product";
 
 $route['new_process/(:any)'] = "dataset/new_process/$1";
 
+$route['new_equipment/(:any)'] = "dataset/new_equipment/$1";
+
 $route['default_controller'] = "homepage";
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
