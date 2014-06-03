@@ -10,6 +10,11 @@ class Project_model extends CI_Model {
     return $this->db->insert_id();
   }
 
+  public function update_project($project,$id){
+    $this->db->where('id', $id);
+    $this->db->update('T_PRJ', $project); 
+  }
+
   public function get_active_project_status(){
 
     $this->db->select('*');
@@ -79,6 +84,16 @@ class Project_model extends CI_Model {
     $query = $this->db->get();
     return $query->result_array();
   }
+  public function remove_company_from_project($projID){
+    $this->db->delete('T_PRJ_CMPNY', array('prj_id' => $projID)); 
+  }
 
+  public function remove_consultant_from_project($projID){
+    $this->db->delete('T_PRJ_CNSLTNT', array('prj_id' => $projID));  
+  }
+
+  public function remove_contactuser_from_project($projID){
+    $this->db->delete('T_PRJ_CNTCT_PRSNL', array('prj_id' => $projID));  
+  }
 }
 ?>

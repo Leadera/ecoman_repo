@@ -43,6 +43,7 @@ $route['register'] = "user/user_register";
 $route['login'] = "user/user_login";
 $route['logout'] = "user/user_logout";
 
+$route['update_project/(:any)'] = "project/update_project/$1";
 $route['newproject'] = "project/new_project";
 $route['projects'] = "project/show_all_project";
 $route['contactperson']="project/contact_person";
