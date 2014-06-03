@@ -94,10 +94,9 @@
      <script type="text/javascript">
     $(document).ready(function () {
         $('#assignCompany').change(function () {
-
             var company = $(this).val();
             $.ajax({
-                url: "contactperson",
+                url: "/ecoman_repo/contactperson",
                 async: false,
                 type: "POST",
                 data: "company_id="+company,
