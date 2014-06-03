@@ -88,7 +88,7 @@ class Company extends CI_Controller{
 	    //insert data
 	    $this->company_model->insert_cmpny_prsnl($last_id);
 	    $this->company_model->insert_cmpny_nace_code($cmpny_nace_code);
-			redirect('okoldu', 'refresh');
+			redirect('company', 'refresh');
 		}
 
 		$this->load->view('template/header');
@@ -192,7 +192,7 @@ class Company extends CI_Controller{
 			//Resmi servera yükleme
 			if (!$this->upload->do_upload())
 			{
-				print_r($this->upload->display_errors());
+				//print_r($this->upload->display_errors());
 			}
 						
 
