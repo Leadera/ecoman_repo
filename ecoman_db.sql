@@ -1,9 +1,10 @@
+
 -- phpMyAdmin SQL Dump
 -- version 4.0.6deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 03, 2014 at 12:30 PM
+-- Generation Time: Jun 03, 2014 at 12:39 PM
 -- Server version: 5.5.37-0ubuntu0.13.10.1
 -- PHP Version: 5.5.3-1ubuntu2.3
 
@@ -172,7 +173,15 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_FLOW` (
   KEY `qntty_unit_id` (`qntty_unit_id`),
   KEY `cost_unit_id` (`cost_unit_id`),
   KEY `ep_unit_id` (`ep_unit_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `T_CMPNY_FLOW`
+--
+
+INSERT INTO `T_CMPNY_FLOW` (`id`, `cmpny_id`, `flow_id`, `qntty`, `qntty_unit_id`, `cost`, `cost_unit_id`, `ep`, `ep_unit_id`, `flow_type_id`) VALUES
+(1, 1, 1, 10.020, NULL, 10.30, NULL, 10.04, NULL, 1),
+(2, 1, 2, 11.200, NULL, 10.03, NULL, 10.04, NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -201,6 +210,15 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_FLOW_PRCSS` (
   KEY `cmpny_flow_id` (`cmpny_flow_id`),
   KEY `cmpny_prcss_id` (`cmpny_prcss_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `T_CMPNY_FLOW_PRCSS`
+--
+
+INSERT INTO `T_CMPNY_FLOW_PRCSS` (`cmpny_flow_id`, `cmpny_prcss_id`) VALUES
+(1, 1),
+(2, 1),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -253,7 +271,15 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_PRCSS` (
   PRIMARY KEY (`id`),
   KEY `cmpny_id` (`cmpny_id`),
   KEY `prcss_id` (`prcss_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `T_CMPNY_PRCSS`
+--
+
+INSERT INTO `T_CMPNY_PRCSS` (`id`, `cmpny_id`, `prcss_id`) VALUES
+(1, 1, 1),
+(2, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -384,7 +410,15 @@ CREATE TABLE IF NOT EXISTS `T_FLOW` (
   `name_tr` varchar(200) DEFAULT NULL,
   `active` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `T_FLOW`
+--
+
+INSERT INTO `T_FLOW` (`id`, `name`, `name_tr`, `active`) VALUES
+(1, 'Water', 'Water', 1),
+(2, 'Electricity', 'Electricity', 1);
 
 -- --------------------------------------------------------
 
@@ -398,7 +432,15 @@ CREATE TABLE IF NOT EXISTS `T_FLOW_TYPE` (
   `name_tr` varchar(200) DEFAULT NULL,
   `active` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `T_FLOW_TYPE`
+--
+
+INSERT INTO `T_FLOW_TYPE` (`id`, `name`, `name_tr`, `active`) VALUES
+(1, 'Input', 'Input', 1),
+(2, 'Output', 'Output', 1);
 
 -- --------------------------------------------------------
 
@@ -2637,7 +2679,16 @@ CREATE TABLE IF NOT EXISTS `T_PRCSS` (
   `active` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `mother_id` (`mother_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `T_PRCSS`
+--
+
+INSERT INTO `T_PRCSS` (`id`, `name`, `name_tr`, `mother_id`, `active`) VALUES
+(1, 'Milling', 'Milling', NULL, 1),
+(2, 'Turning', 'Turning', NULL, 1),
+(3, 'Injection Molling', 'Injection Molling', NULL, 1);
 
 -- --------------------------------------------------------
 
