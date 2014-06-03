@@ -245,6 +245,7 @@ class User extends CI_Controller {
 		} 
 
 	}
+
 	function username_check(){
 		$usernameForm = $this->input->post('username'); // formdan gelen yeni girilen username
 
@@ -258,7 +259,17 @@ class User extends CI_Controller {
 			$this->form_validation->set_message('username_check', 'Please provide an acceptable username.');
 			return false;
 		} 
+	}
 
+	public function become_consultant(){
+		$tmp = $this->session->userdata('user_in');
+		if(empty($tmp) || $this->user_model->is_user_consultant($tmp['id'])){
+			redirect('', 'refresh');
+		}
+		else{
+			$this->user_model->make_user_consultant($tmp['id'],$tmp['username']);
+			redirect('user/'.$tmp['username'], 'refresh');
+		}
 	}
 
 }
