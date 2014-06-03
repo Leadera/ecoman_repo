@@ -59,13 +59,13 @@ $route['search'] = "search/search_pro";
 $route['search/(:any)'] = "search/search_pro/$1";
 
 $route['flow_and_component'] = "dataset/flow_and_component";
-$route['new_flow'] = "dataset/new_flow";
+$route['new_flow/(:any)'] = "dataset/new_flow/$1";
 $route['flow_and_component/new_component'] = "dataset/new_component";
 
 $route['new_product'] = "dataset/new_product";
 $route['product'] = "dataset/product";
 
-$route['new_process'] = "dataset/new_process";
+$route['new_process/(:any)'] = "dataset/new_process/$1";
 
 $route['default_controller'] = "homepage";
 $route['(:any)'] = 'pages/view/$1';

@@ -3,6 +3,7 @@
 	<div class="row">
 		<div class="col-md-9">
 			<div class="lead pull-left"><?php echo $companies['name']; ?></div>
+			<a style="margin-left:10px;" class="btn btn-info btn-sm pull-right" href="<?php echo base_url("new_flow/".$companies['id']); ?>">Dataset Management</a>
 			<a class="btn btn-info btn-sm pull-right" href="<?php echo base_url("update_company/".$companies['id']); ?>">Update Company</a>
 
 			<table class="table table-bordered">

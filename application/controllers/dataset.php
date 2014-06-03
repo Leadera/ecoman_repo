@@ -6,6 +6,7 @@ class Dataset extends CI_Controller {
 		$this->load->model('product_model');
 		$this->load->model('flow_model');
 		$this->load->model('process_model');
+		$this->load->library('form_validation');
 	}
 
 	public function product(){
@@ -19,9 +20,11 @@ class Dataset extends CI_Controller {
 	public function new_product()
 	{
 
+
 		$data['products']=$this->product_model->get_product_list();
 
 		$this->load->library('form_validation');
+
 		
 		$this->form_validation->set_rules('product', 'Product name', 'trim|required|xss_clean|strip_tags');
 
@@ -41,17 +44,14 @@ class Dataset extends CI_Controller {
 		}
 	}
 
-	public function new_flow()
+	public function new_flow($companyID)
 	{
 		$data['flownames'] = $this->flow_model->get_flowname_list();
 		$data['flowtypes'] = $this->flow_model->get_flowtype_list();
 
-		$companyID = 1; // bunu alamıyoruz şuan. static olarak 1
-
 		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
+		$data['companyID'] = $companyID;
 
-
-		$this->load->library('form_validation');
 		$this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean|strip_tags');
 		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|required|xss_clean|strip_tags');	
 		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|xss_clean|strip_tags|numeric');
@@ -76,13 +76,13 @@ class Dataset extends CI_Controller {
 			);
 			$this->flow_model->register_flow_to_company($flow);
 
-			redirect(base_url('new_flow'), 'refresh'); // tablo olusurken ajax kullanılabilir. 
+			redirect(base_url('new_flow/'.$data['companyID']), 'refresh'); // tablo olusurken ajax kullanılabilir. 
 			//şuan sayfa yenileniyor her seferinde database'den satırlar ekleniyor.
 
 		}else{
 
 			$this->load->view('template/header');
-			$this->load->view('dataset/dataSetLeftSide');
+			$this->load->view('dataset/dataSetLeftSide',$data);
 			$this->load->view('dataset/new_flow',$data);
 			$this->load->view('template/footer');
 		}
@@ -94,7 +94,6 @@ class Dataset extends CI_Controller {
 
 	public function new_component()
 	{
-		$this->load->library('form_validation');
 		
 		$this->form_validation->set_rules('componentname', 'Component name', 'trim|required|xss_clean|strip_tags');
 	
@@ -125,15 +124,39 @@ class Dataset extends CI_Controller {
 	}
 
 
-	public function new_process(){
+	public function new_process($companyID){
 		$data['process'] = $this->process_model->get_process();
-
-		$companyID = 1; // bunu alamıyoruz şuan. static olarak 1
-
 		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
+		$data['cmpny_flow_prcss'] = $this->process_model->get_cmpny_flow_prcss($companyID);
+		$data['companyID'] = $companyID;
 
+		$this->form_validation->set_rules('process','Process','required');
+
+
+		if ($this->form_validation->run() !== FALSE)
+		{
+			$used_flows = $this->input->post('usedFlows');
+			$process_id = $this->input->post('process');
+
+			$cmpny_prcss = array(
+				'cmpny_id' => $companyID,
+				'prcss_id' => $process_id
+			);
+			$cmpny_prcss_id = $this->process_model->cmpny_prcss($cmpny_prcss);
+
+			foreach($used_flows as $flow) {
+				$cmpny_flow_prcss = array(
+						'cmpny_flow_id' => $flow,
+						'cmpny_prcss_id' => $cmpny_prcss_id 
+					);
+				$this->process_model->cmpny_flow_prcss($cmpny_flow_prcss);
+			}
+
+			redirect('new_process/'.$companyID, 'refresh');
+		}
+		
 		$this->load->view('template/header');
-		$this->load->view('dataset/dataSetLeftSide');
+		$this->load->view('dataset/dataSetLeftSide',$data);
 		$this->load->view('dataset/new_process',$data);
 		$this->load->view('template/footer');
 	}
