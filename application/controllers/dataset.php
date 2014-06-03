@@ -90,6 +90,7 @@ class Dataset extends CI_Controller {
 		}else{
 
 			$this->load->view('template/header');
+			$this->load->view('dataset/dataSetLeftSide');
 			$this->load->view('dataset/new_flow',$data);
 			$this->load->view('template/footer');
 		}
@@ -107,6 +108,7 @@ class Dataset extends CI_Controller {
 	
 		if($this->form_validation->run() == FALSE) {
 			$this->load->view('template/header');
+			$this->load->view('dataset/dataSetLeftSide');
 			$this->load->view('dataset/new_component');
 			$this->load->view('template/footer');
 		}
@@ -139,6 +141,7 @@ class Dataset extends CI_Controller {
 		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
 
 		$this->load->view('template/header');
+		$this->load->view('dataset/dataSetLeftSide');
 		$this->load->view('dataset/new_process',$data);
 		$this->load->view('template/footer');
 	}

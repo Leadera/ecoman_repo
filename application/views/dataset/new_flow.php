@@ -1,30 +1,8 @@
-<div class="container">
-	<p class="lead">New flow</p>
-
-	<?php if(validation_errors() != NULL ): ?>
-    <div class="alert">
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			<h4>Form couldn't be saved</h4>
-      <p>
-      	<?php echo validation_errors(); ?>
-      </p>
-    </div>
-  <?php endif ?>
 
 	<?php echo form_open_multipart('new_flow'); ?>
-		<div class="row">
-			<div class="col-md-3">
-				<div class="form-group">
-					<ul class="nav nav-list">
-						<li><a style="text-transform:capitalize;" href="<?php echo base_url('new_flow'); ?>">Flows</a></li>
-						<li><a style="text-transform:capitalize;" href="<?php echo base_url('new_process'); ?>">Process</a></li>
-						<li><a style="text-transform:capitalize;" href="<?php echo base_url(''); ?>">Equipment</a></li>
-						<li><a style="text-transform:capitalize;" href="<?php echo base_url(''); ?>">Product</a></li>
-						<li><a style="text-transform:capitalize;" href="<?php echo base_url(''); ?>">Component</a></li>
-					</ul>
-				</div>
-			</div>
+
 			<div class="col-md-4">
+				<p class="lead">New flow</p>
 				<div class="form-group">
 			    <label for="flowname">Flow Name</label>
 		    	<div>	    			
