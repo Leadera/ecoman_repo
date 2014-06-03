@@ -47,7 +47,7 @@
 	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignCompany" name="assignCompany[]">
 	    				
 						<?php foreach ($companies as $company): ?>
-							<option value="<?php echo $company['id']; ?>"><?php echo $company['name']; ?></option>
+							<option value="<?php echo $company['id']; ?>" <?php if(in_array($company['id'], $companyIDs)) echo 'selected';?> ><?php echo $company['name']; ?></option>
 						<?php endforeach ?>
 					</select>
 	 			</div>
@@ -56,14 +56,16 @@
 	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignConsultant" name="assignConsultant[]">
 	    			
 						<?php foreach ($consultants as $consultant): ?>
-							<option value="<?php echo $consultant['id']; ?>"><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name'].')'; ?></option>
+							<option value="<?php echo $consultant['id']; ?>" <?php if(in_array($consultant['id'], $consultantIDs)) echo 'selected';?>><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name'].')'; ?></option>
 						<?php endforeach ?>
 					</select>
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="assignedConsultant">Assign Contact Person</label>   			
 	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignContactPerson" name="assignContactPerson[]">
-	    			
+	    			<?php foreach ($contactusers as $contactuser): ?>
+							<option value="<?php echo $contactuser['id']; ?>"<?php if(in_array($contactuser['id'], $contactIDs)) echo 'selected';?>  ><?php echo $contactuser['name'].' '.$contactuser['surname'].' ('.$contactuser['cmpny_name'].')'; ?></option>
+						<?php endforeach ?>
 						
 					</select>
 	 			</div>

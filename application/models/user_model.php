@@ -50,7 +50,7 @@ class User_model extends CI_Model {
     $this->db->join('T_USER', 'T_USER.id = T_CMPNY_PRSNL.user_id');
     $this->db->where('T_CMPNY_PRSNL.cmpny_id', $cmpny_id); 
     $query = $this->db->get();
-    return $query->result_array();
+    return $query->row_array();
   }
 
   // Session dan acik olan kisinin username bilgisi aliniyor ve bu username e sahip

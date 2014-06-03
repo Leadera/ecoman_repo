@@ -105,19 +105,19 @@
                 success: function(data) {
 
                     $('#assignContactPerson option').remove();
-                    for (var k = 0; k < data.length; k++) { 
+                    
 
-                        for (var i = 0; i < data[k].length; i++) { 
-                            var opt =data[k][i]['id'];
+                        for (var i = 1; i < data.length; i++) { 
+                            var opt =data[i]['id'];
                             if($("#assignContactPerson option[value='"+ opt +"']").length == 0)
                             {
-                               $("#assignContactPerson").append(new Option(data[k][i]['name']+' '+data[k][i]['surname']+' - '+data[k][i]['cmpny_name'],data[k][i]['id']));
+                               $("#assignContactPerson").append(new Option(data[i]['name']+' '+data[i]['surname']+' - '+data[i]['cmpny_name'],data[i]['id']));
                             
                             }else{
                                
                             }
                         }
-                    }                        
+                                            
                     // aklima takilan: eger contact person sectikten sonra , company assign listesinden remove edilirse ne yapacagiz?
                 }
             })

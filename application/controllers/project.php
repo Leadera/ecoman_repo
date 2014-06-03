@@ -105,15 +105,48 @@ class Project extends CI_Controller{
 		$this->load->view('template/footer');
 	}
 
+	
 	public function update_project($term){
 		$data['projects'] = $this->project_model->get_project($term);
 		$data['companies']=$this->company_model->get_companies();
 		$data['consultants']=$this->user_model->get_consultants();
 		$data['project_status']=$this->project_model->get_active_project_status();
+		$data['assignedCompanies'] = $this->project_model->get_prj_companies($term);
+		$data['assignedConsultant'] = $this->project_model->get_prj_consaltnt($term);
+		$data['assignedContactperson'] = $this->project_model->get_prj_cntct_prsnl($term);
+
+		//print_r($data['assignedCompanies'] );
+
+		$companyIDs=array();
+		foreach ($data['assignedCompanies'] as $key) { // bu kısımda sadece id lerden olusan array i alıyorum
+			$companyIDs[] = $key['id'];
+		}
+		$data['companyIDs']=$companyIDs;
+
+		$consultantIDs = array();
+		foreach ($data['assignedConsultant'] as $key) { // bu kısımda sadece id lerden olusan array i alıyorum
+			$consultantIDs[] = $key['id'];
+		}
+		$data['consultantIDs']=$consultantIDs;
+
+		$contactIDs = array();
+		foreach ($data['assignedContactperson'] as $key) { // bu kısımda sadece id lerden olusan array i alıyorum
+			$contactIDs[] = $key['id'];
+		}
+		$data['contactIDs']=$contactIDs;
+
+		foreach ($companyIDs as $cmpny_id) {
+			$contactusers[]= $this->user_model->get_company_users($cmpny_id); 
+		}
+
+		$newArray= array_shift($contactusers); // ilk elemanı kaydırmak için gerekliydi. daha akılcı çözüm bulunabilir.
+
+		$data['contactusers']= $contactusers;
+
 		$this->load->library('form_validation');
 
 
-		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean'); // buraya isunique kontrolü gelecek
+		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean'); // buraya isunique kontrolü ge
 		$this->form_validation->set_rules('description', 'Description', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('assignCompany','Assign Company','required');
 		$this->form_validation->set_rules('assignConsultant','Assign Consultant','required');
