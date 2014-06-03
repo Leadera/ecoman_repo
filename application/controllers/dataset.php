@@ -164,11 +164,47 @@ class Dataset extends CI_Controller {
 
 	public function new_equipment($companyID){
 		$data['companyID'] = $companyID;
-		$data['equipmentName'] = $this->equipment_model->get_equipment_name($companyID);
-		
+		$data['equipmentName'] = $this->equipment_model->get_equipment_name();
+		$data['process'] = $this->equipment_model->cmpny_prcss($companyID);
+
+		$this->form_validation->set_rules('usedprocess','Used Process','required');
+		$this->form_validation->set_rules('equipment','Equipment Name','required');
+
+		if ($this->form_validation->run() !== FALSE)
+		{
+			$usedprocess = $this->input->post('usedprocess');
+			$equipment_id = $this->input->post('equipment');
+
+			$equipmentTypeID = $this->equipment_model->get_eqpmnt_type_id($equipment_id);
+			$cmpny_eqpmnt_type = array(
+					'cmpny_id' => $companyID,
+					'eqpmnt_type_id' => $equipmentTypeID['eqpmnt_type_id']
+				);
+
+			$cmpny_eqpmnt_type_id = $this->equipment_model->cmpny_eqpmnt_type($cmpny_eqpmnt_type);
+
+			foreach ($usedprocess as $proID) {
+				$cmpny_prcss_id = $this->equipment_model->get_cmpny_process($proID);
+				$cmpny_prcss_eqpmnt_type = array(
+						'cmpny_eqpmnt_type_id' => $cmpny_eqpmnt_type_id,
+						'cmpny_prcss_id' => $cmpny_prcss_id['id']
+					);
+				$this->equipment_model->t_cmpny_prcss_eqpmnt_type($cmpny_prcss_eqpmnt_type);
+			}
+
+			$cmpny_eqpmnt = array(
+					'cmpny_id' => $companyID,
+					'eqpmnt_id' => $equipment_id
+				);
+			$this->equipment_model->cmpny_eqpmnt($cmpny_eqpmnt);
+
+
+
+			redirect('new_equipment/'.$companyID, 'refresh');
+		}
 		$this->load->view('template/header');
 		$this->load->view('dataset/dataSetLeftSide',$data);
-		$this->load->view('dataset/new_equipment');
+		$this->load->view('dataset/new_equipment',$data);
 		$this->load->view('template/footer');
 	}
 }

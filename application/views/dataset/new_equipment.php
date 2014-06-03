@@ -4,18 +4,18 @@
 				<div class="form-group">
 		    		<label for="status">Equipment Name</label>
 		    		<div>	    			
-			    		<select id="process" class="info select-block" name="process">
-			  			<?php foreach ($process as $pro): ?>
-							<option value="<?php echo $pro['id']; ?>"><?php echo $pro['name']; ?></option>
+			    		<select id="process" class="info select-block" name="equipment">
+			  			<?php foreach ($equipmentName as $eqpmntName): ?>
+							<option value="<?php echo $eqpmntName['id']; ?>"><?php echo $eqpmntName['name_tr']; ?></option>
 						<?php endforeach ?>
 						</select>
 					</div>
 	 			</div>
 	 			<div class="form-group">
 			    	<label for="description">Used Processes</label>
-			    	<select multiple="multiple" class="select-block" id="usedFlows" name="usedFlows[]">
-				    	<?php foreach ($company_flows as $flow): ?>
-							<option value="<?php echo $flow['cmpny_flow_id']; ?>"><?php echo $flow['flowname'].'('.$flow['flowtype'].')'; ?></option>
+			    	<select multiple="multiple" class="select-block" id="usedprocess" name="usedprocess[]">
+				    	<?php foreach ($process as $prcss): ?>
+							<option value="<?php echo $prcss['processid']; ?>"><?php echo $prcss['prcessname']; ?></option>
 						<?php endforeach ?>
 					</select>
 		    	</div>
@@ -24,8 +24,8 @@
 			<div class="col-md-5">
 				<table class="table table-striped table-bordered text-center">
 					<tr>
-						<td>Process Name</td>
-						<td>Used Flows</td>
+						<td>Equipment Name</td>
+						<td>Processes</td>
 					</tr>
 				</table>
 			</div>
