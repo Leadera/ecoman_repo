@@ -34,8 +34,6 @@ class User_model extends CI_Model {
   }
 
   public function get_consultants(){
-
-
     $this->db->select('T_USER.id as id,T_USER.user_name as user_name,T_USER.name as name,T_USER.surname as surname');
     $this->db->from('T_USER');
     $this->db->join('T_ROLE', 'T_ROLE.id = T_USER.role_id');
@@ -99,6 +97,41 @@ class User_model extends CI_Model {
       $tmp = $this->session->userdata('user_in');
       $this->db->where('id', $tmp['id']);
       $this->db->update('T_USER', $update);
+    }
+  }
+
+  public function make_user_consultant($id,$username=FALSE){
+    if(empty($username)){
+      $username = "Username";
+    }
+
+    // T_cnsltnt'a ekleme
+    $data = array(
+      'user_id' => $id,
+      'description' => $username,
+      'active' => '1'
+    );
+    $this->db->insert('T_CNSLTNT', $data); 
+
+    //T_USER'ı güncelleme
+    $data = array(
+      'role_id' => '1'
+    );
+    $this->db->where('id', $id);
+    $this->db->update('T_USER', $data); 
+  }
+
+  public function is_user_consultant($id){
+    //kullanıcı consultant ise true değilse false döndürür
+    $this->db->select('*');
+    $this->db->from('T_USER');
+    $this->db->where('id', $id);
+    $query = $this->db->get()->row_array();
+    if($query['role_id']=="1"){
+      return TRUE;
+    }
+    else{
+      return FALSE;
     }
   }
 

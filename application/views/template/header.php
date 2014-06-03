@@ -56,7 +56,7 @@
   		</div>
 
   		<div class="row">
-  			<div class="col-md-10">
+  			<div class="col-md-9">
           <?php
             if ($this->session->userdata('user_in') !== FALSE):
           ?>
@@ -74,7 +74,7 @@
             </p>
           <?php endif ?>
   			</div>
-  			<div class="col-md-2">
+  			<div class="col-md-3">
   				<ul class="list-inline text-right">
   					<?php
   					  if ($this->session->userdata('user_in') !== FALSE):
