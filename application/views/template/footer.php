@@ -91,6 +91,43 @@
     });
     </script>
 
+     <script type="text/javascript">
+    $(document).ready(function () {
+        $('#assignCompany').change(function () {
+
+            var company = $(this).val();
+            $.ajax({
+                url: "contactperson",
+                async: false,
+                type: "POST",
+                data: "company_id="+company,
+                dataType: "json",
+
+                success: function(data) {
+
+                    $('#assignContactPerson option').remove();
+                    for (var k = 0; k < data.length; k++) { 
+
+                        for (var i = 0; i < data[k].length; i++) { 
+                            var opt =data[k][i]['id'];
+                            if($("#assignContactPerson option[value='"+ opt +"']").length == 0)
+                            {
+                               $("#assignContactPerson").append(new Option(data[k][i]['name']+' '+data[k][i]['surname']+' - '+data[k][i]['cmpny_name'],data[k][i]['id']));
+                            
+                            }else{
+                               
+                            }
+                        }
+                    }                        
+                    // aklima takilan: eger contact person sectikten sonra , company assign listesinden remove edilirse ne yapacagiz?
+                }
+            })
+
+        });
+    });
+</script>
+
+
 
     </body>
 </html>

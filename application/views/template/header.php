@@ -12,7 +12,7 @@
     <!-- Loading Flat UI -->
     <link href="<?php echo asset_url('css/flat-ui.css'); ?>" rel="stylesheet">
     <link href="<?php echo asset_url('css/custom.css'); ?>" rel="stylesheet">
-    <link href="<?php echo asset_url('css/jquery-ui-1.10.4.custom.css'); ?>" rel="stylesheet">
+     <!--<link href="<?php // echo asset_url('css/jquery-ui-1.10.4.custom.css'); ?>" rel="stylesheet"> 
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
