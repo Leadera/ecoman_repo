@@ -161,9 +161,9 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('jobTitle','Job Title','required|trim|xss_clean');
 		$this->form_validation->set_rules('description','Description','trim|xss_clean');
 		$this->form_validation->set_rules('email', 'e-mail' ,'trim|required|valid_email|callback_email_check');
-		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|numeric|min_length[11]|xss_clean');
-		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|numeric|min_length[11]|xss_clean');
-		$this->form_validation->set_rules('fax', 'Fax Number', 'required|numeric|min_length[11]|xss_clean');
+		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|callback_alpha_dash_space|min_length[11]|xss_clean');
+		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|callback_alpha_dash_space|min_length[11]|xss_clean');
+		$this->form_validation->set_rules('fax', 'Fax Number', 'required|callback_alpha_dash_space|min_length[11]|xss_clean');
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]|xss_clean|callback_username_check');
 		
 		if ($this->form_validation->run() !== FALSE)
