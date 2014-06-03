@@ -239,6 +239,7 @@ class Company extends CI_Controller{
 	    	'nace_code_id' => $nace_code_id
 	    );
 	    $this->company_model->update_cmpny_nace_code($cmpny_nace_code,$data['companies']['id']);
+	    redirect('company', 'refresh');
 	  }
 
 		$this->load->view('template/header');
