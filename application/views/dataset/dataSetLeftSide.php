@@ -1,5 +1,15 @@
 <div class="container">
 		<div class="row">
+			<?php if(validation_errors() != NULL ): ?>
+    <div class="alert">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<h4>Form couldn't be saved</h4>
+      <p>
+      	<?php echo validation_errors(); ?>
+      </p>
+    </div>
+  <?php endif ?>
+
 			<div class="col-md-3">
 				<div class="form-group">
 					<ul class="nav nav-list">
