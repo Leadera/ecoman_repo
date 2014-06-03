@@ -54,7 +54,7 @@ class Dataset extends CI_Controller {
 		$data['flownames'] = $this->flow_model->get_flowname_list();
 		$data['flowtypes'] = $this->flow_model->get_flowtype_list();
 
-		$companyID = 1; // bunu alamıyoruz şuan. static olarak 1
+		$companyID = 4; // bunu alamıyoruz şuan. static olarak 1
 
 		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
 
@@ -134,14 +134,12 @@ class Dataset extends CI_Controller {
 	public function new_process(){
 		$data['process'] = $this->process_model->get_process();
 
-		$companyID = 1; // bunu alamıyoruz şuan. static olarak 1
+		$companyID = 4; // bunu alamıyoruz şuan. static olarak 1
 
 		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
 
-
-
 		$this->load->view('template/header');
-		$this->load->view('dataset/process',$data);
+		$this->load->view('dataset/new_process',$data);
 		$this->load->view('template/footer');
 	}
 }
