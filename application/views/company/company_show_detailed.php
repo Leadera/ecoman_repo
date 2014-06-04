@@ -92,10 +92,26 @@
 			<div class="form-group">
 				<ul class="nav nav-list">
 					<li class="nav-header" style="font-size:15px;">Company workers</li>
-					<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
-					sagittis lacus vel augue laoreet rutrum faucibus.">
-					  Popover on bottom
-					</button>
+				<div class="popover-markup">
+				  <a href="#" class="btn btn-lg btn-danger trigger">
+				    Add Worker
+				  </a>
+				  <div class="head hide">
+				    Select user to add
+				   </div>
+				  <div class="content hide">
+
+				  <?php echo form_open('addUsertoCompany/'.$companies['id']); ?>
+				    	<select id="users" class="info select-block" name="users">
+		  				<?php foreach ($users_without_company as $users): ?>
+								<option value="<?php echo $users['id']; ?>"><?php echo $users['name'].' '.$users['surname']; ?></option>
+							<?php endforeach ?>
+						</select>
+						<button type="submit" class="btn btn-primary">Add</button>
+					</form>
+	
+				  </div>
+				</div>
 				<?php foreach ($cmpnyperson as $cmpprsn): ?>
 					<li><a style="text-transform:capitalize;" href="<?php echo base_url('user/'.$cmpprsn["user_name"]); ?>"> <?php echo $cmpprsn["name"].' '.$cmpprsn["surname"]; ?></a></li>
 				<?php endforeach ?>

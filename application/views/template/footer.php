@@ -47,6 +47,17 @@
     <script type="text/javascript">
         var marker;
         var lat,lon;
+        $('.popover-markup > .trigger').popover({
+            html : true,
+            title: function() {
+              return $(this).parent().find('.head').html();
+            },
+            content: function() {
+              return $(this).parent().find('.content').html();
+            },
+            container: 'body',
+            placement: 'right'
+        });
 
         $('#myModal').on('shown.bs.modal', function (e) { 
             google.maps.event.trigger(map, 'resize'); // modal acildiktan sonra haritanın resize edilmesi gerekiyor.
@@ -104,10 +115,9 @@
                 success: function(data) {
 
                     $('#assignContactPerson option').remove();
-                    
-
-                        for (var i = 1; i < data.length; i++) { 
+                        for (var i = 0; i < data.length; i++) { 
                             var opt =data[i]['id'];
+
                             if($("#assignContactPerson option[value='"+ opt +"']").length == 0)
                             {
                                $("#assignContactPerson").append(new Option(data[i]['name']+' '+data[i]['surname']+' - '+data[i]['cmpny_name'],data[i]['id']));

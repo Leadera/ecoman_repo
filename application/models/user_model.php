@@ -50,7 +50,16 @@ class User_model extends CI_Model {
     $this->db->join('T_USER', 'T_USER.id = T_CMPNY_PRSNL.user_id');
     $this->db->where('T_CMPNY_PRSNL.cmpny_id', $cmpny_id); 
     $query = $this->db->get();
-    return $query->row_array();
+    if($query -> num_rows() == 1)
+    {
+      return $query->row_array();
+    }
+    else
+    {
+      return false;
+    }
+
+
   }
 
   // Session dan acik olan kisinin username bilgisi aliniyor ve bu username e sahip
@@ -159,8 +168,16 @@ class User_model extends CI_Model {
 
   public function set_user_image($userId,$photo){
 
-  $this->db->where('id', $userId);
-  $this->db->update('T_USER', $photo); 
+    $this->db->where('id', $userId);
+    $this->db->update('T_USER', $photo); 
+  }
+
+  public function users_without_company(){
+
+    $this->db->select('*')->from('T_USER');
+    $this->db->where('`id` NOT IN (SELECT `user_id` FROM `T_CMPNY_PRSNL`)', NULL, FALSE);
+    $query = $this->db->get();
+    return $query->result_array();
   }
 
 }

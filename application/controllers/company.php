@@ -4,6 +4,7 @@ class Company extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->model('company_model');
+		$this->load->model('user_model');
 		$this->load->library('form_validation');
 	}
 
@@ -138,7 +139,7 @@ class Company extends CI_Controller{
 		$data['nacecode'] = $this->company_model->get_nace_code($term);
 		$data['prjname'] = $this->company_model->get_company_proj($term);
 		$data['cmpnyperson'] = $this->company_model->get_company_workers($term);
-
+		$data['users_without_company']= $this->user_model->users_without_company();
 		$this->load->view('template/header');
 		$this->load->view('company/company_show_detailed',$data);
 		$this->load->view('template/footer');
@@ -152,6 +153,23 @@ class Company extends CI_Controller{
    		}
 		// and return to autocomplete
 		echo $results;
+	}
+
+	public function addUsertoCompany($term){
+		$this->form_validation->set_rules('users','User','required');
+		if ($this->form_validation->run() !== FALSE)
+		{
+			$user = array(
+				'user_id' => $this->input->post('users'),
+      	'cmpny_id' => $term,
+      	'is_contact' => 0
+    	);
+    	$this->company_model->add_worker_to_company($user);
+		}
+
+
+		redirect('company/'.$term, 'refresh');
+
 	}
 
 	public function update_company($term){
