@@ -2,8 +2,12 @@
 	<div class="row">
 		<div class="col-md-8">
 			<div class="lead pull-left">Show All Projects</div>
+			<?php 
+				$temp = $this->session->userdata('user_in');
+				if($temp['id'] != null){
+			?>
 			<a class="pull-right btn btn-info btn-embossed btn-sm" href="<?php echo base_url("newproject"); ?>">Create Project</a>
-
+			<?php } ?>
 			<ul class="list-group" style="clear:both;">
 			<?php foreach ($projects as $pro): ?>
 				<li class="list-group-item">

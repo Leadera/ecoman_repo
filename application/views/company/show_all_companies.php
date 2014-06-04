@@ -2,7 +2,13 @@
 	<div class="row">
 		<div class="col-md-8">
 			<div class="lead pull-left">Show All Companies</div>
+			<?php 
+				$temp = $this->session->userdata('user_in');
+				if($temp['id'] != null){ ?>
+			
 			<a class="pull-right btn btn-info btn-embossed btn-sm" href="<?php echo base_url("newcompany"); ?>">Create a Company</a>
+
+			<?php }	?>
 
 			<ul class="list-group" style="clear:both;">
 			<?php foreach ($companies as $com): ?>
