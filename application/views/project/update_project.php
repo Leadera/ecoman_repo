@@ -61,8 +61,8 @@
 					</select>
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="assignedConsultant">Assign Contact Person</label>   			
-	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignContactPerson" name="assignContactPerson[]">
+	    			<label for="assignContactPerson">Assign Contact Person</label>   			
+	    			<select  class="select-block" id="assignContactPerson" name="assignContactPerson">
 	    			<?php foreach ($contactusers as $contactuser): ?>
 							<option value="<?php echo $contactuser['id']; ?>"<?php if(in_array($contactuser['id'], $contactIDs)) echo 'selected';?>  ><?php echo $contactuser['name'].' '.$contactuser['surname'].' ('.$contactuser['cmpny_name'].')'; ?></option>
 						<?php endforeach ?>

@@ -92,6 +92,10 @@
 			<div class="form-group">
 				<ul class="nav nav-list">
 					<li class="nav-header" style="font-size:15px;">Company workers</li>
+					<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+					sagittis lacus vel augue laoreet rutrum faucibus.">
+					  Popover on bottom
+					</button>
 				<?php foreach ($cmpnyperson as $cmpprsn): ?>
 					<li><a style="text-transform:capitalize;" href="<?php echo base_url('user/'.$cmpprsn["user_name"]); ?>"> <?php echo $cmpprsn["name"].' '.$cmpprsn["surname"]; ?></a></li>
 				<?php endforeach ?>
