@@ -9,6 +9,11 @@ class Project extends CI_Controller{
 	}
 
 	public function new_project(){
+		$temp = $this->session->userdata('user_in');
+		if($temp['id'] == null){
+			redirect('', 'refresh');
+		}
+
 		$data['companies']=$this->company_model->get_companies();
 		$data['consultants']=$this->user_model->get_consultants();
 		$data['project_status']=$this->project_model->get_active_project_status();

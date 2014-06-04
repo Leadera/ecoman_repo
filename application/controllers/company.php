@@ -8,6 +8,11 @@ class Company extends CI_Controller{
 	}
 
 	public function new_company(){
+		$temp = $this->session->userdata('user_in');
+		if($temp['id'] == null){
+			redirect('', 'refresh');
+		}
+
 		$this->load->library('googlemaps');
 		//alert("1:" + event.latLng.lat() + " 2:" + event.latLng.lng());
 		$config['center'] = '39.98280915242299, 32.73923635482788';
@@ -77,17 +82,17 @@ class Company extends CI_Controller{
 				'description' => $data['description']
 			);
 
-	    $this->company_model->insert_cmpny_data($cmpny_data);
-	    $nace_code_id = $this->company_model->search_nace_code($code);
+		    $this->company_model->insert_cmpny_data($cmpny_data);
+		    $nace_code_id = $this->company_model->search_nace_code($code);
 
-	    $cmpny_nace_code = array(
-	    	'cmpny_id' => $last_id,
-	    	'nace_code_id' => $nace_code_id
-	    );
+		    $cmpny_nace_code = array(
+		    	'cmpny_id' => $last_id,
+		    	'nace_code_id' => $nace_code_id
+		    );
 
-	    //insert data
-	    $this->company_model->insert_cmpny_prsnl($last_id);
-	    $this->company_model->insert_cmpny_nace_code($cmpny_nace_code);
+		    //insert data
+		    $this->company_model->insert_cmpny_prsnl($last_id);
+		    $this->company_model->insert_cmpny_nace_code($cmpny_nace_code);
 			redirect('company', 'refresh');
 		}
 
