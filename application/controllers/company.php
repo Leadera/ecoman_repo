@@ -4,12 +4,16 @@ class Company extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->model('company_model');
+		$this->load->model('user_model');
 		$this->load->library('form_validation');
 	}
 
 	public function new_company(){
 		$temp = $this->session->userdata('user_in');
 		if($temp['id'] == null){
+			redirect('', 'refresh');
+		}
+		if($this->create_company_control() == FALSE){
 			redirect('', 'refresh');
 		}
 
@@ -262,6 +266,15 @@ class Company extends CI_Controller{
 			return false;
 		}
 	}
-
+	public function create_company_control(){
+		$temp = $this->session->userdata('user_in');
+		$cmpny = $this->user_model->do_edit_company_consultant($temp['id']);
+		if(count($cmpny) == 0){
+			return TRUE;
+		}
+		else{
+			return FALSE;
+		}
+	}
 }
 ?>

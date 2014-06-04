@@ -158,10 +158,27 @@ class User_model extends CI_Model {
   }
 
   public function set_user_image($userId,$photo){
-
-  $this->db->where('id', $userId);
-  $this->db->update('T_USER', $photo); 
+    $this->db->where('id', $userId);
+    $this->db->update('T_USER', $photo); 
   }
 
+  public function do_consultant($id){
+    $this->db->select('T_ROLE.short_code');
+    $this->db->from('T_ROLE');
+    $this->db->join('T_USER','T_USER.role_id = T_ROLE.id');
+    $this->db->where('T_USER.id',$id);
+    $query = $this->db->get();
+    return $query->row_array();
+  } 
+
+  public function do_edit_company_consultant($id){
+    $this->db->select('T_PRJ_CMPNY.cmpny_id as cmpnyID');
+    $this->db->from('T_PRJ_CNSLTNT');
+    $this->db->join('T_USER','T_USER.id = T_PRJ_CNSLTNT.cnsltnt_id');
+    $this->db->join('T_PRJ_CMPNY', 'T_PRJ_CMPNY.prj_id = T_PRJ_CNSLTNT.prj_id');  
+    $this->db->where('T_USER.id',$id);
+    $query = $this->db->get();
+    return $query->result_array();  
+  }
 }
 ?>

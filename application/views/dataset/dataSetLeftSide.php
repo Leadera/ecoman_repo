@@ -15,7 +15,7 @@
 					<li><a style="text-transform:capitalize;" href="<?php echo base_url('new_flow/'.$companyID); ?>">Flows</a></li>
 					<li><a style="text-transform:capitalize;" href="<?php echo base_url('new_process/'.$companyID); ?>">Process</a></li>
 					<li><a style="text-transform:capitalize;" href="<?php echo base_url('new_equipment/'.$companyID); ?>">Equipment</a></li>
-					<li><a style="text-transform:capitalize;" href="<?php echo base_url('new_product'); ?>">Product</a></li>
+					<li><a style="text-transform:capitalize;" href="<?php echo base_url('new_product/'.$companyID); ?>">Product</a></li>
 					<li><a style="text-transform:capitalize;" href="<?php echo base_url(''); ?>">Component</a></li>
 					</ul>
 			</div>

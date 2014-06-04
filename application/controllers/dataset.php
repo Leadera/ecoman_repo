@@ -4,50 +4,43 @@ class Dataset extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('product_model');
+		$this->load->model('user_model');
 		$this->load->model('flow_model');
 		$this->load->model('process_model');
 		$this->load->model('equipment_model');
 		$this->load->library('form_validation');
 	}
 
-	public function product(){
-		$data['product_list'] = $this->product_model->product_list();
-
-		$this->load->view('template/header');
-		$this->load->view('dataset/product',$data);
-		$this->load->view('template/footer');
-	}
-
-	public function new_product()
+	public function new_product($companyID)
 	{
+		if($this->edit_company_dataset($companyID) == FALSE){
+			redirect(base_url(''), 'refresh');
+		}
+		$this->form_validation->set_rules('product', 'Product Field', 'trim|required|xss_clean');
 
+		if($this->form_validation->run() !== FALSE) {
+			$productArray = array(
+					'cmpny_id' => $companyID,
+					'name' => $this->input->post('product')
+				);
+			$this->product_model->set_product($productArray);
+		}
 
-		$data['products']=$this->product_model->get_product_list();
-
-		$this->load->library('form_validation');
-
+		$data['product'] = $this->product_model->get_product_list($companyID);
+		$data['companyID'] = $companyID;
 		
-		$this->form_validation->set_rules('product', 'Product name', 'trim|required|xss_clean|strip_tags');
-
-		if($this->form_validation->run() == FALSE) {
-			$this->load->view('template/header');
-			$this->load->view('dataset/dataSetLeftSide');
-			$this->load->view('dataset/new_product',$data);
-			$this->load->view('template/footer');
-		}
-		else{
-			$product = $this->input->post('product');
-
-			
-			$this->product_model->register_product_to_company();
-
-			redirect(base_url('new_product'), 'refresh');
-		}
+		$this->load->view('template/header');
+		$this->load->view('dataset/dataSetLeftSide',$data);
+		$this->load->view('dataset/new_product',$data);
+		$this->load->view('template/footer');
 	}
 
 	public function new_flow($companyID)
 	{
 
+		if($this->edit_company_dataset($companyID) == FALSE){
+			redirect(base_url(''), 'refresh');
+		}
 
 		$this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean|strip_tags');
 		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|required|xss_clean|strip_tags');	
@@ -125,6 +118,9 @@ class Dataset extends CI_Controller {
 
 	public function new_process($companyID){
 
+		if($this->edit_company_dataset($companyID) == FALSE){
+			redirect(base_url(''), 'refresh');
+		}
 
 		$this->form_validation->set_rules('process','Process','required');
 
@@ -162,6 +158,10 @@ class Dataset extends CI_Controller {
 	}
 
 	public function new_equipment($companyID){
+		if($this->edit_company_dataset($companyID) == FALSE){
+			redirect(base_url(''), 'refresh');
+		}
+
 		$data['companyID'] = $companyID;
 		$data['equipmentName'] = $this->equipment_model->get_equipment_name();
 		$data['process'] = $this->equipment_model->cmpny_prcss($companyID);
@@ -205,5 +205,34 @@ class Dataset extends CI_Controller {
 		$this->load->view('dataset/dataSetLeftSide',$data);
 		$this->load->view('dataset/new_equipment',$data);
 		$this->load->view('template/footer');
+	}
+
+	public function edit_company_dataset($companyID){
+		$temp = $this->session->userdata('user_in');
+		if($temp['id'] == null){
+			return FALSE;
+		}
+		else{
+			$ans = $this->user_model->do_consultant($temp['id']);
+			if($ans['short_code'] != 'CNS'){
+				return FALSE;
+			}else{
+				$cmpny = $this->user_model->do_edit_company_consultant($temp['id']);
+				foreach ($cmpny as $id) {
+					if($id['cmpnyID'] == $companyID){
+						return TRUE;
+					}
+				}
+				return FALSE;
+			}
+		}
+	}
+
+	public function delete_product($companyID,$id){
+		if($this->edit_company_dataset($companyID) == FALSE){
+			redirect(base_url(''), 'refresh');
+		}
+		$this->product_model->delete_product($id);
+		redirect('new_product/'.$companyID, 'refresh');
 	}
 }
