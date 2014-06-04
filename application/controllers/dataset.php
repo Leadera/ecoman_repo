@@ -47,11 +47,7 @@ class Dataset extends CI_Controller {
 
 	public function new_flow($companyID)
 	{
-		$data['flownames'] = $this->flow_model->get_flowname_list();
-		$data['flowtypes'] = $this->flow_model->get_flowtype_list();
 
-		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
-		$data['companyID'] = $companyID;
 
 		$this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean|strip_tags');
 		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|required|xss_clean|strip_tags');	
@@ -68,28 +64,30 @@ class Dataset extends CI_Controller {
 			$quantity = $this->input->post('quantity');
 
 			$flow = array(
-			'cmpny_id'=>$companyID,
-			'flow_id'=>$flowID,
-			'qntty'=>$quantity,
-			'cost' =>$cost,
-			'ep' => $ep,
-			'flow_type_id'=> $flowtypeID
+				'cmpny_id'=>$companyID,
+				'flow_id'=>$flowID,
+				'qntty'=>$quantity,
+				'cost' =>$cost,
+				'ep' => $ep,
+				'flow_type_id'=> $flowtypeID
 			);
 			$this->flow_model->register_flow_to_company($flow);
 
-			redirect(base_url('new_flow/'.$data['companyID']), 'refresh'); // tablo olusurken ajax kullanılabilir. 
+			//redirect(base_url('new_flow/'.$data['companyID']), 'refresh'); // tablo olusurken ajax kullanılabilir. 
 			//şuan sayfa yenileniyor her seferinde database'den satırlar ekleniyor.
 
-		}else{
-
-			$this->load->view('template/header');
-			$this->load->view('dataset/dataSetLeftSide',$data);
-			$this->load->view('dataset/new_flow',$data);
-			$this->load->view('template/footer');
 		}
 
+		$data['flownames'] = $this->flow_model->get_flowname_list();
+		$data['flowtypes'] = $this->flow_model->get_flowtype_list();
 
+		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
+		$data['companyID'] = $companyID;
 
+		$this->load->view('template/header');
+		$this->load->view('dataset/dataSetLeftSide',$data);
+		$this->load->view('dataset/new_flow',$data);
+		$this->load->view('template/footer');
 
 	}
 
@@ -126,10 +124,7 @@ class Dataset extends CI_Controller {
 
 
 	public function new_process($companyID){
-		$data['process'] = $this->process_model->get_process();
-		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
-		$data['cmpny_flow_prcss'] = $this->process_model->get_cmpny_flow_prcss($companyID);
-		$data['companyID'] = $companyID;
+
 
 		$this->form_validation->set_rules('process','Process','required');
 
@@ -152,9 +147,13 @@ class Dataset extends CI_Controller {
 					);
 				$this->process_model->cmpny_flow_prcss($cmpny_flow_prcss);
 			}
-
-			redirect('new_process/'.$companyID, 'refresh');
 		}
+
+		$data['process'] = $this->process_model->get_process();
+		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
+		$data['cmpny_flow_prcss'] = $this->process_model->get_cmpny_flow_prcss($companyID);
+		$data['companyID'] = $companyID;
+
 		
 		$this->load->view('template/header');
 		$this->load->view('dataset/dataSetLeftSide',$data);
@@ -198,7 +197,7 @@ class Dataset extends CI_Controller {
 				);
 			$this->equipment_model->cmpny_eqpmnt($cmpny_eqpmnt);
 
-
+			
 
 			redirect('new_equipment/'.$companyID, 'refresh');
 		}
