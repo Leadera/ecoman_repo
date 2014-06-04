@@ -56,10 +56,10 @@
               return $(this).parent().find('.content').html();
             },
             container: 'body',
-            placement: 'right'
+            placement: 'bottom'
         });
 
-        $('#myModal').on('shown.bs.modal', function (e) { 
+        $('#myModal').on('shown.bs.modal', function (e) {
             google.maps.event.trigger(map, 'resize'); // modal acildiktan sonra haritanın resize edilmesi gerekiyor.
 
             map.setZoom(15);
@@ -69,7 +69,7 @@
                 map.setCenter(marker.getPosition());
 
             google.maps.event.addListener(map, 'click', function(event) {
-                $("#latId").val("Lat:" + event.latLng.lat()); $("#longId").val("Long:" + event.latLng.lng()); 
+                $("#latId").val("Lat:" + event.latLng.lat()); $("#longId").val("Long:" + event.latLng.lng());
                 $("#lat").val(event.latLng.lat()); $("#long").val(event.latLng.lng());
                 placeMarker(event.latLng);
             });
@@ -115,18 +115,18 @@
                 success: function(data) {
 
                     $('#assignContactPerson option').remove();
-                        for (var i = 0; i < data.length; i++) { 
+                        for (var i = 0; i < data.length; i++) {
                             var opt =data[i]['id'];
 
                             if($("#assignContactPerson option[value='"+ opt +"']").length == 0)
                             {
                                $("#assignContactPerson").append(new Option(data[i]['name']+' '+data[i]['surname']+' - '+data[i]['cmpny_name'],data[i]['id']));
-                            
+
                             }else{
-                               
+
                             }
                         }
-                                            
+
                     // aklima takilan: eger contact person sectikten sonra , company assign listesinden remove edilirse ne yapacagiz?
                 }
             })
