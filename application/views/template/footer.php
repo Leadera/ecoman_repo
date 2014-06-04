@@ -57,6 +57,8 @@
             },
             container: 'body',
             placement: 'bottom'
+        }).click(function(e) {
+          e.preventDefault();
         });
 
         $('#myModal').on('shown.bs.modal', function (e) {

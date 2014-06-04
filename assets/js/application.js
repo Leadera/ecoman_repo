@@ -7,7 +7,7 @@ String.prototype.repeat = function(num) {
 (function($) {
 
   // Add segments to a slider
-  $.fn.addSliderSegments = function (amount, orientation) {    
+  $.fn.addSliderSegments = function (amount, orientation) {
     return this.each(function () {
       if (orientation == "vertical") {
         var output = ''
@@ -214,7 +214,7 @@ String.prototype.repeat = function(num) {
         "North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina",
         "South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
       });
-    }    
+    }
 
     // make code pretty
     window.prettyPrint && prettyPrint();

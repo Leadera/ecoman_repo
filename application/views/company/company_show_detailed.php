@@ -98,24 +98,26 @@
 				</ul>
 			</div>
 
-			<div class="popover-markup">
-				<a href="#" class="btn btn-sm btn-default trigger">
-					Add Worker
-				</a>
-				<div class="head hide">
+			<button class="btn btn-sm btn-success" style="width:100%" onclick="$('#target').toggle();">Add New User</button>
+
+			<div id="target" class="well" style="display: none">
+				<p>
 					Select user to add
-				</div>
-				<div class="content hide">
+				</p>
+				<div class="content">
 					<?php echo form_open('addUsertoCompany/'.$companies['id']); ?>
+						<p>
 							<select id="users" class="info select-block" name="users">
 							<?php foreach ($users_without_company as $users): ?>
 								<option value="<?php echo $users['id']; ?>"><?php echo $users['name'].' '.$users['surname']; ?></option>
-							<?php endforeach ?>
-						</select>
-						<button type="submit" class="btn btn-primary">Add</button>
-					</form>
+								<?php endforeach ?>
+							</select>
+							<button type="submit" class="btn btn-primary">Add</button>
+						</form>
+					</p>
 				</div>
 			</div>
+
 		</div>
 	</div>
 </div>
