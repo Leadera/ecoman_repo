@@ -132,5 +132,9 @@ class Company_model extends CI_Model {
     $count = $this->db->count_all('T_CMPNY');
     return $count;
   }
+
+  public function add_worker_to_company($user){
+    $this->db->insert('T_CMPNY_PRSNL',$user); 
+  }
 }
 ?>

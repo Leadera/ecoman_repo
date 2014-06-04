@@ -56,6 +56,7 @@ $route['update_company/(:any)'] = "company/update_company/$1";
 $route['newcompany'] = "company/new_company";
 $route['company'] = "company/show_all_companies";
 $route['company/(:any)'] = "company/companies/$1";
+$route['addUsertoCompany/(:any)'] = "company/addUsertoCompany/$1";
 
 $route['search'] = "search/search_pro";
 $route['search/(:any)'] = "search/search_pro/$1";

@@ -61,8 +61,8 @@
 					</select>
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="assignedConsultant">Assign Contact Person</label>   			
-	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignContactPerson" name="assignContactPerson[]">
+	    			<label for="assignContactPerson">Assign Contact Person</label>   			
+	    			<select  class="select-block" id="assignContactPerson" name="assignContactPerson">
 	    			
 						
 					</select>
