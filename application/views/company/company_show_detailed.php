@@ -3,8 +3,10 @@
 	<div class="row">
 		<div class="col-md-9">
 			<div class="lead pull-left"><?php echo $companies['name']; ?></div>
+			<?php if($have_permission): ?>
 			<a style="margin-left:10px;" class="btn btn-info btn-sm pull-right" href="<?php echo base_url("new_flow/".$companies['id']); ?>">Dataset Management</a>
 			<a class="btn btn-info btn-sm pull-right" href="<?php echo base_url("update_company/".$companies['id']); ?>">Update Company</a>
+			<?php endif ?>
 
 			<table class="table table-bordered">
 				<tr>
@@ -98,6 +100,8 @@
 				</ul>
 			</div>
 
+
+			<?php if($have_permission): ?>
 			<button class="btn btn-sm btn-success" style="width:100%" onclick="$('#target').toggle();">Add New User</button>
 
 			<div id="target" class="well" style="display: none">
@@ -117,6 +121,8 @@
 					</p>
 				</div>
 			</div>
+			<?php endif ?>
+
 
 		</div>
 	</div>

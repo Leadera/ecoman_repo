@@ -47,7 +47,7 @@
     <script type="text/javascript">
         var marker;
         var lat,lon;
-        
+
         $('#myModal').on('shown.bs.modal', function (e) {
             google.maps.event.trigger(map, 'resize'); // modal acildiktan sonra haritanın resize edilmesi gerekiyor.
 
@@ -104,18 +104,17 @@
                 success: function(data) {
 
                     $('#assignContactPerson option').remove();
-                        for (var i = 0; i < data.length; i++) {
-                            var opt =data[i]['id'];
 
+                      for (var k = 0; k < data.length; k++) {
+                        for (var i = 0; i < data[k].length; i++) {
+                            var opt =data[k][i]['id'];
                             if($("#assignContactPerson option[value='"+ opt +"']").length == 0)
                             {
-                               $("#assignContactPerson").append(new Option(data[i]['name']+' '+data[i]['surname']+' - '+data[i]['cmpny_name'],data[i]['id']));
-
-                            }else{
+                               $("#assignContactPerson").append(new Option(data[k][i]['name']+' '+data[k][i]['surname']+' - '+data[k][i]['cmpny_name'],data[k][i]['id']));
 
                             }
                         }
-
+                      }
                     // aklima takilan: eger contact person sectikten sonra , company assign listesinden remove edilirse ne yapacagiz?
                 }
             })

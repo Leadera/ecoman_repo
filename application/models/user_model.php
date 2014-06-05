@@ -37,7 +37,7 @@ class User_model extends CI_Model {
     $this->db->select('T_USER.id as id,T_USER.user_name as user_name,T_USER.name as name,T_USER.surname as surname');
     $this->db->from('T_USER');
     $this->db->join('T_ROLE', 'T_ROLE.id = T_USER.role_id');
-    $this->db->where('T_ROLE.short_code', 'CNS'); 
+    $this->db->where('T_ROLE.short_code', 'CNS');
     $query = $this->db->get();
     return $query->result_array();
 
@@ -48,18 +48,16 @@ class User_model extends CI_Model {
     $this->db->from('T_CMPNY_PRSNL');
     $this->db->join('T_CMPNY', 'T_CMPNY.id = T_CMPNY_PRSNL.cmpny_id');
     $this->db->join('T_USER', 'T_USER.id = T_CMPNY_PRSNL.user_id');
-    $this->db->where('T_CMPNY_PRSNL.cmpny_id', $cmpny_id); 
+    $this->db->where('T_CMPNY_PRSNL.cmpny_id', $cmpny_id);
     $query = $this->db->get();
-    if($query -> num_rows() == 1)
+    if($query->num_rows() > 0)
     {
-      return $query->row_array();
+      return $query->result_array();
     }
     else
     {
       return false;
     }
-
-
   }
 
   // Session dan acik olan kisinin username bilgisi aliniyor ve bu username e sahip
@@ -96,7 +94,7 @@ class User_model extends CI_Model {
       $this->db->from('T_PRJ');
       $this->db->join('T_PRJ_CNTCT_PRSNL', 'T_PRJ_CNTCT_PRSNL.prj_id = T_PRJ.id');
       $this->db->join('T_USER', 'T_USER.id = T_PRJ_CNTCT_PRSNL.usr_id');
-      $this->db->where('T_USER.id', $id); 
+      $this->db->where('T_USER.id', $id);
       $query = $this->db->get();
       return $query->result_array();
   }
@@ -120,14 +118,14 @@ class User_model extends CI_Model {
       'description' => $username,
       'active' => '1'
     );
-    $this->db->insert('T_CNSLTNT', $data); 
+    $this->db->insert('T_CNSLTNT', $data);
 
     //T_USER'ı güncelleme
     $data = array(
       'role_id' => '1'
     );
     $this->db->where('id', $id);
-    $this->db->update('T_USER', $data); 
+    $this->db->update('T_USER', $data);
   }
 
   public function is_user_consultant($id){
@@ -185,24 +183,61 @@ class User_model extends CI_Model {
     $this->db->where('T_USER.id',$id);
     $query = $this->db->get();
     return $query->row_array();
-  } 
+  }
 
-  public function do_edit_company_consultant($id){
+  //Bir danışmanın danışman olduğu şirketleri listeler
+  public function do_edit_company_consultant($user_id){
     $this->db->select('T_PRJ_CMPNY.cmpny_id as cmpnyID');
     $this->db->from('T_PRJ_CNSLTNT');
-    $this->db->join('T_USER','T_USER.id = T_PRJ_CNSLTNT.cnsltnt_id');
-    $this->db->join('T_PRJ_CMPNY', 'T_PRJ_CMPNY.prj_id = T_PRJ_CNSLTNT.prj_id');  
-    $this->db->where('T_USER.id',$id);
-    $query = $this->db->get();
-    return $query->result_array();  
+    $this->db->join('T_PRJ_CMPNY', 'T_PRJ_CMPNY.prj_id = T_PRJ_CNSLTNT.prj_id');
+    $this->db->where('T_PRJ_CNSLTNT.cnsltnt_id',$user_id);
+    $query = $this->db->get()->result_array();
+    return $query;
   }
 
-  public function cmpny_prsnl($id){
+  //Bir kullanıcı bir şirketin danışmanı mıdır?
+  public function is_consultant_of_company_by_user_id($user_id,$company_id){
+    $this->db->select('T_PRJ_CMPNY.cmpny_id as cmpnyID');
+    $this->db->from('T_PRJ_CNSLTNT');
+    $this->db->join('T_PRJ_CMPNY', 'T_PRJ_CMPNY.prj_id = T_PRJ_CNSLTNT.prj_id');
+    $this->db->where('T_PRJ_CNSLTNT.cnsltnt_id',$user_id);
+    $this->db->where('T_PRJ_CMPNY.cmpny_id',$company_id);
+    $query = $this->db->get()->result_array();
+    if(empty($query)){
+      return FALSE;
+    }else{
+      return TRUE;
+    }
+  }
+
+  public function cmpny_prsnl($user_id){
     $this->db->select('cmpny_id');
     $this->db->from('T_CMPNY_PRSNL');
-    $this->db->where('user_id',$id);
-    $query = $this->db->get(); 
+    $this->db->where('user_id',$user_id);
+    $query = $this->db->get();
     return $query->row_array();
   }
+
+  //Firmanın contact person'ı mı?
+  public function is_contact_by_userid($user_id,$company_id){
+    $this->db->select('*');
+    $this->db->from('T_CMPNY_PRSNL');
+    $this->db->where('user_id',$user_id);
+    $this->db->where('cmpny_id', $company_id);
+    $this->db->where('is_contact', '1');
+    $query = $this->db->get()->row_array();
+    if(empty($query))
+      return FALSE;
+    else
+      return TRUE;
+  }
+
+  //verilen user'ın verilen şirketi edit edip edemeyeceğine dair bilgiyi verir
+  public function can_edit_company($user_id,$company_id){
+    $consultant = $this->is_consultant_of_company_by_user_id($user_id,$company_id);
+    $contact = $this->is_contact_by_userid($user_id,$company_id);
+    return $consultant || $contact;
+  }
+
 }
 ?>

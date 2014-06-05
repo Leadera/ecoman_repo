@@ -32,7 +32,7 @@ class Company extends CI_Controller{
 		$this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('companyName', 'Company Name', 'trim|required|xss_clean|is_unique[T_CMPNY.name]');
-		$this->form_validation->set_rules('naceCode', 'Nace Code', 'trim|required|xss_clean|regex_match[/^\d{2}\.\d{2}\.\d{2}$/]');
+		$this->form_validation->set_rules('naceCode', 'Nace Code', 'trim|required|xss_clean|callback_is_in_nace|regex_match[/^\d{2}\.\d{2}\.\d{2}$/]');
 		$this->form_validation->set_rules('companyDescription', 'Company Description', 'trim|xss_clean');
 		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email|is_unique[T_CMPNY.email]');
 		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
@@ -117,6 +117,19 @@ class Company extends CI_Controller{
 		}
 	}
 
+	function is_in_nace($nace)
+	{
+		$degisken= $this->company_model->is_in_nace($nace);
+
+		if($degisken){
+			return TRUE;
+		}
+		else{
+			$this->form_validation->set_message('is_in_nace', 'NACE code is wrong');
+			return FALSE;
+		}
+	}
+
 	public function show_all_companies(){
 		$data['companies'] = $this->company_model->get_companies();
 
@@ -129,20 +142,25 @@ class Company extends CI_Controller{
 		$this->load->library('googlemaps');
 
 		$data['companies'] = $this->company_model->get_company($term);
-		$config['center'] = $data['companies']['latitude'].','. $data['companies']['longitude'];
+			$config['center'] = $data['companies']['latitude'].','. $data['companies']['longitude'];
 	    $config['zoom'] = '15';
 	    $config['places'] = TRUE;
 	    $config['placesRadius'] = 20;
 	    $marker = array();
-		$marker['position'] = $data['companies']['latitude'].','. $data['companies']['longitude'];
-		$this->googlemaps->add_marker($marker);
-   		$this->googlemaps->initialize($config);
+			$marker['position'] = $data['companies']['latitude'].','. $data['companies']['longitude'];
+			$this->googlemaps->add_marker($marker);
+			$this->googlemaps->initialize($config);
 
 		$data['map'] = $this->googlemaps->create_map();
 		$data['nacecode'] = $this->company_model->get_nace_code($term);
 		$data['prjname'] = $this->company_model->get_company_proj($term);
 		$data['cmpnyperson'] = $this->company_model->get_company_workers($term);
 		$data['users_without_company']= $this->user_model->users_without_company();
+
+		//kullanıcının company'i editleme hakkı varmı kontrolü
+		$kullanici = $this->session->userdata('user_in');
+		$data['have_permission'] = $this->user_model->can_edit_company($kullanici['id'],$term);
+
 		$this->load->view('template/header');
 		$this->load->view('company/company_show_detailed',$data);
 		$this->load->view('template/footer');
@@ -159,6 +177,12 @@ class Company extends CI_Controller{
 	}
 
 	public function addUsertoCompany($term){
+		//kullanıcının company'i editleme hakkı varmı kontrolü
+		$kullanici = $this->session->userdata('user_in');
+		if(!$this->user_model->can_edit_company($kullanici['id'],$term)){
+			redirect(base_url(),'refresh');
+		}
+
 		$this->form_validation->set_rules('users','User','required');
 		if ($this->form_validation->run() !== FALSE)
 		{
@@ -176,6 +200,13 @@ class Company extends CI_Controller{
 	}
 
 	public function update_company($term){
+
+		//kullanıcının company'i editleme hakkı varmı kontrolü
+		$kullanici = $this->session->userdata('user_in');
+		if(!$this->user_model->can_edit_company($kullanici['id'],$term)){
+			redirect(base_url(),'refresh');
+		}
+
 		$data['companies'] = $this->company_model->get_company($term);
 		$data['nace_code'] = $this->company_model->get_nace_code($term);
 
@@ -197,7 +228,7 @@ class Company extends CI_Controller{
 		$this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('companyName', 'Company Name', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('naceCode', 'Nace Code', 'trim|required|xss_clean|regex_match[/^\d{2}\.\d{2}\.\d{2}$/]');
+		$this->form_validation->set_rules('naceCode', 'Nace Code', 'trim|required|xss_clean|callback_is_in_nace|regex_match[/^\d{2}\.\d{2}\.\d{2}$/]');
 		$this->form_validation->set_rules('coordinates', 'Coordinates', 'trim|xss_clean');
 		$this->form_validation->set_rules('companyDescription', 'Company Description', 'trim|xss_clean');
 		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email|callback_is_unique_email['.$data['companies']['id'].']');
@@ -220,7 +251,7 @@ class Company extends CI_Controller{
 			{
 				//print_r($this->upload->display_errors());
 			}
-						
+
 
 			//Yüklenen resmi boyutlandırma ve çevirme
 			$config['image_library'] = 'gd2';
@@ -246,7 +277,7 @@ class Company extends CI_Controller{
 				'latitude'=>$this->input->post('lat'),
 				'longitude'=>$this->input->post('long')
 			);
-	    
+
 	    $this->company_model->update_company($data2,$term);
 
 	    $code = $this->input->post('naceCode');
@@ -257,7 +288,7 @@ class Company extends CI_Controller{
     	);
 
 		  $this->company_model->update_cmpny_data($cmpny_data,$data['companies']['id']);
-		    
+
 		  $nace_code_id = $this->company_model->search_nace_code($code);
 
 	    $cmpny_nace_code = array(
