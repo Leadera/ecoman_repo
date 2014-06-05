@@ -144,8 +144,6 @@ class Project extends CI_Controller{
 			$contactusers[]= $this->user_model->get_company_users($cmpny_id);
 		}
 
-		$newArray= array_shift($contactusers); // ilk elemanı kaydırmak için gerekliydi. daha akılcı çözüm bulunabilir.
-
 		$data['contactusers']= $contactusers;
 
 		$this->load->library('form_validation');
