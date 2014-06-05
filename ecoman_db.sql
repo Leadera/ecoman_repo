@@ -3,18 +3,12 @@
 -- http://www.phpmyadmin.net
 --
 -- Anamakine: localhost:8889
--- Üretim Zamanı: 04 Haz 2014, 15:29:25
+-- Üretim Zamanı: 05 Haz 2014, 14:57:19
 -- Sunucu sürümü: 5.5.34
 -- PHP Sürümü: 5.5.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Veritabanı: `ecoman_db`
@@ -70,7 +64,15 @@ CREATE TABLE `T_CMPNY` (
   `latitude` varchar(25) NOT NULL,
   `longitude` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+--
+-- Tablo döküm verisi `T_CMPNY`
+--
+
+INSERT INTO `T_CMPNY` (`id`, `name`, `phone_num_1`, `phone_num_2`, `fax_num`, `address`, `description`, `email`, `postal_code`, `logo`, `active`, `latitude`, `longitude`) VALUES
+(7, 'Ostim A.Ş.', '90-312-385-50-90', '90-312-385-50-90', '90-312-354-58-98', 'Ostim Organize Sanayi Bölge Müdürlüğü 100. Yıl Bulvarı No: 101/A, 06370, Ostim / Ankara', 'Türkiye’nin en büyük, dünyanın ise sayılı küçük ve orta ölçekli sanayi üretim alanlarından biri olan Ostim “üretimde esnekliği” geniş makine parkının avantajlarıyla birleştirmiştir.', 'iletisim@ostim.com.tr', 'NULL', '1.jpg', 1, '39.97346964672723', '32.745373249053955'),
+(8, 'Reddit', '1-222-111-11-11', '1-222-111-11-12', '1-222-111-11-10', 'San Francisco, Silicon Alley', 'Reddit Conde Nast Digital şirketine ait bir sosyal haber sitesidir.', 'contact@reddit.com', 'NULL', '2.jpg', 1, '44.08758502824516', '-107.578125');
 
 -- --------------------------------------------------------
 
@@ -97,6 +99,14 @@ CREATE TABLE `T_CMPNY_DATA` (
   `description` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`cmpny_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Tablo döküm verisi `T_CMPNY_DATA`
+--
+
+INSERT INTO `T_CMPNY_DATA` (`cmpny_id`, `description`) VALUES
+(7, 'Türkiye’nin en büyük, dünyanın ise sayılı küçük ve orta ölçekli sanayi üretim alanlarından biri olan Ostim “üretimde esnekliği” geniş makine parkının avantajlarıyla birleştirmiştir. Ostim 17 ana sektö'),
+(8, 'Reddit Conde Nast Digital şirketine ait bir sosyal haber sitesidir.');
 
 -- --------------------------------------------------------
 
@@ -152,7 +162,7 @@ CREATE TABLE `T_CMPNY_FLOW` (
   KEY `qntty_unit_id` (`qntty_unit_id`),
   KEY `cost_unit_id` (`cost_unit_id`),
   KEY `ep_unit_id` (`ep_unit_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -196,6 +206,14 @@ CREATE TABLE `T_CMPNY_NACE_CODE` (
   KEY `nace_code_id` (`nace_code_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Tablo döküm verisi `T_CMPNY_NACE_CODE`
+--
+
+INSERT INTO `T_CMPNY_NACE_CODE` (`cmpny_id`, `nace_code_id`) VALUES
+(7, 91),
+(8, 123);
+
 -- --------------------------------------------------------
 
 --
@@ -223,7 +241,7 @@ CREATE TABLE `T_CMPNY_PRCSS` (
   PRIMARY KEY (`id`),
   KEY `cmpny_id` (`cmpny_id`),
   KEY `prcss_id` (`prcss_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -253,6 +271,15 @@ CREATE TABLE `T_CMPNY_PRSNL` (
   KEY `cmpny_id` (`cmpny_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Tablo döküm verisi `T_CMPNY_PRSNL`
+--
+
+INSERT INTO `T_CMPNY_PRSNL` (`user_id`, `cmpny_id`, `is_contact`) VALUES
+(1, 7, 1),
+(2, 8, 1),
+(3, 7, 0);
 
 -- --------------------------------------------------------
 
@@ -2657,7 +2684,14 @@ CREATE TABLE `T_PRJ` (
   `active` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `status_id` (`status_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Tablo döküm verisi `T_PRJ`
+--
+
+INSERT INTO `T_PRJ` (`id`, `name`, `start_date`, `end_date`, `status_id`, `description`, `active`) VALUES
+(2, 'Project X', '2014-06-10', NULL, 3, 'The X-Men are a team of mutant superheroes in the Marvel Universe. They were created by writer Stan Lee and artist Jack Kirby, and first appeared in The X-Men #1 (September 1963). The basic concept of', 1);
 
 -- --------------------------------------------------------
 
@@ -2707,6 +2741,14 @@ CREATE TABLE `T_PRJ_CMPNY` (
   KEY `prj_id` (`prj_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Tablo döküm verisi `T_PRJ_CMPNY`
+--
+
+INSERT INTO `T_PRJ_CMPNY` (`prj_id`, `cmpny_id`) VALUES
+(2, 7),
+(2, 8);
+
 -- --------------------------------------------------------
 
 --
@@ -2722,6 +2764,13 @@ CREATE TABLE `T_PRJ_CNSLTNT` (
   KEY `prj_id` (`prj_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Tablo döküm verisi `T_PRJ_CNSLTNT`
+--
+
+INSERT INTO `T_PRJ_CNSLTNT` (`prj_id`, `cnsltnt_id`, `active`) VALUES
+(2, 2, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -2735,6 +2784,13 @@ CREATE TABLE `T_PRJ_CNTCT_PRSNL` (
   PRIMARY KEY (`prj_id`,`usr_id`),
   KEY `usr_id` (`usr_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Tablo döküm verisi `T_PRJ_CNTCT_PRSNL`
+--
+
+INSERT INTO `T_PRJ_CNTCT_PRSNL` (`prj_id`, `usr_id`, `description`) VALUES
+(2, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -2789,7 +2845,7 @@ CREATE TABLE `T_ROLE` (
   `active` tinyint(1) NOT NULL,
   `short_code` varchar(3) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Tablo döküm verisi `T_ROLE`
@@ -2797,7 +2853,8 @@ CREATE TABLE `T_ROLE` (
 
 INSERT INTO `T_ROLE` (`id`, `name`, `name_tr`, `active`, `short_code`) VALUES
 (1, 'Consultant', 'Consultant', 1, 'CNS'),
-(2, 'Visitor', 'Visitor', 1, 'VST');
+(2, 'Visitor', 'Visitor', 1, 'VST'),
+(3, 'Admin', 'Admin', 1, 'ADM');
 
 -- --------------------------------------------------------
 
@@ -2825,7 +2882,7 @@ CREATE TABLE `T_USER` (
   `surname` varchar(100) NOT NULL,
   `user_name` varchar(50) NOT NULL,
   `psswrd` varchar(40) NOT NULL,
-  `role_id` int(11) DEFAULT NULL,
+  `role_id` int(11) DEFAULT '2',
   `title` varchar(255) DEFAULT NULL,
   `phone_num_1` varchar(50) DEFAULT NULL,
   `phone_num_2` varchar(50) DEFAULT NULL,
@@ -3040,7 +3097,3 @@ ALTER TABLE `T_USER`
 --
 ALTER TABLE `T_USER_LOG`
   ADD CONSTRAINT `FK_T_USER_LOG_T_USER` FOREIGN KEY (`user_id`) REFERENCES `T_USER` (`id`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
