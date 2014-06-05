@@ -196,5 +196,13 @@ class User_model extends CI_Model {
     $query = $this->db->get();
     return $query->result_array();  
   }
+
+  public function cmpny_prsnl($id){
+    $this->db->select('cmpny_id');
+    $this->db->from('T_CMPNY_PRSNL');
+    $this->db->where('user_id',$id);
+    $query = $this->db->get(); 
+    return $query->row_array();
+  }
 }
 ?>

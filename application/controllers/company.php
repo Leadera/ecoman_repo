@@ -285,7 +285,7 @@ class Company extends CI_Controller{
 	}
 	public function create_company_control(){
 		$temp = $this->session->userdata('user_in');
-		$cmpny = $this->user_model->do_edit_company_consultant($temp['id']);
+		$cmpny = $this->user_model->cmpny_prsnl($temp['id']);
 		if(count($cmpny) == 0){
 			return TRUE;
 		}
