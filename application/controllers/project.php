@@ -1,6 +1,6 @@
 <?php
 class Project extends CI_Controller{
-		
+
 	function __construct(){
 		parent::__construct();
 		$this->load->model('project_model');
@@ -39,17 +39,17 @@ class Project extends CI_Controller{
 			$last_inserted_project_id = $this->project_model->create_project($project);
 
 			$companies = array ($_POST['assignCompany']); // multiple select , secilen company'ler
-			
+
 			foreach ($companies[0] as $company) {
 				$prj_cmpny=array(
 					'prj_id' => $last_inserted_project_id,
 					'cmpny_id' => $company
 					);
-				$this->project_model->insert_project_company($prj_cmpny);	 
+				$this->project_model->insert_project_company($prj_cmpny);
 			}
 
 			$consultants = $_POST['assignConsultant']; // multiple select , secilen consultant'lar
-			
+
 			foreach ($consultants as $consultant) {
 				$prj_cnsltnt=array(
 					'prj_id' => $last_inserted_project_id,
@@ -66,9 +66,10 @@ class Project extends CI_Controller{
 			);
 
 			$this->project_model->insert_project_contact_person($prj_cntct_prsnl);
-		
-		redirect('projects', 'refresh');
+
+			redirect('projects', 'refresh');
 		}
+
 		$this->load->view('template/header');
 		$this->load->view('project/create_project',$data);
 		$this->load->view('template/footer');
@@ -79,15 +80,14 @@ class Project extends CI_Controller{
 		$user = array();
 		if($cmpny_id != 'null'){
 			$cmpny_id_arr = explode(",", $cmpny_id); // explode ile parse edildi. array icinde company id'ler tutuluyor.
-			
+
 			foreach ($cmpny_id_arr as $cmpny_id) {
-				$user[] = $this->user_model->get_company_users($cmpny_id); 
+				$user[] = $this->user_model->get_company_users($cmpny_id);
 			}
 			//foreach dongusu icinde tek tek company id'ler gonderilip ilgili user'lar bulunacak.
 			//suanda sadece ilk company id ' yi alıp user ları donuyor.
 		}
-			echo json_encode($user);
-		
+		echo json_encode($user);
 	}
 
 	public function show_all_project(){
@@ -110,7 +110,7 @@ class Project extends CI_Controller{
 		$this->load->view('template/footer');
 	}
 
-	
+
 	public function update_project($term){
 		$data['projects'] = $this->project_model->get_project($term);
 		$data['companies']=$this->company_model->get_companies();
@@ -141,7 +141,7 @@ class Project extends CI_Controller{
 		$data['contactIDs']=$contactIDs;
 
 		foreach ($companyIDs as $cmpny_id) {
-			$contactusers[]= $this->user_model->get_company_users($cmpny_id); 
+			$contactusers[]= $this->user_model->get_company_users($cmpny_id);
 		}
 
 		$newArray= array_shift($contactusers); // ilk elemanı kaydırmak için gerekliydi. daha akılcı çözüm bulunabilir.
@@ -160,7 +160,7 @@ class Project extends CI_Controller{
 		//$this->form_validation->set_rules('email', 'Email' ,'trim|required|valid_email');
 		if ($this->form_validation->run() !== FALSE)
 		{
-			
+
 			date_default_timezone_set('UTC');
 
 			$project = array(
@@ -173,20 +173,20 @@ class Project extends CI_Controller{
 			$this->project_model->update_project($project,$term);
 
 			$companies = $_POST['assignCompany']; // multiple select , secilen company'ler
-			
+
 			$this->project_model->remove_company_from_project($term);	// once hepsini siliyoruz projeye bağlı companylerin
-			
+
 			foreach ($companies as $company) {
 				$prj_cmpny=array(
 					'prj_id' => $term,
 					'cmpny_id' => $company
 					);
-				$this->project_model->insert_project_company($prj_cmpny);	 
+				$this->project_model->insert_project_company($prj_cmpny);
 			}
 
 			$consultants = $_POST['assignConsultant']; // multiple select , secilen consultant'lar
 
-			$this->project_model->remove_consultant_from_project($term);	
+			$this->project_model->remove_consultant_from_project($term);
 
 			foreach ($consultants as $consultant) {
 				$prj_cnsltnt=array(
@@ -197,16 +197,16 @@ class Project extends CI_Controller{
 				$this->project_model->insert_project_consultant($prj_cnsltnt);
 			}
 
-			$this->project_model->remove_contactuser_from_project($term);	
+			$this->project_model->remove_contactuser_from_project($term);
 
 			$contactuser= $this->input->post('assignContactPerson');
 			$prj_cntct_prsnl=array(
 				'prj_id' => $term,
 				'usr_id' => $contactuser
 			);
-			
+
 			$this->project_model->insert_project_contact_person($prj_cntct_prsnl);
-		redirect('projects', 'refresh');
+			redirect('projects', 'refresh');
 		}
 		$this->load->view('template/header');
 		$this->load->view('project/update_project',$data);
