@@ -63,10 +63,11 @@
 	 			<div class="form-group">
 	    			<label for="assignContactPerson">Assign Contact Person</label>   			
 	    			<select  class="select-block" id="assignContactPerson" name="assignContactPerson">
-	    			<?php foreach ($contactusers as $contactuser): ?>
+	    			<?php foreach ($contactusers as $contacts): ?>
+	    			<?php foreach ($contacts as $contactuser): ?>
 							<option value="<?php echo $contactuser['id']; ?>"<?php if(in_array($contactuser['id'], $contactIDs)) echo 'selected';?>  ><?php echo $contactuser['name'].' '.$contactuser['surname'].' ('.$contactuser['cmpny_name'].')'; ?></option>
 						<?php endforeach ?>
-						
+							<?php endforeach ?>
 					</select>
 	 			</div>
 	 			
