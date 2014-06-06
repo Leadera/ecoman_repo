@@ -6,6 +6,9 @@ class Company extends CI_Controller{
 		$this->load->model('company_model');
 		$this->load->model('user_model');
 		$this->load->library('form_validation');
+		if($this->session->userdata('user_in') === FALSE){
+			redirect('','refresh');
+		}
 	}
 
 	public function new_company(){
