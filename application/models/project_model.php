@@ -95,5 +95,18 @@ class Project_model extends CI_Model {
   public function remove_contactuser_from_project($projID){
     $this->db->delete('T_PRJ_CNTCT_PRSNL', array('prj_id' => $projID));  
   }
+
+  public function can_update_project_information($user_id,$project_id){
+    $this->db->select('cnsltnt_id');
+    $this->db->from('T_PRJ_CNSLTNT');
+    $this->db->where('T_PRJ_CNSLTNT.prj_id',$project_id);
+    $query = $this->db->get()->result_array();
+    foreach ($query as $cnsltnt) {
+      if($cnsltnt['cnsltnt_id'] == $user_id){
+        return true;
+      }
+    }
+    return false;
+  }
 }
 ?>

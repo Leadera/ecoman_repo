@@ -6,6 +6,11 @@ class Project extends CI_Controller{
 		$this->load->model('project_model');
 		$this->load->model('company_model');
 		$this->load->model('user_model');
+		
+		$kullanici = $this->session->userdata('user_in');
+		if ($kullanici === FALSE){
+			redirect('','refresh');
+		}		
 	}
 
 	public function new_project(){
@@ -112,6 +117,10 @@ class Project extends CI_Controller{
 
 
 	public function update_project($term){
+		$kullanici = $this->session->userdata('user_in');
+		if($this->project_model->can_update_project_information($kullanici['id'],$term) == false){
+			redirect('','refresh');
+		}
 		$data['projects'] = $this->project_model->get_project($term);
 		$data['companies']=$this->company_model->get_companies();
 		$data['consultants']=$this->user_model->get_consultants();
