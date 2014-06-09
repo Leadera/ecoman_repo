@@ -70,7 +70,7 @@ class User extends CI_Controller {
 			$this->user_model->set_user_image($last_inserted_user_id,$photo);
 
 			//process completed
-			redirect('okoldu', 'refresh');
+			redirect('completed', 'refresh');
 		}
 
 		$this->load->view('template/header');
