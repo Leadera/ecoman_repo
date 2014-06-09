@@ -13,7 +13,8 @@ class Search extends CI_Controller {
 			redirect(base_url('search/'.$term), 'refresh');
 		}
 
-		$data['search_result'] = $this->search_model->search_product($term);
+		$data['companies'] = $this->search_model->search_company($term);
+		$data['projects'] = $this->search_model->search_project($term);
 
 		$this->load->view('template/header');
 		$this->load->view('search/index',$data);
