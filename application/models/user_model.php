@@ -152,6 +152,8 @@ class User_model extends CI_Model {
     }
   }
 
+
+
   public function check_user_email($email){
     $this->db->from('T_USER');
     $this->db->where('email',$email);
@@ -219,6 +221,31 @@ class User_model extends CI_Model {
       return TRUE;
     }
   }
+  public function is_consultant_of_project_by_user_id($user_id,$prj_id){
+    $this->db->select('*');
+    $this->db->from('T_PRJ_CNSLTNT');
+    $this->db->where('T_PRJ_CNSLTNT.cnsltnt_id',$user_id);
+    $this->db->where('T_PRJ_CNSLTNT.prj_id',$prj_id);
+    $query = $this->db->get()->result_array();
+    if(empty($query)){
+      return FALSE;
+    }else{
+      return TRUE;
+    }
+  }
+  public function is_contactperson_of_project_by_user_id($user_id,$prj_id){
+    $this->db->select('*');
+    $this->db->from('T_PRJ_CNTCT_PRSNL');
+    $this->db->where('T_PRJ_CNTCT_PRSNL.usr_id',$user_id);
+    $this->db->where('T_PRJ_CNTCT_PRSNL.prj_id',$prj_id);
+    $query = $this->db->get()->result_array();
+    if(empty($query)){
+      return FALSE;
+    }else{
+      return TRUE;
+    }
+  }
+
 
   public function cmpny_prsnl($user_id){
     $this->db->select('cmpny_id');

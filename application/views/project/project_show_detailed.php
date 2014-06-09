@@ -2,7 +2,9 @@
 	<div class="row">
 		<div class="col-md-9">
 			<div class="lead pull-left"><?php echo $projects['name']; ?></div>
-			<a class="btn btn-info btn-sm pull-right" href="<?php echo base_url("update_project/".$projects['id']); ?>">Update Project Info</a>
+			<?php if($is_consultant_of_project): ?>
+				<a class="btn btn-info btn-sm pull-right" href="<?php echo base_url("update_project/".$projects['id']); ?>">Update Project Info</a>
+			<?php endif ?>
 			<table class="table table-bordered">
 				<tr>
 					<td style="width:150px;">

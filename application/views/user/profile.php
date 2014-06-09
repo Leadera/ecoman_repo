@@ -5,7 +5,7 @@
 				<?php  if($userInfo['id']==$this->session->userdata('user_in')['id']): ?>
 		  	<a class="btn btn-info btn-embossed btn-sm pull-right" href="<?php echo base_url("profile_update"); ?>">Update User Info</a>
 		  	<?php endif ?>
-		  	<?php if($userInfo['role_id']==null): ?>
+		  	<?php if($userInfo['role_id']=='2'): ?>
 		  	<a class="btn btn-success btn-embossed btn-sm pull-right" style="margin-right:15px;" href="<?php echo base_url("become_consultant"); ?>">Becoman a Consultant</a>
 		  	<?php endif ?>
 		  	<?php if($userInfo['role_id']=="1"): ?>
