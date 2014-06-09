@@ -11,8 +11,7 @@ class Dataset extends CI_Controller {
 		$this->load->library('form_validation');
 
 		$kullanici = $this->session->userdata('user_in');
-
-		if($this->user_model->can_edit_company($kullanici['id'],$this->uri->segment(2)) == FALSE){
+		if($this->user_model->can_edit_company($kullanici['id'],$this->uri->segment(2)) == FALSE && $this->uri->segment(1) != "get_equipment_type" && $this->uri->segment(1) != "get_equipment_attribute"){
 			redirect(base_url(''), 'refresh');
 		}
 
@@ -140,47 +139,43 @@ class Dataset extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
-	public function new_equipment($companyID){
-
-		$data['companyID'] = $companyID;
-		$data['equipmentName'] = $this->equipment_model->get_equipment_name();
-		$data['process'] = $this->equipment_model->cmpny_prcss($companyID);
+	public function new_equipment($companyID){				
 
 		$this->form_validation->set_rules('usedprocess','Used Process','required');
 		$this->form_validation->set_rules('equipment','Equipment Name','required');
 
 		if ($this->form_validation->run() !== FALSE)
 		{
-			$usedprocess = $this->input->post('usedprocess');
+			$prcss_id = $this->input->post('usedprocess');
 			$equipment_id = $this->input->post('equipment');
+			$equipment_type_id = $this->input->post('equipmentTypeName');
+			$equipment_type_attribute_id = $this->input->post('equipmentAttributeName');
 
-			$equipmentTypeID = $this->equipment_model->get_eqpmnt_type_id($equipment_id);
-			$cmpny_eqpmnt_type = array(
-					'cmpny_id' => $companyID,
-					'eqpmnt_type_id' => $equipmentTypeID['eqpmnt_type_id']
-				);
-
-			$cmpny_eqpmnt_type_id = $this->equipment_model->cmpny_eqpmnt_type($cmpny_eqpmnt_type);
-
-			foreach ($usedprocess as $proID) {
-				$cmpny_prcss_id = $this->equipment_model->get_cmpny_process($proID);
-				$cmpny_prcss_eqpmnt_type = array(
-						'cmpny_eqpmnt_type_id' => $cmpny_eqpmnt_type_id,
-						'cmpny_prcss_id' => $cmpny_prcss_id['id']
-					);
-				$this->equipment_model->t_cmpny_prcss_eqpmnt_type($cmpny_prcss_eqpmnt_type);
-			}
-
-			$cmpny_eqpmnt = array(
+			$cmpny_eqpmnt_data = array(
 					'cmpny_id' => $companyID,
 					'eqpmnt_id' => $equipment_id
 				);
-			$this->equipment_model->cmpny_eqpmnt($cmpny_eqpmnt);
+			$this->equipment_model->set_cmpny_eqpmnt($cmpny_eqpmnt_data);
+			
+			$cmpny_eqpmnt_type_data = array(
+					'cmpny_id' => $companyID,
+					'eqpmnt_type_id' => $equipment_type_id
+				);
+			$cmpny_eqpmnt_type_id = $this->equipment_model->set_cmpny_eqpmnt_type($cmpny_eqpmnt_type_data);
 
-
-
-			redirect('new_equipment/'.$companyID, 'refresh');
+			$cmpny_prcss_id = $this->equipment_model->get_cmpny_prcss_id($companyID,$prcss_id);
+			$cmpny_prcss_eqpmnt_type_data = array(
+					'cmpny_eqpmnt_type_id' => $cmpny_eqpmnt_type_id,
+					'cmpny_prcss_id' => $cmpny_prcss_id['id']
+				);
+			$this->equipment_model->set_cmpny_prcss_eqpmnt($cmpny_prcss_eqpmnt_type_data);
 		}
+
+		$data['companyID'] = $companyID;
+		$data['equipmentName'] = $this->equipment_model->get_equipment_name();
+		$data['process'] = $this->equipment_model->cmpny_prcss($companyID);
+		$data['informations'] = $this->equipment_model->all_information_of_equipment($companyID);
+		
 		$this->load->view('template/header');
 		$this->load->view('dataset/dataSetLeftSide',$data);
 		$this->load->view('dataset/new_equipment',$data);
@@ -190,5 +185,17 @@ class Dataset extends CI_Controller {
 	public function delete_product($companyID,$id){
 		$this->product_model->delete_product($id);
 		redirect('new_product/'.$companyID, 'refresh');
+	}
+
+	public function get_equipment_type(){
+		$equipment_id = $this->input->post('equipment_id');
+		$type_list = $this->equipment_model->get_equipment_type_list($equipment_id);
+		echo json_encode($type_list);
+	}
+
+	public function get_equipment_attribute(){
+		$equipment_type_id = $this->input->post('equipment_type_id');
+		$attribute_list = $this->equipment_model->get_equipment_attribute_list($equipment_type_id);
+		echo json_encode($attribute_list);
 	}
 }

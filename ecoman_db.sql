@@ -1,26 +1,32 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.0.6deb1
 -- http://www.phpmyadmin.net
 --
--- Anamakine: localhost:8889
--- Üretim Zamanı: 05 Haz 2014, 14:57:19
--- Sunucu sürümü: 5.5.34
--- PHP Sürümü: 5.5.10
+-- Host: localhost
+-- Generation Time: Jun 09, 2014 at 02:13 PM
+-- Server version: 5.5.37-0ubuntu0.13.10.1
+-- PHP Version: 5.5.3-1ubuntu2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
 --
--- Veritabanı: `ecoman_db`
+-- Database: `ecoman_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CLSTR`
+-- Table structure for table `T_CLSTR`
 --
 
-CREATE TABLE `T_CLSTR` (
+CREATE TABLE IF NOT EXISTS `T_CLSTR` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
   `active` tinyint(4) NOT NULL,
@@ -32,10 +38,10 @@ CREATE TABLE `T_CLSTR` (
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNNT`
+-- Table structure for table `T_CMPNNT`
 --
 
-CREATE TABLE `T_CMPNNT` (
+CREATE TABLE IF NOT EXISTS `T_CMPNNT` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
   `name_tr` varchar(200) DEFAULT NULL,
@@ -46,10 +52,10 @@ CREATE TABLE `T_CMPNNT` (
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY`
+-- Table structure for table `T_CMPNY`
 --
 
-CREATE TABLE `T_CMPNY` (
+CREATE TABLE IF NOT EXISTS `T_CMPNY` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `phone_num_1` varchar(50) DEFAULT NULL,
@@ -67,7 +73,7 @@ CREATE TABLE `T_CMPNY` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Tablo döküm verisi `T_CMPNY`
+-- Dumping data for table `T_CMPNY`
 --
 
 INSERT INTO `T_CMPNY` (`id`, `name`, `phone_num_1`, `phone_num_2`, `fax_num`, `address`, `description`, `email`, `postal_code`, `logo`, `active`, `latitude`, `longitude`) VALUES
@@ -77,10 +83,10 @@ INSERT INTO `T_CMPNY` (`id`, `name`, `phone_num_1`, `phone_num_2`, `fax_num`, `a
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_CLSTR`
+-- Table structure for table `T_CMPNY_CLSTR`
 --
 
-CREATE TABLE `T_CMPNY_CLSTR` (
+CREATE TABLE IF NOT EXISTS `T_CMPNY_CLSTR` (
   `cmpny_id` int(11) NOT NULL,
   `clstr_id` int(11) NOT NULL,
   PRIMARY KEY (`cmpny_id`,`clstr_id`),
@@ -91,17 +97,17 @@ CREATE TABLE `T_CMPNY_CLSTR` (
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_DATA`
+-- Table structure for table `T_CMPNY_DATA`
 --
 
-CREATE TABLE `T_CMPNY_DATA` (
+CREATE TABLE IF NOT EXISTS `T_CMPNY_DATA` (
   `cmpny_id` int(11) NOT NULL,
   `description` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`cmpny_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `T_CMPNY_DATA`
+-- Dumping data for table `T_CMPNY_DATA`
 --
 
 INSERT INTO `T_CMPNY_DATA` (`cmpny_id`, `description`) VALUES
@@ -111,40 +117,64 @@ INSERT INTO `T_CMPNY_DATA` (`cmpny_id`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_EQPMNT`
+-- Table structure for table `T_CMPNY_EQPMNT`
 --
 
-CREATE TABLE `T_CMPNY_EQPMNT` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `T_CMPNY_EQPMNT` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `cmpny_id` int(11) DEFAULT NULL,
   `eqpmnt_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `cmpny_id` (`cmpny_id`),
   KEY `eqpmnt_id` (`eqpmnt_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+
+--
+-- Dumping data for table `T_CMPNY_EQPMNT`
+--
+
+INSERT INTO `T_CMPNY_EQPMNT` (`id`, `cmpny_id`, `eqpmnt_id`) VALUES
+(12, 7, 2),
+(13, 7, 2),
+(14, 7, 2),
+(15, 7, 5),
+(16, 7, 4),
+(17, 7, 2);
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_EQPMNT_TYPE`
+-- Table structure for table `T_CMPNY_EQPMNT_TYPE`
 --
 
-CREATE TABLE `T_CMPNY_EQPMNT_TYPE` (
+CREATE TABLE IF NOT EXISTS `T_CMPNY_EQPMNT_TYPE` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cmpny_id` int(11) NOT NULL,
   `eqpmnt_type_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cmpny_id` (`cmpny_id`),
   KEY `eqpmnt_type_id` (`eqpmnt_type_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+
+--
+-- Dumping data for table `T_CMPNY_EQPMNT_TYPE`
+--
+
+INSERT INTO `T_CMPNY_EQPMNT_TYPE` (`id`, `cmpny_id`, `eqpmnt_type_id`) VALUES
+(9, 7, 9),
+(10, 7, 9),
+(11, 7, 8),
+(12, 7, 34),
+(13, 7, 22),
+(14, 7, 11);
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_FLOW`
+-- Table structure for table `T_CMPNY_FLOW`
 --
 
-CREATE TABLE `T_CMPNY_FLOW` (
+CREATE TABLE IF NOT EXISTS `T_CMPNY_FLOW` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cmpny_id` int(11) DEFAULT NULL,
   `flow_id` int(11) NOT NULL,
@@ -162,15 +192,22 @@ CREATE TABLE `T_CMPNY_FLOW` (
   KEY `qntty_unit_id` (`qntty_unit_id`),
   KEY `cost_unit_id` (`cost_unit_id`),
   KEY `ep_unit_id` (`ep_unit_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `T_CMPNY_FLOW`
+--
+
+INSERT INTO `T_CMPNY_FLOW` (`id`, `cmpny_id`, `flow_id`, `qntty`, `qntty_unit_id`, `cost`, `cost_unit_id`, `ep`, `ep_unit_id`, `flow_type_id`) VALUES
+(1, 7, 1, 11.20, NULL, 10.30, NULL, 11.40, NULL, 1);
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_FLOW_CMPNNT`
+-- Table structure for table `T_CMPNY_FLOW_CMPNNT`
 --
 
-CREATE TABLE `T_CMPNY_FLOW_CMPNNT` (
+CREATE TABLE IF NOT EXISTS `T_CMPNY_FLOW_CMPNNT` (
   `cmpny_flow_id` int(11) NOT NULL,
   `cmpnnt_id` int(11) NOT NULL,
   PRIMARY KEY (`cmpny_flow_id`,`cmpnnt_id`),
@@ -181,10 +218,10 @@ CREATE TABLE `T_CMPNY_FLOW_CMPNNT` (
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_FLOW_PRCSS`
+-- Table structure for table `T_CMPNY_FLOW_PRCSS`
 --
 
-CREATE TABLE `T_CMPNY_FLOW_PRCSS` (
+CREATE TABLE IF NOT EXISTS `T_CMPNY_FLOW_PRCSS` (
   `cmpny_flow_id` int(11) NOT NULL,
   `cmpny_prcss_id` int(11) NOT NULL,
   PRIMARY KEY (`cmpny_flow_id`,`cmpny_prcss_id`),
@@ -192,13 +229,21 @@ CREATE TABLE `T_CMPNY_FLOW_PRCSS` (
   KEY `cmpny_prcss_id` (`cmpny_prcss_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `T_CMPNY_FLOW_PRCSS`
+--
+
+INSERT INTO `T_CMPNY_FLOW_PRCSS` (`cmpny_flow_id`, `cmpny_prcss_id`) VALUES
+(1, 1),
+(1, 2);
+
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_NACE_CODE`
+-- Table structure for table `T_CMPNY_NACE_CODE`
 --
 
-CREATE TABLE `T_CMPNY_NACE_CODE` (
+CREATE TABLE IF NOT EXISTS `T_CMPNY_NACE_CODE` (
   `cmpny_id` int(11) NOT NULL,
   `nace_code_id` int(11) NOT NULL,
   PRIMARY KEY (`cmpny_id`,`nace_code_id`),
@@ -207,7 +252,7 @@ CREATE TABLE `T_CMPNY_NACE_CODE` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `T_CMPNY_NACE_CODE`
+-- Dumping data for table `T_CMPNY_NACE_CODE`
 --
 
 INSERT INTO `T_CMPNY_NACE_CODE` (`cmpny_id`, `nace_code_id`) VALUES
@@ -217,10 +262,10 @@ INSERT INTO `T_CMPNY_NACE_CODE` (`cmpny_id`, `nace_code_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_ORG_IND_REG`
+-- Table structure for table `T_CMPNY_ORG_IND_REG`
 --
 
-CREATE TABLE `T_CMPNY_ORG_IND_REG` (
+CREATE TABLE IF NOT EXISTS `T_CMPNY_ORG_IND_REG` (
   `org_ind_reg_id` int(11) NOT NULL,
   `cmpny_id` int(11) NOT NULL,
   PRIMARY KEY (`org_ind_reg_id`,`cmpny_id`),
@@ -231,25 +276,33 @@ CREATE TABLE `T_CMPNY_ORG_IND_REG` (
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_PRCSS`
+-- Table structure for table `T_CMPNY_PRCSS`
 --
 
-CREATE TABLE `T_CMPNY_PRCSS` (
+CREATE TABLE IF NOT EXISTS `T_CMPNY_PRCSS` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cmpny_id` int(11) DEFAULT NULL,
   `prcss_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cmpny_id` (`cmpny_id`),
   KEY `prcss_id` (`prcss_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `T_CMPNY_PRCSS`
+--
+
+INSERT INTO `T_CMPNY_PRCSS` (`id`, `cmpny_id`, `prcss_id`) VALUES
+(1, 7, 1),
+(2, 7, 3);
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_PRCSS_EQPMNT_TYPE`
+-- Table structure for table `T_CMPNY_PRCSS_EQPMNT_TYPE`
 --
 
-CREATE TABLE `T_CMPNY_PRCSS_EQPMNT_TYPE` (
+CREATE TABLE IF NOT EXISTS `T_CMPNY_PRCSS_EQPMNT_TYPE` (
   `cmpny_eqpmnt_type_id` int(11) NOT NULL,
   `cmpny_prcss_id` int(11) NOT NULL,
   PRIMARY KEY (`cmpny_eqpmnt_type_id`,`cmpny_prcss_id`),
@@ -257,13 +310,25 @@ CREATE TABLE `T_CMPNY_PRCSS_EQPMNT_TYPE` (
   KEY `cmpny_prcss_id` (`cmpny_prcss_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `T_CMPNY_PRCSS_EQPMNT_TYPE`
+--
+
+INSERT INTO `T_CMPNY_PRCSS_EQPMNT_TYPE` (`cmpny_eqpmnt_type_id`, `cmpny_prcss_id`) VALUES
+(9, 1),
+(10, 1),
+(11, 1),
+(12, 1),
+(13, 2),
+(14, 2);
+
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_PRSNL`
+-- Table structure for table `T_CMPNY_PRSNL`
 --
 
-CREATE TABLE `T_CMPNY_PRSNL` (
+CREATE TABLE IF NOT EXISTS `T_CMPNY_PRSNL` (
   `user_id` int(11) NOT NULL,
   `cmpny_id` int(11) NOT NULL,
   `is_contact` tinyint(4) NOT NULL,
@@ -273,7 +338,7 @@ CREATE TABLE `T_CMPNY_PRSNL` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `T_CMPNY_PRSNL`
+-- Dumping data for table `T_CMPNY_PRSNL`
 --
 
 INSERT INTO `T_CMPNY_PRSNL` (`user_id`, `cmpny_id`, `is_contact`) VALUES
@@ -284,10 +349,10 @@ INSERT INTO `T_CMPNY_PRSNL` (`user_id`, `cmpny_id`, `is_contact`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CNSLTNT`
+-- Table structure for table `T_CNSLTNT`
 --
 
-CREATE TABLE `T_CNSLTNT` (
+CREATE TABLE IF NOT EXISTS `T_CNSLTNT` (
   `user_id` int(11) NOT NULL,
   `description` varchar(200) DEFAULT NULL,
   `active` tinyint(4) NOT NULL,
@@ -295,7 +360,7 @@ CREATE TABLE `T_CNSLTNT` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `T_CNSLTNT`
+-- Dumping data for table `T_CNSLTNT`
 --
 
 INSERT INTO `T_CNSLTNT` (`user_id`, `description`, `active`) VALUES
@@ -306,10 +371,10 @@ INSERT INTO `T_CNSLTNT` (`user_id`, `description`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_DOC`
+-- Table structure for table `T_DOC`
 --
 
-CREATE TABLE `T_DOC` (
+CREATE TABLE IF NOT EXISTS `T_DOC` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `doc` varchar(40) DEFAULT NULL,
   `description` varchar(200) DEFAULT NULL,
@@ -319,56 +384,740 @@ CREATE TABLE `T_DOC` (
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_EQPMNT`
+-- Table structure for table `T_EQPMNT`
 --
 
-CREATE TABLE `T_EQPMNT` (
+CREATE TABLE IF NOT EXISTS `T_EQPMNT` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
   `name_tr` varchar(200) DEFAULT NULL,
   `active` tinyint(4) NOT NULL,
   `eqpmnt_type_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `T_EQPMNT`
+--
+
+INSERT INTO `T_EQPMNT` (`id`, `name`, `name_tr`, `active`, `eqpmnt_type_id`) VALUES
+(1, 'Casting Equipment', 'Döküm Tezgahları', 1, 0),
+(2, 'Forming Equipment', 'Şekillendirme tezgahları', 1, 0),
+(3, 'Joining Equipment', 'Birleştirme Tezgahları', 1, 0),
+(4, 'Machining Equipment', 'Talaşlı imalat Tezgahları', 1, 0),
+(5, 'Non-Traditional', 'Geleneksel Olmayan Süreçler', 1, 0);
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_EQPMNT_TYPE`
+-- Table structure for table `T_EQPMNT_TYPE`
 --
 
-CREATE TABLE `T_EQPMNT_TYPE` (
+CREATE TABLE IF NOT EXISTS `T_EQPMNT_TYPE` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) DEFAULT NULL,
   `name_tr` varchar(200) DEFAULT NULL,
   `mother_id` int(11) DEFAULT NULL,
   `active` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
+
+--
+-- Dumping data for table `T_EQPMNT_TYPE`
+--
+
+INSERT INTO `T_EQPMNT_TYPE` (`id`, `name`, `name_tr`, `mother_id`, `active`) VALUES
+(1, 'Centrifugal Casting Machine', 'Santrifüjal Döküm ', 1, 1),
+(2, 'Die Casting', 'Press Döküm', 1, 1),
+(3, 'Evaporative Pattern Casting', 'Buharlı Döküm', 1, 1),
+(4, 'Law Pressure Casting', 'Düşük Basınçlı Döküm', 1, 1),
+(5, 'Permanent Mold Casting', 'Daimi Kalıp Döküm', 1, 1),
+(6, 'Forge', 'Dövme tezgahı', 2, 1),
+(7, 'Powder Metallurgy', 'Toz Metalurjisi', 2, 1),
+(8, 'Press', 'Press', 2, 1),
+(9, 'Rolling Machine', 'Haddeleme', 2, 1),
+(10, 'Shearing Machine', 'Kesme', 2, 1),
+(11, 'Extrusion Machine', 'Çekme', 2, 1),
+(12, 'Brazing(at Temperatures over 450°C)', 'Lehimleme (Sıcaklık > 450°C))', 3, 1),
+(13, 'Fastening', 'Bağlama', 3, 1),
+(14, 'Press Fitting', 'Baskılı Geçirme', 3, 1),
+(15, 'Sintering', 'Sinterleme', 3, 1),
+(16, 'Soldering(at Temperatures Less than 450°C)', 'Lehimleme ( Sıcaklık < 450°C)', 3, 1),
+(17, 'Welding', 'Kaynak', 3, 1),
+(18, 'Lathe', 'Torna', 4, 1),
+(19, 'Milling', 'Freze', 4, 1),
+(20, 'Machining Center', 'İşleme Merkezi', 4, 1),
+(21, 'Shaper', 'Şekillendirme', 4, 1),
+(22, 'Drilling Machine', 'Matkap', 4, 1),
+(23, 'Broaching Machine', 'Broşlama- Tığ Çekme', 4, 1),
+(24, 'Countersinking Machine', 'Havşa Tez.', 4, 1),
+(25, 'Gashing Machine', 'Dişli Açma Makinesi', 4, 1),
+(26, 'Grinding Machine', 'Taşlama Tez.', 4, 1),
+(27, 'Hobbing Machine', 'Dişli Tezgahı', 4, 1),
+(28, 'Honning Machine', 'Honlama Tezgahı', 4, 1),
+(29, 'Router', 'Router Tezgahı', 4, 1),
+(30, 'Saw', 'Testere', 4, 1),
+(31, 'Tapping', 'Kılavuz Tezgahı', 4, 1),
+(32, 'Reaming', 'Raybalama', 4, 1),
+(33, 'planing', 'Rendeleme', 4, 1),
+(34, 'Laser cutting', 'Laser Kesme', 5, 1),
+(35, 'EDM', 'EDM', 5, 1),
+(36, 'Wire EDM', 'Tel EDM', 5, 1);
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_EQPMNT_TYPE_ATTRBT`
+-- Table structure for table `T_EQPMNT_TYPE_ATTRBT`
 --
 
-CREATE TABLE `T_EQPMNT_TYPE_ATTRBT` (
+CREATE TABLE IF NOT EXISTS `T_EQPMNT_TYPE_ATTRBT` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `attribute_name` varchar(50) DEFAULT NULL,
+  `attribute_name_tr` varchar(50) DEFAULT NULL,
   `attribute_value` varchar(200) DEFAULT NULL,
   `eqpmnt_type_id` int(11) DEFAULT NULL,
   `active` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `eqpmnt_type_id` (`eqpmnt_type_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=625 ;
+
+--
+-- Dumping data for table `T_EQPMNT_TYPE_ATTRBT`
+--
+
+INSERT INTO `T_EQPMNT_TYPE_ATTRBT` (`id`, `attribute_name`, `attribute_name_tr`, `attribute_value`, `eqpmnt_type_id`, `active`) VALUES
+(1, 'Casting Size OD MIN.', 'Döküm Boyutu OD MIN.', 'mm', 1, 1),
+(2, 'Casting Size OD MAX.', 'Döküm Boyutu OD MAX.', 'mm', 1, 1),
+(3, 'Casting Length MIN', 'Min. Döküm Uzunluğu', 'mm', 1, 1),
+(4, 'Casting Length MAX', 'Max. Döküm Uzunluğu', 'mm', 1, 1),
+(5, 'Weight Limit', 'Ağırlık Limiti', 'kg', 1, 1),
+(6, 'Standard Die Size', 'Standard Kalıp Boyutu', 'mm*mm', 1, 1),
+(7, 'Total Power', 'Toplam Gücü', 'KW', 1, 1),
+(8, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 1, 1),
+(9, 'Machine Weight', 'Makina Ağırlığı', 'kg', 1, 1),
+(10, 'Precision', 'Hassasiyet', '%', 1, 1),
+(11, 'Accuracy', 'Doğruluk', 'micrometer', 1, 1),
+(12, 'Production Date', 'Üretim Tarihi', 'year', 1, 1),
+(13, 'Production Location', 'Üretim Yeri', '', 1, 1),
+(14, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 1, 1),
+(15, 'Maximum Ejector Stroke', 'Maximum Ejector Darbesi', 'mm', 2, 1),
+(16, 'Total Die Opening', 'Toplam Kalıp Açıklığı', 'mm', 2, 1),
+(17, 'Injection Plunger Diameter', 'Enjeksiyon Pistonu Çapı', 'mm', 2, 1),
+(18, 'Injection Cylinder Diameter', 'Enjeksiyon Silindir Çapı', 'mm', 2, 1),
+(19, 'Injection Plunger Stroke', 'Enjeksiyon Piston Darbesi', 'mm', 2, 1),
+(20, 'Dry Shot Speed at 900 PSI ', 'Kuru Atış Hızı @ 900 psi', 'm/dk', 2, 1),
+(21, 'Injection Capacity ', 'Enjeksiyon Kapasitesi', 'gram', 2, 1),
+(22, 'Maximum Shot Weight', 'Maksimum Atış Ağırlığı', 'gram', 2, 1),
+(23, 'Metal Pressure ', 'Metal Basinci', 'Pa', 2, 1),
+(24, 'Clamping Force ', 'Sıkıştırma Kuvveti', 'Newton', 2, 1),
+(25, 'Dry Cycle Speed', 'Kuru Dönüş hızı', 'rpm', 2, 1),
+(26, 'Standard Die Size', 'Standard Kalıp Boyutu', 'mm*mm', 2, 1),
+(27, 'Total Power', 'Toplam Gücü', 'KW', 2, 1),
+(28, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 2, 1),
+(29, 'Machine Weight', 'Makina Ağırlığı', 'kg', 2, 1),
+(30, 'Precision', 'Hassasiyet', '%', 2, 1),
+(31, 'Accuracy', 'Doğruluk', 'micrometer', 2, 1),
+(32, 'Production Date', 'Üretim Tarihi', 'year', 2, 1),
+(33, 'Production Location', 'Üretim Yeri', '', 2, 1),
+(34, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 2, 1),
+(35, 'Vacuum Stablized System', 'Vacum Denge Sistemi', '', 3, 1),
+(36, 'Molding System', 'Döküm Yöntemi', '', 3, 1),
+(37, 'Sand Reclamation System', 'Kum Geri Kazanım Yöntemi', '', 3, 1),
+(38, 'Standard Die Size', 'Standard Kalıp Boyutu', 'mm*mm', 3, 1),
+(39, 'Total Power', 'Toplam Gücü', 'KW', 3, 1),
+(40, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 3, 1),
+(41, 'Machine Weight', 'Makina Ağırlığı', 'kg', 3, 1),
+(42, 'Precision', 'Hassasiyet', '%', 3, 1),
+(43, 'Accuracy', 'Doğruluk', 'micrometer', 3, 1),
+(44, 'Production Date', 'Üretim Tarihi', 'year', 3, 1),
+(45, 'Production Location', 'Üretim Yeri', '', 3, 1),
+(46, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 3, 1),
+(47, 'Crucible Capacity', 'Pota Kapasitesi', 'kg', 4, 1),
+(48, 'Cylinder Spacing', 'Silindir Boşluğu', 'mm*mm', 4, 1),
+(49, 'Open Type Force', 'Açık kuvvet tipi', 'Newton', 4, 1),
+(50, 'Rated-Locking Force', 'Kilitleme Kuvveti', 'Newton', 4, 1),
+(51, 'Move Template Trip', 'Kalıp Hareketi', 'mm', 4, 1),
+(52, 'Hydraulic System Work Pressure', 'Hidrolik Sistem Çalışma Basıncı', 'Pa', 4, 1),
+(53, 'Static Model Core-Inserting Force', 'Statik Modele Çekirdek Ekleme Kuvveti', 'Newton', 4, 1),
+(54, 'Static Model Core-Pulling Force', 'Static Modele Çekirdek Çekme Kuvveti', 'Newton', 4, 1),
+(55, 'The Static Model Core-Pulling Cylinder Center High', 'Statik Modelin Çekirdek Çekme Silindir Merkez Yüks', 'mm', 4, 1),
+(56, 'Holding Furnace Power', 'Bekletme Fırın Gücü', 'KW', 4, 1),
+(57, 'Oil Pump Motor Power', 'Yağ Pompası Motor Gücü', 'KW', 4, 1),
+(58, 'Standard Die Size', 'Standard Kalıp Boyutu', 'mm*mm', 4, 1),
+(59, 'Total Power', 'Toplam Gücü', 'KW', 4, 1),
+(60, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 4, 1),
+(61, 'Machine Weight', 'Makina Ağırlığı', 'kg', 4, 1),
+(62, 'Precision', 'Hassasiyet', '%', 4, 1),
+(63, 'Accuracy', 'Doğruluk', 'micrometer', 4, 1),
+(64, 'Production Date', 'Üretim Tarihi', 'year', 4, 1),
+(65, 'Production Location', 'Üretim Yeri', '', 4, 1),
+(66, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 4, 1),
+(67, 'Clamping Pressure', 'Sıkıştırma Basıncı', 'kg', 5, 1),
+(68, 'Max. Mold Size', 'Max. Şablon Boyutu', 'mm*mm', 5, 1),
+(69, 'Ram Stroke ', 'Ram darbesi', 'mm', 5, 1),
+(70, 'Daylight Opening ', 'Gün Işığı Açıklığı', 'mm', 5, 1),
+(71, 'Pressure Height Center ', 'Basınç Yüksekliği Merkezi', 'mm', 5, 1),
+(72, 'Tie Bar Size ', 'Basma Kolu Boyutu', 'mm', 5, 1),
+(73, 'Tilt Speed (Min.) ', 'Tilt Hızı (Min.) ', 'rpm', 5, 1),
+(74, 'Standard Die Size', 'Standard Kalıp Boyutu', 'mm*mm', 5, 1),
+(75, 'Total Power', 'Toplam Gücü', 'KW', 5, 1),
+(76, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 5, 1),
+(77, 'Machine Weight', 'Makina Ağırlığı', 'kg', 5, 1),
+(78, 'Precision', 'Hassasiyet', '%', 5, 1),
+(79, 'Accuracy', 'Doğruluk', 'micrometer', 5, 1),
+(80, 'Production Date', 'Üretim Tarihi', 'year', 5, 1),
+(81, 'Production Location', 'Üretim Yeri', '', 5, 1),
+(82, 'Product Acquisition Date', 'Ürünü satın Alma Tarihi', 'year', 5, 1),
+(83, 'Forging Station', 'Dövme İstasyon', '', 6, 1),
+(84, 'Forging Force', 'Dövme kuvveti', 'Newton', 6, 1),
+(85, 'Max. Cutt Off Diameter', 'Makisumum Kesme Çapı', 'mm', 6, 1),
+(86, 'Speed Range', 'Hız Aralığı', 'm/min', 6, 1),
+(87, 'Main Slide Stroke', 'Ana kayma darbesi', 'mm', 6, 1),
+(88, 'Total Power', 'Toplam Gücü', 'KW', 6, 1),
+(89, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 6, 1),
+(90, 'Machine Weight', 'Makina Ağırlığı', 'kg', 6, 1),
+(91, 'Precision', 'Hassasiyet', '%', 6, 1),
+(92, 'Accuracy', 'Doğruluk', 'micrometer', 6, 1),
+(93, 'Production Date', 'Üretim Tarihi', 'year', 6, 1),
+(94, 'Production Location', 'Üretim Yeri', '', 6, 1),
+(95, 'Product Acquisition Date', 'Ürünü satın Alma Tarihi', 'year', 6, 1),
+(96, 'Max. Useful Diameter Of Pressure Chamber', 'Basınç Odası Maksimum Çapı', 'mm', 7, 1),
+(97, 'Max. Useful Depth Of Pressure Chamber', 'Basınç Odası Makisumum Kullanılabilir Derinliği', 'mm', 7, 1),
+(98, 'Max. Operating Pressure', 'Max. Çalışma Basıncı', 'Pa', 7, 1),
+(99, 'Work Medium', 'Çalışma Ortamı', '', 7, 1),
+(100, 'Manner Of Increasing Pressure', 'Artan Basınç Tarzı', '', 7, 1),
+(101, 'Max Time Of Increasing Pressure', 'Maksimum Basınca Ulaşma Zamanı', 'dk', 7, 1),
+(102, 'Time Of Keeping Pressure', 'Basıncı Koruma Süresi', 'dk', 7, 1),
+(103, 'Pressure Loss Rate Within 5 Minutes', '5 Dakikalık Basınç Kaybı Hızı', 'Pa/min', 7, 1),
+(104, 'Unloading Rate', 'Tahliye Oranı', 'unit/min', 7, 1),
+(105, 'Hydraulic System Rating Pressure', 'Hidrolik Sistem Basınç Oranı', 'Pa', 7, 1),
+(106, 'Temperature', 'Sıcaklık', 'degree', 7, 1),
+(107, 'Total Power', 'Toplam Gücü', 'KW', 7, 1),
+(108, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 7, 1),
+(109, 'Machine Weight', 'Makina Ağırlığı', 'kg', 7, 1),
+(110, 'Precision', 'Hassasiyet', '%', 7, 1),
+(111, 'Accuracy', 'Doğruluk', 'micrometer', 7, 1),
+(112, 'Production Date', 'Üretim Tarihi', 'year', 7, 1),
+(113, 'Production Location', 'Üretim Yeri', '', 7, 1),
+(114, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 7, 1),
+(115, 'Nominal Pressure', 'Nominal Basınç', 'Newton', 8, 1),
+(116, 'Ejecting Force', 'Çıkartma Kuvveti', 'Newton', 8, 1),
+(117, 'Stroke of Slider', 'Kaydırma Darbesi', 'mm', 8, 1),
+(118, 'Max. Opening Height', 'Maksimum Açılma Yüksekliği', 'mm', 8, 1),
+(119, 'Table Size', 'Tabla Boyutu', 'mm*mm', 8, 1),
+(120, 'EjectingSstroke', 'Fırlatma Darbesi', 'mm', 8, 1),
+(121, 'Speed of Slider', 'Kaydırma Hızı', 'm/min', 8, 1),
+(122, 'Total Power', 'Toplam Gücü', 'KW', 8, 1),
+(123, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 8, 1),
+(124, 'Machine Weight', 'Makina Ağırlığı', 'kg', 8, 1),
+(125, 'Precision', 'Hassasiyet', '%', 8, 1),
+(126, 'Accuracy', 'Doğruluk', 'micrometer', 8, 1),
+(127, 'Production Date', 'Üretim Tarihi', 'year', 8, 1),
+(128, 'Production Location', 'Üretim Yeri', '', 8, 1),
+(129, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 8, 1),
+(130, 'Max. Rolling Thickness', 'Max. Heddeleme Kalınlığı', 'mm', 9, 1),
+(131, 'Max. Pre-Bending Thickness', 'Maksimum İlk Bükülme Kalınlığı', 'mm', 9, 1),
+(132, 'Max. Rolling Width', 'Max. Heddeleme Genişliği', 'mm', 9, 1),
+(133, 'Diameter of Upper Roller', 'Üst Silindirin Çapı', 'mm', 9, 1),
+(134, 'Total Power', 'Toplam Gücü', 'KW', 9, 1),
+(135, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 9, 1),
+(136, 'Machine Weight', 'Makina Ağırlığı', 'kg', 9, 1),
+(137, 'Precision', 'Hassasiyet', '%', 9, 1),
+(138, 'Accuracy', 'Doğruluk', 'micrometer', 9, 1),
+(139, 'Production Date', 'Üretim Tarihi', 'year', 9, 1),
+(140, 'Production Location', 'Üretim Yeri', '', 9, 1),
+(141, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 9, 1),
+(142, 'Max. Shearing Thickness', 'Max. Kesme Kalınlığı', 'mm', 10, 1),
+(143, 'Max.  Shearing Width', 'Max.  Kesme Genışliği', 'mm', 10, 1),
+(144, 'Distance Betweein Uprights', 'Sütünlar Arası Mesafe', 'mm', 10, 1),
+(145, 'Strokes Max. No.', 'Maksimum Darbe Miktarı', 'quantity', 10, 1),
+(146, 'Background Stroke', 'Arkaplan Darbesi', 'mm', 10, 1),
+(147, 'Shearing Angle', 'Kesme Açısı', 'degree', 10, 1),
+(148, 'Working Table Height', 'İşleme Tabla Yüksekliği', 'mm', 10, 1),
+(149, 'Total Power', 'Toplam Gücü', 'KW', 10, 1),
+(150, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 10, 1),
+(151, 'Machine Weight', 'Makina Ağırlığı', 'kg', 10, 1),
+(152, 'Precision', 'Hassasiyet', '%', 10, 1),
+(153, 'Accuracy', 'Doğruluk', 'micrometer', 10, 1),
+(154, 'Production Date', 'Üretim Tarihi', 'year', 10, 1),
+(155, 'Production Location', 'Üretim Yeri', '', 10, 1),
+(156, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 10, 1),
+(157, 'Compressed Air', 'Basınçlı Hava', 'Pa', 11, 1),
+(158, 'Number of Controlled Axis', 'Kontrollü Eksen Sayısı', 'quantity', 11, 1),
+(159, 'Min. Mend Radius', 'Kıvrılma Yarıçapı', 'mm', 11, 1),
+(160, 'Applied Material', 'Uygulanmakta Olan Malzeme', '', 11, 1),
+(161, 'Material Thickness', 'Malzeme Kalınlığı', 'mm', 11, 1),
+(162, 'Processing Height', 'İşleme Yüksekliği', 'mm', 11, 1),
+(163, 'Material Feeding Method', 'Malzeme Besleme Yöntemi', '', 11, 1),
+(164, 'File Format', 'Dosya Formatı', '', 11, 1),
+(165, 'Total Power', 'Toplam Gücü', 'KW', 11, 1),
+(166, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 11, 1),
+(167, 'Machine Weight', 'Makina Ağırlığı', 'kg', 11, 1),
+(168, 'Rrecision', 'Hassasiyet', '%', 11, 1),
+(169, 'Accuracy', 'Doğruluk', 'micrometer', 11, 1),
+(170, 'Production Date', 'Üretim Tarihi', 'year', 11, 1),
+(171, 'Production Location', 'Üretim Yeri', '', 11, 1),
+(172, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 11, 1),
+(173, 'Output Power Range', 'Çıkış Gücü Aralığı', 'Kw', 12, 1),
+(174, 'Output Frequency Range', 'Çıkış Ferekans Aralığı', '1/seconed', 12, 1),
+(175, 'Output Power Adjustable Range', 'Ayarlanabilir Çıkış Gücü Aralığı', 'Kw', 12, 1),
+(176, 'Output Frequency Tracking ', 'Çıkış Frekans Takibi', '1/seconed', 12, 1),
+(177, 'Closed-loop Control Stability', 'Kapalı Çevrim Kontrol Stabilitesi', '', 12, 1),
+(178, 'Power Factor', 'Güç Faktörü', 'Kw', 12, 1),
+(179, 'Input Voltage Range', 'Giriş Gerilimi Aralığı', 'volt', 12, 1),
+(180, 'Overload Ability', 'Aşırı Yük Kapasitesi', '', 12, 1),
+(181, 'Cabinet Protection Level', 'Kabine Koruma Seviyesi', '', 12, 1),
+(182, 'Cooling Mode', 'Soğutma Yöntemi', '', 12, 1),
+(183, 'Environment Temperature', 'Çevre Sıcaklığı', 'degree', 12, 1),
+(184, 'Altitude', 'Yükseklik', 'mm', 12, 1),
+(185, 'Input Voltage', 'Giriş Gerilimi', 'volt', 12, 1),
+(186, 'Efficiency', 'Etkinlik', '%', 12, 1),
+(187, 'Total Power', 'Toplam Gücü', 'KW', 12, 1),
+(188, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 12, 1),
+(189, 'Machine Weight', 'Makina Ağırlığı', 'kg', 12, 1),
+(190, 'precision', 'Hassasiyet', '%', 12, 1),
+(191, 'Accuracy', 'Doğruluk', 'micrometer', 12, 1),
+(192, 'Production Date', 'Üretim Tarihi', 'year', 12, 1),
+(193, 'Production Location', 'Üretim Yeri', '', 12, 1),
+(194, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 12, 1),
+(195, 'Air Consumption', 'Hava Tüketimi', 'm3/min', 13, 1),
+(196, 'Head End Diameter', 'Düşü Yüksekliği', 'mm', 13, 1),
+(197, 'Screw Diameter', 'Vida Çapı', 'mm', 13, 1),
+(198, 'Screw Length', 'Vida Uzunluğu', 'mm', 13, 1),
+(199, 'Motor Rotational Speed', 'Motor Dönme Hızı', 'rpm', 13, 1),
+(200, 'Max. Air Pressure', 'Maksimum Hava Basıncı', 'Pa', 13, 1),
+(201, 'Input Voltage', 'Giriş Gerilimi', 'rpm', 13, 1),
+(202, 'Efficiency', 'Etkinlik', '%', 13, 1),
+(203, 'Total Power', 'Toplam Gücü', 'KW', 13, 1),
+(204, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 13, 1),
+(205, 'Machine Weight', 'Makina Ağırlığı', 'kg', 13, 1),
+(206, 'Precision', 'Hassasiyet', '%', 13, 1),
+(207, 'Accuracy', 'Doğruluk', 'micrometer', 13, 1),
+(208, 'Production Date', 'Üretim Tarihi', 'year', 13, 1),
+(209, 'Production Location', 'Üretim Yeri', '', 13, 1),
+(210, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 13, 1),
+(211, 'Rotor Outer Diameter', 'Rotor Dış Çapı', 'mm', 14, 1),
+(212, 'Rotor Stack Height  ', 'Rotorun Yığın Yüksekliği', 'mm', 14, 1),
+(213, 'Rotor Slot Numbers ', 'Rotorun Delik Sayısı', 'quantity', 14, 1),
+(214, 'Rotor Shaft Length ', 'Rotor Mili Uzunluğu', 'mm', 14, 1),
+(215, 'Rotor Axle Diameter', 'Rotor Mili Çapı', 'mm', 14, 1),
+(216, 'Max. Air Pressure', 'Maksimum Hava Basıncı', 'Pa', 14, 1),
+(217, 'Input Voltage', 'Giriş Gerilimi', 'volt', 14, 1),
+(218, 'Efficiency', 'Etkinlik', '%', 14, 1),
+(219, 'Total Power', 'Toplam Gücü', 'KW', 14, 1),
+(220, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 14, 1),
+(221, 'Machine Weight', 'Makina Ağırlığı', 'kg', 14, 1),
+(222, 'Precision', 'Hassasiyet', '%', 14, 1),
+(223, 'Accuracy', 'Doğruluk', 'micrometer', 14, 1),
+(224, 'Production Date', 'Üretim Tarihi', 'year', 14, 1),
+(225, 'Production Location', 'Üretim Yeri', '', 14, 1),
+(226, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 14, 1),
+(227, 'Temperature Range    ', 'Sıcaklık Aralığı', 'Degree', 15, 1),
+(228, 'Temperature Control Precision', 'Sıcaklık Kontrolü Hassasiyeti', 'Degree', 15, 1),
+(229, 'Heating Power ', 'Isıtma Gücü', 'KW', 15, 1),
+(230, 'Rated Current ', 'Nominal Akım', 'Amper', 15, 1),
+(231, 'Stroke Length of Piston', 'Piston Kurs Boyu', 'mm', 15, 1),
+(232, 'Max. Air pressure', 'Maksimum Hava Basıncı', 'Pa', 15, 1),
+(233, 'Input Voltage', 'Giriş Gerilimi', 'volt', 15, 1),
+(234, 'Efficiency', 'Etkinlik', '%', 15, 1),
+(235, 'Total Power', 'Toplam Gücü', 'KW', 15, 1),
+(236, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 15, 1),
+(237, 'Machine Weight', 'Makina Ağırlığı', 'kg', 15, 1),
+(238, 'Precision', 'Hassasiyet', '%', 15, 1),
+(239, 'Accuracy', 'Doğruluk', 'micrometer', 15, 1),
+(240, 'Production Date', 'Üretim Tarihi', 'year', 15, 1),
+(241, 'Production Location', 'Üretim Yeri', '', 15, 1),
+(242, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 15, 1),
+(243, 'Control  Method', 'Kontrol Yöntemi', '', 16, 1),
+(244, 'Convey or speed', 'Hiz', 'volt,Watt', 16, 1),
+(245, 'PCB  Size', 'PCB  Boyutu', 'mm', 16, 1),
+(246, 'Flux Capacity', 'Akı Kapasitesi', 'Liter', 16, 1),
+(247, 'Pre-Heating Zone', 'Ön Isıtma Bölgesi', 'mm', 16, 1),
+(248, 'Solder Pot Temperature', 'LehimPotası Sıcaklığı', 'degree', 16, 1),
+(249, 'Solder Pot Capacity', 'LehimPotası Kapasitesi', 'Kg', 16, 1),
+(250, 'Wave Motor Power', 'Dalga Motoru', 'kW', 16, 1),
+(251, 'Finger Cleaning Pump Power', 'Parmak Temizleme Motoru', 'kW', 16, 1),
+(252, 'Convey or Direction', 'Yön', '', 16, 1),
+(253, 'Convey or Angle', 'Açı', 'degree', 16, 1),
+(254, 'Flux  Pressure', 'Akı Basıncı', 'bar', 16, 1),
+(255, 'Input Voltage', 'Giriş Gerilimi', 'volt', 16, 1),
+(256, 'Efficiency', 'Etkinlik', '%', 16, 1),
+(257, 'Total Power', 'Toplam Gücü', 'KW', 16, 1),
+(258, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 16, 1),
+(259, 'Machine Weight', 'Makina Ağırlığı', 'kg', 16, 1),
+(260, 'Precision', 'Hassasiyet', '%', 16, 1),
+(261, 'Accuracy', 'Doğruluk', 'micrometer', 16, 1),
+(262, 'Production Date', 'Üretim Tarihi', 'year', 16, 1),
+(263, 'Production Location', 'Üretim Yeri', '', 16, 1),
+(264, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 16, 1),
+(265, 'RatedOutput Current', 'Nominal Çıkış Akımı', 'Amper', 17, 1),
+(266, 'Range of Welding Current Regulation', 'Kaynak Akımının Aralığı', 'Amper', 17, 1),
+(267, 'No-load Voltage', 'Yüksüz Çalışma Gerilimi', 'volt', 17, 1),
+(268, 'Duty Cycle', 'Görev Döngüsü', '%', 17, 1),
+(269, 'Outer Covering Protection Rank', 'Dış Kaplama Koruması Derecesi', '', 17, 1),
+(270, 'Insulation Grade', 'İzolasyon Seviyesi', '', 17, 1),
+(271, 'Welding Rod Diameter', 'Kaynak Çubuğu Çapı', 'mm', 17, 1),
+(272, 'Input Voltage', 'Giriş Gerilimi', 'volt', 17, 1),
+(273, 'Efficiency', 'Etkinlik', '%', 17, 1),
+(274, 'Total Power', 'Toplam Gücü', 'KW', 17, 1),
+(275, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 17, 1),
+(276, 'Machine Weight', 'Makina Ağırlığı', 'kg', 17, 1),
+(277, 'Precision', 'Hassasiyet', '%', 17, 1),
+(278, 'Accuracy', 'Doğruluk', 'micrometer', 17, 1),
+(279, 'Production Date', 'Üretim Tarihi', 'year', 17, 1),
+(280, 'Production Location', 'Üretim Yeri', '', 17, 1),
+(281, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 17, 1),
+(282, 'Travel in X/Y/Z', 'X/Y/Z Eksenlerindeki Hareket', 'mm', 18, 1),
+(283, 'Bar Diameter', 'Çubuk Çapı', 'mm', 18, 1),
+(284, 'Max. Part Length', 'Max. Parça Uzunluğu', 'mm', 18, 1),
+(285, 'Swing Over Bed', 'Yatak Üstü Hareket Mesafesi', 'mm', 18, 1),
+(286, 'Rapid Motion Speeds in X/Y/Z', ' X/Y/Z Eksenlerinde Yüksek Hareket Hızı', 'm/min', 18, 1),
+(287, 'Work Feed X/Y/Z', ' X/Y/Z Eksenlerinde Besleme', 'm/min', 18, 1),
+(288, 'Feed Force in X/Y/Z', 'Besleme Kuvveti X/Y/Z', 'Newton', 18, 1),
+(289, 'Max. Spindle Speed', 'Max. Spindle Devri', 'rpm', 18, 1),
+(290, 'Spindle Nose', 'Spindle Ucu', '', 18, 1),
+(291, 'Max. Drive Power', 'Max. Sürüş Gücü', 'kw', 18, 1),
+(292, 'Max. Torque', 'Max. Burulma Momenti', 'Nm', 18, 1),
+(293, 'Table Size', 'Tabla Boyutu', 'mm', 18, 1),
+(294, 'Max Load Weight', 'Maksimum Yük Miktarı', 'kg', 18, 1),
+(295, 'Total Power', 'Toplam Gücü', 'KW', 18, 1),
+(296, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 18, 1),
+(297, 'Machine Weight', 'Makina Ağırlığı', 'kg', 18, 1),
+(298, 'Precision', 'Hassasiyet', '%', 18, 1),
+(299, 'Accuracy', 'Doğruluk', 'micrometer', 18, 1),
+(300, 'Production Date', 'Üretim Tarihi', 'year', 18, 1),
+(301, 'Production Location', 'Üretim Yeri', '', 18, 1),
+(302, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 18, 1),
+(303, 'Longitudinal Travel', 'Boylamsal Hareket', 'mm', 19, 1),
+(304, 'Vertical Travel', 'Dikey Hareket', 'mm', 19, 1),
+(305, 'T Slots', 'T Kanal', '', 19, 1),
+(306, 'Rapid Speed Of Table', 'Tablanın Konumlama Hızı', 'm/dk', 19, 1),
+(307, 'Cutting Speed Of Table', 'Tablanın Kesme Hızı', 'm/dk', 19, 1),
+(308, 'Mainspindle Nose', 'Ana Spindle Ucu', '', 19, 1),
+(309, 'Spindle Speed', 'Spindle Devri', 'rpm', 19, 1),
+(310, 'Vertical Speed', 'Dikey Hız', 'rpm', 19, 1),
+(311, 'Cross Speed', 'Çapraz Hız', 'm/dk', 19, 1),
+(312, 'Horizontal Spindle Power', 'Yatay İş Spindle Gücü', 'KW', 19, 1),
+(313, 'Table Longitudinal Feed', 'Tabla Boyuna Besleme Hızı', 'm/dk', 19, 1),
+(314, 'Lubricating Oil Pump power', 'Yağlama Yağı Pompası Gücü', 'kW', 19, 1),
+(315, 'Coolant Pump power', 'Soğutma Pompası Gücü', 'kW', 19, 1),
+(316, 'Table Size', 'Tabla Boyutu', 'mm', 19, 1),
+(317, 'Max Load Weight', 'Maksimum Yük Miktarı', 'kg', 19, 1),
+(318, 'Total Power', 'Toplam Gücü', 'KW', 19, 1),
+(319, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 19, 1),
+(320, 'Machine Weight', 'Makina Ağırlığı', 'kg', 19, 1),
+(321, 'Precision', 'Hassasiyet', '%', 19, 1),
+(322, 'Accuracy', 'Doğruluk', 'micrometer', 19, 1),
+(323, 'Production Date', 'Üretim Tarihi', 'year', 19, 1),
+(324, 'Production Location', 'Üretim Yeri', '', 19, 1),
+(325, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 19, 1),
+(326, 'Tool Storage Capacity', 'Takım Depolama Kapasitesi', 'unit', 20, 1),
+(327, 'Tool Shank', 'Takım Ucu', '', 20, 1),
+(328, 'Model', 'Model', '', 20, 1),
+(329, 'Spindle Power', 'Spindle Gücü', 'kw', 20, 1),
+(330, 'Tool magazine Specs.', 'Takım Magazini Spesifikasyonları', '', 20, 1),
+(331, 'Spindle Speed', 'Spindle Hızı', 'rpm', 20, 1),
+(332, 'Linear Traveling Distance- X', 'Doğrusal Hareket Mesafesi-X', 'mm', 20, 1),
+(333, 'Linear Traveling Distance- Y', 'Doğrusal Hareket Mesafesi-Y', 'mm', 20, 1),
+(334, 'Linear Traveling Distance- Z', 'Doğrusal Hareket Mesafesi-Z', 'mm', 20, 1),
+(335, 'Linear Rapid Traverse Rate- X', 'Doğrusal Travers Hızı X', 'm/min', 20, 1),
+(336, 'Linear Rapid Traverse Rate- Y', 'Doğrusal Travers Hızı Y', 'm/min', 20, 1),
+(337, 'Linear Rapid Traverse Rate- Z', 'Doğrusal Travers Hızı- Z', 'm/min', 20, 1),
+(338, 'Rotational Rapid Traverse Rate- A', 'Dönme Travers Hızı- A', 'rpm', 20, 1),
+(339, 'Rotational Rapid Traverse Rate- B', 'Dönme Travers Hızı- B', 'rpm', 20, 1),
+(340, 'Rotational Rapid Traverse Rate- C', 'Dönme Travers Hızı- C', 'rpm', 20, 1),
+(341, 'Rotational Degree- A', 'Dönme Derecesi- A', 'degree', 20, 1),
+(342, 'Rotational Degree- B', 'Dönme Derecesi- B', 'degree', 20, 1),
+(343, 'Rotational Degree- C', 'Dönme Derecesi- C', 'degree', 20, 1),
+(344, 'Tool Magazine', 'Takım Magazini', 'pocket', 20, 1),
+(345, 'Table Size', 'Tabla Boyutu', 'mm*mm', 20, 1),
+(346, 'Max Load Weight', 'Maksimum Yük Miktarı', 'kg', 20, 1),
+(347, 'Total Power', 'Toplam Gücü', 'KW', 20, 1),
+(348, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 20, 1),
+(349, 'Machine Weight', 'Makina Ağırlığı', 'kg', 20, 1),
+(350, 'Precision', 'Hassasiyet', '%', 20, 1),
+(351, 'Accuracy', 'Doğruluk', 'micrometer', 20, 1),
+(352, 'Production Date', 'Üretim Tarihi', 'year', 20, 1),
+(353, 'Production Location', 'Üretim Yeri', '', 20, 1),
+(354, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 20, 1),
+(355, 'MaximumStroke', 'Maksimum Darbe', 'mm', 21, 1),
+(356, 'Max. distanceTable to Ram', 'Kafa ve Tabla Arası Maksimum Mesafe', 'mm', 21, 1),
+(357, 'Min. distance Table to Ram', 'Kafa ve Tabla Arası Minimum Mesafe', 'mm', 21, 1),
+(358, 'Table Size', 'Tabla Boyutu', 'mm*mm', 21, 1),
+(359, 'Max Load Weight', 'Maksimum Yük Miktarı', 'kg', 21, 1),
+(360, 'Total Power', 'Toplam Gücü', 'KW', 21, 1),
+(361, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 21, 1),
+(362, 'Machine Weight', 'Makina Ağırlığı', 'kg', 21, 1),
+(363, 'Precision', 'Hassasiyet', '%', 21, 1),
+(364, 'Accuracy', 'Doğruluk', 'micrometer', 21, 1),
+(365, 'Production Date', 'Üretim Tarihi', 'year', 21, 1),
+(366, 'Production Location', 'Üretim Yeri', '', 21, 1),
+(367, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 21, 1),
+(368, 'Spindle Taper', 'Spindle Tutucu', '', 22, 1),
+(369, 'Spindle Travel', 'Spindle Hareketi', 'mm', 22, 1),
+(370, 'Spindle Speed (RPM x Steps)', 'Spindle hızı (RPM x Steps)', 'rpm', 22, 1),
+(371, 'Diameter of RAM (Quill)', 'Kafa Çapı (Quill)', 'mm', 22, 1),
+(372, 'No. of Spindle Auto Feed Ranges (MM/REV)', 'Spindle''ın Otomatik Besleme Hızı', 'steps', 22, 1),
+(373, 'Max / Min Distance Spindle Nose to Base', 'Spindle Burnu ile Kafası Arası Maks/Min Mesafe', 'mm', 22, 1),
+(374, 'Max / Min Distance Spindle Center to Column', 'Spindle Merkezi ile Kolon Arasındaki Maksimum Mesa', 'mm', 22, 1),
+(375, 'Vertical Travel of Arm', 'Dikey Hareket', 'mm', 22, 1),
+(376, 'Horizontal Travel of Arm', 'Yatay Hareket', 'mm', 22, 1),
+(377, 'Max Drilling Radius', 'Maksimum. Delme Yarı Çapı', 'mm', 22, 1),
+(378, 'Diameter of Column', 'Sütun Çapı', 'mm', 22, 1),
+(379, 'Coolant Tank', 'Soğutma Tankı', 'Liter', 22, 1),
+(380, 'Drill Head Motor Power', 'Delme Motorunun Gücü', 'Kw', 22, 1),
+(381, 'Elevating Motor Power', 'Yükseltme Motorunun Gücü', 'Kw', 22, 1),
+(382, 'Table Size', 'Tabla Boyutu', 'mm*mm', 22, 1),
+(383, 'Max Load Weight', 'Maksimum Yük Miktarı', 'kg', 22, 1),
+(384, 'Total Power', 'Toplam Gücü', 'KW', 22, 1),
+(385, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 22, 1),
+(386, 'Machine Weight', 'Makina Ağırlığı', 'kg', 22, 1),
+(387, 'Precision', 'Hassasiyet', '%', 22, 1),
+(388, 'Accuracy', 'Doğruluk', 'micrometer', 22, 1),
+(389, 'Production Date', 'Üretim Tarihi', 'year', 22, 1),
+(390, 'Production Location', 'Üretim Yeri', '', 22, 1),
+(391, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 22, 1),
+(392, 'Pulling Capacity', 'Çekme Kapasitesi', 'kg', 23, 1),
+(393, 'Max. cutting Speed', 'Max. Kesme Hızı', 'm/s', 23, 1),
+(394, 'Max. Return Speed', 'Max. Geri Dönüş Hızı', 'm/s', 23, 1),
+(395, 'Stroke', 'Darbe', 'mm', 23, 1),
+(396, 'coolant Res. Capacity', 'Soğutucunun Direnç Kapasitesi', 'Pa', 23, 1),
+(397, 'Floor Space', 'Kapsama Alanı', 'mm*mm', 23, 1),
+(398, 'Table Size', 'Tabla Boyutu', 'mm*mm', 23, 1),
+(399, 'Max Load Weight', 'Maksimum Yük Miktarı', 'kg', 23, 1),
+(400, 'Total Power', 'Toplam Gücü', 'KW', 23, 1),
+(401, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 23, 1),
+(402, 'Machine Weight', 'Makina Ağırlığı', 'kg', 23, 1),
+(403, 'Precision', 'Hassasiyet', '%', 23, 1),
+(404, 'Accuracy', 'Doğruluk', 'micrometer', 23, 1),
+(405, 'Production Date', 'Üretim Tarihi', 'year', 23, 1),
+(406, 'Production Location', 'Üretim Yeri', '', 23, 1),
+(407, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 23, 1),
+(408, 'Rated Voltage ', 'Nominal Gerilim', 'volt', 24, 1),
+(409, 'Max. Attraction ', 'Max. Çekim', 'Newton', 24, 1),
+(410, 'Rated Input Power ', 'Nominal Giriş Gücü', 'Kw', 24, 1),
+(411, 'No-load Speed ', 'Maksimum Hızı', 'm/min', 24, 1),
+(412, 'Table Size', 'Tabla Boyutu', 'mm*mm', 24, 1),
+(413, 'Max Load Weight', 'Maksimum Yük Miktarı', 'kg', 24, 1),
+(414, 'Total Power', 'Toplam Gücü', 'KW', 24, 1),
+(415, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 24, 1),
+(416, 'Machine Weight', 'Makina Ağırlığı', 'kg', 24, 1),
+(417, 'Precision', 'Hassasiyet', '%', 24, 1),
+(418, 'Accuracy', 'Doğruluk', 'micrometer', 24, 1),
+(419, 'Production Date', 'Üretim Tarihi', 'year', 24, 1),
+(420, 'Production Location', 'Üretim Yeri', '', 24, 1),
+(421, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 24, 1),
+(422, 'Part Max. Diameter', 'Parçanin Max. Çapı', 'mm', 25, 1),
+(423, 'Max. Module ', 'Max. Modül', 'M', 25, 1),
+(424, 'Max. Gear Width ', 'Max. Vites Aralığı', 'mm', 25, 1),
+(425, 'Table Max. Weight ', 'Tablanın Max. Ağırlığı', 'kg', 25, 1),
+(426, 'Table Size', 'Tabla Boyutu', 'mm*mm', 25, 1),
+(427, 'Max Load Weight', 'Maksimum Yük Miktarı', 'kg', 25, 1),
+(428, 'Total Power', 'Toplam Gücü', 'KW', 25, 1),
+(429, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 25, 1),
+(430, 'Machine Weight', 'Makina Ağırlığı', 'kg', 25, 1),
+(431, 'Precision', 'Hassasiyet', '%', 25, 1),
+(432, 'Accuracy', 'Doğruluk', 'micrometer', 25, 1),
+(433, 'Production Date', 'Üretim Tarihi', 'year', 25, 1),
+(434, 'Production Location', 'Üretim Yeri', '', 25, 1),
+(435, 'Product Acquisition Date', 'Ürünü satın Alma Tarihi', 'year', 25, 1),
+(436, 'Maximum Size of Workpiece', 'Parçanin Max. Boyutu', 'mm', 26, 1),
+(437, 'The Grinding Workpiece Height Size', 'Taşalama İş Parçası Boyutu', 'mm', 26, 1),
+(438, 'The Maximum Speed of the Grinding Heel Spindle', 'Taşlama Topuk Milinin Maksimum Hızı', 'rpm', 26, 1),
+(439, 'Grinding Wheel/ Diameter', 'Bileme Teker Çapı', 'mm', 26, 1),
+(440, 'Wheelhead Feed Speed ', 'Dişli Besleme Hızı', 'm/dk', 26, 1),
+(441, 'Chuck Workpiece Speed', 'Ayna Hızı', 'm/dk', 26, 1),
+(442, 'Table Size', 'Tabla Boyutu', 'mm*mm', 26, 1),
+(443, 'Max Load Weight', 'Maksimum Yük Miktarı', 'kg', 26, 1),
+(444, 'Total Power', 'Toplam Gücü', 'KW', 26, 1),
+(445, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 26, 1),
+(446, 'Machine Weight', 'Makina Ağırlığı', 'kg', 26, 1),
+(447, 'Precision', 'Hassasiyet', '%', 26, 1),
+(448, 'Accuracy', 'Doğruluk', 'micrometer', 26, 1),
+(449, 'Production Date', 'Üretim Tarihi', 'year', 26, 1),
+(450, 'Production Location', 'Üretim Yeri', '', 26, 1),
+(451, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 26, 1),
+(452, 'Max Machining Diameter', 'Max İşleme Çapı', 'mm', 27, 1),
+(453, 'Max Modulus', 'Max. Modül', 'mm', 27, 1),
+(454, 'Max Machining Width', 'Max İşleme Genişliği', 'mm', 27, 1),
+(455, 'Max Diameter/Length of Hob', 'Freze Bıçağının Maksimum Çapı ve Uzunluğu', 'mm', 27, 1),
+(456, 'Scope of Main Tool Turning Speed and Grade', 'Ana Tornaalam Hızı ve Derecesi', 'rpm', 27, 1),
+(457, 'Arbor Diameter', 'Malafa Çapı', 'mm', 27, 1),
+(458, 'Arbor Diameter of Workpiece', 'Parçanın Malafa Çapı', 'mm', 27, 1),
+(459, 'Max Axial Travel of Tool', 'Takımın Maksimum Eksenel Hareketi', 'mm', 27, 1),
+(460, 'Max Turning Angle of Hob', 'Maksimum freze bıçağının dönme açısı', 'degree', 27, 1),
+(461, 'Worktable Aperture', 'Tabla Açıklığı', 'mm', 27, 1),
+(462, 'Spindle Taper', 'Spindle Tutucu', '', 27, 1),
+(463, 'Distance from Hob Center to Worktable Face', 'Tablanın Freze Bıçağına Olan Mesafesi', 'mm', 27, 1),
+(464, 'Distance from Hob Center to Worktable Axis Center', 'Tablanın Eksen Merkezinin Freze Bıçağına Olan Mesa', 'mm', 27, 1),
+(465, 'Table Size', 'Tabla Boyutu', 'mm*mm', 27, 1),
+(466, 'Max Load Weight', 'Maksimum Yük Miktarı', 'kg', 27, 1),
+(467, 'Total Power', 'Toplam Gücü', 'KW', 27, 1),
+(468, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 27, 1),
+(469, 'Machine Weight', 'Makina Ağırlığı', 'kg', 27, 1),
+(470, 'Precision', 'Hassasiyet', '%', 27, 1),
+(471, 'Accuracy', 'Doğruluk', 'micrometer', 27, 1),
+(472, 'Production Date', 'Üretim Tarihi', 'year', 27, 1),
+(473, 'Production Location', 'Üretim Yeri', '', 27, 1),
+(474, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 27, 1),
+(475, 'Max. Turning Diameter', 'Max. Tornalama Çapı', 'mm', 28, 1),
+(476, 'Max. Height of Workpiece', 'Max. Parça uzunluğu', 'mm', 28, 1),
+(477, 'Workbench Diameter', 'Tabla Çapı', 'mm', 28, 1),
+(478, 'Workbench Speed Series', 'Tablanın Hızı', 'rpm', 28, 1),
+(479, 'Workbench Speed Range', 'Tabla Hızının Aralığı', 'rpm', 28, 1),
+(480, 'Max. Workbench Torque', 'Maksimum Tablanın Torku', 'N*m', 28, 1),
+(481, 'Max. Cutting Force of Knife Rest', 'Kesicinin Maksimum Kesme Kuvveti', 'Newton', 28, 1),
+(482, 'RAM Travel of Vertical Slide', 'Dikey Sürgünün Ram Hareketi', 'mm', 28, 1),
+(483, 'Table Size', 'Tabla Boyutu', 'mm*mm', 28, 1),
+(484, 'Max Load Weight', 'Maksimum Yük Miktarı', 'kg', 28, 1),
+(485, 'Total Power', 'Toplam Gücü', 'KW', 28, 1),
+(486, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 28, 1),
+(487, 'Machine Weight', 'Makina Ağırlığı', 'kg', 28, 1),
+(488, 'Precision', 'Hassasiyet', '%', 28, 1),
+(489, 'Accuracy', 'Doğruluk', 'micrometer', 28, 1),
+(490, 'Production Date', 'Üretim Tarihi', 'year', 28, 1),
+(491, 'Production Location', 'Üretim Yeri', '', 28, 1),
+(492, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 28, 1),
+(493, 'WorkingSpeed ', 'Çalışma Hızı', 'mm/s', 29, 1),
+(494, 'Spindle Motor', 'Spindle Motoru', 'KW', 29, 1),
+(495, 'Engraving Speed  ', 'Oyma Hızı', 'mm/s', 29, 1),
+(496, 'Rotation Speed of Spindle Motor ', 'Spindle Motorunun Dönüş Hızı', 'rpm', 29, 1),
+(497, 'Engraving Tool', 'Oyma Takımları', '', 29, 1),
+(498, 'Ball Screw ', 'Bilyalı Vida', '', 29, 1),
+(499, 'Resolution', 'Çözünürlük', 'mm', 29, 1),
+(500, 'Table Size', 'Tabla Boyutu', 'mm*mm', 29, 1),
+(501, 'Max Load Weight', 'Maksimum Yük Miktarı', 'kg', 29, 1),
+(502, 'Total Power', 'Toplam Gücü', 'KW', 29, 1),
+(503, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 29, 1),
+(504, 'Machine Weight', 'Makina Ağırlığı', 'kg', 29, 1),
+(505, 'Precision', 'Hassasiyet', '%', 29, 1),
+(506, 'Accuracy', 'Doğruluk', 'micrometer', 29, 1),
+(507, 'Production Date', 'Üretim Tarihi', 'year', 29, 1),
+(508, 'Production Location', 'Üretim Yeri', '', 29, 1),
+(509, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 29, 1),
+(510, 'Main Drive Motor', 'Ana Motor Sürücüsü', 'KW', 30, 1),
+(511, 'Blade Speeds', 'Bıçak Hızları', 'rpm', 30, 1),
+(512, 'Head Swivel', 'Döner Kafa', 'degree', 30, 1),
+(513, 'Clamping Vise', 'Mengene', 'mm', 30, 1),
+(514, 'Coolant Pump Motor', 'Soğutucu Pompa Motoru', 'KW', 30, 1),
+(515, 'Max. Clamping Capacity', 'Maksimum Sıkma Kapasitesi', 'number/pocket', 30, 1),
+(516, 'Saw Blade Size', 'Testere Bıçak Boyutu', 'mm', 30, 1),
+(517, 'Pin Hole of Saw Blade', 'Testerenin Pim Deliği', 'mm', 30, 1),
+(518, 'Selective Feeding Speed', 'Besleme Hızı', 'mm', 30, 1),
+(519, 'Hydrauic Pump Motor', 'Hidrolik Motor Pompası', 'KW', 30, 1),
+(520, 'Operating Pressure', 'Çalışma Basıncı', 'Pa', 30, 1),
+(521, 'Air Pressure Consumption', 'Hava Basıncı tüketımı', 'Pa', 30, 1),
+(522, 'Servomotor Of Material Line-Up', 'Malzeme Sürme', 'Kw', 30, 1),
+(523, 'Servomotor Of Feeding', 'Servo Motorun Beslemesi', 'Kw', 30, 1),
+(524, 'Table Size', 'Tabla Boyutu', 'mm*mm', 30, 1),
+(525, 'Max Load Weight', 'Maksimum Yük Miktarı', 'kg', 30, 1),
+(526, 'Total Power', 'Toplam Gücü', 'KW', 30, 1),
+(527, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 30, 1),
+(528, 'Machine Weight', 'Makina Ağırlığı', 'kg', 30, 1),
+(529, 'Precision', 'Hassasiyet', '%', 30, 1),
+(530, 'Accuracy', 'Doğruluk', 'micrometer', 30, 1),
+(531, 'Production Date', 'Üretim Tarihi', 'year', 30, 1),
+(532, 'Production Location', 'Üretim Yeri', '', 30, 1),
+(533, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 30, 1),
+(534, 'X,Y,Z Axis travel ', 'X/Y/Z Eksenlerindeki Hareket', 'mm', 31, 1),
+(535, 'Spindle Nose to Worktable', 'Spindle Burnunun Tablaya Olan Uzaklığı', 'mm', 31, 1),
+(536, 'Spindle Centerline to Column', 'Spindle ile Kolon Arası Mesafe', 'mm', 31, 1),
+(537, 'Spindle Taper', 'Spindle Tutucu', '', 31, 1),
+(538, 'Spindle Speed', 'Spindle Hızı', 'rpm', 31, 1),
+(539, 'Max Gearbox Ratio', 'Maksimum Şanzıman Oranı', '', 31, 1),
+(540, 'Max Torque', 'Max Burulma Momenti', 'n*m', 31, 1),
+(541, 'Tool Change Type', 'Takım Magazini', '', 31, 1),
+(542, 'Mini Display Unit', 'Mini Ekran Ünitesi', 'mm', 31, 1),
+(543, 'Triaxial Motor', 'Üç Eksenli Motor', 'Kw', 31, 1),
+(544, 'Ball Screw Types', 'Bilyalı Vida Tipleri', '', 31, 1),
+(545, 'Table Size', 'Tabla Boyutu', 'mm*mm', 31, 1),
+(546, 'Max Load Weight', 'Maksimum Yük Miktarı', 'kg', 31, 1),
+(547, 'Total Power', 'Toplam Gücü', 'KW', 31, 1),
+(548, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 31, 1),
+(549, 'Machine Weight', 'Makina Ağırlığı', 'kg', 31, 1),
+(550, 'Precision', 'Hassasiyet', '%', 31, 1),
+(551, 'Accuracy', 'Doğruluk', 'micrometer', 31, 1),
+(552, 'Production Date', 'Üretim Tarihi', 'year', 31, 1),
+(553, 'Production Location', 'Üretim Yeri', '', 31, 1),
+(554, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 31, 1),
+(555, 'Spindle Travel', 'Spindle Hareketi', 'mm', 32, 1),
+(556, 'Spindle Speeds', 'Spindle Hızları', 'rpm', 32, 1),
+(557, 'Distance from Spindle Nose to Worktable', 'Spindle ile Tabla Arası Uzaklık', 'mm', 32, 1),
+(558, 'Distance from Spindle Axis to Column Surface', 'Spindle ile Kolon Yüzeyi Arasındaki Mesafe', 'mm', 32, 1),
+(559, 'Diameter of Column', 'Sütunun Çapı', 'mm', 32, 1),
+(560, 'Outline Dimension ', 'Taslak Uzunlukarı', 'mm', 32, 1),
+(561, 'Table Size', 'Tabla Boyutu', 'mm*mm', 32, 1),
+(562, 'Max Load Weight', 'Maksimum Yük Miktarı', 'kg', 32, 1),
+(563, 'Total Power', 'Toplam Gücü', 'KW', 32, 1),
+(564, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 32, 1),
+(565, 'Machine Weight', 'Makina Ağırlığı', 'kg', 32, 1),
+(566, 'Precision', 'Hassasiyet', '%', 32, 1),
+(567, 'Accuracy', 'Doğruluk', 'micrometer', 32, 1),
+(568, 'Production Date', 'Üretim Tarihi', 'year', 32, 1),
+(569, 'Production Location', 'Üretim Yeri', '', 32, 1),
+(570, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 32, 1),
+(571, 'Travels', 'Hareketler', 'mm', 33, 1),
+(572, 'Spindle diameter', 'Spindle Çapları', 'mm', 33, 1),
+(573, 'Table Size', 'Tabla Boyutu', 'mm*mm', 33, 1),
+(574, 'Max Load weight', 'Maksimum Yük Miktarı', 'kg', 33, 1),
+(575, 'Total Power', 'Toplam Gücü', 'KW', 33, 1),
+(576, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 33, 1),
+(577, 'Machine Weight', 'Makina Ağırlığı', 'kg', 33, 1),
+(578, 'Precision', 'Hassasiyet', '%', 33, 1),
+(579, 'Accuracy', 'Doğruluk', 'micrometer', 33, 1),
+(580, 'Production Date', 'Üretim Tarihi', 'year', 33, 1),
+(581, 'Production Location', 'Üretim Yeri', '', 33, 1),
+(582, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 33, 1),
+(583, 'Working Area ', 'Çalışma Alanı', '', 34, 1),
+(584, 'Rapid Speed', 'Hız', 'm/min', 34, 1),
+(585, 'Total Power', 'Toplam Gücü', 'KW', 34, 1),
+(586, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 34, 1),
+(587, 'Machine Weight', 'Makina Ağırlığı', 'kg', 34, 1),
+(588, 'Precision', 'Hassasiyet', '%', 34, 1),
+(589, 'Accuracy', 'Doğruluk', 'micrometer', 34, 1),
+(590, 'Production Date', 'Üretim Tarihi', 'year', 34, 1),
+(591, 'Production Location', 'Üretim Yeri', '', 34, 1),
+(592, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 34, 1),
+(593, 'Stroke(X)', 'Darbe(X)', 'mm', 35, 1),
+(594, 'Stroke(Y)', 'Darbe(Y)', 'mm', 35, 1),
+(595, 'Stroke(Z)', 'Darbe(Z)', 'mm', 35, 1),
+(596, 'Spindle Stroke', 'Spindle Darbesi', 'mm', 35, 1),
+(597, 'Max.Processing Current', 'Maksimum Akım', 'amper', 35, 1),
+(598, 'Max.Cutting Speed', 'Maksimum Kesme Hızı', 'm/min', 35, 1),
+(599, 'Min.Electrode Consumption', 'Minimum Elektrot Tüketimi', 'm/min', 35, 1),
+(600, 'Optimum Roughness', 'Optimum Pürüzlülük', 'micrometer', 35, 1),
+(601, 'Total Power', 'Toplam Gücü', 'KW', 35, 1),
+(602, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 35, 1),
+(603, 'Machine Weight', 'Makina Ağırlığı', 'kg', 35, 1),
+(604, 'Precision', 'Hassasiyet', '%', 35, 1),
+(605, 'Accuracy', 'Doğruluk', 'micrometer', 35, 1),
+(606, 'Production Date', 'Üretim Tarihi', 'year', 35, 1),
+(607, 'Production Location', 'Üretim Yeri', '', 35, 1),
+(608, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 35, 1),
+(609, 'Stroke(X)', 'Darbe(X)', 'mm', 36, 1),
+(610, 'Stroke(Y)', 'Darbe(Y)', 'mm', 36, 1),
+(611, 'Stroke(Z)', 'Darbe(Z)', 'mm', 36, 1),
+(612, 'Spindle Stroke', 'Spindle Darbesi', 'mm', 36, 1),
+(613, 'Max.Processing Current', 'Maksimum Akım', 'amper', 36, 1),
+(614, 'Max.Cutting Speed', 'Maksimum Kesme Hızı', 'm/min', 36, 1),
+(615, 'Min.Electrode Consumption', 'Minimum Elektrot Tüketimi', 'm/min', 36, 1),
+(616, 'Optimum Roughness', 'Optimum Pürüzlülük', 'micrometer', 36, 1),
+(617, 'Total Power', 'Toplam Gücü', 'KW', 36, 1),
+(618, 'Machine Dimension', 'Makina Boyutları', 'mm*mm*mm', 36, 1),
+(619, 'Machine Weight', 'Makina Ağırlığı', 'kg', 36, 1),
+(620, 'Precision', 'Hassasiyet', '%', 36, 1),
+(621, 'Accuracy', 'Doğruluk', 'micrometer', 36, 1),
+(622, 'Production Date', 'Üretim Tarihi', 'year', 36, 1),
+(623, 'Production Location', 'Üretim Yeri', '', 36, 1),
+(624, 'Product Acquisition Date', 'Ürünü Satın Alma Tarihi', 'year', 36, 1);
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_FLOW`
+-- Table structure for table `T_FLOW`
 --
 
-CREATE TABLE `T_FLOW` (
+CREATE TABLE IF NOT EXISTS `T_FLOW` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
   `name_tr` varchar(200) DEFAULT NULL,
@@ -377,7 +1126,7 @@ CREATE TABLE `T_FLOW` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Tablo döküm verisi `T_FLOW`
+-- Dumping data for table `T_FLOW`
 --
 
 INSERT INTO `T_FLOW` (`id`, `name`, `name_tr`, `active`) VALUES
@@ -387,10 +1136,10 @@ INSERT INTO `T_FLOW` (`id`, `name`, `name_tr`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_FLOW_TYPE`
+-- Table structure for table `T_FLOW_TYPE`
 --
 
-CREATE TABLE `T_FLOW_TYPE` (
+CREATE TABLE IF NOT EXISTS `T_FLOW_TYPE` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) DEFAULT NULL,
   `name_tr` varchar(200) DEFAULT NULL,
@@ -399,7 +1148,7 @@ CREATE TABLE `T_FLOW_TYPE` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Tablo döküm verisi `T_FLOW_TYPE`
+-- Dumping data for table `T_FLOW_TYPE`
 --
 
 INSERT INTO `T_FLOW_TYPE` (`id`, `name`, `name_tr`, `active`) VALUES
@@ -409,10 +1158,10 @@ INSERT INTO `T_FLOW_TYPE` (`id`, `name`, `name_tr`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_NACE_CODE`
+-- Table structure for table `T_NACE_CODE`
 --
 
-CREATE TABLE `T_NACE_CODE` (
+CREATE TABLE IF NOT EXISTS `T_NACE_CODE` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name_tr` varchar(255) DEFAULT NULL,
   `code` varchar(255) NOT NULL,
@@ -422,7 +1171,7 @@ CREATE TABLE `T_NACE_CODE` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2187 ;
 
 --
--- Tablo döküm verisi `T_NACE_CODE`
+-- Dumping data for table `T_NACE_CODE`
 --
 
 INSERT INTO `T_NACE_CODE` (`id`, `name_tr`, `code`, `name`, `active`) VALUES
@@ -2618,10 +3367,10 @@ INSERT INTO `T_NACE_CODE` (`id`, `name_tr`, `code`, `name`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_ORG_IND_REG`
+-- Table structure for table `T_ORG_IND_REG`
 --
 
-CREATE TABLE `T_ORG_IND_REG` (
+CREATE TABLE IF NOT EXISTS `T_ORG_IND_REG` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
   `active` tinyint(4) NOT NULL,
@@ -2632,10 +3381,10 @@ CREATE TABLE `T_ORG_IND_REG` (
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRCSS`
+-- Table structure for table `T_PRCSS`
 --
 
-CREATE TABLE `T_PRCSS` (
+CREATE TABLE IF NOT EXISTS `T_PRCSS` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
   `name_tr` varchar(200) DEFAULT NULL,
@@ -2646,7 +3395,7 @@ CREATE TABLE `T_PRCSS` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Tablo döküm verisi `T_PRCSS`
+-- Dumping data for table `T_PRCSS`
 --
 
 INSERT INTO `T_PRCSS` (`id`, `name`, `name_tr`, `mother_id`, `active`) VALUES
@@ -2657,10 +3406,10 @@ INSERT INTO `T_PRCSS` (`id`, `name`, `name_tr`, `mother_id`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRDCT`
+-- Table structure for table `T_PRDCT`
 --
 
-CREATE TABLE `T_PRDCT` (
+CREATE TABLE IF NOT EXISTS `T_PRDCT` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cmpny_id` int(11) DEFAULT NULL,
   `name` varchar(200) NOT NULL,
@@ -2671,10 +3420,10 @@ CREATE TABLE `T_PRDCT` (
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRJ`
+-- Table structure for table `T_PRJ`
 --
 
-CREATE TABLE `T_PRJ` (
+CREATE TABLE IF NOT EXISTS `T_PRJ` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `start_date` date NOT NULL,
@@ -2687,7 +3436,7 @@ CREATE TABLE `T_PRJ` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Tablo döküm verisi `T_PRJ`
+-- Dumping data for table `T_PRJ`
 --
 
 INSERT INTO `T_PRJ` (`id`, `name`, `start_date`, `end_date`, `status_id`, `description`, `active`) VALUES
@@ -2696,10 +3445,10 @@ INSERT INTO `T_PRJ` (`id`, `name`, `start_date`, `end_date`, `status_id`, `descr
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRJ_ACSS_CMPNY`
+-- Table structure for table `T_PRJ_ACSS_CMPNY`
 --
 
-CREATE TABLE `T_PRJ_ACSS_CMPNY` (
+CREATE TABLE IF NOT EXISTS `T_PRJ_ACSS_CMPNY` (
   `cmpny_id` int(11) NOT NULL,
   `prj_id` int(11) NOT NULL,
   `read_acss` tinyint(4) DEFAULT NULL,
@@ -2713,10 +3462,10 @@ CREATE TABLE `T_PRJ_ACSS_CMPNY` (
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRJ_ACSS_USER`
+-- Table structure for table `T_PRJ_ACSS_USER`
 --
 
-CREATE TABLE `T_PRJ_ACSS_USER` (
+CREATE TABLE IF NOT EXISTS `T_PRJ_ACSS_USER` (
   `user_id` int(11) NOT NULL,
   `prj_id` int(11) NOT NULL,
   `read_acss` tinyint(4) DEFAULT NULL,
@@ -2730,10 +3479,10 @@ CREATE TABLE `T_PRJ_ACSS_USER` (
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRJ_CMPNY`
+-- Table structure for table `T_PRJ_CMPNY`
 --
 
-CREATE TABLE `T_PRJ_CMPNY` (
+CREATE TABLE IF NOT EXISTS `T_PRJ_CMPNY` (
   `prj_id` int(11) NOT NULL,
   `cmpny_id` int(11) NOT NULL,
   PRIMARY KEY (`prj_id`,`cmpny_id`),
@@ -2742,7 +3491,7 @@ CREATE TABLE `T_PRJ_CMPNY` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `T_PRJ_CMPNY`
+-- Dumping data for table `T_PRJ_CMPNY`
 --
 
 INSERT INTO `T_PRJ_CMPNY` (`prj_id`, `cmpny_id`) VALUES
@@ -2752,10 +3501,10 @@ INSERT INTO `T_PRJ_CMPNY` (`prj_id`, `cmpny_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRJ_CNSLTNT`
+-- Table structure for table `T_PRJ_CNSLTNT`
 --
 
-CREATE TABLE `T_PRJ_CNSLTNT` (
+CREATE TABLE IF NOT EXISTS `T_PRJ_CNSLTNT` (
   `prj_id` int(11) NOT NULL,
   `cnsltnt_id` int(11) NOT NULL,
   `active` tinyint(4) DEFAULT NULL,
@@ -2765,7 +3514,7 @@ CREATE TABLE `T_PRJ_CNSLTNT` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `T_PRJ_CNSLTNT`
+-- Dumping data for table `T_PRJ_CNSLTNT`
 --
 
 INSERT INTO `T_PRJ_CNSLTNT` (`prj_id`, `cnsltnt_id`, `active`) VALUES
@@ -2774,10 +3523,10 @@ INSERT INTO `T_PRJ_CNSLTNT` (`prj_id`, `cnsltnt_id`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRJ_CNTCT_PRSNL`
+-- Table structure for table `T_PRJ_CNTCT_PRSNL`
 --
 
-CREATE TABLE `T_PRJ_CNTCT_PRSNL` (
+CREATE TABLE IF NOT EXISTS `T_PRJ_CNTCT_PRSNL` (
   `prj_id` int(11) NOT NULL,
   `usr_id` int(11) NOT NULL,
   `description` varchar(200) DEFAULT NULL,
@@ -2786,7 +3535,7 @@ CREATE TABLE `T_PRJ_CNTCT_PRSNL` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `T_PRJ_CNTCT_PRSNL`
+-- Dumping data for table `T_PRJ_CNTCT_PRSNL`
 --
 
 INSERT INTO `T_PRJ_CNTCT_PRSNL` (`prj_id`, `usr_id`, `description`) VALUES
@@ -2795,10 +3544,10 @@ INSERT INTO `T_PRJ_CNTCT_PRSNL` (`prj_id`, `usr_id`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRJ_DOC`
+-- Table structure for table `T_PRJ_DOC`
 --
 
-CREATE TABLE `T_PRJ_DOC` (
+CREATE TABLE IF NOT EXISTS `T_PRJ_DOC` (
   `doc_id` int(11) NOT NULL,
   `prj_id` int(11) NOT NULL,
   PRIMARY KEY (`doc_id`,`prj_id`),
@@ -2809,10 +3558,10 @@ CREATE TABLE `T_PRJ_DOC` (
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRJ_STATUS`
+-- Table structure for table `T_PRJ_STATUS`
 --
 
-CREATE TABLE `T_PRJ_STATUS` (
+CREATE TABLE IF NOT EXISTS `T_PRJ_STATUS` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) DEFAULT NULL,
   `name_tr` varchar(200) DEFAULT NULL,
@@ -2822,7 +3571,7 @@ CREATE TABLE `T_PRJ_STATUS` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Tablo döküm verisi `T_PRJ_STATUS`
+-- Dumping data for table `T_PRJ_STATUS`
 --
 
 INSERT INTO `T_PRJ_STATUS` (`id`, `name`, `name_tr`, `active`, `short_code`) VALUES
@@ -2835,10 +3584,10 @@ INSERT INTO `T_PRJ_STATUS` (`id`, `name`, `name_tr`, `active`, `short_code`) VAL
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_ROLE`
+-- Table structure for table `T_ROLE`
 --
 
-CREATE TABLE `T_ROLE` (
+CREATE TABLE IF NOT EXISTS `T_ROLE` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `name_tr` varchar(100) DEFAULT NULL,
@@ -2848,7 +3597,7 @@ CREATE TABLE `T_ROLE` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Tablo döküm verisi `T_ROLE`
+-- Dumping data for table `T_ROLE`
 --
 
 INSERT INTO `T_ROLE` (`id`, `name`, `name_tr`, `active`, `short_code`) VALUES
@@ -2859,10 +3608,10 @@ INSERT INTO `T_ROLE` (`id`, `name`, `name_tr`, `active`, `short_code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_UNIT`
+-- Table structure for table `T_UNIT`
 --
 
-CREATE TABLE `T_UNIT` (
+CREATE TABLE IF NOT EXISTS `T_UNIT` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
   `name_tr` varchar(200) DEFAULT NULL,
@@ -2873,10 +3622,10 @@ CREATE TABLE `T_UNIT` (
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_USER`
+-- Table structure for table `T_USER`
 --
 
-CREATE TABLE `T_USER` (
+CREATE TABLE IF NOT EXISTS `T_USER` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `surname` varchar(100) NOT NULL,
@@ -2897,7 +3646,7 @@ CREATE TABLE `T_USER` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Tablo döküm verisi `T_USER`
+-- Dumping data for table `T_USER`
 --
 
 INSERT INTO `T_USER` (`id`, `name`, `surname`, `user_name`, `psswrd`, `role_id`, `title`, `phone_num_1`, `phone_num_2`, `fax_num`, `email`, `description`, `linkedin_user`, `photo`, `active`) VALUES
@@ -2908,10 +3657,10 @@ INSERT INTO `T_USER` (`id`, `name`, `surname`, `user_name`, `psswrd`, `role_id`,
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_USER_LOG`
+-- Table structure for table `T_USER_LOG`
 --
 
-CREATE TABLE `T_USER_LOG` (
+CREATE TABLE IF NOT EXISTS `T_USER_LOG` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -2919,44 +3668,44 @@ CREATE TABLE `T_USER_LOG` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dökümü yapılmış tablolar için kısıtlamalar
+-- Constraints for dumped tables
 --
 
 --
--- Tablo kısıtlamaları `T_CLSTR`
+-- Constraints for table `T_CLSTR`
 --
 ALTER TABLE `T_CLSTR`
   ADD CONSTRAINT `FK_T_CLSTR_T_ORG_IND_REG` FOREIGN KEY (`org_ind_reg_id`) REFERENCES `T_ORG_IND_REG` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_CLSTR`
+-- Constraints for table `T_CMPNY_CLSTR`
 --
 ALTER TABLE `T_CMPNY_CLSTR`
   ADD CONSTRAINT `FK_T_CMPNY_CLSTR_T_CLSTR` FOREIGN KEY (`clstr_id`) REFERENCES `T_CLSTR` (`id`),
   ADD CONSTRAINT `FK_T_CMPNY_CLSTR_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_DATA`
+-- Constraints for table `T_CMPNY_DATA`
 --
 ALTER TABLE `T_CMPNY_DATA`
   ADD CONSTRAINT `FK_T_CMPNY_PRJ_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_EQPMNT`
+-- Constraints for table `T_CMPNY_EQPMNT`
 --
 ALTER TABLE `T_CMPNY_EQPMNT`
   ADD CONSTRAINT `FK_T_EQPMNT_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY_DATA` (`cmpny_id`),
   ADD CONSTRAINT `FK_T_EQPMNT_T_EQPMNT_NAME` FOREIGN KEY (`eqpmnt_id`) REFERENCES `T_EQPMNT` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_EQPMNT_TYPE`
+-- Constraints for table `T_CMPNY_EQPMNT_TYPE`
 --
 ALTER TABLE `T_CMPNY_EQPMNT_TYPE`
   ADD CONSTRAINT `FK_T_CMPNY_EQPMNT_TYPE_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY_DATA` (`cmpny_id`),
   ADD CONSTRAINT `FK_T_CMPNY_EQPMNT_TYPE_T_EQPMNT_TYPE` FOREIGN KEY (`eqpmnt_type_id`) REFERENCES `T_EQPMNT_TYPE` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_FLOW`
+-- Constraints for table `T_CMPNY_FLOW`
 --
 ALTER TABLE `T_CMPNY_FLOW`
   ADD CONSTRAINT `FK_T_FLOW_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY_DATA` (`cmpny_id`),
@@ -2967,133 +3716,137 @@ ALTER TABLE `T_CMPNY_FLOW`
   ADD CONSTRAINT `FK_T_FLOW_T_UNIT_QNTTY` FOREIGN KEY (`qntty_unit_id`) REFERENCES `T_UNIT` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_FLOW_CMPNNT`
+-- Constraints for table `T_CMPNY_FLOW_CMPNNT`
 --
 ALTER TABLE `T_CMPNY_FLOW_CMPNNT`
   ADD CONSTRAINT `FK_T_FLOW_CMPNNT_NAME_T_CMPNNT_NAME` FOREIGN KEY (`cmpnnt_id`) REFERENCES `T_CMPNNT` (`id`),
   ADD CONSTRAINT `FK_T_FLOW_CMPNNT_T_FLOW` FOREIGN KEY (`cmpny_flow_id`) REFERENCES `T_CMPNY_FLOW` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_FLOW_PRCSS`
+-- Constraints for table `T_CMPNY_FLOW_PRCSS`
 --
 ALTER TABLE `T_CMPNY_FLOW_PRCSS`
   ADD CONSTRAINT `FK_T_FLOW_PRCSS_T_FLOW` FOREIGN KEY (`cmpny_flow_id`) REFERENCES `T_CMPNY_FLOW` (`id`),
   ADD CONSTRAINT `FK_T_FLOW_PRCSS_T_PRCSS` FOREIGN KEY (`cmpny_prcss_id`) REFERENCES `T_CMPNY_PRCSS` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_NACE_CODE`
+-- Constraints for table `T_CMPNY_NACE_CODE`
 --
 ALTER TABLE `T_CMPNY_NACE_CODE`
   ADD CONSTRAINT `FK_T_CMPNY_NACE_CODE_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`),
   ADD CONSTRAINT `FK_T_CMPNY_NACE_CODE_T_NACE_CODE` FOREIGN KEY (`nace_code_id`) REFERENCES `T_NACE_CODE` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_ORG_IND_REG`
+-- Constraints for table `T_CMPNY_ORG_IND_REG`
 --
 ALTER TABLE `T_CMPNY_ORG_IND_REG`
   ADD CONSTRAINT `FK_T_CMPNY_ORG_IND_REG_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`),
   ADD CONSTRAINT `FK_T_CMPNY_ORG_IND_REG_T_ORG_IND_REG` FOREIGN KEY (`org_ind_reg_id`) REFERENCES `T_ORG_IND_REG` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_PRCSS`
+-- Constraints for table `T_CMPNY_PRCSS`
 --
 ALTER TABLE `T_CMPNY_PRCSS`
   ADD CONSTRAINT `FK_T_PRCSS_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY_DATA` (`cmpny_id`),
   ADD CONSTRAINT `FK_T_PRCSS_T_PRCSS_NAME` FOREIGN KEY (`prcss_id`) REFERENCES `T_PRCSS` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_PRCSS_EQPMNT_TYPE`
+-- Constraints for table `T_CMPNY_PRCSS_EQPMNT_TYPE`
 --
 ALTER TABLE `T_CMPNY_PRCSS_EQPMNT_TYPE`
   ADD CONSTRAINT `FK_T_CMPNY_PRCSS_EQPMNT_TYPE_T_CMPNY_EQPMNT_TYPE` FOREIGN KEY (`cmpny_eqpmnt_type_id`) REFERENCES `T_CMPNY_EQPMNT_TYPE` (`id`),
   ADD CONSTRAINT `FK_T_CMPNY_PRCSS_EQPMNT_TYPE_T_CMPNY_PRCSS` FOREIGN KEY (`cmpny_prcss_id`) REFERENCES `T_CMPNY_PRCSS` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_PRSNL`
+-- Constraints for table `T_CMPNY_PRSNL`
 --
 ALTER TABLE `T_CMPNY_PRSNL`
   ADD CONSTRAINT `FK_T_CMPNY_PRSNL_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`),
   ADD CONSTRAINT `FK_T_CMPNY_PRSNL_T_USER` FOREIGN KEY (`user_id`) REFERENCES `T_USER` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CNSLTNT`
+-- Constraints for table `T_CNSLTNT`
 --
 ALTER TABLE `T_CNSLTNT`
   ADD CONSTRAINT `FK_T_CNSLTNT_T_USER` FOREIGN KEY (`user_id`) REFERENCES `T_USER` (`id`);
 
 --
--- Tablo kısıtlamaları `T_EQPMNT_TYPE_ATTRBT`
+-- Constraints for table `T_EQPMNT_TYPE_ATTRBT`
 --
 ALTER TABLE `T_EQPMNT_TYPE_ATTRBT`
   ADD CONSTRAINT `FK_T_EQPMNT_ATTRBT_T_EQPMNT_TYPE` FOREIGN KEY (`eqpmnt_type_id`) REFERENCES `T_EQPMNT_TYPE` (`id`);
 
 --
--- Tablo kısıtlamaları `T_PRCSS`
+-- Constraints for table `T_PRCSS`
 --
 ALTER TABLE `T_PRCSS`
   ADD CONSTRAINT `FK_T_PRCSS_NAME_T_PRCSS_NAME` FOREIGN KEY (`mother_id`) REFERENCES `T_PRCSS` (`id`);
 
 --
--- Tablo kısıtlamaları `T_PRDCT`
+-- Constraints for table `T_PRDCT`
 --
 ALTER TABLE `T_PRDCT`
   ADD CONSTRAINT `FK_T_PRDCT_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY_DATA` (`cmpny_id`);
 
 --
--- Tablo kısıtlamaları `T_PRJ`
+-- Constraints for table `T_PRJ`
 --
 ALTER TABLE `T_PRJ`
   ADD CONSTRAINT `FK_T_PRJ_T_STATUS` FOREIGN KEY (`status_id`) REFERENCES `T_PRJ_STATUS` (`id`);
 
 --
--- Tablo kısıtlamaları `T_PRJ_ACSS_CMPNY`
+-- Constraints for table `T_PRJ_ACSS_CMPNY`
 --
 ALTER TABLE `T_PRJ_ACSS_CMPNY`
   ADD CONSTRAINT `FK_T_PRJ_ACSS_CMPNY_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`),
   ADD CONSTRAINT `FK_T_PRJ_ACSS_CMPNY_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`);
 
 --
--- Tablo kısıtlamaları `T_PRJ_ACSS_USER`
+-- Constraints for table `T_PRJ_ACSS_USER`
 --
 ALTER TABLE `T_PRJ_ACSS_USER`
   ADD CONSTRAINT `FK_T_PRJ_ACSS_USER_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`),
   ADD CONSTRAINT `FK_T_PRJ_ACSS_USER_T_USER` FOREIGN KEY (`user_id`) REFERENCES `T_USER` (`id`);
 
 --
--- Tablo kısıtlamaları `T_PRJ_CMPNY`
+-- Constraints for table `T_PRJ_CMPNY`
 --
 ALTER TABLE `T_PRJ_CMPNY`
   ADD CONSTRAINT `FK_T_PRJ_CMPNY_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`),
   ADD CONSTRAINT `FK_T_PRJ_CMPNY_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`);
 
 --
--- Tablo kısıtlamaları `T_PRJ_CNSLTNT`
+-- Constraints for table `T_PRJ_CNSLTNT`
 --
 ALTER TABLE `T_PRJ_CNSLTNT`
   ADD CONSTRAINT `FK_T_PRJ_CNSLTNT_T_CNSLTNT` FOREIGN KEY (`cnsltnt_id`) REFERENCES `T_CNSLTNT` (`user_id`),
   ADD CONSTRAINT `FK_T_PRJ_CNSLTNT_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`);
 
 --
--- Tablo kısıtlamaları `T_PRJ_CNTCT_PRSNL`
+-- Constraints for table `T_PRJ_CNTCT_PRSNL`
 --
 ALTER TABLE `T_PRJ_CNTCT_PRSNL`
   ADD CONSTRAINT `FK_T_PRJ_CNTCT_PRSNL_T_USER` FOREIGN KEY (`usr_id`) REFERENCES `T_USER` (`id`);
 
 --
--- Tablo kısıtlamaları `T_PRJ_DOC`
+-- Constraints for table `T_PRJ_DOC`
 --
 ALTER TABLE `T_PRJ_DOC`
   ADD CONSTRAINT `FK_T_PRJ_DOC_T_DOC` FOREIGN KEY (`doc_id`) REFERENCES `T_DOC` (`id`),
   ADD CONSTRAINT `FK_T_PRJ_DOC_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`);
 
 --
--- Tablo kısıtlamaları `T_USER`
+-- Constraints for table `T_USER`
 --
 ALTER TABLE `T_USER`
   ADD CONSTRAINT `FK_T_USER_T_ROLE` FOREIGN KEY (`role_id`) REFERENCES `T_ROLE` (`id`);
 
 --
--- Tablo kısıtlamaları `T_USER_LOG`
+-- Constraints for table `T_USER_LOG`
 --
 ALTER TABLE `T_USER_LOG`
   ADD CONSTRAINT `FK_T_USER_LOG_T_USER` FOREIGN KEY (`user_id`) REFERENCES `T_USER` (`id`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -33,7 +33,7 @@
 	    <label for="amount">EP(Annual)</label>
 	    <input class="form-control" id="ep" name="ep" placeholder="Enter EP">
 	  </div>
-	  <button type="submit" class="btn btn-primary pull-right">Add Process</button>
+	  <button type="submit" class="btn btn-primary pull-right">Add Flow</button>
 	</form>
 	<hr>
 	<table class="table table-striped table-bordered text-center">

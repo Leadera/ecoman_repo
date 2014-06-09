@@ -90,40 +90,76 @@
     });
     </script>
 
-     <script type="text/javascript">
-    $(document).ready(function () {
+    <script type="text/javascript">
+      $(document).ready(function () {
         $('#assignCompany').change(function () {
-            var company = $(this).val();
-            $.ajax({
-                url: "/ecoman_repo/contactperson",
-                async: false,
-                type: "POST",
-                data: "company_id="+company,
-                dataType: "json",
+          var company = $(this).val();
+          $.ajax({
+            url: "/ecoman_repo/contactperson",
+            async: false,
+            type: "POST",
+            data: "company_id="+company,
+            dataType: "json",
+            success: function(data) {
+              $('#assignContactPerson option').remove();
 
-                success: function(data) {
-
-                    $('#assignContactPerson option').remove();
-
-                      for (var k = 0; k < data.length; k++) {
-                        for (var i = 0; i < data[k].length; i++) {
-                            var opt =data[k][i]['id'];
-                            if($("#assignContactPerson option[value='"+ opt +"']").length == 0)
-                            {
-                               $("#assignContactPerson").append(new Option(data[k][i]['name']+' '+data[k][i]['surname']+' - '+data[k][i]['cmpny_name'],data[k][i]['id']));
-
-                            }
-                        }
-                      }
-                    // aklima takilan: eger contact person sectikten sonra , company assign listesinden remove edilirse ne yapacagiz?
+              for (var k = 0; k < data.length; k++) {
+                for (var i = 0; i < data[k].length; i++) {
+                  var opt =data[k][i]['id'];
+                  if($("#assignContactPerson option[value='"+ opt +"']").length == 0)
+                  {
+                    $("#assignContactPerson").append(new Option(data[k][i]['name']+' '+data[k][i]['surname']+' - '+data[k][i]['cmpny_name'],data[k][i]['id']));
+                  }
                 }
-            })
-
+              }
+            }
+          })
         });
-    });
-</script>
+      });
+    </script>
 
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#equipment').change(function () {
+          var equipmentID = $(this).val();
+          $.ajax({
+            url: "/ecoman_repo/get_equipment_type",
+            async: false,
+            type: "POST",
+            data: "equipment_id="+equipmentID,
+            dataType: "json",
+            success: function(data) {
+              $('#equipmentTypeName option').remove();
+              $('#equipmentAttributeName option').remove();
+              for(var i = 0 ; i < data.length ; i++){
+                $("#equipmentTypeName").append(new Option(data[i]['name'],data[i]['id']));
+              }
+            }
+          })
+        });
+      });
+    </script>
 
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#equipmentTypeName').change(function () {
+          var equipmentTypeID = $(this).val();
+          $.ajax({
+            url: "/ecoman_repo/get_equipment_attribute",
+            async: false,
+            type: "POST",
+            data: "equipment_type_id="+equipmentTypeID,
+            dataType: "json",
+            success: function(data) {
+              $('#equipmentAttributeName option').remove();
+              for(var i = 0 ; i < data.length ; i++){
+                $("#equipmentAttributeName").append(new Option(data[i]['attribute_name'],data[i]['id']));
+              }
+            }
+          })
+        });
+      });
+    </script>
 
     </body>
 </html>
