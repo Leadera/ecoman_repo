@@ -14,8 +14,9 @@ class Project extends CI_Controller{
 	}
 
 	public function new_project(){
-		$temp = $this->session->userdata('user_in');
-		if($temp['id'] == null){
+		$kullanici = $this->session->userdata('user_in');
+		$is_consultant = $this->user_model->is_user_consultant($kullanici['id']);
+		if(!$is_consultant){
 			redirect('', 'refresh');
 		}
 
@@ -96,29 +97,36 @@ class Project extends CI_Controller{
 	}
 
 	public function show_all_project(){
-		$data['projects'] = $this->project_model->get_projects();
+		$kullanici = $this->session->userdata('user_in');
+		$data['is_consultant'] = $this->user_model->is_user_consultant($kullanici['id']);
 
+		$data['projects'] = $this->project_model->get_projects();
 		$this->load->view('template/header');
 		$this->load->view('project/show_all_project',$data);
 		$this->load->view('template/footer');
 	}
 
 	public function view_project($prj_id){
+
 		$data['projects'] = $this->project_model->get_project($prj_id);
 		$data['status'] = $this->project_model->get_status($prj_id);
 		$data['constant'] = $this->project_model->get_prj_consaltnt($prj_id);
 		$data['companies'] = $this->project_model->get_prj_companies($prj_id);
 		$data['contact'] = $this->project_model->get_prj_cntct_prsnl($prj_id);
 
+		$kullanici = $this->session->userdata('user_in');
+		$data['is_consultant_of_project'] = $this->user_model->is_consultant_of_project_by_user_id($kullanici['id'],$prj_id);
+
 		$this->load->view('template/header');
 		$this->load->view('project/project_show_detailed',$data);
 		$this->load->view('template/footer');
+
 	}
 
 
 	public function update_project($term){
 		$kullanici = $this->session->userdata('user_in');
-		if($this->project_model->can_update_project_information($kullanici['id'],$term) == false){
+		if(!$this->user_model->is_consultant_of_project_by_user_id($kullanici['id'],$term)){
 			redirect('','refresh');
 		}
 		$data['projects'] = $this->project_model->get_project($term);
