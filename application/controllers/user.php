@@ -5,12 +5,9 @@ class User extends CI_Controller {
 		parent::__construct();
 		$this->load->model('user_model');
 		$this->load->library('form_validation');
-
 	}
 
 	public function user_register(){
-		
-
 		//form kontroller
 		$this->form_validation->set_rules('name','Name','trim|required|xss_clean	');
 		$this->form_validation->set_rules('surname','Surname','trim|required|xss_clean');
@@ -122,8 +119,7 @@ class User extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
-	public function check_user()
-	{
+	public function check_user(){
 		$username= $this->input->post('username');
 		$password=md5($this->input->post('password'));
 		$userInfo=$this->user_model->check_user($username,$password);
@@ -153,10 +149,7 @@ class User extends CI_Controller {
 	// Database de kayıtlı olan user kullanıcısının bilgilerini view sayfasına gönderiliyor
 	// User önceden hangi bilgileri girdigini unutmus ise hatırlatma amaclida kullanilir
 	public function user_profile_update(){
-
-
 		$data = $this->user_model->get_session_user();
-
 		//form kontroller
 		$this->form_validation->set_rules('name','Name','trim|required|xss_clean	');
 		$this->form_validation->set_rules('surname','Surname','trim|required|xss_clean');
@@ -170,7 +163,6 @@ class User extends CI_Controller {
 		
 		if ($this->form_validation->run() !== FALSE)
 		{
-
 			$update = array(
 				'name'=>$this->input->post('name'),
 				'surname'=>$this->input->post('surname'),
@@ -189,21 +181,18 @@ class User extends CI_Controller {
 			//file properties
 
 			//@unlink('./assets/user_pictures/'.$data['photo']); //  silmeye gerek yok. overwrite true islemi bunu yapıyor zaten
-
 			$config['upload_path'] = './assets/user_pictures/';
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size']	= '5000';
 			$config['file_name']	= $data['photo'];
 			$this->load->library('upload', $config);
 			$this->upload->overwrite = true;
-
 			//Resmi servera yükleme
 			if (!$this->upload->do_upload())
 			{
 				//print_r($this->upload->display_errors());
 				//hata vermeye gerek yok , resim secmeyebilir.
 			}
-
 			//Yüklenen resmi boyutlandırma ve çevirme
 			$config['image_library'] = 'gd2';
 			$config['source_image']	= './assets/user_pictures/'.$data['photo'];
@@ -211,10 +200,7 @@ class User extends CI_Controller {
 			$config['width']	 = 200;
 			$config['height']	 = 200;
 			$this->load->library('image_lib', $config);
-
 			$this->image_lib->resize();
-
-
 			//session ayaları ve atama 
 			//username ve email degistigi icin session tekrar olusturuluyor.
 			$session_array= array(
@@ -225,8 +211,6 @@ class User extends CI_Controller {
 			$this->session->set_userdata('user_in',$session_array);
 			redirect('', 'refresh');
 		}
-
-		
 		$this->load->view('template/header');
 		$this->load->view('user/profile_update',$data);
 		$this->load->view('template/footer');

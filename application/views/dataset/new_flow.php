@@ -43,6 +43,7 @@
 		<td>Quantity</td>
 		<td>Cost</td>
 		<td>EP</td>
+		<td>Equipment</td>
 	</tr>
 	<?php foreach ($company_flows as $flow): ?>
 	<tr>	
@@ -51,6 +52,7 @@
 			<td><?php echo $flow['qntty']; ?></td>
 			<td><?php echo $flow['cost']; ?></td>
 			<td><?php echo $flow['ep']; ?></td>
+			<td><a href="<?php echo base_url('new_flow/'.$companyID);?>" class="btn btn-default btn-sm>" value=""><span class="glyphicon glyphicon-edit"></span></button></td>
 
 	</tr>
 	<?php endforeach ?>
