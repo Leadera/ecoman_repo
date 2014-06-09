@@ -108,6 +108,13 @@ class Project extends CI_Controller{
 
 	public function view_project($prj_id){
 
+		$kullanici = $this->session->userdata('user_in');
+		$is_consultant_of_project = $this->user_model->is_consultant_of_project_by_user_id($kullanici['id'],$prj_id);
+		$is_contactperson_of_project = $this->user_model->is_contactperson_of_project_by_user_id($kullanici['id'],$prj_id);
+		
+		if(!$is_consultant_of_project && !$is_contactperson_of_project){
+			redirect('','refresh');
+		}
 		$data['projects'] = $this->project_model->get_project($prj_id);
 		$data['status'] = $this->project_model->get_status($prj_id);
 		$data['constant'] = $this->project_model->get_prj_consaltnt($prj_id);
@@ -115,7 +122,7 @@ class Project extends CI_Controller{
 		$data['contact'] = $this->project_model->get_prj_cntct_prsnl($prj_id);
 
 		$kullanici = $this->session->userdata('user_in');
-		$data['is_consultant_of_project'] = $this->user_model->is_consultant_of_project_by_user_id($kullanici['id'],$prj_id);
+		$data['is_consultant_of_project'] = $is_consultant_of_project;
 
 		$this->load->view('template/header');
 		$this->load->view('project/project_show_detailed',$data);
