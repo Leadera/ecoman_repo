@@ -4,12 +4,12 @@
 		<div class="form-group">
 	    <label for="flowname">Flow Name</label>
     	<div>	    			
-				<select id="flowname" class="info select-block" name="flowname">
-					<?php foreach ($flownames as $flowname): ?>
-						<option value="<?php echo $flowname['id']; ?>"><?php echo $flowname['name']; ?></option>
-					<?php endforeach ?>
-				</select>
-			</div>
+			<select id="flowname" class="info select-block" name="flowname">
+				<?php foreach ($flownames as $flowname): ?>
+					<option value="<?php echo $flowname['id']; ?>"><?php echo $flowname['name']; ?></option>
+				<?php endforeach ?>
+			</select>
+		</div>
 	  </div>
 	  <div class="form-group">
 	    <label for="flowtype">Flow Type</label>
@@ -37,29 +37,23 @@
 	</form>
 	<hr>
 	<table class="table table-striped table-bordered text-center">
-	<tr>
-		<td>Flow Name</td>
-		<td>Flow Type</td>
-		<td>Quantity</td>
-		<td>Cost</td>
-		<td>EP</td>
-		<td>Equipment</td>
-	</tr>
-	<?php foreach ($company_flows as $flow): ?>
-	<tr>	
-			<td><?php echo $flow['flowname']; ?></td>
-			<td><?php echo $flow['flowtype']; ?></td>
-			<td><?php echo $flow['qntty']; ?></td>
-			<td><?php echo $flow['cost']; ?></td>
-			<td><?php echo $flow['ep']; ?></td>
-			<td><a href="<?php echo base_url('new_flow/'.$companyID);?>" class="btn btn-default btn-sm>" value=""><span class="glyphicon glyphicon-edit"></span></button></td>
-
-	</tr>
-	<?php endforeach ?>
-
+		<tr>
+			<td>Flow Name</td>
+			<td>Flow Type</td>
+			<td>Quantity</td>
+			<td>Cost</td>
+			<td>EP</td>
+		</tr>
+		<?php foreach ($company_flows as $flow): ?>
+			<tr>	
+				<td><?php echo $flow['flowname']; ?></td>
+				<td><?php echo $flow['flowtype']; ?></td>
+				<td><?php echo $flow['qntty']; ?></td>
+				<td><?php echo $flow['cost']; ?></td>
+				<td><?php echo $flow['ep']; ?></td>
+			</tr>
+		<?php endforeach ?>
 	</table>
-
 	</div>
-
 	</div>
 </div>

@@ -5,10 +5,8 @@ class Company extends CI_Controller{
 		parent::__construct();
 		$this->load->model('company_model');
 		$this->load->model('user_model');
+		$this->load->model('cluster_model');	
 		$this->load->library('form_validation');
-		if($this->session->userdata('user_in') === FALSE){
-			redirect('','refresh');
-		}
 	}
 
 	public function new_company(){
@@ -134,7 +132,17 @@ class Company extends CI_Controller{
 	}
 
 	public function show_all_companies(){
-		$data['companies'] = $this->company_model->get_companies();
+		$cluster_id = $this->input->post('cluster');
+		
+		if($cluster_id == null || $cluster_id == 0){
+			$data['cluster_name']['name'] = 'All Companies';
+			$data['companies'] = $this->company_model->get_companies();
+		}
+		else{
+			$data['companies'] = $this->company_model->get_companies_with_cluster($cluster_id);
+			$data['cluster_name'] = $this->cluster_model->get_cluster_name($cluster_id);
+		}		
+		$data['clusters'] = $this->cluster_model->get_clusters();
 
 		$this->load->view('template/header');
 		$this->load->view('company/show_all_companies',$data);
@@ -317,6 +325,7 @@ class Company extends CI_Controller{
 			return false;
 		}
 	}
+
 	public function create_company_control(){
 		$temp = $this->session->userdata('user_in');
 		$cmpny = $this->user_model->cmpny_prsnl($temp['id']);

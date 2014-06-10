@@ -5,12 +5,7 @@ class Project extends CI_Controller{
 		parent::__construct();
 		$this->load->model('project_model');
 		$this->load->model('company_model');
-		$this->load->model('user_model');
-		
-		$kullanici = $this->session->userdata('user_in');
-		if ($kullanici === FALSE){
-			redirect('','refresh');
-		}		
+		$this->load->model('user_model');	
 	}
 
 	public function new_project(){
@@ -98,8 +93,11 @@ class Project extends CI_Controller{
 
 	public function show_all_project(){
 		$kullanici = $this->session->userdata('user_in');
-		$data['is_consultant'] = $this->user_model->is_user_consultant($kullanici['id']);
-
+		if($kullanici['id']!=null)
+			$data['is_consultant'] = $this->user_model->is_user_consultant($kullanici['id']);
+		else
+			$data['is_consultant'] = false;
+ 
 		$data['projects'] = $this->project_model->get_projects();
 		$this->load->view('template/header');
 		$this->load->view('project/show_all_project',$data);

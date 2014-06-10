@@ -145,5 +145,20 @@ class Company_model extends CI_Model {
       return TRUE;
   }
 
+  public function get_clusters(){
+    $this->db->select('*');
+    $this->db->from('T_CLSTR');
+    $query = $this->db->get()->result_array();
+    return $query;
+  }
+
+  public function get_companies_with_cluster($cluster_id){
+    $this->db->select('*');
+    $this->db->from('T_CMPNY');
+    $this->db->join('T_CMPNY_CLSTR','T_CMPNY_CLSTR.cmpny_id = T_CMPNY.id');
+    $this->db->where('T_CMPNY_CLSTR.clstr_id',$cluster_id);
+    $query = $this->db->get()->result_array();
+    return $query;
+  }
 }
 ?>

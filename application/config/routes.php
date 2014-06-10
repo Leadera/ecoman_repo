@@ -37,6 +37,8 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+$route['cluster_to_match_company'] = "cluster/cluster_to_match_company";
+
 $route['become_consultant'] = "user/become_consultant";
 $route['profile_update'] = "user/user_profile_update";
 $route['user/(:any)'] = "user/user_profile/$1";
