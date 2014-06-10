@@ -1,25 +1,32 @@
-<div class="container">
-	<div class="row">
-<div class="col-md-12 ">
-	<div class="row">
-		<div class="col-md-6"><div class="altbaslik">New component</div></div>
-		<div class="col-md-6"></div>			
-	</div>
-	<?php echo form_open('flow_and_component/new_component','role="form"'); ?>
+	<div class="col-md-9">
+		<?php echo form_open_multipart('new_component/'.$companyID, 'style="overflow:hidden;"'); ?>
+			<p class="lead">New Component</p>
+			<div class="form-group">
+			    <label for="component_name">Component Name</label>
+			   	<input class="form-control" id="component_name" name="component_name" placeholder="Enter Component Name">
+		 	</div>
 
-		<?php if(validation_errors() != NULL ): ?>
-    <div class="alert">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <?php echo validation_errors(); ?>        
-    </div>
-    <?php endif ?>
-	  <div class="form-group">
-	    <label for="componentname">Component name</label>
-	    <input class="form-control" id="componentname" name="componentname" placeholder="Enter component name">
-	  </div>
-	  <button type="submit" class="btn btn-info">Save component</button>
-	  <button class="btn btn-default">Cancel</button>
-	</form>
-</div>
-</div>
+			<div class="form-group">
+			    <select id="flowtype" class="info select-block" name="flowtype">
+					<?php foreach ($flow_and_flow_type as $flows): ?>
+						<option value="<?php echo $flows['value_id']; ?>"><?php echo $flows['flow_name'].'('.$flows['flow_type_name'].')'; ?></option>
+					<?php endforeach ?>
+				</select>
+			</div>
+		  	
+		  	<button type="submit" class="btn btn-primary pull-right">Add Component</button>
+		</form>
+		<hr>
+		<table class="table table-striped table-bordered text-center">
+			<tr>
+				<td><b>Component Name</b></td>
+			</tr>
+			<?php foreach ($component_name as $component): ?>
+				<tr>	
+					<td><?php echo $component['name']; ?></td>
+				</tr>
+			<?php endforeach ?>
+		</table>
+		</div>
+	</div>
 </div>

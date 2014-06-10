@@ -8,6 +8,7 @@ class Dataset extends CI_Controller {
 		$this->load->model('flow_model');
 		$this->load->model('process_model');
 		$this->load->model('equipment_model');
+		$this->load->model('component_model');
 		$this->load->library('form_validation');
 
 		$kullanici = $this->session->userdata('user_in');
@@ -82,24 +83,33 @@ class Dataset extends CI_Controller {
 
 	}
 
-	public function new_component()
-	{
+	public function new_component($companyID){
+		
+		$this->form_validation->set_rules('component_name', 'Component Name', 'trim|required|xss_clean');
 
-		$this->form_validation->set_rules('componentname', 'Component name', 'trim|required|xss_clean|strip_tags');
+		if($this->form_validation->run() !== FALSE) {
+			$component_array = array(
+					'name' => $this->input->post('component_name'),
+					'name_tr' => $this->input->post('component_name'),
+					'active' => '1'
+				);
+			$component_id = $this->component_model->set_cmpnnt($component_array);
 
-		if($this->form_validation->run() == FALSE) {
-			$this->load->view('template/header');
-			$this->load->view('dataset/dataSetLeftSide');
-			$this->load->view('dataset/new_component');
-			$this->load->view('template/footer');
+			$cmpny_flow_cmpnnt = array(
+					'cmpny_flow_id' => $this->input->post('flowtype'),
+					'cmpnnt_id' => $component_id
+				);
+			$this->component_model->set_cmpny_flow_cmpnnt($cmpny_flow_cmpnnt);
 		}
-		else{
-			$componentname = $this->input->post('componentname');
+		
+		$data['component_name'] = $this->component_model->get_cmpnnt($companyID);;
+		$data['companyID'] = $companyID;
+		$data['flow_and_flow_type'] = $this->component_model->get_cmpny_flow_and_flow_type($companyID);
 
-			$this->product_model->register_component($componentname);
-
-			redirect(base_url('flow_and_component'), 'refresh');
-		}
+		$this->load->view('template/header');
+		$this->load->view('dataset/dataSetLeftSide',$data);
+		$this->load->view('dataset/new_component',$data);
+		$this->load->view('template/footer');
 	}
 
 	public function new_process($companyID){
