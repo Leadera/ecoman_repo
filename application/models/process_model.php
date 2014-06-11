@@ -17,6 +17,18 @@ class Process_model extends CI_Model {
 		$this->db->insert('T_CMPNY_FLOW_PRCSS',$data);
 	}
 
+	public function can_write_cmpny_prcss($cmpny_id,$prcss_id){
+		$this->db->select('id');
+	    $this->db->from('T_CMPNY_PRCSS');
+	    $this->db->where('cmpny_id',$cmpny_id);
+	    $this->db->where('prcss_id',$prcss_id);
+	    $query = $this->db->get()->row_array();
+	    if(empty($query))
+	    	return false;
+	    else
+	    	return $query;
+	}
+
 	public function cmpny_prcss($data){
 		$this->db->insert('T_CMPNY_PRCSS',$data);
 		return $this->db->insert_id();

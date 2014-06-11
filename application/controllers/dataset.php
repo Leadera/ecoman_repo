@@ -122,16 +122,30 @@ class Dataset extends CI_Controller {
 			$used_flows = $this->input->post('usedFlows');
 			$process_id = $this->input->post('process');
 
-			$cmpny_prcss = array(
-				'cmpny_id' => $companyID,
-				'prcss_id' => $process_id
-			);
-			$cmpny_prcss_id = $this->process_model->cmpny_prcss($cmpny_prcss);
+			$cmpny_prcss_id = $this->process_model->can_write_cmpny_prcss($companyID,$process_id);
+			
+			if($cmpny_prcss_id != false){
+				$cmpny_prcss = array(
+					'cmpny_id' => $companyID,
+					'prcss_id' => $process_id
+				);
+
+				$cmpny_prcss_id = $this->process_model->cmpny_prcss($cmpny_prcss);
+
+				foreach($used_flows as $flow) {
+					$cmpny_flow_prcss = array(
+							'cmpny_flow_id' => $flow,
+							'cmpny_prcss_id' => $cmpny_prcss_id
+						);
+					$this->process_model->cmpny_flow_prcss($cmpny_flow_prcss);
+				}
+
+			}
 
 			foreach($used_flows as $flow) {
 				$cmpny_flow_prcss = array(
 						'cmpny_flow_id' => $flow,
-						'cmpny_prcss_id' => $cmpny_prcss_id
+						'cmpny_prcss_id' => $cmpny_prcss_id['id']
 					);
 				$this->process_model->cmpny_flow_prcss($cmpny_flow_prcss);
 			}
@@ -161,24 +175,21 @@ class Dataset extends CI_Controller {
 			$equipment_type_id = $this->input->post('equipmentTypeName');
 			$equipment_type_attribute_id = $this->input->post('equipmentAttributeName');
 
-			$cmpny_eqpmnt_data = array(
+			$cmpny_eqpmnt_type_attrbt = array(
 					'cmpny_id' => $companyID,
-					'eqpmnt_id' => $equipment_id
+					'eqpmnt_id' => $equipment_id,
+					'eqpmnt_type_id' => $equipment_type_id,
+					'eqpmnt_type_attrbt_id' => $equipment_type_attribute_id
 				);
-			$this->equipment_model->set_cmpny_eqpmnt($cmpny_eqpmnt_data);
-			
-			$cmpny_eqpmnt_type_data = array(
-					'cmpny_id' => $companyID,
-					'eqpmnt_type_id' => $equipment_type_id
-				);
-			$cmpny_eqpmnt_type_id = $this->equipment_model->set_cmpny_eqpmnt_type($cmpny_eqpmnt_type_data);
+			$last_index = $this->equipment_model->set_info($cmpny_eqpmnt_type_attrbt);
 
 			$cmpny_prcss_id = $this->equipment_model->get_cmpny_prcss_id($companyID,$prcss_id);
-			$cmpny_prcss_eqpmnt_type_data = array(
-					'cmpny_eqpmnt_type_id' => $cmpny_eqpmnt_type_id,
+
+			$cmpny_prcss = array(
+					'cmpny_eqpmnt_type_id' => $last_index,
 					'cmpny_prcss_id' => $cmpny_prcss_id['id']
 				);
-			$this->equipment_model->set_cmpny_prcss_eqpmnt($cmpny_prcss_eqpmnt_type_data);
+			$this->equipment_model->set_cmpny_prcss($cmpny_prcss);
 		}
 
 		$data['companyID'] = $companyID;

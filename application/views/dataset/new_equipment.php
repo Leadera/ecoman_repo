@@ -49,9 +49,9 @@
 			</tr>
 			<?php foreach ($informations as $info): ?>
 			<tr>	
-					<td><?php echo $info['equipment_name']; ?></td>
-					<td><?php echo $info['equipment_type_name']; ?></td>
-					<td>NULL</td>
+					<td><?php echo $info['eqpmnt_name']; ?></td>
+					<td><?php echo $info['eqpmnt_type_name']; ?></td>
+					<td><?php echo $info['eqpmnt_type_attrbt_name']; ?></td>
 					<td><?php echo $info['prcss_name']; ?></td>
 			</tr>
 			<?php endforeach ?>
