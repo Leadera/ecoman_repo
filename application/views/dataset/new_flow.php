@@ -1,5 +1,5 @@
 	<div class="col-md-9">
-		<?php echo form_open_multipart('new_flow/'.$companyID, 'style="overflow:hidden;"'); ?>
+		<?php echo form_open_multipart('new_flow/'.$companyID); ?>
 			<p class="lead">New flow</p>
 			<div class="form-group">
 			    <label for="flowname">Flow Name</label>
@@ -33,16 +33,17 @@
 		  		<label for="amount">EP(Annual)</label>
 		    	<input class="form-control" id="ep" name="ep" placeholder="Enter EP">
 		  	</div>
-		  	<button type="submit" class="btn btn-primary pull-right">Add Flow</button>
+		  	<button type="submit" class="btn btn-info">Add Flow</button>
 		</form>
 		<hr>
-		<table class="table table-striped table-bordered text-center">
+		<p class="lead">Company flows</p>
+		<table class="table table-striped table-bordered">
 			<tr>
-				<td>Flow Name</td>
-				<td>Flow Type</td>
-				<td>Quantity</td>
-				<td>Cost</td>
-				<td>EP</td>
+				<th>Flow Name</th>
+				<th>Flow Type</th>
+				<th>Quantity</th>
+				<th>Cost</th>
+				<th>EP</th>
 			</tr>
 			<?php foreach ($company_flows as $flow): ?>
 				<tr>	

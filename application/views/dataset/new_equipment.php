@@ -1,44 +1,43 @@
 	<div class="col-md-9">
-	<?php echo form_open_multipart('new_equipment/'.$companyID[0],'style="overflow:hidden;"'); ?>
-				<div class="form-group">
-		    		<label for="status">Equipment Name</label>
-		    		<div>	    			
-			    		<select class="info select-block" name="equipment" id="equipment">
-			  			<?php foreach ($equipmentName as $eqpmntName): ?>
-							<option value="<?php echo $eqpmntName['id']; ?>"><?php echo $eqpmntName['name']; ?></option>
-						<?php endforeach ?>
-						</select>
-					</div>
-	 			</div>
-	 			<div class="form-group">
-		    		<label for="status">Equipment Type Name</label>
-		    		<div>	    			
-			    		<select  class="select-block" id="equipmentTypeName" name="equipmentTypeName">
+	<?php echo form_open_multipart('new_equipment/'.$companyID[0]); ?>
+	<div class="form-group">
+			<label for="status">Equipment Name</label>
+			<div>	    			
+		  	<select class="info select-block" name="equipment" id="equipment">
+					<?php foreach ($equipmentName as $eqpmntName): ?>
+					<option value="<?php echo $eqpmntName['id']; ?>"><?php echo $eqpmntName['name']; ?></option>
+				<?php endforeach ?>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="status">Equipment Type Name</label>
+			<div>	    			
+	  		<select  class="select-block" id="equipmentTypeName" name="equipmentTypeName">
+
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="status">Equipment Attribute Name</label>
+			<div>	    			
+	  		<select  class="select-block" id="equipmentAttributeName" name="equipmentAttributeName">
 
 
-						</select>
-					</div>
-	 			</div>
-	 			<div class="form-group">
-		    		<label for="status">Equipment Attribute Name</label>
-		    		<div>	    			
-			    		<select  class="select-block" id="equipmentAttributeName" name="equipmentAttributeName">
-
-
-						</select>
-					</div>
-	 			</div>
-	 			<div class="form-group">
-			    	<label for="description">Used Processes</label>
-			    	<select class="select-block" id="usedprocess" name="usedprocess">
-				    	<?php foreach ($process as $prcss): ?>
-							<option value="<?php echo $prcss['processid']; ?>"><?php echo $prcss['prcessname']; ?></option>
-						<?php endforeach ?>
-					</select>
-		    	</div>
-			    <button type="submit" class="btn btn-primary pull-right">Add Equipment</button>
-			
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+	  	<label for="description">Used Processes</label>
+	  	<select class="select-block" id="usedprocess" name="usedprocess">
+	    	<?php foreach ($process as $prcss): ?>
+				<option value="<?php echo $prcss['processid']; ?>"><?php echo $prcss['prcessname']; ?></option>
+			<?php endforeach ?>
+		</select>
+		</div>
+	  <button type="submit" class="btn btn-info">Add Equipment</button>
 	</form>
+	<div class="clearfix">
 		<hr>
 		<table class="table table-striped table-bordered text-center">
 			<tr>
@@ -56,6 +55,8 @@
 			</tr>
 			<?php endforeach ?>
 		</table>
+	</div>
+
 		</div>
 	</div>
 </div>

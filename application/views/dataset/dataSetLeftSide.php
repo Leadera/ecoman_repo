@@ -12,8 +12,9 @@
 		<div class="col-md-3">
 			<div class="form-group">
 				<ul class="nav nav-list">
+					<li class="nav-header" style="font-size:15px;">Dataset Parts</li>
 					<li><a style="text-transform:capitalize;" href="<?php echo base_url('new_flow/'.$companyID); ?>">Flows</a></li>
-					<li><a style="text-transform:capitalize;" href="<?php echo base_url('new_component/'.$companyID); ?>">Component</a></li>
+					<li><a style="text-transform:capitalize;" href="<?php echo base_url('new_component/'.$companyID); ?>"><span style="margin-left:10px; font-size:12px;"> Component</span></a></li>
 					<li><a style="text-transform:capitalize;" href="<?php echo base_url('new_process/'.$companyID); ?>">Process</a></li>
 					<li><a style="text-transform:capitalize;" href="<?php echo base_url('new_equipment/'.$companyID); ?>">Equipment</a></li>
 					<li><a style="text-transform:capitalize;" href="<?php echo base_url('new_product/'.$companyID); ?>">Product</a></li>

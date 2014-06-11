@@ -9,7 +9,7 @@
             <ul class="bottom-links">
               <li><a href="#fakelink">About Us</a></li>
               <li><a href="#fakelink">Store</a></li>
-              <li class="active"><a href="#fakelink">Jobs</a></li>
+              <li><a href="#fakelink">Jobs</a></li>
               <li><a href="#fakelink">Privacy</a></li>
               <li><a href="#fakelink">Terms</a></li>
               <li><a href="#fakelink">Follow Us</a></li>
@@ -19,7 +19,7 @@
           </div>
 
           <div class="col-md-2">
-            <ul class="bottom-icons">
+            <ul class="bottom-icons pull-right">
               <li><a href="#fakelink" class="fui-pinterest"></a></li>
               <li><a href="#fakelink" class="fui-facebook"></a></li>
               <li><a href="#fakelink" class="fui-twitter"></a></li>
