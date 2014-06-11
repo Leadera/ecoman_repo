@@ -9,7 +9,7 @@
             <ul class="bottom-links">
               <li><a href="#fakelink">About Us</a></li>
               <li><a href="#fakelink">Store</a></li>
-              <li class="active"><a href="#fakelink">Jobs</a></li>
+              <li><a href="#fakelink">Jobs</a></li>
               <li><a href="#fakelink">Privacy</a></li>
               <li><a href="#fakelink">Terms</a></li>
               <li><a href="#fakelink">Follow Us</a></li>
