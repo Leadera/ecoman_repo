@@ -19,7 +19,7 @@
           </div>
 
           <div class="col-md-2">
-            <ul class="bottom-icons">
+            <ul class="bottom-icons pull-right">
               <li><a href="#fakelink" class="fui-pinterest"></a></li>
               <li><a href="#fakelink" class="fui-facebook"></a></li>
               <li><a href="#fakelink" class="fui-twitter"></a></li>
