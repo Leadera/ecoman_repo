@@ -9,9 +9,7 @@
 				
 				<a class="pull-right btn btn-info btn-embossed btn-sm" href="<?php echo base_url("newcompany"); ?>">Create a Company</a>
 
-				<?php }	?>
-
-				<label for="cluster">Select Cluster</label>
+				<?php }	?>	
 				<select title="Choose at least one" class="select-block" id="cluster" name="cluster">
 					<option value="0">All of Companies</option>
 					<?php foreach ($clusters as $cluster): ?>

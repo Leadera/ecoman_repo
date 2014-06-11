@@ -15,19 +15,20 @@ class Cluster extends CI_Controller{
 
 		if ($this->form_validation->run() !== FALSE)
 		{
-			if($cluster_id != 0 && $company_id != 0){
-				if($this->cluster_model->can_write_info($cluster_id,$company_id) == false){
-					$cmpny_clstr = array(
-							'cmpny_id' => $company_id,
-							'clstr_id' => $cluster_id
-						);
-					$this->cluster_model->set_cmpny_clstr($cmpny_clstr);
-				}
+			$company_id = $this->input->post('company');
+			$cluster_id = $this->input->post('cluster');
+			if($this->cluster_model->can_write_info($cluster_id,$company_id) == false){
+				$cmpny_clstr = array(
+						'cmpny_id' => $company_id,
+						'clstr_id' => $cluster_id
+					);
+				$this->cluster_model->set_cmpny_clstr($cmpny_clstr);
 			}
 		}
 
 		$data['clusters'] = $this->cluster_model->get_clusters();
 		$data['companies'] = $this->company_model->get_companies();
+
 		$this->load->view('template/header');
 		$this->load->view('cluster/cluster_match_company',$data);
 		$this->load->view('template/footer');
