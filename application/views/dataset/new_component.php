@@ -22,11 +22,14 @@
 			<tr>
 				<th>Flow Name</th>
 				<th>Component Name</th>
+				<th style="width:100px;">Delete</th>
 			</tr>
 			<?php foreach ($component_name as $component): ?>
 				<tr>	
 					<td><?php echo $component['flow_name']; ?> (<?php echo $component['flow_type_name']; ?>)</td>
 					<td><?php echo $component['component_name']; ?></td>
+					<td><a href="<?php echo base_url('delete_component/'.$companyID.'/'.$component['id']);?>" class="btn btn-danger btn-sm" value="<?php echo $component['id']; ?>"><span class="glyphicon glyphicon-remove"></span></button></td>
+			
 				</tr>
 			<?php endforeach ?>
 		</table>
