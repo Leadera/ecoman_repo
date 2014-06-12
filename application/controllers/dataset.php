@@ -215,6 +215,18 @@ class Dataset extends CI_Controller {
 		$this->product_model->delete_product($id);
 		redirect('new_product/'.$companyID, 'refresh');
 	}
+	public function delete_flow($companyID,$id){
+		$cmpny_flow_prcss_id_list = $this->process_model->cmpny_flow_prcss_id_list($id);
+		foreach ($cmpny_flow_prcss_id_list as $cmpny_flow_prcss_id) {
+			$this->equipment_model->delete_cmpny_equipment($cmpny_flow_prcss_id['cmpny_prcss_id']);
+			$this->process_model->delete_cmpny_flow_process($cmpny_flow_prcss_id['cmpny_prcss_id']);
+			$this->process_model->delete_cmpny_process($cmpny_flow_prcss_id['cmpny_prcss_id']);
+		}
+
+		$this->component_model->delete_flow_cmpnnt($id);
+		$this->flow_model->delete_flow($id);
+		redirect('new_flow/'.$companyID, 'refresh');
+	}
 
 	public function get_equipment_type(){
 		$equipment_id = $this->input->post('equipment_id');

@@ -59,6 +59,7 @@
 				<th>Quantity</th>
 				<th>Cost</th>
 				<th>EP</th>
+				<th style="width:100px;">Delete</th>
 			</tr>
 			<?php foreach ($company_flows as $flow): ?>
 				<tr>	
@@ -67,6 +68,8 @@
 					<td><?php echo $flow['qntty'].' '.$flow['qntty_unit_name']; ?></td>
 					<td><?php echo $flow['cost'].' '.$flow['cost_unit_name']; ?></td>
 					<td><?php echo $flow['ep'].' '.$flow['ep_unit_name']; ?></td>
+					<td><a href="<?php echo base_url('delete_flow/'.$companyID.'/'.$flow['id']);?>" class="btn btn-danger btn-sm" value="<?php echo $flow['id']; ?>"><span class="glyphicon glyphicon-remove"></span></button></td>
+			
 				</tr>
 			<?php endforeach ?>
 		</table>
