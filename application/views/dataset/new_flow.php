@@ -64,9 +64,9 @@
 				<tr>	
 					<td><?php echo $flow['flowname']; ?></td>
 					<td><?php echo $flow['flowtype']; ?></td>
-					<td><?php echo $flow['qntty'].' '.$flow['qntty_unit_id']; ?></td>
-					<td><?php echo $flow['cost'].' '.$flow['cost_unit_id']; ?></td>
-					<td><?php echo $flow['ep'].' '.$flow['ep_unit_id']; ?></td>
+					<td><?php echo $flow['qntty'].' '.$flow['qntty_unit_name']; ?></td>
+					<td><?php echo $flow['cost'].' '.$flow['cost_unit_name']; ?></td>
+					<td><?php echo $flow['ep'].' '.$flow['ep_unit_name']; ?></td>
 				</tr>
 			<?php endforeach ?>
 		</table>
