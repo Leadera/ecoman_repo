@@ -160,5 +160,21 @@ class Company_model extends CI_Model {
     $query = $this->db->get()->result_array();
     return $query;
   }
+  public function have_project_name($cmpny_id,$cmpny_name){
+    $this->db->select('id');
+    $this->db->from('T_CMPNY');
+    $this->db->where('name',$cmpny_name); 
+    $query = $this->db->get()->result_array();
+    if(empty($query))
+      return true;
+    else{
+        foreach ($query as $variable) {
+          if($variable['id'] != $cmpny_id){
+            return false;
+          }
+        }
+        return true;
+    }
+  }
 }
 ?>

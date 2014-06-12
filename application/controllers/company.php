@@ -238,7 +238,7 @@ class Company extends CI_Controller{
 
 		$this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('companyName', 'Company Name', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('companyName', 'Company Name', 'trim|required|xss_clean|callback_name_control');
 		$this->form_validation->set_rules('naceCode', 'Nace Code', 'trim|required|xss_clean|callback_is_in_nace|regex_match[/^\d{2}\.\d{2}\.\d{2}$/]');
 		$this->form_validation->set_rules('coordinates', 'Coordinates', 'trim|xss_clean');
 		$this->form_validation->set_rules('companyDescription', 'Company Description', 'trim|xss_clean');
@@ -334,6 +334,18 @@ class Company extends CI_Controller{
 		}
 		else{
 			return FALSE;
+		}
+	}
+
+	function name_control(){
+		$cmpny_id = $this->uri->segment(2);
+		$cmpny_name = $this->input->post('companyName');
+		if($this->company_model->have_project_name($cmpny_id,$cmpny_name)){
+			return true;
+		}
+		else{
+			$this->form_validation->set_message('name_control','Company Name must be required');
+			return false;
 		}
 	}
 }
