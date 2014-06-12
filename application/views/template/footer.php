@@ -120,7 +120,7 @@
 
     <script type="text/javascript">
       $(document).ready(function () {
-        $('#equipment').change(function () {
+        $('#equipment').bind('change',function () {
           var equipmentID = $(this).val();
           $.ajax({
             url: "/ecoman_repo/get_equipment_type",
@@ -137,12 +137,13 @@
             }
           })
         });
+        $('#equipment').trigger('change');
       });
     </script>
 
     <script type="text/javascript">
       $(document).ready(function () {
-        $('#equipmentTypeName').change(function () {
+        $('#equipmentTypeName').bind('change',function () {
           var equipmentTypeID = $(this).val();
           $.ajax({
             url: "/ecoman_repo/get_equipment_attribute",
@@ -158,6 +159,7 @@
             }
           })
         });
+        $('#equipmentTypeName').trigger('change');
       });
     </script>
 
