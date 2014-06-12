@@ -44,23 +44,31 @@ class Dataset extends CI_Controller {
 		$this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean|strip_tags');
 		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|required|xss_clean|strip_tags');
 		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('quantityUnit', 'Quantity Unit', 'trim|required|xss_clean|strip_tags');
 		$this->form_validation->set_rules('cost', 'Cost', 'trim|required|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('costUnit', 'Cost Unit', 'trim|required|xss_clean|strip_tags');
 		$this->form_validation->set_rules('ep', 'EP', 'trim|required|xss_clean|strip_tags|numeric');
-
+		$this->form_validation->set_rules('epUnit', 'EP Unit', 'trim|required|xss_clean|strip_tags');
 		if($this->form_validation->run() !== FALSE) {
 
 			$flowID = $this->input->post('flowname');
 			$flowtypeID = $this->input->post('flowtype');
 			$ep = $this->input->post('ep');
+			$epUnit = $this->input->post('epUnit');
 			$cost = $this->input->post('cost');
+			$costUnit = $this->input->post('costUnit');
 			$quantity = $this->input->post('quantity');
+			$quantityUnit = $this->input->post('quantityUnit');
 
 			$flow = array(
 				'cmpny_id'=>$companyID,
 				'flow_id'=>$flowID,
 				'qntty'=>$quantity,
+				'qntty_unit_id'=>$quantityUnit,
 				'cost' =>$cost,
+				'cost_unit_id' =>$costUnit,
 				'ep' => $ep,
+				'ep_unit_id' => $epUnit,
 				'flow_type_id'=> $flowtypeID
 			);
 			$this->flow_model->register_flow_to_company($flow);
@@ -75,6 +83,8 @@ class Dataset extends CI_Controller {
 
 		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
 		$data['companyID'] = $companyID;
+
+		$data['units'] = $this->flow_model->get_unit_list();
 
 		$this->load->view('template/header');
 		$this->load->view('dataset/dataSetLeftSide',$data);
