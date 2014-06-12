@@ -171,7 +171,7 @@ class Project extends CI_Controller{
 		$this->load->library('form_validation');
 
 
-		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean'); // buraya isunique kontrolü ge
+		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean|callback_name_control'); // buraya isunique kontrolü ge
 		$this->form_validation->set_rules('description', 'Description', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('assignCompany','Assign Company','required');
 		$this->form_validation->set_rules('assignConsultant','Assign Consultant','required');
@@ -231,6 +231,17 @@ class Project extends CI_Controller{
 		$this->load->view('template/header');
 		$this->load->view('project/update_project',$data);
 		$this->load->view('template/footer');
+	}
+
+	function name_control(){
+		$project_id = $this->uri->segment(2);
+		$project_name = $this->input->post('projectName');
+		if($this->project_model->have_project_name($project_id,$project_name))
+			return true;
+		else{
+			$this->form_validation->set_message('name_control','Project Name must be required');
+			return false;
+		}
 	}
 }
 ?>
