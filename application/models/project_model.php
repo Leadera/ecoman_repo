@@ -108,5 +108,22 @@ class Project_model extends CI_Model {
     }
     return false;
   }
-}
+
+  public function have_project_name($project_id,$project_name){
+    $this->db->select('id');
+    $this->db->from('T_PRJ');
+    $this->db->where('name',$project_name); 
+    $query = $this->db->get()->result_array();
+    if(empty($query))
+      return true;
+    else{
+      foreach ($query as $variable) {
+        if($variable['id'] != $project_id){
+          return false;
+        }
+      }
+      return true;
+    }
+  }
+ }
 ?>
