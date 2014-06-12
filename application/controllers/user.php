@@ -9,15 +9,15 @@ class User extends CI_Controller {
 
 	public function user_register(){
 		//form kontroller
-		$this->form_validation->set_rules('name','Name','trim|required|xss_clean	');
-		$this->form_validation->set_rules('surname','Surname','trim|required|xss_clean');
+		$this->form_validation->set_rules('name','Name','trim|required|xss_clean|callback__string_control');
+		$this->form_validation->set_rules('surname','Surname','trim|required|xss_clean|callback__string_control');
 		$this->form_validation->set_rules('jobTitle','Job Title','required|trim|xss_clean');
 		$this->form_validation->set_rules('description','Description','trim|xss_clean');
 		$this->form_validation->set_rules('email', 'e-mail' ,'trim|required|valid_email|is_unique[T_USER.email]');
 		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
 		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
 		$this->form_validation->set_rules('fax', 'Fax Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]|xss_clean|is_unique[T_USER.user_name]');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]|xss_clean|is_unique[T_USER.user_name]|alpha_numeric');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[5]|matches[rePassword]|trim|xss_clean');
 
 		if ($this->form_validation->run() !== FALSE)
@@ -78,7 +78,10 @@ class User extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
-
+	function string_control($str)
+	{
+	    return (!preg_match("/^([-a-üöçşığz A-ÜÖÇŞİĞZ_ ])+$/i", $str)) ? FALSE : TRUE;
+	}	 
 	//bu kod telefon numaralarına - boşluk ve _ koymaya yarar
 	function alpha_dash_space($str_in = '')
 	{
@@ -151,15 +154,15 @@ class User extends CI_Controller {
 	public function user_profile_update(){
 		$data = $this->user_model->get_session_user();
 		//form kontroller
-		$this->form_validation->set_rules('name','Name','trim|required|xss_clean	');
-		$this->form_validation->set_rules('surname','Surname','trim|required|xss_clean');
+		$this->form_validation->set_rules('name','Name','trim|required|xss_clean|callback__string_control');
+		$this->form_validation->set_rules('surname','Surname','trim|required|xss_clean|callback__string_control');
 		$this->form_validation->set_rules('jobTitle','Job Title','required|trim|xss_clean');
 		$this->form_validation->set_rules('description','Description','trim|xss_clean');
 		$this->form_validation->set_rules('email', 'e-mail' ,'trim|required|valid_email|callback_email_check');
 		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|callback_alpha_dash_space|min_length[11]|xss_clean');
 		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|callback_alpha_dash_space|min_length[11]|xss_clean');
 		$this->form_validation->set_rules('fax', 'Fax Number', 'required|callback_alpha_dash_space|min_length[11]|xss_clean');
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]|xss_clean|callback_username_check');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]|xss_clean|callback_username_check|alpha_numeric');
 		
 		if ($this->form_validation->run() !== FALSE)
 		{
