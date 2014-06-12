@@ -4,6 +4,7 @@
 			<div class="lead pull-left"><?php echo $userInfo["name"].' '.$userInfo["surname"].' Profile'; ?></div>
 				<?php  if($userInfo['id']==$this->session->userdata('user_in')['id']): ?>
 		  	<a class="btn btn-info btn-embossed btn-sm pull-right" href="<?php echo base_url("profile_update"); ?>">Update User Info</a>
+		  	<a class="btn btn-info btn-embossed btn-sm pull-right" href="<?php echo base_url('change_pass'); ?>" style="text-transform: capitalize;">Change Pass</a>
 		  	<?php endif ?>
 		  	<?php if($userInfo['role_id']=='2'): ?>
 		  	<a class="btn btn-success btn-embossed btn-sm pull-right" style="margin-right:15px;" href="<?php echo base_url("become_consultant"); ?>">Becoman a Consultant</a>
