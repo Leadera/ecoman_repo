@@ -5,6 +5,7 @@ class Dataset extends CI_Controller {
 		parent::__construct();
 		$this->load->model('product_model');
 		$this->load->model('user_model');
+		$this->load->model('company_model');
 		$this->load->model('flow_model');
 		$this->load->model('process_model');
 		$this->load->model('equipment_model');
@@ -15,7 +16,6 @@ class Dataset extends CI_Controller {
 		if($this->user_model->can_edit_company($kullanici['id'],$this->uri->segment(2)) == FALSE && $this->uri->segment(1) != "get_equipment_type" && $this->uri->segment(1) != "get_equipment_attribute"){
 			redirect(base_url(''), 'refresh');
 		}
-
 	}
 
 	public function new_product($companyID)
@@ -32,6 +32,8 @@ class Dataset extends CI_Controller {
 
 		$data['product'] = $this->product_model->get_product_list($companyID);
 		$data['companyID'] = $companyID;
+		$data['company_info'] = $this->company_model->get_company($companyID);
+
 
 		$this->load->view('template/header');
 		$this->load->view('dataset/dataSetLeftSide',$data);
@@ -75,6 +77,8 @@ class Dataset extends CI_Controller {
 
 		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
 		$data['companyID'] = $companyID;
+		$data['company_info'] = $this->company_model->get_company($companyID);
+
 
 		$this->load->view('template/header');
 		$this->load->view('dataset/dataSetLeftSide',$data);
@@ -104,6 +108,7 @@ class Dataset extends CI_Controller {
 		
 		$data['component_name'] = $this->component_model->get_cmpnnt($companyID);;
 		$data['companyID'] = $companyID;
+		$data['company_info'] = $this->company_model->get_company($companyID);
 		$data['flow_and_flow_type'] = $this->component_model->get_cmpny_flow_and_flow_type($companyID);
 
 		$this->load->view('template/header');
@@ -147,6 +152,7 @@ class Dataset extends CI_Controller {
 		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
 		$data['cmpny_flow_prcss'] = $this->process_model->get_cmpny_flow_prcss($companyID);
 		$data['companyID'] = $companyID;
+		$data['company_info'] = $this->company_model->get_company($companyID);
 
 		$this->load->view('template/header');
 		$this->load->view('dataset/dataSetLeftSide',$data);
@@ -187,6 +193,7 @@ class Dataset extends CI_Controller {
 		$data['equipmentName'] = $this->equipment_model->get_equipment_name();
 		$data['process'] = $this->equipment_model->cmpny_prcss($companyID);
 		$data['informations'] = $this->equipment_model->all_information_of_equipment($companyID);
+		$data['company_info'] = $this->company_model->get_company($companyID);
 		
 		$this->load->view('template/header');
 		$this->load->view('dataset/dataSetLeftSide',$data);
