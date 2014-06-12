@@ -66,7 +66,8 @@ $route['search/(:any)'] = "search/search_pro/$1";
 $route['flow_and_component'] = "dataset/flow_and_component";
 $route['new_flow/(:any)'] = "dataset/new_flow/$1";
 $route['new_component/(:any)'] = "dataset/new_component/$1";
-$route['delete_flow/(:any)'] = "dataset/delete_flow/$1";
+$route['delete_flow/(:any)/(:any)'] = "dataset/delete_flow/$1/$2";
+$route['delete_component/(:any)/(:any)'] = "dataset/delete_component/$1/$2";
 
 $route['new_product/(:any)'] = "dataset/new_product/$1";
 $route['product'] = "dataset/product";

@@ -226,9 +226,15 @@ class Dataset extends CI_Controller {
 			}
 		}
 
-		$this->component_model->delete_flow_cmpnnt($id);
+		$this->component_model->delete_flow_cmpnnt_by_flowID($id);
 		$this->flow_model->delete_flow($id);
 		redirect('new_flow/'.$companyID, 'refresh');
+	}
+
+	public function delete_component($companyID,$id){
+		$this->component_model->delete_flow_cmpnnt_by_cmpnntID($id);
+		$this->component_model->delete_cmpnnt($id);
+		redirect('new_component/'.$companyID, 'refresh');
 	}
 
 	public function get_equipment_type(){

@@ -26,7 +26,7 @@ class Component_model extends CI_Model {
 	}
 
 	public function get_cmpnnt($cmpny_id){
-		$this->db->select('T_CMPNNT.name as component_name, T_FLOW.name as flow_name, T_FLOW_TYPE.name as flow_type_name');
+		$this->db->select('T_CMPNNT.id as id,T_CMPNNT.name as component_name, T_FLOW.name as flow_name, T_FLOW_TYPE.name as flow_type_name');
 		$this->db->from('T_CMPNY_FLOW');
 		$this->db->join('T_CMPNY_FLOW_CMPNNT','T_CMPNY_FLOW.id = T_CMPNY_FLOW_CMPNNT.cmpny_flow_id');
 		$this->db->join('T_CMPNNT','T_CMPNY_FLOW_CMPNNT.cmpnnt_id = T_CMPNNT.id');
@@ -37,8 +37,18 @@ class Component_model extends CI_Model {
     	return $query;
 	}
 
-	public function delete_flow_cmpnnt($id){
+	public function delete_flow_cmpnnt_by_flowID($id){
 		$this->db->where('cmpny_flow_id', $id);
 		$this->db->delete('T_CMPNY_FLOW_CMPNNT'); 
+	}
+
+	public function delete_flow_cmpnnt_by_cmpnntID($id){
+		$this->db->where('cmpnnt_id', $id);
+		$this->db->delete('T_CMPNY_FLOW_CMPNNT'); 
+	}
+
+	public function delete_cmpnnt($id){
+		$this->db->where('id', $id);
+		$this->db->delete('T_CMPNNT'); 
 	}
 }
