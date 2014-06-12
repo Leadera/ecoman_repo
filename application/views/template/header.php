@@ -1,31 +1,27 @@
 <!DOCTYPE html>
-
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Yeşil OSTİM</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!-- Loading Bootstrap -->
     <link href="<?php echo asset_url('bootstrap/css/bootstrap.css'); ?>" rel="stylesheet">
 
     <!-- Loading Flat UI -->
     <link href="<?php echo asset_url('css/flat-ui.css'); ?>" rel="stylesheet">
     <link href="<?php echo asset_url('css/custom.css'); ?>" rel="stylesheet">
-     <!--<link href="<?php // echo asset_url('css/jquery-ui-1.10.4.custom.css'); ?>" rel="stylesheet"> 
+    <!--<link href="<?php // echo asset_url('css/jquery-ui-1.10.4.custom.css'); ?>" rel="stylesheet"> 
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
     <![endif]-->
     <script src="<?php echo asset_url('js/jquery-1.10.2.min.js'); ?>"></script>
-
   </head>
   <body>
 
   <nav class="navbar navbar-default navbar-lg" role="navigation">
   	<div class="container">
-
   		<div class="row">
         <div class="col-md-8">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
