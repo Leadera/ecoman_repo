@@ -77,5 +77,11 @@ class Equipment_model extends CI_Model {
   public function set_cmpny_prcss($data){
     $this->db->insert('T_CMPNY_PRCSS_EQPMNT_TYPE',$data);
   }
+
+  public function delete_cmpny_equipment($cmpny_prcss_id){
+    $this->db->where('cmpny_prcss_id', $cmpny_prcss_id);
+    $this->db->delete('T_CMPNY_PRCSS_EQPMNT_TYPE'); 
+  
+  }
 }
 ?>
