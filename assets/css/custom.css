@@ -11,10 +11,26 @@ body{
 
 /* bootstrap üstüne */
 .navbar-default{
-	background-color:#EEF4EF;
+    background-color:#579f62;
+    border-radius: 0px;
+    color:#f0f0f0;
+}
+.navbar-default .navbar-nav > li > a{
+    color:#fff;
+}
+.navbar-default .navbar-nav > li > a:hover{
+    color:#f0f0f0;
+    text-decoration: underline;
+}
+.navbar-default a{
+    color:#fff;
+}
+.navbar-default a:hover{
+    color:#f0f0f0;
+    text-decoration: underline;
 }
 .lead{
-	font-size:22px;
+    font-size:22px;
 }
 
 

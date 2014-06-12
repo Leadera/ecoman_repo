@@ -31,7 +31,7 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
             <span class="sr-only">Toggle navigation</span>
           </button>
-          <a class="navbar-brand" href="<?php echo base_url(); ?>" style="color:green;">Yeşil Ostim</a>
+          <a class="navbar-brand" href="<?php echo base_url(); ?>" style="color:white;">Yeşil Ostim</a>
           <div class="collapse navbar-collapse" id="navbar-collapse-01">
             <ul class="nav navbar-nav">
               <li><a href="<?php echo base_url('projects'); ?>">Projects</a></li>

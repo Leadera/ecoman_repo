@@ -24,14 +24,29 @@
 			<div class="form-group">
 				<label for="quantity">Quantity(Annual)</label>
 			   	<input class="form-control" id="quantity" name="quantity" placeholder="Enter Quantity of Flow">
+		   		<select id="quantityUnit" class="info select-block" name="quantityUnit">
+					<?php foreach ($units as $unit): ?>
+						<option value="<?php echo $unit['id']; ?>"><?php echo $unit['name']; ?></option>
+					<?php endforeach ?>
+				</select>
 			</div>
 		  	<div class="form-group">
 		    	<label for="cost">Cost(Annual)</label>
 		    	<input class="form-control" id="cost" name="cost" placeholder="Cost of flow (number)">
+		    	<select id="costUnit" class="info select-block" name="costUnit">
+					<?php foreach ($units as $unit): ?>
+						<option value="<?php echo $unit['id']; ?>"><?php echo $unit['name']; ?></option>
+					<?php endforeach ?>
+				</select>
 		  	</div>
 		  	<div class="form-group">
 		  		<label for="amount">EP(Annual)</label>
 		    	<input class="form-control" id="ep" name="ep" placeholder="Enter EP">
+		    	<select id="epUnit" class="info select-block" name="epUnit">
+					<?php foreach ($units as $unit): ?>
+						<option value="<?php echo $unit['id']; ?>"><?php echo $unit['name']; ?></option>
+					<?php endforeach ?>
+				</select>
 		  	</div>
 		  	<button type="submit" class="btn btn-info">Add Flow</button>
 		</form>
@@ -49,9 +64,9 @@
 				<tr>	
 					<td><?php echo $flow['flowname']; ?></td>
 					<td><?php echo $flow['flowtype']; ?></td>
-					<td><?php echo $flow['qntty']; ?></td>
-					<td><?php echo $flow['cost']; ?></td>
-					<td><?php echo $flow['ep']; ?></td>
+					<td><?php echo $flow['qntty'].' '.$flow['qntty_unit_name']; ?></td>
+					<td><?php echo $flow['cost'].' '.$flow['cost_unit_name']; ?></td>
+					<td><?php echo $flow['ep'].' '.$flow['ep_unit_name']; ?></td>
 				</tr>
 			<?php endforeach ?>
 		</table>

@@ -48,22 +48,16 @@ class Process_model extends CI_Model {
 	}
 
 	public function can_write_cmpny_flow_prcss($cmpny_flow_id,$cmpny_prcss_id){
-		$this->db->select('cmpny_prcss_id');
-	    $this->db->from('T_CMPNY_FLOW_PRCSS');
-	    $this->db->where('cmpny_flow_id',$cmpny_flow_id);
-	    $query = $this->db->get()->row_array();
-	    if(!empty($query)){
-	    	if($query['cmpny_prcss_id'] == $cmpny_prcss_id){
-	    		return false;
-	    	}
-	    	else {
-	    		return true;
-	    	}
-		}
-		else{
+		$this->db->select('*');
+    $this->db->from('T_CMPNY_FLOW_PRCSS');
+    $this->db->where('cmpny_flow_id',$cmpny_flow_id);
+    $this->db->where('cmpny_prcss_id',$cmpny_prcss_id);
+    $query = $this->db->get()->row_array();
+    if(empty($query)){
 			return true;
 		}
+		return false;
 	}
-}
 
+}
 ?>
