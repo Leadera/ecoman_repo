@@ -20,7 +20,7 @@
 							</div>
 							<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
 							<div>
-									<span class="btn btn-primary btn-embossed btn-file">
+									<span class="btn btn-primary btn-embossed btn-file" name="photo">
 										<span class="fileinput-new"><span class="fui-image"></span>  Select image</span>
 										<span class="fileinput-exists"><span class="fui-gear"></span>  Change</span>
 										<input type="file" name="userfile">

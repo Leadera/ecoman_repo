@@ -49,10 +49,8 @@ class User extends CI_Controller {
 			//Resmi servera yükleme
 			if (!$this->upload->do_upload())
 			{
-				print_r($this->upload->display_errors());
 				exit;
 			}
-
 			//Yüklenen resmi boyutlandırma ve çevirme
 			$config['image_library'] = 'gd2';
 			$config['source_image']	= './assets/user_pictures/'.$last_inserted_user_id.'.jpg';
@@ -166,6 +164,40 @@ class User extends CI_Controller {
 		
 		if ($this->form_validation->run() !== FALSE)
 		{
+
+
+			//file properties
+
+			//@unlink('./assets/user_pictures/'.$data['photo']); //  silmeye gerek yok. overwrite true islemi bunu yapıyor zaten
+			$config['upload_path'] = './assets/user_pictures/';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']	= '5000';
+			$config['file_name']	= $data['id'].".jpg";
+			$this->load->library('upload', $config);
+			$this->upload->overwrite = true;
+			//Resmi servera yükleme
+			if (!$this->upload->do_upload())
+			{
+				//print_r($this->upload->display_errors());
+				//hata vermeye gerek yok , resim secmeyebilir.
+			}
+			/*  upload'un ne yazdırğını kontrol için 
+			else{
+				$photo_user = array('upload_data' => $this->upload->data());
+			}*/
+
+			
+			//Yüklenen resmi boyutlandırma ve çevirme
+			$config['image_library'] = 'gd2';
+			$config['source_image']	= './assets/user_pictures/'.$data['photo'];
+			$config['maintain_ratio'] = TRUE;
+			$config['width']	 = 200;
+			$config['height']	 = 200;
+			$this->load->library('image_lib', $config);
+			$this->image_lib->resize();
+
+
+
 			$update = array(
 				'name'=>$this->input->post('name'),
 				'surname'=>$this->input->post('surname'),
@@ -176,34 +208,12 @@ class User extends CI_Controller {
 				'phone_num_2'=>$this->input->post('workPhone'),
 				'fax_num'=>$this->input->post('fax'),
 				'user_name'=>$this->input->post('username'),
-				'psswrd'=>$data['psswrd']
+				'psswrd'=>$data['psswrd'],
+				'photo' =>$data['id'].".jpg"
 			);
 
 			$this->user_model->update_user($update);
 
-			//file properties
-
-			//@unlink('./assets/user_pictures/'.$data['photo']); //  silmeye gerek yok. overwrite true islemi bunu yapıyor zaten
-			$config['upload_path'] = './assets/user_pictures/';
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size']	= '5000';
-			$config['file_name']	= $data['photo'];
-			$this->load->library('upload', $config);
-			$this->upload->overwrite = true;
-			//Resmi servera yükleme
-			if (!$this->upload->do_upload())
-			{
-				//print_r($this->upload->display_errors());
-				//hata vermeye gerek yok , resim secmeyebilir.
-			}
-			//Yüklenen resmi boyutlandırma ve çevirme
-			$config['image_library'] = 'gd2';
-			$config['source_image']	= './assets/user_pictures/'.$data['photo'];
-			$config['maintain_ratio'] = TRUE;
-			$config['width']	 = 200;
-			$config['height']	 = 200;
-			$this->load->library('image_lib', $config);
-			$this->image_lib->resize();
 			//session ayaları ve atama 
 			//username ve email degistigi icin session tekrar olusturuluyor.
 			$session_array= array(
@@ -212,6 +222,11 @@ class User extends CI_Controller {
 				'email' => $update['email']
 				);
 			$this->session->set_userdata('user_in',$session_array);
+
+
+
+
+
 			redirect('', 'refresh');
 		}
 		$this->load->view('template/header');

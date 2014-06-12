@@ -55,7 +55,11 @@
 			</table>
 		</div>
 		<div class="col-md-3">
-			<img class="img-responsive thumbnail" src="<?php echo asset_url("user_pictures/".$userInfo['photo']); ?>">
+			<?php if(file_exists("assets/user_pictures/".$userInfo['photo'])): ?>
+				<img class="img-responsive thumbnail" src="<?php echo asset_url("user_pictures/".$userInfo['photo']); ?>">
+			<?php else: ?>
+				<img class="img-responsive thumbnail" src="<?php echo asset_url("user_pictures/default.jpg"); ?>">
+			<?php endif ?>
 			<ul class="nav nav-list">
 					<li class="nav-header" style="font-size:15px;">Projects As a Contact Person</li>
 			<?php foreach ($projectsAsWorker as $prj): ?>
