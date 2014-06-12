@@ -58,6 +58,32 @@ class Process_model extends CI_Model {
 		}
 		return false;
 	}
+	public function cmpny_flow_prcss_id_list($id){
+		$this->db->select('cmpny_prcss_id');
+	    $this->db->from('T_CMPNY_FLOW_PRCSS');
+	    $this->db->where('cmpny_flow_id',$id);
+	    $query = $this->db->get();
+	    return $query->result_array();
+	}
 
+	public function delete_cmpny_flow_process($cmpny_flow_id){
+		$this->db->where('cmpny_flow_id', $cmpny_flow_id);
+    	$this->db->delete('T_CMPNY_FLOW_PRCSS'); 
+	}
+
+	public function delete_cmpny_process($cmpny_prcss_id){
+		$this->db->where('id', $cmpny_prcss_id);
+    	$this->db->delete('T_CMPNY_PRCSS'); 
+	}
+	public function still_exist_this_cmpny_prcss($cmpny_prcss_id){
+		$this->db->select('*');
+	    $this->db->from('T_CMPNY_FLOW_PRCSS');
+	    $this->db->where('cmpny_prcss_id',$cmpny_prcss_id);
+	    $query = $this->db->get()->row_array();
+	    if(empty($query))
+	    	return false;
+	    else
+	    	return true;
+	}
 }
 ?>

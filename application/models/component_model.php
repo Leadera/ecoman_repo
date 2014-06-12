@@ -36,4 +36,9 @@ class Component_model extends CI_Model {
 		$query = $this->db->get()->result_array();
     	return $query;
 	}
+
+	public function delete_flow_cmpnnt($id){
+		$this->db->where('cmpny_flow_id', $id);
+		$this->db->delete('T_CMPNY_FLOW_CMPNNT'); 
+	}
 }
