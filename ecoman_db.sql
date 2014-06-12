@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 09, 2014 at 02:13 PM
+-- Generation Time: Jun 12, 2014 at 06:57 AM
 -- Server version: 5.5.37-0ubuntu0.13.10.1
 -- PHP Version: 5.5.3-1ubuntu2.3
 
@@ -33,7 +33,16 @@ CREATE TABLE IF NOT EXISTS `T_CLSTR` (
   `org_ind_reg_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `org_ind_reg_id` (`org_ind_reg_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `T_CLSTR`
+--
+
+INSERT INTO `T_CLSTR` (`id`, `name`, `active`, `org_ind_reg_id`) VALUES
+(4, 'Medikal Kümesi', 1, 1),
+(5, 'İş ve İnşaat Kümesi', 1, 2),
+(6, 'Savunma ve Havacılık Kümesi', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -47,7 +56,20 @@ CREATE TABLE IF NOT EXISTS `T_CMPNNT` (
   `name_tr` varchar(200) DEFAULT NULL,
   `active` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `T_CMPNNT`
+--
+
+INSERT INTO `T_CMPNNT` (`id`, `name`, `name_tr`, `active`) VALUES
+(1, 'Deneme Component', 'Deneme Component', 1),
+(2, 'Component X', 'Component X', 1),
+(3, 'Component Y', 'Component Y', 1),
+(4, 'Deneme Component', 'Deneme Component', 1),
+(5, 'Component Xç', 'Component Xç', 1),
+(6, 'Component Xç', 'Component Xç', 1),
+(7, 'Component Xç', 'Component Xç', 1);
 
 -- --------------------------------------------------------
 
@@ -94,6 +116,15 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_CLSTR` (
   KEY `cmpny_id` (`cmpny_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `T_CMPNY_CLSTR`
+--
+
+INSERT INTO `T_CMPNY_CLSTR` (`cmpny_id`, `clstr_id`) VALUES
+(7, 4),
+(7, 5),
+(8, 6);
+
 -- --------------------------------------------------------
 
 --
@@ -124,49 +155,25 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_EQPMNT` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cmpny_id` int(11) DEFAULT NULL,
   `eqpmnt_id` int(11) DEFAULT NULL,
+  `eqpmnt_type_id` int(11) DEFAULT NULL,
+  `eqpmnt_type_attrbt_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `cmpny_id` (`cmpny_id`),
-  KEY `eqpmnt_id` (`eqpmnt_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+  KEY `eqpmnt_id` (`eqpmnt_id`),
+  KEY `eqpmnt_type_id` (`eqpmnt_type_id`),
+  KEY `eqpmnt_type_attrbt_id` (`eqpmnt_type_attrbt_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `T_CMPNY_EQPMNT`
 --
 
-INSERT INTO `T_CMPNY_EQPMNT` (`id`, `cmpny_id`, `eqpmnt_id`) VALUES
-(12, 7, 2),
-(13, 7, 2),
-(14, 7, 2),
-(15, 7, 5),
-(16, 7, 4),
-(17, 7, 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `T_CMPNY_EQPMNT_TYPE`
---
-
-CREATE TABLE IF NOT EXISTS `T_CMPNY_EQPMNT_TYPE` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cmpny_id` int(11) NOT NULL,
-  `eqpmnt_type_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `cmpny_id` (`cmpny_id`),
-  KEY `eqpmnt_type_id` (`eqpmnt_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
-
---
--- Dumping data for table `T_CMPNY_EQPMNT_TYPE`
---
-
-INSERT INTO `T_CMPNY_EQPMNT_TYPE` (`id`, `cmpny_id`, `eqpmnt_type_id`) VALUES
-(9, 7, 9),
-(10, 7, 9),
-(11, 7, 8),
-(12, 7, 34),
-(13, 7, 22),
-(14, 7, 11);
+INSERT INTO `T_CMPNY_EQPMNT` (`id`, `cmpny_id`, `eqpmnt_id`, `eqpmnt_type_id`, `eqpmnt_type_attrbt_id`) VALUES
+(8, 7, 4, 20, 328),
+(9, 7, 4, 20, 328),
+(10, 7, 4, 20, 328),
+(11, 7, 4, 20, 328),
+(12, 7, 2, 8, 117);
 
 -- --------------------------------------------------------
 
@@ -192,14 +199,16 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_FLOW` (
   KEY `qntty_unit_id` (`qntty_unit_id`),
   KEY `cost_unit_id` (`cost_unit_id`),
   KEY `ep_unit_id` (`ep_unit_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `T_CMPNY_FLOW`
 --
 
 INSERT INTO `T_CMPNY_FLOW` (`id`, `cmpny_id`, `flow_id`, `qntty`, `qntty_unit_id`, `cost`, `cost_unit_id`, `ep`, `ep_unit_id`, `flow_type_id`) VALUES
-(1, 7, 1, 11.20, NULL, 10.30, NULL, 11.40, NULL, 1);
+(1, 7, 1, 11.20, NULL, 10.30, NULL, 11.40, NULL, 1),
+(2, 7, 2, 12.00, NULL, 12.00, NULL, 12.00, NULL, 2),
+(3, 7, 2, 12.00, NULL, 12.10, NULL, 1.15, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -214,6 +223,19 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_FLOW_CMPNNT` (
   KEY `cmpnnt_id` (`cmpnnt_id`),
   KEY `cmpny_flow_id` (`cmpny_flow_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `T_CMPNY_FLOW_CMPNNT`
+--
+
+INSERT INTO `T_CMPNY_FLOW_CMPNNT` (`cmpny_flow_id`, `cmpnnt_id`) VALUES
+(1, 1),
+(1, 2),
+(2, 3),
+(1, 4),
+(3, 5),
+(1, 6),
+(1, 7);
 
 -- --------------------------------------------------------
 
@@ -235,7 +257,8 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_FLOW_PRCSS` (
 
 INSERT INTO `T_CMPNY_FLOW_PRCSS` (`cmpny_flow_id`, `cmpny_prcss_id`) VALUES
 (1, 1),
-(1, 2);
+(1, 2),
+(2, 5);
 
 -- --------------------------------------------------------
 
@@ -286,7 +309,7 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_PRCSS` (
   PRIMARY KEY (`id`),
   KEY `cmpny_id` (`cmpny_id`),
   KEY `prcss_id` (`prcss_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `T_CMPNY_PRCSS`
@@ -294,7 +317,8 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_PRCSS` (
 
 INSERT INTO `T_CMPNY_PRCSS` (`id`, `cmpny_id`, `prcss_id`) VALUES
 (1, 7, 1),
-(2, 7, 3);
+(2, 7, 3),
+(5, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -315,12 +339,8 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_PRCSS_EQPMNT_TYPE` (
 --
 
 INSERT INTO `T_CMPNY_PRCSS_EQPMNT_TYPE` (`cmpny_eqpmnt_type_id`, `cmpny_prcss_id`) VALUES
-(9, 1),
-(10, 1),
 (11, 1),
-(12, 1),
-(13, 2),
-(14, 2);
+(12, 2);
 
 -- --------------------------------------------------------
 
@@ -3376,7 +3396,16 @@ CREATE TABLE IF NOT EXISTS `T_ORG_IND_REG` (
   `active` tinyint(4) NOT NULL,
   `country` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `T_ORG_IND_REG`
+--
+
+INSERT INTO `T_ORG_IND_REG` (`id`, `name`, `active`, `country`) VALUES
+(1, 'Example 1', 1, 'Ankara'),
+(2, 'Example 2', 1, 'İstanbul'),
+(3, 'Example 3', 1, 'İzmir');
 
 -- --------------------------------------------------------
 
@@ -3415,7 +3444,15 @@ CREATE TABLE IF NOT EXISTS `T_PRDCT` (
   `name` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cmpny_id` (`cmpny_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `T_PRDCT`
+--
+
+INSERT INTO `T_PRDCT` (`id`, `cmpny_id`, `name`) VALUES
+(3, 7, 'Product Y'),
+(4, 7, 'Product A');
 
 -- --------------------------------------------------------
 
@@ -3433,14 +3470,15 @@ CREATE TABLE IF NOT EXISTS `T_PRJ` (
   `active` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `status_id` (`status_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `T_PRJ`
 --
 
 INSERT INTO `T_PRJ` (`id`, `name`, `start_date`, `end_date`, `status_id`, `description`, `active`) VALUES
-(2, 'Project X', '2014-06-10', NULL, 3, 'The X-Men are a team of mutant superheroes in the Marvel Universe. They were created by writer Stan Lee and artist Jack Kirby, and first appeared in The X-Men #1 (September 1963). The basic concept of', 1);
+(2, 'Project X', '2014-06-10', NULL, 3, 'The X-Men are a team of mutant superheroes in the Marvel Universe. They were created by writer Stan Lee and artist Jack Kirby, and first appeared in The X-Men #1 (September 1963). The basic concept of', 1),
+(3, 'Odessa Mobile  Technology Project', '2014-06-05', NULL, 1, 'This section should describe the work you have done to date, the choices you had with regard to hardware/software, and an explanation of how you arrived at the decision to use L3 and Tiburon.', 1);
 
 -- --------------------------------------------------------
 
@@ -3496,6 +3534,7 @@ CREATE TABLE IF NOT EXISTS `T_PRJ_CMPNY` (
 
 INSERT INTO `T_PRJ_CMPNY` (`prj_id`, `cmpny_id`) VALUES
 (2, 7),
+(3, 7),
 (2, 8);
 
 -- --------------------------------------------------------
@@ -3518,7 +3557,8 @@ CREATE TABLE IF NOT EXISTS `T_PRJ_CNSLTNT` (
 --
 
 INSERT INTO `T_PRJ_CNSLTNT` (`prj_id`, `cnsltnt_id`, `active`) VALUES
-(2, 2, 1);
+(2, 1, 1),
+(3, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -3539,7 +3579,8 @@ CREATE TABLE IF NOT EXISTS `T_PRJ_CNTCT_PRSNL` (
 --
 
 INSERT INTO `T_PRJ_CNTCT_PRSNL` (`prj_id`, `usr_id`, `description`) VALUES
-(2, 1, NULL);
+(2, 2, NULL),
+(3, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -3694,15 +3735,10 @@ ALTER TABLE `T_CMPNY_DATA`
 -- Constraints for table `T_CMPNY_EQPMNT`
 --
 ALTER TABLE `T_CMPNY_EQPMNT`
-  ADD CONSTRAINT `FK_T_EQPMNT_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY_DATA` (`cmpny_id`),
-  ADD CONSTRAINT `FK_T_EQPMNT_T_EQPMNT_NAME` FOREIGN KEY (`eqpmnt_id`) REFERENCES `T_EQPMNT` (`id`);
-
---
--- Constraints for table `T_CMPNY_EQPMNT_TYPE`
---
-ALTER TABLE `T_CMPNY_EQPMNT_TYPE`
-  ADD CONSTRAINT `FK_T_CMPNY_EQPMNT_TYPE_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY_DATA` (`cmpny_id`),
-  ADD CONSTRAINT `FK_T_CMPNY_EQPMNT_TYPE_T_EQPMNT_TYPE` FOREIGN KEY (`eqpmnt_type_id`) REFERENCES `T_EQPMNT_TYPE` (`id`);
+  ADD CONSTRAINT `T_CMPNY_EQPMNT_ibfk_1` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`),
+  ADD CONSTRAINT `T_CMPNY_EQPMNT_ibfk_2` FOREIGN KEY (`eqpmnt_id`) REFERENCES `T_EQPMNT` (`id`),
+  ADD CONSTRAINT `T_CMPNY_EQPMNT_ibfk_3` FOREIGN KEY (`eqpmnt_type_id`) REFERENCES `T_EQPMNT_TYPE` (`id`),
+  ADD CONSTRAINT `T_CMPNY_EQPMNT_ibfk_4` FOREIGN KEY (`eqpmnt_type_attrbt_id`) REFERENCES `T_EQPMNT_TYPE_ATTRBT` (`id`);
 
 --
 -- Constraints for table `T_CMPNY_FLOW`
@@ -3754,7 +3790,7 @@ ALTER TABLE `T_CMPNY_PRCSS`
 -- Constraints for table `T_CMPNY_PRCSS_EQPMNT_TYPE`
 --
 ALTER TABLE `T_CMPNY_PRCSS_EQPMNT_TYPE`
-  ADD CONSTRAINT `FK_T_CMPNY_PRCSS_EQPMNT_TYPE_T_CMPNY_EQPMNT_TYPE` FOREIGN KEY (`cmpny_eqpmnt_type_id`) REFERENCES `T_CMPNY_EQPMNT_TYPE` (`id`),
+  ADD CONSTRAINT `FK_T_CMPNY_PRCSS_EQPMNT_TYPE_T_CMPNY_EQPMNT_TYPE` FOREIGN KEY (`cmpny_eqpmnt_type_id`) REFERENCES `T_CMPNY_EQPMNT` (`id`),
   ADD CONSTRAINT `FK_T_CMPNY_PRCSS_EQPMNT_TYPE_T_CMPNY_PRCSS` FOREIGN KEY (`cmpny_prcss_id`) REFERENCES `T_CMPNY_PRCSS` (`id`);
 
 --
