@@ -23,7 +23,6 @@
 			<div>	    			
 	  		<select  class="select-block" id="equipmentAttributeName" name="equipmentAttributeName">
 
-
 				</select>
 			</div>
 		</div>
@@ -39,12 +38,12 @@
 	</form>
 	<div class="clearfix">
 		<hr>
-		<table class="table table-striped table-bordered text-center">
+		<table class="table table-striped table-bordered">
 			<tr>
-				<td>Equipment Name</td>
-				<td>Equipment Type Name</td>
-				<td>Equipment Attribute Name</td>
-				<td>Processes</td>
+				<th>Equipment Name</th>
+				<th>Equipment Type Name</th>
+				<th>Equipment Attribute Name</th>
+				<th>Processes</th>
 			</tr>
 			<?php foreach ($informations as $info): ?>
 			<tr>	

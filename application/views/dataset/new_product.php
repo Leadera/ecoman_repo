@@ -9,7 +9,7 @@
 			</form>
 			
 			<hr>
-			<table class="table table-striped table-bordered text-center">
+			<table class="table table-striped table-bordered">
 			<tr>
 				<th>Product</th>
 				<th style="width:100px;">Delete</th>
