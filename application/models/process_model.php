@@ -66,8 +66,8 @@ class Process_model extends CI_Model {
 	    return $query->result_array();
 	}
 
-	public function delete_cmpny_flow_process($cmpny_prcss_id){
-		$this->db->where('cmpny_prcss_id', $cmpny_prcss_id);
+	public function delete_cmpny_flow_process($cmpny_flow_id){
+		$this->db->where('cmpny_flow_id', $cmpny_flow_id);
     	$this->db->delete('T_CMPNY_FLOW_PRCSS'); 
 	}
 
@@ -75,6 +75,15 @@ class Process_model extends CI_Model {
 		$this->db->where('id', $cmpny_prcss_id);
     	$this->db->delete('T_CMPNY_PRCSS'); 
 	}
-
+	public function still_exist_this_cmpny_prcss($cmpny_prcss_id){
+		$this->db->select('*');
+	    $this->db->from('T_CMPNY_FLOW_PRCSS');
+	    $this->db->where('cmpny_prcss_id',$cmpny_prcss_id);
+	    $query = $this->db->get()->row_array();
+	    if(empty($query))
+	    	return false;
+	    else
+	    	return true;
+	}
 }
 ?>
