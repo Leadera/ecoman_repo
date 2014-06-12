@@ -11,6 +11,11 @@ class Company_model extends CI_Model {
     return $this->db->insert_id();
   }
 
+  public function set_company_image($last_id,$logo){
+    $this->db->where('id', $last_id);
+    $this->db->update('T_CMPNY', $logo);
+  }
+
   public function insert_cmpny_data($data){
     $this->db->insert('T_CMPNY_DATA',$data);
   }
@@ -97,16 +102,20 @@ class Company_model extends CI_Model {
     $this->db->update('T_CMPNY_NACE_CODE',$data);
   }
 
-  public function unique_control_email($email){
-    $this->db->like('email', $email);
+  public function unique_control_email($email,$cmpny_id){
+    $this->db->select('id');
     $this->db->from('T_CMPNY');
-    $count = $this->db->count_all_results();
-    if($count == 0){
+    $this->db->where('email', $email);
+    $query = $this->db->get()->result_array();
+    if(empty($query)){
       return true;
     }
     else{
-      return false;
-
+      foreach ($query as $variable) {
+        if($variable['id'] != $cmpny_id)
+          return false;
+      }
+      return true;
     }
   }
 

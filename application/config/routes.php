@@ -82,6 +82,8 @@ $route['default_controller'] = "homepage";
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
 
+$route['change_pass'] = "password/change_pass";
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

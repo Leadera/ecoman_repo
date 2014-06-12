@@ -80,7 +80,13 @@
 
 		<div class="col-md-3">
 		<div>
-			<img class="img-responsive thumbnail" src="<?php echo asset_url('company_pictures/'.$companies['logo']);?>" />
+			<?php if($companies['logo'] == null) 
+					$companies['logo'] = '.jpg';
+				if(file_exists("assets/company_pictures/".$companies['logo'])): ?>
+				<img class="img-responsive thumbnail" src="<?php echo asset_url('company_pictures/'.$companies['logo']);?>" />
+			<?php else: ?>
+				<img class="img-responsive thumbnail" src="<?php echo asset_url("company_pictures/default.jpg"); ?>">
+			<?php endif ?>
 		</div>
 			<div class="form-group">
 				<ul class="nav nav-list">

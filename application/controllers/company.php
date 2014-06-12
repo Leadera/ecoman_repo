@@ -43,29 +43,6 @@ class Company extends CI_Controller{
 
 		if ($this->form_validation->run() !== FALSE)
 		{
-			$config['upload_path'] = './assets/company_pictures/';
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size']	= '5000';
-			$count = $this->company_model->count_company_table();
-			$count = $count + 1;
-			$config['file_name'] = $count.'.jpg';
-			$this->load->library('upload', $config);
-
-			if (!$this->upload->do_upload())
-			{
-				print_r($this->upload->display_errors());
-				exit;
-			}
-
-			$config['image_library'] = 'gd2';
-			$config['source_image']	= './assets/company_pictures/'.$count.'.jpg';
-			$config['maintain_ratio'] = TRUE;
-			$config['width'] = 200;
-			$config['height'] = 200;
-			$this->load->library('image_lib', $config);
-
-			$this->image_lib->resize();
-
 			$data = array(
 				'name'=>$this->input->post('companyName'),
 				'phone_num_1'=>$this->input->post('cellPhone'),
@@ -76,7 +53,6 @@ class Company extends CI_Controller{
 				'email'=>$this->input->post('email'),
 				'latitude'=>$this->input->post('lat'),
 				'longitude'=>$this->input->post('long'),
-				'logo'=> $count.'.jpg',
 				'active'=>'1'
 			);
 			$code = $this->input->post('naceCode');
@@ -95,9 +71,35 @@ class Company extends CI_Controller{
 		    	'nace_code_id' => $nace_code_id
 		    );
 
-		    //insert data
 		    $this->company_model->insert_cmpny_prsnl($last_id);
 		    $this->company_model->insert_cmpny_nace_code($cmpny_nace_code);
+
+		    $config['upload_path'] = './assets/company_pictures/';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']	= '5000';
+			$config['file_name'] = $last_id.'.jpg';
+			$this->load->library('upload', $config);
+
+			if (!$this->upload->do_upload())
+			{
+				redirect('company', 'refresh');
+				exit;
+			}
+
+			$config['image_library'] = 'gd2';
+			$config['source_image']	= './assets/company_pictures/'.$last_id.'.jpg';
+			$config['maintain_ratio'] = TRUE;
+			$config['width'] = 200;
+			$config['height'] = 200;
+			$this->load->library('image_lib', $config);
+
+			$this->image_lib->resize();
+
+			$logo = array(
+				'logo'=>$last_id.'.jpg'
+			);
+			$this->company_model->set_company_image($last_id,$logo);
+
 			redirect('company', 'refresh');
 		}
 
@@ -205,7 +207,6 @@ class Company extends CI_Controller{
     	$this->company_model->add_worker_to_company($user);
 		}
 
-
 		redirect('company/'.$term, 'refresh');
 
 	}
@@ -242,7 +243,7 @@ class Company extends CI_Controller{
 		$this->form_validation->set_rules('naceCode', 'Nace Code', 'trim|required|xss_clean|callback_is_in_nace|regex_match[/^\d{2}\.\d{2}\.\d{2}$/]');
 		$this->form_validation->set_rules('coordinates', 'Coordinates', 'trim|xss_clean');
 		$this->form_validation->set_rules('companyDescription', 'Company Description', 'trim|xss_clean');
-		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email|callback_is_unique_email['.$data['companies']['id'].']');
+		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email|callback_is_unique_email');
 		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
 		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
 		$this->form_validation->set_rules('fax', 'Fax Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
@@ -250,23 +251,21 @@ class Company extends CI_Controller{
 
 		if ($this->form_validation->run() !== FALSE)
 		{
-			//file properties
 			$config['upload_path'] = './assets/company_pictures/';
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size']	= '5000';
-			$config['file_name'] = $data['companies']['logo'];
+			$config['file_name']	= $this->uri->segment(2).'.jpg';
 			$this->load->library('upload', $config);
 			$this->upload->overwrite = true;
 			//Resmi servera yükleme
 			if (!$this->upload->do_upload())
 			{
-				//print_r($this->upload->display_errors());
+				print_r($this->upload->display_errors());
+				//hata vermeye gerek yok , resim secmeyebilir.
 			}
-
-
 			//Yüklenen resmi boyutlandırma ve çevirme
 			$config['image_library'] = 'gd2';
-			$config['source_image']	= './assets/company_pictures/'.$data['companies']['logo'];
+			$config['source_image']	= './assets/company_pictures/'.$this->uri->segment(2).'.jpg';
 			$config['maintain_ratio'] = TRUE;
 			$config['width']	 = 200;
 			$config['height']	 = 200;
@@ -283,7 +282,7 @@ class Company extends CI_Controller{
 				'description'=>$this->input->post('companyDescription'),
 				'email'=>$this->input->post('email'),
 				'postal_code'=>'NULL',
-				'logo'=>$data['companies']['logo'],
+				'logo'=>$this->uri->segment(2).'.jpg',
 				'active'=>'1',
 				'latitude'=>$this->input->post('lat'),
 				'longitude'=>$this->input->post('long')
@@ -309,19 +308,18 @@ class Company extends CI_Controller{
 	    $this->company_model->update_cmpny_nace_code($cmpny_nace_code,$data['companies']['id']);
 	    redirect('company', 'refresh');
 	  }
-
 		$this->load->view('template/header');
 		$this->load->view('company/update_company',$data);
 		$this->load->view('template/footer');
 	}
 
-	public function is_unique_email($field,$term){
-		$newEmail = $this->input->post('email');
-		$oldEmail = $this->company_model->return_email((int)$term);
-		if(($newEmail == $oldEmail[0]['email']) || ($this->company_model->unique_control_email($newEmail))){
+	public function is_unique_email(){
+		$email = $this->input->post('email');
+		$cmpny_id = $this->uri->segment(2);
+		if($this->company_model->unique_control_email($email,$cmpny_id) == true)
 			return true;
-		}else{
-			$this->form_validation->set_message('is_unique_email', 'Check email address.');
+		else{
+			$this->form_validation->set_message('is_unique_email','Email must be unique.');
 			return false;
 		}
 	}
