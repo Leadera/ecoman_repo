@@ -30,7 +30,7 @@
 				<?php foreach ($cmpny_flow_prcss as $attribute): ?>
 					<tr>	
 						<td><?php echo $attribute['prcessname']; ?></td>
-						<td><?php echo $attribute['flowname']; ?></td>
+						<td><?php echo $attribute['flowname'].'('.$attribute['flow_type_name'].')'; ?></td>
 					</tr>
 					<?php endforeach ?>
 			</table>
