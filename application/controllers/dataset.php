@@ -248,4 +248,15 @@ class Dataset extends CI_Controller {
 		$attribute_list = $this->equipment_model->get_equipment_attribute_list($equipment_type_id);
 		echo json_encode($attribute_list);
 	}
+
+	public function delete_process($companyID){
+		$cmpny_flow_prcss_ids = $this->process_model->get_cmpny_prcss_id($companyID);
+		foreach ($cmpny_flow_prcss_ids as $id) {
+			$this->process_model->delete_company_flow_prcss($id['id']);
+			$this->process_model->delete_cmpny_prcss_eqpmnt_type($id['id']);
+		}
+		$this->process_model->delete_cmpny_prcss($companyID);
+		$this->process_model->delete_cmpny_eqpmnt($companyID);
+		redirect('new_process/'.$companyID);
+	}
 }

@@ -1,4 +1,4 @@
-<?php echo form_open_multipart('new_process/'.$companyID[0]); ?>
+<?php echo form_open_multipart('new_process/'.$companyID); ?>
 		<div class="col-md-9">
 			<p class="lead">Add new process</p>
 			<div class="form-group">
@@ -26,11 +26,13 @@
 				<tr>
 					<th>Process Name</th>
 					<th>Used Flows</th>
+					<th>Delete</th>
 				</tr>
 				<?php foreach ($cmpny_flow_prcss as $attribute): ?>
 					<tr>	
 						<td><?php echo $attribute['prcessname']; ?></td>
 						<td><?php echo $attribute['flowname'].'('.$attribute['flow_type_name'].')'; ?></td>
+						<td><a href="<?php echo base_url('delete_process/'.$companyID.'/'.$attribute['prcessname']);?>" class="btn btn-danger btn-sm" value="<?php echo $attribute['prcessid']; ?>"><span class="glyphicon glyphicon-remove"></span></button></td>
 					</tr>
 					<?php endforeach ?>
 			</table>

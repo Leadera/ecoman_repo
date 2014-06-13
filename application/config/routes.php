@@ -79,6 +79,7 @@ $route['product'] = "dataset/product";
 $route['delete_product/(:any)/(:any)'] = "dataset/delete_product/$1/$2";
 
 $route['new_process/(:any)'] = "dataset/new_process/$1";
+$route['delete_process/(:any)'] = "dataset/delete_process/$1";
 
 $route['new_equipment/(:any)'] = "dataset/new_equipment/$1";
 $route['get_equipment_type'] = "dataset/get_equipment_type";

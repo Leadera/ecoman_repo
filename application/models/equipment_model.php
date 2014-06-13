@@ -14,7 +14,7 @@ class Equipment_model extends CI_Model {
   }
 
   public function cmpny_prcss($id){
-    $this->db->select('T_PRCSS.name_tr as prcessname,T_PRCSS.id as processid');
+    $this->db->select('T_PRCSS.name as prcessname,T_PRCSS.id as processid');
     $this->db->from('T_CMPNY_PRCSS');
     $this->db->join('T_PRCSS','T_CMPNY_PRCSS.prcss_id = T_PRCSS.id');
     $this->db->where('T_CMPNY_PRCSS.cmpny_id',$id);

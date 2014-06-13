@@ -43,7 +43,7 @@
 				<th>Equipment Name</th>
 				<th>Equipment Type Name</th>
 				<th>Equipment Attribute Name</th>
-				<th>Processes</th>
+				<th>Used Process</th>
 			</tr>
 			<?php foreach ($informations as $info): ?>
 			<tr>	
