@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.0.6deb1
 -- http://www.phpmyadmin.net
 --
--- Anamakine: localhost
--- Üretim Zamanı: 12 Haz 2014, 10:16:51
--- Sunucu sürümü: 5.5.37-0ubuntu0.14.04.1
--- PHP Sürümü: 5.5.9-1ubuntu4
+-- Host: localhost
+-- Generation Time: Jun 13, 2014 at 10:26 AM
+-- Server version: 5.5.37-0ubuntu0.13.10.1
+-- PHP Version: 5.5.3-1ubuntu2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Veritabanı: `ecoman_db`
+-- Database: `ecoman_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CLSTR`
+-- Table structure for table `T_CLSTR`
 --
 
 CREATE TABLE IF NOT EXISTS `T_CLSTR` (
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `T_CLSTR` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Tablo döküm verisi `T_CLSTR`
+-- Dumping data for table `T_CLSTR`
 --
 
 INSERT INTO `T_CLSTR` (`id`, `name`, `active`, `org_ind_reg_id`) VALUES
@@ -47,7 +47,7 @@ INSERT INTO `T_CLSTR` (`id`, `name`, `active`, `org_ind_reg_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNNT`
+-- Table structure for table `T_CMPNNT`
 --
 
 CREATE TABLE IF NOT EXISTS `T_CMPNNT` (
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `T_CMPNNT` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
--- Tablo döküm verisi `T_CMPNNT`
+-- Dumping data for table `T_CMPNNT`
 --
 
 INSERT INTO `T_CMPNNT` (`id`, `name`, `name_tr`, `active`) VALUES
@@ -74,7 +74,7 @@ INSERT INTO `T_CMPNNT` (`id`, `name`, `name_tr`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY`
+-- Table structure for table `T_CMPNY`
 --
 
 CREATE TABLE IF NOT EXISTS `T_CMPNY` (
@@ -95,17 +95,17 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Tablo döküm verisi `T_CMPNY`
+-- Dumping data for table `T_CMPNY`
 --
 
 INSERT INTO `T_CMPNY` (`id`, `name`, `phone_num_1`, `phone_num_2`, `fax_num`, `address`, `description`, `email`, `postal_code`, `logo`, `active`, `latitude`, `longitude`) VALUES
-(7, 'Ostim A.Ş.', '90-312-385-50-90', '90-312-385-50-90', '90-312-354-58-98', 'Ostim Organize Sanayi Bölge Müdürlüğü 100. Yıl Bulvarı No: 101/A, 06370, Ostim / Ankara', 'Türkiye’nin en büyük, dünyanın ise sayılı küçük ve orta ölçekli sanayi üretim alanlarından biri olan Ostim “üretimde esnekliği” geniş makine parkının avantajlarıyla birleştirmiştir.', 'iletisim@ostim.com.tr', 'NULL', '1.jpg', 1, '39.97346964672723', '32.745373249053955'),
-(8, 'Reddit', '1-222-111-11-11', '1-222-111-11-12', '1-222-111-11-10', 'San Francisco, Silicon Alley', 'Reddit Conde Nast Digital şirketine ait bir sosyal haber sitesidir.', 'contact@reddit.com', 'NULL', '2.jpg', 1, '44.08758502824516', '-107.578125');
+(7, 'Ostim A.Ş.', '90-312-385-50-90', '90-312-385-50-90', '90-312-354-58-98', 'Ostim Organize Sanayi Bölge Müdürlüğü 100. Yıl Bulvarı No: 101/A, 06370, Ostim / Ankara', 'Türkiye’nin en büyük, dünyanın ise sayılı küçük ve orta ölçekli sanayi üretim alanlarından biri olan Ostim “üretimde esnekliği” geniş makine parkının avantajlarıyla birleştirmiştir.', 'iletisim@ostim.com.tr', 'NULL', '7.jpg', 1, '39.97346964672723', '32.745373249053955'),
+(8, 'Reddit', '1-222-111-11-11', '1-222-111-11-12', '1-222-111-11-10', 'San Francisco, Silicon Alley', 'Reddit Conde Nast Digital şirketine ait bir sosyal haber sitesidir.', 'contact@reddit.com', 'NULL', '8.jpg', 1, '44.08758502824516', '-107.578125');
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_CLSTR`
+-- Table structure for table `T_CMPNY_CLSTR`
 --
 
 CREATE TABLE IF NOT EXISTS `T_CMPNY_CLSTR` (
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_CLSTR` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `T_CMPNY_CLSTR`
+-- Dumping data for table `T_CMPNY_CLSTR`
 --
 
 INSERT INTO `T_CMPNY_CLSTR` (`cmpny_id`, `clstr_id`) VALUES
@@ -128,7 +128,7 @@ INSERT INTO `T_CMPNY_CLSTR` (`cmpny_id`, `clstr_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_DATA`
+-- Table structure for table `T_CMPNY_DATA`
 --
 
 CREATE TABLE IF NOT EXISTS `T_CMPNY_DATA` (
@@ -138,17 +138,17 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_DATA` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `T_CMPNY_DATA`
+-- Dumping data for table `T_CMPNY_DATA`
 --
 
 INSERT INTO `T_CMPNY_DATA` (`cmpny_id`, `description`) VALUES
-(7, 'Türkiye’nin en büyük, dünyanın ise sayılı küçük ve orta ölçekli sanayi üretim alanlarından biri olan Ostim “üretimde esnekliği” geniş makine parkının avantajlarıyla birleştirmiştir. Ostim 17 ana sektö'),
+(7, 'Türkiye’nin en büyük, dünyanın ise sayılı küçük ve orta ölçekli sanayi üretim alanlarından biri olan Ostim “üretimde esnekliği” geniş makine parkının avantajlarıyla birleştirmiştir.'),
 (8, 'Reddit Conde Nast Digital şirketine ait bir sosyal haber sitesidir.');
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_EQPMNT`
+-- Table structure for table `T_CMPNY_EQPMNT`
 --
 
 CREATE TABLE IF NOT EXISTS `T_CMPNY_EQPMNT` (
@@ -165,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_EQPMNT` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
--- Tablo döküm verisi `T_CMPNY_EQPMNT`
+-- Dumping data for table `T_CMPNY_EQPMNT`
 --
 
 INSERT INTO `T_CMPNY_EQPMNT` (`id`, `cmpny_id`, `eqpmnt_id`, `eqpmnt_type_id`, `eqpmnt_type_attrbt_id`) VALUES
@@ -179,7 +179,7 @@ INSERT INTO `T_CMPNY_EQPMNT` (`id`, `cmpny_id`, `eqpmnt_id`, `eqpmnt_type_id`, `
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_FLOW`
+-- Table structure for table `T_CMPNY_FLOW`
 --
 
 CREATE TABLE IF NOT EXISTS `T_CMPNY_FLOW` (
@@ -200,21 +200,22 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_FLOW` (
   KEY `qntty_unit_id` (`qntty_unit_id`),
   KEY `cost_unit_id` (`cost_unit_id`),
   KEY `ep_unit_id` (`ep_unit_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Tablo döküm verisi `T_CMPNY_FLOW`
+-- Dumping data for table `T_CMPNY_FLOW`
 --
 
 INSERT INTO `T_CMPNY_FLOW` (`id`, `cmpny_id`, `flow_id`, `qntty`, `qntty_unit_id`, `cost`, `cost_unit_id`, `ep`, `ep_unit_id`, `flow_type_id`) VALUES
 (1, 7, 1, 11.20, NULL, 10.30, NULL, 11.40, NULL, 1),
 (2, 7, 2, 12.00, NULL, 12.00, NULL, 12.00, NULL, 2),
-(3, 7, 2, 12.00, NULL, 12.10, NULL, 1.15, NULL, 1);
+(3, 7, 2, 12.00, NULL, 12.10, NULL, 1.15, NULL, 1),
+(4, 7, 2, 10.02, 5, 11.30, 7, 1.00, 19, 2);
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_FLOW_CMPNNT`
+-- Table structure for table `T_CMPNY_FLOW_CMPNNT`
 --
 
 CREATE TABLE IF NOT EXISTS `T_CMPNY_FLOW_CMPNNT` (
@@ -226,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_FLOW_CMPNNT` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `T_CMPNY_FLOW_CMPNNT`
+-- Dumping data for table `T_CMPNY_FLOW_CMPNNT`
 --
 
 INSERT INTO `T_CMPNY_FLOW_CMPNNT` (`cmpny_flow_id`, `cmpnnt_id`) VALUES
@@ -241,7 +242,7 @@ INSERT INTO `T_CMPNY_FLOW_CMPNNT` (`cmpny_flow_id`, `cmpnnt_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_FLOW_PRCSS`
+-- Table structure for table `T_CMPNY_FLOW_PRCSS`
 --
 
 CREATE TABLE IF NOT EXISTS `T_CMPNY_FLOW_PRCSS` (
@@ -253,18 +254,19 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_FLOW_PRCSS` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `T_CMPNY_FLOW_PRCSS`
+-- Dumping data for table `T_CMPNY_FLOW_PRCSS`
 --
 
 INSERT INTO `T_CMPNY_FLOW_PRCSS` (`cmpny_flow_id`, `cmpny_prcss_id`) VALUES
 (1, 1),
 (1, 2),
-(2, 5);
+(2, 5),
+(4, 1);
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_NACE_CODE`
+-- Table structure for table `T_CMPNY_NACE_CODE`
 --
 
 CREATE TABLE IF NOT EXISTS `T_CMPNY_NACE_CODE` (
@@ -276,7 +278,7 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_NACE_CODE` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `T_CMPNY_NACE_CODE`
+-- Dumping data for table `T_CMPNY_NACE_CODE`
 --
 
 INSERT INTO `T_CMPNY_NACE_CODE` (`cmpny_id`, `nace_code_id`) VALUES
@@ -286,7 +288,7 @@ INSERT INTO `T_CMPNY_NACE_CODE` (`cmpny_id`, `nace_code_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_ORG_IND_REG`
+-- Table structure for table `T_CMPNY_ORG_IND_REG`
 --
 
 CREATE TABLE IF NOT EXISTS `T_CMPNY_ORG_IND_REG` (
@@ -300,7 +302,7 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_ORG_IND_REG` (
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_PRCSS`
+-- Table structure for table `T_CMPNY_PRCSS`
 --
 
 CREATE TABLE IF NOT EXISTS `T_CMPNY_PRCSS` (
@@ -313,7 +315,7 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_PRCSS` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Tablo döküm verisi `T_CMPNY_PRCSS`
+-- Dumping data for table `T_CMPNY_PRCSS`
 --
 
 INSERT INTO `T_CMPNY_PRCSS` (`id`, `cmpny_id`, `prcss_id`) VALUES
@@ -324,7 +326,7 @@ INSERT INTO `T_CMPNY_PRCSS` (`id`, `cmpny_id`, `prcss_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_PRCSS_EQPMNT_TYPE`
+-- Table structure for table `T_CMPNY_PRCSS_EQPMNT_TYPE`
 --
 
 CREATE TABLE IF NOT EXISTS `T_CMPNY_PRCSS_EQPMNT_TYPE` (
@@ -336,7 +338,7 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_PRCSS_EQPMNT_TYPE` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `T_CMPNY_PRCSS_EQPMNT_TYPE`
+-- Dumping data for table `T_CMPNY_PRCSS_EQPMNT_TYPE`
 --
 
 INSERT INTO `T_CMPNY_PRCSS_EQPMNT_TYPE` (`cmpny_eqpmnt_type_id`, `cmpny_prcss_id`) VALUES
@@ -347,7 +349,7 @@ INSERT INTO `T_CMPNY_PRCSS_EQPMNT_TYPE` (`cmpny_eqpmnt_type_id`, `cmpny_prcss_id
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CMPNY_PRSNL`
+-- Table structure for table `T_CMPNY_PRSNL`
 --
 
 CREATE TABLE IF NOT EXISTS `T_CMPNY_PRSNL` (
@@ -360,7 +362,7 @@ CREATE TABLE IF NOT EXISTS `T_CMPNY_PRSNL` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `T_CMPNY_PRSNL`
+-- Dumping data for table `T_CMPNY_PRSNL`
 --
 
 INSERT INTO `T_CMPNY_PRSNL` (`user_id`, `cmpny_id`, `is_contact`) VALUES
@@ -371,7 +373,7 @@ INSERT INTO `T_CMPNY_PRSNL` (`user_id`, `cmpny_id`, `is_contact`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_CNSLTNT`
+-- Table structure for table `T_CNSLTNT`
 --
 
 CREATE TABLE IF NOT EXISTS `T_CNSLTNT` (
@@ -382,7 +384,7 @@ CREATE TABLE IF NOT EXISTS `T_CNSLTNT` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `T_CNSLTNT`
+-- Dumping data for table `T_CNSLTNT`
 --
 
 INSERT INTO `T_CNSLTNT` (`user_id`, `description`, `active`) VALUES
@@ -393,7 +395,7 @@ INSERT INTO `T_CNSLTNT` (`user_id`, `description`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_DOC`
+-- Table structure for table `T_DOC`
 --
 
 CREATE TABLE IF NOT EXISTS `T_DOC` (
@@ -406,7 +408,7 @@ CREATE TABLE IF NOT EXISTS `T_DOC` (
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_EQPMNT`
+-- Table structure for table `T_EQPMNT`
 --
 
 CREATE TABLE IF NOT EXISTS `T_EQPMNT` (
@@ -419,7 +421,7 @@ CREATE TABLE IF NOT EXISTS `T_EQPMNT` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Tablo döküm verisi `T_EQPMNT`
+-- Dumping data for table `T_EQPMNT`
 --
 
 INSERT INTO `T_EQPMNT` (`id`, `name`, `name_tr`, `active`, `eqpmnt_type_id`) VALUES
@@ -432,7 +434,7 @@ INSERT INTO `T_EQPMNT` (`id`, `name`, `name_tr`, `active`, `eqpmnt_type_id`) VAL
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_EQPMNT_TYPE`
+-- Table structure for table `T_EQPMNT_TYPE`
 --
 
 CREATE TABLE IF NOT EXISTS `T_EQPMNT_TYPE` (
@@ -445,7 +447,7 @@ CREATE TABLE IF NOT EXISTS `T_EQPMNT_TYPE` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
 
 --
--- Tablo döküm verisi `T_EQPMNT_TYPE`
+-- Dumping data for table `T_EQPMNT_TYPE`
 --
 
 INSERT INTO `T_EQPMNT_TYPE` (`id`, `name`, `name_tr`, `mother_id`, `active`) VALUES
@@ -489,7 +491,7 @@ INSERT INTO `T_EQPMNT_TYPE` (`id`, `name`, `name_tr`, `mother_id`, `active`) VAL
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_EQPMNT_TYPE_ATTRBT`
+-- Table structure for table `T_EQPMNT_TYPE_ATTRBT`
 --
 
 CREATE TABLE IF NOT EXISTS `T_EQPMNT_TYPE_ATTRBT` (
@@ -504,7 +506,7 @@ CREATE TABLE IF NOT EXISTS `T_EQPMNT_TYPE_ATTRBT` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=625 ;
 
 --
--- Tablo döküm verisi `T_EQPMNT_TYPE_ATTRBT`
+-- Dumping data for table `T_EQPMNT_TYPE_ATTRBT`
 --
 
 INSERT INTO `T_EQPMNT_TYPE_ATTRBT` (`id`, `attribute_name`, `attribute_name_tr`, `attribute_value`, `eqpmnt_type_id`, `active`) VALUES
@@ -1136,7 +1138,7 @@ INSERT INTO `T_EQPMNT_TYPE_ATTRBT` (`id`, `attribute_name`, `attribute_name_tr`,
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_FLOW`
+-- Table structure for table `T_FLOW`
 --
 
 CREATE TABLE IF NOT EXISTS `T_FLOW` (
@@ -1148,7 +1150,7 @@ CREATE TABLE IF NOT EXISTS `T_FLOW` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Tablo döküm verisi `T_FLOW`
+-- Dumping data for table `T_FLOW`
 --
 
 INSERT INTO `T_FLOW` (`id`, `name`, `name_tr`, `active`) VALUES
@@ -1158,7 +1160,7 @@ INSERT INTO `T_FLOW` (`id`, `name`, `name_tr`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_FLOW_TYPE`
+-- Table structure for table `T_FLOW_TYPE`
 --
 
 CREATE TABLE IF NOT EXISTS `T_FLOW_TYPE` (
@@ -1170,7 +1172,7 @@ CREATE TABLE IF NOT EXISTS `T_FLOW_TYPE` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Tablo döküm verisi `T_FLOW_TYPE`
+-- Dumping data for table `T_FLOW_TYPE`
 --
 
 INSERT INTO `T_FLOW_TYPE` (`id`, `name`, `name_tr`, `active`) VALUES
@@ -1180,7 +1182,7 @@ INSERT INTO `T_FLOW_TYPE` (`id`, `name`, `name_tr`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_NACE_CODE`
+-- Table structure for table `T_NACE_CODE`
 --
 
 CREATE TABLE IF NOT EXISTS `T_NACE_CODE` (
@@ -1193,7 +1195,7 @@ CREATE TABLE IF NOT EXISTS `T_NACE_CODE` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2187 ;
 
 --
--- Tablo döküm verisi `T_NACE_CODE`
+-- Dumping data for table `T_NACE_CODE`
 --
 
 INSERT INTO `T_NACE_CODE` (`id`, `name_tr`, `code`, `name`, `active`) VALUES
@@ -3389,7 +3391,7 @@ INSERT INTO `T_NACE_CODE` (`id`, `name_tr`, `code`, `name`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_ORG_IND_REG`
+-- Table structure for table `T_ORG_IND_REG`
 --
 
 CREATE TABLE IF NOT EXISTS `T_ORG_IND_REG` (
@@ -3401,7 +3403,7 @@ CREATE TABLE IF NOT EXISTS `T_ORG_IND_REG` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Tablo döküm verisi `T_ORG_IND_REG`
+-- Dumping data for table `T_ORG_IND_REG`
 --
 
 INSERT INTO `T_ORG_IND_REG` (`id`, `name`, `active`, `country`) VALUES
@@ -3412,7 +3414,7 @@ INSERT INTO `T_ORG_IND_REG` (`id`, `name`, `active`, `country`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRCSS`
+-- Table structure for table `T_PRCSS`
 --
 
 CREATE TABLE IF NOT EXISTS `T_PRCSS` (
@@ -3426,7 +3428,7 @@ CREATE TABLE IF NOT EXISTS `T_PRCSS` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Tablo döküm verisi `T_PRCSS`
+-- Dumping data for table `T_PRCSS`
 --
 
 INSERT INTO `T_PRCSS` (`id`, `name`, `name_tr`, `mother_id`, `active`) VALUES
@@ -3437,7 +3439,7 @@ INSERT INTO `T_PRCSS` (`id`, `name`, `name_tr`, `mother_id`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRDCT`
+-- Table structure for table `T_PRDCT`
 --
 
 CREATE TABLE IF NOT EXISTS `T_PRDCT` (
@@ -3449,7 +3451,7 @@ CREATE TABLE IF NOT EXISTS `T_PRDCT` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Tablo döküm verisi `T_PRDCT`
+-- Dumping data for table `T_PRDCT`
 --
 
 INSERT INTO `T_PRDCT` (`id`, `cmpny_id`, `name`) VALUES
@@ -3459,7 +3461,7 @@ INSERT INTO `T_PRDCT` (`id`, `cmpny_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRJ`
+-- Table structure for table `T_PRJ`
 --
 
 CREATE TABLE IF NOT EXISTS `T_PRJ` (
@@ -3475,7 +3477,7 @@ CREATE TABLE IF NOT EXISTS `T_PRJ` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Tablo döküm verisi `T_PRJ`
+-- Dumping data for table `T_PRJ`
 --
 
 INSERT INTO `T_PRJ` (`id`, `name`, `start_date`, `end_date`, `status_id`, `description`, `active`) VALUES
@@ -3486,7 +3488,7 @@ INSERT INTO `T_PRJ` (`id`, `name`, `start_date`, `end_date`, `status_id`, `descr
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRJ_ACSS_CMPNY`
+-- Table structure for table `T_PRJ_ACSS_CMPNY`
 --
 
 CREATE TABLE IF NOT EXISTS `T_PRJ_ACSS_CMPNY` (
@@ -3503,7 +3505,7 @@ CREATE TABLE IF NOT EXISTS `T_PRJ_ACSS_CMPNY` (
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRJ_ACSS_USER`
+-- Table structure for table `T_PRJ_ACSS_USER`
 --
 
 CREATE TABLE IF NOT EXISTS `T_PRJ_ACSS_USER` (
@@ -3520,7 +3522,7 @@ CREATE TABLE IF NOT EXISTS `T_PRJ_ACSS_USER` (
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRJ_CMPNY`
+-- Table structure for table `T_PRJ_CMPNY`
 --
 
 CREATE TABLE IF NOT EXISTS `T_PRJ_CMPNY` (
@@ -3532,7 +3534,7 @@ CREATE TABLE IF NOT EXISTS `T_PRJ_CMPNY` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `T_PRJ_CMPNY`
+-- Dumping data for table `T_PRJ_CMPNY`
 --
 
 INSERT INTO `T_PRJ_CMPNY` (`prj_id`, `cmpny_id`) VALUES
@@ -3545,7 +3547,7 @@ INSERT INTO `T_PRJ_CMPNY` (`prj_id`, `cmpny_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRJ_CNSLTNT`
+-- Table structure for table `T_PRJ_CNSLTNT`
 --
 
 CREATE TABLE IF NOT EXISTS `T_PRJ_CNSLTNT` (
@@ -3558,7 +3560,7 @@ CREATE TABLE IF NOT EXISTS `T_PRJ_CNSLTNT` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `T_PRJ_CNSLTNT`
+-- Dumping data for table `T_PRJ_CNSLTNT`
 --
 
 INSERT INTO `T_PRJ_CNSLTNT` (`prj_id`, `cnsltnt_id`, `active`) VALUES
@@ -3569,7 +3571,7 @@ INSERT INTO `T_PRJ_CNSLTNT` (`prj_id`, `cnsltnt_id`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRJ_CNTCT_PRSNL`
+-- Table structure for table `T_PRJ_CNTCT_PRSNL`
 --
 
 CREATE TABLE IF NOT EXISTS `T_PRJ_CNTCT_PRSNL` (
@@ -3581,7 +3583,7 @@ CREATE TABLE IF NOT EXISTS `T_PRJ_CNTCT_PRSNL` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `T_PRJ_CNTCT_PRSNL`
+-- Dumping data for table `T_PRJ_CNTCT_PRSNL`
 --
 
 INSERT INTO `T_PRJ_CNTCT_PRSNL` (`prj_id`, `usr_id`, `description`) VALUES
@@ -3592,7 +3594,7 @@ INSERT INTO `T_PRJ_CNTCT_PRSNL` (`prj_id`, `usr_id`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRJ_DOC`
+-- Table structure for table `T_PRJ_DOC`
 --
 
 CREATE TABLE IF NOT EXISTS `T_PRJ_DOC` (
@@ -3606,7 +3608,7 @@ CREATE TABLE IF NOT EXISTS `T_PRJ_DOC` (
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_PRJ_STATUS`
+-- Table structure for table `T_PRJ_STATUS`
 --
 
 CREATE TABLE IF NOT EXISTS `T_PRJ_STATUS` (
@@ -3619,7 +3621,7 @@ CREATE TABLE IF NOT EXISTS `T_PRJ_STATUS` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Tablo döküm verisi `T_PRJ_STATUS`
+-- Dumping data for table `T_PRJ_STATUS`
 --
 
 INSERT INTO `T_PRJ_STATUS` (`id`, `name`, `name_tr`, `active`, `short_code`) VALUES
@@ -3632,7 +3634,7 @@ INSERT INTO `T_PRJ_STATUS` (`id`, `name`, `name_tr`, `active`, `short_code`) VAL
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_ROLE`
+-- Table structure for table `T_ROLE`
 --
 
 CREATE TABLE IF NOT EXISTS `T_ROLE` (
@@ -3645,7 +3647,7 @@ CREATE TABLE IF NOT EXISTS `T_ROLE` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Tablo döküm verisi `T_ROLE`
+-- Dumping data for table `T_ROLE`
 --
 
 INSERT INTO `T_ROLE` (`id`, `name`, `name_tr`, `active`, `short_code`) VALUES
@@ -3656,7 +3658,7 @@ INSERT INTO `T_ROLE` (`id`, `name`, `name_tr`, `active`, `short_code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_UNIT`
+-- Table structure for table `T_UNIT`
 --
 
 CREATE TABLE IF NOT EXISTS `T_UNIT` (
@@ -3665,10 +3667,10 @@ CREATE TABLE IF NOT EXISTS `T_UNIT` (
   `name_tr` varchar(200) DEFAULT NULL,
   `active` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=64 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
 
 --
--- Tablo döküm verisi `T_UNIT`
+-- Dumping data for table `T_UNIT`
 --
 
 INSERT INTO `T_UNIT` (`id`, `name`, `name_tr`, `active`) VALUES
@@ -3712,7 +3714,7 @@ INSERT INTO `T_UNIT` (`id`, `name`, `name_tr`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_USER`
+-- Table structure for table `T_USER`
 --
 
 CREATE TABLE IF NOT EXISTS `T_USER` (
@@ -3731,23 +3733,26 @@ CREATE TABLE IF NOT EXISTS `T_USER` (
   `linkedin_user` tinyint(1) DEFAULT NULL,
   `photo` varchar(60) DEFAULT NULL,
   `active` tinyint(1) NOT NULL,
+  `random_string` varchar(20) NOT NULL,
+  `click_control` int(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `role_id` (`role_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Tablo döküm verisi `T_USER`
+-- Dumping data for table `T_USER`
 --
 
-INSERT INTO `T_USER` (`id`, `name`, `surname`, `user_name`, `psswrd`, `role_id`, `title`, `phone_num_1`, `phone_num_2`, `fax_num`, `email`, `description`, `linkedin_user`, `photo`, `active`) VALUES
-(1, 'Tuna Çağlar', 'Gümüş', 'tcgumus', '8287458823facb8ff918dbfabcd22ccb', 1, 'Engineer', '0555-201-01-03', '0555-201-01-03', '1234-123-12-12', 'tunacaglargumus@gmail.com', 'Engineer at lead era ecoman project', NULL, 'tcgumus.jpg', 0),
-(2, 'Burak', 'Dikili', 'burakdikili', '39109a5bb10ccb7aff1313d369804b74', 1, 'Manager', '1-800-694-7466', '1-800-694-7466', '1-800-694-7466', 'burakdikili@gmail.com', 'desc', NULL, '2.jpg', 0),
-(3, 'Ertan', 'Tolan', 'etolan', '8287458823facb8ff918dbfabcd22ccb', 1, 'job title', '1-800-694-7466', '1-800-694-7466', '1-800-694-7466', 'test@test.com', 'description', NULL, '3.jpg', 0);
+INSERT INTO `T_USER` (`id`, `name`, `surname`, `user_name`, `psswrd`, `role_id`, `title`, `phone_num_1`, `phone_num_2`, `fax_num`, `email`, `description`, `linkedin_user`, `photo`, `active`, `random_string`, `click_control`) VALUES
+(1, 'Tuna Çağlar', 'Gümüş', 'tcgumus', '8287458823facb8ff918dbfabcd22ccb', 1, 'Engineer', '0555-201-01-03', '0555-201-01-03', '1234-123-12-12', 'tunacaglargumus@gmail.com', 'Engineer at lead era ecoman project', NULL, '1.jpg', 0, '', 0),
+(2, 'Burak', 'Dikili', 'burakdikili', '8287458823facb8ff918dbfabcd22ccb', 1, 'Manager', '1-800-694-7466', '1-800-694-7466', '1-800-694-7466', 'burakdikili@gmail.com', 'desc', NULL, '2.jpg', 0, '', 0),
+(3, 'Ertan', 'Tolan', 'etolan', '31663bdaeeefb7ae67859c6413d58b39', 1, 'job title', '1-800-694-7466', '1-800-694-7466', '1-800-694-7466', 'etolan.11@gmail.com', 'description', NULL, '3.jpg', 0, '', 0),
+(6, 'Cansın Ahmet', 'Bayrak', 'cansin123', '8287458823facb8ff918dbfabcd22ccb', 2, 'manager', '1-800-694-7466', '1-800-694-7466', '1-800-694-7466', 'cansin@gmail.com', 'desc', NULL, '6.jpg', 0, '', 0);
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `T_USER_LOG`
+-- Table structure for table `T_USER_LOG`
 --
 
 CREATE TABLE IF NOT EXISTS `T_USER_LOG` (
@@ -3758,30 +3763,30 @@ CREATE TABLE IF NOT EXISTS `T_USER_LOG` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dökümü yapılmış tablolar için kısıtlamalar
+-- Constraints for dumped tables
 --
 
 --
--- Tablo kısıtlamaları `T_CLSTR`
+-- Constraints for table `T_CLSTR`
 --
 ALTER TABLE `T_CLSTR`
   ADD CONSTRAINT `FK_T_CLSTR_T_ORG_IND_REG` FOREIGN KEY (`org_ind_reg_id`) REFERENCES `T_ORG_IND_REG` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_CLSTR`
+-- Constraints for table `T_CMPNY_CLSTR`
 --
 ALTER TABLE `T_CMPNY_CLSTR`
   ADD CONSTRAINT `FK_T_CMPNY_CLSTR_T_CLSTR` FOREIGN KEY (`clstr_id`) REFERENCES `T_CLSTR` (`id`),
   ADD CONSTRAINT `FK_T_CMPNY_CLSTR_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_DATA`
+-- Constraints for table `T_CMPNY_DATA`
 --
 ALTER TABLE `T_CMPNY_DATA`
   ADD CONSTRAINT `FK_T_CMPNY_PRJ_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_EQPMNT`
+-- Constraints for table `T_CMPNY_EQPMNT`
 --
 ALTER TABLE `T_CMPNY_EQPMNT`
   ADD CONSTRAINT `T_CMPNY_EQPMNT_ibfk_1` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`),
@@ -3790,7 +3795,7 @@ ALTER TABLE `T_CMPNY_EQPMNT`
   ADD CONSTRAINT `T_CMPNY_EQPMNT_ibfk_4` FOREIGN KEY (`eqpmnt_type_attrbt_id`) REFERENCES `T_EQPMNT_TYPE_ATTRBT` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_FLOW`
+-- Constraints for table `T_CMPNY_FLOW`
 --
 ALTER TABLE `T_CMPNY_FLOW`
   ADD CONSTRAINT `FK_T_FLOW_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY_DATA` (`cmpny_id`),
@@ -3801,133 +3806,133 @@ ALTER TABLE `T_CMPNY_FLOW`
   ADD CONSTRAINT `FK_T_FLOW_T_UNIT_QNTTY` FOREIGN KEY (`qntty_unit_id`) REFERENCES `T_UNIT` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_FLOW_CMPNNT`
+-- Constraints for table `T_CMPNY_FLOW_CMPNNT`
 --
 ALTER TABLE `T_CMPNY_FLOW_CMPNNT`
   ADD CONSTRAINT `FK_T_FLOW_CMPNNT_NAME_T_CMPNNT_NAME` FOREIGN KEY (`cmpnnt_id`) REFERENCES `T_CMPNNT` (`id`),
   ADD CONSTRAINT `FK_T_FLOW_CMPNNT_T_FLOW` FOREIGN KEY (`cmpny_flow_id`) REFERENCES `T_CMPNY_FLOW` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_FLOW_PRCSS`
+-- Constraints for table `T_CMPNY_FLOW_PRCSS`
 --
 ALTER TABLE `T_CMPNY_FLOW_PRCSS`
   ADD CONSTRAINT `FK_T_FLOW_PRCSS_T_FLOW` FOREIGN KEY (`cmpny_flow_id`) REFERENCES `T_CMPNY_FLOW` (`id`),
   ADD CONSTRAINT `FK_T_FLOW_PRCSS_T_PRCSS` FOREIGN KEY (`cmpny_prcss_id`) REFERENCES `T_CMPNY_PRCSS` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_NACE_CODE`
+-- Constraints for table `T_CMPNY_NACE_CODE`
 --
 ALTER TABLE `T_CMPNY_NACE_CODE`
   ADD CONSTRAINT `FK_T_CMPNY_NACE_CODE_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`),
   ADD CONSTRAINT `FK_T_CMPNY_NACE_CODE_T_NACE_CODE` FOREIGN KEY (`nace_code_id`) REFERENCES `T_NACE_CODE` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_ORG_IND_REG`
+-- Constraints for table `T_CMPNY_ORG_IND_REG`
 --
 ALTER TABLE `T_CMPNY_ORG_IND_REG`
   ADD CONSTRAINT `FK_T_CMPNY_ORG_IND_REG_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`),
   ADD CONSTRAINT `FK_T_CMPNY_ORG_IND_REG_T_ORG_IND_REG` FOREIGN KEY (`org_ind_reg_id`) REFERENCES `T_ORG_IND_REG` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_PRCSS`
+-- Constraints for table `T_CMPNY_PRCSS`
 --
 ALTER TABLE `T_CMPNY_PRCSS`
   ADD CONSTRAINT `FK_T_PRCSS_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY_DATA` (`cmpny_id`),
   ADD CONSTRAINT `FK_T_PRCSS_T_PRCSS_NAME` FOREIGN KEY (`prcss_id`) REFERENCES `T_PRCSS` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_PRCSS_EQPMNT_TYPE`
+-- Constraints for table `T_CMPNY_PRCSS_EQPMNT_TYPE`
 --
 ALTER TABLE `T_CMPNY_PRCSS_EQPMNT_TYPE`
   ADD CONSTRAINT `FK_T_CMPNY_PRCSS_EQPMNT_TYPE_T_CMPNY_EQPMNT_TYPE` FOREIGN KEY (`cmpny_eqpmnt_type_id`) REFERENCES `T_CMPNY_EQPMNT` (`id`),
   ADD CONSTRAINT `FK_T_CMPNY_PRCSS_EQPMNT_TYPE_T_CMPNY_PRCSS` FOREIGN KEY (`cmpny_prcss_id`) REFERENCES `T_CMPNY_PRCSS` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CMPNY_PRSNL`
+-- Constraints for table `T_CMPNY_PRSNL`
 --
 ALTER TABLE `T_CMPNY_PRSNL`
   ADD CONSTRAINT `FK_T_CMPNY_PRSNL_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`),
   ADD CONSTRAINT `FK_T_CMPNY_PRSNL_T_USER` FOREIGN KEY (`user_id`) REFERENCES `T_USER` (`id`);
 
 --
--- Tablo kısıtlamaları `T_CNSLTNT`
+-- Constraints for table `T_CNSLTNT`
 --
 ALTER TABLE `T_CNSLTNT`
   ADD CONSTRAINT `FK_T_CNSLTNT_T_USER` FOREIGN KEY (`user_id`) REFERENCES `T_USER` (`id`);
 
 --
--- Tablo kısıtlamaları `T_EQPMNT_TYPE_ATTRBT`
+-- Constraints for table `T_EQPMNT_TYPE_ATTRBT`
 --
 ALTER TABLE `T_EQPMNT_TYPE_ATTRBT`
   ADD CONSTRAINT `FK_T_EQPMNT_ATTRBT_T_EQPMNT_TYPE` FOREIGN KEY (`eqpmnt_type_id`) REFERENCES `T_EQPMNT_TYPE` (`id`);
 
 --
--- Tablo kısıtlamaları `T_PRCSS`
+-- Constraints for table `T_PRCSS`
 --
 ALTER TABLE `T_PRCSS`
   ADD CONSTRAINT `FK_T_PRCSS_NAME_T_PRCSS_NAME` FOREIGN KEY (`mother_id`) REFERENCES `T_PRCSS` (`id`);
 
 --
--- Tablo kısıtlamaları `T_PRDCT`
+-- Constraints for table `T_PRDCT`
 --
 ALTER TABLE `T_PRDCT`
   ADD CONSTRAINT `FK_T_PRDCT_T_CMPNY_DATA` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY_DATA` (`cmpny_id`);
 
 --
--- Tablo kısıtlamaları `T_PRJ`
+-- Constraints for table `T_PRJ`
 --
 ALTER TABLE `T_PRJ`
   ADD CONSTRAINT `FK_T_PRJ_T_STATUS` FOREIGN KEY (`status_id`) REFERENCES `T_PRJ_STATUS` (`id`);
 
 --
--- Tablo kısıtlamaları `T_PRJ_ACSS_CMPNY`
+-- Constraints for table `T_PRJ_ACSS_CMPNY`
 --
 ALTER TABLE `T_PRJ_ACSS_CMPNY`
   ADD CONSTRAINT `FK_T_PRJ_ACSS_CMPNY_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`),
   ADD CONSTRAINT `FK_T_PRJ_ACSS_CMPNY_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`);
 
 --
--- Tablo kısıtlamaları `T_PRJ_ACSS_USER`
+-- Constraints for table `T_PRJ_ACSS_USER`
 --
 ALTER TABLE `T_PRJ_ACSS_USER`
   ADD CONSTRAINT `FK_T_PRJ_ACSS_USER_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`),
   ADD CONSTRAINT `FK_T_PRJ_ACSS_USER_T_USER` FOREIGN KEY (`user_id`) REFERENCES `T_USER` (`id`);
 
 --
--- Tablo kısıtlamaları `T_PRJ_CMPNY`
+-- Constraints for table `T_PRJ_CMPNY`
 --
 ALTER TABLE `T_PRJ_CMPNY`
   ADD CONSTRAINT `FK_T_PRJ_CMPNY_T_CMPNY` FOREIGN KEY (`cmpny_id`) REFERENCES `T_CMPNY` (`id`),
   ADD CONSTRAINT `FK_T_PRJ_CMPNY_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`);
 
 --
--- Tablo kısıtlamaları `T_PRJ_CNSLTNT`
+-- Constraints for table `T_PRJ_CNSLTNT`
 --
 ALTER TABLE `T_PRJ_CNSLTNT`
   ADD CONSTRAINT `FK_T_PRJ_CNSLTNT_T_CNSLTNT` FOREIGN KEY (`cnsltnt_id`) REFERENCES `T_CNSLTNT` (`user_id`),
   ADD CONSTRAINT `FK_T_PRJ_CNSLTNT_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`);
 
 --
--- Tablo kısıtlamaları `T_PRJ_CNTCT_PRSNL`
+-- Constraints for table `T_PRJ_CNTCT_PRSNL`
 --
 ALTER TABLE `T_PRJ_CNTCT_PRSNL`
   ADD CONSTRAINT `FK_T_PRJ_CNTCT_PRSNL_T_USER` FOREIGN KEY (`usr_id`) REFERENCES `T_USER` (`id`);
 
 --
--- Tablo kısıtlamaları `T_PRJ_DOC`
+-- Constraints for table `T_PRJ_DOC`
 --
 ALTER TABLE `T_PRJ_DOC`
   ADD CONSTRAINT `FK_T_PRJ_DOC_T_DOC` FOREIGN KEY (`doc_id`) REFERENCES `T_DOC` (`id`),
   ADD CONSTRAINT `FK_T_PRJ_DOC_T_PRJ` FOREIGN KEY (`prj_id`) REFERENCES `T_PRJ` (`id`);
 
 --
--- Tablo kısıtlamaları `T_USER`
+-- Constraints for table `T_USER`
 --
 ALTER TABLE `T_USER`
   ADD CONSTRAINT `FK_T_USER_T_ROLE` FOREIGN KEY (`role_id`) REFERENCES `T_ROLE` (`id`);
 
 --
--- Tablo kısıtlamaları `T_USER_LOG`
+-- Constraints for table `T_USER_LOG`
 --
 ALTER TABLE `T_USER_LOG`
   ADD CONSTRAINT `FK_T_USER_LOG_T_USER` FOREIGN KEY (`user_id`) REFERENCES `T_USER` (`id`);

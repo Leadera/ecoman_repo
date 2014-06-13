@@ -1,4 +1,4 @@
-		<div class="container">
+<div class="container">
 
 			<?php if(validation_errors() != NULL ): ?>
 			    <div class="alert">
@@ -7,7 +7,7 @@
 			    </div>
 		 	<?php endif ?>
 
-			<?php echo form_open_multipart('change_pass');?>
+			<?php echo form_open_multipart('change_pass/'.$random_string);?>
 			<div class="row">
 				<div class="col-md-4">
 					

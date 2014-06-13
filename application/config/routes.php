@@ -37,6 +37,9 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+$route['send_email_for_change_pass'] = "password/send_email_for_change_pass";
+$route['change_pass/(:any)'] = "password/change_pass/$1";
+
 $route['cluster'] = "cluster/cluster_to_match_company";
 
 $route['become_consultant'] = "user/become_consultant";
@@ -82,9 +85,6 @@ $route['get_equipment_attribute'] = "dataset/get_equipment_attribute";
 $route['default_controller'] = "homepage";
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
-
-$route['change_pass'] = "password/change_pass";
-
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
