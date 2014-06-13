@@ -19,7 +19,7 @@ class Password extends CI_Controller{
 			$email = $this->input->post('email');
 
 			$random_str = $this->generateRandomString();
-			$asd = 'localhost/ecoman_repo/change_pass/'.$random_str;
+			$asd = base_url("change_pass/".$random_str);
 			$message = '<a href='.$asd.'>Change Password</a>';
 
 			$rnd_str = array(
@@ -104,7 +104,8 @@ class Password extends CI_Controller{
 			$user_id = $this->password_model->get_id($email);
 
 			$random_str = $this->generateRandomString();
-			$asd = 'localhost/ecoman_repo/new_password/'.$random_str;
+			$asd = base_url("new_password/".$random_str);
+			
 			$message = '<a href='.$asd.'>Change Password</a>';
 
 			$rnd_str = array(
