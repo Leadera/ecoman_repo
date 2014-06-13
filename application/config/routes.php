@@ -84,6 +84,7 @@ $route['delete_process/(:any)'] = "dataset/delete_process/$1";
 $route['new_equipment/(:any)'] = "dataset/new_equipment/$1";
 $route['get_equipment_type'] = "dataset/get_equipment_type";
 $route['get_equipment_attribute'] = "dataset/get_equipment_attribute";
+$route['delete_equipment/(:any)/(:any)'] = "dataset/delete_equipment/$1/$2";
 
 $route['default_controller'] = "homepage";
 $route['(:any)'] = 'pages/view/$1';

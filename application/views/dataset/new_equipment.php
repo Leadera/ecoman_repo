@@ -1,5 +1,5 @@
 	<div class="col-md-9">
-	<?php echo form_open_multipart('new_equipment/'.$companyID[0]); ?>
+	<?php echo form_open_multipart('new_equipment/'.$companyID); ?>
 	<div class="form-group">
 			<label for="status">Equipment Name</label>
 			<div>	    			
@@ -44,6 +44,7 @@
 				<th>Equipment Type Name</th>
 				<th>Equipment Attribute Name</th>
 				<th>Used Process</th>
+				<th>Delete</th>
 			</tr>
 			<?php foreach ($informations as $info): ?>
 			<tr>	
@@ -51,6 +52,7 @@
 					<td><?php echo $info['eqpmnt_type_name']; ?></td>
 					<td><?php echo $info['eqpmnt_type_attrbt_name']; ?></td>
 					<td><?php echo $info['prcss_name']; ?></td>
+					<td><a href="<?php echo base_url('delete_equipment/'.$companyID.'/'.$info['cmpny_eqpmnt_id']);?>" class="btn btn-danger btn-sm" value="<?php echo $info['cmpny_eqpmnt_id']; ?>"><span class="glyphicon glyphicon-remove"></span></button></td>
 			</tr>
 			<?php endforeach ?>
 		</table>

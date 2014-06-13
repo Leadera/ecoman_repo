@@ -259,4 +259,11 @@ class Dataset extends CI_Controller {
 		$this->process_model->delete_cmpny_eqpmnt($companyID);
 		redirect('new_process/'.$companyID);
 	}
+
+	public function delete_equipment($cmpny_id,$cmpny_eqpmnt_id){
+
+		$this->equipment_model->delete_cmpny_prcss_eqpmnt_type($cmpny_eqpmnt_id);
+		$this->equipment_model->delete_cmpny_eqpmnt($cmpny_eqpmnt_id);
+		redirect('new_equipment/'.$cmpny_id,'refresh');
+	}
 }

@@ -52,7 +52,7 @@ class Equipment_model extends CI_Model {
   }
 
   public function all_information_of_equipment($companyID){
-    $this->db->select('T_EQPMNT.name as eqpmnt_name, T_EQPMNT_TYPE.name as eqpmnt_type_name, T_EQPMNT_TYPE_ATTRBT.attribute_name as eqpmnt_type_attrbt_name, T_PRCSS.name as prcss_name');
+    $this->db->select('T_CMPNY_EQPMNT.id as cmpny_eqpmnt_id, T_EQPMNT.name as eqpmnt_name, T_EQPMNT_TYPE.name as eqpmnt_type_name, T_EQPMNT_TYPE_ATTRBT.attribute_name as eqpmnt_type_attrbt_name, T_PRCSS.name as prcss_name');
     $this->db->from('T_CMPNY_PRCSS_EQPMNT_TYPE');
     $this->db->join('T_CMPNY_EQPMNT','T_CMPNY_EQPMNT.id = T_CMPNY_PRCSS_EQPMNT_TYPE.cmpny_eqpmnt_type_id');
     $this->db->join('T_EQPMNT','T_EQPMNT.id = T_CMPNY_EQPMNT.eqpmnt_id');
@@ -82,6 +82,16 @@ class Equipment_model extends CI_Model {
     $this->db->where('cmpny_prcss_id', $cmpny_prcss_id);
     $this->db->delete('T_CMPNY_PRCSS_EQPMNT_TYPE'); 
   
+  }
+
+  public function delete_cmpny_prcss_eqpmnt_type($cmpny_eqpmnt_id){
+    $this->db->where('cmpny_eqpmnt_type_id', $cmpny_eqpmnt_id);
+    $this->db->delete('T_CMPNY_PRCSS_EQPMNT_TYPE'); 
+  }
+
+  public function delete_cmpny_eqpmnt($id){
+    $this->db->where('id', $id);
+    $this->db->delete('T_CMPNY_EQPMNT'); 
   }
 }
 ?>
