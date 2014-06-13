@@ -39,6 +39,8 @@
 */
 $route['send_email_for_change_pass'] = "password/send_email_for_change_pass";
 $route['change_pass/(:any)'] = "password/change_pass/$1";
+$route['new_password_email'] = "password/new_password_email";
+$route['new_password/(:any)'] = "password/new_password/$1";
 
 $route['cluster'] = "cluster/cluster_to_match_company";
 

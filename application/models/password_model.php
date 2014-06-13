@@ -63,5 +63,13 @@ class Password_model extends CI_Model {
     $query = $this->db->get()->row_array();
     return $query['id'];
   }
+
+  public function get_id($email){
+    $this->db->select('id');
+    $this->db->from('T_USER');
+    $this->db->where('email',$email);
+    $query = $this->db->get()->row_array();
+    return $query['id'];
+  }
 }
 ?>

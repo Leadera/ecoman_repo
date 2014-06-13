@@ -53,9 +53,6 @@ class Password extends CI_Controller{
 			if ($this->form_validation->run() !== FALSE){
 
 				$user_id = $this->password_model->get_user_id($random);
-				$data = array(
-					'random_string' => $random
-				);
 
 				$old_pass = $this->input->post('old_pass');
 				$new_pass = $this->input->post('new_pass');
@@ -66,7 +63,7 @@ class Password extends CI_Controller{
 					$this->password_model->change_pass($user_id,$control);
 				}
 
-				$message = 'Sifreniz degistirildi. Yeni şifreniz: '.$new_pass;
+				$message = 'Sifreniz degistirildi. Yeni sifreniz: '.$new_pass;
 				$email = $this->password_model->get_email($user_id);
 
 				$send_email = array(
@@ -84,6 +81,10 @@ class Password extends CI_Controller{
 				redirect('login','refresh');
 			}
 
+			$data = array(
+				'random_string' => $random
+			);
+
 			$this->load->view('template/header');
 			$this->load->view('password/change_pass',$data);
 			$this->load->view('template/footer');
@@ -91,6 +92,76 @@ class Password extends CI_Controller{
 		else{
 			redirect('','refresh');
 		}
+	}
+
+	public function new_password_email(){
+		$this->form_validation->set_rules('email', 'E-mail', 'trim|xss_clean|required');
+
+		if ($this->form_validation->run() !== FALSE){
+			
+			$email = $this->input->post('email');
+
+			$user_id = $this->password_model->get_id($email);
+
+			$random_str = $this->generateRandomString();
+			$asd = 'localhost/ecoman_repo/new_password/'.$random_str;
+			$message = '<a href='.$asd.'>Change Password</a>';
+
+			$rnd_str = array(
+					'random_string' => $random_str,
+					'click_control' => 1
+				);
+			$this->password_model->set_random_string($user_id,$rnd_str);
+
+			$data = array(
+					'message' => $message,
+					'email' => $email
+				);
+			$this->sendMAil($data);
+			redirect('','refresh');
+		}
+		$this->load->view('template/header');
+		$this->load->view('password/new_password_email');
+		$this->load->view('template/footer');
+	}	
+
+	public function new_password($rnd_string){
+		$data['random_string'] = $rnd_string;
+
+		$this->form_validation->set_rules('new_pass', 'New Password', 'trim|xss_clean|required');
+		$this->form_validation->set_rules('new_pass_again', 'New Password(Again)', 'trim|xss_clean|required');
+
+		if ($this->form_validation->run() !== FALSE){
+			if($this->password_check() == true){
+				$user_id = $this->password_model->get_user_id($rnd_string);
+				$new_pass = $this->input->post('new_pass');
+				$control = array(
+					'psswrd' => md5($new_pass)
+				);
+				$this->password_model->change_pass($user_id,$control);
+				
+				$message = 'Sifreniz degistirildi. Yeni sifreniz: '.$new_pass;
+				$email = $this->password_model->get_email($user_id);
+
+				$send_email = array(
+					'message' => $message,
+					'email' => $email
+				);
+				$this->sendMAil($send_email);
+
+				$rnd_str = array(
+					'random_string' => null,
+					'click_control' => 0
+				);
+				$this->password_model->set_random_string_zero($rnd_string,$rnd_str);
+
+				redirect('login','refresh');
+			}	
+		}
+
+		$this->load->view('template/header');
+		$this->load->view('password/new_pass',$data);
+		$this->load->view('template/footer');
 	}
 
 	public function sendMail($data)

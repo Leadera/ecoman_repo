@@ -1,4 +1,4 @@
-		<div class="col-md-9">
+<div class="col-md-9">
 			<p class="lead">Add new product</p>
 			<?php echo form_open_multipart('new_product/'.$companyID); ?>
 				<div class="form-group">
