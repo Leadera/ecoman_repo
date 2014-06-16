@@ -12,6 +12,24 @@ class Process_model extends CI_Model {
 	    $query = $this->db->get();
 	    return $query->result_array();
 	}
+	
+	public function get_main_process(){
+		$this->db->select('*');
+	    $this->db->from('T_PRCSS');
+	    $this->db->where('mother_id',NULL);
+	    $this->db->where('active',1);
+	    $query = $this->db->get();
+	    return $query->result_array();
+	}
+
+	public function get_process_from_motherID($mother_id){
+		$this->db->select('*');
+	    $this->db->from('T_PRCSS');
+	    $this->db->where('mother_id',$mother_id);
+	    $this->db->where('active',1);
+	    $query = $this->db->get();
+	    return $query->result_array();
+	}
 
 	public function cmpny_flow_prcss($data){
 		$this->db->insert('T_CMPNY_FLOW_PRCSS',$data);

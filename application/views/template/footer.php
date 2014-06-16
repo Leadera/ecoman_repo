@@ -163,5 +163,33 @@
       });
     </script>
 
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#process').bind('change',function () {
+          var processID = $(this).val();
+          $.ajax({
+            url: "/ecoman_repo/get_sub_process",
+            async: false,
+            type: "POST",
+            data: "processID="+processID,
+            dataType: "json",
+            success: function(data) {
+            if(data.length > 0){
+              $('#process option').remove();
+
+              for(var i = 0 ; i < data.length ; i++){
+                $("#process").append(new Option(data[i]['name'],data[i]['id']));
+
+              }
+            }
+
+            }
+          })
+        });
+
+      });
+    </script>
+
+
     </body>
 </html>

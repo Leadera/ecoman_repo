@@ -13,7 +13,7 @@ class Dataset extends CI_Controller {
 		$this->load->library('form_validation');
 
 		$kullanici = $this->session->userdata('user_in');
-		if($this->user_model->can_edit_company($kullanici['id'],$this->uri->segment(2)) == FALSE && $this->uri->segment(1) != "get_equipment_type" && $this->uri->segment(1) != "get_equipment_attribute"){
+		if($this->user_model->can_edit_company($kullanici['id'],$this->uri->segment(2)) == FALSE && $this->uri->segment(1) != "get_equipment_type" && $this->uri->segment(1) != "get_equipment_attribute"&& $this->uri->segment(1) != "get_sub_process"){
 			redirect(base_url(''), 'refresh');
 		}
 	}
@@ -158,7 +158,7 @@ class Dataset extends CI_Controller {
 			}
 		}
 
-		$data['process'] = $this->process_model->get_process();
+		$data['process'] = $this->process_model->get_main_process();
 		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
 		$data['cmpny_flow_prcss'] = $this->process_model->get_cmpny_flow_prcss($companyID);
 		$data['companyID'] = $companyID;
@@ -249,6 +249,12 @@ class Dataset extends CI_Controller {
 		echo json_encode($attribute_list);
 	}
 
+	public function get_sub_process(){
+		$processID = $this->input->post('processID');
+		$process_list = $this->process_model->get_process_from_motherID($processID);
+		echo json_encode($process_list);
+	}
+
 	public function delete_process($companyID){
 		$cmpny_flow_prcss_ids = $this->process_model->get_cmpny_prcss_id($companyID);
 		foreach ($cmpny_flow_prcss_ids as $id) {
@@ -266,4 +272,6 @@ class Dataset extends CI_Controller {
 		$this->equipment_model->delete_cmpny_eqpmnt($cmpny_eqpmnt_id);
 		redirect('new_equipment/'.$cmpny_id,'refresh');
 	}
+
+
 }
