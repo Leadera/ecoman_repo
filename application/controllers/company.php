@@ -162,6 +162,8 @@ class Company extends CI_Controller{
 		$temp = $this->session->userdata('user_in');
 		if($temp['id'] == null){
 			$data['valid'] = "0";
+		}else{
+			$data['valid'] = "1";
 		}
 
 		$data['company_flows'] = $this->flow_model->get_company_flow_list($term);
