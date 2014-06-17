@@ -166,28 +166,60 @@
     <script type="text/javascript">
       $(document).ready(function () {
         $('#process').bind('change',function () {
-          var processID = $(this).val();
-          $.ajax({
-            url: "/ecoman_repo/get_sub_process",
-            async: false,
-            type: "POST",
-            data: "processID="+processID,
-            dataType: "json",
-            success: function(data) {
-            if(data.length > 0){
-              $('#process option').remove();
+          $("[id*=subprocess]").remove();
+          $('#lastprocess').val($(this).val());
+          var stage=1;
+          get_sub_process($(this).val(),stage);
 
-              for(var i = 0 ; i < data.length ; i++){
-                $("#process").append(new Option(data[i]['name'],data[i]['id']));
-
-              }
-            }
-
-            }
-          })
-        });
+    });
 
       });
+
+
+      function get_sub_process(id,stage){
+        var processID = id;
+
+        $.ajax({
+          url: "/ecoman_repo/get_sub_process",
+          async: false,
+          type: "POST",
+          data: "processID="+processID,
+          dataType: "json",
+          success: function(data) {
+          if(data.length > 0){
+            var pro_id=stage+'subprocess'+id;
+            var select=document.createElement("select");
+            select.id= pro_id;
+            $('#processList').append(select);
+
+            $("#"+pro_id).addClass('select-block')
+            $("select").selectpicker({style: 'btn btn-default', menuStyle: 'dropdown-inverse'});
+            $("select").selectpicker('refresh');
+            for(var i = 0 ; i < data.length ; i++){
+              $("#"+pro_id).append(new Option(data[i]['name'],data[i]['id']));
+
+            }
+            $("#"+pro_id).bind('change',function () {
+
+              var my_id = $(this).attr('id').slice(0,1);
+              for (var i = parseInt(my_id)+1 ; i < 100 ; i++) {
+                if($("[id*="+i+"subprocess]").length != 0){
+                  $("[id*="+i+"subprocess]").remove();
+                  $("#processList div:last-child").remove();
+                }
+               
+              }
+              stage += 1;
+              get_sub_process($(this).val(),stage);
+              $('#lastprocess').val($(this).val());
+            });
+
+          }
+
+          }
+        })
+
+      }
     </script>
 
 
