@@ -6,6 +6,11 @@ class Company extends CI_Controller{
 		$this->load->model('company_model');
 		$this->load->model('user_model');
 		$this->load->model('cluster_model');	
+		$this->load->model('flow_model');	
+		$this->load->model('process_model');	
+		$this->load->model('component_model');	
+		$this->load->model('equipment_model');
+		$this->load->model('product_model');
 		$this->load->library('form_validation');
 	}
 
@@ -154,6 +159,17 @@ class Company extends CI_Controller{
 	public function companies($term){
 		$this->load->library('googlemaps');
 
+		$temp = $this->session->userdata('user_in');
+		if($temp['id'] == null){
+			$data['valid'] = "0";
+		}
+
+		$data['company_flows'] = $this->flow_model->get_company_flow_list($term);
+		$data['company_prcss'] = $this->process_model->get_cmpny_flow_prcss($term);
+		$data['company_component'] = $this->component_model->get_cmpnnt($term);
+		$data['company_equipment'] = $this->equipment_model->all_information_of_equipment($term);
+		$data['company_product'] = $this->product_model->get_product_list($term);
+		
 		$data['companies'] = $this->company_model->get_company($term);
 			$config['center'] = $data['companies']['latitude'].','. $data['companies']['longitude'];
 	    $config['zoom'] = '15';

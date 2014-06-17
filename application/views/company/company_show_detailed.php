@@ -76,6 +76,98 @@
 					</td>
 				</tr>
 			</table>
+			<?php if($valid != 0): ?>
+				
+				<table class="table table-bordered">
+					<tr>
+						<th colspan="5">Company Flows</th>
+					</tr>
+					<tr>
+						<th>Flow Name</th>
+						<th>Flow Type</th>
+						<th>Quantity</th>
+						<th>Cost</th>
+						<th>EP</th>
+					</tr>
+					<?php foreach ($company_flows as $flows): ?>
+						<tr>	
+							<td><?php echo $flows['flowname']; ?></td>
+							<td><?php echo $flows['flowtype']; ?></td>
+							<td><?php echo $flows['qntty'].' '.$flows['qntty_unit_name']; ?></td>
+							<td><?php echo $flows['cost'].' '.$flows['cost_unit_name']; ?></td>
+							<td><?php echo $flows['ep'].' '.$flows['ep_unit_name']; ?></td>
+						</tr>
+					<?php endforeach ?>
+				</table>
+				
+				<table class="table table-bordered">
+					<tr>
+						<th colspan="3">Company Process</th>
+					</tr>
+					<tr>
+						<th>Process Name</th>
+						<th>Flow Name</th>
+						<th>Flow Type</th>
+					</tr>
+					<?php foreach ($company_prcss as $prcss): ?>
+						<tr>	
+							<td><?php echo $prcss['prcessname']; ?></td>
+							<td><?php echo $prcss['flowname']; ?></td>
+							<td><?php echo $prcss['flow_type_name']?></td>
+						</tr>
+					<?php endforeach ?>
+				</table>
+
+				<table class="table table-bordered">
+					<tr>
+						<th colspan="2">Company Component</th>
+					</tr>
+					<tr>
+						<th>Flow Name</th>
+						<th>Component Name</th>
+					</tr>
+					<?php foreach ($company_component as $cmpnnt): ?>
+						<tr>	
+							<td><?php echo $cmpnnt['flow_name']; ?></td>
+							<td><?php echo $cmpnnt['component_name']; ?></td>
+						</tr>
+					<?php endforeach ?>
+				</table>
+
+				<table class="table table-bordered">
+					<tr>
+						<th colspan="4">Company Equipment</th>
+					</tr>
+					<tr>
+						<th>Equipment Name</th>
+						<th>Equipment Type Name</th>
+						<th>Equipment Attribute Name</th>
+						<th>Used Process</th>
+					</tr>
+					<?php foreach ($company_equipment as $eqpmnt): ?>
+						<tr>	
+							<td><?php echo $eqpmnt['eqpmnt_name']; ?></td>
+							<td><?php echo $eqpmnt['eqpmnt_type_name']; ?></td>
+							<td><?php echo $eqpmnt['eqpmnt_type_attrbt_name']; ?></td>
+							<td><?php echo $eqpmnt['prcss_name']; ?></td>
+						</tr>
+					<?php endforeach ?>
+				</table>
+
+				<table class="table table-bordered">
+					<tr>
+						<th>Company Product</th>
+					</tr>
+					<tr>
+						<th>Product Name</th>
+					</tr>
+					<?php foreach ($company_product as $prdct): ?>
+						<tr>	
+							<td><?php echo $prdct['name']; ?></td>
+						</tr>
+					<?php endforeach ?>
+				</table>
+			<?php endif ?>
 		</div>
 
 		<div class="col-md-3">

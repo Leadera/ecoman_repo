@@ -5,8 +5,7 @@ class Project extends CI_Controller{
 		parent::__construct();
 		$this->load->model('project_model');
 		$this->load->model('company_model');
-		$this->load->model('user_model');	
-	}
+		$this->load->model('user_model');		}
 
 	public function new_project(){
 		$kullanici = $this->session->userdata('user_in');

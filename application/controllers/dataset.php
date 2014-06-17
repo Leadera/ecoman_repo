@@ -116,7 +116,7 @@ class Dataset extends CI_Controller {
 			$this->component_model->set_cmpny_flow_cmpnnt($cmpny_flow_cmpnnt);
 		}
 		
-		$data['component_name'] = $this->component_model->get_cmpnnt($companyID);;
+		$data['component_name'] = $this->component_model->get_cmpnnt($companyID);
 		$data['companyID'] = $companyID;
 		$data['company_info'] = $this->company_model->get_company($companyID);
 		$data['flow_and_flow_type'] = $this->component_model->get_cmpny_flow_and_flow_type($companyID);
