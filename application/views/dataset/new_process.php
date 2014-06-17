@@ -11,7 +11,7 @@
 					</select>
 
 				</div>
-				<input id ="lastprocess" name ="lastprocess" style="display:none;"></input>
+				<input id ="lastprocess" name ="lastprocess" style="display:none;" value="1"></input>
  			</div>
  			<div class="form-group">
 		    	<label for="description">Used Flows</label>
