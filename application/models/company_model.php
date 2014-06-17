@@ -129,6 +129,11 @@ class Company_model extends CI_Model {
     $this->db->insert('T_CMPNY_PRSNL',$data);
   }
 
+  public function update_cmpny_prsnl($user_id,$data){
+    $this->db->where('user_id', $user_id);
+    $this->db->update('T_CMPNY_PRSNL', $data);
+  }
+
   public function return_email($id){
     $this->db->select('email');
     $this->db->from('T_CMPNY');

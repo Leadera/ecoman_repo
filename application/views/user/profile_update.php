@@ -63,14 +63,12 @@
 						<input type="text" class="form-control" id="surname" placeholder="Enter surname" value="<?php echo set_value('surname',$surname); ?>"  name="surname">
 				</div>
 				<div class="form-group">
-						<label for="company">Company</label>
+					<label for="company">Company</label>
 
-						<select id="info" name="company" class="select-block">
-							<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
+					<select title="Choose at least one" class="select-block" id="company" name="company">
+						<?php foreach ($companies as $company): ?>
+							<option value="<?php echo $company['id']; ?>"><?php echo $company['name']; ?></option>
+						<?php endforeach ?>
 					</select>
 
 				</div>

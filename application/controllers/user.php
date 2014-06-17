@@ -4,6 +4,7 @@ class User extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('user_model');
+		$this->load->model('company_model');
 		$this->load->library('form_validation');
 	}
 
@@ -164,10 +165,7 @@ class User extends CI_Controller {
 		
 		if ($this->form_validation->run() !== FALSE)
 		{
-
-
 			//file properties
-
 			//@unlink('./assets/user_pictures/'.$data['photo']); //  silmeye gerek yok. overwrite true islemi bunu yapıyor zaten
 			$config['upload_path'] = './assets/user_pictures/';
 			$config['allowed_types'] = 'gif|jpg|png';
@@ -185,8 +183,6 @@ class User extends CI_Controller {
 			else{
 				$photo_user = array('upload_data' => $this->upload->data());
 			}*/
-
-			
 			//Yüklenen resmi boyutlandırma ve çevirme
 			$config['image_library'] = 'gd2';
 			$config['source_image']	= './assets/user_pictures/'.$data['photo'];
@@ -195,8 +191,6 @@ class User extends CI_Controller {
 			$config['height']	 = 200;
 			$this->load->library('image_lib', $config);
 			$this->image_lib->resize();
-
-
 
 			$update = array(
 				'name'=>$this->input->post('name'),
@@ -223,12 +217,20 @@ class User extends CI_Controller {
 				);
 			$this->session->set_userdata('user_in',$session_array);
 
+			$user_id = $this->session->userdata('user_in')['id'];
 
-
-
+			$cmpny_prsnl = array(
+					'user_id' => $user_id,
+					'cmpny_id' => $this->input->post('company'),
+					'is_contact' => '0'
+				);
+			$this->company_model->update_cmpny_prsnl($user_id,$cmpny_prsnl);
 
 			redirect('', 'refresh');
 		}
+
+		$data['companies'] = $this->company_model->get_companies();
+
 		$this->load->view('template/header');
 		$this->load->view('user/profile_update',$data);
 		$this->load->view('template/footer');
