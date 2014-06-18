@@ -24,7 +24,7 @@
 			<a class="btn btn-default btn-sm" href="<?php echo base_url('cluster'); ?>">Add company to a cluster</a>
 						<?php echo form_open_multipart('company'); ?>
 
-			<div class="well" style="margin-top: 20px; overflow:hidden;">
+			<div class="well" style="margin-top: 20px;">
 				<label for="cluster">Select Cluster</label>
 				<select title="Choose at least one" class="select-block" id="cluster" name="cluster">
 					<option value="0">All of Companies</option>
