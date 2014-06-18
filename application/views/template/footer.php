@@ -166,13 +166,12 @@
     <script type="text/javascript">
       $(document).ready(function () {
         $('#process').bind('change',function () {
+          $("button[id*=subprocess]").parent().remove();
           $("[id*=subprocess]").remove();
           $('#lastprocess').val($(this).val());
           var stage=1;
           get_sub_process($(this).val(),stage);
-
-    });
-
+        });
       });
 
 
@@ -195,14 +194,14 @@
             $("#"+pro_id).addClass('select-block')
             $("select").selectpicker({style: 'btn btn-default', menuStyle: 'dropdown-inverse'});
             $("select").selectpicker('refresh');
+            $("#"+pro_id).append(new Option('Please select subprocess'));
             for(var i = 0 ; i < data.length ; i++){
               $("#"+pro_id).append(new Option(data[i]['name'],data[i]['id']));
-
             }
             $("#"+pro_id).bind('change',function () {
 
               var my_id = $(this).attr('id').slice(0,1);
-              for (var i = parseInt(my_id)+1 ; i < 100 ; i++) {
+              for (var i = parseInt(my_id)+1 ; i < 300 ; i++) {
                 if($("[id*="+i+"subprocess]").length != 0){
                   $("[id*="+i+"subprocess]").remove();
                   $("#processList div:last-child").remove();

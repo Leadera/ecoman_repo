@@ -2,16 +2,16 @@
 		<div class="col-md-9">
 			<p class="lead">Add new process</p>
 			<div class="form-group">
-	    		<label for="status">Process Name</label>
-	    		<div id="processList">	    			
-		    		<select id="process" class="info select-block" name="process">
-		  			<?php foreach ($process as $pro): ?>
+	    	<label for="status">Process Name</label>
+				<div id="processList">
+				<select id="process" class="info select-block" name="process">
+					<option value="">Please select a process</option>
+					<?php foreach ($process as $pro): ?>
 						<option value="<?php echo $pro['id']; ?>"><?php echo $pro['name']; ?></option>
 					<?php endforeach ?>
-					</select>
-
+				</select>
 				</div>
-				<input id ="lastprocess" name ="lastprocess" style="display:none;" value="1"></input>
+				<input id="lastprocess" name="lastprocess" style="display:none;" value="1"></input>
  			</div>
  			<div class="form-group">
 		    	<label for="description">Used Flows</label>
