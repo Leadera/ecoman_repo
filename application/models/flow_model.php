@@ -48,6 +48,21 @@ class Flow_model extends CI_Model {
 		$query = $this->db->get();
 		return $query->result_array();
 	}
+
+	public function has_same_flow($flow_id,$flow_type_id){
+		$this->db->select("*");
+		$this->db->from("T_CMPNY_FLOW");
+		$this->db->where('flow_id',$flow_id);
+		$this->db->where('flow_type_id',$flow_type_id);
+		$query = $this->db->get();
+		if(!empty($query)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
 	public function delete_flow($id){
 		$this->db->where('id', $id);
 		$this->db->delete('T_CMPNY_FLOW'); 

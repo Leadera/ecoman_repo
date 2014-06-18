@@ -34,7 +34,7 @@
 					<tr>	
 						<td><?php echo $attribute['prcessname']; ?></td>
 						<td><?php echo $attribute['flowname'].'('.$attribute['flow_type_name'].')'; ?></td>
-						<td><a href="<?php echo base_url('delete_process/'.$companyID.'/'.$attribute['prcessname']);?>" class="btn btn-danger btn-sm" value="<?php echo $attribute['prcessid']; ?>"><span class="glyphicon glyphicon-remove"></span></button></td>
+						<td><a href="<?php echo base_url('delete_process/'.$companyID.'/'.$attribute['company_process_id'].'/'.$attribute['company_flow_id']);?>" class="btn btn-danger btn-sm" value="<?php echo $attribute['prcessid']; ?>"><span class="glyphicon glyphicon-remove"></span></button></td>
 					</tr>
 					<?php endforeach ?>
 			</table>

@@ -62,6 +62,10 @@ class Dataset extends CI_Controller {
 			$quantity = $this->input->post('quantity');
 			$quantityUnit = $this->input->post('quantityUnit');
 
+			if($this->flow_model->has_same_flow($flowID,$flowtypeID)){
+				redirect(base_url('new_flow/'.$companyID));
+			}
+
 			$flow = array(
 				'cmpny_id'=>$companyID,
 				'flow_id'=>$flowID,
@@ -255,14 +259,19 @@ class Dataset extends CI_Controller {
 		echo json_encode($process_list);
 	}
 
-	public function delete_process($companyID){
-		$cmpny_flow_prcss_ids = $this->process_model->get_cmpny_prcss_id($companyID);
-		foreach ($cmpny_flow_prcss_ids as $id) {
-			$this->process_model->delete_company_flow_prcss($id['id']);
-			$this->process_model->delete_cmpny_prcss_eqpmnt_type($id['id']);
+	public function delete_process($companyID,$company_process_id,$company_flow_id){
+		
+		$this->process_model->delete_company_flow_prcss($company_process_id,$company_flow_id);
+		
+		if(!$this->process_model->still_exist_this_cmpny_prcss($company_process_id))
+		{
+			$this->equipment_model->delete_cmpny_equipment($company_process_id);
+			$this->process_model->delete_cmpny_process($company_process_id);
 		}
+		/*
+			$this->process_model->delete_cmpny_prcss_eqpmnt_type($id['id']);
 		$this->process_model->delete_cmpny_prcss($companyID);
-		$this->process_model->delete_cmpny_eqpmnt($companyID);
+		$this->process_model->delete_cmpny_eqpmnt($companyID)*/
 		redirect('new_process/'.$companyID);
 	}
 
