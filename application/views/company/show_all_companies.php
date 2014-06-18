@@ -5,7 +5,7 @@
 				<div class="lead pull-left"><?php echo $cluster_name['name'];?></div>
 				<?php 
 					$temp = $this->session->userdata('user_in');
-					if($temp['id'] != null): ?>
+					if(($temp['id'] != null) && ($help != "0")): ?>
 					<a class="pull-right btn btn-info btn-sm" href="<?php echo base_url("newcompany"); ?>">Create a Company</a>
 					<?php endif	?>	
 

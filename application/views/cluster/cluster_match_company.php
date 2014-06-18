@@ -9,7 +9,7 @@
     </div>
   <?php endif ?>
 
-	<?php echo form_open_multipart('cluster_to_match_company'); ?>
+	<?php echo form_open_multipart('cluster'); ?>
 		<div class="row">
 			<div class="col-md-4">
 
@@ -34,7 +34,6 @@
 						<?php endforeach ?>
 					</select>
 	 			</div>
-
 	 			<button type="submit" class="btn btn-primary pull-right">To Match</button>
 			</div>
 			<div class="col-md-4">

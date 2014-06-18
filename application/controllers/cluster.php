@@ -17,7 +17,7 @@ class Cluster extends CI_Controller{
 		{
 			$company_id = $this->input->post('company');
 			$cluster_id = $this->input->post('cluster');
-			if($this->cluster_model->can_write_info($cluster_id,$company_id) == false){
+			if($this->cluster_model->can_write_info($cluster_id,$company_id) == true){
 				$cmpny_clstr = array(
 						'cmpny_id' => $company_id,
 						'clstr_id' => $cluster_id

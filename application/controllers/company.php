@@ -19,9 +19,6 @@ class Company extends CI_Controller{
 		if($temp['id'] == null){
 			redirect('', 'refresh');
 		}
-		if($this->create_company_control() == FALSE){
-			redirect('', 'refresh');
-		}
 
 		$this->load->library('googlemaps');
 		//alert("1:" + event.latLng.lat() + " 2:" + event.latLng.lng());
@@ -140,6 +137,10 @@ class Company extends CI_Controller{
 
 	public function show_all_companies(){
 		$cluster_id = $this->input->post('cluster');
+		if($this->create_company_control() == FALSE){
+			$data['help'] = "0";
+			//redirect('', 'refresh');
+		}
 		
 		if($cluster_id == null || $cluster_id == 0){
 			$data['cluster_name']['name'] = 'All Companies';

@@ -26,14 +26,20 @@ class Cluster_model extends CI_Model {
   }
 
   public function can_write_info($cluster_id,$company_id){
-    $this->db->select('cmpny_id');
+    $this->db->select('clstr_id');
     $this->db->from('T_CMPNY_CLSTR');
-    $this->db->where('clstr_id',$cluster_id);
-    $query = $this->db->get()->row_array();
-    if($query['cmpny_id'] == $company_id)
+    $this->db->where('cmpny_id',$company_id);
+    $query = $this->db->get()->result_array();
+    if(empty($query)){
       return true;
-    else
-      return false;
+    }else{
+      foreach ($query as $var) {
+        if($var['clstr_id'] == $cluster_id){
+          return false;
+        }
+      }
+      return true;
+    }
   }
 }
 ?>
