@@ -19,7 +19,7 @@
 				<div class="form-group">
 	    			<label for="assignedCompanies">Select Company</label>
 	    			<select title="Choose at least one" class="select-block" id="company" name="company">
-	    				<option value="0">Nothing Selected</option>
+	    				<option value="">Nothing Selected</option>
 						<?php foreach ($companies as $company): ?>
 							<option value="<?php echo $company['id']; ?>"><?php echo $company['name']; ?></option>
 						<?php endforeach ?>
@@ -28,7 +28,7 @@
 				<div class="form-group">
 	    			<label for="assignedCompanies">Select Cluster</label>
 	    			<select title="Choose at least one" class="select-block" id="cluster" name="cluster">
-	    				<option value="0">Nothing Selected</option>
+	    				<option value="">Nothing Selected</option>
 						<?php foreach ($clusters as $cluster): ?>
 							<option value="<?php echo $cluster['id']; ?>"><?php echo $cluster['name']; ?></option>
 						<?php endforeach ?>
