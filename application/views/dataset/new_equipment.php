@@ -4,10 +4,11 @@
 			<label for="status">Equipment Name</label>
 			<div>	    			
 		  	<select class="info select-block" name="equipment" id="equipment">
-					<?php foreach ($equipmentName as $eqpmntName): ?>
-					<option value="<?php echo $eqpmntName['id']; ?>"><?php echo $eqpmntName['name']; ?></option>
-				<?php endforeach ?>
-				</select>
+	  			<option value="">Nothing Selected</option>
+				<?php foreach ($equipmentName as $eqpmntName): ?>
+				<option value="<?php echo $eqpmntName['id']; ?>"><?php echo $eqpmntName['name']; ?></option>
+			<?php endforeach ?>
+			</select>
 			</div>
 		</div>
 		<div class="form-group">
@@ -15,7 +16,7 @@
 			<div>	    			
 	  		<select  class="select-block" id="equipmentTypeName" name="equipmentTypeName">
 
-				</select>
+			</select>
 			</div>
 		</div>
 		<div class="form-group">
@@ -23,7 +24,7 @@
 			<div>	    			
 	  		<select  class="select-block" id="equipmentAttributeName" name="equipmentAttributeName">
 
-				</select>
+			</select>
 			</div>
 		</div>
 		<div class="form-group">

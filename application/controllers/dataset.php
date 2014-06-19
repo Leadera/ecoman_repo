@@ -178,6 +178,8 @@ class Dataset extends CI_Controller {
 
 		$this->form_validation->set_rules('usedprocess','Used Process','required');
 		$this->form_validation->set_rules('equipment','Equipment Name','required');
+		$this->form_validation->set_rules('equipmentTypeName','Equipment Type Name','required');
+		$this->form_validation->set_rules('equipmentAttributeName','Equipment Attribute Name','required');
 
 		if ($this->form_validation->run() !== FALSE)
 		{
