@@ -137,6 +137,7 @@ class Company extends CI_Controller{
 
 	public function show_all_companies(){
 		$cluster_id = $this->input->post('cluster');
+		$data['help'] = "1";
 		if($this->create_company_control() == FALSE){
 			$data['help'] = "0";
 			//redirect('', 'refresh');
