@@ -10,11 +10,11 @@
 		  	<a class="btn btn-success btn-sm pull-right" style="margin-right:15px;" href="<?php echo base_url("become_consultant"); ?>">Become a Consultant</a>
 		  	<?php endif ?>
 		  	<?php if($userInfo['role_id']=="1"): ?>
-		  	<div class="btn btn-default btn-sm">This user is a consultant</div>
+		  	<div class="label label-default">This user is a consultant</div>
 		  	<?php endif ?>
 		  </div>
 			<div class="lead" style="margin: 15px 0;"><?php echo $userInfo["name"].' '.$userInfo["surname"].' Profile'; ?></div>
-			<table class="table table-striped table-bordered text-center">
+			<table class="table table-striped table-bordered">
 				<tr>
 					<td>
 					User Info

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Yeşil OSTİM</title>
+    <title>CPIS Tool</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Loading Bootstrap -->
     <link href="<?php echo asset_url('bootstrap/css/bootstrap.css'); ?>" rel="stylesheet">
