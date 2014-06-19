@@ -1,32 +1,5 @@
-    <div class="bottom-menu  " style="margin-top:80px;">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2 ">
-            Ecoman
-          </div>
+    <div  style="margin-top:80px;">
 
-          <div class="col-md-8">
-            <ul class="bottom-links">
-              <li><a href="#fakelink">About Us</a></li>
-              <li><a href="#fakelink">Store</a></li>
-              <li><a href="#fakelink">Jobs</a></li>
-              <li><a href="#fakelink">Privacy</a></li>
-              <li><a href="#fakelink">Terms</a></li>
-              <li><a href="#fakelink">Follow Us</a></li>
-              <li><a href="#fakelink">Support</a></li>
-              <li><a href="#fakelink">Links</a></li>
-            </ul>
-          </div>
-
-          <div class="col-md-2">
-            <ul class="bottom-icons pull-right">
-              <li><a href="#fakelink" class="fui-pinterest"></a></li>
-              <li><a href="#fakelink" class="fui-facebook"></a></li>
-              <li><a href="#fakelink" class="fui-twitter"></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </div>
 
     <script src="<?php echo asset_url('js/flatui-fileinput.js'); ?>"></script>
