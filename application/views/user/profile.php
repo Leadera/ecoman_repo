@@ -1,17 +1,19 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-9">
-			<div class="lead pull-left"><?php echo $userInfo["name"].' '.$userInfo["surname"].' Profile'; ?></div>
+			<div style="overflow:hidden; margin-bottom: 10px;">
 				<?php  if($userInfo['id']==$this->session->userdata('user_in')['id']): ?>
-		  	<a style="margin-left:10px;" class="btn btn-info btn-embossed btn-sm pull-right" href="<?php echo base_url("profile_update"); ?>">Update User Info</a>
-		  	<a class="btn btn-info btn-embossed btn-sm pull-right" href="<?php echo base_url('send_email_for_change_pass'); ?>" style="text-transform: capitalize;">Change Password</a>
+		  	<a style="margin-left:10px;" class="btn btn-info btn-sm pull-right" href="<?php echo base_url("profile_update"); ?>">Update User Info</a>
+		  	<a class="btn btn-default btn-sm pull-right" href="<?php echo base_url('send_email_for_change_pass'); ?>" style="text-transform: capitalize;">Change Password</a>
 		  	<?php endif ?>
 		  	<?php if($userInfo['role_id']=='2'): ?>
-		  	<a class="btn btn-success btn-embossed btn-sm pull-right" style="margin-right:15px;" href="<?php echo base_url("become_consultant"); ?>">Becoman a Consultant</a>
+		  	<a class="btn btn-success btn-sm pull-right" style="margin-right:15px;" href="<?php echo base_url("become_consultant"); ?>">Become a Consultant</a>
 		  	<?php endif ?>
 		  	<?php if($userInfo['role_id']=="1"): ?>
-		  	<div class="label label-success" style="margin-left:15px;">This user is a consultant</div>
+		  	<div class="btn btn-default btn-sm">This user is a consultant</div>
 		  	<?php endif ?>
+		  </div>
+			<div class="lead" style="margin: 15px 0;"><?php echo $userInfo["name"].' '.$userInfo["surname"].' Profile'; ?></div>
 			<table class="table table-striped table-bordered text-center">
 				<tr>
 					<td>
