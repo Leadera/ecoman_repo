@@ -4,7 +4,7 @@
 			<?php if(!empty($companies)): ?>
 				<p class="lead">Companies</p>
 			<?php foreach ($companies as $c): ?>
-				<div><?php echo $c['name']; ?></div>
+				<div><a href="<?php echo base_url('company/'.$c['id']); ?>"><?php echo $c['name']; ?></a></div>
 				<div><?php echo $c['description']; ?></div>
 				<hr>
 			<?php endforeach ?>
@@ -12,7 +12,7 @@
 			<?php if(!empty($projects)): ?>
 			<p class="lead">Projects</p>
 			<?php foreach ($projects as $p): ?>
-				<div><?php echo $p['name']; ?></div>
+				<div><a href="<?php echo base_url('project/'.$p['id']); ?>"><?php echo $p['name']; ?></a></div>
 				<div><?php echo $p['description']; ?></div>
 				<hr>
 			<?php endforeach ?>

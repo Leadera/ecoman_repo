@@ -79,7 +79,7 @@
 			<?php if($valid != 0): ?>
 				
 				<table class="table table-bordered">
-					<tr>
+					<tr class="success">
 						<th colspan="5">Company Flows</th>
 					</tr>
 					<tr>
@@ -101,7 +101,7 @@
 				</table>
 				
 				<table class="table table-bordered">
-					<tr>
+					<tr class="success">
 						<th colspan="3">Company Process</th>
 					</tr>
 					<tr>
@@ -119,7 +119,7 @@
 				</table>
 
 				<table class="table table-bordered">
-					<tr>
+					<tr class="success">
 						<th colspan="2">Company Component</th>
 					</tr>
 					<tr>
@@ -135,7 +135,7 @@
 				</table>
 
 				<table class="table table-bordered">
-					<tr>
+					<tr class="success">
 						<th colspan="4">Company Equipment</th>
 					</tr>
 					<tr>
@@ -155,7 +155,7 @@
 				</table>
 
 				<table class="table table-bordered">
-					<tr>
+					<tr class="success">
 						<th>Company Product</th>
 					</tr>
 					<tr>
