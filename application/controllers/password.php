@@ -9,31 +9,23 @@ class Password extends CI_Controller{
 
 	public function send_email_for_change_pass(){
 
-		$this->form_validation->set_rules('email', 'E-mail', 'trim|xss_clean|required');
+		$this->form_validation->set_rules('old_pass', 'Old Password', 'trim|xss_clean|required');
+		$this->form_validation->set_rules('new_pass', 'New Password', 'trim|xss_clean|required');
+		$this->form_validation->set_rules('new_pass_again', 'New Password(Again)', 'trim|xss_clean|required');
 
 		if ($this->form_validation->run() !== FALSE){
 
-			$tmp = $this->session->userdata('user_in');
-			$user_id = $tmp['id'];
-			
-			$email = $this->input->post('email');
-
-			$random_str = $this->generateRandomString();
-			$asd = base_url("change_pass/".$random_str);
-			$message = '<a href='.$asd.'>Change Password</a>';
-
-			$rnd_str = array(
-					'random_string' => $random_str,
-					'click_control' => 1
-				);
-			$this->password_model->set_random_string($user_id,$rnd_str);
-
-			$data = array(
-					'message' => $message,
-					'email' => $email
-				);
-			$this->sendMAil($data);
-			$this->user_logout();
+			if($this->password_check()){
+				$user = $this->session->userdata('user_in');
+				$pass = md5($this->input->post('old_pass'));
+				if($this->password_model->do_similar_pass($user['id'],$pass)){
+					$data = array(
+							'psswrd' => md5($this->input->post('new_pass'))
+						);
+					$this->password_model->change_pass($user['id'],$data);
+					redirect('send_email_for_change_pass','refresh');
+				}
+			}
 		}
 		$this->load->view('template/header');
 		$this->load->view('password/send_email_for_change_pass');
@@ -201,7 +193,7 @@ class Password extends CI_Controller{
 			return true;
 		}
 		else{
-			$this->form_validation->set_message('password_check','Passwords aren\'t same.');
+			$this->form_validation->set_message('password_check','Passwords arent same.');
 			return false;
 		}
 	}

@@ -19,7 +19,7 @@
 					<input type="password" class="form-control" id="password" placeholder="Password" name="password">
 				</div>
 				<button type="submit" class="btn btn-primary">Login</button>
-				<a href="<?php echo base_url('new_password_email');?>">Şifremi Unuttum</a>
+				<a href="<?php echo base_url('new_password_email');?>">Forgot Password!</a>
 		    </form>
 		</div>
 	</div>	

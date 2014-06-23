@@ -13,12 +13,20 @@
 					
 				</div>
 				<div class="col-md-4">
-					<p class="lead">Send E-mail</p>
+					<p class="lead">Update Password</p>
 					<div class="form-group">
-		    			<label for="email">E-mail</label>
-		    			<input type="email" class="form-control" id="email" placeholder="Enter Your E-mail" value="<?php echo set_value('email'); ?>" name="email">
+		    			<label for="old_pass">Old Password</label>
+		    			<input type="password" class="form-control" id="old_pass" placeholder="Enter Old Password" value="<?php echo set_value('old_pass'); ?>" name="old_pass">
 	 				</div>
-	 				<button type="submit" class="btn btn-primary pull-right">Send Mail</button>
+	 				<div class="form-group">
+		    			<label for="new_pass">New Password</label>
+		    			<input type="password" class="form-control" id="new_pass" placeholder="Enter New Password" value="<?php echo set_value('new_pass'); ?>" name="new_pass">
+	 				</div>
+	 				<div class="form-group">
+		    			<label for="new_pass_again">New Password(Again)</label>
+		    			<input type="password" class="form-control" id="new_pass_again" placeholder="Enter New Password" value="<?php echo set_value('new_pass_again'); ?>" name="new_pass_again">
+	 				</div>
+	 				<button type="submit" class="btn btn-primary pull-right">Update Password</button>
 				</div>
 				<div class="col-md-4">
 				
