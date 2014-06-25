@@ -68,7 +68,7 @@
         $('#assignCompany').change(function () {
           var company = $(this).val();
           $.ajax({
-            url: "/ecoman_repo/contactperson",
+            url: "<?php echo base_url('contactperson');?>",
             async: false,
             type: "POST",
             data: "company_id="+company,
@@ -96,7 +96,7 @@
         $('#equipment').bind('change',function () {
           var equipmentID = $(this).val();
           $.ajax({
-            url: "/ecoman_repo/get_equipment_type",
+            url: "<?php echo base_url('get_equipment_type');?>",
             async: false,
             type: "POST",
             data: "equipment_id="+equipmentID,
@@ -119,7 +119,7 @@
         $('#equipmentTypeName').bind('change',function () {
           var equipmentTypeID = $(this).val();
           $.ajax({
-            url: "/ecoman_repo/get_equipment_attribute",
+            url: "<?php echo base_url('get_equipment_attribute');?>",
             async: false,
             type: "POST",
             data: "equipment_type_id="+equipmentTypeID,
@@ -152,7 +152,7 @@
         var processID = id;
 
         $.ajax({
-          url: "/ecoman_repo/get_sub_process",
+          url: "<?php echo base_url('get_sub_process');?>",
           async: false,
           type: "POST",
           data: "processID="+processID,
