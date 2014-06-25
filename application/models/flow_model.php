@@ -54,12 +54,12 @@ class Flow_model extends CI_Model {
 		$this->db->from("T_CMPNY_FLOW");
 		$this->db->where('flow_id',$flow_id);
 		$this->db->where('flow_type_id',$flow_type_id);
-		$query = $this->db->get();
+		$query = $this->db->get()->result_array();
 		if(!empty($query)){
-			return true;
+			return false;
 		}
 		else{
-			return false;
+			return true;
 		}
 	}
 
