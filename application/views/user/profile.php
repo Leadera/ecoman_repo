@@ -6,7 +6,7 @@
 		  	<a style="margin-left:10px;" class="btn btn-info btn-sm pull-right" href="<?php echo base_url("profile_update"); ?>">Update User Info</a>
 		  	<a class="btn btn-default btn-sm pull-right" href="<?php echo base_url('send_email_for_change_pass'); ?>" style="text-transform: capitalize;">Change Password</a>
 		  	<?php endif ?>
-		  	<?php if($userInfo['role_id']=='2'): ?>
+		  	<?php if(($userInfo['role_id']=='2') && $this->session->userdata('user_in')['id'] == $userInfo['id']): ?>
 		  	<a class="btn btn-success btn-sm pull-right" style="margin-right:15px;" href="<?php echo base_url("become_consultant"); ?>">Become a Consultant</a>
 		  	<?php endif ?>
 		  	<?php if($userInfo['role_id']=="1"): ?>

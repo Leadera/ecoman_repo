@@ -12,6 +12,7 @@ class User_model extends CI_Model {
   }
 
   public function get_userinfo_by_username($username){
+    $this->db->select('*');
     $this->db->from('T_USER');
     $this->db->where('user_name',$username);
     return $this->db->get()->row_array();
