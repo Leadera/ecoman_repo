@@ -37,6 +37,12 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+
+//Cp Scoping Routes
+$route['cpscoping/pro/(:any)'] = "cpscoping/p_companies/$1";
+$route['cpscoping'] = "cpscoping/index";
+
+//Password routes
 $route['send_email_for_change_pass'] = "password/send_email_for_change_pass";
 $route['change_pass/(:any)'] = "password/change_pass/$1";
 $route['new_password_email'] = "password/new_password_email";

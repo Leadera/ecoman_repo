@@ -31,7 +31,9 @@ String.prototype.repeat = function(num) {
     $("select[id='large']").selectpicker({style: 'btn-lg btn-danger'});
     $("select[class='info']").selectpicker({style: 'btn-inverse'});
     $("select[id='status']").selectpicker({style: 'btn-default'});
-    $("select[id='small']").selectpicker({style: 'btn-sm btn-primary'});
+    $("select[id='small']").selectpicker({style: 'btn-sm btn-inverse'});
+    $("select[id='projects']").selectpicker({style: 'btn-sm btn-inverse'});
+    $("select[id='companiess']").selectpicker({style: 'btn-sm btn-inverse'});
     $("select").selectpicker({style: 'btn btn-default', menuStyle: 'dropdown-inverse'});
 
 

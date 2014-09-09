@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>CPIS Tool</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <!-- Loading Bootstrap -->
     <link href="<?php echo asset_url('bootstrap/css/bootstrap.css'); ?>" rel="stylesheet">
 
@@ -57,12 +57,7 @@
             if ($this->session->userdata('user_in') !== FALSE):
           ?>
   				<ul class="list-inline">
-  				  <li class="head-li">Manage Projects</li>
-  				  <li class="head-li">Dataset Management</li>
-  				  <li class="head-li">CPIS Scoping</li>
-  				  <li class="head-li">Ecotracking</li>
-  				  <li class="head-li">IS Potentials</li>
-  				  <li class="head-li">Cost Benefit Analysis</li>
+  				  <li class="head-li"><a href="<?php echo base_url('cpscoping'); ?>">CP Scoping</a></li>
   				</ul>
           <?php else: ?>
             <p style="font-size:14px;">
