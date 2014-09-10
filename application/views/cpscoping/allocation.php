@@ -128,10 +128,7 @@ $(document).ready(function() {
 				</div>
 				<div class="col-md-3">
 					<select name="unit_env_impact" id="unit_env_impact" class="btn-group select select-block">
-						<option value="0">Nothing Selected</option>
-						<?php foreach ($unit_list as $u): ?>
-							<option value="<?php echo $u['name']; ?>"><?php echo $u['name']; ?></option>
-						<?php endforeach ?>
+						<option value="EP">EP</option>
 					</select>
 				</div>
 				<div class="col-md-3">
