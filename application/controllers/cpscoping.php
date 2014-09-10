@@ -5,6 +5,7 @@ class Cpscoping extends CI_Controller {
 		parent::__construct();
 		$this->load->model('user_model');
 		$this->load->model('project_model');
+		$this->load->model('process_model');
 	}
 
 	public function index(){
@@ -15,11 +16,22 @@ class Cpscoping extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	//Getting project companies from ajax
 	public function p_companies($pid){
 		$com_array = $this->project_model->get_prj_companies($pid);
 		header("Content-Type: application/json", true);
-    	/* Return JSON */
-   		echo json_encode($com_array);
+		/* Return JSON */
+		echo json_encode($com_array);
 	}
+
+	public function cp_allocation($project_id,$company_id){
+		$this->load->view('template/header');
+
+		print_r($this->process_model->get_cmpny_flow_prcss($company_id));
+		
+		$this->load->view('cpscoping/allocation');
+		$this->load->view('template/footer');
+	}
+
 
 }

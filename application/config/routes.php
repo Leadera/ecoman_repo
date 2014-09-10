@@ -39,6 +39,7 @@
 */
 
 //Cp Scoping Routes
+$route['cpscoping/(:any)/(:any)/allocation'] = "cpscoping/cp_allocation/$1/$2";
 $route['cpscoping/pro/(:any)'] = "cpscoping/p_companies/$1";
 $route['cpscoping'] = "cpscoping/index";
 
