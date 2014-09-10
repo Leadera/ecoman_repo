@@ -127,9 +127,7 @@ $(document).ready(function() {
 					<input type="text" class="form-control" id="env_impact" placeholder="3000" name="env_impact">
 				</div>
 				<div class="col-md-3">
-					<select name="unit_env_impact" id="unit_env_impact" class="btn-group select select-block">
-						<option value="EP">EP</option>
-					</select>
+					<input type="text" class="form-control" id="unit_env_impact" value="EP" name="unit_env_impact" readonly>
 				</div>
 				<div class="col-md-3">
 					<input type="text" class="form-control" id="allocation_env_impact" placeholder="40 %" name="allocation_env_impact">
