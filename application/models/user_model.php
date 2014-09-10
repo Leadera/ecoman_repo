@@ -100,6 +100,16 @@ class User_model extends CI_Model {
       return $query->result_array();
   }
 
+  public function deneme_json($id){
+      $this->db->select('T_PRJ.name as text,T_PRJ.id as id');
+      $this->db->from('T_PRJ');
+      $this->db->join('T_PRJ_CNSLTNT', 'T_PRJ_CNSLTNT.prj_id = T_PRJ.id');
+      $this->db->join('T_USER', 'T_USER.id = T_PRJ_CNSLTNT.cnsltnt_id');
+      $this->db->where('T_USER.id', $id);
+      $query = $this->db->get();
+      return $query->result_array();
+  }
+
   public function get_consultant_projects_from_userid($id){
       $this->db->select('T_PRJ.name,T_PRJ.id as proje_id');
       $this->db->from('T_PRJ');

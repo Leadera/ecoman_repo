@@ -76,6 +76,15 @@ class Project_model extends CI_Model {
     return $query->result_array();
   }
 
+  public function deneme_json_2($prj_id){
+    $this->db->select('T_CMPNY.name as text,T_CMPNY.id as id');
+    $this->db->from('T_CMPNY');
+    $this->db->join('T_PRJ_CMPNY', 'T_PRJ_CMPNY.cmpny_id = T_CMPNY.id');
+    $this->db->where('T_PRJ_CMPNY.prj_id', $prj_id); 
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
   public function get_prj_cntct_prsnl($prj_id){
     $this->db->select('T_USER.name,T_USER.surname,T_USER.id,T_USER.user_name');
     $this->db->from('T_USER');

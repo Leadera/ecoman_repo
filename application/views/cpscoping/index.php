@@ -9,7 +9,7 @@ $(document).ready(function() {
             url: '<?php echo base_url('cpscoping/pro'); ?>/'+secim, 
             success: function(data)
             {
-            	  $('#companiess').append('<option value="0">Nothing Selected</option>');
+            	$('#companiess').append('<option value="0">Nothing Selected</option>');
                 for(var k = 0 ; k < data.length ; k++){
                     $('#companiess').append('<option value="'+data[k].id+'">'+data[k].name+'</option>');
                 }

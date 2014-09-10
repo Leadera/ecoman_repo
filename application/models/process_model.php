@@ -41,7 +41,9 @@ class Process_model extends CI_Model {
 	}
 
 	public function get_cmpny_flow_prcss($id){
-		$this->db->select('T_CMPNY_FLOW.id as company_flow_id, T_FLOW.name as flowname, T_PRCSS.name as prcessname,T_FLOW_TYPE.name as flow_type_name, T_PRCSS.id as prcessid, T_CMPNY_PRCSS.id as company_process_id');
+		$this->db->select('T_CMPNY_FLOW.id as company_flow_id, T_FLOW.name as flowname, T_PRCSS.name as prcessname,
+			T_FLOW_TYPE.name as flow_type_name, T_PRCSS.id as prcessid, T_CMPNY_PRCSS.id as company_process_id, 
+			T_CMPNY_FLOW.flow_id as flow_id , T_CMPNY_FLOW.flow_type_id as flow_type_id');
 		$this->db->from('T_CMPNY_FLOW_PRCSS');
 		$this->db->join('T_CMPNY_FLOW','T_CMPNY_FLOW.id = T_CMPNY_FLOW_PRCSS.cmpny_flow_id');
 		$this->db->join('T_FLOW','T_FLOW.id = T_CMPNY_FLOW.flow_id');
