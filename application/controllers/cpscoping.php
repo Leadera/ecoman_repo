@@ -7,6 +7,7 @@ class Cpscoping extends CI_Controller {
 		$this->load->model('project_model');		
 		$this->load->model('process_model');
 		$this->load->model('cpscoping_model');
+		$this->load->model('flow_model');
 		$this->load->library('form_validation');
 	}
 
@@ -42,18 +43,24 @@ class Cpscoping extends CI_Controller {
 			$env_impact = $this->input->post('env_impact');
 			$allocation_env_impact = $this->input->post('allocation_env_impact');
 			$importance_env_impact = $this->input->post('importance_env_impact');
+			$unit_amount = $this->input->post('unit_amount');
+			$unit_cost = $this->input->post('unit_cost');
+			$unit_env_impact = $this->input->post('unit_env_impact');
 
 			$array_allocation = array(
 				'prcss_id'=>$prcss_name,
 				'flow_id'=>$flow_name,
 				'flow_type_id'=>$flow_type_name,
 				'amount'=>$amount,
+				'unit_amount'=>$unit_amount,
 				'allocation_amount'=>$allocation_amount,
 				'importance_amount'=>$importance_amount,
 				'cost'=>$cost,
+				'unit_cost'=>$unit_cost,
 				'allocation_cost'=>$allocation_cost,
 				'importance_cost'=>$importance_cost,
 				'env_impact'=>$env_impact,
+				'unit_env_impact'=>$unit_env_impact,
 				'allocation_env_impact'=>$allocation_env_impact,
 				'importance_env_impact'=>$importance_env_impact
 			);
@@ -64,7 +71,8 @@ class Cpscoping extends CI_Controller {
 		$data['project_id'] = $project_id;
 		$data['company_id'] = $company_id;
 		$data['prcss_info'] = $this->process_model->get_cmpny_flow_prcss($company_id);
-
+		$data['unit_list'] = $this->flow_model->get_unit_list();
+ 
 		$this->load->view('template/header');
 		$this->load->view('cpscoping/allocation',$data);
 		$this->load->view('template/footer');

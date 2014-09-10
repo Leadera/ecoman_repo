@@ -64,16 +64,24 @@ $(document).ready(function() {
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-md-4">Amount Value</label>
-				<label class="control-label col-md-4">Allocation</label>
-				<label class="control-label col-md-4">Importance</label>
-				<div class="col-md-4">
-					<input type="text" class="form-control" id="amount" placeholder="1,5 kg/year" name="amount">
+				<label class="control-label col-md-6">Amount Value</label>
+				<label class="control-label col-md-3">Allocation(%)</label>
+				<label class="control-label col-md-3">Importance</label>
+				<div class="col-md-3">
+					<input type="text" class="form-control" id="amount" placeholder="1,5" name="amount">
 				</div>
-				<div class="col-md-4">
-					<input type="text" class="form-control" id="allocation_amount" placeholder="40 %" name="allocation_amount">
+				<div class="col-md-3">
+					<select name="unit_amount" id="unit_amount" class="btn-group select select-block">
+						<option value="0">Nothing Selected</option>
+						<?php foreach ($unit_list as $u): ?>
+							<option value="<?php echo $u['name']; ?>"><?php echo $u['name']; ?></option>
+						<?php endforeach ?>
+					</select>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
+					<input type="text" class="form-control" id="allocation_amount" placeholder="40" name="allocation_amount">
+				</div>
+				<div class="col-md-3">
 					<select name="importance_amount" id="importance_amount" class="btn-group select select-block">
 						<option value="0">Nothing Selected</option>
 						<option value="High">High</option>
@@ -84,16 +92,24 @@ $(document).ready(function() {
 			</div>
 
 			<div class="form-group">
-				<label class="control-label col-md-4">Cost</label>
-				<label class="control-label col-md-4">Allocation</label>
-				<label class="control-label col-md-4">Importance</label>
-				<div class="col-md-4">
-					<input type="text" class="form-control" id="cost" placeholder="$210/pc" name="cost">
+				<label class="control-label col-md-6">Cost</label>
+				<label class="control-label col-md-3">Allocation(%)</label>
+				<label class="control-label col-md-3">Importance</label>
+				<div class="col-md-3">
+					<input type="text" class="form-control" id="cost" placeholder="210" name="cost">
 				</div>
-				<div class="col-md-4">
-					<input type="text" class="form-control" id="allocation_cost" placeholder="40 %" name="allocation_cost">
+				<div class="col-md-3">
+					<select name="unit_cost" id="unit_cost" class="btn-group select select-block">
+						<option value="0">Nothing Selected</option>
+						<option value="Euro">Euro</option>
+						<option value="Dolar">Dolar</option>
+						<option value="TL">TL</option>
+					</select>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
+					<input type="text" class="form-control" id="allocation_cost" placeholder="40" name="allocation_cost">
+				</div>
+				<div class="col-md-3">
 					<select name="importance_cost" id="importance_cost" class="btn-group select select-block">
 						<option value="0">Nothing Selected</option>
 						<option value="High">High</option>
@@ -104,16 +120,24 @@ $(document).ready(function() {
 			</div>
 
 			<div class="form-group">
-				<label class="control-label col-md-4">Env. Impact</label>
-				<label class="control-label col-md-4">Allocation</label>
-				<label class="control-label col-md-4">Importance</label>
-				<div class="col-md-4">
-					<input type="text" class="form-control" id="env_impact" placeholder="3000 EP" name="env_impact">
+				<label class="control-label col-md-6">Env. Impact</label>
+				<label class="control-label col-md-3">Allocation(%)</label>
+				<label class="control-label col-md-3">Importance</label>
+				<div class="col-md-3">
+					<input type="text" class="form-control" id="env_impact" placeholder="3000" name="env_impact">
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
+					<select name="unit_env_impact" id="unit_env_impact" class="btn-group select select-block">
+						<option value="0">Nothing Selected</option>
+						<?php foreach ($unit_list as $u): ?>
+							<option value="<?php echo $u['name']; ?>"><?php echo $u['name']; ?></option>
+						<?php endforeach ?>
+					</select>
+				</div>
+				<div class="col-md-3">
 					<input type="text" class="form-control" id="allocation_env_impact" placeholder="40 %" name="allocation_env_impact">
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<select name="importance_env_impact" id="importance_env_impact" class="btn-group select select-block">
 						<option value="0">Nothing Selected</option>
 						<option value="High">High</option>
@@ -122,7 +146,7 @@ $(document).ready(function() {
 					</select>
 				</div>
 			</div>
-			<div class="col-md-4"><button type="submit" class="btn btn-primary">Create Company</button></div>	
+			<div class="col-md-4"><button type="submit" class="btn btn-primary">Save Info</button></div>	
 		</div>
 	</div>
 </form>

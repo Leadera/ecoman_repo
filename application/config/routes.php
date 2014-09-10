@@ -37,11 +37,11 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-
-//Cp Scoping Routes
+//Easy UI Denemeleri
 $route['cp_allocation/deneme'] = "cpscoping/deneme";
 $route['cp_allocation/deneme_json'] = "cpscoping/deneme_json";
 
+//Cp Scoping Routes
 $route['cp_allocation_array/(:any)'] = "cpscoping/cp_allocation_array/$1";
 $route['cpscoping/(:any)/(:any)/allocation'] = "cpscoping/cp_allocation/$1/$2";
 $route['cpscoping/pro/(:any)'] = "cpscoping/p_companies/$1";
