@@ -65,6 +65,12 @@ class Cpscoping extends CI_Controller {
 				'importance_env_impact'=>$importance_env_impact
 			);
 			$this->cpscoping_model->set_cp_allocation($array_allocation);
+			$allocation_array = array(
+				'allocation_id' => $this->db->insert_id(),
+				'prjct_id' => $project_id,
+				'cmpny_id' => $company_id
+			);
+			$this->cpscoping_model->set_cp_allocation_main($allocation_array);
 
 			redirect('cpscoping/'.$project_id.'/'.$company_id.'/allocation');
 		}

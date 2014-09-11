@@ -65,8 +65,7 @@ $(document).ready(function() {
 			</div>
 			<div class="form-group">
 				<label class="control-label col-md-6">Amount Value</label>
-				<label class="control-label col-md-3">Allocation(%)</label>
-				<label class="control-label col-md-3">Importance</label>
+				<label class="control-label col-md-6">Allocation(%)</label>
 				<div class="col-md-3">
 					<input type="text" class="form-control" id="amount" placeholder="1,5" name="amount">
 				</div>
@@ -93,8 +92,7 @@ $(document).ready(function() {
 
 			<div class="form-group">
 				<label class="control-label col-md-6">Cost</label>
-				<label class="control-label col-md-3">Allocation(%)</label>
-				<label class="control-label col-md-3">Importance</label>
+				<label class="control-label col-md-6">Allocation(%)</label>
 				<div class="col-md-3">
 					<input type="text" class="form-control" id="cost" placeholder="210" name="cost">
 				</div>
@@ -121,8 +119,7 @@ $(document).ready(function() {
 
 			<div class="form-group">
 				<label class="control-label col-md-6">Env. Impact</label>
-				<label class="control-label col-md-3">Allocation(%)</label>
-				<label class="control-label col-md-3">Importance</label>
+				<label class="control-label col-md-6">Allocation(%)</label>
 				<div class="col-md-3">
 					<input type="text" class="form-control" id="env_impact" placeholder="3000" name="env_impact">
 				</div>
@@ -130,7 +127,7 @@ $(document).ready(function() {
 					<input type="text" class="form-control" id="unit_env_impact" value="EP" name="unit_env_impact" readonly>
 				</div>
 				<div class="col-md-3">
-					<input type="text" class="form-control" id="allocation_env_impact" placeholder="40 %" name="allocation_env_impact">
+					<input type="text" class="form-control" id="allocation_env_impact" placeholder="40" name="allocation_env_impact">
 				</div>
 				<div class="col-md-3">
 					<select name="importance_env_impact" id="importance_env_impact" class="btn-group select select-block">
