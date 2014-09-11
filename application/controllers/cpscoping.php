@@ -72,7 +72,7 @@ class Cpscoping extends CI_Controller {
 			);
 			$this->cpscoping_model->set_cp_allocation_main($allocation_array);
 
-			redirect('cpscoping/'.$project_id.'/'.$company_id.'/allocation');
+			redirect('cpscoping/'.$project_id.'/'.$company_id.'/show');
 		}
 		$data['project_id'] = $project_id;
 		$data['company_id'] = $company_id;
@@ -81,6 +81,18 @@ class Cpscoping extends CI_Controller {
  
 		$this->load->view('template/header');
 		$this->load->view('cpscoping/allocation',$data);
+		$this->load->view('template/footer');
+	}
+
+	public function cp_show_allocation($project_id,$company_id){
+		$allocation_id_array = $this->cpscoping_model->get_allocation_id_from_ids($company_id,$project_id);
+		$data['allocation'] = array();
+		foreach ($allocation_id_array as $ids) {
+			$data['allocation'][] = $this->cpscoping_model->get_allocation_from_allocation_id($ids['allocation_id']);
+		}
+		print_r($data['allocation']);
+		$this->load->view('template/header');
+		$this->load->view('cpscoping/show',$data);
 		$this->load->view('template/footer');
 	}
 
