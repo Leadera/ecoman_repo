@@ -11,6 +11,22 @@ class Flow_model extends CI_Model {
 		$this->db->insert('T_CMPNY_FLOW', $flow);
 	}
 
+	public function get_flow_from_flow_id($flow_id){
+		$this->db->select("*");
+		$this->db->from("T_FLOW");
+		$this->db->where("id",$flow_id);
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+
+	public function get_flow_from_flow_name($flow_name){
+		$this->db->select("*");
+		$this->db->from("T_FLOW");
+		$this->db->where("name",$flow_name);
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+
 	public function get_flowname_list(){
 		$this->db->select("*");
 		$this->db->from("T_FLOW");

@@ -42,6 +42,7 @@ $route['cp_allocation/deneme'] = "cpscoping/deneme";
 $route['cp_allocation/deneme_json'] = "cpscoping/deneme_json";
 
 //Cp Scoping Routes
+$route['cpscoping/get_allo/(:any)/(:any)'] = "cpscoping/get_allo_from_fname_pname/$1/$2";
 $route['cpscoping/(:any)/(:any)/show'] = "cpscoping/cp_show_allocation/$1/$2";
 $route['cp_allocation_array/(:any)'] = "cpscoping/cp_allocation_array/$1";
 $route['cpscoping/(:any)/(:any)/allocation'] = "cpscoping/cp_allocation/$1/$2";

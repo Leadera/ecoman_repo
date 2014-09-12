@@ -4,23 +4,23 @@
 			<table class="table table-bordered">
 			<tr>
 			<th>Input Flows</th>
-			<th>Unit</th>
-			<th>Quantity</th>
-			<?php $deneme_array = array(); $count = 0; ?>
+			<th>Total</th>
+			<?php $deneme_arrayi = array(); $tekrarsiz = array(); $tekrarsiz[-1] = "Total"; $count = 0; $process_adet=0; ?>
 			<?php foreach ($allocation as $a): ?>
 			<?php
 			$degisken = 1;
-			$deneme_array[$count] = $a['prcss_name'];
+			$deneme_arrayi[$count] = $a['prcss_name'];
 			$count++;
 			for ($i=0; $i < $count-1; $i++) { 
-				if($deneme_array[$i] == $a['prcss_name']){
+				if($deneme_arrayi[$i] == $a['prcss_name']){
 				$degisken = 0;
 				break;
 				}
 			}
-if($degisken == 1){
-
+			if($degisken == 1){
+				$process_adet++;
 				echo "<th>".$a['prcss_name']."</th>";
+				$tekrarsiz[$process_adet-1] = $a['prcss_id']; 
 			}
 			?>
 			<?php endforeach ?>
@@ -32,83 +32,51 @@ if($degisken == 1){
 					$deneme_array[$count] = $a['flow_name'];
 					$count++;
 					for ($i=0; $i < $count-1; $i++) { 
-					if($deneme_array[$i] == $a['flow_name'] && sizeof($deneme_array) > 1){
-					$degisken = 0;
-					break;
+						if($deneme_array[$i] == $a['flow_name'] && sizeof($deneme_array) > 1){
+							$degisken = 0;
+							break;
+						}	
 					}
-					}
-				if($degisken == 1): 	
+					if($degisken == 1): 	
 
 						if ($a['flow_type_name'] == "Input"): ?>
-			<tr>
-				<td rowspan="3"><?php echo $a['flow_name']; ?></td>
-				<td>Amount (<?php echo $a['unit_amount']; ?>)</td>
-				<td><?php echo $a['amount']; ?></td> 
-					<?php 
-						$temp = "";
-							$temp = $a['flow_name'];
-							for($i = 0 ; $i < count($allocation); $i++){ 
-								$tempp = $allocation[$i]['prcss_name'];
-								$sayi = 0;
-								$prc_array = array(); $prccount = 0;
+					<tr>
+						<td><?php echo $a['flow_name']; ?></td>	
+						<?php for ($t=0; $t < $process_adet+1; $t++): ?>
+							<?php if($t!=0): ?>
+						<script type="text/javascript">
+							$(document).ready(function() {
+							        $.ajax({ 
+							            type: "POST",
+							            dataType:'json',
+							            url: '<?php echo base_url('cpscoping/get_allo');?>/'+<?php echo $a['flow_id']; ?>+'/'+<?php echo $tekrarsiz[$t-1]; ?>, 
+							            success: function(data)
+							            {
+							            	console.log(data);							            
+							            }
+							        });
+							});
+						</script>
+					<?php endif ?>
+							<td>          ".$t."     ".$tekrarsiz[$t-1]." / ".."
 
-								for($j = 0 ; $j < count($allocation); $j++){
-									$flow_name_temp = $allocation[$j]['flow_name'];
-									$prcss_name_temp = $allocation[$j]['prcss_name'];
-
-
-
-										$tuna = 1;
-										$prc_array[$prccount] = $prcss_name_temp;
-										//print_r($prc_array);
-										$prccount++;
-										for ($ip=0; $ip < $prccount-1; $ip++) { 
-											if($prc_array[$ip] == $prcss_name_temp){
-											$tuna = 0;
-											break;
-											}
-										}
-										if($tuna == 1){
-
-
-									if($temp == $flow_name_temp && $tempp == $prcss_name_temp){		
-
-										$sayi++;
-										echo "<td rowspan='3'>
-											".$sayi." / ".$allocation[$j]['prcss_name']." - ".$prcss_name_temp."
 											<table style='width:100%; font-size:13px;'>
 												<tr>
-													<td>".$allocation[$j]['amount']."</td><td rowspan='3'>test</td>
+													<td>".$alloinfo['amount']."</td><td rowspan='3'>test</td>
 												</tr>
 												<tr>
-													<td>".$allocation[$j]['cost']."</td>
+													<td>".$alloinfo['cost']."</td>
 												</tr>
 												<tr>
-													<td>".$allocation[$j]['env_impact']."</td>
+													<td>".$alloinfo['env_impact']."</td>
 												</tr>
 											</table>
-										</td>";
-									}
-									}
-								}
 
-									if($sayi == 0){
-										echo "<td rowspan='3'>".$sayi."/".count($allocation)."</td>";
-									}
-							}
-					
-					?>
-				</tr>
-				<tr>
-					<td>Cost (<?php echo $a['unit_cost']; ?>)</td>
-					<td><?php echo $a['cost']; ?></td>
-				</tr>
-				<tr>
-					<td>Ep (UBP)</td>
-					<td><?php echo $a['env_impact']; ?></td>
-				</tr>
-						<?php endif ?>
+							</td>
+						<?php endfor ?>
+					</tr>
 
+				<?php endif ?>
 				<?php endif ?>
 				<?php endforeach ?>
 			</table>

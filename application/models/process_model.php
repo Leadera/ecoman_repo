@@ -6,11 +6,28 @@ class Process_model extends CI_Model {
 		$this->load->database();
 	}
 
+	public function get_cmpny_prcss_id_copy($cmpny_id,$prcss_id){
+		$this->db->select('id');
+		$this->db->from('t_cmpny_prcss');
+		$this->db->where('cmpny_id',$cmpny_id);
+		$this->db->where('prcss_id',$prcss_id);
+		return $this->db->get()->row_array();
+	}
+
 	public function get_process(){
 		$this->db->select('*');
 	    $this->db->from('T_PRCSS');
 	    $query = $this->db->get();
 	    return $query->result_array();
+	}
+
+	public function get_process_from_process_name($process_name){
+		$this->db->select('*');
+    $this->db->from('T_PRCSS');
+        $this->db->where('name',$process_name);
+
+    $query = $this->db->get();
+    return $query->row_array();
 	}
 	
 	public function get_main_process(){

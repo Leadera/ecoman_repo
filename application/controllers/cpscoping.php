@@ -96,6 +96,12 @@ class Cpscoping extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function get_allo_from_fname_pname($flow_id,$process_id){
+		$array = $this->cpscoping_model->get_allocation_from_fname_pname($flow_id,$process_id);
+		header("Content-Type: application/json", true);
+		echo json_encode($array);
+	}
+
 	public function cp_allocation_array($company_id){
 		$allocation_array = $this->process_model->get_cmpny_flow_prcss($company_id);
 		header("Content-Type: application/json", true);
