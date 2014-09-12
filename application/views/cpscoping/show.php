@@ -51,23 +51,22 @@
 
 								if($temp == $allocation[$j]['flow_name'] or $tempp == $allocation[$j]['prcss_name']){								
 									$sayi++;
-
-																echo "<td rowspan='3'>
-											".$sayi." / ".$allocation[$j]['prcss_name']." - ".$tempp."
-											<table style='width:100%; font-size:13px;'>
-												<tr>
-													<td>".$allocation[$j]['amount']."</td><td rowspan='3'>test</td>
-												</tr>
-												<tr>
-													<td>".$allocation[$j]['cost']."</td>
-												</tr>
-												<tr>
-													<td>".$allocation[$j]['env_impact']."</td>
-												</tr>
-											</table>
-										</td>";
-
-								}else{
+									echo "<td rowspan='3'>
+										".$sayi." / ".$allocation[$j]['prcss_name']." - ".$tempp." / ".$temp."
+										<table style='width:100%; font-size:13px;'>
+											<tr>
+												<td>".$allocation[$j]['amount']."</td><td rowspan='3'>test</td>
+											</tr>
+											<tr>
+												<td>".$allocation[$j]['cost']."</td>
+											</tr>
+											<tr>
+												<td>".$allocation[$j]['env_impact']."</td>
+											</tr>
+										</table>
+									</td>";
+								}
+								else{
 									echo "<td rowspan='3'>".$sayi."/".count($allocation)."</td>";
 								}
 								
