@@ -44,6 +44,5 @@ class Cpscoping_model extends CI_Model {
   	$this->db->where('t_cp_allocation.flow_type_id',$input_output);
   	return $this->db->get()->row_array();
   }
-
 }
 ?>

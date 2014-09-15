@@ -96,9 +96,31 @@ class Cpscoping extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
-	public function get_allo_from_fname_pname($flow_id,$process_id,$cmpny_id = false,$input_output){
+	public function get_allo_from_fname_pname($flow_id,$process_id,$cmpny_id,$input_output){
 		if($process_id != 0){
 			$array = $this->cpscoping_model->get_allocation_from_fname_pname($flow_id,$process_id,$input_output);
+			
+			$cmpny_prcss_id = $this->process_model->get_cmpny_prcss_id($cmpny_id);
+			$i = 0;
+			$kontrol = array();
+			foreach ($cmpny_prcss_id as $id) {
+				$kontrol = $this->cpscoping_model->get_allocation_from_fname_pname($flow_id,$id['id'],$input_output);
+				if(!empty($kontrol)){
+					$array_copy[$i] = $kontrol;
+					$i++;
+				}
+			}
+			if($i != 0){
+				$kontrol = array();
+				$amount = 0.0;
+				for($k = 0 ; $k < $i ; $k++){
+					$amount += $array_copy[$k]["amount"];
+				}
+				$amount_temp = $array['amount'];
+				$amount_temp = ($amount_temp * 100) / $amount;
+				$amount_array = array('allocation_rate' => number_format($amount_temp,2));
+				$array = array_merge($array,$amount_array);
+			}
 		}else{
 			$cmpny_prcss_id = $this->process_model->get_cmpny_prcss_id($cmpny_id);
 			$i = 0;
