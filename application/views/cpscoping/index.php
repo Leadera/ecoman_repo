@@ -41,8 +41,31 @@ $(document).ready(function() {
 				<option value="0">Nothing Selected</option>
 			</select>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-12">
 			<a href="#" class="btn btn-default btn-sm" id="cpscopinga">New CP potentials identification</a>		
 		</div>
 	</div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <?php $i = 0; ?>
+                <?php foreach ($com_pro as $cp): ?>
+                    <tr>
+                        <th style="width:50%;"><?php echo $cp['project_name']; ?></th>
+                        <th><?php echo $cp['company_name']; ?></th>
+                    </tr>                    
+                    <?php for($k = 0 ; $k < sizeof($flow_prcss[$i]) ; $k++): ?>
+                        <tr>
+                            <td><?php echo $flow_prcss[$i][$k]['prcss_name']; ?></td>
+                            <td><?php echo $flow_prcss[$i][$k]['flow_name']; ?></td>
+                        </tr>   
+                    <?php endfor ?>
+                    <?php $i++; ?>
+                <?php endforeach ?>
+            </table>
+        </div>
+    </div>
 </div>
