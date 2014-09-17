@@ -116,15 +116,49 @@ class Cpscoping extends CI_Controller {
 		foreach ($allocation_id_array as $ids) {
 			$data['allocation'][] = $this->cpscoping_model->get_allocation_from_allocation_id($ids['allocation_id']);
 		}
-		//print_r($data['allocation']);
+		print_r($data['allocation']);
 		$this->load->view('template/header');
 		$this->load->view('cpscoping/show',$data);
 		$this->load->view('template/footer');
 	}
 
-	public function get_allo_from_fname_pname($flow_id,$process_id,$cmpny_id,$input_output){
+	public function get_allo_from_fname_pname($flow_id,$process_id,$cmpny_id,$input_output,$prjct_id){
 		if($process_id != 0){
-			$array = $this->cpscoping_model->get_allocation_from_fname_pname($flow_id,$process_id,$input_output);
+			$kontrol = array();
+			$array = array();
+
+			$allocation_ids = $this->cpscoping_model->get_allocation_id_from_ids($cmpny_id,$prjct_id);
+			foreach ($allocation_ids as $allo_id) {
+				$kontrol = $this->cpscoping_model->get_allocation_prcss_flow_id($allo_id['allocation_id'],$input_output);
+				if(!empty($kontrol)){
+					if($kontrol['prcss_id'] == $process_id && $kontrol['flow_id'] == $flow_id){
+						$array = $kontrol;
+						break;
+					}
+				}
+			}
+			$i = 0;
+			$kontrol = array();
+			$array_copy = array();
+			foreach ($allocation_ids as $allo_id) {
+				$kontrol = $this->cpscoping_model->get_allocation_from_fname_pname_copy($flow_id,$allo_id['allocation_id'],$input_output);
+				if(!empty($kontrol)){
+					$array_copy[$i] = $kontrol;
+					$i++;
+				}
+			}
+			if($i != 0){
+				$kontrol = array();
+				$amount = 0.0;
+				for($k = 0 ; $k < $i ; $k++){
+					$amount += $array_copy[$k]["amount"];
+				}
+				$amount_temp = $array['amount'];
+				$amount_temp = ($amount_temp * 100) / $amount;
+				$amount_array = array('allocation_rate' => number_format($amount_temp,2));
+				$array = array_merge($array,$amount_array);
+			}
+			/*$array = $this->cpscoping_model->get_allocation_from_fname_pname($flow_id,$process_id,$input_output);
 			
 			$cmpny_prcss_id = $this->process_model->get_cmpny_prcss_id($cmpny_id);
 			$i = 0;
@@ -146,9 +180,43 @@ class Cpscoping extends CI_Controller {
 				$amount_temp = ($amount_temp * 100) / $amount;
 				$amount_array = array('allocation_rate' => number_format($amount_temp,2));
 				$array = array_merge($array,$amount_array);
-			}
+			}*/
 		}else{
-			$cmpny_prcss_id = $this->process_model->get_cmpny_prcss_id($cmpny_id);
+			$kontrol = array();
+			$array = array();
+			$i = 0;
+
+			$allocation_ids = $this->cpscoping_model->get_allocation_id_from_ids($cmpny_id,$prjct_id);
+			foreach ($allocation_ids as $allo_id) {
+				$kontrol = $this->cpscoping_model->get_allocation_from_fname_pname_copy($flow_id,$allo_id['allocation_id'],$input_output);
+				if(!empty($kontrol)){
+					$array[$i] = $kontrol;
+					$i++;
+				}
+			}
+			if($i != 0){
+				$kontrol = array();
+				$amount = 0.0;
+				$cost = 0.0;
+				$env_impact = 0.0;
+				for($k = 0 ; $k < $i ; $k++){
+					$amount += $array[$k]["amount"];
+					$cost += $array[$k]["cost"];
+					$env_impact += $array[$k]["env_impact"];
+				}
+				$kontrol = array(
+					'amount' => $amount,
+					'unit_amount'=>$array[0]["unit_amount"],
+					'cost' => $cost,
+					'unit_cost'=>$array[0]["unit_cost"],
+					'env_impact' => $env_impact,
+					'unit_env_impact'=>$array[0]["unit_env_impact"],
+					'allocation_amount'=>"none"
+				);
+				//print_r($kontrol);
+				$array = $kontrol;
+			}
+			/*$cmpny_prcss_id = $this->process_model->get_cmpny_prcss_id($cmpny_id);
 			$i = 0;
 			$kontrol = array();
 			foreach ($cmpny_prcss_id as $id) {
@@ -179,7 +247,7 @@ class Cpscoping extends CI_Controller {
 				);
 				//print_r($kontrol);
 				$array = $kontrol;
-			}
+			}*/
 		}
 		header("Content-Type: application/json", true);
 		echo json_encode($array);

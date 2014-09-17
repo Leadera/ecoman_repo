@@ -3,7 +3,7 @@
     $.ajax({
       type: "POST",
       dataType:'json',
-	    url: '<?php echo base_url('cpscoping/get_allo'); ?>/'+f+'/'+p+'/'+<?php echo $this->uri->segment(3); ?> + '/' + k,
+	    url: '<?php echo base_url('cpscoping/get_allo'); ?>/'+f+'/'+p+'/'+<?php echo $this->uri->segment(3); ?> + '/' + k + '/' + <?php echo $this->uri->segment(2); ?>,
       success: function(data)
       {
       	if(!$.isEmptyObject(data)){
