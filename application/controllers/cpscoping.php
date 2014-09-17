@@ -37,7 +37,6 @@ class Cpscoping extends CI_Controller {
 			$deneme[$j] = $flow_prcss;
 			$j++;
 		}
-		print_r($deneme);
 		$data['flow_prcss'] = $deneme;
 		$data['com_pro'] = $result;
 		$this->load->view('template/header');
@@ -104,6 +103,27 @@ class Cpscoping extends CI_Controller {
 		$data['company_id'] = $company_id;
 		$data['prcss_info'] = $this->process_model->get_cmpny_flow_prcss($company_id);
 		$data['unit_list'] = $this->flow_model->get_unit_list();
+
+		$array_temp = array();
+		$temp_index = 0;
+		$kontrol = array();
+		$index = 0;
+		foreach ($data['prcss_info'] as $prcss_info) {
+			$deneme = 0;
+			$kontrol[$index] = $prcss_info['prcessname'];
+			$index++;
+			for($k = 0 ; $k < $index - 1 ; $k++){
+				if($kontrol[$k] == $prcss_info['prcessname']){
+					$deneme = 1;
+				}
+			}
+			if($deneme == 0){
+				$array_temp[$temp_index] = $prcss_info;
+				$temp_index++;
+			}
+		}
+
+		$data['prcss_info'] = $array_temp;
  
 		$this->load->view('template/header');
 		$this->load->view('cpscoping/allocation',$data);
@@ -116,7 +136,6 @@ class Cpscoping extends CI_Controller {
 		foreach ($allocation_id_array as $ids) {
 			$data['allocation'][] = $this->cpscoping_model->get_allocation_from_allocation_id($ids['allocation_id']);
 		}
-		print_r($data['allocation']);
 		$this->load->view('template/header');
 		$this->load->view('cpscoping/show',$data);
 		$this->load->view('template/footer');
@@ -213,7 +232,6 @@ class Cpscoping extends CI_Controller {
 					'unit_env_impact'=>$array[0]["unit_env_impact"],
 					'allocation_amount'=>"none"
 				);
-				//print_r($kontrol);
 				$array = $kontrol;
 			}
 			/*$cmpny_prcss_id = $this->process_model->get_cmpny_prcss_id($cmpny_id);
@@ -245,7 +263,6 @@ class Cpscoping extends CI_Controller {
 					'unit_env_impact'=>$array[0]["unit_env_impact"],
 					'allocation_amount'=>"none"
 				);
-				//print_r($kontrol);
 				$array = $kontrol;
 			}*/
 		}

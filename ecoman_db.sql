@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2014 at 02:32 PM
+-- Generation Time: Sep 17, 2014 at 03:08 PM
 -- Server version: 5.5.36
 -- PHP Version: 5.4.27
 
@@ -387,7 +387,7 @@ CREATE TABLE IF NOT EXISTS `t_cp_allocation` (
   KEY `flow_id` (`flow_id`),
   KEY `flow_type_id` (`flow_type_id`),
   KEY `t_cp_scoping_ibfk_1` (`prcss_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `t_cp_allocation`
@@ -404,7 +404,9 @@ INSERT INTO `t_cp_allocation` (`id`, `prcss_id`, `flow_id`, `flow_type_id`, `amo
 (8, 18, 3, 2, 1.50, 'm³', '40', 'Medium', 21012.00, 'Dolar', '40', 'High', 30006.00, 'EP', '20', 'High'),
 (9, 21, 1, 1, 1.50, 'Liter', '40', 'Medium', 21012.00, 'Dolar', '40', 'High', 30006.00, 'EP', '20', 'High'),
 (10, 21, 2, 1, 1.59, 'Liter', '40', 'Medium', 21012.00, 'Dolar', '40', 'High', 30006.00, 'EP', '20', 'High'),
-(11, 21, 2, 2, 3.56, 'Liter', '40', 'Medium', 5000.00, 'Dolar', '40', 'High', 30006.00, 'EP', '20', 'High');
+(11, 21, 2, 2, 3.56, 'Liter', '40', 'Medium', 5000.00, 'Dolar', '40', 'High', 30006.00, 'EP', '20', 'High'),
+(12, 22, 3, 1, 89.12, 'm³', '10', 'Medium', 245.00, 'Euro', '28', 'High', 3231.00, 'EP', '20', 'Medium'),
+(13, 18, 3, 1, 12.10, 'm³', '10', 'Medium', 127.00, 'Euro', '28', 'High', 1000.00, 'EP', '20', 'Medium');
 
 -- --------------------------------------------------------
 
@@ -421,7 +423,7 @@ CREATE TABLE IF NOT EXISTS `t_cp_company_project` (
   KEY `allocation_id` (`allocation_id`),
   KEY `prjct_id` (`prjct_id`),
   KEY `cmpny_id` (`cmpny_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `t_cp_company_project`
@@ -438,7 +440,9 @@ INSERT INTO `t_cp_company_project` (`id`, `allocation_id`, `prjct_id`, `cmpny_id
 (8, 8, 3, 7),
 (9, 9, 3, 7),
 (10, 10, 3, 7),
-(11, 11, 3, 7);
+(11, 11, 3, 7),
+(12, 12, 2, 7),
+(13, 13, 2, 7);
 
 -- --------------------------------------------------------
 

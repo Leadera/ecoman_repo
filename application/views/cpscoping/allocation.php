@@ -39,6 +39,7 @@ $(document).ready(function() {
 				<div class="col-md-12">
 					<select name="prcss_name" id="prcss_name" class="btn-group select select-block">
 						<option value="0">Nothing Selected</option>
+						<?php $kontrol = array(); $index = 0;?>
 						<?php for($i = 0 ; $i < sizeof($prcss_info) ; $i++): ?>
 							<option value="<?php echo $prcss_info[$i]['company_process_id']; ?>"><?php echo $prcss_info[$i]['prcessname']; ?></option>
 						<?php endfor ?>

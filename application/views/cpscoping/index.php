@@ -44,28 +44,23 @@ $(document).ready(function() {
 		<div class="col-md-12">
 			<a href="#" class="btn btn-default btn-sm" id="cpscopinga">New CP potentials identification</a>		
 		</div>
-	</div>
-</div>
-
-<div class="container">
-    <div class="row">
         <div class="col-md-12">
             <table class="table table-bordered">
                 <?php $i = 0; ?>
                 <?php foreach ($com_pro as $cp): ?>
                     <tr>
-                        <th style="width:50%;"><?php echo $cp['project_name']; ?></th>
-                        <th><?php echo $cp['company_name']; ?></th>
+                        <th style="width:50%;" colspan="3">Company Name: <?php echo $cp['company_name']; ?> - Project Name: <?php echo $cp['project_name']; ?></th>
                     </tr>                    
                     <?php for($k = 0 ; $k < sizeof($flow_prcss[$i]) ; $k++): ?>
                         <tr>
-                            <td><?php echo $flow_prcss[$i][$k]['prcss_name']; ?></td>
-                            <td><?php echo $flow_prcss[$i][$k]['flow_name']; ?></td>
+                            <td>Used Process Name: <?php echo $flow_prcss[$i][$k]['prcss_name']; ?></td>
+                            <td>Used Flow Name: <?php echo $flow_prcss[$i][$k]['flow_name']; ?></td>
+                            <td><?php echo $flow_prcss[$i][$k]['flow_type_name']; ?></td>
                         </tr>   
                     <?php endfor ?>
                     <?php $i++; ?>
                 <?php endforeach ?>
             </table>
         </div>
-    </div>
+	</div>
 </div>
