@@ -37,11 +37,14 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+//Html Parse
+$route['euro_dolar'] = "cpscoping/dolar_euro_parse";
 //Easy UI Denemeleri
 $route['cp_allocation/deneme'] = "cpscoping/deneme";
 $route['cp_allocation/deneme_json'] = "cpscoping/deneme_json";
 
 //Cp Scoping Routes
+$route['cpscoping/cost_ep/(:any)/(:any)/(:any)'] = "cpscoping/cost_ep_value/$1/$2/$3";
 $route['cpscoping/get_allo/(:any)/(:any)/(:any)/(:any)/(:any)'] = "cpscoping/get_allo_from_fname_pname/$1/$2/$3/$4/$5";
 $route['cpscoping/(:any)/(:any)/show'] = "cpscoping/cp_show_allocation/$1/$2";
 $route['cp_allocation_array/(:any)'] = "cpscoping/cp_allocation_array/$1";

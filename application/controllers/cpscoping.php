@@ -276,6 +276,73 @@ class Cpscoping extends CI_Controller {
 		echo json_encode($allocation_array);
 	}
 
+	public function cost_ep_value($prcss_id,$prjct_id,$cmpny_id){
+		$allocation_ids = $this->cpscoping_model->get_allocation_id_from_ids($cmpny_id,$prjct_id);
+		$array = array();
+		$index = 0;
+		$cost_value_alt = 0.0;
+		$cost_value_ust = 0.0;
+		$ep_value_alt = 0.0;
+		$ep_value_ust = 0.0;
+		$prcss_name = "";
+		foreach ($allocation_ids as $allo_id) {
+			$array[$index] = $this->cpscoping_model->get_allocation_from_allocation_id($allo_id['allocation_id']);
+			if($array[$index]['prcss_id'] == $prcss_id){
+				$doviz_array = $this->dolar_euro_parse();
+				$unit = $array[$index]['unit_cost'];
+				$allocation_cost = $array[$index]['allocation_cost'];
+				$allocation_env_impact = $array[$index]['allocation_env_impact'];
+
+				if($unit == "Dolar"){
+					$cost_value_alt += ($array[$index]['cost'] * ((100-$allocation_cost)/100)) * number_format(($doviz_array['dolar'] / $doviz_array['euro']),4);
+					$cost_value_ust += ($array[$index]['cost'] * ((100+$allocation_cost)/100)) * number_format(($doviz_array['dolar'] / $doviz_array['euro']),4);
+				}else if($unit == "TL"){
+					$cost_value_alt += ($array[$index]['cost'] * ((100-$allocation_cost)/100)) * $doviz_array['euro'];
+					$cost_value_ust += ($array[$index]['cost'] * ((100+$allocation_cost)/100)) * $doviz_array['euro'];
+				}else{
+					$cost_value_alt += ($array[$index]['cost'] * ((100-$allocation_cost)/100));
+					$cost_value_ust += ($array[$index]['cost'] * ((100+$allocation_cost)/100)) * $doviz_array['euro'];
+				}
+
+				$prcss_name = $array[$index]['prcss_name'];
+				$ep_value_alt += $array[$index]['env_impact'] * ((100-$allocation_env_impact)/100);
+				$ep_value_ust += $array[$index]['env_impact'] * ((100+$allocation_env_impact)/100);
+			}
+			$index++;
+		}
+		$return_array = array(
+			'prcss_name' => $prcss_name,
+			'ep_value_alt' => $ep_value_alt,
+			'ep_value_ust' => $ep_value_ust,
+			'cost_value_alt' => $cost_value_alt,
+			'cost_value_ust' => $cost_value_ust
+		);
+		header("Content-Type: application/json", true);
+		echo json_encode($return_array);
+	}
+
+	public function dolar_euro_parse(){
+		$sayac = 0;
+		$array_temp = array();
+		$this->load->library('simple_html_dom');
+		$raw = file_get_html('http://www.doviz.com/');
+		foreach($raw->find('div') as $element){
+		 	foreach ($element->find('ul') as $key) {
+		  		foreach ($key->find('li') as $value) {
+		  			foreach ($value->find('span') as $sp) {
+		  				$sayac++;
+		  				if($sayac == 8){
+		  					$array_temp['dolar'] = str_replace(',', '.', $sp->plaintext);
+		  				}else if($sayac == 13){
+		  					$array_temp['euro'] = str_replace(',', '.', $sp->plaintext);
+		  				}
+			  		}
+		  		}
+		  	}
+		}
+		return $array_temp;
+	}
+
 	public function deneme(){
 		$this->load->view('template/header');
 		$this->load->view('cpscoping/deneme');
