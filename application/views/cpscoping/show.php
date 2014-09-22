@@ -112,12 +112,34 @@
 			}
 		});
 	};
-	
-</script>
 
-
-<script type="text/javascript">
-	
+	function is_candidate(id){
+		var buton_durum = 0;
+		$(document).ready(function () {
+			$.ajax({
+		     	type: "POST",
+		     	dataType:'json',
+			  	url: '<?php echo base_url('cpscoping/is_candidate_control'); ?>/'+id,
+		      	success: function(data)
+		      	{
+		      		if(!(data.control == 1)){
+		      			$("#"+id).removeClass();
+		    			$("#"+id).addClass("btn btn-success btn-xs");
+		    			buton_durum = 1;
+		    		}else{
+		    			$("#"+id).removeClass();
+		    			$("#"+id).addClass("btn btn-default btn-xs");
+		    			buton_durum = 0;
+		    		}
+		    		$.ajax({
+				     	type: "POST",
+				     	dataType:'json',
+					  	url: '<?php echo base_url('cpscoping/is_candidate_insert'); ?>/'+id+'/'+buton_durum,
+				    });
+		      	}
+		    });
+	  	});
+	};
 </script>
 
 <div class="container">
@@ -161,7 +183,18 @@
 					}
 					if($degisken == 1): ?>
 					<tr>
-						<td><b><?php echo $a['flow_name']; ?></b></td>
+						<td>
+							<b><?php echo $a['flow_name']; ?></b>
+							<br>
+							<?php if ($active[$a['allocation_id']] == 0): ?>
+								<button class="btn btn-default btn-xs" id="<?php echo $a['allocation_id']; ?>" onclick="is_candidate(<?php echo $a['allocation_id'];?>)"><span class="glyphicon glyphicon-ok"></span>
+								</button>
+							<?php else: ?>
+								<button class="btn btn-success btn-xs" id="<?php echo $a['allocation_id']; ?>" onclick="is_candidate(<?php echo $a['allocation_id'];?>)"><span class="glyphicon glyphicon-ok"></span>
+								</button>
+							<?php endif ?>
+							
+						</td>
 						<?php for ($t=0; $t < $process_adet+1; $t++): ?>
 							<script type="text/javascript">
 								yazdir(<?php echo $a['flow_id']; ?>,<?php echo $tekrarsiz[$t-1]; ?>,1);
@@ -216,8 +249,26 @@
 						}
 					}
 					if($degisken == 1): ?>
+
 					<tr>
-						<td><b><?php echo $a['flow_name']; ?></b></td>
+						<td>
+							<b><?php echo $a['flow_name']; ?></b>
+							<br>
+							<?php $id = 0;
+							foreach ($allocation_output as $a_output) {
+								if($a_output['flow_name'] == $a['flow_name']){
+									$id = $a_output['allocation_id'];
+								}
+							}
+
+							if ($active[$id] == 0): ?>
+								<button class="btn btn-default btn-xs" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)"><span class="glyphicon glyphicon-ok"></span>
+								</button>
+							<?php else: ?>
+								<button class="btn btn-success btn-xs" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)"><span class="glyphicon glyphicon-ok"></span>
+								</button>
+							<?php endif ?>
+						</td>
 						<?php for ($t=0; $t < $process_adet+1; $t++): ?>
 							<script type="text/javascript">
 								yazdir(<?php echo $a['flow_id']; ?>,<?php echo $tekrarsiz[$t-1]; ?>,2);
@@ -252,4 +303,3 @@
 		</div>
 	</div>
 </div>
-

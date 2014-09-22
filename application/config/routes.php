@@ -44,6 +44,8 @@ $route['cp_allocation/deneme'] = "cpscoping/deneme";
 $route['cp_allocation/deneme_json'] = "cpscoping/deneme_json";
 
 //Cp Scoping Routes
+$route['cpscoping/is_candidate_insert/(:any)/(:any)'] = "cpscoping/cp_is_candidate_insert/$1/$2";
+$route['cpscoping/is_candidate_control/(:any)'] = "cpscoping/cp_is_candidate_control/$1";
 $route['cpscoping/cost_ep/(:any)/(:any)/(:any)'] = "cpscoping/cost_ep_value/$1/$2/$3";
 $route['cpscoping/get_allo/(:any)/(:any)/(:any)/(:any)/(:any)'] = "cpscoping/get_allo_from_fname_pname/$1/$2/$3/$4/$5";
 $route['cpscoping/(:any)/(:any)/show'] = "cpscoping/cp_show_allocation/$1/$2";

@@ -14,7 +14,7 @@ class Cpscoping_model extends CI_Model {
   }
 
   public function get_allocation_from_allocation_id($allocation_id){
-  	$this->db->select('t_cp_allocation.prcss_id as prcss_id,t_prcss.name as prcss_name, t_flow.name as flow_name, t_flow_type.name as flow_type_name,amount,unit_amount,allocation_amount,importance_amount,cost,unit_cost,allocation_cost,importance_cost,env_impact,unit_env_impact,allocation_env_impact,importance_env_impact,t_cp_allocation.flow_id,t_cp_allocation.prcss_id');
+  	$this->db->select('t_cp_allocation.id as allocation_id, t_cp_allocation.prcss_id as prcss_id,t_prcss.name as prcss_name, t_flow.name as flow_name, t_flow_type.name as flow_type_name,amount,unit_amount,allocation_amount,importance_amount,cost,unit_cost,allocation_cost,importance_cost,env_impact,unit_env_impact,allocation_env_impact,importance_env_impact,t_cp_allocation.flow_id,t_cp_allocation.prcss_id');
   	$this->db->from('t_cp_allocation');
   	$this->db->join('t_flow','t_flow.id = t_cp_allocation.flow_id');
   	$this->db->join('t_flow_type', 't_flow_type.id = t_cp_allocation.flow_type_id');
@@ -22,6 +22,21 @@ class Cpscoping_model extends CI_Model {
   	$this->db->join('t_prcss','t_prcss.id = t_cmpny_prcss.prcss_id');
   	$this->db->where('t_cp_allocation.id',$allocation_id);
   	return $this->db->get()->row_array();
+  }
+
+  public function get_allocation_from_allocation_id_output($allocation_id){
+    $this->db->select('t_cp_allocation.id as allocation_id, t_cp_allocation.prcss_id as prcss_id,t_prcss.name as prcss_name, t_flow.name as flow_name, t_flow_type.name as flow_type_name,amount,unit_amount,allocation_amount,importance_amount,cost,unit_cost,allocation_cost,importance_cost,env_impact,unit_env_impact,allocation_env_impact,importance_env_impact,t_cp_allocation.flow_id,t_cp_allocation.prcss_id');
+    $this->db->from('t_cp_allocation');
+    $this->db->join('t_flow','t_flow.id = t_cp_allocation.flow_id');
+    $this->db->join('t_flow_type', 't_flow_type.id = t_cp_allocation.flow_type_id');
+    $this->db->join('t_cmpny_prcss','t_cmpny_prcss.id = t_cp_allocation.prcss_id');
+    $this->db->join('t_prcss','t_prcss.id = t_cmpny_prcss.prcss_id');
+    $this->db->where('t_cp_allocation.id',$allocation_id);
+    $this->db->where('t_cp_allocation.flow_type_id','2');
+    $query = $this->db->get()->row_array();
+    if(!empty($query)){
+      return $query;
+    }
   }
 
   public function get_allocation_id_from_ids($company_id,$project_id){
@@ -77,6 +92,44 @@ class Cpscoping_model extends CI_Model {
     $this->db->where('id',$allocation_id);
     $this->db->where('flow_type_id',$input_output);
     return $this->db->get()->row_array();
+  }
+
+  public function cp_is_candidate_control($allocation_id){
+    $this->db->select('*');
+    $this->db->from('t_cp_is_candidate');
+    $this->db->where('allocation_id',$allocation_id);
+    $query = $this->db->get()->row_array();
+
+    if(!empty($query)){
+      if($query['active'] == 1){
+        return 1;
+      }else{
+        return 2;
+      }
+    }else{
+      return 0;
+    }
+  }
+
+  public function cp_is_candidate_insert($is_candidate_array){
+    $this->db->insert('t_cp_is_candidate',$is_candidate_array);
+  }
+
+  public function cp_is_candidate_update($is_candidate_array,$allocation_id){
+    $this->db->where('allocation_id',$allocation_id);
+    $this->db->update('t_cp_is_candidate',$is_candidate_array);
+  }
+
+  public function get_is_candidate_active_position($allocation_id){
+    $this->db->select('active');
+    $this->db->from('t_cp_is_candidate');
+    $this->db->where('allocation_id',$allocation_id);
+    $query = $this->db->get()->row_array();
+    if(empty($query)){
+      return 0;
+    }else{
+      return $query['active'];
+    }
   }
 }
 ?>

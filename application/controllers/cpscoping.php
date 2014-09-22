@@ -135,6 +135,8 @@ class Cpscoping extends CI_Controller {
 		$data['allocation'] = array();
 		foreach ($allocation_id_array as $ids) {
 			$data['allocation'][] = $this->cpscoping_model->get_allocation_from_allocation_id($ids['allocation_id']);
+			$data['allocation_output'][] = $this->cpscoping_model->get_allocation_from_allocation_id_output($ids['allocation_id']);
+			$data['active'][$ids['allocation_id']] = $this->cpscoping_model->get_is_candidate_active_position($ids['allocation_id']);
 		}
 		$this->load->view('template/header');
 		$this->load->view('cpscoping/show',$data);
@@ -341,6 +343,25 @@ class Cpscoping extends CI_Controller {
 		  	}
 		}
 		return $array_temp;
+	}
+
+	public function cp_is_candidate_control($allocation_id){
+		$return_array['control'] = $this->cpscoping_model->cp_is_candidate_control($allocation_id);
+		header("Content-Type: application/json", true);
+		echo json_encode($return_array);
+	}
+
+	public function cp_is_candidate_insert($allocation_id,$buton_durum){
+		$result = $this->cpscoping_model->cp_is_candidate_control($allocation_id);
+		$is_candidate_array = array(
+			'allocation_id' => $allocation_id,
+			'active' => $buton_durum
+		);
+		if($result == 0){
+			$this->cpscoping_model->cp_is_candidate_insert($is_candidate_array);
+		}else{
+			$this->cpscoping_model->cp_is_candidate_update($is_candidate_array,$allocation_id);
+		}
 	}
 
 	public function deneme(){
