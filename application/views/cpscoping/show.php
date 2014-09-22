@@ -1,3 +1,5 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
 <script type="text/javascript">
 	function yazdir(f,p,k) {
 	    $.ajax({
@@ -24,7 +26,19 @@
 	    });
 	};
 
-	function cost_ep_value(prcss_id){
+	google.load("visualization", "1", {packages:["corechart"]});
+	var temp_array = new Array();
+	var temp_index = 0;
+	var ep_alt_temp_array = new Array();
+	var ep_alt_temp_index = 0;
+	var ep_ust_temp_array = new Array();
+	var ep_ust_temp_index = 0;
+	var cost_array = new Array();
+	var cost_array_clone = new Array();
+	var cost_index = 0;
+	var index_array = new Array();
+
+	function cost_ep_value(prcss_id,process_adet){
 		//alert(prcss_id);
 		$.ajax({
 			type: "POST",
@@ -35,10 +49,77 @@
 				var temp = "";
 				temp += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><th style="text-align:center;">' + data.prcss_name + '</th></tr><tr><td> Upper EP Value: ' + data.ep_value_ust + ' EP</td></tr><tr><td> Lower EP Value: ' + data.ep_value_alt + ' EP</td></tr><tr><td> Upper Cost Value: ' + data.cost_value_ust + ' Euro</td></tr><tr><td> Lower Cost Value: ' + data.cost_value_alt + ' Euro</td></tr></table>';
 				$("div."+prcss_id).html(temp);
+
+				temp_array[temp_index] = data.prcss_name;
+				temp_index++;
+				ep_alt_temp_array[ep_alt_temp_index] = data.ep_value_alt;
+				ep_alt_temp_index++;
+				ep_ust_temp_array[ep_ust_temp_index] = data.ep_value_ust;
+				ep_ust_temp_index++;
+
+				cost_array[cost_index] = data.cost_value_alt;
+				cost_array_clone[cost_index] = data.cost_value_alt;
+				cost_index++;
+
+				if(process_adet == temp_index){
+	          		
+	          		for(var i = 0 ; i < cost_index; i++){
+	          			for(var j = i+1 ; j < cost_index ; j++){
+	          				if(cost_array[i] > cost_array[j]){
+	          					var temp = cost_array[j];
+	          					cost_array[j] = cost_array[i];
+	          					cost_array[i] = temp;
+	          				}
+	          			}
+	          		}
+
+	          		for(var i = 0 ; i < cost_index ; i++){
+	          			for(var j = 0 ; j < cost_index ; j++){
+	          				if(cost_array_clone[j] == cost_array[i]){
+	          					index_array[i] = j;
+	          				}
+	          			}
+	          		}
+
+		          	var newData = new Array(temp_index+1);
+		          	for(var i = 0 ; i < temp_index+1 ; i++){
+		          		newData[i] = new Array(5);
+		          	}
+
+		          	console.log(newData);
+
+		          	newData[0][0] = '';
+		          	newData[0][1] = 0;
+		          	newData[0][2] = 0;
+		          	newData[0][3] = 0;
+		          	newData[0][4] = 0;
+
+		          	for(var i = 0 ; i < temp_index ; i++){
+		          		newData[i+1][0] = temp_array[index_array[i]];
+		          		newData[i+1][1] = ep_alt_temp_array[index_array[i]];
+		          		newData[i+1][2] = ep_alt_temp_array[index_array[i]];
+		          		newData[i+1][3] = ep_ust_temp_array[index_array[i]];
+		          		newData[i+1][4] = ep_ust_temp_array[index_array[i]];
+		          	}
+
+		          	var data = google.visualization.arrayToDataTable(newData, true);
+				    var options = {
+				      legend:'none'
+				    };
+				    var chart = new google.visualization.CandlestickChart(document.getElementById('chart_div'));
+				    chart.draw(data, options);
+	          	}
 			}
 		});
 	};
+	
 </script>
+
+
+<script type="text/javascript">
+	
+</script>
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
@@ -157,7 +238,7 @@
 				<tr>
 					<?php for($i = 0 ; $i < $process_adet ; $i++): ?>
 						<script type="text/javascript">
-							cost_ep_value(<?php echo $tekrarsiz[$i]; ?>);
+							cost_ep_value(<?php echo $tekrarsiz[$i]; ?>,<?php echo $process_adet; ?>);
 						</script>
 						<td style="padding:0px !important;">
 							<div class="<?php echo $tekrarsiz[$i]; ?>">
@@ -167,7 +248,8 @@
 					<?php endfor ?>
 				</tr>
 			</table>
-
+			<div id="chart_div" style="width: 900px; height: 500px;"></div>
 		</div>
 	</div>
 </div>
+
