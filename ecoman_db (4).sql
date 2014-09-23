@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 23, 2014 at 07:59 AM
+-- Generation Time: Sep 23, 2014 at 08:16 AM
 -- Server version: 5.5.36
 -- PHP Version: 5.4.27
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `ecoman_db`
 --
+CREATE DATABASE IF NOT EXISTS `ecoman_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `ecoman_db`;
 
 -- --------------------------------------------------------
 
