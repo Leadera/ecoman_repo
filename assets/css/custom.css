@@ -95,5 +95,13 @@ body{
     border-top-right-radius: 0;
 }
 
+.cp-heading{
+    background: #f0f0f0;
+    padding: 10px;
+    border-radius: 4px 4px;
+    font-size: 14px;
+}
 
-
+.btn-sm{
+    font-size:12px;
+}
