@@ -142,9 +142,12 @@
 	};
 </script>
 
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-4">
+			<p>Cost and Environmental impact graph of processes</p>
+			<div id="chart_div" style="width: 100%; height: 400px; border:2px solid #f0f0f0;"></div>
+		</div>
+		<div class="col-md-8">
+			<p>CP Potentials Identifications</p>
 			<table class="table table-bordered">
 			<tr>
 			<th>Input Flows</th>
@@ -284,7 +287,7 @@
 				<?php endif ?>
 				<?php endforeach ?>
 			</table>
-
+			<p>Cost and Environmental impact data of processes</p>
 			<table class="table table-bordered">
 				<tr>
 					<?php for($i = 0 ; $i < $process_adet ; $i++): ?>
@@ -299,7 +302,4 @@
 					<?php endfor ?>
 				</tr>
 			</table>
-			<div id="chart_div" style="width: 900px; height: 500px;"></div>
 		</div>
-	</div>
-</div>
