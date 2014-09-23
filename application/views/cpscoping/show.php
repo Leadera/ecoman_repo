@@ -145,32 +145,58 @@
 		<div class="col-md-4">
 			<p>Cost and Environmental impact graph of processes</p>
 			<div id="chart_div" style="width: 100%; height: 400px; border:2px solid #f0f0f0;"></div>
+			
+			<div style="height:10px;"></div>
+
+			<?php echo form_open_multipart('cpscoping/file_upload/'.$this->uri->segment('2').'/'.$this->uri->segment('3')); ?>
+				<div class="form-group" style="width: 100%; height: 400px; border:2px solid #f0f0f0;">
+				    <input type="file" name="userfile" id="userfile" size="20" />
+					<br/>
+				    <button type="submit" class="btn btn-info">Save File</button>
+				    <table class="table table-bordered">
+				    	<tr>
+				    		<th>Index</th>
+				    		<th>File Name</th>
+				    	</tr>
+					    <?php $sayac = 1;foreach ($cp_files as $file): ?>
+					    	<tr>
+					    		<td>
+					    			<?php echo $sayac; $sayac++; ?>
+					    		</td>
+					    		<td>
+					    			<?php echo $file['file_name']; ?>
+					    		</td>
+					    	</tr>
+					    <?php endforeach ?>
+				    </table>
+				</div>
+			</form>
 		</div>
 		<div class="col-md-8">
 			<p>CP Potentials Identifications</p>
 			<table class="table table-bordered">
 			<tr>
-			<th>Input Flows</th>
-			<th>Total</th>
-			<?php $deneme_arrayi = array(); $tekrarsiz = array(); $tekrarsiz[-1] = "0"; $count = 0; $process_adet=0; ?>
-			<?php foreach ($allocation as $a): ?>
-			<?php
-			$degisken = 1;
-			$deneme_arrayi[$count] = $a['prcss_name'];
-			$count++;
-			for ($i=0; $i < $count-1; $i++) { 
-				if($deneme_arrayi[$i] == $a['prcss_name']){
-				$degisken = 0;
-				break;
+				<th>Input Flows</th>
+				<th>Total</th>
+				<?php $deneme_arrayi = array(); $tekrarsiz = array(); $tekrarsiz[-1] = "0"; $count = 0; $process_adet=0; ?>
+				<?php foreach ($allocation as $a): ?>
+				<?php
+				$degisken = 1;
+				$deneme_arrayi[$count] = $a['prcss_name'];
+				$count++;
+				for ($i=0; $i < $count-1; $i++) { 
+					if($deneme_arrayi[$i] == $a['prcss_name']){
+					$degisken = 0;
+					break;
+					}
 				}
-			}
-			if($degisken == 1){
-				$process_adet++;
-				echo "<th>".$a['prcss_name']."</th>";
-				$tekrarsiz[$process_adet-1] = $a['prcss_id']; 
-			}
-			?>
-			<?php endforeach ?>
+				if($degisken == 1){
+					$process_adet++;
+					echo "<th>".$a['prcss_name']."</th>";
+					$tekrarsiz[$process_adet-1] = $a['prcss_id']; 
+				}
+				?>
+				<?php endforeach ?>
 			</tr>
 			<?php
 				$count = 0; $deneme_array = array();
@@ -190,10 +216,10 @@
 							<b><?php echo $a['flow_name']; ?></b>
 							<br>
 							<?php if ($active[$a['allocation_id']] == 0): ?>
-								<button class="btn btn-default btn-xs" id="<?php echo $a['allocation_id']; ?>" onclick="is_candidate(<?php echo $a['allocation_id'];?>)"><span class="glyphicon glyphicon-ok"></span>
+								<button class="btn btn-default btn-xs" title="IS Candidate off" id="<?php echo $a['allocation_id']; ?>" onclick="is_candidate(<?php echo $a['allocation_id'];?>)"><span class="glyphicon glyphicon-ok"></span>
 								</button>
 							<?php else: ?>
-								<button class="btn btn-success btn-xs" id="<?php echo $a['allocation_id']; ?>" onclick="is_candidate(<?php echo $a['allocation_id'];?>)"><span class="glyphicon glyphicon-ok"></span>
+								<button class="btn btn-success btn-xs" title="IS Candidate on" id="<?php echo $a['allocation_id']; ?>" onclick="is_candidate(<?php echo $a['allocation_id'];?>)"><span class="glyphicon glyphicon-ok"></span>
 								</button>
 							<?php endif ?>
 							

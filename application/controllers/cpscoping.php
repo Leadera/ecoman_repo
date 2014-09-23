@@ -138,6 +138,7 @@ class Cpscoping extends CI_Controller {
 			$data['allocation_output'][] = $this->cpscoping_model->get_allocation_from_allocation_id_output($ids['allocation_id']);
 			$data['active'][$ids['allocation_id']] = $this->cpscoping_model->get_is_candidate_active_position($ids['allocation_id']);
 		}
+		$data['cp_files'] = $this->cpscoping_model->get_cp_scoping_files($project_id,$company_id);
 		$this->load->view('template/header');
 		$this->load->view('cpscoping/show',$data);
 		$this->load->view('template/footer');
@@ -361,6 +362,38 @@ class Cpscoping extends CI_Controller {
 			$this->cpscoping_model->cp_is_candidate_insert($is_candidate_array);
 		}else{
 			$this->cpscoping_model->cp_is_candidate_update($is_candidate_array,$allocation_id);
+		}
+	}
+
+	public function cp_scoping_file_upload($prjct_id,$cmpny_id){
+		$uzanti = $_FILES['userfile']['name'];
+		$uzanti = explode('.',$uzanti);
+		$eklenti = $uzanti[sizeof($uzanti)-1];
+
+		$dosya_adi = "";
+		for($i = 0 ; $i < sizeof($uzanti)-1 ; $i++){
+			$dosya_adi .= $uzanti[$i];
+		}
+	
+		$config['upload_path'] = './assets/cp_scoping_files/';
+		$config['allowed_types'] = $eklenti;
+		$config['max_size']	= '5000';
+		$config['file_name']	= $dosya_adi.'.'.$eklenti;
+		$this->load->library('upload', $config);
+
+		//Resmi servera yükleme
+		if (!$this->upload->do_upload())
+		{
+			echo $this->upload->display_errors();
+			exit;
+		}else{
+			$cp_scoping_files = array(
+				'prjct_id' => $prjct_id,
+				'cmpny_id' => $cmpny_id,
+				'file_name' => $dosya_adi.'.'.$eklenti
+			);
+			$this->cpscoping_model->insert_cp_scoping_file($cp_scoping_files);
+			redirect(base_url('cpscoping/'.$prjct_id.'/'.$cmpny_id.'/show'),'refresh');
 		}
 	}
 
