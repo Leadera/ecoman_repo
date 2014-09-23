@@ -145,6 +145,32 @@
 		<div class="col-md-4">
 			<p>Cost and Environmental impact graph of processes</p>
 			<div id="chart_div" style="width: 100%; height: 400px; border:2px solid #f0f0f0;"></div>
+			
+			<div style="height:10px;"></div>
+
+			<?php echo form_open_multipart('cpscoping/file_upload/'.$this->uri->segment('2').'/'.$this->uri->segment('3')); ?>
+				<div class="form-group" style="width: 100%; height: 400px; border:2px solid #f0f0f0;">
+				    <input type="file" name="userfile" id="userfile" size="20" />
+					<br/>
+				    <button type="submit" class="btn btn-info">Save File</button>
+				    <table class="table table-bordered">
+				    	<tr>
+				    		<th>Index</th>
+				    		<th>File Name</th>
+				    	</tr>
+					    <?php $sayac = 1;foreach ($cp_files as $file): ?>
+					    	<tr>
+					    		<td>
+					    			<?php echo $sayac; $sayac++; ?>
+					    		</td>
+					    		<td>
+					    			<?php echo $file['file_name']; ?>
+					    		</td>
+					    	</tr>
+					    <?php endforeach ?>
+				    </table>
+				</div>
+			</form>
 		</div>
 		<div class="col-md-8">
 			<p>CP Potentials Identifications</p>

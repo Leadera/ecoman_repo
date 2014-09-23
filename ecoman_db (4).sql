@@ -471,6 +471,16 @@ INSERT INTO `t_cp_is_candidate` (`id`, `allocation_id`, `active`) VALUES
 (14, 12, 1),
 (15, 2, 1);
 
+CREATE TABLE IF NOT EXISTS `t_cp_scoping_files` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `prjct_id` int(11) DEFAULT NULL,
+  `cmpny_id` int(11) DEFAULT NULL,
+  `file_name` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `prjct_id` (`prjct_id`),
+  KEY `cmpny_id` (`cmpny_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
 -- --------------------------------------------------------
 
 --
@@ -4260,6 +4270,13 @@ ALTER TABLE `t_cp_allocation`
 ALTER TABLE `t_cp_is_candidate`
   ADD CONSTRAINT `t_cp_is_candidate_ibfk_1` FOREIGN KEY (`allocation_id`) REFERENCES `t_cp_allocation` (`id`);
 
+--
+-- Constraints for table `t_cp_scoping_files`
+--
+ALTER TABLE `t_cp_scoping_files`
+  ADD CONSTRAINT `t_cp_scoping_files_ibfk_1` FOREIGN KEY (`prjct_id`) REFERENCES `t_prj` (`id`),
+  ADD CONSTRAINT `t_cp_scoping_files_ibfk_2` FOREIGN KEY (`cmpny_id`) REFERENCES `t_cmpny` (`id`);
+  
 --
 -- Constraints for table `t_eqpmnt_type_attrbt`
 --

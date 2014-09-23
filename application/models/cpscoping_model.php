@@ -131,5 +131,17 @@ class Cpscoping_model extends CI_Model {
       return $query['active'];
     }
   }
+
+  public function insert_cp_scoping_file($cp_scoping_files){
+    $this->db->insert('t_cp_scoping_files',$cp_scoping_files);
+  }
+
+  public function get_cp_scoping_files($project_id,$cmpny_id){
+    $this->db->select('*');
+    $this->db->from('t_cp_scoping_files');
+    $this->db->where('prjct_id',$project_id);
+    $this->db->where('cmpny_id',$cmpny_id);
+    return $this->db->get()->result_array();
+  }
 }
 ?>
