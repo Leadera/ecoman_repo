@@ -143,5 +143,13 @@ class Cpscoping_model extends CI_Model {
     $this->db->where('cmpny_id',$cmpny_id);
     return $this->db->get()->result_array();
   }
+
+  public function search_result($prjct_id,$cmpny_id,$search){
+    $this->db->from('t_cp_scoping_files');
+    $this->db->like('file_name', $search, 'both');
+    $this->db->where('prjct_id',$prjct_id);
+    $this->db->where('cmpny_id',$cmpny_id);
+    return $this->db->get()->result_array();
+  }
 }
 ?>
