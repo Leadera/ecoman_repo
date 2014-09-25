@@ -44,6 +44,7 @@ $route['cp_allocation/deneme'] = "cpscoping/deneme";
 $route['cp_allocation/deneme_json'] = "cpscoping/deneme_json";
 
 //Cp Scoping Routes
+$route['kpi_insert/(:any)/(:any)/(:any)/(:any)/(:any)'] = "cpscoping/kpi_insert/$1/$2/$3/$4/$5";
 $route['kpi_calculation/(:any)/(:any)'] = "cpscoping/kpi_calculation/$1/$2";
 $route['search_result/(:any)/(:any)'] = "cpscoping/search_result/$1/$2";
 $route['cpscoping/file_upload/(:any)/(:any)'] = "cpscoping/cp_scoping_file_upload/$1/$2";

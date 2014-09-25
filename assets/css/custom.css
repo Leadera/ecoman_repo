@@ -105,3 +105,12 @@ body{
 .btn-sm{
     font-size:12px;
 }
+
+.cp-heading-kpi{
+    background: #f0f0f0;
+    padding: 10px;
+    border-radius: 4px 4px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+}
