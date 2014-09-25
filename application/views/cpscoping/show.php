@@ -47,8 +47,9 @@
 			success: function(data){
 				//console.log(data);
 				var temp = "";
-				temp += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><th style="text-align:center;">' + data.prcss_name + '</th></tr><tr><td> Upper EP Value: ' + data.ep_value_ust + ' EP</td></tr><tr><td> Lower EP Value: ' + data.ep_value_alt + ' EP</td></tr><tr><td> Upper Cost Value: ' + data.cost_value_ust + ' Euro</td></tr><tr><td> Lower Cost Value: ' + data.cost_value_alt + ' Euro</td></tr></table>';
+				temp += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><th style="text-align:center;">' + data.prcss_name + '</th></tr><tr><td> <b>EP:</b> ' + data.ep_value_alt + ' - ' + data.ep_value_ust + '</td></tr><tr><td> <b>Cost:</b> ' + data.cost_value_alt.toFixed(2) + ' - ' + data.cost_value_ust.toFixed(2) + ' Euro</td></tr></table>';
 				$("div."+prcss_id).html(temp);
+
 
 				temp_array[temp_index] = data.prcss_name;
 				temp_index++;
@@ -125,10 +126,12 @@
 		      		if(!(data.control == 1)){
 		      			$("#"+id).removeClass();
 		    			$("#"+id).addClass("btn btn-success btn-xs");
+		    			$("#"+id).html("Selected");
 		    			buton_durum = 1;
 		    		}else{
 		    			$("#"+id).removeClass();
 		    			$("#"+id).addClass("btn btn-default btn-xs");
+		    			$("#"+id).html("Dropped");
 		    			buton_durum = 0;
 		    		}
 		    		$.ajax({
@@ -241,10 +244,11 @@
 							<b><?php echo $a['flow_name']; ?></b>
 							<br>
 							<?php if ($active[$a['allocation_id']] == 0): ?>
-								<button class="btn btn-default btn-xs" id="<?php echo $a['allocation_id']; ?>" onclick="is_candidate(<?php echo $a['allocation_id'];?>)"><span class="glyphicon glyphicon-ok"></span>
+								<button class="btn btn-default btn-xs" id="<?php echo $a['allocation_id']; ?>" onclick="is_candidate(<?php echo $a['allocation_id'];?>)">
+									Select as IS candidate
 								</button>
 							<?php else: ?>
-								<button class="btn btn-success btn-xs" id="<?php echo $a['allocation_id']; ?>" onclick="is_candidate(<?php echo $a['allocation_id'];?>)"><span class="glyphicon glyphicon-ok"></span>
+								<button class="btn btn-success btn-xs" id="<?php echo $a['allocation_id']; ?>" onclick="is_candidate(<?php echo $a['allocation_id'];?>)">IS candidate
 								</button>
 							<?php endif ?>
 							
@@ -315,10 +319,10 @@
 								}
 							}
 							if ($active[$id] == 0): ?>
-								<button class="btn btn-default btn-xs" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)"><span class="glyphicon glyphicon-ok"></span>
+								<button class="btn btn-default btn-xs" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)">Select as IS candidate
 								</button>
 							<?php else: ?>
-								<button class="btn btn-success btn-xs" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)"><span class="glyphicon glyphicon-ok"></span>
+								<button class="btn btn-success btn-xs" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)">IS Candidate
 								</button>
 							<?php endif ?>
 						</td>
