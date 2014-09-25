@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 23, 2014 at 08:16 AM
+-- Generation Time: Sep 25, 2014 at 10:13 AM
 -- Server version: 5.5.36
 -- PHP Version: 5.4.27
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `ecoman_db`
 --
-CREATE DATABASE IF NOT EXISTS `ecoman_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `ecoman_db`;
 
 -- --------------------------------------------------------
 
@@ -385,30 +383,35 @@ CREATE TABLE IF NOT EXISTS `t_cp_allocation` (
   `unit_env_impact` varchar(25) NOT NULL,
   `allocation_env_impact` varchar(250) DEFAULT NULL,
   `importance_env_impact` varchar(250) DEFAULT NULL,
+  `reference` int(11) NOT NULL,
+  `unit_reference` varchar(25) NOT NULL,
+  `kpi` double NOT NULL,
+  `unit_kpi` varchar(25) NOT NULL,
+  `kpi_error` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `flow_id` (`flow_id`),
   KEY `flow_type_id` (`flow_type_id`),
   KEY `t_cp_scoping_ibfk_1` (`prcss_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `t_cp_allocation`
 --
 
-INSERT INTO `t_cp_allocation` (`id`, `prcss_id`, `flow_id`, `flow_type_id`, `amount`, `unit_amount`, `allocation_amount`, `importance_amount`, `cost`, `unit_cost`, `allocation_cost`, `importance_cost`, `env_impact`, `unit_env_impact`, `allocation_env_impact`, `importance_env_impact`) VALUES
-(1, 20, 1, 1, 1.50, 'Liter', '40', 'High', 210.00, 'Dolar', '40', 'Low', 3000.00, 'EP', '20', 'Medium'),
-(2, 21, 1, 2, 1.50, 'KW', '40', 'High', 210.00, 'Dolar', '40', 'Low', 3000.00, 'EP', '20', 'Medium'),
-(3, 21, 2, 1, 2.60, 'KW', '40', 'High', 1000.00, 'Dolar', '40', 'Low', 3000.00, 'EP', '20', 'Medium'),
-(4, 18, 2, 1, 1.50, 'KW', '40', 'Medium', 210.00, 'Dolar', '40', 'Low', 3000.00, 'EP', '20', 'High'),
-(5, 20, 1, 1, 1.50, 'Liter', '40', 'Medium', 210.00, 'Dolar', '40', 'Low', 3000.00, 'EP', '20', 'High'),
-(6, 20, 2, 2, 1.58, 'KW', '40', 'Medium', 21012.00, 'Dolar', '10', 'Medium', 3006.00, 'EP', '28', 'High'),
-(7, 20, 2, 1, 1.58, 'KW', '40', 'Medium', 21012.00, 'Dolar', '10', 'Medium', 3076.00, 'EP', '28', 'High'),
-(8, 18, 3, 2, 1.50, 'm³', '40', 'Medium', 21012.00, 'Dolar', '40', 'High', 3206.00, 'EP', '20', 'High'),
-(9, 21, 1, 1, 1.50, 'Liter', '40', 'Medium', 21012.00, 'Dolar', '40', 'High', 4006.00, 'EP', '20', 'High'),
-(10, 21, 2, 1, 1.59, 'Liter', '40', 'Medium', 21012.00, 'Dolar', '40', 'High', 3016.00, 'EP', '20', 'High'),
-(11, 21, 2, 2, 3.56, 'Liter', '40', 'Medium', 5000.00, 'Dolar', '40', 'High', 1206.00, 'EP', '20', 'High'),
-(12, 22, 3, 1, 89.12, 'm³', '10', 'Medium', 245.00, 'Euro', '28', 'High', 3231.00, 'EP', '20', 'Medium'),
-(13, 18, 3, 2, 12.10, 'm³', '10', 'Medium', 120007.00, 'TL', '28', 'High', 5000.00, 'EP', '20', 'Medium');
+INSERT INTO `t_cp_allocation` (`id`, `prcss_id`, `flow_id`, `flow_type_id`, `amount`, `unit_amount`, `allocation_amount`, `importance_amount`, `cost`, `unit_cost`, `allocation_cost`, `importance_cost`, `env_impact`, `unit_env_impact`, `allocation_env_impact`, `importance_env_impact`, `reference`, `unit_reference`, `kpi`, `unit_kpi`, `kpi_error`) VALUES
+(1, 20, 1, 1, 1.50, 'Liter', '40', 'High', 210.00, 'Dolar', '40', 'Low', 3000.00, 'EP', '20', 'Medium', 0, '', 0, '', 0),
+(2, 21, 1, 2, 1.50, 'KW', '40', 'High', 210.00, 'Dolar', '40', 'Low', 3000.00, 'EP', '20', 'Medium', 0, '', 0, '', 0),
+(3, 21, 2, 1, 2.60, 'KW', '40', 'High', 1000.00, 'Dolar', '40', 'Low', 3000.00, 'EP', '20', 'Medium', 0, '', 0, '', 0),
+(4, 18, 2, 1, 1.50, 'KW', '40', 'Medium', 210.00, 'Dolar', '40', 'Low', 3000.00, 'EP', '20', 'High', 0, '', 0, '', 0),
+(5, 20, 1, 1, 1.50, 'Liter', '40', 'Medium', 210.00, 'Dolar', '40', 'Low', 3000.00, 'EP', '20', 'High', 0, '', 0, '', 0),
+(6, 20, 2, 2, 1.58, 'KW', '40', 'Medium', 21012.00, 'Dolar', '10', 'Medium', 3006.00, 'EP', '28', 'High', 0, '', 0, '', 0),
+(7, 20, 2, 1, 1.58, 'KW', '40', 'Medium', 21012.00, 'Dolar', '10', 'Medium', 3076.00, 'EP', '28', 'High', 0, '', 0, '', 0),
+(8, 18, 3, 2, 1.50, 'm³', '40', 'Medium', 21012.00, 'Dolar', '40', 'High', 3206.00, 'EP', '20', 'High', 0, '', 0, '', 0),
+(9, 21, 1, 1, 1.50, 'Liter', '40', 'Medium', 21012.00, 'Dolar', '40', 'High', 4006.00, 'EP', '20', 'High', 0, '', 0, '', 0),
+(10, 21, 2, 1, 1.59, 'Liter', '40', 'Medium', 21012.00, 'Dolar', '40', 'High', 3016.00, 'EP', '20', 'High', 0, '', 0, '', 0),
+(11, 21, 2, 2, 3.56, 'Liter', '40', 'Medium', 5000.00, 'Dolar', '40', 'High', 1206.00, 'EP', '20', 'High', 0, '', 0, '', 0),
+(12, 22, 3, 1, 89.12, 'm³', '10', 'Medium', 245.00, 'Euro', '28', 'High', 3231.00, 'EP', '20', 'Medium', 0, '', 0, '', 0),
+(13, 18, 3, 2, 12.10, 'm³', '10', 'Medium', 120007.00, 'TL', '28', 'High', 5000.00, 'EP', '20', 'Medium', 0, '', 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -425,7 +428,7 @@ CREATE TABLE IF NOT EXISTS `t_cp_company_project` (
   KEY `allocation_id` (`allocation_id`),
   KEY `prjct_id` (`prjct_id`),
   KEY `cmpny_id` (`cmpny_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `t_cp_company_project`
@@ -458,7 +461,7 @@ CREATE TABLE IF NOT EXISTS `t_cp_is_candidate` (
   `active` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `allocation_id` (`allocation_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `t_cp_is_candidate`
@@ -469,7 +472,14 @@ INSERT INTO `t_cp_is_candidate` (`id`, `allocation_id`, `active`) VALUES
 (12, 13, 0),
 (13, 3, 0),
 (14, 12, 1),
-(15, 2, 1);
+(15, 2, 1),
+(16, 6, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_cp_scoping_files`
+--
 
 CREATE TABLE IF NOT EXISTS `t_cp_scoping_files` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -479,7 +489,15 @@ CREATE TABLE IF NOT EXISTS `t_cp_scoping_files` (
   PRIMARY KEY (`id`),
   KEY `prjct_id` (`prjct_id`),
   KEY `cmpny_id` (`cmpny_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `t_cp_scoping_files`
+--
+
+INSERT INTO `t_cp_scoping_files` (`id`, `prjct_id`, `cmpny_id`, `file_name`) VALUES
+(7, 2, 7, 'Metal machining benchmarks.xlsx'),
+(8, 2, 7, 'Mechanical Engineering.pdf');
 
 -- --------------------------------------------------------
 
@@ -4276,7 +4294,7 @@ ALTER TABLE `t_cp_is_candidate`
 ALTER TABLE `t_cp_scoping_files`
   ADD CONSTRAINT `t_cp_scoping_files_ibfk_1` FOREIGN KEY (`prjct_id`) REFERENCES `t_prj` (`id`),
   ADD CONSTRAINT `t_cp_scoping_files_ibfk_2` FOREIGN KEY (`cmpny_id`) REFERENCES `t_cmpny` (`id`);
-  
+
 --
 -- Constraints for table `t_eqpmnt_type_attrbt`
 --
