@@ -148,7 +148,6 @@ class Cpscoping extends CI_Controller {
 			$data['allocation_output'][] = $this->cpscoping_model->get_allocation_from_allocation_id_output($ids['allocation_id']);
 			$data['active'][$ids['allocation_id']] = $this->cpscoping_model->get_is_candidate_active_position($ids['allocation_id']);
 		}
-		$data['cp_files'] = $this->cpscoping_model->get_cp_scoping_files($project_id,$company_id);
 		$this->load->view('template/header');
 		$this->load->view('cpscoping/show',$data);
 		$this->load->view('template/footer');
@@ -434,5 +433,12 @@ class Cpscoping extends CI_Controller {
 		}
 		header("Content-Type: application/json", true);
 		echo json_encode($allocation_array);
+	}
+
+	public function kpi_calculation($prjct_id,$cmpny_id){
+		$data['cp_files'] = $this->cpscoping_model->get_cp_scoping_files($prjct_id,$cmpny_id);
+		$this->load->view('template/header');
+		$this->load->view('cpscoping/kpi_calculation',$data);
+		$this->load->view('template/footer');
 	}
 }

@@ -37,7 +37,7 @@ $(document).ready(function() {
     <select id="companiess" class="btn-group select select-block">
         <option value="0">Nothing Selected</option>
     </select>
-    <a href="#" class="btn btn-default btn-sm" id="cpscopinga">New CP potentials identification</a>     
+    <a href="#" class="btn btn-default btn-sm" id="cpscopinga">New CP potentials identification</a>
 </div>
 
 <div class="col-md-9">
@@ -46,7 +46,8 @@ $(document).ready(function() {
     <?php foreach ($com_pro as $cp): ?>
         <?php // print_r($cp); ?>
         <div class="cp-heading">
-            <a href="<?php echo base_url('cpscoping/'.$cp['project_id'].'/'.$cp['company_id'].'/show'); ?>" class="btn btn-sm btn-info pull-right">View and Edit Cp Potentials Identifications</a>
+            <a style="margin-left:10px;" href="<?php echo base_url('cpscoping/'.$cp['project_id'].'/'.$cp['company_id'].'/show'); ?>" class="btn btn-sm btn-info pull-right">View and Edit Cp Potentials Identifications</a>
+            <a href="<?php echo base_url('kpi_calculation/'.$cp['project_id'].'/'.$cp['company_id']); ?>" class="btn btn-sm btn-info pull-right">View and Edit KPI Calculation</a>
             <b>Company Name:</b> <?php echo $cp['company_name']; ?><br>
             <b>Project Name:</b> <?php echo $cp['project_name']; ?>
         </div>                    
