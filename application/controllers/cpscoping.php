@@ -71,6 +71,11 @@ class Cpscoping extends CI_Controller {
 			$unit_amount = $this->input->post('unit_amount');
 			$unit_cost = $this->input->post('unit_cost');
 			$unit_env_impact = $this->input->post('unit_env_impact');
+			$reference = $this->input->post('reference');
+			$unit_reference = $this->input->post('unit_reference');
+			$kpi = $this->input->post('kpi');
+			$unit_kpi = $this->input->post('unit_kpi');
+			$kpi_error = $this->input->post('kpi_error');
 
 			$array_allocation = array(
 				'prcss_id'=>$prcss_name,
@@ -87,7 +92,12 @@ class Cpscoping extends CI_Controller {
 				'env_impact'=>$env_impact,
 				'unit_env_impact'=>$unit_env_impact,
 				'allocation_env_impact'=>$allocation_env_impact,
-				'importance_env_impact'=>$importance_env_impact
+				'importance_env_impact'=>$importance_env_impact,
+				'reference' => $reference,
+				'unit_reference' => $unit_reference,
+				'kpi' => number_format($kpi,4),
+				'unit_kpi' => $unit_kpi,
+				'kpi_error' => $kpi_error
 			);
 			$this->cpscoping_model->set_cp_allocation($array_allocation);
 			$allocation_array = array(

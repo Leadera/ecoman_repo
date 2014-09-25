@@ -314,13 +314,15 @@
 									$id = $a_output['allocation_id'];
 								}
 							}
-							if ($active[$id] == 0): ?>
-								<button class="btn btn-default btn-xs" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)"><span class="glyphicon glyphicon-ok"></span>
-								</button>
-							<?php else: ?>
-								<button class="btn btn-success btn-xs" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)"><span class="glyphicon glyphicon-ok"></span>
-								</button>
-							<?php endif ?>
+							if($id != 0){
+								if ($active[$id] == 0): ?>
+									<button class="btn btn-default btn-xs" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)"><span class="glyphicon glyphicon-ok"></span>
+									</button>
+								<?php else: ?>
+									<button class="btn btn-success btn-xs" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)"><span class="glyphicon glyphicon-ok"></span>
+									</button>
+								<?php endif ?>
+							<?php } ?>
 						</td>
 						<?php for ($t=0; $t < $process_adet+1; $t++): ?>
 							<script type="text/javascript">
