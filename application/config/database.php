@@ -48,9 +48,9 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'ecoman_db';
-$db['default']['password'] = '12345';
+$db['default']['hostname'] = '88.249.18.205';
+$db['default']['username'] = 'root';
+$db['default']['password'] = 'Ecoman_db1';
 $db['default']['database'] = 'ecoman_db';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
