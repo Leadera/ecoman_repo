@@ -14,7 +14,7 @@ class Cpscoping_model extends CI_Model {
   }
 
   public function get_allocation_from_allocation_id($allocation_id){
-  	$this->db->select('t_cp_allocation.id as allocation_id, t_cp_allocation.prcss_id as prcss_id,t_prcss.name as prcss_name, t_flow.name as flow_name, t_flow_type.name as flow_type_name,amount,unit_amount,allocation_amount,importance_amount,cost,unit_cost,allocation_cost,importance_cost,env_impact,unit_env_impact,allocation_env_impact,importance_env_impact,t_cp_allocation.flow_id as flow_id,t_cp_allocation.prcss_id as prcss_id,t_cp_allocation.flow_type_id as flow_type_id, kpi, unit_kpi, kpi_error');
+  	$this->db->select('t_cp_allocation.id as allocation_id, t_cp_allocation.prcss_id as prcss_id,t_prcss.name as prcss_name, t_flow.name as flow_name, t_flow_type.name as flow_type_name,amount,unit_amount,allocation_amount,importance_amount,cost,unit_cost,allocation_cost,importance_cost,env_impact,unit_env_impact,allocation_env_impact,importance_env_impact,t_cp_allocation.flow_id as flow_id,t_cp_allocation.prcss_id as prcss_id,t_cp_allocation.flow_type_id as flow_type_id, kpi, unit_kpi, kpi_error, benchmark_kpi, best_practice');
   	$this->db->from('t_cp_allocation');
   	$this->db->join('t_flow','t_flow.id = t_cp_allocation.flow_id');
   	$this->db->join('t_flow_type', 't_flow_type.id = t_cp_allocation.flow_type_id');

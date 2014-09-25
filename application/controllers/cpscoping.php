@@ -465,7 +465,6 @@ class Cpscoping extends CI_Controller {
 				    );
 				    $this->cpscoping_model->kpi_insert($insert_array,$allo_id['allocation_id']);
 				}
-				$data['query'][] = $query;
 			}
 		}
 

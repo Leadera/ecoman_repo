@@ -76,10 +76,10 @@
 						   				echo "<table class='table table-bordered' style='text-align:center; margin-bottom:5px;'>";
 				   						echo "<tr><th style='text-align:center;' colspan='2'>".$kpi_values[$i]['flow_name']."-".$kpi_values[$i]['flow_type_name']."</th></tr>";
 				   						echo "<tr><td style='width:50%;'>Kpi</td><td>".$kpi_values[$i]['kpi']."</td></tr>";
-				   						echo "<tr><td style='width:50%;'>Benchmark KPI</td><td><input type='text' class='form-control' id='benchmark_kpi' name='benchmark_kpi' value=''></td></tr>";
+				   						echo "<tr><td style='width:50%;'>Benchmark KPI</td><td><input type='text' class='form-control' id='benchmark_kpi' name='benchmark_kpi' value='".$kpi_values[$i]['benchmark_kpi']."'></td></tr>";
 				   						echo "<tr><td>Kpi Unit Value</td><td>".$kpi_values[$i]['unit_kpi']."</td></tr>";
 				   						echo "<tr><td>Kpi Error Value</td><td>".$kpi_values[$i]['kpi_error']."%</td></tr>";
-				   						echo "<tr><td>Best Practice</td><td><textarea class='form-control' id='best_practice' name='best_practice' rows='3'></textarea></td></tr>";
+				   						echo "<tr><td>Best Practice</td><td><textarea class='form-control' id='best_practice' name='best_practice' rows='3'>".$kpi_values[$i]['best_practice']."</textarea></td></tr>";
 				   						echo "</table>";
 				   						echo "<div class='col-md-4'><button style='margin-bottom:5px;' type='submit' class='btn btn-primary'>Save Info</button></div>";
 				   						echo "</form>";
