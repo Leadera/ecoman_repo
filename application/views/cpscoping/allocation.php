@@ -30,6 +30,29 @@ $(document).ready(function() {
     });
 });
 </script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+	    $("#reference").change(function() { 
+	    	var amount = $("#amount").val();
+	    	var reference = $("#reference").val();
+	    	if(amount != ""){
+		    	$("#kpi").val(amount/reference);
+	    	}else{
+	    		alert("Amount degeri bos olmamali!");
+	    	}
+	    });
+	    $("#unit_reference").change(function() { 
+	    	var unit_amount = $("#unit_amount").val();
+	    	var unit_reference = $("#unit_reference").val();
+	    	if(unit_amount != 0){
+		    	$("#unit_kpi").val(unit_amount+"/"+unit_reference);
+	    	}else{
+	    		alert("Amount unit degeri bos olmamali!");
+	    	}
+	    });
+	});
+</script>
 <?php echo form_open_multipart('cpscoping/'.$project_id.'/'.$company_id.'/allocation'); ?>
 	<div class="container">
 		<div class="row">
@@ -138,6 +161,38 @@ $(document).ready(function() {
 						<option value="Low">Low</option>
 					</select>
 				</div>
+			</div>
+
+			<div class="for-group">
+				<label class="control-label col-md-6">Reference</label>
+				<label class="control-label col-md-6">Unit</label>
+				<div class="col-md-6">
+					<input type="text" class="form-control" id="reference" placeholder="3000" name="reference">
+				</div>
+				<div class="col-md-6">
+					<select name="unit_reference" id="unit_reference" class="btn-group select select-block">
+						<option value="0">Nothing Selected</option>
+						<?php foreach ($unit_list as $u): ?>
+							<option value="<?php echo $u['name']; ?>"><?php echo $u['name']; ?></option>
+						<?php endforeach ?>
+					</select>
+				</div>
+			</div>
+
+			<div class="for-group">
+				<label class="control-label col-md-3">KPI</label>
+				<label class="control-label col-md-3">KPI Unit</label>
+				<label class="control-label col-md-6">KPI Error(%)</label>
+				<div class="col-md-3">
+					<input type="text" class="form-control" id="kpi" placeholder="" name="kpi" readonly>
+				</div>
+				<div class="col-md-3">
+					<input type="text" class="form-control" id="unit_kpi" placeholder="" name="unit_kpi" readonly>
+				</div>
+				<div class="col-md-6">
+					<input type="text" class="form-control" id="kpi_error" placeholder="30" name="kpi_error">
+				</div>
+				
 			</div>
 			<div class="col-md-4"><button type="submit" class="btn btn-primary">Save Info</button></div>	
 		</div>

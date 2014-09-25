@@ -318,6 +318,7 @@
 									$id = $a_output['allocation_id'];
 								}
 							}
+							if($id != 0){
 							if ($active[$id] == 0): ?>
 								<button class="btn btn-default btn-xs" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)">Select as IS candidate
 								</button>
@@ -325,6 +326,9 @@
 								<button class="btn btn-success btn-xs" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)">IS Candidate
 								</button>
 							<?php endif ?>
+
+							<?php } ?>
+
 						</td>
 						<?php for ($t=0; $t < $process_adet+1; $t++): ?>
 							<script type="text/javascript">
