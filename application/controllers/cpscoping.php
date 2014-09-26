@@ -153,6 +153,16 @@ class Cpscoping extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function kpi_calculation_chart($prjct_id,$cmpny_id){
+		$allocation_id_array = $this->cpscoping_model->get_allocation_id_from_ids($cmpny_id,$prjct_id);
+		$data['allocation'] = array();
+		foreach ($allocation_id_array as $ids) {
+			$data['allocation'][] = $this->cpscoping_model->get_allocation_from_allocation_id($ids['allocation_id']);
+		}
+		header("Content-Type: application/json", true);
+		echo json_encode($data);
+	}
+
 	public function get_allo_from_fname_pname($flow_id,$process_id,$cmpny_id,$input_output,$prjct_id){
 		if($process_id != 0){
 			$kontrol = array();
@@ -404,7 +414,7 @@ class Cpscoping extends CI_Controller {
 				'file_name' => $file_name
 			);
 			$this->cpscoping_model->insert_cp_scoping_file($cp_scoping_files);
-			redirect(base_url('cpscoping/'.$prjct_id.'/'.$cmpny_id.'/show'),'refresh');
+			redirect(base_url('kpi_calculation/'.$prjct_id.'/'.$cmpny_id),'refresh');
 		}
 	}
 
