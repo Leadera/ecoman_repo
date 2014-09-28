@@ -11,7 +11,7 @@
 				<?php $sayac = 1; foreach ($result as $r): ?>
 					<tr>
 						<th><?php echo $sayac;$sayac++; ?></th>
-						<th><a href="<?php echo asset_url('cp_scoping_files/').$r["file_name"]; ?>"><?php echo $r['file_name']; ?></a></th>
+						<th><a href="<?php echo asset_url('cp_scoping_files').'/'.$r["file_name"]; ?>"><?php echo $r['file_name']; ?></a></th>
 					</tr>
 				<?php endforeach ?>
 			</table>

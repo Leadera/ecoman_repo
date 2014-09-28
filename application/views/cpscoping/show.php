@@ -149,7 +149,9 @@
 		
 	};
 </script>
-
+		<div class="col-md-12" style="margin-bottom: 10px;">
+			<a class="btn btn-default btn-sm" href="<?php echo base_url('kpi_calculation/'.$this->uri->segment(2).'/'.$this->uri->segment(3)); ?>">Show KPI Calculation Data</a>
+		</div>
 		<div class="col-md-4">
 			<p>Cost and Environmental impact graph of processes</p>
 			<div id="chart_div" style="width: 100%; height: 400px; border:2px solid #f0f0f0;"></div>

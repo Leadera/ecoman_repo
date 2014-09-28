@@ -46,7 +46,7 @@
 
 	          	for(var i = 1 ; i < index+1 ; i++){
 	          		newData[i][0] = prcss_array[i-1]+"-"+flow_array[i-1]+"-"+flow_type_array[i-1];
-	          		newData[i][1] = 100;
+	          		newData[i][1] = 100-(kpi_ust[i-1] - kpi_alt[i-1])/2;
 	          		newData[i][2] = (kpi_ust[i-1] - kpi_alt[i-1]);
 	          		newData[i][3] = '';
 	          	}
@@ -54,7 +54,6 @@
 	          	var data = google.visualization.arrayToDataTable(newData);
 
 	          	var options = {
-			        width: 1000,
 			        height: 400,
 			        legend: { position: 'top', maxLines: 3 },
 			        bar: { groupWidth: '75%' },
@@ -92,48 +91,11 @@
 		// chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';*/
 	};
 </script>
-
-
-
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="form-group" style="width: 100%; height: 400px; border:2px solid #f0f0f0;">
-				<?php echo form_open_multipart('cpscoping/file_upload/'.$this->uri->segment('2').'/'.$this->uri->segment('3')); ?>
-				    <input type="text" class="form-control" id="file_name" placeholder="file_name.pdf or file_name.xlsx or file_name.docx etc." name="file_name">
-				    <input type="file" name="userfile" id="userfile" size="20" />
-					<br/>
-				    <button type="submit" class="btn btn-info">Save File</button>
-			    </form>
-			    <table class="table table-bordered">
-			    	<tr>
-			    		<th>Index</th>
-			    		<th>File Name</th>
-			    	</tr>
-				    <?php $sayac = 1;foreach ($cp_files as $file): ?>
-				    	<tr>
-				    		<td>
-				    			<?php echo $sayac; $sayac++; ?>
-				    		</td>
-				    		<td>
-				    			<button onclick="open_document(<?php echo $file['id']; ?>)" id="<?php echo $file['id']; ?>"
-			    						style="width:100%;background-color: Transparent;
-										    background-repeat:no-repeat;
-										    border: none;
-										    cursor:pointer;
-										    overflow: hidden;
-										    outline:none;">
-									<?php echo $file['file_name']; ?>
-								</button>
-				    		</td>
-				    	</tr>
-				    <?php endforeach ?>
-			    </table>
-			</div>
-
-			<?php echo form_open_multipart('search_result/'.$this->uri->segment(2).'/'.$this->uri->segment(3)); ?>
-			    <input style="margin-bottom:10px;" type="text" class="form-control" id="search" placeholder="Search" name="search">
-		    </form>
+<div class="col-md-12" style="margin-bottom: 10px;">
+	<a class="btn btn-default btn-sm" href="<?php echo base_url('cpscoping/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/show'); ?>">Show CP Scoping Data</a>
+</div>
+<div class="col-md-7">
+	<p>KPI View and Edit Table</p>
 		    <?php 
     			$kontrol = array(); $index = 0; $prcss_adet = 0; $kontrol_prcss = array(); $index_prcss = 0; 
     		?>
@@ -165,8 +127,9 @@
 		   			if($deger == 0){
 				 ?>
 			   		<div class="cp-heading-kpi">
-			   			<?php echo $kpi['prcss_name'];?>
+			   			Process: <?php echo $kpi['prcss_name'];?>
 			    	</div>
+			    	<div style="margin-bottom: 25px;">
 			    		<?php 
 			    			$kontrol_flow = array(); $index_flow = 0;
 			    			$kontrol_flow_type = array();
@@ -185,26 +148,67 @@
 						   			$index_flow++;
 						   			if($deger_flow == 0){
 						   				echo form_open_multipart("kpi_insert/".$this->uri->segment(2)."/".$this->uri->segment(3)."/".$kpi_values[$i]['flow_id']."/".$kpi_values[$i]['flow_type_id']."/".$kpi_values[$i]['prcss_id']);
-						   				echo "<table class='table table-bordered' style='text-align:center; margin-bottom:5px;'>";
-				   						echo "<tr><th style='text-align:center;' colspan='2'>".$kpi_values[$i]['flow_name']."-".$kpi_values[$i]['flow_type_name']."</th></tr>";
-				   						echo "<tr><td style='width:50%;'>Kpi</td><td>".$kpi_values[$i]['kpi']."</td></tr>";
-				   						echo "<tr><td style='width:50%;'>Benchmark KPI</td><td><input type='text' class='form-control' id='benchmark_kpi' name='benchmark_kpi' value='".$kpi_values[$i]['benchmark_kpi']."'></td></tr>";
-				   						echo "<tr><td>Kpi Unit Value</td><td>".$kpi_values[$i]['unit_kpi']."</td></tr>";
-				   						echo "<tr><td>Kpi Error Value</td><td>".$kpi_values[$i]['kpi_error']."%</td></tr>";
-				   						echo "<tr><td>Best Practice</td><td><textarea class='form-control' id='best_practice' name='best_practice' rows='3'>".$kpi_values[$i]['best_practice']."</textarea></td></tr>";
+						   				echo "<table class='table table-bordered' style='margin-bottom:0px;'>";
+				   						echo "<tr><th colspan='6'>Flow: ".$kpi_values[$i]['flow_name']."-".$kpi_values[$i]['flow_type_name']."</th></tr>";
+				   						echo "<tr><td>Kpi</td><td style='width:130px;'>".$kpi_values[$i]['kpi']."</td><td>Kpi Unit Value</td><td>".$kpi_values[$i]['unit_kpi']."</td><td>Kpi Error Value</td><td>".$kpi_values[$i]['kpi_error']."%</td></tr>";
+				   						echo "<tr><td>Benchmark KPI</td><td><input type='text' class='form-control' id='benchmark_kpi' name='benchmark_kpi' value='".$kpi_values[$i]['benchmark_kpi']."'></td><td>Best Practice</td><td><textarea class='form-control' id='best_practice' name='best_practice' rows='3'>".$kpi_values[$i]['best_practice']."</textarea></td><td colspan='2'><div class='col-md-4'><button style='margin-bottom:5px;' type='submit' class='btn btn-inverted'>Save Data</button></div></td></tr>";
 				   						echo "</table>";
-				   						echo "<div class='col-md-4'><button style='margin-bottom:5px;' type='submit' class='btn btn-primary'>Save Info</button></div>";
 				   						echo "</form>";
 				   					}
 			   					}
 			   				}
 		   				?>
+		   			</div>
 			    <?php } ?>
 		   	<?php endforeach ?>
 		</div>
-	</div>
-	<div id="chart_div"></div>
-</div>
+
+		<div class="col-md-5">
+			<p>Company KPIs vs Benchmark KPIs Comparison Graph</p>
+			<div id="chart_div" style="border:2px solid #f0f0f0;"></div>
+			<hr>
+			<p>Search for Documents</p>
+			<?php echo form_open_multipart('search_result/'.$this->uri->segment(2).'/'.$this->uri->segment(3)); ?>
+			  <input style="margin-bottom:10px;" type="text" class="form-control" id="search" placeholder="Please enter search term" name="search">
+		  </form>
+		  <hr>
+		  <p>Document Upload</p>
+		  <div class="form-group">
+				<?php echo form_open_multipart('cpscoping/file_upload/'.$this->uri->segment('2').'/'.$this->uri->segment('3')); ?>
+				    <input type="text" class="form-control" id="file_name" placeholder="file_name.pdf or file_name.xlsx or file_name.docx etc." name="file_name">
+				    <input type="file" name="userfile" id="userfile" size="20" />
+						<br/>
+				    <button type="submit" class="btn btn-info btn-sm">Save File</button>
+			    </form>
+			    <hr>
+			    <p>Uploaded Documents</p>
+			    <table class="table table-bordered">
+			    	<tr>
+			    		<th>Index</th>
+			    		<th>File Name</th>
+			    	</tr>
+				    <?php $sayac = 1;foreach ($cp_files as $file): ?>
+				    	<tr>
+				    		<td>
+				    			<?php echo $sayac; $sayac++; ?>
+				    		</td>
+				    		<td>
+				    			<button onclick="open_document(<?php echo $file['id']; ?>)" id="<?php echo $file['id']; ?>"
+			    						style="width:100%;background-color: Transparent;
+										    background-repeat:no-repeat;
+										    border: none;
+										    cursor:pointer;
+										    overflow: hidden;
+										    outline:none;">
+									<?php echo $file['file_name']; ?>
+								</button>
+				    		</td>
+				    	</tr>
+				    <?php endforeach ?>
+			    </table>
+			</div>
+		</div>
+
 <script type="text/javascript">
 	deneme();
 </script>

@@ -107,11 +107,10 @@ body{
 }
 
 .cp-heading-kpi{
-    background: #f0f0f0;
-    padding: 10px;
-    border-radius: 4px 4px;
+    background: #6D6D6D;
+    padding: 10px 27px;
     font-size: 14px;
-    text-align: center;
     font-weight: bold;
-    margin-top: 50px;
+    color: white;
+    border-radius: 4px 4px 0 0;
 }
