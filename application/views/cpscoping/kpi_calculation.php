@@ -22,8 +22,10 @@
 						prcss_array[index] = data['allocation'][i].prcss_name;
 						flow_array[index] = data['allocation'][i].flow_name;
 						flow_type_array[index] = data['allocation'][i].flow_type_name;
-						kpi_alt[index] = (data['allocation'][i].kpi * (100 -  data['allocation'][i].kpi_error) / 100) / data['allocation'][i].benchmark_kpi;
-						kpi_ust[index] = (data['allocation'][i].kpi * (100 +  data['allocation'][i].kpi_error) / 100) / data['allocation'][i].benchmark_kpi;
+
+						var kpi_error = parseFloat(data['allocation'][i].kpi_error);
+						kpi_alt[index] = ((data['allocation'][i].kpi * (100 - kpi_error) / 100) / data['allocation'][i].benchmark_kpi)*100;
+						kpi_ust[index] = ((data['allocation'][i].kpi * (100 + kpi_error) / 100) / data['allocation'][i].benchmark_kpi)*100;
 						index++;
 					}
 				}
@@ -39,27 +41,29 @@
 	          	}
 
 	          	newData[0][0] = 'Genre';
-	          	newData[0][1] = 'Process';
-	          	newData[0][2] = 'Error';
+	          	newData[0][1] = 'Fair Value';
+	          	newData[0][2] = 'Error Value';
 	          	newData[0][3] = { role: 'annotation' };
 
 
 	          	for(var i = 1 ; i < index+1 ; i++){
 	          		newData[i][0] = prcss_array[i-1]+"-"+flow_array[i-1]+"-"+flow_type_array[i-1];
-	          		newData[i][1] = 100-(kpi_ust[i-1] - kpi_alt[i-1])/2;
-	          		newData[i][2] = (kpi_ust[i-1] - kpi_alt[i-1]);
+	          		newData[i][1] = kpi_alt[i-1];
+	          		newData[i][2] = kpi_ust[i-1] - kpi_alt[i-1];
 	          		newData[i][3] = '';
 	          	}
 
 	          	var data = google.visualization.arrayToDataTable(newData);
 
 	          	var options = {
-			        height: 400,
+			        height: 600,
 			        legend: { position: 'top', maxLines: 3 },
 			        bar: { groupWidth: '75%' },
 			        isStacked: true,
+			        vAxis: {title: "% (Percentage)"},
+			        hAxis: {title: 'Process Name - Flow Name - Flow Type Name', titleTextStyle: {color: 'red'}}
 			    };
-
+			    
 			    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
 			    chart.draw(data, options);
 			}
@@ -175,7 +179,7 @@
 		  <p>Document Upload</p>
 		  <div class="form-group">
 				<?php echo form_open_multipart('cpscoping/file_upload/'.$this->uri->segment('2').'/'.$this->uri->segment('3')); ?>
-				    <input type="text" class="form-control" id="file_name" placeholder="file_name.pdf or file_name.xlsx or file_name.docx etc." name="file_name">
+				    <input type="text" class="form-control" id="file_name" placeholder="file_name" name="file_name">
 				    <input type="file" name="userfile" id="userfile" size="20" />
 						<br/>
 				    <button type="submit" class="btn btn-info btn-sm">Save File</button>
