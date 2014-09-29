@@ -386,20 +386,26 @@ class Cpscoping extends CI_Controller {
 
 	public function cp_scoping_file_upload($prjct_id,$cmpny_id){
 		$file_name = $this->input->post('file_name');
+
 		$uzanti = $_FILES['userfile']['name'];
 		$uzanti = explode('.',$uzanti);
 		$eklenti = $uzanti[sizeof($uzanti)-1];
 
-		$dosya_adi = "";
-		for($i = 0 ; $i < sizeof($uzanti)-1 ; $i++){
-			$dosya_adi .= $uzanti[$i];
+		$last_file_name = explode(' ',$file_name);
+		$f_name = "";
+		for($i = 0 ; $i < sizeof($last_file_name) ; $i++){
+			if($i == sizeof($last_file_name)-1){
+				$f_name .= $last_file_name[$i];
+			}else{
+				$f_name .= $last_file_name[$i]."_";
+			}
 		}
 		
 		ini_set('upload_max_filesize','20M'); 
 		$config['upload_path'] = './assets/cp_scoping_files/';
 		$config['allowed_types'] = $eklenti;
 		$config['max_size']	= '500000';
-		$config['file_name']	= $file_name;
+		$config['file_name']	= $f_name.'.'.$eklenti;
 		$this->load->library('upload', $config);
 
 		//Resmi servera yükleme
@@ -411,7 +417,7 @@ class Cpscoping extends CI_Controller {
 			$cp_scoping_files = array(
 				'prjct_id' => $prjct_id,
 				'cmpny_id' => $cmpny_id,
-				'file_name' => $file_name
+				'file_name' => $f_name.'.'.$eklenti
 			);
 			$this->cpscoping_model->insert_cp_scoping_file($cp_scoping_files);
 			redirect(base_url('kpi_calculation/'.$prjct_id.'/'.$cmpny_id),'refresh');
@@ -420,7 +426,9 @@ class Cpscoping extends CI_Controller {
 
 	public function search_result($prjct_id,$cmpny_id){
 		$search = $this->input->post('search');
-		$data['result'] = $this->cpscoping_model->search_result($prjct_id,$cmpny_id,$search);
+		$data['result'] = $this->cpscoping_model->search_result($search);
+		$data['prjct_id'] = $prjct_id;
+		$data['cmpny_id'] = $cmpny_id;
 		$this->load->view('template/header');
 		$this->load->view('cpscoping/search_result',$data);
 		$this->load->view('template/footer');
