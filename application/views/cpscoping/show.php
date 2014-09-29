@@ -195,7 +195,7 @@
 							break;
 						}
 					}
-					if($degisken == 1): ?>
+					if($degisken == 1 && $a['flow_type_id'] == 1): ?>
 					<tr>
 						<td>
 							<b><?php echo $a['flow_name']; ?></b>
@@ -263,18 +263,23 @@
 							break;
 						}
 					}
-					if($degisken == 1): ?>
+					if($degisken == 1){
+						$id = 0;
+						foreach ($allocation_output as $a_output) {
+							if($a_output['flow_name'] == $a['flow_name']){
+								$id = $a_output['allocation_id'];
+							}
+						}
+						if($id == 0){
+							continue;
+						}
 
+							?>
 					<tr>
 						<td>
 							<b><?php echo $a['flow_name']; ?></b>
 							<br>
-							<?php $id = 0;
-							foreach ($allocation_output as $a_output) {
-								if($a_output['flow_name'] == $a['flow_name']){
-									$id = $a_output['allocation_id'];
-								}
-							}
+							<?php
 							if($id != 0){
 							if ($active[$id] == 0): ?>
 								<button class="btn btn-default btn-xs" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)">Select as IS candidate
@@ -299,7 +304,7 @@
 						<?php endfor ?>
 					</tr>
 
-				<?php endif ?>
+				<?php } ?>
 				<?php endforeach ?>
 			</table>
 			<p>Cost and Environmental impact data of processes</p>
