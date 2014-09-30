@@ -60,7 +60,7 @@
 			        legend: { position: 'top', maxLines: 3 },
 			        bar: { groupWidth: '75%' },
 			        isStacked: true,
-			        vAxis: {title: "% (Percentage)"},
+			        vAxis: {title: "% (Percentage)",gridlines: { count: 12} },
 			        hAxis: {title: 'Process Name - Flow Name - Flow Type Name', titleTextStyle: {color: 'red'}}
 			    };
 			    
