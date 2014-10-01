@@ -9,6 +9,10 @@ class Cpscoping extends CI_Controller {
 		$this->load->model('cpscoping_model');
 		$this->load->model('flow_model');
 		$this->load->library('form_validation');
+		$temp = $this->session->userdata('user_in');
+		if(empty($temp)){
+			redirect(base_url('login'),'refresh');
+		}
 	}
 
 	public function index(){
