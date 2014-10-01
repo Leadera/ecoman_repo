@@ -9,8 +9,7 @@
 		var prcss_array = new Array();
 		var flow_array = new Array();
 		var flow_type_array = new Array();
-		var kpi_alt = new Array();
-		var kpi_ust = new Array();
+		var kpi = new Array();
 		var index = 0;
 		$.ajax({
 			type: "POST",
@@ -23,15 +22,12 @@
 						flow_array[index] = data['allocation'][i].flow_name;
 						flow_type_array[index] = data['allocation'][i].flow_type_name;
 
-						var kpi_error = parseFloat(data['allocation'][i].kpi_error);
-						kpi_alt[index] = ((data['allocation'][i].kpi * (100 - kpi_error) / 100) / data['allocation'][i].benchmark_kpi)*100;
-						kpi_ust[index] = ((data['allocation'][i].kpi * (100 + kpi_error) / 100) / data['allocation'][i].benchmark_kpi)*100;
+						kpi[index] = ((data['allocation'][i].benchmark_kpi - data['allocation'][i].kpi) / data['allocation'][i].kpi) * 100;
 						index++;
 					}
 				}
 
-				console.log(kpi_alt);
-				console.log(kpi_ust);
+				console.log(kpi);
 
 				var data = new google.visualization.DataTable();
 
@@ -48,8 +44,8 @@
 
 	          	for(var i = 1 ; i < index+1 ; i++){
 	          		newData[i][0] = prcss_array[i-1]+"-"+flow_array[i-1]+"-"+flow_type_array[i-1];
-	          		newData[i][1] = kpi_alt[i-1];
-	          		newData[i][2] = kpi_ust[i-1] - kpi_alt[i-1];
+	          		newData[i][1] = 100;
+	          		newData[i][2] = kpi[i-1];
 	          		newData[i][3] = '';
 	          	}
 
