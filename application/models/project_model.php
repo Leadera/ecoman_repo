@@ -6,109 +6,108 @@ class Project_model extends CI_Model {
     $this->load->database();
   }
   public function create_project($project){
-    $this->db->insert('T_PRJ', $project);
+    $this->db->insert('t_prj', $project);
     return $this->db->insert_id();
   }
 
   public function update_project($project,$id){
     $this->db->where('id', $id);
-    $this->db->update('T_PRJ', $project); 
+    $this->db->update('t_prj', $project); 
   }
 
   public function get_active_project_status(){
-
     $this->db->select('*');
-    $this->db->from('T_PRJ_STATUS');
+    $this->db->from('t_prj_status');
     $this->db->where('active', 1);
     $query = $this->db->get();
     return $query->result_array();
   }
 
   public function insert_project_company($prj_cmpny){
-    $this->db->insert('T_PRJ_CMPNY', $prj_cmpny);
+    $this->db->insert('t_prj_cmpny', $prj_cmpny);
   }
   public function insert_project_consultant($prj_cnsltnt){
-    $this->db->insert('T_PRJ_CNSLTNT', $prj_cnsltnt);
+    $this->db->insert('t_prj_cnsltnt', $prj_cnsltnt);
   }
   public function insert_project_contact_person($prj_cntct_prsnl){
-     $this->db->insert('T_PRJ_CNTCT_PRSNL', $prj_cntct_prsnl);
+     $this->db->insert('t_prj_cntct_prsnl', $prj_cntct_prsnl);
   }
 
   public function get_projects(){
     $this->db->select("*");
-    $this->db->from('T_PRJ');
+    $this->db->from('t_prj');
     $query = $this->db->get();
     return $query->result_array();
   }
 
   public function get_project($prj_id){
     $this->db->select("*");
-    $this->db->from('T_PRJ');
+    $this->db->from('t_prj');
     $this->db->where('id',$prj_id);
     $query = $this->db->get();
     return $query->row_array();
   }
 
   public function get_status($prj_id){
-    $this->db->select('T_PRJ_STATUS.name');
-    $this->db->from('T_PRJ_STATUS');
-    $this->db->join('T_PRJ', 'T_PRJ.status_id = T_PRJ_STATUS.id');
-    $this->db->where('T_PRJ.id', $prj_id); 
+    $this->db->select('t_prj_status.name');
+    $this->db->from('t_prj_status');
+    $this->db->join('t_prj', 't_prj.status_id = t_prj_status.id');
+    $this->db->where('t_prj.id', $prj_id); 
     $query = $this->db->get();
     return $query->row_array();
   }
 
   public function get_prj_consaltnt($prj_id){
-    $this->db->select('T_USER.name,T_USER.surname,T_USER.id,T_USER.user_name');
-    $this->db->from('T_USER');
-    $this->db->join('T_PRJ_CNSLTNT', 'T_PRJ_CNSLTNT.cnsltnt_id = T_USER.id');
-    $this->db->where('T_PRJ_CNSLTNT.prj_id', $prj_id); 
+    $this->db->select('t_user.name,t_user.surname,t_user.id,t_user.user_name');
+    $this->db->from('t_user');
+    $this->db->join('t_prj_cnsltnt', 't_prj_cnsltnt.cnsltnt_id = t_user.id');
+    $this->db->where('t_prj_cnsltnt.prj_id', $prj_id); 
     $query = $this->db->get();
     return $query->result_array();
   }
 
   public function get_prj_companies($prj_id){
-    $this->db->select('T_CMPNY.name,T_CMPNY.id');
-    $this->db->from('T_CMPNY');
-    $this->db->join('T_PRJ_CMPNY', 'T_PRJ_CMPNY.cmpny_id = T_CMPNY.id');
-    $this->db->where('T_PRJ_CMPNY.prj_id', $prj_id); 
+    $this->db->select('t_cmpny.name,t_cmpny.id');
+    $this->db->from('t_cmpny');
+    $this->db->join('t_prj_cmpny', 't_prj_cmpny.cmpny_id = t_cmpny.id');
+    $this->db->where('t_prj_cmpny.prj_id', $prj_id); 
     $query = $this->db->get();
     return $query->result_array();
   }
 
   public function deneme_json_2($prj_id){
-    $this->db->select('T_CMPNY.name as text,T_CMPNY.id as id');
-    $this->db->from('T_CMPNY');
-    $this->db->join('T_PRJ_CMPNY', 'T_PRJ_CMPNY.cmpny_id = T_CMPNY.id');
-    $this->db->where('T_PRJ_CMPNY.prj_id', $prj_id); 
+    $this->db->select('t_cmpny.name as text,t_cmpny.id as id');
+    $this->db->from('t_cmpny');
+    $this->db->join('t_prj_cmpny', 't_prj_cmpny.cmpny_id = t_cmpny.id');
+    $this->db->where('t_prj_cmpny.prj_id', $prj_id); 
     $query = $this->db->get();
     return $query->result_array();
   }
 
   public function get_prj_cntct_prsnl($prj_id){
-    $this->db->select('T_USER.name,T_USER.surname,T_USER.id,T_USER.user_name');
-    $this->db->from('T_USER');
-    $this->db->join('T_PRJ_CNTCT_PRSNL', 'T_PRJ_CNTCT_PRSNL.usr_id = T_USER.id');
-    $this->db->where('T_PRJ_CNTCT_PRSNL.prj_id', $prj_id); 
+    $this->db->select('t_user.name,t_user.surname,t_user.id,t_user.user_name');
+    $this->db->from('t_user');
+    $this->db->join('t_prj_cntct_prsnl', 't_prj_cntct_prsnl.usr_id = t_user.id');
+    $this->db->where('t_prj_cntct_prsnl.prj_id', $prj_id); 
     $query = $this->db->get();
     return $query->result_array();
   }
   public function remove_company_from_project($projID){
-    $this->db->delete('T_PRJ_CMPNY', array('prj_id' => $projID)); 
+    $this->db->delete('t_prj_cmpny', array('prj_id' => $projID)); 
   }
 
   public function remove_consultant_from_project($projID){
-    $this->db->delete('T_PRJ_CNSLTNT', array('prj_id' => $projID));  
+    $this->db->delete('t_prj_cnsltnt', array('prj_id' => $projID));  
   }
 
   public function remove_contactuser_from_project($projID){
-    $this->db->delete('T_PRJ_CNTCT_PRSNL', array('prj_id' => $projID));  
+    $this->db->delete('t_prj_cntct_prsnl', array('prj_id' => $projID));  
   }
 
   public function can_update_project_information($user_id,$project_id){
     $this->db->select('cnsltnt_id');
-    $this->db->from('T_PRJ_CNSLTNT');
-    $this->db->where('T_PRJ_CNSLTNT.prj_id',$project_id);
+    $this->db->from('t_prj_cnsltnt');
+    $this->db->where('t_prj_cnsltnt.prj_id',$project_id);
     $query = $this->db->get()->result_array();
     foreach ($query as $cnsltnt) {
       if($cnsltnt['cnsltnt_id'] == $user_id){
@@ -120,7 +119,7 @@ class Project_model extends CI_Model {
 
   public function have_project_name($project_id,$project_name){
     $this->db->select('id');
-    $this->db->from('T_PRJ');
+    $this->db->from('t_prj');
     $this->db->where('name',$project_name); 
     $query = $this->db->get()->result_array();
     if(empty($query))

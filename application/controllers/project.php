@@ -20,13 +20,14 @@ class Project extends CI_Controller{
 
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean|is_unique[T_PRJ.name]');
+		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('assignCompany','Assign Company','required');
 		$this->form_validation->set_rules('assignConsultant','Assign Consultant','required');
 
 		//$this->form_validation->set_rules('surname', 'Password', 'required');
 		//$this->form_validation->set_rules('email', 'Email' ,'trim|required|valid_email');
+
 		if ($this->form_validation->run() !== FALSE)
 		{
 			$project = array(
@@ -37,6 +38,7 @@ class Project extends CI_Controller{
 			'active'=>1 //default active:1 olarak kaydediyoruz.
 			);
 			$last_inserted_project_id = $this->project_model->create_project($project);
+
 
 			$companies = array ($_POST['assignCompany']); // multiple select , secilen company'ler
 

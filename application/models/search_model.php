@@ -8,7 +8,7 @@ class Search_model extends CI_Model {
 
 	public function search_company($term){
 		$this->db->select('*');
-		$this->db->from('T_CMPNY');
+		$this->db->from('t_cmpny');
 		$this->db->like('name', $term); 
 		$this->db->or_like('description', $term);
 		$query = $this->db->get();
@@ -17,7 +17,7 @@ class Search_model extends CI_Model {
 
 	public function search_project($term){
 		$this->db->select('*');
-		$this->db->from('T_PRJ');
+		$this->db->from('t_prj');
 		$this->db->like('name', $term); 
 		$this->db->or_like('description', $term);
 		$query = $this->db->get();
