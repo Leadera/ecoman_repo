@@ -64,11 +64,12 @@ class Flow_model extends CI_Model {
 		return $query->result_array();
 	}
 
-	public function has_same_flow($flow_id,$flow_type_id){
+	public function has_same_flow($flow_id,$flow_type_id,$companyID){
 		$this->db->select("*");
 		$this->db->from("t_cmpny_flow");
 		$this->db->where('flow_id',$flow_id);
 		$this->db->where('flow_type_id',$flow_type_id);
+		$this->db->where('cmpny_id',$companyID);
 		$query = $this->db->get()->result_array();
 		if(!empty($query)){
 			return false;

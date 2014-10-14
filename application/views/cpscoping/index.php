@@ -47,7 +47,8 @@ $(document).ready(function() {
         <?php // print_r($cp); ?>
         <div class="cp-heading">
             <a style="margin-left:10px;" href="<?php echo base_url('cpscoping/'.$cp['project_id'].'/'.$cp['company_id'].'/show'); ?>" class="btn btn-sm btn-info pull-right">View and Edit Cp Potentials Identifications</a>
-            <a href="<?php echo base_url('kpi_calculation/'.$cp['project_id'].'/'.$cp['company_id']); ?>" class="btn btn-sm btn-info pull-right">View and Edit KPI Calculation</a>
+            <a style="margin-left:10px;" href="<?php echo base_url('kpi_calculation/'.$cp['project_id'].'/'.$cp['company_id']); ?>" class="btn btn-sm btn-info pull-right">View and Edit KPI Calculation</a>
+            <a href="<?php echo base_url('cost_benefit/'.$cp['project_id'].'/'.$cp['company_id']); ?>" class="btn btn-sm btn-info pull-right">New Cost-Benefit Analysis</a>
             <b>Company Name:</b> <?php echo $cp['company_name']; ?><br>
             <b>Project Name:</b> <?php echo $cp['project_name']; ?>
         </div>                    

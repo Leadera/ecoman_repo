@@ -154,5 +154,18 @@ class Cpscoping_model extends CI_Model {
     $this->db->where('id',$allocation_id);
     $this->db->update('t_cp_allocation',$kpi);
   }
+
+  public function can_consultant_prjct($user_id){
+    $this->db->select('prj_id');
+    $this->db->from('t_prj_cnsltnt');
+    $this->db->where('cnsltnt_id',$user_id);
+    $this->db->where('active','1');
+    $query = $this->db->get()->result_array();
+    if(!empty($query)){
+      return true;
+    }else{
+      return false;
+    }
+  }
 }
 ?>

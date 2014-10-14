@@ -37,8 +37,12 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+//Cost Benefit
+$route['cost_benefit/(:any)/(:any)'] = "cost_benefit/new_cost_benefit/$1/$2";
+
 //Html Parse
 $route['euro_dolar'] = "cpscoping/dolar_euro_parse";
+
 //Easy UI Denemeleri
 $route['cp_allocation/deneme'] = "cpscoping/deneme";
 $route['cp_allocation/deneme_json'] = "cpscoping/deneme_json";

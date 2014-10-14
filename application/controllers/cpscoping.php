@@ -17,35 +17,39 @@ class Cpscoping extends CI_Controller {
 
 	public function index(){
 		$c_user = $this->user_model->get_session_user();
-		$data['c_projects']=$this->user_model->get_consultant_projects_from_userid($c_user['id']);
-		$result = array(array());
-		$com_array = array();
-		$i = 0;
-		foreach ($data['c_projects'] as $project_name) {
-			$com_array = $this->project_model->get_prj_companies($project_name['proje_id']);
-			foreach ($com_array as $c) {
-				$com_pro = array(
-					"project_name" => $project_name['name'],
-					"company_name" => $c['name'],
-					"project_id" => $project_name['proje_id'],
-					"company_id" => $c['id']
-				);
-				$result[$i] = $com_pro;
-				$i++;
+		if($this->cpscoping_model->can_consultant_prjct($c_user['id']) == false){
+			redirect('','refresh');
+		}else{
+			$data['c_projects']=$this->user_model->get_consultant_projects_from_userid($c_user['id']);
+			$result = array(array());
+			$com_array = array();
+			$i = 0;
+			foreach ($data['c_projects'] as $project_name) {
+				$com_array = $this->project_model->get_prj_companies($project_name['proje_id']);
+				foreach ($com_array as $c) {
+					$com_pro = array(
+						"project_name" => $project_name['name'],
+						"company_name" => $c['name'],
+						"project_id" => $project_name['proje_id'],
+						"company_id" => $c['id']
+					);
+					$result[$i] = $com_pro;
+					$i++;
+				}
 			}
+			$deneme = array(array());
+			$j = 0;
+			foreach ($result as $r) {
+				$flow_prcss = $this->cpscoping_model->get_allocation_values($r['company_id'],$r['project_id']);
+				$deneme[$j] = $flow_prcss;
+				$j++;
+			}
+			$data['flow_prcss'] = $deneme;
+			$data['com_pro'] = $result;
+			$this->load->view('template/header');
+			$this->load->view('cpscoping/index',$data);
+			$this->load->view('template/footer');
 		}
-		$deneme = array(array());
-		$j = 0;
-		foreach ($result as $r) {
-			$flow_prcss = $this->cpscoping_model->get_allocation_values($r['company_id'],$r['project_id']);
-			$deneme[$j] = $flow_prcss;
-			$j++;
-		}
-		$data['flow_prcss'] = $deneme;
-		$data['com_pro'] = $result;
-		$this->load->view('template/header');
-		$this->load->view('cpscoping/index',$data);
-		$this->load->view('template/footer');
 	}
 
 	//Getting project companies from ajax

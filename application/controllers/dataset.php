@@ -62,10 +62,9 @@ class Dataset extends CI_Controller {
 			$quantity = $this->input->post('quantity');
 			$quantityUnit = $this->input->post('quantityUnit');
 
-			if(!$this->flow_model->has_same_flow($flowID,$flowtypeID)){
+			if(!$this->flow_model->has_same_flow($flowID,$flowtypeID,$companyID)){
 				redirect(base_url('new_flow/'.$companyID));
 			}
-
 			$flow = array(
 				'cmpny_id'=>$companyID,
 				'flow_id'=>$flowID,
