@@ -184,17 +184,20 @@
 			<?php endforeach ?>
 			</tr>
 			<?php
-				$count = 0; $deneme_array = array();
+				$count = 0; $deneme_array = array(); $flow_type_array = array();
 				foreach ($allocation as $a):
 					$degisken = 1;
 					$deneme_array[$count] = $a['flow_name'];
+					$flow_type_array[$count] = $a['flow_type_id'];
 					$count++;
 					for ($i=0; $i < $count-1; $i++) {
-						if($deneme_array[$i] == $a['flow_name'] && sizeof($deneme_array) > 1){
+						if($deneme_array[$i] == $a['flow_name'] && sizeof($deneme_array) > 1 && $flow_type_array[$i] == $a['flow_type_id']){
+							echo $a['flow_name'].' '.$a['flow_type_id'].' '.$degisken;
 							$degisken = 0;
 							break;
 						}
 					}
+					
 					if($degisken == 1 && $a['flow_type_id'] == 1): ?>
 					<tr>
 						<td>
