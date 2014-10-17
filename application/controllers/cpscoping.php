@@ -60,9 +60,42 @@ class Cpscoping extends CI_Controller {
 		echo json_encode($com_array);
 	}
 
+	public function checkbox_control($str){
+		if($str == 0){
+			$this->form_validation->set_message('checkbox_control', 'The %s field is required.');
+			return FALSE;
+		}else{
+			return TRUE;
+		}
+	}
+
 	public function cp_allocation($project_id,$company_id){
-		$this->form_validation->set_rules('amount', 'Coordinates Latitude', 'trim|xss_clean');
-		$this->form_validation->set_rules('allocation', 'Allocation', 'trim|xss_clean');
+		$this->form_validation->set_rules('prcss_name', 'Process Name', 'callback_checkbox_control|trim|xss_clean');
+		$this->form_validation->set_rules('flow_name', 'Flow Name', 'callback_checkbox_control|trim|xss_clean');
+		$this->form_validation->set_rules('flow_type_name', 'Flow Type Name', 'callback_checkbox_control|trim|xss_clean');
+		
+		$this->form_validation->set_rules('amount', 'Amount', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('allocation_amount', 'Allocation Amount', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('importance_amount', 'Importance Amount', 'callback_checkbox_control|trim|xss_clean');
+		$this->form_validation->set_rules('unit_amount', 'Unit Amount', 'callback_checkbox_control|trim|xss_clean');
+
+		$this->form_validation->set_rules('cost', 'Cost', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('allocation_cost', 'Allocation Cost', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('importance_cost', 'Importance Cost', 'callback_checkbox_control|trim|xss_clean');
+		$this->form_validation->set_rules('unit_cost', 'Unit Cost', 'callback_checkbox_control|trim|xss_clean');
+		
+		$this->form_validation->set_rules('env_impact', 'Env. Impact', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('allocation_env_impact', 'Allocation Env. Impact', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('importance_env_impact', 'Importance Env. Impact', 'callback_checkbox_control|trim|xss_clean');
+		$this->form_validation->set_rules('unit_env_impact', 'Unit Env. Impact', 'required|trim|xss_clean');
+
+		$this->form_validation->set_rules('reference', 'Reference', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('unit_reference', 'Unit Reference', 'callback_checkbox_control|trim|xss_clean');
+		
+		$this->form_validation->set_rules('kpi', 'Ki', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('unit_kpi', ' Unit Kpi', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('kpi_error', 'Kpi Error', 'required|trim|xss_clean');
+		
 		if ($this->form_validation->run() !== FALSE){
 			$prcss_name = $this->input->post('prcss_name');
 			$flow_name = $this->input->post('flow_name');
@@ -393,43 +426,46 @@ class Cpscoping extends CI_Controller {
 	}
 
 	public function cp_scoping_file_upload($prjct_id,$cmpny_id){
-		$file_name = $this->input->post('file_name');
+		$this->form_validation->set_rules('file_name','File Name','xss_clean|trim|required');
+		if($this->form_validation->run() !== FALSE){
+			$file_name = $this->input->post('file_name');
+			$uzanti = $_FILES['userfile']['name'];
+			$uzanti = explode('.',$uzanti);
+			$eklenti = $uzanti[sizeof($uzanti)-1];
 
-		$uzanti = $_FILES['userfile']['name'];
-		$uzanti = explode('.',$uzanti);
-		$eklenti = $uzanti[sizeof($uzanti)-1];
+			$last_file_name = explode(' ',$file_name);
+			$f_name = "";
+			for($i = 0 ; $i < sizeof($last_file_name) ; $i++){
+				if($i == sizeof($last_file_name)-1){
+					$f_name .= $last_file_name[$i];
+				}else{
+					$f_name .= $last_file_name[$i]."_";
+				}
+			}
+			
+			ini_set('upload_max_filesize','20M'); 
+			$config['upload_path'] = './assets/cp_scoping_files/';
+			$config['allowed_types'] = $eklenti;
+			$config['max_size']	= '500000';
+			$config['file_name']	= $f_name.'.'.$eklenti;
+			$this->load->library('upload', $config);
 
-		$last_file_name = explode(' ',$file_name);
-		$f_name = "";
-		for($i = 0 ; $i < sizeof($last_file_name) ; $i++){
-			if($i == sizeof($last_file_name)-1){
-				$f_name .= $last_file_name[$i];
+			//Resmi servera yükleme
+			if (!$this->upload->do_upload())
+			{
+				echo $this->upload->display_errors();
+				exit;
 			}else{
-				$f_name .= $last_file_name[$i]."_";
+				$cp_scoping_files = array(
+					'prjct_id' => $prjct_id,
+					'cmpny_id' => $cmpny_id,
+					'file_name' => $f_name.'.'.$eklenti
+				);
+				$this->cpscoping_model->insert_cp_scoping_file($cp_scoping_files);
+				redirect(base_url('kpi_calculation/'.$prjct_id.'/'.$cmpny_id),'refresh');
 			}
 		}
-		
-		ini_set('upload_max_filesize','20M'); 
-		$config['upload_path'] = './assets/cp_scoping_files/';
-		$config['allowed_types'] = $eklenti;
-		$config['max_size']	= '500000';
-		$config['file_name']	= $f_name.'.'.$eklenti;
-		$this->load->library('upload', $config);
-
-		//Resmi servera yükleme
-		if (!$this->upload->do_upload())
-		{
-			echo $this->upload->display_errors();
-			exit;
-		}else{
-			$cp_scoping_files = array(
-				'prjct_id' => $prjct_id,
-				'cmpny_id' => $cmpny_id,
-				'file_name' => $f_name.'.'.$eklenti
-			);
-			$this->cpscoping_model->insert_cp_scoping_file($cp_scoping_files);
-			redirect(base_url('kpi_calculation/'.$prjct_id.'/'.$cmpny_id),'refresh');
-		}
+		redirect(base_url('kpi_calculation/'.$prjct_id.'/'.$cmpny_id),'refresh');
 	}
 
 	public function search_result($prjct_id,$cmpny_id){
@@ -473,7 +509,7 @@ class Cpscoping extends CI_Controller {
 	}
 
 	public function kpi_insert($prjct_id,$cmpny_id,$flow_id,$flow_type_id,$prcss_id){
-		$this->form_validation->set_rules('benchmark_kpi', 'Benchmark Kpi', 'trim|xss_clean');
+		$this->form_validation->set_rules('benchmark_kpi', 'Benchmark Kpi', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('best_practice', 'Best Practice', 'trim|xss_clean');
 
 		$allocation_ids = $this->cpscoping_model->get_allocation_id_from_ids($cmpny_id,$prjct_id);

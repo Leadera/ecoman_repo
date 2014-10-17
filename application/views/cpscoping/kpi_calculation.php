@@ -99,6 +99,19 @@
 		<a class="btn btn-default btn-sm" href="<?php echo base_url('cpscoping/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/show'); ?>">Show CP Scoping Data</a>
 	</div>
 	<div class="col-md-7">
+		<?php 
+
+		if(validation_errors() != NULL ){
+		    echo '<div class="alert">';
+			echo '<button type="button" class="close" data-dismiss="alert">&times;</button>
+					<h4>Form couldn\'t be saved</h4>
+		      	<p>';
+		      		echo validation_errors();
+		      	echo '</p>
+		    </div>';
+		}
+
+		 ?>
 		<p>KPI View and Edit Table</p>
 		<?php 
     		$kontrol = array(); $index = 0; $prcss_adet = 0; $kontrol_prcss = array(); $index_prcss = 0; 
@@ -178,6 +191,15 @@
 	  <hr>
 	  <p>Document Upload</p>
 	  <div class="form-group">
+		  	<?php if(validation_errors() != NULL ): ?>
+			    <div class="alert">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<h4>Form couldn't be saved</h4>
+			      	<p>
+			      		<?php echo validation_errors(); ?>
+			      	</p>
+			    </div>
+			<?php endif ?>
 			<?php echo form_open_multipart('cpscoping/file_upload/'.$this->uri->segment('2').'/'.$this->uri->segment('3')); ?>
 			    <input type="text" class="form-control" id="file_name" placeholder="file_name" name="file_name">
 			    <input type="file" name="userfile" id="userfile" size="20" />
