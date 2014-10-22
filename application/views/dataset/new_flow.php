@@ -42,9 +42,9 @@
 						<div class="col-md-4">
 							<label for="cost">Cost Unit</label>
 							<select id="costUnit" class="info select-block" name="costUnit">
-								<?php foreach ($units as $unit): ?>
-									<option value="<?php echo $unit['id']; ?>"><?php echo $unit['name']; ?></option>
-								<?php endforeach ?>
+								<option value="TL">TL</option>
+								<option value="Euro">Euro</option>
+								<option value="Dolar">Dolar</option>
 							</select>
 						</div>
 		  		</div>
@@ -57,11 +57,7 @@
 				    </div>
 						<div class="col-md-4">
 							<label for="amount">EP Unit</label>
-							<select id="epUnit" class="info select-block" name="epUnit">
-								<?php foreach ($units as $unit): ?>
-									<option value="<?php echo $unit['id']; ?>"><?php echo $unit['name']; ?></option>
-								<?php endforeach ?>
-							</select>
+							<input type="text" class="form-control" id="epUnit" value="EP" name="epUnit" readonly>
 						</div>
 		  		</div>
 		  	</div>
@@ -83,8 +79,8 @@
 					<td><?php echo $flow['flowname']; ?></td>
 					<td><?php echo $flow['flowtype']; ?></td>
 					<td><?php echo $flow['qntty'].' '.$flow['qntty_unit_name']; ?></td>
-					<td><?php echo $flow['cost'].' '.$flow['cost_unit_name']; ?></td>
-					<td><?php echo $flow['ep'].' '.$flow['ep_unit_name']; ?></td>
+					<td><?php echo $flow['cost'].' '.$flow['cost_unit']; ?></td>
+					<td><?php echo $flow['ep'].' '.$flow['ep_unit']; ?></td>
 					<td><a href="<?php echo base_url('delete_flow/'.$companyID.'/'.$flow['id']);?>" class="btn btn-danger btn-sm" value="<?php echo $flow['id']; ?>"><span class="glyphicon glyphicon-remove"></span></button></td>
 			
 				</tr>

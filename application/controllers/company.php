@@ -70,7 +70,7 @@ class Company extends CI_Controller{
 
 		    $cmpny_nace_code = array(
 		    	'cmpny_id' => $last_id,
-		    	'nace_code_id' => $nace_code_id
+		    	'nace_code_id' => $nace_code_id['id']
 		    );
 
 		    $this->company_model->insert_cmpny_prsnl($last_id);
@@ -84,24 +84,25 @@ class Company extends CI_Controller{
 
 			if (!$this->upload->do_upload())
 			{
-				redirect('company', 'refresh');
-				exit;
+				$logo = array(
+					'logo'=>'default.jpg'
+				);
+				$this->company_model->set_company_image($last_id,$logo);
+			}else{
+				$config['image_library'] = 'gd2';
+				$config['source_image']	= './assets/company_pictures/'.$last_id.'.jpg';
+				$config['maintain_ratio'] = TRUE;
+				$config['width'] = 200;
+				$config['height'] = 200;
+				$this->load->library('image_lib', $config);
+
+				$this->image_lib->resize();
+
+				$logo = array(
+					'logo'=>$last_id.'.jpg'
+				);
+				$this->company_model->set_company_image($last_id,$logo);
 			}
-
-			$config['image_library'] = 'gd2';
-			$config['source_image']	= './assets/company_pictures/'.$last_id.'.jpg';
-			$config['maintain_ratio'] = TRUE;
-			$config['width'] = 200;
-			$config['height'] = 200;
-			$this->load->library('image_lib', $config);
-
-			$this->image_lib->resize();
-
-			$logo = array(
-				'logo'=>$last_id.'.jpg'
-			);
-			$this->company_model->set_company_image($last_id,$logo);
-
 			redirect('company', 'refresh');
 		}
 
@@ -277,20 +278,25 @@ class Company extends CI_Controller{
 			$this->load->library('upload', $config);
 			$this->upload->overwrite = true;
 			//Resmi servera yükleme
+			$resim = "";
 			if (!$this->upload->do_upload())
 			{
-				print_r($this->upload->display_errors());
+				$resim = "default";
 				//hata vermeye gerek yok , resim secmeyebilir.
 			}
+			else{
 			//Yüklenen resmi boyutlandırma ve çevirme
-			$config['image_library'] = 'gd2';
-			$config['source_image']	= './assets/company_pictures/'.$this->uri->segment(2).'.jpg';
-			$config['maintain_ratio'] = TRUE;
-			$config['width']	 = 200;
-			$config['height']	 = 200;
-			$this->load->library('image_lib', $config);
+				$config['image_library'] = 'gd2';
+				$config['source_image']	= './assets/company_pictures/'.$this->uri->segment(2).'.jpg';
+				$config['maintain_ratio'] = TRUE;
+				$config['width']	 = 200;
+				$config['height']	 = 200;
+				$this->load->library('image_lib', $config);
 
-			$this->image_lib->resize();
+				$this->image_lib->resize();
+
+				$resim = $this->uri->segment(2);
+			}
 
 			$data2 = array(
 				'name'=>$this->input->post('companyName'),
@@ -301,32 +307,32 @@ class Company extends CI_Controller{
 				'description'=>$this->input->post('companyDescription'),
 				'email'=>$this->input->post('email'),
 				'postal_code'=>'NULL',
-				'logo'=>$this->uri->segment(2).'.jpg',
+				'logo'=>$resim.'.jpg',
 				'active'=>'1',
 				'latitude'=>$this->input->post('lat'),
 				'longitude'=>$this->input->post('long')
 			);
 
-	    $this->company_model->update_company($data2,$term);
+		    $this->company_model->update_company($data2,$term);
 
-	    $code = $this->input->post('naceCode');
+		    $code = $this->input->post('naceCode');
 
 			$cmpny_data = array(
 				'cmpny_id' => $data['companies']['id'],
-      	'description' => $data['companies']['description']
-    	);
+      			'description' => $data['companies']['description']
+    		);
 
-		  $this->company_model->update_cmpny_data($cmpny_data,$data['companies']['id']);
+		  	$this->company_model->update_cmpny_data($cmpny_data,$data['companies']['id']);
 
-		  $nace_code_id = $this->company_model->search_nace_code($code);
+		  	$nace_code_id = $this->company_model->search_nace_code($code);
 
-	    $cmpny_nace_code = array(
-	    	'cmpny_id' => $data['companies']['id'],
-	    	'nace_code_id' => $nace_code_id
-	    );
-	    $this->company_model->update_cmpny_nace_code($cmpny_nace_code,$data['companies']['id']);
-	    redirect('company', 'refresh');
-	  }
+	    	$cmpny_nace_code = array(
+		    	'cmpny_id' => $data['companies']['id'],
+		    	'nace_code_id' => $nace_code_id['id']
+		    );
+		    $this->company_model->update_cmpny_nace_code($cmpny_nace_code,$data['companies']['id']);
+		    redirect('company', 'refresh');
+	  	}
 		$this->load->view('template/header');
 		$this->load->view('company/update_company',$data);
 		$this->load->view('template/footer');

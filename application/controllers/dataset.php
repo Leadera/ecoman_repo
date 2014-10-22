@@ -51,6 +51,7 @@ class Dataset extends CI_Controller {
 		$this->form_validation->set_rules('costUnit', 'Cost Unit', 'trim|required|xss_clean|strip_tags');
 		$this->form_validation->set_rules('ep', 'EP', 'trim|required|xss_clean|strip_tags|numeric');
 		$this->form_validation->set_rules('epUnit', 'EP Unit', 'trim|required|xss_clean|strip_tags');
+
 		if($this->form_validation->run() !== FALSE) {
 
 			$flowID = $this->input->post('flowname');
@@ -103,19 +104,21 @@ class Dataset extends CI_Controller {
 	public function new_component($companyID){
 		
 		$this->form_validation->set_rules('component_name', 'Component Name', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|required|xss_clean');
 
 		if($this->form_validation->run() !== FALSE) {
 			$component_array = array(
-					'name' => $this->input->post('component_name'),
-					'name_tr' => $this->input->post('component_name'),
-					'active' => '1'
-				);
+				'cmpny_id' => $companyID,
+				'name' => $this->input->post('component_name'),
+				'name_tr' => $this->input->post('component_name'),
+				'active' => '1'
+			);
 			$component_id = $this->component_model->set_cmpnnt($component_array);
 
 			$cmpny_flow_cmpnnt = array(
-					'cmpny_flow_id' => $this->input->post('flowtype'),
-					'cmpnnt_id' => $component_id
-				);
+				'cmpny_flow_id' => $this->input->post('flowtype'),
+				'cmpnnt_id' => $component_id
+			);
 			$this->component_model->set_cmpny_flow_cmpnnt($cmpny_flow_cmpnnt);
 		}
 		
@@ -153,9 +156,9 @@ class Dataset extends CI_Controller {
 			foreach($used_flows as $flow) {
 				if($this->process_model->can_write_cmpny_flow_prcss($flow,$cmpny_prcss_id['id']) == true){
 					$cmpny_flow_prcss = array(
-							'cmpny_flow_id' => $flow,
-							'cmpny_prcss_id' => $cmpny_prcss_id['id']
-						);
+						'cmpny_flow_id' => $flow,
+						'cmpny_prcss_id' => $cmpny_prcss_id['id']
+					);
 					$this->process_model->cmpny_flow_prcss($cmpny_flow_prcss);
 				}
 			}
@@ -238,7 +241,7 @@ class Dataset extends CI_Controller {
 
 	public function delete_component($companyID,$id){
 		$this->component_model->delete_flow_cmpnnt_by_cmpnntID($id);
-		$this->component_model->delete_cmpnnt($id);
+		$this->component_model->delete_cmpnnt($companyID,$id);
 		redirect('new_component/'.$companyID, 'refresh');
 	}
 

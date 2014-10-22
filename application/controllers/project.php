@@ -130,18 +130,18 @@ class Project extends CI_Controller{
 	}
 
 
-	public function update_project($term){
+	public function update_project($prjct_id){
 		$kullanici = $this->session->userdata('user_in');
-		if(!$this->user_model->is_consultant_of_project_by_user_id($kullanici['id'],$term)){
+		if(!$this->user_model->is_consultant_of_project_by_user_id($kullanici['id'],$prjct_id)){
 			redirect('','refresh');
 		}
-		$data['projects'] = $this->project_model->get_project($term);
+		$data['projects'] = $this->project_model->get_project($prjct_id);
 		$data['companies']=$this->company_model->get_companies();
 		$data['consultants']=$this->user_model->get_consultants();
 		$data['project_status']=$this->project_model->get_active_project_status();
-		$data['assignedCompanies'] = $this->project_model->get_prj_companies($term);
-		$data['assignedConsultant'] = $this->project_model->get_prj_consaltnt($term);
-		$data['assignedContactperson'] = $this->project_model->get_prj_cntct_prsnl($term);
+		$data['assignedCompanies'] = $this->project_model->get_prj_companies($prjct_id);
+		$data['assignedConsultant'] = $this->project_model->get_prj_consaltnt($prjct_id);
+		$data['assignedContactperson'] = $this->project_model->get_prj_cntct_prsnl($prjct_id);
 
 		//print_r($data['assignedCompanies'] );
 
@@ -191,15 +191,15 @@ class Project extends CI_Controller{
 			'status_id'=>$this->input->post('status'),
 			'active'=>1 //default active:1 olarak kaydediyoruz.
 			);
-			$this->project_model->update_project($project,$term);
+			$this->project_model->update_project($project,$prjct_id);
 
 			$companies = $_POST['assignCompany']; // multiple select , secilen company'ler
 
-			$this->project_model->remove_company_from_project($term);	// once hepsini siliyoruz projeye bağlı companylerin
+			$this->project_model->remove_company_from_project($prjct_id);	// once hepsini siliyoruz projeye bağlı companylerin
 
 			foreach ($companies as $company) {
 				$prj_cmpny=array(
-					'prj_id' => $term,
+					'prj_id' => $prjct_id,
 					'cmpny_id' => $company
 					);
 				$this->project_model->insert_project_company($prj_cmpny);
@@ -207,27 +207,27 @@ class Project extends CI_Controller{
 
 			$consultants = $_POST['assignConsultant']; // multiple select , secilen consultant'lar
 
-			$this->project_model->remove_consultant_from_project($term);
+			$this->project_model->remove_consultant_from_project($prjct_id);
 
 			foreach ($consultants as $consultant) {
 				$prj_cnsltnt=array(
-					'prj_id' => $term,
+					'prj_id' => $prjct_id,
 					'cnsltnt_id' => $consultant,
 					'active' => 1
 					);
 				$this->project_model->insert_project_consultant($prj_cnsltnt);
 			}
 
-			$this->project_model->remove_contactuser_from_project($term);
+			$this->project_model->remove_contactuser_from_project($prjct_id);
 
 			$contactuser= $this->input->post('assignContactPerson');
 			$prj_cntct_prsnl=array(
-				'prj_id' => $term,
+				'prj_id' => $prjct_id,
 				'usr_id' => $contactuser
 			);
 
 			$this->project_model->insert_project_contact_person($prj_cntct_prsnl);
-			redirect('projects', 'refresh');
+			redirect('project/'.$prjct_id, 'refresh');
 		}
 		$this->load->view('template/header');
 		$this->load->view('project/update_project',$data);

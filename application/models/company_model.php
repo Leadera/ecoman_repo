@@ -21,8 +21,11 @@ class Company_model extends CI_Model {
   }
 
   public function search_nace_code($code){
-    $nace_id = $this->db->select('id')->where('code', $code)->limit(1)-> get('t_nace_code')->result_array()[0]['id'];
-    return $nace_id;
+    $this->db->select('id');
+    $this->db->from('t_nace_code');
+    $this->db->where('code',$code);
+    $query = $this->db->get()->row_array();
+    return $query;
   }
 
   public function insert_cmpny_nace_code($data){

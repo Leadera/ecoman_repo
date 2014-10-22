@@ -28,8 +28,6 @@
 						}
 					}
 
-					console.log(kpi);
-
 					var data = new google.visualization.DataTable();
 
 					var newData = new Array(index);

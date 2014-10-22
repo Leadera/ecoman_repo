@@ -49,24 +49,28 @@ class User extends CI_Controller {
 			//Resmi servera yükleme
 			if (!$this->upload->do_upload())
 			{
-				exit;
+				$photo = array(
+					'photo'=>'default.jpg'
+				);
+				$this->user_model->set_user_image($last_inserted_user_id,$photo);
 			}
 			//Yüklenen resmi boyutlandırma ve çevirme
-			$config['image_library'] = 'gd2';
-			$config['source_image']	= './assets/user_pictures/'.$last_inserted_user_id.'.jpg';
-			$config['maintain_ratio'] = TRUE;
-			$config['width']	 = 200;
-			$config['height']	 = 200;
-			$this->load->library('image_lib', $config);
+			else{
+				$config['image_library'] = 'gd2';
+				$config['source_image']	= './assets/user_pictures/'.$last_inserted_user_id.'.jpg';
+				$config['maintain_ratio'] = TRUE;
+				$config['width']	 = 200;
+				$config['height']	 = 200;
+				$this->load->library('image_lib', $config);
 
-			$this->image_lib->resize();
+				$this->image_lib->resize();
 
 
-			$photo = array(
-				'photo'=>$last_inserted_user_id.'.jpg'
-			);
-			$this->user_model->set_user_image($last_inserted_user_id,$photo);
-
+				$photo = array(
+					'photo'=>$last_inserted_user_id.'.jpg'
+				);
+				$this->user_model->set_user_image($last_inserted_user_id,$photo);
+			}
 			//process completed
 			redirect('completed', 'refresh');
 		}
