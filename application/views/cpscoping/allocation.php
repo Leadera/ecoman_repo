@@ -70,7 +70,7 @@ $(document).ready(function() {
 				<label for="prcss_name" class="control-label col-md-12">Select Process</label>
 				<div class="col-md-12">
 					<select name="prcss_name" id="prcss_name" class="btn-group select select-block">
-						<option value="0">Nothing Selected</option>
+						<option value="">Nothing Selected</option>
 						<?php $kontrol = array(); $index = 0;?>
 						<?php for($i = 0 ; $i < sizeof($prcss_info) ; $i++): ?>
 							<option value="<?php echo $prcss_info[$i]['company_process_id']; ?>"><?php echo $prcss_info[$i]['prcessname']; ?></option>
@@ -83,7 +83,7 @@ $(document).ready(function() {
 				<label for="flow_name" class="control-label col-md-12">Select Flow</label>
 				<div class="col-md-12">
 					<select name="flow_name" id="flow_name" class="btn-group select select-block">
-						<option value="0">Nothing Selected</option>
+						<option value="">Nothing Selected</option>
 					</select>
 				</div>
 			</div>
@@ -92,7 +92,7 @@ $(document).ready(function() {
 				<label for="flow_type_name" class="control-label col-md-12">Select Flow Type</label>
 				<div class="col-md-12">
 					<select name="flow_type_name" id="flow_type_name" class="btn-group select select-block">
-						<option value="0">Nothing Selected</option>
+						<option value="">Nothing Selected</option>
 					</select>
 				</div>
 			</div>
@@ -104,7 +104,7 @@ $(document).ready(function() {
 				</div>
 				<div class="col-md-3">
 					<select name="unit_amount" id="unit_amount" class="btn-group select select-block">
-						<option value="0">Nothing Selected</option>
+						<option value="">Nothing Selected</option>
 						<?php foreach ($unit_list as $u): ?>
 							<option value="<?php echo $u['name']; ?>"><?php echo $u['name']; ?></option>
 						<?php endforeach ?>
@@ -115,7 +115,7 @@ $(document).ready(function() {
 				</div>
 				<div class="col-md-3">
 					<select name="importance_amount" id="importance_amount" class="btn-group select select-block">
-						<option value="0">Nothing Selected</option>
+						<option value="">Nothing Selected</option>
 						<option value="High">High</option>
 						<option value="Medium">Medium</option>
 						<option value="Low">Low</option>
@@ -131,7 +131,7 @@ $(document).ready(function() {
 				</div>
 				<div class="col-md-3">
 					<select name="unit_cost" id="unit_cost" class="btn-group select select-block">
-						<option value="0">Nothing Selected</option>
+						<option value="">Nothing Selected</option>
 						<option value="Euro">Euro</option>
 						<option value="Dolar">Dolar</option>
 						<option value="TL">TL</option>
@@ -142,7 +142,7 @@ $(document).ready(function() {
 				</div>
 				<div class="col-md-3">
 					<select name="importance_cost" id="importance_cost" class="btn-group select select-block">
-						<option value="0">Nothing Selected</option>
+						<option value="">Nothing Selected</option>
 						<option value="High">High</option>
 						<option value="Medium">Medium</option>
 						<option value="Low">Low</option>
@@ -164,7 +164,7 @@ $(document).ready(function() {
 				</div>
 				<div class="col-md-3">
 					<select name="importance_env_impact" id="importance_env_impact" class="btn-group select select-block">
-						<option value="0">Nothing Selected</option>
+						<option value="">Nothing Selected</option>
 						<option value="High">High</option>
 						<option value="Medium">Medium</option>
 						<option value="Low">Low</option>
@@ -180,7 +180,7 @@ $(document).ready(function() {
 				</div>
 				<div class="col-md-6">
 					<select name="unit_reference" id="unit_reference" class="btn-group select select-block">
-						<option value="0">Nothing Selected</option>
+						<option value="">Nothing Selected</option>
 						<?php foreach ($unit_list as $u): ?>
 							<option value="<?php echo $u['name']; ?>"><?php echo $u['name']; ?></option>
 						<?php endforeach ?>

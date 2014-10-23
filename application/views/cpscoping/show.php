@@ -146,7 +146,6 @@
 
 	function open_document(id){
 		alert(id);
-		
 	};
 </script>
 		<div class="col-md-12" style="margin-bottom: 10px;">
@@ -177,7 +176,6 @@
 			}
 			if($degisken == 1){
 				$process_adet++;
-				echo "<th>".$a['prcss_name']."</th>";
 				$tekrarsiz[$process_adet-1] = $a['prcss_id']; 
 			}
 			?>
@@ -192,7 +190,6 @@
 					$count++;
 					for ($i=0; $i < $count-1; $i++) {
 						if($deneme_array[$i] == $a['flow_name'] && sizeof($deneme_array) > 1 && $flow_type_array[$i] == $a['flow_type_id']){
-							echo $a['flow_name'].' '.$a['flow_type_id'].' '.$degisken;
 							$degisken = 0;
 							break;
 						}

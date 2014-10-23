@@ -70,27 +70,27 @@ class Cpscoping extends CI_Controller {
 	}
 
 	public function cp_allocation($project_id,$company_id){
-		$this->form_validation->set_rules('prcss_name', 'Process Name', 'callback_checkbox_control|trim|xss_clean');
-		$this->form_validation->set_rules('flow_name', 'Flow Name', 'callback_checkbox_control|trim|xss_clean');
-		$this->form_validation->set_rules('flow_type_name', 'Flow Type Name', 'callback_checkbox_control|trim|xss_clean');
+		$this->form_validation->set_rules('prcss_name', 'Process Name', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('flow_name', 'Flow Name', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('flow_type_name', 'Flow Type Name', 'required|trim|xss_clean');
 		
 		$this->form_validation->set_rules('amount', 'Amount', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('allocation_amount', 'Allocation Amount', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('importance_amount', 'Importance Amount', 'callback_checkbox_control|trim|xss_clean');
-		$this->form_validation->set_rules('unit_amount', 'Unit Amount', 'callback_checkbox_control|trim|xss_clean');
+		$this->form_validation->set_rules('importance_amount', 'Importance Amount', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('unit_amount', 'Unit Amount', 'required|trim|xss_clean');
 
 		$this->form_validation->set_rules('cost', 'Cost', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('allocation_cost', 'Allocation Cost', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('importance_cost', 'Importance Cost', 'callback_checkbox_control|trim|xss_clean');
-		$this->form_validation->set_rules('unit_cost', 'Unit Cost', 'callback_checkbox_control|trim|xss_clean');
+		$this->form_validation->set_rules('importance_cost', 'Importance Cost', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('unit_cost', 'Unit Cost', 'required|trim|xss_clean');
 		
 		$this->form_validation->set_rules('env_impact', 'Env. Impact', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('allocation_env_impact', 'Allocation Env. Impact', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('importance_env_impact', 'Importance Env. Impact', 'callback_checkbox_control|trim|xss_clean');
+		$this->form_validation->set_rules('importance_env_impact', 'Importance Env. Impact', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('unit_env_impact', 'Unit Env. Impact', 'required|trim|xss_clean');
 
 		$this->form_validation->set_rules('reference', 'Reference', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('unit_reference', 'Unit Reference', 'callback_checkbox_control|trim|xss_clean');
+		$this->form_validation->set_rules('unit_reference', 'Unit Reference', 'required|trim|xss_clean');
 		
 		$this->form_validation->set_rules('kpi', 'Ki', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('unit_kpi', ' Unit Kpi', 'required|trim|xss_clean');
