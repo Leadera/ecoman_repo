@@ -176,6 +176,7 @@
 			}
 			if($degisken == 1){
 				$process_adet++;
+				echo "<th>".$a['prcss_name']."</th>";
 				$tekrarsiz[$process_adet-1] = $a['prcss_id']; 
 			}
 			?>
