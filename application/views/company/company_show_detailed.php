@@ -94,8 +94,8 @@
 							<td><?php echo $flows['flowname']; ?></td>
 							<td><?php echo $flows['flowtype']; ?></td>
 							<td><?php echo $flows['qntty'].' '.$flows['qntty_unit_name']; ?></td>
-							<td><?php echo $flows['cost'].' '.$flows['cost_unit_name']; ?></td>
-							<td><?php echo $flows['ep'].' '.$flows['ep_unit_name']; ?></td>
+							<td><?php echo $flows['cost'].' '.$flows['cost_unit']; ?></td>
+							<td><?php echo $flows['ep'].' EP'?></td>
 						</tr>
 					<?php endforeach ?>
 				</table>
