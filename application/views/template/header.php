@@ -62,7 +62,7 @@
           <li class="head-li"><a href="<?php echo base_url('cpscoping'); ?>"><i class="fa fa-bar-chart"></i> Cleaner Production Allocations</a></li>
         </ul>
       <?php else: ?>
-        <p style="font-size:14px;">
+        <p style="font-size:14px; margin:0px;">
           To use the extended features of this web site, please register.
         </p>
       <?php endif ?>
