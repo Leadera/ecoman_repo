@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="<?php echo asset_url('themes/demo.css') ?>">
     <link href="<?php echo asset_url('css/flat-ui.css'); ?>" rel="stylesheet">
     <link href="<?php echo asset_url('css/custom.css'); ?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo asset_url('css/font-awesome.min.css'); ?>">
     <!--<link href="<?php // echo asset_url('css/jquery-ui-1.10.4.custom.css'); ?>" rel="stylesheet"> 
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
@@ -26,8 +27,8 @@
     <nav class="navbar navbar-default navbar-lg" style="margin-bottom:0px;">
       <a class="navbar-brand" href="<?php echo base_url(); ?>" style="color:white;">ECOMAN</a>
       <ul class="nav navbar-nav navbar-left">
-        <li><a href="<?php echo base_url('projects'); ?>">Projects</a></li>
-        <li><a href="<?php echo base_url('company'); ?>">Companies</a></li>
+        <li><a href="<?php echo base_url('projects'); ?>"><i class="fa fa-globe"></i> Projects</a></li>
+        <li><a href="<?php echo base_url('company'); ?>"><i class="fa fa-building-o"></i> Companies</a></li>
       </ul>
       <form class="navbar-form navbar-left" action="<?php echo base_url('search') ?>" method="post" role="search">
         <div class="form-group">
@@ -44,10 +45,13 @@
           if ($this->session->userdata('user_in') !== FALSE):
             $tmp = $this->session->userdata('user_in');
         ?>
-          <li class="head-li"><a href="<?php echo base_url('user/'.$tmp['username']); ?>" style="text-transform: capitalize;"><?php echo $tmp['username']; ?></a></li>
-          <li class="head-li"><a href="<?php echo base_url('logout'); ?>">Logout</a></li>
+          <li class="head-li"><a href="<?php echo base_url('user/'.$tmp['username']); ?>" style="text-transform: capitalize;"><i class="fa fa-user"></i>
+ <?php echo $tmp['username']; ?></a></li>
+          <li class="head-li"><a href="<?php echo base_url('logout'); ?>"><i class="fa fa-sign-out"></i>
+ Logout</a></li>
         <?php else: ?>
-          <li class="head-li"><a href="<?php echo base_url('login'); ?>">Login</a></li>
+          <li class="head-li"><a href="<?php echo base_url('login'); ?>"><i class="fa fa-sign-in"></i>
+ Login</a></li>
           <li class="head-li"><a href="<?php echo base_url('register'); ?>">Register</a></li>
         <?php endif ?>
       </ul>
@@ -55,7 +59,7 @@
     <div style="background-color: rgb(240, 240, 240); padding: 10px 20px; margin-bottom: 40px;">
       <?php if ($this->session->userdata('user_in') !== FALSE): ?>
         <ul class="list-inline" style="margin:0px;">
-          <li class="head-li"><a href="<?php echo base_url('cpscoping'); ?>">CP Scoping</a></li>
+          <li class="head-li"><a href="<?php echo base_url('cpscoping'); ?>"><i class="fa fa-bar-chart"></i> Cleaner Production Allocations</a></li>
         </ul>
       <?php else: ?>
         <p style="font-size:14px;">
