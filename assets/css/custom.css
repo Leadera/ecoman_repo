@@ -114,14 +114,16 @@ body{
     color: white;
     border-radius: 4px 4px 0 0;
 }
-.navbar-brand
-{
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 0;
-    text-align: center;
-    margin: auto;
+ @media screen and (min-width: 1200px) {
+    .navbar-brand
+    {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+        text-align: center;
+        margin: auto;
+    }
 }
 .navbar-nav.navbar-right:last-child{
     margin-right: 0px !important;
