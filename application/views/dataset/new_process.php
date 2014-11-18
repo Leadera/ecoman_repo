@@ -3,15 +3,12 @@
 			<p class="lead">Add new process</p>
 			<div class="form-group">
 	    	<label for="status">Process Name</label>
-				<div id="processList">
-				<select id="process" class="info select-block" name="process">
+				<select id="selectize" name="process">
 					<option value="">Please select a process</option>
 					<?php foreach ($process as $pro): ?>
 						<option value="<?php echo $pro['id']; ?>"><?php echo $pro['name']; ?></option>
 					<?php endforeach ?>
 				</select>
-				</div>
-				<input id="lastprocess" name="lastprocess" style="display:none;" value="1"></input>
  			</div>
  			<div class="form-group">
 		    	<label for="description">Used Flows</label>

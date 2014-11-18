@@ -32,11 +32,27 @@ class Process_model extends CI_Model {
 	
 	public function get_main_process(){
 		$this->db->select('*');
-	    $this->db->from('t_prcss');
-	    $this->db->where('mother_id',NULL);
-	    $this->db->where('active',1);
-	    $query = $this->db->get();
-	    return $query->result_array();
+	  $this->db->from('t_prcss');
+	//$this->db->where('mother_id',NULL);
+	  $this->db->where('active',1);
+	  $query = $this->db->get();
+	  return $query->result_array();
+	}
+
+	public function is_new_process($process_id){
+		if(is_numeric($process_id)){
+			return $process_id;
+		}
+		else{
+			$data = array(
+				'name' => $process_id,
+				'active' => 1,
+				'layer' => 1
+			);
+			$this->db->insert('t_prcss',$data);
+			return $this->db->insert_id();
+		}
+
 	}
 
 	public function get_process_from_motherID($mother_id){

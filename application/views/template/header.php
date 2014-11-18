@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="<?php echo asset_url('themes/demo.css') ?>">
     <link href="<?php echo asset_url('css/flat-ui.css'); ?>" rel="stylesheet">
     <link href="<?php echo asset_url('css/custom.css'); ?>" rel="stylesheet">
+    <link href="<?php echo asset_url('css/selectize.css'); ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo asset_url('css/font-awesome.min.css'); ?>">
     <!--<link href="<?php // echo asset_url('css/jquery-ui-1.10.4.custom.css'); ?>" rel="stylesheet"> 
 
@@ -20,7 +21,18 @@
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
     <![endif]-->
+
     <script src="<?php echo asset_url('js/jquery-1.10.2.min.js'); ?>"></script>
+    <!--[if lt IE 9]><script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.0.8/es5-shim.min.js"></script><![endif]-->
+    <script src="<?php echo asset_url('js/selectize.min.js'); ?>"></script>
+    <script type="text/javascript">
+    $(function() {
+      $('#selectize').selectize({
+        create: true,
+        sortField: 'text'
+      });
+    });
+    </script>
   </head>
   <body>
 

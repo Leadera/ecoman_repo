@@ -137,6 +137,7 @@
       });
     </script>
 
+    <?php /* 
     <script type="text/javascript">
       $(document).ready(function () {
         $('#process').bind('change',function () {
@@ -194,7 +195,7 @@
 
       }
     </script>
-
+    */ ?>
 
     </body>
 </html>

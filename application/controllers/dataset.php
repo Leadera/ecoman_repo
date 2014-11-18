@@ -141,7 +141,10 @@ class Dataset extends CI_Controller {
 		if ($this->form_validation->run() !== FALSE)
 		{
 			$used_flows = $this->input->post('usedFlows');
-			$process_id = $this->input->post('lastprocess');
+			$process_id = $this->input->post('process');
+
+			//CHECK IF PROCESS IS NEW?
+			$process_id = $this->process_model->is_new_process($process_id);
 
 			$cmpny_prcss_id = $this->process_model->can_write_cmpny_prcss($companyID,$process_id);
 			
