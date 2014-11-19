@@ -31,6 +31,7 @@
         create: true,
         sortField: 'text'
       });
+      $( "select[multiple='multiple']" ).selectize();
     });
     </script>
   </head>

@@ -136,6 +136,7 @@ class Dataset extends CI_Controller {
 	public function new_process($companyID){
 
 		$this->form_validation->set_rules('process','Process','required');
+		$this->form_validation->set_rules('usedFlows','Used Flows','required');
 
 
 		if ($this->form_validation->run() !== FALSE)
