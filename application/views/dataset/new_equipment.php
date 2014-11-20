@@ -15,16 +15,16 @@
 			<label for="status">Equipment Type Name</label>
 			<div>	    			
 	  		<select  class="select-block" id="equipmentTypeName" name="equipmentTypeName">
-
-			</select>
+					<option value="">Nothing Selected</option>
+				</select>
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="status">Equipment Attribute Name</label>
 			<div>	    			
 	  		<select  class="select-block" id="equipmentAttributeName" name="equipmentAttributeName">
-
-			</select>
+					<option value="">Nothing Selected</option>
+				</select>
 			</div>
 		</div>
 		<div class="form-group">
