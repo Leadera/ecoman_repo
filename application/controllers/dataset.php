@@ -63,6 +63,9 @@ class Dataset extends CI_Controller {
 			$quantity = $this->input->post('quantity');
 			$quantityUnit = $this->input->post('quantityUnit');
 
+			//CHECK IF PROCESS IS NEW?
+			$flowID = $this->process_model->is_new_flow($flowID);
+
 			if(!$this->flow_model->has_same_flow($flowID,$flowtypeID,$companyID)){
 				redirect(base_url('new_flow/'.$companyID));
 			}

@@ -55,6 +55,21 @@ class Process_model extends CI_Model {
 
 	}
 
+	public function is_new_flow($flowID){
+		if(is_numeric($flowID)){
+			return $flowID;
+		}
+		else{
+			$data = array(
+				'name' => $flowID,
+				'active' => 1,
+			);
+			$this->db->insert('t_flow',$data);
+			return $this->db->insert_id();
+		}
+
+	}
+
 	public function get_process_from_motherID($mother_id){
 		$this->db->select('*');
 	    $this->db->from('t_prcss');

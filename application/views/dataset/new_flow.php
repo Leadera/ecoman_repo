@@ -2,8 +2,9 @@
 		<?php echo form_open_multipart('new_flow/'.$companyID); ?>
 			<p class="lead">New flow</p>
 			<div class="form-group">
-				<label for="flowname">Flow Name</label>
-				<select id="flowname" class="info select-block" name="flowname">
+				<label for="selectize">Flow Name</label>
+				<select id="selectize" class="info select-block" name="flowname">
+					<option value="">Please select a flow</option>
 					<?php foreach ($flownames as $flowname): ?>
 						<option value="<?php echo $flowname['id']; ?>"><?php echo $flowname['name']; ?></option>
 					<?php endforeach ?>
