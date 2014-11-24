@@ -13,7 +13,7 @@
 
 
 			<div>
-				<div style="font-size:20px;"><?php echo $company_info['name']; ?></div>
+				<div class="lead"><?php echo $company_info['name']; ?></div>
 				<div><small><b>Email:</b> <?php echo $company_info['email']; ?></small></div>
 				<div><small><b>Phone:</b> <?php echo $company_info['phone_num_1']; ?></small></div>
 			</div>

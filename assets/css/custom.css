@@ -1,5 +1,6 @@
 body{
 	font-size:14px;
+    font-family: 'Roboto', arial, sans-serif;
 }
 .altbaslik{
 	font-size:24px;
@@ -7,7 +8,10 @@ body{
 .head-li{
 	font-size: 14px;
 }
-
+.form-control{
+    border: 1px solid #bdc3c7;
+    font-size: 13px;
+}
 
 /* bootstrap üstüne */
 .navbar-default{
@@ -31,6 +35,7 @@ body{
 }
 .lead{
     font-size:22px;
+    font-family: 'Lobster', cursive;
 }
 
 
@@ -123,6 +128,7 @@ body{
         top: 0;
         text-align: center;
         margin: auto;
+        font-family: 'Lobster', cursive;
     }
 }
 .navbar-nav.navbar-right:last-child{

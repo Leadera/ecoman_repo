@@ -34,6 +34,10 @@
         //$( "select" ).selectize();
       });
     </script>
+
+    <!-- font -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic,500italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   </head>
   <body>
 
