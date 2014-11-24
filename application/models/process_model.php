@@ -55,13 +55,14 @@ class Process_model extends CI_Model {
 
 	}
 
-	public function is_new_flow($flowID){
+	public function is_new_flow($flowID,$flowfamilyID = false){
 		if(is_numeric($flowID)){
 			return $flowID;
 		}
 		else{
 			$data = array(
 				'name' => $flowID,
+				'flow_family_id' => $flowfamilyID,
 				'active' => 1,
 			);
 			$this->db->insert('t_flow',$data);

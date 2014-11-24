@@ -43,7 +43,7 @@ class Dataset extends CI_Controller {
 
 	public function new_flow($companyID)
 	{
-		$this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean|strip_tags');
+		$this->form_validation->set_rules('flowname', 'Flow Name', 'trim|alpha_dash|required|xss_clean|strip_tags');
 		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|required|xss_clean|strip_tags');
 		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|xss_clean|strip_tags|numeric');
 		$this->form_validation->set_rules('quantityUnit', 'Quantity Unit', 'trim|required|xss_clean|strip_tags');
@@ -56,6 +56,7 @@ class Dataset extends CI_Controller {
 
 			$flowID = $this->input->post('flowname');
 			$flowtypeID = $this->input->post('flowtype');
+			$flowfamilyID = $this->input->post('flowfamily');
 			$ep = $this->input->post('ep');
 			$epUnit = $this->input->post('epUnit');
 			$cost = $this->input->post('cost');
@@ -64,7 +65,7 @@ class Dataset extends CI_Controller {
 			$quantityUnit = $this->input->post('quantityUnit');
 
 			//CHECK IF PROCESS IS NEW?
-			$flowID = $this->process_model->is_new_flow($flowID);
+			$flowID = $this->process_model->is_new_flow($flowID,$flowfamilyID);
 
 			if(!$this->flow_model->has_same_flow($flowID,$flowtypeID,$companyID)){
 				redirect(base_url('new_flow/'.$companyID));
@@ -89,6 +90,7 @@ class Dataset extends CI_Controller {
 
 		$data['flownames'] = $this->flow_model->get_flowname_list();
 		$data['flowtypes'] = $this->flow_model->get_flowtype_list();
+		$data['flowfamilys'] = $this->flow_model->get_flowfamily_list();
 
 		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
 		$data['companyID'] = $companyID;

@@ -1,9 +1,27 @@
+	<script type="text/javascript">
+		function getFlowId(){
+		    var id = $('.selectize-input .item').html();
+		    var isnum = /^\d+$/.test(id);
+		    //alert(isnum);
+		    if(isnum){
+		    	alert("You can't enter only numerical characters as a flow name!");
+		    	$("select[id=selectize] option").remove();
+		    }
+		    //console.log(id);
+		    var newid = $('select[name=flowname]').val();
+				var newisnum = /^\d+$/.test(newid);
+				if(!newisnum && newid !=""){
+					$('#flow-family').show("slow");
+				}
+		}
+	</script>
+
 	<div class="col-md-9">
 		<?php echo form_open_multipart('new_flow/'.$companyID); ?>
 			<p class="lead">New flow</p>
 			<div class="form-group">
 				<label for="selectize">Flow Name</label>
-				<select id="selectize" class="info select-block" name="flowname">
+				<select id="selectize" onchange="getFlowId()" class="info select-block" name="flowname">
 					<option value="">Please select a flow</option>
 					<?php foreach ($flownames as $flowname): ?>
 						<option value="<?php echo $flowname['id']; ?>"><?php echo $flowname['name']; ?></option>
@@ -15,6 +33,15 @@
 				<select id="flowtype" class="info select-block" name="flowtype">
 					<?php foreach ($flowtypes as $flowtype): ?>
 						<option value="<?php echo $flowtype['id']; ?>"><?php echo $flowtype['name']; ?></option>
+					<?php endforeach ?>
+				</select>
+			</div>
+			<div class="form-group" id="flow-family" style="display:none;">
+				<label for="flowfamily">Flow Family</label>
+				<select id="flowfamily" class="info select-block" name="flowfamily">
+					<option value="">Nothing Selected</option>
+					<?php foreach ($flowfamilys as $flowfamily): ?>
+						<option value="<?php echo $flowfamily['id']; ?>"><?php echo $flowfamily['name']; ?></option>
 					<?php endforeach ?>
 				</select>
 			</div>
@@ -70,6 +97,7 @@
 			<tr>
 				<th>Flow Name</th>
 				<th>Flow Type</th>
+				<th>Flow Family Name</th>
 				<th>Quantity</th>
 				<th>Cost</th>
 				<th>EP</th>
@@ -79,6 +107,7 @@
 				<tr>	
 					<td><?php echo $flow['flowname']; ?></td>
 					<td><?php echo $flow['flowtype']; ?></td>
+					<td><?php echo $flow['flowfamily']; ?></td>
 					<td><?php echo $flow['qntty'].' '.$flow['qntty_unit_name']; ?></td>
 					<td><?php echo $flow['cost'].' '.$flow['cost_unit']; ?></td>
 					<td><?php echo $flow['ep'].' '.$flow['ep_unit']; ?></td>
