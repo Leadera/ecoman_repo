@@ -16,9 +16,9 @@
 		}
 	</script>
 
-	<div class="col-md-9">
+	<div class="col-md-5 borderli">
 		<?php echo form_open_multipart('new_flow/'.$companyID); ?>
-			<p class="lead">New flow</p>
+			<p class="lead">Add new flow to company</p>
 			<div class="form-group">
 				<label for="selectize">Flow Name</label>
 				<select id="selectize" onchange="getFlowId()" class="info select-block" name="flowname">
@@ -91,7 +91,8 @@
 		  	</div>
 		  	<button type="submit" class="btn btn-info">Add Flow</button>
 		</form>
-		<hr>
+		</div>
+	<div class="col-md-5">
 		<p class="lead">Company flows</p>
 		<table class="table table-striped table-bordered">
 			<tr>
@@ -111,12 +112,9 @@
 					<td><?php echo $flow['qntty'].' '.$flow['qntty_unit_name']; ?></td>
 					<td><?php echo $flow['cost'].' '.$flow['cost_unit']; ?></td>
 					<td><?php echo $flow['ep'].' '.$flow['ep_unit']; ?></td>
-					<td><a href="<?php echo base_url('delete_flow/'.$companyID.'/'.$flow['id']);?>" class="btn btn-danger btn-sm" value="<?php echo $flow['id']; ?>"><span class="glyphicon glyphicon-remove"></span></button></td>
+					<td><a href="<?php echo base_url('delete_flow/'.$companyID.'/'.$flow['id']);?>" class="label label-danger" value="<?php echo $flow['id']; ?>"><span class="fa fa-times"></span> Delete</button></td>
 			
 				</tr>
 			<?php endforeach ?>
 		</table>
-		</div>
 	</div>
-</div>
-</div>

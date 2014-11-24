@@ -1,5 +1,6 @@
-<?php echo form_open_multipart('new_process/'.$companyID); ?>
-		<div class="col-md-9">
+		<div class="col-md-5 borderli">
+		<?php echo form_open_multipart('new_process/'.$companyID); ?>
+
 			<p class="lead">Add new process</p>
 			<div class="form-group">
 	    	<label for="status">Process Name</label>
@@ -19,23 +20,22 @@
 				</select>
 	    	</div>
 	    <button type="submit" class="btn btn-info">Add Process</button>
-	    <hr>
-			<p class="lead">Company Processes</p>
+	    </form>
+	    </div>
+		<div class="col-md-5">
+			<p class="lead">Company processes</p>
 			<table class="table table-striped table-bordered">
-				<tr>
-					<th>Process Name</th>
-					<th>Used Flows</th>
-					<th>Delete</th>
+			<tr>
+				<th>Process Name</th>
+				<th>Used Flows</th>
+				<th>Delete</th>
+			</tr>
+			<?php foreach ($cmpny_flow_prcss as $attribute): ?>
+				<tr>	
+					<td><?php echo $attribute['prcessname']; ?></td>
+					<td><?php echo $attribute['flowname'].'('.$attribute['flow_type_name'].')'; ?></td>
+					<td><a href="<?php echo base_url('delete_process/'.$companyID.'/'.$attribute['company_process_id'].'/'.$attribute['company_flow_id']);?>" class="label label-danger" value="<?php echo $attribute['prcessid']; ?>"><span class="fa fa-times"></span> Delete</button></td>
 				</tr>
-				<?php foreach ($cmpny_flow_prcss as $attribute): ?>
-					<tr>	
-						<td><?php echo $attribute['prcessname']; ?></td>
-						<td><?php echo $attribute['flowname'].'('.$attribute['flow_type_name'].')'; ?></td>
-						<td><a href="<?php echo base_url('delete_process/'.$companyID.'/'.$attribute['company_process_id'].'/'.$attribute['company_flow_id']);?>" class="btn btn-danger btn-sm" value="<?php echo $attribute['prcessid']; ?>"><span class="glyphicon glyphicon-remove"></span></button></td>
-					</tr>
-					<?php endforeach ?>
+				<?php endforeach ?>
 			</table>
 		</div>
-		</div>
-	</form>
-</div>

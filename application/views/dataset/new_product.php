@@ -1,5 +1,5 @@
-<div class="col-md-9">
-			<p class="lead">Add new product</p>
+<div class="col-md-5 borderli">
+			<p class="lead">Add new product to company</p>
 			<?php echo form_open_multipart('new_product/'.$companyID); ?>
 				<div class="form-group">
 				    <label for="product">Add Product</label>
@@ -8,7 +8,9 @@
 				<button type="submit" class="btn btn-info">Add Product</button>
 			</form>
 			
-			<hr>
+			</div>
+			<div class="col-md-5">
+			<p class="lead">Company products</p>
 			<table class="table table-striped table-bordered">
 			<tr>
 				<th>Product</th>
@@ -17,11 +19,9 @@
 			<?php foreach ($product as $pro): ?>
 			<tr>	
 				<td><?php echo $pro['name']; ?></td>
-				<td><a href="<?php echo base_url('delete_product/'.$companyID.'/'.$pro['id']);?>" class="btn btn-danger btn-sm" value="<?php echo $pro['id']; ?>"><span class="glyphicon glyphicon-remove"></span></button></td>
+				<td><a href="<?php echo base_url('delete_product/'.$companyID.'/'.$pro['id']);?>" class="label label-danger" value="<?php echo $pro['id']; ?>"><span class="fa fa-times"></span> Delete</button></td>
 			</tr>
 			<?php endforeach ?>
 
 			</table>
 		</div>
-	</div>
-</div>
