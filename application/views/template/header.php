@@ -59,6 +59,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <?php
+          //print_r($this->session->userdata('user_in'));
           if ($this->session->userdata('user_in') !== FALSE):
             $tmp = $this->session->userdata('user_in');
         ?>
