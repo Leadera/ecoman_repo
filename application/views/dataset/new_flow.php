@@ -89,6 +89,94 @@
 						</div>
 		  		</div>
 		  	</div>
+
+		  	<div class="form-group">
+				  <label for="cf">Chemical formula</label>
+				  <input class="form-control" id="cf" name="cf" placeholder="Chemical formula">
+		  	</div>		  	
+
+				<div class="form-group">
+					<label for="availability">Availability</label>
+					<select id="availability" class="info select-block" name="availability">
+						<option value="1">Available</option>
+						<option value="0">Not Available</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="conc">Concentration</label>
+					<input class="form-control" id="conc" name="conc" placeholder="Concentration">
+				</div>				
+
+				<div class="form-group">
+					<label for="pres">Pression</label>
+					<input class="form-control" id="pres" name="pres" placeholder="Pression">
+				</div>				
+
+				<div class="form-group">
+					<label for="ph">PH</label>
+					<input class="form-control" id="ph" name="ph" placeholder="PH">
+				</div>
+
+				<div class="form-group">
+					<label for="state">State</label>
+					<select id="state" class="info select-block" name="state">
+						<option value="1">Solid</option>
+						<option value="2">Liquid</option>
+						<option value="3">Gas</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="quality">Quality</label>
+					<input class="form-control" id="quality" name="quality" placeholder="Quality">
+				</div>				
+
+				<div class="form-group">
+					<label for="oloc">Output location</label>
+					<input class="form-control" id="oloc" name="oloc" placeholder="Output location">
+				</div>				
+
+<!--					<div class="form-group">
+					<label for="odis">Output distance</label>
+					<input class="form-control" id="odis" name="odis" placeholder="Output distance">
+				</div>				
+
+				<div class="form-group">
+					<label for="otrasmean">Output transport mean</label>
+					<input class="form-control" id="otrasmean" name="otrasmean" placeholder="Output transport mean">
+				</div>				
+
+				<div class="form-group">
+					<label for="sdis">Supply distance</label>
+					<input class="form-control" id="sdis" name="sdis" placeholder="Supply distance">
+				</div>				
+
+				<div class="form-group">
+					<label for="strasmean">Supply transport mean</label>
+					<input class="form-control" id="strasmean" name="strasmean" placeholder="Supply transport mean">
+				</div>
+						
+ 				<div class="form-group">
+					<label for="rtech">Recycling technology</label>
+					<input class="form-control" id="rtech" name="rtech" placeholder="Recycling technology">
+				</div> -->
+				
+				<div class="form-group">
+					<label for="spot">Substitute potential</label>
+					<input class="form-control" id="spot" name="spot" placeholder="Substitute potential">
+				</div>
+
+				<div class="form-group">
+					<label for="desc">Description</label>
+					<input class="form-control" id="desc" name="desc" placeholder="Description">
+				</div>
+
+				<div class="form-group">
+					<label for="comment">Comment</label>
+					<input class="form-control" id="comment" name="comment" placeholder="Comment">
+				</div>
+
 		  	<button type="submit" class="btn btn-info">Add Flow</button>
 		</form>
 		</div>

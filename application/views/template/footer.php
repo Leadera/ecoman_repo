@@ -1,6 +1,4 @@
-    <div  style="margin-top:80px;">
-
-    </div>
+    <div style="overflow: hidden;display: block;padding-top: 50px;clear: both;">&nbsp;</div>
 
     <script src="<?php echo asset_url('js/flatui-fileinput.js'); ?>"></script>
     <script src="<?php echo asset_url('js/jquery-ui-1.10.3.custom.min.js'); ?>"></script>

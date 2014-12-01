@@ -63,6 +63,23 @@ class Dataset extends CI_Controller {
 			$costUnit = $this->input->post('costUnit');
 			$quantity = $this->input->post('quantity');
 			$quantityUnit = $this->input->post('quantityUnit');
+			
+			$cf = $this->input->post('cf');
+			$availability = $this->input->post('availability');
+			$conc = $this->input->post('conc');
+			$pres = $this->input->post('pres');
+			$ph = $this->input->post('ph');
+			$state = $this->input->post('state');
+			$quality = $this->input->post('quality');
+			$oloc = $this->input->post('oloc');
+			//$odis = $this->input->post('odis');
+			//$otrasmean = $this->input->post('otrasmean');			
+			//$sdis = $this->input->post('sdis');
+			//$strasmean = $this->input->post('strasmean');
+			//$rtech = $this->input->post('rtech');
+			$desc = $this->input->post('desc');
+			$spot = $this->input->post('spot');
+			$comment = $this->input->post('comment');
 
 			//CHECK IF PROCESS IS NEW?
 			$flowID = $this->process_model->is_new_flow($flowID,$flowfamilyID);
@@ -79,7 +96,18 @@ class Dataset extends CI_Controller {
 				'cost_unit_id' =>$costUnit,
 				'ep' => $ep,
 				'ep_unit_id' => $epUnit,
-				'flow_type_id'=> $flowtypeID
+				'flow_type_id'=> $flowtypeID,
+				'chemical_formula' => $cf,
+				'availability' => $availability,
+				'concentration' => $conc,
+				'pression' => $pres,
+				'ph' => $ph,
+				'state_id' => $state,
+				'quality' => $quality,
+				'output_location' => $oloc,
+				'substitute_potential' => $spot,
+				'description' => $desc,
+				'comment' => $comment
 			);
 			$this->flow_model->register_flow_to_company($flow);
 

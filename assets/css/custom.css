@@ -11,6 +11,7 @@ body{
 .form-control{
     border: 1px solid #bdc3c7;
     font-size: 13px;
+    height: 38px;
 }
 
 /* bootstrap üstüne */
@@ -35,9 +36,9 @@ body{
 }
 .lead{
     font-size:22px;
-    font-family: 'Lobster', cursive;
+    font-family: 'Roboto', cursive;
+    font-weight: 600;
 }
-
 
 /*auto complete  */
 .wrapper {
@@ -128,7 +129,7 @@ body{
         top: 0;
         text-align: center;
         margin: auto;
-        font-family: 'Lobster', cursive;
+        font-family: 'Roboto', cursive;
     }
 }
 .navbar-nav.navbar-right:last-child{
