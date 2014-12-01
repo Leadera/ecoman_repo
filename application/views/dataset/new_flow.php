@@ -98,8 +98,8 @@
 				<div class="form-group">
 					<label for="availability">Availability</label>
 					<select id="availability" class="info select-block" name="availability">
-						<option value="1">Available</option>
-						<option value="0">Not Available</option>
+						<option value="true">Available</option>
+						<option value="false">Not Available</option>
 					</select>
 				</div>
 
@@ -190,6 +190,17 @@
 				<th>Quantity</th>
 				<th>Cost</th>
 				<th>EP</th>
+				<th>Chemical Formula</th>
+				<th>Availability</th>
+				<th>Concentration</th>
+				<th>Pression</th>
+				<th>PH</th>
+				<th>State</th>
+				<th>Quality</th>
+				<th>Output Location</th>
+				<th>Substitue Potential</th>
+				<th>Description</th>
+				<th>Comment</th>
 				<th style="width:100px;">Delete</th>
 			</tr>
 			<?php foreach ($company_flows as $flow): ?>
@@ -200,6 +211,19 @@
 					<td><?php echo $flow['qntty'].' '.$flow['qntty_unit_name']; ?></td>
 					<td><?php echo $flow['cost'].' '.$flow['cost_unit']; ?></td>
 					<td><?php echo $flow['ep'].' '.$flow['ep_unit']; ?></td>
+					<td><?php echo $flow['chemical_formula']; ?></td>
+					<td><?php if($flow['availability']){echo "Available";}else{echo "Not Available";} ?></td>
+					<td><?php echo $flow['concentration']; ?></td>
+					<td><?php echo $flow['pression']; ?></td>
+					<td><?php echo $flow['ph']; ?></td>
+					<td><?php echo $flow['state_id']; ?></td>
+					<td><?php echo $flow['quality']; ?></td>
+					<td><?php echo $flow['output_location']; ?></td>
+					<td><?php echo $flow['substitute_potential']; ?></td>
+					<td><?php echo $flow['description']; ?></td>
+					<td><?php echo $flow['comment']; ?></td>
+
+
 					<td><a href="<?php echo base_url('delete_flow/'.$companyID.'/'.$flow['id']);?>" class="label label-danger" value="<?php echo $flow['id']; ?>"><span class="fa fa-times"></span> Delete</button></td>
 			
 				</tr>

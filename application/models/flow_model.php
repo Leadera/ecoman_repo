@@ -52,10 +52,10 @@ class Flow_model extends CI_Model {
 	}
 
 	public function get_company_flow_list($companyID){
-		$this->db->select('t_flow_family.name as flowfamily,t_cmpny_flow.id as id,t_flow.name as flowname,t_flow_type.name  as flowtype,t_cmpny_flow.id as cmpny_flow_id,t_cmpny_flow.qntty as qntty,unit1.name as qntty_unit_name,t_cmpny_flow.cost as cost,t_cmpny_flow.ep as ep,t_cmpny_flow.ep_unit_id as ep_unit, t_cmpny_flow.cost_unit_id as cost_unit');
+		$this->db->select('*,t_flow_family.name as flowfamily,t_cmpny_flow.id as id,t_flow.name as flowname,t_flow_type.name  as flowtype,t_cmpny_flow.id as cmpny_flow_id,t_cmpny_flow.qntty as qntty,unit1.name as qntty_unit_name,t_cmpny_flow.cost as cost,t_cmpny_flow.ep as ep,t_cmpny_flow.ep_unit_id as ep_unit, t_cmpny_flow.cost_unit_id as cost_unit');
 		$this->db->from("t_cmpny_flow");
 		$this->db->join('t_flow','t_flow.id = t_cmpny_flow.flow_id');
-		$this->db->join('t_flow_family','t_flow.flow_family_id = t_flow_family.id');
+		$this->db->join('t_flow_family','t_flow.flow_family_id = t_flow_family.id', 'left');
 		$this->db->join('t_flow_type','t_flow_type.id = t_cmpny_flow.flow_type_id');
 		$this->db->join('t_unit as unit1','unit1.id = t_cmpny_flow.qntty_unit_id');
 		$this->db->where('cmpny_id',$companyID);
