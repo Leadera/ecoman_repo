@@ -18,6 +18,11 @@ class Dataset extends CI_Controller {
 		}
 	}
 
+	function sifirla($data){
+		if(empty($data)) return 0;
+		else return $data;
+	}
+
 	public function new_product($companyID)
 	{
 		$this->form_validation->set_rules('product', 'Product Field', 'trim|required|xss_clean');
@@ -90,18 +95,18 @@ class Dataset extends CI_Controller {
 			$flow = array(
 				'cmpny_id'=>$companyID,
 				'flow_id'=>$flowID,
-				'qntty'=>$quantity,
-				'qntty_unit_id'=>$quantityUnit,
-				'cost' =>$cost,
+				'qntty'=>$this->sifirla($quantity),
+				'qntty_unit_id'=>$this->sifirla($quantityUnit),
+				'cost' =>$this->sifirla($cost),
 				'cost_unit_id' =>$costUnit,
-				'ep' => $ep,
+				'ep' => $this->sifirla($ep),
 				'ep_unit_id' => $epUnit,
-				'flow_type_id'=> $flowtypeID,
+				'flow_type_id'=> $this->sifirla($flowtypeID),
 				'chemical_formula' => $cf,
 				'availability' => $availability,
-				'concentration' => $conc,
-				'pression' => $pres,
-				'ph' => $ph,
+				'concentration' => $this->sifirla($conc),
+				'pression' => $this->sifirla($pres),
+				'ph' => $this->sifirla($ph),
 				'state_id' => $state,
 				'quality' => $quality,
 				'output_location' => $oloc,
@@ -150,12 +155,25 @@ class Dataset extends CI_Controller {
 
 			$cmpny_flow_cmpnnt = array(
 				'cmpny_flow_id' => $this->input->post('flowtype'),
+				'description' => $this->input->post('description'),
+				'qntty' => $this->sifirla($this->input->post('quantity')),
+				'qntty_unit_id' => $this->sifirla($this->input->post('quantityUnit')),
+				'supply_cost' => $this->sifirla($this->input->post('cost')),
+				'supply_cost_unit' => $this->input->post('costUnit'),
+				'output_cost' => $this->sifirla($this->input->post('ocost')),
+				'output_cost_unit' => $this->input->post('ocostunit'),
+				'data_quality' => $this->input->post('quality'),
+				'substitute_potential' => $this->input->post('spot'),
+				'comment' => $this->input->post('comment'),
+				'cmpnt_type_id' =>$this->sifirla($this->input->post('component_type')),
 				'cmpnnt_id' => $component_id
 			);
 			$this->component_model->set_cmpny_flow_cmpnnt($cmpny_flow_cmpnnt);
 		}
 		
+		$data['units'] = $this->flow_model->get_unit_list();
 		$data['component_name'] = $this->component_model->get_cmpnnt($companyID);
+		$data['ctypes'] = $this->component_model->get_cmpnnt_type();
 		$data['companyID'] = $companyID;
 		$data['company_info'] = $this->company_model->get_company($companyID);
 		$data['flow_and_flow_type'] = $this->component_model->get_cmpny_flow_and_flow_type($companyID);
