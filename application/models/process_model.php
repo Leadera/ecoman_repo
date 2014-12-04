@@ -14,6 +14,13 @@ class Process_model extends CI_Model {
 		return $this->db->get()->row_array();
 	}
 
+	public function get_processfamily_list(){
+		$this->db->select('*');
+		$this->db->from('t_prcss_family');
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
 	public function get_process(){
 		$this->db->select('*');
 	    $this->db->from('t_prcss');
@@ -39,13 +46,14 @@ class Process_model extends CI_Model {
 	  return $query->result_array();
 	}
 
-	public function is_new_process($process_id){
+	public function is_new_process($process_id,$processfamilyID = false){
 		if(is_numeric($process_id)){
 			return $process_id;
 		}
 		else{
 			$data = array(
 				'name' => $process_id,
+				'prcss_family_id' => $processfamilyID,
 				'active' => 1,
 				'layer' => 1
 			);
@@ -90,13 +98,18 @@ class Process_model extends CI_Model {
 	}
 
 	public function get_cmpny_flow_prcss($id){
-		$this->db->select('t_cmpny_flow.id as company_flow_id, t_flow.name as flowname, t_prcss.name as prcessname,
+		$this->db->select('t_cmpny_prcss.comment,t_cmpny_prcss.max_rate_util,t_cmpny_prcss.typ_rate_util,t_cmpny_prcss.min_rate_util,t_cmpny_flow.id as company_flow_id, t_flow.name as flowname, t_prcss.name as prcessname,
+			unit1.name as minrateu,unit2.name as typrateu,unit3.name as maxrateu,
 			t_flow_type.name as flow_type_name, t_prcss.id as prcessid, t_cmpny_prcss.id as company_process_id, 
 			t_cmpny_flow.flow_id as flow_id , t_cmpny_flow.flow_type_id as flow_type_id');
 		$this->db->from('t_cmpny_flow_prcss');
 		$this->db->join('t_cmpny_flow','t_cmpny_flow.id = t_cmpny_flow_prcss.cmpny_flow_id');
 		$this->db->join('t_flow','t_flow.id = t_cmpny_flow.flow_id');
+		$this->db->join('t_flow_family','t_flow_family.id = t_flow.flow_family_id','left');
 		$this->db->join('t_cmpny_prcss','t_cmpny_prcss.id = t_cmpny_flow_prcss.cmpny_prcss_id');
+		$this->db->join('t_unit as unit1','unit1.id = t_cmpny_prcss.min_rate_util_unit','left');
+		$this->db->join('t_unit as unit2','unit2.id = t_cmpny_prcss.typ_rate_util_unit','left');
+		$this->db->join('t_unit as unit3','unit3.id = t_cmpny_prcss.max_rate_util_unit','left');
 		$this->db->join('t_flow_type','t_flow_type.id = t_cmpny_flow.flow_type_id');
 		$this->db->join('t_prcss','t_prcss.id = t_cmpny_prcss.prcss_id');
 		$this->db->where('t_cmpny_flow.cmpny_id',$id);

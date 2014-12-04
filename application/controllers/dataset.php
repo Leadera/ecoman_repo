@@ -86,7 +86,7 @@ class Dataset extends CI_Controller {
 			$spot = $this->input->post('spot');
 			$comment = $this->input->post('comment');
 
-			//CHECK IF PROCESS IS NEW?
+			//CHECK IF FLOW IS NEW?
 			$flowID = $this->process_model->is_new_flow($flowID,$flowfamilyID);
 
 			if(!$this->flow_model->has_same_flow($flowID,$flowtypeID,$companyID)){
@@ -188,21 +188,33 @@ class Dataset extends CI_Controller {
 
 		$this->form_validation->set_rules('process','Process','required');
 		$this->form_validation->set_rules('usedFlows','Used Flows','required');
+		$this->form_validation->set_rules('min_rate_util','Minimum rate of utilization','numeric');
+		$this->form_validation->set_rules('typ_rate_util','Typical rate of utilization','numeric');
+		$this->form_validation->set_rules('max_rate_util','Maximum rate of utilization','numeric');
+		$this->form_validation->set_rules('comment','Comment','alpha_numeric');
 
 
 		if ($this->form_validation->run() !== FALSE)
 		{
 			$used_flows = $this->input->post('usedFlows');
 			$process_id = $this->input->post('process');
+			$processfamilyID = $this->input->post('processfamily');
 
 			//CHECK IF PROCESS IS NEW?
-			$process_id = $this->process_model->is_new_process($process_id);
+			$process_id = $this->process_model->is_new_process($process_id,$processfamilyID);
 
 			$cmpny_prcss_id = $this->process_model->can_write_cmpny_prcss($companyID,$process_id);
 			
 			if($cmpny_prcss_id == false){
 				$cmpny_prcss = array(
 					'cmpny_id' => $companyID,
+					'min_rate_util' => $this->sifirla($this->input->post('min_rate_util')),
+					'min_rate_util_unit' => $this->sifirla($this->input->post('min_rate_util_unit')),					
+					'typ_rate_util' => $this->sifirla($this->input->post('typ_rate_util')),
+					'typ_rate_util_unit' => $this->sifirla($this->input->post('typ_rate_util_unit')),
+					'max_rate_util' => $this->sifirla($this->input->post('max_rate_util')),
+					'max_rate_util_unit' => $this->sifirla($this->input->post('max_rate_util_unit')),
+					'comment' => $this->input->post('comment'),
 					'prcss_id' => $process_id
 				);
 				$cmpny_prcss_id['id'] = $this->process_model->cmpny_prcss($cmpny_prcss);
@@ -224,6 +236,8 @@ class Dataset extends CI_Controller {
 		$data['cmpny_flow_prcss'] = $this->process_model->get_cmpny_flow_prcss($companyID);
 		$data['companyID'] = $companyID;
 		$data['company_info'] = $this->company_model->get_company($companyID);
+		$data['processfamilys'] = $this->process_model->get_processfamily_list();
+		$data['units'] = $this->flow_model->get_unit_list();
 
 		$this->load->view('template/header');
 		$this->load->view('dataset/dataSetLeftSide',$data);
