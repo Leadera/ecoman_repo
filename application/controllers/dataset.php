@@ -188,10 +188,10 @@ class Dataset extends CI_Controller {
 
 		$this->form_validation->set_rules('process','Process','required');
 		$this->form_validation->set_rules('usedFlows','Used Flows','required');
-		$this->form_validation->set_rules('min_rate_util','Minimum rate of utilization','numeric');
-		$this->form_validation->set_rules('typ_rate_util','Typical rate of utilization','numeric');
-		$this->form_validation->set_rules('max_rate_util','Maximum rate of utilization','numeric');
-		$this->form_validation->set_rules('comment','Comment','alpha_numeric');
+		$this->form_validation->set_rules('min_rate_util','Minimum rate of utilization','trim|numeric|xss_clean');
+		$this->form_validation->set_rules('typ_rate_util','Typical rate of utilization','trim|numeric|xss_clean');
+		$this->form_validation->set_rules('max_rate_util','Maximum rate of utilization','trim|numeric|xss_clean');
+		$this->form_validation->set_rules('comment','Comment','trim|alpha_numeric|xss_clean');
 
 
 		if ($this->form_validation->run() !== FALSE)
@@ -251,6 +251,8 @@ class Dataset extends CI_Controller {
 		$this->form_validation->set_rules('equipment','Equipment Name','required');
 		$this->form_validation->set_rules('equipmentTypeName','Equipment Type Name','required');
 		$this->form_validation->set_rules('equipmentAttributeName','Equipment Attribute Name','required');
+		$this->form_validation->set_rules('eqpmnt_attrbt_val','Equipment Attribute Value','trim|required|numeric|xss_clean');
+		$this->form_validation->set_rules('eqpmnt_attrbt_unit','Equipment Attribute Unit','required|numeric');
 
 		if ($this->form_validation->run() !== FALSE)
 		{
@@ -258,12 +260,16 @@ class Dataset extends CI_Controller {
 			$equipment_id = $this->input->post('equipment');
 			$equipment_type_id = $this->input->post('equipmentTypeName');
 			$equipment_type_attribute_id = $this->input->post('equipmentAttributeName');
+			$eqpmnt_attrbt_val = $this->input->post('eqpmnt_attrbt_val');
+			$eqpmnt_attrbt_unit = $this->input->post('eqpmnt_attrbt_unit');
 
 			$cmpny_eqpmnt_type_attrbt = array(
 					'cmpny_id' => $companyID,
 					'eqpmnt_id' => $equipment_id,
 					'eqpmnt_type_id' => $equipment_type_id,
-					'eqpmnt_type_attrbt_id' => $equipment_type_attribute_id
+					'eqpmnt_type_attrbt_id' => $equipment_type_attribute_id,
+					'eqpmnt_attrbt_val' => $eqpmnt_attrbt_val,
+					'eqpmnt_attrbt_unit' => $eqpmnt_attrbt_unit
 				);
 			$last_index = $this->equipment_model->set_info($cmpny_eqpmnt_type_attrbt);
 
@@ -281,7 +287,8 @@ class Dataset extends CI_Controller {
 		$data['process'] = $this->equipment_model->cmpny_prcss($companyID);
 		$data['informations'] = $this->equipment_model->all_information_of_equipment($companyID);
 		$data['company_info'] = $this->company_model->get_company($companyID);
-		
+		$data['units'] = $this->flow_model->get_unit_list();
+
 		$this->load->view('template/header');
 		$this->load->view('dataset/dataSetLeftSide',$data);
 		$this->load->view('dataset/new_equipment',$data);
