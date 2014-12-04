@@ -189,6 +189,7 @@ class Company extends CI_Controller{
 		$data['prjname'] = $this->company_model->get_company_proj($term);
 		$data['cmpnyperson'] = $this->company_model->get_company_workers($term);
 		//$data['users_without_company']= $this->user_model->users_without_company();
+		if(empty($data['nacecode'])){$data['nacecode']['code']="";$data['nacecode']['name_tr']="";}
 
 		//kullanıcının company'i editleme hakkı varmı kontrolü
 		$kullanici = $this->session->userdata('user_in');
@@ -242,6 +243,8 @@ class Company extends CI_Controller{
 		$data['companies'] = $this->company_model->get_company($term);
 		$data['nace_code'] = $this->company_model->get_nace_code($term);
 
+		if(empty($data['nace_code'])){$data['nace_code']['code']="";}
+
 		$this->load->library('googlemaps');
 
 		$config['center'] = '39.98280915242299, 32.73923635482788';
@@ -260,7 +263,7 @@ class Company extends CI_Controller{
 		$this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('companyName', 'Company Name', 'trim|required|xss_clean|callback_name_control');
-		$this->form_validation->set_rules('naceCode', 'Nace Code', 'trim|required|xss_clean|callback_is_in_nace|regex_match[/^\d{2}\.\d{2}\.\d{2}$/]');
+		$this->form_validation->set_rules('naceCode', 'Nace Code', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('coordinates', 'Coordinates', 'trim|xss_clean');
 		$this->form_validation->set_rules('companyDescription', 'Company Description', 'trim|xss_clean');
 		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email|callback_is_unique_email');
@@ -317,10 +320,10 @@ class Company extends CI_Controller{
 
 		    $code = $this->input->post('naceCode');
 
-			$cmpny_data = array(
-				'cmpny_id' => $data['companies']['id'],
-      			'description' => $data['companies']['description']
-    		);
+				$cmpny_data = array(
+					'cmpny_id' => $data['companies']['id'],
+					'description' => $data['companies']['description']
+				);
 
 		  	$this->company_model->update_cmpny_data($cmpny_data,$data['companies']['id']);
 

@@ -46,23 +46,23 @@ class Company_model extends CI_Model {
   }
 
   public function get_nace_code($id){
-      $this->db->select('t_nace_code.code,t_nace_code.name_tr');
-      $this->db->from('t_nace_code');
-      $this->db->join('t_cmpny_nace_code', 't_cmpny_nace_code.nace_code_id = t_nace_code.id');
-      $this->db->join('t_cmpny', 't_cmpny.id = t_cmpny_nace_code.cmpny_id');
-      $this->db->where('t_cmpny.id', $id);
-      $query = $this->db->get();
-      return $query->row_array();
+    $this->db->select('t_nace_code.code,t_nace_code.name_tr');
+    $this->db->from('t_nace_code');
+    $this->db->join('t_cmpny_nace_code', 't_cmpny_nace_code.nace_code_id = t_nace_code.id', 'left');
+    $this->db->join('t_cmpny', 't_cmpny.id = t_cmpny_nace_code.cmpny_id', 'left');
+    $this->db->where('t_cmpny.id', $id);
+    $query = $this->db->get();
+    return $query->row_array();
   }
 
   public function get_company_proj($id){
-      $this->db->select('t_prj.name,t_prj.id as proje_id');
-      $this->db->from('t_prj');
-      $this->db->join('t_prj_cmpny', 't_prj_cmpny.prj_id = t_prj.id');
-      $this->db->join('t_cmpny', 't_cmpny.id = t_prj_cmpny.cmpny_id');
-      $this->db->where('t_cmpny.id', $id);
-      $query = $this->db->get();
-      return $query->result_array();
+    $this->db->select('t_prj.name,t_prj.id as proje_id');
+    $this->db->from('t_prj');
+    $this->db->join('t_prj_cmpny', 't_prj_cmpny.prj_id = t_prj.id');
+    $this->db->join('t_cmpny', 't_cmpny.id = t_prj_cmpny.cmpny_id');
+    $this->db->where('t_cmpny.id', $id);
+    $query = $this->db->get();
+    return $query->result_array();
   }
 
   public function get_company_workers($id){
