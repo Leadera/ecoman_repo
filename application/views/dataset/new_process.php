@@ -16,12 +16,12 @@
 		}
 	</script>
 
-		<div class="col-md-5 borderli">
+		<div class="col-md-4 borderli">
 		<?php echo form_open_multipart('new_process/'.$companyID); ?>
 
 			<p class="lead">Assign new process and set a flow to the company</p>
 			<div class="form-group">
-	    	<label for="status">Process Name</label>
+	    	<label for="status">Process Name <span style="color:red;">*</span></label>
 				<select id="selectize" onchange="getProcessId()" name="process">
 					<option value="">Please select a process</option>
 					<?php foreach ($process as $pro): ?>
@@ -30,7 +30,7 @@
 				</select>
  			</div>
  			<div class="form-group" id="process-family" style="display:none;">
-				<label for="processfamily">Process Family</label>
+				<label for="processfamily">Process Family <span style="color:red;">*</span></label>
 				<select id="processfamily" class="info select-block" name="processfamily">
 					<?php foreach ($processfamilys as $processfamily): ?>
 						<option value="<?php echo $processfamily['id']; ?>"><?php echo $processfamily['name']; ?></option>
@@ -38,7 +38,7 @@
 				</select>
 			</div>
  			<div class="form-group">
-		    	<label for="description">Used Flows</label>
+		    	<label for="description">Used Flows <span style="color:red;">*</span></label>
 		    	<select multiple="multiple" class="select-block" id="usedFlows" name="usedFlows[]">
 			    	<?php foreach ($company_flows as $flow): ?>
 						<option value="<?php echo $flow['cmpny_flow_id']; ?>"><?php echo $flow['flowname'].'('.$flow['flowtype'].')'; ?></option>
@@ -100,7 +100,7 @@
 	    <button type="submit" class="btn btn-info">Add Process</button>
 	    </form>
 	    </div>
-		<div class="col-md-5">
+		<div class="col-md-8">
 			<p class="lead">Company processes</p>
 			<table class="table table-striped table-bordered">
 			<tr>

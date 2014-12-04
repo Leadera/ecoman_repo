@@ -1,4 +1,4 @@
-	<div class="col-md-5 borderli">
+	<div class="col-md-4 borderli">
 		<div class="lead">Add new equipment to company</div>
 			<?php echo form_open_multipart('new_equipment/'.$companyID); ?>
 			<div class="form-group">
@@ -55,7 +55,7 @@
 			  <button type="submit" class="btn btn-info">Add Equipment</button>
 			</form>
 		</div>
-		<div class="col-md-5">
+		<div class="col-md-8">
 			<div class="lead">Company equipments</div>
 			<table class="table table-striped table-bordered">
 				<tr>

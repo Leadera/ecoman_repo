@@ -1,10 +1,19 @@
-	<div class="col-md-5 borderli">
+	<div class="col-md-4 borderli">
 		<?php echo form_open_multipart('new_component/'.$companyID); ?>
 			<p class="lead">Add new component to company</p>
 			<div class="form-group">
-			    <label for="component_name">Component Name</label>
+			    <label for="component_name">Component Name <span style="color:red;">*</span></label>
 			   	<input class="form-control" id="component_name" name="component_name" placeholder="Enter Component Name">
 		 	</div>
+
+			<div class="form-group">
+				<label for="component_name">Connected Flow  <span style="color:red;">*</span></label>
+				<select id="flowtype" class="info select-block" name="flowtype">
+					<?php foreach ($flow_and_flow_type as $flows): ?>
+					<option value="<?php echo $flows['value_id']; ?>"><?php echo $flows['flow_name'].'('.$flows['flow_type_name'].')'; ?></option>
+					<?php endforeach ?>
+				</select>
+			</div>
 
 		 	<div class="form-group">
 			  <label for="component_type">Component Type</label>
@@ -15,15 +24,6 @@
 					<?php endforeach ?>
 				</select>
 		 	</div>
-
-			<div class="form-group">
-				<label for="component_name">Connected Flow</label>
-				<select id="flowtype" class="info select-block" name="flowtype">
-					<?php foreach ($flow_and_flow_type as $flows): ?>
-					<option value="<?php echo $flows['value_id']; ?>"><?php echo $flows['flow_name'].'('.$flows['flow_type_name'].')'; ?></option>
-					<?php endforeach ?>
-				</select>
-			</div>
 
 			<div class="form-group">
 				<label for="description">Description</label>
@@ -98,7 +98,7 @@
 		  <button type="submit" class="btn btn-info">Add Component</button>
 		</form>
 		</div>
-		<div class="col-md-5">
+		<div class="col-md-8">
 		<p class="lead">Company components</p>
 		<table class="table table-striped table-bordered">
 			<tr>

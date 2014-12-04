@@ -16,11 +16,11 @@
 		}
 	</script>
 
-	<div class="col-md-5 borderli">
+	<div class="col-md-4 borderli">
 		<?php echo form_open_multipart('new_flow/'.$companyID); ?>
 			<p class="lead">Add new flow to company</p>
 			<div class="form-group">
-				<label for="selectize">Flow Name</label>
+				<label for="selectize">Flow Name <span style="color:red;">*</span></label>
 				<select id="selectize" onchange="getFlowId()" class="info select-block" name="flowname">
 					<option value="">Please select a flow</option>
 					<?php foreach ($flownames as $flowname): ?>
@@ -29,7 +29,7 @@
 				</select>
 		 	</div>
 			<div class="form-group">
-				<label for="flowtype">Flow Type</label>
+				<label for="flowtype">Flow Type <span style="color:red;">*</span></label>
 				<select id="flowtype" class="info select-block" name="flowtype">
 					<?php foreach ($flowtypes as $flowtype): ?>
 						<option value="<?php echo $flowtype['id']; ?>"><?php echo $flowtype['name']; ?></option>
@@ -37,7 +37,7 @@
 				</select>
 			</div>
 			<div class="form-group" id="flow-family" style="display:none;">
-				<label for="flowfamily">Flow Family</label>
+				<label for="flowfamily">Flow Family <span style="color:red;">*</span></label>
 				<select id="flowfamily" class="info select-block" name="flowfamily">
 					<option value="">Nothing Selected</option>
 					<?php foreach ($flowfamilys as $flowfamily): ?>
@@ -48,11 +48,11 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-8">
-						<label for="quantity">Quantity (Annual)</label>
+						<label for="quantity">Quantity (Annual) <span style="color:red;">*</span></label>
 						<input class="form-control" id="quantity" name="quantity" placeholder="Enter Quantity of Flow">
 					</div>
 					<div class="col-md-4">
-						<label for="quantity">Quantity Unit</label>
+						<label for="quantity">Quantity Unit <span style="color:red;">*</span></label>
 						<select id="quantityUnit" class="info select-block" name="quantityUnit">
 							<?php foreach ($units as $unit): ?>
 								<option value="<?php echo $unit['id']; ?>"><?php echo $unit['name']; ?></option>
@@ -64,11 +64,11 @@
 		  	<div class="form-group">
 		    	<div class="row">
 						<div class="col-md-8">
-							<label for="cost">Cost (Annual)</label>
+							<label for="cost">Cost (Annual) <span style="color:red;">*</span></label>
 		    			<input class="form-control" id="cost" name="cost" placeholder="Cost of flow (number)">
 			    	</div>
 						<div class="col-md-4">
-							<label for="cost">Cost Unit</label>
+							<label for="cost">Cost Unit <span style="color:red;">*</span></label>
 							<select id="costUnit" class="info select-block" name="costUnit">
 								<option value="TL">TL</option>
 								<option value="Euro">Euro</option>
@@ -80,11 +80,11 @@
 		  	<div class="form-group">
 		  		<div class="row">
 						<div class="col-md-8">
-				  		<label for="amount">EP (Annual)</label>
+				  		<label for="amount">EP (Annual) <span style="color:red;">*</span></label>
 				    	<input class="form-control" id="ep" name="ep" placeholder="Enter EP">
 				    </div>
 						<div class="col-md-4">
-							<label for="amount">EP Unit</label>
+							<label for="amount">EP Unit <span style="color:red;">*</span></label>
 							<input type="text" class="form-control" id="epUnit" value="EP" name="epUnit" readonly>
 						</div>
 		  		</div>
@@ -180,7 +180,7 @@
 		  	<button type="submit" class="btn btn-info">Add Flow</button>
 		</form>
 		</div>
-	<div class="col-md-5">
+	<div class="col-md-8">
 		<p class="lead">Company flows</p>
 		<table class="table table-striped table-bordered">
 			<tr>

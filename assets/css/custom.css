@@ -12,6 +12,7 @@ body{
     border: 1px solid #bdc3c7;
     font-size: 13px;
     height: 38px;
+    border-radius: 4px !important;
 }
 
 /* bootstrap üstüne */
@@ -144,7 +145,6 @@ fieldset[disabled] .form-control {
 }
 
 .borderli{
-    border-left: 1px solid #d0d0d0;
     border-right: 1px solid #d0d0d0;
 }
 label{
@@ -152,4 +152,24 @@ label{
 }
 .btn{
     font-size:13px;
+}
+.ultab{
+    border-bottom: 2px solid #d0d0d0;
+    font-size:16px;
+    font-weight: 600;
+}
+.ultab li{
+    border: 2px solid #f0f0f0;
+    border-bottom: 0px;
+    background-color: #f0f0f0;
+}
+.ultab > li:first-child{
+    padding-left:5px;
+}
+.ultab li.active{
+    border: 2px solid #d0d0d0;
+    background-color: #d0d0d0;
+}
+.ultab li a{
+    color:rgb(52, 73, 94) !important;
 }
