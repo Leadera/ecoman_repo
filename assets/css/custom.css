@@ -138,7 +138,7 @@ body{
 }
 .form-control[disabled],
 .form-control[readonly],
-fieldset[disabled] .form-control {
+fieldset[disabled] .form-control {                                                                                                                                                                                                    
     color: #34495E;
     font-size:15px;
     font-weight: bold;

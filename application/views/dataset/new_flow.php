@@ -179,6 +179,7 @@
 
 		  	<button type="submit" class="btn btn-info">Add Flow</button>
 		</form>
+		<span class="label label-default"><span style="color:red;">*</span> labels are required.</span>
 		</div>
 	<div class="col-md-8">
 		<p class="lead">Company flows</p>

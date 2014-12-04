@@ -54,6 +54,8 @@
 				</div>
 			  <button type="submit" class="btn btn-info">Add Equipment</button>
 			</form>
+			<span class="label label-default"><span style="color:red;">*</span> labels are required.</span>
+
 		</div>
 		<div class="col-md-8">
 			<div class="lead">Company equipments</div>
