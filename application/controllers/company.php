@@ -65,7 +65,6 @@ class Company extends CI_Controller{
 				'description' => $data['description']
 			);
 
-		    $this->company_model->insert_cmpny_data($cmpny_data);
 		    $nace_code_id = $this->company_model->search_nace_code($code);
 
 		    $cmpny_nace_code = array(
@@ -105,6 +104,7 @@ class Company extends CI_Controller{
 			}
 			redirect('company', 'refresh');
 		}
+		$data['all_nace_codes'] = $this->company_model->get_all_nace_codes();
 
 		$this->load->view('template/header');
 		$this->load->view('company/create_company',$data);
@@ -242,6 +242,7 @@ class Company extends CI_Controller{
 
 		$data['companies'] = $this->company_model->get_company($term);
 		$data['nace_code'] = $this->company_model->get_nace_code($term);
+		$data['all_nace_codes'] = $this->company_model->get_all_nace_codes();
 
 		if(empty($data['nace_code'])){$data['nace_code']['code']="";}
 
@@ -328,13 +329,12 @@ class Company extends CI_Controller{
 		  	$this->company_model->update_cmpny_data($cmpny_data,$data['companies']['id']);
 
 		  	$nace_code_id = $this->company_model->search_nace_code($code);
-
 	    	$cmpny_nace_code = array(
 		    	'cmpny_id' => $data['companies']['id'],
 		    	'nace_code_id' => $nace_code_id['id']
 		    );
 		    $this->company_model->update_cmpny_nace_code($cmpny_nace_code,$data['companies']['id']);
-		    redirect('company', 'refresh');
+		    redirect('company/'.$data['companies']['id'], 'refresh');
 	  	}
 		$this->load->view('template/header');
 		$this->load->view('company/update_company',$data);

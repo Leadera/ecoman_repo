@@ -38,9 +38,14 @@
 	    			<input type="text" class="form-control" id="companyName" placeholder="Enter Company Name" value="<?php echo set_value('companyName'); ?>" name="companyName">
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="naceCode">Nace Code</label>
-	    			<input type="text" class="form-control" id="naceCode" placeholder="XX.XX.XX" value="<?php echo set_value('naceCode'); ?>"  name="naceCode">
-	 				<a target="_blank" href="http://tobb.org.tr/faaliyet/Sayfalar/nace-sorgulama.php">Nace Codes</a>
+	    		<label for="naceCode">Nace Code</label>
+					<select id="selectize" name="naceCode">
+						<option value="">Nothing Selected</option>
+						<?php foreach ($all_nace_codes as $anc): ?>
+							<option value="<?php echo $anc['code']; ?>"><?php echo $anc['code']; ?> - <?php echo $anc['name_tr']; ?></option>
+						<?php endforeach ?>
+					</select>
+					<a target="_blank" href="http://tobb.org.tr/faaliyet/Sayfalar/nace-sorgulama.php">Nace Codes</a>
 	 			</div>
 
 
@@ -117,3 +122,8 @@
 </div>
 
 </div>
+<script type="text/javascript">
+	$('#selectize').selectize({
+		create: false
+	});
+</script>

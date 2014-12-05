@@ -16,10 +16,6 @@ class Company_model extends CI_Model {
     $this->db->update('t_cmpny', $logo);
   }
 
-  public function insert_cmpny_data($data){
-    $this->db->insert('t_cmpny_data',$data);
-  }
-
   public function search_nace_code($code){
     $this->db->select('id');
     $this->db->from('t_nace_code');
@@ -53,6 +49,13 @@ class Company_model extends CI_Model {
     $this->db->where('t_cmpny.id', $id);
     $query = $this->db->get();
     return $query->row_array();
+  }
+
+  public function get_all_nace_codes(){
+    $this->db->select('t_nace_code.code,t_nace_code.name_tr');
+    $this->db->from('t_nace_code');
+    $query = $this->db->get();
+    return $query->result_array();
   }
 
   public function get_company_proj($id){
