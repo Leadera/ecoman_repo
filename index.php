@@ -18,7 +18,13 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-	define('ENVIRONMENT', 'development');
+	// Domain-based environment
+if ($_SERVER['SERVER_NAME'] == 'http://88.249.18.205:8090/') {
+    define('ENVIRONMENT', 'development');
+} else {
+    define('ENVIRONMENT', 'production');
+}
+
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
