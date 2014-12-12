@@ -19,11 +19,7 @@
  *
  */
 	// Domain-based environment
-if ($_SERVER['SERVER_NAME'] == 'localhost') {
     define('ENVIRONMENT', 'development');
-} else {
-    define('ENVIRONMENT', 'production');
-}
 
 /*
  *---------------------------------------------------------------
