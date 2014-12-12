@@ -76,6 +76,9 @@ class Process_model extends CI_Model {
 			$this->db->insert('t_flow',$data);
 			return $this->db->insert_id();
 		}
+		echo $this->db->last_query();
+		exit;
+		break;
 
 	}
 

@@ -7,7 +7,6 @@ class Flow_model extends CI_Model {
 	}
 
 	public function register_flow_to_company($flow){
-
 		$this->db->insert('t_cmpny_flow', $flow);
 	}
 
