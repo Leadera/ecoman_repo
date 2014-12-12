@@ -19,7 +19,7 @@
  *
  */
 	// Domain-based environment
-if ($_SERVER['SERVER_NAME'] == 'http://88.249.18.205:8090/') {
+if ($_SERVER['SERVER_NAME'] == 'localhost') {
     define('ENVIRONMENT', 'development');
 } else {
     define('ENVIRONMENT', 'production');
