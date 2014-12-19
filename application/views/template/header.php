@@ -8,9 +8,6 @@
     <link href="<?php echo asset_url('bootstrap/css/bootstrap.css'); ?>" rel="stylesheet">
 
     <!-- Loading Flat UI -->
-    <link rel="stylesheet" href="<?php echo asset_url('themes/default/easyui.css') ?>">
-    <link rel="stylesheet" href="<?php echo asset_url('themes/icon.css') ?>">
-    <link rel="stylesheet" href="<?php echo asset_url('themes/demo.css') ?>">
     <link href="<?php echo asset_url('css/flat-ui.css'); ?>" rel="stylesheet">
     <link href="<?php echo asset_url('css/custom.css'); ?>" rel="stylesheet">
     <link href="<?php echo asset_url('css/selectize.css'); ?>" rel="stylesheet">
