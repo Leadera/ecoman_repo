@@ -8,7 +8,7 @@
 <script src="<?php echo asset_url('is/print/jQuery.print.js'); ?>"></script> 
 <script src="<?php echo asset_url('is/src/datagrid-filter.js'); ?>"></script>
 <script src="<?php echo asset_url('is/IS_js/js2_scen.js'); ?>"></script>
-<div <?php if($this->uri->segment(1)=="isscoping"){echo 'class="easyui-layout"';} ?>  >
+<div>
  <div id="cc" class="easyui-layout" style="height:1000px;" data-options="fit:true">
        <!-- <div data-options="region:'north'" style="height:50px"></div>-->
         <div data-options="region:'south',split:true" style="height:400px;">
