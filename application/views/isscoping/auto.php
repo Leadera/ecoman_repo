@@ -12,7 +12,7 @@
 <div class="col-md-12">
     <div id="cc" class="easyui-layout" data-options="fit:true" style="height:1000px;">
         <!--<div data-options="region:'north'" style="height:50px"></div>-->
-        <div data-options="region:'south',split:true" style="height:400px;">
+        <div data-options="region:'south',split:true" style="height:550px; padding-bottom:200px;">
             <div class="easyui-layout" data-options="fit:true">
                 <div id="zeyn"   data-options="region:'west',split:true" style="width:50%;">
                     <table  id="tt_grid_dynamic" class="easyui-datagrid" title="Dynamic table with IS potentials" style=""
