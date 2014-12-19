@@ -10,7 +10,7 @@
     <script src="<?php echo asset_url('is/IS_js/js2_scen.js'); ?>"></script>
 
 
-    
+<div class="easyui-layout"> 
     <div class="easyui-layout" data-options="fit:true">
         <div data-options="region:'center',title:'Senaryo 2',iconCls:'icon-ok'">
             <div id="tt_grid_div" style="width:100%">
@@ -147,3 +147,4 @@
             </form>
         </div>
     </div>
+</div>
