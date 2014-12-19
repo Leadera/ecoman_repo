@@ -1,16 +1,15 @@
 
-    <link rel="stylesheet" type="text/css" href="<?php echo asset_url('is/themes/default/easyui.css'); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo asset_url('is/themes/icon.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo asset_url('is/themes/default/easyui.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo asset_url('is/themes/icon.css'); ?>">
 
-    <script type="text/javascript" src="<?php echo asset_url('is/jquery.easyui.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php echo asset_url('is/locale/easyui-lang-tr.js'); ?>"></script>
-    <script type="text/javascript" src="<?php echo asset_url('is/locale_IS/IS_lang_tr.js'); ?>"></script>
-    <script src="<?php echo asset_url('is/print/jQuery.print.js'); ?>"></script> 
-    <script src="<?php echo asset_url('is/src/datagrid-filter.js'); ?>"></script>
-    <script src="<?php echo asset_url('is/IS_js/js2_scen.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo asset_url('is/jquery.easyui.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo asset_url('is/locale/easyui-lang-tr.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo asset_url('is/locale_IS/IS_lang_tr.js'); ?>"></script>
+<script src="<?php echo asset_url('is/print/jQuery.print.js'); ?>"></script> 
+<script src="<?php echo asset_url('is/src/datagrid-filter.js'); ?>"></script>
+<script src="<?php echo asset_url('is/IS_js/js2_scen.js'); ?>"></script>
 
-
-<div class="easyui-layout"> 
+<div class="easyui-layout" style="height:100%;"> 
     <div class="easyui-layout" data-options="fit:true">
         <div data-options="region:'center',title:'Senaryo 2',iconCls:'icon-ok'">
             <div id="tt_grid_div" style="width:100%">
