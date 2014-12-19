@@ -1,10 +1,12 @@
     <div style="overflow: hidden;display: block;padding-top: 50px;clear: both;">&nbsp;</div>
 
     <script src="<?php echo asset_url('js/flatui-fileinput.js'); ?>"></script>
-    <script src="<?php echo asset_url('js/jquery-ui-1.10.3.custom.min.js'); ?>"></script>
-    <script src="<?php echo asset_url('js/jquery.ui.touch-punch.min.js'); ?>"></script>
-    <script src="<?php echo asset_url('js/jquery-ui-1.10.4.custom.js'); ?>"></script>
-    <script src="<?php echo asset_url('js/bootstrap.min.js'); ?>"></script>
+    <?php if($this->uri->segment(1)!="is"): ?>
+      <script src="<?php echo asset_url('js/jquery-ui-1.10.3.custom.min.js'); ?>"></script>
+      <script src="<?php echo asset_url('js/jquery.ui.touch-punch.min.js'); ?>"></script>
+      <script src="<?php echo asset_url('js/jquery-ui-1.10.4.custom.js'); ?>"></script>
+      <script src="<?php echo asset_url('js/bootstrap.min.js'); ?>"></script>
+    <?php endif ?>
     <script src="<?php echo asset_url('js/bootstrap-select.js'); ?>"></script>
     <script src="<?php echo asset_url('js/bootstrap-switch.js'); ?>"></script>
     <script src="<?php echo asset_url('js/flatui-checkbox.js'); ?>"></script>
