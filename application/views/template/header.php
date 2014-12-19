@@ -21,16 +21,18 @@
 
     <script src="<?php echo asset_url('js/jquery-1.10.2.min.js'); ?>"></script>
     <!--[if lt IE 9]><script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.0.8/es5-shim.min.js"></script><![endif]-->
-    <script src="<?php echo asset_url('js/selectize.min.js'); ?>"></script>
-    <script type="text/javascript">
-      $(function() {
-        $('#selectize').selectize({
-          create: true,
-          sortField: 'text'
+    <?php if($this->uri->segment(1)!="is"): ?>
+      <script src="<?php echo asset_url('js/selectize.min.js'); ?>"></script>
+      <script type="text/javascript">
+        $(function() {
+          $('#selectize').selectize({
+            create: true,
+            sortField: 'text'
+          });
+          //$( "select" ).selectize();
         });
-        //$( "select" ).selectize();
-      });
-    </script>
+      </script>
+    <?php endif ?>
 
     <!-- font -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic,500italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
