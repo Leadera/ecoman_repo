@@ -14,7 +14,6 @@
     <script src="<?php echo asset_url('js/holder.js'); ?>"></script>
     <script src="<?php echo asset_url('js/application.js'); ?>"></script>
     <script src="<?php echo asset_url('js/jquery.autocomplete.multiselect.js'); ?>"></script>
-    <script src="<?php echo asset_url('jquery.easyui.min.js'); ?>"></script>
 
     <script type="text/javascript">
         var marker;
