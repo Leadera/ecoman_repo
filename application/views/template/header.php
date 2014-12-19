@@ -21,7 +21,7 @@
 
     <script src="<?php echo asset_url('js/jquery-1.10.2.min.js'); ?>"></script>
     <!--[if lt IE 9]><script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.0.8/es5-shim.min.js"></script><![endif]-->
-    <?php if($this->uri->segment(1)!="is"): ?>
+    <?php if($this->uri->segment(1)!="isscoping"): ?>
       <script src="<?php echo asset_url('js/selectize.min.js'); ?>"></script>
       <script type="text/javascript">
         $(function() {
