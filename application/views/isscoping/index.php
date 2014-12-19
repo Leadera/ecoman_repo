@@ -9,9 +9,9 @@
 <script src="<?php echo asset_url('is/src/datagrid-filter.js'); ?>"></script>
 <script src="<?php echo asset_url('is/IS_js/js2_scen.js'); ?>"></script>
 <div <?php if($this->uri->segment(1)=="is"){echo 'class="easyui-layout"';} ?>  >
-    <div id="cc" class="easyui-layout" style="height:1000px;" data-options="fit:true">
+ <div id="cc" class="easyui-layout" style="height:1000px;" data-options="fit:true">
        <!-- <div data-options="region:'north'" style="height:50px"></div>-->
-        <div data-options="region:'south',split:true" style="height:550px;">
+        <div data-options="region:'south',split:true" style="height:400px;">
            
             <div class="easyui-layout" data-options="fit:true">
                 <div id="tt_grid_dynamic2_div" data-options="region:'west',split:true" style="width:50%;">
