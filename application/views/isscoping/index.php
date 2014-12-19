@@ -8,7 +8,7 @@
 <script src="<?php echo asset_url('is/print/jQuery.print.js'); ?>"></script> 
 <script src="<?php echo asset_url('is/src/datagrid-filter.js'); ?>"></script>
 <script src="<?php echo asset_url('is/IS_js/js2_scen.js'); ?>"></script>
-
+<div class="col-md-12">
 <div class="easyui-layout" style="height:100%;"> 
     <div class="easyui-layout" data-options="fit:true">
         <div data-options="region:'center',title:'Senaryo 2',iconCls:'icon-ok'">
@@ -146,4 +146,5 @@
             </form>
         </div>
     </div>
+</div>
 </div>
