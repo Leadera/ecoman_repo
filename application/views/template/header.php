@@ -37,7 +37,7 @@
     <!-- font -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic,500italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   </head>
-  <body <?php if($this->uri->segment(1)=="is"){echo 'class="easyui-layout"';} ?> >
+  <body>
 
     <nav class="navbar navbar-default navbar-lg" style="margin-bottom:0px;">
       <a class="navbar-brand" href="<?php echo base_url(); ?>" style="color:white;">ECOMAN</a>

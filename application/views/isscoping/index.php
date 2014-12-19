@@ -8,7 +8,7 @@
 <script src="<?php echo asset_url('is/print/jQuery.print.js'); ?>"></script> 
 <script src="<?php echo asset_url('is/src/datagrid-filter.js'); ?>"></script>
 <script src="<?php echo asset_url('is/IS_js/js2_scen.js'); ?>"></script>
-<div class="col-md-12" >
+<div <?php if($this->uri->segment(1)=="is"){echo 'class="easyui-layout"';} ?>  >
     <div id="cc" class="easyui-layout" style="height:1000px;" data-options="fit:true">
        <!-- <div data-options="region:'north'" style="height:50px"></div>-->
         <div data-options="region:'south',split:true" style="height:550px;">
