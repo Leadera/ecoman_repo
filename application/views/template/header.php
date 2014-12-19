@@ -8,10 +8,13 @@
     <link href="<?php echo asset_url('bootstrap/css/bootstrap.css'); ?>" rel="stylesheet">
 
     <!-- Loading Flat UI -->
+        <?php if($this->uri->segment(1)!="is"): ?>
+
     <link href="<?php echo asset_url('css/flat-ui.css'); ?>" rel="stylesheet">
     <link href="<?php echo asset_url('css/custom.css'); ?>" rel="stylesheet">
     <link href="<?php echo asset_url('css/selectize.css'); ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo asset_url('css/font-awesome.min.css'); ?>">
+  <?php endif ?>
     <!--<link href="<?php // echo asset_url('css/jquery-ui-1.10.4.custom.css'); ?>" rel="stylesheet"> 
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
