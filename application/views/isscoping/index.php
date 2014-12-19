@@ -9,96 +9,127 @@
 <script src="<?php echo asset_url('is/src/datagrid-filter.js'); ?>"></script>
 <script src="<?php echo asset_url('is/IS_js/js2_scen.js'); ?>"></script>
 <div class="col-md-12">
-<div class="easyui-layout" style="height:100%;"> 
-    <div class="easyui-layout" data-options="fit:true">
-        <div data-options="region:'center',title:'Senaryo 2',iconCls:'icon-ok'">
-            <div id="tt_grid_div" style="width:100%">
-                
-                <table id="tt_grid2" class="easyui-datagrid" title="Company Flow Sets" style="height:100%" ></table>
-                <table id="tt_grid_scenarios2" data-options="fit:true" class="easyui-datagrid" title="IS Scenarios" style="" ></table>
-                
-                <div id="tb" style="padding:5px;height:auto">
-                    <div style="margin-bottom:5px">
-                        <a href="#" onclick="addRow();" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add Potential IS</a>
-                        <a href="#" onclick="beginISPotential();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Begin Manual IS Process</a>
-                        <a href="#" onclick="beginISPotentialByAllFlows();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Process By All Flows</a>
-                        <a href="#" onclick="beginISPotentialByFlows();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Process By Selected Flows</a>
-                        <a href="#" id="printGrid2" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
-                        <!--<a href="#" onclick="savePotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true">Save a table with relevant IS potentials</a>-->
-                    </div>
-                    <div>
-                        <label style="margin-right:7px;">IS Scenario Type:</label>
-                        <input class="easyui-combobox" 
-                           name="IS_search2" id="IS_search2"
-                           data-options="
-                                   url:'<?php echo asset_url('is/combobox_data1.json'); ?>',
-                                   method:'get',
-                                   valueField:'id',
-                                   textField:'text',
-                                   panelHeight:'auto',
-                                   icons:[{
-                                       iconCls:'icon-add'
-                                   }]
-                           ">
-                    </div>
-                </div>
-
-                <div id="tb2" style="padding:5px;height:auto">
-                    <div style="margin-bottom:5px">
-                        <a href="#" onclick="beginFlowPotential();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Get specific flow info</a>
-                        <a href="#" onclick="addRow();" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add Potential IS</a>
-                        <a href="#" id="printGridPotentials2" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
-                    </div>
-
-                </div>
-                
-                <div id="tt_grid_tree_div" data-options="fit:true,collapsible:true" class="easyui-panel" title="Flow Categories" style="height:10%" >
-                    <ul id="tt_tree2" class="easyui-tree" ></ul>
-                </div>
-                
-                <table id="tt_grid_dynamic2" class="easyui-datagrid" title="Dynamic table with IS potentials" style="height:100%"
-                data-options="singleSelect:false,
-                                collapsible:true,
-                                method:'get',
-                                idField:'id'">
-
-
-                </table>
-                
-                <table id="tt_grid_dynamic3"  title="Dynamic table with IS potentials" style="height:100%"
-                data-options="singleSelect:false,
-                                collapsible:true,
-                                method:'get',
-                                idField:'id'">
-
-                </table>
-                
-                <div id="tb3" style="padding:5px;height:auto">
-                    <div style="margin-bottom:5px">
-                        <a href="#" onclick="addRow();" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add Potential IS</a>
-                        <a href="#" id="printGridPotentials3" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
-                    </div>
-                </div>
-                
-                <table id="tt_grid_dynamic4" class="easyui-datagrid" title="IS potentials" style="height:100%"
+    <div id="cc" class="easyui-layout" style="height:1000px;" data-options="fit:true">
+       <!-- <div data-options="region:'north'" style="height:50px"></div>-->
+        <div data-options="region:'south',split:true" style="height:400px;">
+           
+            <div class="easyui-layout" data-options="fit:true">
+                <div id="tt_grid_dynamic2_div" data-options="region:'west',split:true" style="width:50%;">
+                    <table id="tt_grid_dynamic2" class="easyui-datagrid" title="Dynamic table with IS potentials" style="height:100%"
                     data-options="singleSelect:false,
-                                collapsible:true,
-                                method:'get',
-                                idField:'id'">
+                                    collapsible:true,
+                                    /*url:'datagrid_data1.json',*/
+                                    /*url:'../slim_rest/index.php/companies',*/
+                                    method:'get',
+                                    idField:'id'">
 
-                </table>
-                
-                <div id="tb4" style="padding:5px;height:auto">
-                    <div style="margin-bottom:5px">
-                        <!--<a href="#" onclick="deleteISPotential();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">Remove row</a>-->
-                        <a href="#" onclick="deleteAllISPotential();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Clear all</a>
-                        <a href="#" onclick="savePotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true">Save a table with relevant IS potentials</a>
 
-                    </div>
+                    </table>
+
+                </div>
+                <div id="tt_grid_dynamic3_div" data-options="region:'center'" style="width:50%;">
+                    <table id="tt_grid_dynamic3"  title="Dynamic table with IS potentials" style="height:100%"
+                    data-options="singleSelect:false,
+                                    collapsible:true,
+                                    /*url:'datagrid_data1.json',*/
+                                    /*url:'../slim_rest/index.php/companies',*/
+                                    method:'get',
+                                    idField:'id'">
+
+                    </table>
+                </div>
+            
+        </div>
+
+            
+   
+        </div>
+        <div data-options="region:'east',split:true" title="IS Scenario" style="width:25%;">
+            <table id="tt_grid_dynamic4" class="easyui-datagrid" title="IS potentials" style="height:100%"
+                data-options="singleSelect:false,
+                            collapsible:true,
+                            /*url:'datagrid_data1.json',*/
+                            /*url:'../slim_rest/index.php/companies',*/
+                            method:'get',
+                            idField:'id'">
+
+            </table>
+            <!--<input class="easyui-combobox" 
+            name="IS"
+            data-options="
+                    url:'combobox_data1.json',
+                    method:'get',
+                    valueField:'id',
+                    textField:'text',
+                    panelHeight:'auto',
+                    icons:[{
+                        iconCls:'icon-add'
+                    }]
+            ">-->
+            
+        </div>
+        <div data-options="region:'west',split:true" title="Flow Categories" style="width:10%;">
+            <ul id="tt_tree2" class="easyui-tree" ></ul>
+            
+        </div>
+        <div id="tt_grid_div2" data-options="region:'center',title:'Manual IS Potential Detection Settings'">
+            
+            <table id="tt_grid2" class="easyui-datagrid" title="Company Flow Sets" style="height:100%" 
+            </table>
+            <table id="tt_grid_scenarios2" data-options="fit:true" class="easyui-datagrid" title="IS Scenarios" style="" 
+            </table>
+            
+             <div id="tb" style="padding:5px;height:auto">
+                <div style="margin-bottom:5px">
+                    <a href="#" onclick="addRow();" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add Potential IS</a>
+                    <a href="#" onclick="beginISPotential();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Begin Manual IS Process</a>
+                    <a href="#" onclick="beginISPotentialByAllFlows();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Process By All Flows</a>
+                    <a href="#" onclick="beginISPotentialByFlows();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Process By Selected Flows</a>
+                    <a href="#" id="printGrid2" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
+                    <!--<a href="#" onclick="savePotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true">Save a table with relevant IS potentials</a>-->
+                </div>
+                 <div>
+                    <label style="margin-right:7px;">IS Scenario Type:</label>
+                    <input class="easyui-combobox" 
+                       name="IS_search2" id="IS_search2"
+                       data-options="
+                               url:'<?php echo asset_url('is/combobox_data1.json'); ?>',
+                               method:'get',
+                               valueField:'id',
+                               textField:'text',
+                               panelHeight:'auto',
+                               icons:[{
+                                   iconCls:'icon-add'
+                               }]
+                       ">
+                 </div>
+            </div>
+            
+            <div id="tb2" style="padding:5px;height:auto">
+                <div style="margin-bottom:5px">
+                    <a href="#" onclick="beginFlowPotential();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Get specific flow info</a>
+                    <a href="#" onclick="addRow();" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add Potential IS</a>
+                    <a href="#" id="printGridPotentials2" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
                 </div>
                 
             </div>
-               
+            
+            <div id="tb4" style="padding:5px;height:auto">
+                <div style="margin-bottom:5px">
+                    <!--<a href="#" onclick="deleteISPotential();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">Remove row</a>-->
+                    <a href="#" onclick="deleteAllISPotential();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Clear all</a>
+                    <a href="#" onclick="savePotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true">Save a table with relevant IS potentials</a>
+
+                </div>
+            </div>
+            
+            <div id="tb3" style="padding:5px;height:auto">
+                <div style="margin-bottom:5px">
+                    <a href="#" onclick="addRow();" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add Potential IS</a>
+                    <a href="#" id="printGridPotentials3" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
+                </div>
+            </div>
+            
         </div>
     </div>
     
@@ -146,5 +177,4 @@
             </form>
         </div>
     </div>
-</div>
 </div>
