@@ -1,6 +1,7 @@
     <div style="overflow: hidden;display: block;padding-top: 50px;clear: both;">&nbsp;</div>
 
 
+
     <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto"): ?>
 
     <script src="<?php echo asset_url('js/flatui-fileinput.js'); ?>"></script>
@@ -197,8 +198,6 @@
       }
     </script>
     */ ?>
-    <script type="text/javascript">$.widget.bridge('uitooltip', $.ui.tooltip);</script>
-    <script src="<?php echo asset_url('js/bootstrap.min.js'); ?>"></script>
 
     </body>
 </html>

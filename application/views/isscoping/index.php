@@ -2,7 +2,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo asset_url('is/themes/bootstrap/easyui.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo asset_url('is/themes/icon.css'); ?>">
 
-<script type="text/javascript" src="<?php echo asset_url('is/jquery.easyui.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo asset_url('is/locale/easyui-lang-tr.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo asset_url('is/locale_IS/IS_lang_tr.js'); ?>"></script>
 <script src="<?php echo asset_url('is/print/jQuery.print.js'); ?>"></script> 
