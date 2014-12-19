@@ -14,7 +14,7 @@
         //alert('test');
 //$(function() {
     $.ajax({
-        url: '../slim_rest/index.php/companyEquipmentTooltip_json_test',
+        url: '../slim_ecoman/index.php/companyEquipmentTooltip_json_test',
         type: 'GET',
         dataType : 'html',
         //data: 'selectedFlows='+JSON.stringify(columnArray),

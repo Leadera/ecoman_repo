@@ -15,7 +15,7 @@
            // $('#ff').form('submit');
             console.warn($('#tt_grid_dynamic5').datagrid('getRows'));
             $.ajax({
-                url: '../slim_rest/index.php/insertIS',
+                url: '../slim_ecoman/index.php/insertIS',
                 type: 'POST',
                 dataType : 'json',
                 data: 'row='+JSON.stringify($('#tt_grid_dynamic5').datagrid('getRows'))+'&text='+$('#tt_textAuto').textbox('getText'),
@@ -189,7 +189,7 @@
                 *  @todo buras� dinamik kolon yap�s� i�in denenecek
                  */
                 $.ajax({
-                    url: '../slim_rest/index.php/ISPotentialsNew_json_test',
+                    url: '../slim_ecoman/index.php/ISPotentialsNew_json_test',
                     type: 'GET',
                     dataType : 'json',
                     //data: 'selectedFlows='+JSON.stringify(columnArray),
@@ -200,7 +200,7 @@
                             $('#tt_grid_dynamic').datagrid('loadData', data);
                             $('#tt_grid_dynamic').datagrid({
 
-                               //url : '../slim_rest/index.php/ISPotentialsNew?selectedFlows='+flowStr+'&companies='+companyStr
+                               //url : '../slim_ecoman/index.php/ISPotentialsNew?selectedFlows='+flowStr+'&companies='+companyStr
                           });
                             //$('#tt_grid_dynamic2').datagrid('getPanel').panel("setTitle",companyName);
                         } else {
@@ -438,7 +438,7 @@
  
          
     $('#tt_tree').tree({
-        url : '../slim_rest/index.php/flows',
+        url : '../slim_ecoman/index.php/flows',
         method:'get',
         animate:true,
         checkbox:true
@@ -452,7 +452,7 @@
                 /*ctrlSelect:true,*/
                 collapsible:true,
                 /*url:'datagrid_data1.json',*/
-                //url:'../slim_rest/index.php/ISPotentials',
+                //url:'../slim_ecoman/index.php/ISPotentials',
                 method:'get',
                 idField:'id',
                 toolbar:'#tb5',
@@ -466,7 +466,7 @@
     
 
     $.ajax({
-        url: '../slim_rest/index.php/columnflows_json_test',
+        url: '../slim_ecoman/index.php/columnflows_json_test',
         type: 'GET',
         dataType : 'json',
         //data: 'rowIndex='+rowData.id,
@@ -478,7 +478,7 @@
                 ctrlSelect:true,*/
                 collapsible:true,
                 /*url:'datagrid_data1.json',*/
-                url:'../slim_rest/index.php/companies_json_test2',
+                url:'../slim_ecoman/index.php/companies_json_test2',
                 method:'get',
                 idField:'id',
                 toolbar:'#tb',
@@ -495,7 +495,7 @@
                       alert(rowIndex);
                       console.warn(rowData);
                       $.ajax({
-                          url: '../slim_rest/index.php/flows',
+                          url: '../slim_ecoman/index.php/flows',
                           type: 'GET',
                           dataType : 'json',
                           data: 'rowIndex='+rowData.id,
@@ -546,7 +546,7 @@
                 /*singleSelect:false,
                 ctrlSelect:true,*/
                 collapsible:true,
-                url:'../slim_rest/index.php/ISScenarios',
+                url:'../slim_ecoman/index.php/ISScenarios',
                 method:'get',
                 idField:'id',
                 /*toolbar:'#tb',*/
@@ -610,7 +610,7 @@
                       console.warn(rowData); 
               }
          //width : 500
-         //url : '../slim_rest/index.php/companyFlows'
+         //url : '../slim_ecoman/index.php/companyFlows'
     });
     
     $('#printTest').click(function() {
