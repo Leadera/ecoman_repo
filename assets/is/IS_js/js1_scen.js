@@ -9,7 +9,7 @@
             if (value < 30){
                 return 'background-color:#ffee00;color:red;';
             }
-        }
+        }  
         
         function submitFormAuto(){
            // $('#ff').form('submit');
