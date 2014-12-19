@@ -10,6 +10,7 @@
 		var flow_array = new Array();
 		var flow_type_array = new Array();
 		var kpi = new Array();
+		var kpi2 = new Array();
 		var index = 0;
 		$.ajax({
 			type: "POST",
@@ -23,11 +24,13 @@
 							flow_array[index] = data['allocation'][i].flow_name;
 							flow_type_array[index] = data['allocation'][i].flow_type_name;
 
-							kpi[index] = ((data['allocation'][i].benchmark_kpi - data['allocation'][i].kpi) / data['allocation'][i].kpi) * 100;
+							kpi[index] = ((data['allocation'][i].benchmark_kpi - data['allocation'][i].kpi) / data['allocation'][i].benchmark_kpi) * 100;
+							if (kpi[index] > 0) {kpi2[index] = 100-kpi[index];}
+							else{kpi2[index] = 100+kpi[index];}
 							index++;
 						}
 					}
-
+					console.log(kpi2);
 					var data = new google.visualization.DataTable();
 
 					var newData = new Array(index);
@@ -43,7 +46,7 @@
 
 		          	for(var i = 1 ; i < index+1 ; i++){
 		          		newData[i][0] = prcss_array[i-1]+"-"+flow_array[i-1]+"-"+flow_type_array[i-1];
-		          		newData[i][1] = 100;
+		          		newData[i][1] = kpi2[i-1];
 		          		newData[i][2] = kpi[i-1];
 		          		newData[i][3] = '';
 		          	}
@@ -55,10 +58,9 @@
 				        legend: { position: 'top', maxLines: 3 },
 				        bar: { groupWidth: '75%' },
 				        isStacked: true,
-				        vAxis: {title: "% (Percentage)",gridlines: { count: 12} },
+				        vAxis: {title: "% (Percentage)",gridlines: { count: 10},format:'0.0' },
 				        hAxis: {title: 'Process Name - Flow Name - Flow Type Name', titleTextStyle: {color: 'red'}}
 				    };
-				    
 				    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
 				    chart.draw(data, options);
 				}
