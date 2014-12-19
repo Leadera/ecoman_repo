@@ -1,6 +1,5 @@
     <div style="overflow: hidden;display: block;padding-top: 50px;clear: both;">&nbsp;</div>
 
-    <script src="<?php echo asset_url('js/bootstrap.min.js'); ?>"></script>
     <script src="<?php echo asset_url('js/application.js'); ?>"></script>
 
     <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto"): ?>
