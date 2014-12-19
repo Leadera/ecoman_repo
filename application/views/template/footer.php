@@ -1,5 +1,5 @@
     <div style="overflow: hidden;display: block;padding-top: 50px;clear: both;">&nbsp;</div>
-    <?php if($this->uri->segment(1)!="isscoping"): ?>
+    <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto"): ?>
 
     <script src="<?php echo asset_url('js/flatui-fileinput.js'); ?>"></script>
       <script src="<?php echo asset_url('js/jquery-ui-1.10.3.custom.min.js'); ?>"></script>

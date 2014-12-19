@@ -21,7 +21,7 @@
 
     <script src="<?php echo asset_url('js/jquery-1.10.2.min.js'); ?>"></script>
     <!--[if lt IE 9]><script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.0.8/es5-shim.min.js"></script><![endif]-->
-    <?php if($this->uri->segment(1)!="isscoping"): ?>
+    <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto"): ?>
       <script src="<?php echo asset_url('js/selectize.min.js'); ?>"></script>
       <script type="text/javascript">
         $(function() {
@@ -37,7 +37,7 @@
     <!-- font -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic,500italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   </head>
-  <body <?php if($this->uri->segment(1)=="isscoping"){echo 'class="easyui-layout"';} ?>>
+  <body <?php if($this->uri->segment(1)=="isscoping" or $this->uri->segment(1)=="isscopingauto"){echo 'class="easyui-layout"';} ?>>
 
     <nav class="navbar navbar-default navbar-lg" style="margin-bottom:0px;">
       <a class="navbar-brand" href="<?php echo base_url(); ?>" style="color:white;">ECOMAN</a>
