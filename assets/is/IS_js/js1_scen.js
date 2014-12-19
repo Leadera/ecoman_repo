@@ -27,7 +27,7 @@
                       $('#tt_grid_dynamic5').datagrid('loadData',[]);
                   } else if(data["notFound"]==true) {
                       $.messager.alert('Insert failed','Failed to insert IS Potential !','error');
-                  }
+                  }   
                   
                   
                 },
