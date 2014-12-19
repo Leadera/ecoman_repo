@@ -76,7 +76,7 @@
       <?php if ($this->session->userdata('user_in') !== FALSE): ?>
         <ul class="list-inline" style="margin:0px;">
           <li class="head-li"><a href="<?php echo base_url('cpscoping'); ?>"><i class="fa fa-bar-chart"></i> Cleaner Production Allocations</a></li>
-          <li class="head-li"><a href="<?php echo base_url('isscoping'); ?>"><i class="fa fa-bar-chart"></i> Industrial Symbiosis Allocations</a></li>
+          <li class="head-li"><a href="<?php echo base_url('isscoping'); ?>"><i class="fa fa-sitemap"></i> Industrial Symbiosis Allocations</a></li>
         </ul>
       <?php else: ?>
         <p style="font-size:14px; margin:0px;">
