@@ -26,11 +26,19 @@ class Dataset extends CI_Controller {
 	public function new_product($companyID)
 	{
 		$this->form_validation->set_rules('product', 'Product Field', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('quantities', 'Product Quantity', 'trim|number|xss_clean');
+		$this->form_validation->set_rules('ucost', 'Unit Cost', 'trim|number|xss_clean');
+		$this->form_validation->set_rules('ucostu', 'Unit Cost Unit', 'trim|xss_clean');
+		$this->form_validation->set_rules('tper', 'Time Period', 'trim|xss_clean');
 
 		if($this->form_validation->run() !== FALSE) {
 			$productArray = array(
 					'cmpny_id' => $companyID,
-					'name' => $this->input->post('product')
+					'name' => $this->input->post('product'),
+					'quantities' => $this->sifirla($this->input->post('quantities')),
+					'ucost' => $this->sifirla($this->input->post('ucost')),
+					'ucostu' => $this->input->post('ucostu'),
+					'tper' => $this->input->post('tper'),
 				);
 			$this->product_model->set_product($productArray);
 		}
