@@ -26,8 +26,8 @@ class Dataset extends CI_Controller {
 	public function new_product($companyID)
 	{
 		$this->form_validation->set_rules('product', 'Product Field', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('quantities', 'Product Quantity', 'trim|numerical|xss_clean');
-		$this->form_validation->set_rules('ucost', 'Unit Cost', 'trim|numerical|xss_clean');
+		$this->form_validation->set_rules('quantities', 'Product Quantity', 'trim|numeric|xss_clean');
+		$this->form_validation->set_rules('ucost', 'Unit Cost', 'trim|numeric|xss_clean');
 		$this->form_validation->set_rules('ucostu', 'Unit Cost Unit', 'trim|xss_clean');
 		$this->form_validation->set_rules('tper', 'Time Period', 'trim|xss_clean');
 
