@@ -13,7 +13,7 @@
   border-style: solid;
 }
 .panel-header {
-  padding: 5px;
+  padding: 5px 10px;
   position: relative;
 }
 .panel-title {
@@ -106,16 +106,10 @@
 }
 .panel-header,
 .panel-body {
-  border-color: #D4D4D4;
+  border-color: #d0d0d0;
 }
 .panel-header {
-  background-color: #F2F2F2;
-  background: -webkit-linear-gradient(top,#ffffff 0,#F2F2F2 100%);
-  background: -moz-linear-gradient(top,#ffffff 0,#F2F2F2 100%);
-  background: -o-linear-gradient(top,#ffffff 0,#F2F2F2 100%);
-  background: linear-gradient(to bottom,#ffffff 0,#F2F2F2 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff,endColorstr=#F2F2F2,GradientType=0);
+  background-color: #f0f0f0;
 }
 .panel-body {
   background-color: #ffffff;
@@ -123,9 +117,8 @@
   font-size: 12px;
 }
 .panel-title {
-  font-size: 12px;
-  font-weight: bold;
-  color: #777;
+  font-size: 13px;
+  color: #1F9832;
   height: 16px;
   line-height: 16px;
 }
@@ -729,19 +722,19 @@
 }
 .layout-split-proxy-h,
 .layout-split-proxy-v {
-  background-color: #bbb;
+  background-color: #fff;
 }
 .layout-split-north {
-  border-bottom: 5px solid #eee;
+  border-bottom: 5px solid #fff;
 }
 .layout-split-south {
-  border-top: 5px solid #eee;
+  border-top: 5px solid #fff;
 }
 .layout-split-east {
-  border-left: 5px solid #eee;
+  border-left: 5px solid #fff;
 }
 .layout-split-west {
-  border-right: 5px solid #eee;
+  border-right: 5px solid #fff;
 }
 .layout-expand {
   background-color: #F2F2F2;

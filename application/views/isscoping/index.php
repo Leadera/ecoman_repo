@@ -11,7 +11,7 @@
 <div class="col-md-12" >
     <div id="cc" class="easyui-layout" style="height:1000px;" data-options="fit:true">
        <!-- <div data-options="region:'north'" style="height:50px"></div>-->
-        <div data-options="region:'south',split:true" style="height:400px;">
+        <div data-options="region:'south',split:true" style="height:550px;">
            
             <div class="easyui-layout" data-options="fit:true">
                 <div id="tt_grid_dynamic2_div" data-options="region:'west',split:true" style="width:50%;">
