@@ -1,0 +1,26 @@
+[{
+	"id":0,
+	"text":"All IS Candidates",
+	"selected":true,
+	"desc":"All IS Candidates"
+},{
+	"id":1,
+	"text":"Input Mutualisation",
+	"desc":"Input Mutualisation"
+},{
+	"id":2,
+	"text":"Output Mutualisation",
+	"desc":"Output Mutualisation"
+},{
+	"id":3,
+	"text":"Input & Output Mutualisation",
+	"desc":"Input & Output Mutualisation"
+},{
+	"id":4,
+	"text":"Substitution",
+	"desc":"Substitution"
+},{
+	"id":5,
+	"text":"Substitution & Mutualisation",
+	"desc":"Substitution & Mutualisation"
+}]
