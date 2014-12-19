@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" type="text/css" href="<?php echo asset_url('is/themes/default/easyui.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo asset_url('is/themes/bootstrap/easyui.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo asset_url('is/themes/icon.css'); ?>">
 
 <script type="text/javascript" src="<?php echo asset_url('is/jquery.easyui.min.js'); ?>"></script>
