@@ -2,8 +2,12 @@
 			<p class="lead">Add new product to company</p>
 			<?php echo form_open_multipart('new_product/'.$companyID); ?>
 				<div class="form-group">
-				    <label for="product">Add Product <span style="color:red;">*</span></label>
-				    <input class="form-control" id="product" name="product" placeholder="Enter Product Name">
+						<label for="product">Add Product <span style="color:red;">*</span></label>
+						<input class="form-control" id="product" name="product" placeholder="Enter Product Name">
+				</div>				
+				<div class="form-group">
+					<label for="quantities">Quantities</label>
+					<input class="form-control" id="quantities" name="quantities" placeholder="Enter Quantities">
 				</div>
 				<button type="submit" class="btn btn-info">Add Product</button>
 			</form>
