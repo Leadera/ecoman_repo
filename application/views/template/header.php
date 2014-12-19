@@ -76,7 +76,18 @@
       <?php if ($this->session->userdata('user_in') !== FALSE): ?>
         <ul class="list-inline" style="margin:0px;">
           <li class="head-li"><a href="<?php echo base_url('cpscoping'); ?>"><i class="fa fa-bar-chart"></i> Cleaner Production Allocations</a></li>
-          <li class="head-li"><a href="<?php echo base_url('isscoping'); ?>"><i class="fa fa-sitemap"></i> Industrial Symbiosis Allocations</a></li>
+          <li class="head-li">
+            <div class="dropdown">
+              <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                <i class="fa fa-sitemap"></i> Industrial Symbiosis Allocations
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu dropdown-inverse" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url('isscoping'); ?>">Manual IS</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url('isscopingauto'); ?>">Automated IS</a></li>
+              </ul>
+            </div>
+          </li>
         </ul>
       <?php else: ?>
         <p style="font-size:14px; margin:0px;">
