@@ -197,6 +197,7 @@
       }
     </script>
     */ ?>
+    <script type="text/javascript">$.widget.bridge('uitooltip', $.ui.tooltip);</script>
     <script src="<?php echo asset_url('js/bootstrap.min.js'); ?>"></script>
 
     </body>
