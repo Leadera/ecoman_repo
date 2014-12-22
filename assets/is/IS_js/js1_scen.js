@@ -1,6 +1,8 @@
 // remote connection test
 // remote connection test2
 
+
+
 function search_by_company() {
             
              $('#tt_grid').datagrid('load',{
