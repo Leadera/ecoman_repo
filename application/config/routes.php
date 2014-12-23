@@ -43,6 +43,7 @@
 $route['isscoping'] = "isscoping/index";
 $route['isscopingauto'] = "isscoping/auto";
 $route['isscopingtooltip'] = "isscoping/tooltip";
+$route['isscopingtooltipscenarios'] = "isscoping/tooltipscenarios";
 
 //Cost Benefit
 $route['cost_benefit/(:any)/(:any)'] = "cost_benefit/new_cost_benefit/$1/$2";
