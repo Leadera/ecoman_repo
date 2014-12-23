@@ -3,7 +3,7 @@ function beginISPotentialByAllFlows() {
                     if (r){
                         $('#tt_grid2').datagrid('loadData',[]);
                         $.ajax({
-                        url: 'http://88.249.18.205:8090/slim_ecoman/index.php/columnflows_json_test',
+                        url: '../../../slim_ecoman/index.php/columnflows_json_test',
                         type: 'GET',
                         dataType : 'json',
                         //data: 'rowIndex='+rowData.id,
@@ -16,13 +16,13 @@ function beginISPotentialByAllFlows() {
                                   /*ctrlSelect:true,*/
                                   collapsible:true,
                                   /*url:'datagrid_data1.json',*/
-                                  url:'http://88.249.18.205:8090/slim_ecoman/index.php/companies_json_test2',
+                                  url:'../../..slim_ecoman/index.php/companies_json_test2',
                                   method:'get',
                                   idField:'id',
                                   toolbar:'#tb',
                                   remoteSort:true,
                                   multiSort:false,
-                                  loadMsg :'Please wait while loading...',
+                                  //loadMsg :'Please wait while loading...',
                                   rownumbers: "true",
                                   pagination: "true",
                                   //height : 700,
@@ -33,7 +33,7 @@ function beginISPotentialByAllFlows() {
                                         alert(rowIndex);
                                         console.warn(rowData);
                                         $.ajax({
-                                            url: 'http://88.249.18.205:8090/slim_ecoman/index.php/flows',
+                                            url: '../../../slim_ecoman/index.php/flows',
                                             type: 'GET',
                                             dataType : 'json',
                                             data: 'rowIndex='+rowData.id,
@@ -116,7 +116,7 @@ function beginISPotentialByAllFlows() {
                           });
                          console.warn(arrayLeaf);
                         $.ajax({
-                            url: 'http://88.249.18.205:8090/slim_ecoman/index.php/flowsAndCompanies_json_test',
+                            url: '../../../slim_ecoman/index.php/flowsAndCompanies_json_test',
                             type: 'GET',
                             dataType : 'json',
                             data: 'flows='+JSON.stringify(arrayLeaf),
@@ -135,7 +135,7 @@ function beginISPotentialByAllFlows() {
                               $('#tt_grid2').datagrid('loadData', data);
                               $('#tt_grid2').datagrid({
 
-                                 url : 'http://88.249.18.205:8090/slim_ecoman/index.php/flowsAndCompanies_json_test?flows='+JSON.stringify(arrayLeaf)
+                                 url : '../../../slim_ecoman/index.php/flowsAndCompanies_json_test?flows='+JSON.stringify(arrayLeaf)
                             });
                            /*$("#tt_tree2").tree({
                                 checkbox :false
@@ -164,7 +164,7 @@ function beginISPotentialByAllFlows() {
            // $('#ff').form('submit');
             console.warn($('#tt_grid_dynamic4').datagrid('getRows'));
             $.ajax({
-                url: 'http://88.249.18.205:8090/slim_ecoman/index.php/insertIS',
+                url: '../../../slim_ecoman/index.php/insertIS',
                 type: 'POST',
                 dataType : 'json',
                 data: 'row='+JSON.stringify($('#tt_grid_dynamic4').datagrid('getRows'))+'&text='+$('#tt_text').textbox('getText'),
@@ -259,7 +259,7 @@ function beginISPotentialByAllFlows() {
                       idField:'id',
                       singleSelect: true,
                       //
-                      url: 'http://88.249.18.205:8090/slim_ecoman/index.php/flowCompanies_json_test?flowid='+index+'&IS3='+$('#IS_search2').combobox('getValue')+'&cmpny_id='+companyID,
+                      url: '../../../slim_ecoman/index.php/flowCompanies_json_test?flowid='+index+'&IS3='+$('#IS_search2').combobox('getValue')+'&cmpny_id='+companyID,
                    });
                    $('#tt_grid_dynamic3').datagrid('getPanel').panel("setTitle",flowName);
             /*$.ajax({
@@ -313,7 +313,7 @@ function beginISPotentialByAllFlows() {
                 loadMsg :'Please wait while loading...',
                 rownumbers: "true",
                 pagination: "true",
-                url:'http://88.249.18.205:8090/slim_ecoman/index.php/companyFlows_json_test?companyid='+index+'&IS2='+$('#IS_search2').combobox('getValue')
+                url:'../../../slim_ecoman/index.php/companyFlows_json_test?companyid='+index+'&IS2='+$('#IS_search2').combobox('getValue')
              });
             
             /*$.ajax({
@@ -576,7 +576,7 @@ function beginISPotentialByAllFlows() {
     $('#tt_tree2').tree({
         
         //url : '../slim_ecoman/index.php/flowsManual',
-        url : 'http://88.249.18.205:8090/slim_ecoman/index.php/flows',
+        url : '../../../slim_ecoman/index.php/flows',
         //url:'tree_data1.json',
         method:'get',
         animate:true,
@@ -669,7 +669,7 @@ function beginISPotentialByAllFlows() {
     *  @todo buras� dinamik kolon yap�s� i�in denenecek
      */
     $.ajax({
-        url: 'http://88.249.18.205:8090/slim_ecoman/index.php/columnflows_json_test',
+        url: '../../../slim_ecoman/index.php/columnflows_json_test',
         type: 'GET',
         dataType : 'json',
         //data: 'rowIndex='+rowData.id,
@@ -681,13 +681,13 @@ function beginISPotentialByAllFlows() {
                 /*ctrlSelect:true,*/
                 collapsible:true,
                 /*url:'datagrid_data1.json',*/
-                url:'http://88.249.18.205:8090/slim_ecoman/index.php/companies_json_test2',
+                url:'../../../slim_ecoman/index.php/companies_json_test2',
                 method:'get',
                 idField:'id',
                 toolbar:'#tb',
                 remoteSort:true,
                 multiSort:false,
-                loadMsg :'Please wait while loading...',
+                //loadMsg :'Please wait while loading...',
                 rownumbers: "true",
                 pagination: "true",
                 //height : 700,
@@ -699,7 +699,7 @@ function beginISPotentialByAllFlows() {
                       alert(rowIndex);
                       console.warn(rowData);
                       $.ajax({
-                          url: 'http://88.249.18.205:8090/slim_ecoman/index.php/flows',
+                          url: '../../../slim_ecoman/index.php/flows',
                           type: 'GET',
                           dataType : 'json',
                           data: 'rowIndex='+rowData.id,
@@ -748,7 +748,7 @@ function beginISPotentialByAllFlows() {
                 ctrlSelect:true,*/
                 collapsible:true,
                 /*url:'datagrid_data1.json',*/
-                url:'http://88.249.18.205:8090/slim_ecoman/index.php/ISScenarios',
+                url:'../../../slim_ecoman/index.php/ISScenarios',
                 method:'get',
                 idField:'id',
                 /*toolbar:'#tb',*/
@@ -761,9 +761,10 @@ function beginISPotentialByAllFlows() {
                 fit:true,
                 pagePosition : "top",
                 columns:[[
-                            {field:'prj_name',title:'Project Name',width:100},
-                            {field:'syn_name',title:'Synergy Type',width:100},
-                            {field:'date',title:' Project Date',width:100}
+                            {field:'prj_name',title:'Project Name',width:300},
+                            {field:'syn_name',title:'Synergy Type',width:300},
+                            {field:'date',title:' Project Date',width:300},
+                            {field:'detail',title:' Details',width:100}
                         ]]
         });
 
