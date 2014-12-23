@@ -564,9 +564,10 @@ function search_by_company() {
                 fit:true,
                 pagePosition : "top",
                 columns:[[
-                            {field:'prj_name',title:'Project Name',width:100},
-                            {field:'syn_name',title:'Synergy Type',width:100},
-                            {field:'date',title:' Project Date',width:100}
+                            {field:'prj_name',title:'Project Name',width:300},
+                            {field:'syn_name',title:'Synergy Type',width:300},
+                            {field:'date',title:' Project Date',width:300},
+                            {field:'detail',title:' Details',width:100}
                         ]]
         });
 
