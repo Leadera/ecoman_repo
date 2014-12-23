@@ -22,7 +22,7 @@
         success: function(data, textStatus, jqXHR) {
             //alert('test');
             console.warn('ajax success');
-            $('#myResults_<?php echo $_GET["id"]; ?>_<?php echo $_GET["col"]; ?>').html("<p>"+data+"</p>");
+            $('#myResults_<?php echo $_GET["id"]; ?>').html("<p>"+data+"</p>");
             //alert(data);
             if(!data['notFound']) {
                 //console.warn('success text status-->'+textStatus);
@@ -40,7 +40,7 @@
     });
 //}); 
 </script>
-        <div id="myResults_<?php echo $_GET["id"]; ?>_<?php echo $_GET["col"]; ?>" name="myResults_<?php echo $_GET["id"]; ?>_<?php echo $_GET["col"]; ?>">
+        <div id="myResults_<?php echo $_GET["id"]; ?>" name="myResults_<?php echo $_GET["id"]; ?>">
 	<!--<p  style="font-size:14px">Here is the content loaded via AJAX.</p>
 	<ul>
 		<li>company id ==<?php   echo $_GET["id"];?>   easyui is a collection of user-interface plugin based on jQuery.</li>
