@@ -20,7 +20,7 @@ function search_by_company() {
            // $('#ff').form('submit');
             console.warn($('#tt_grid_dynamic5').datagrid('getRows'));
             $.ajax({
-                url: '../slim_ecoman/index.php/insertIS',
+                url: '../../../slim_ecoman/index.php/insertIS',
                 type: 'POST',
                 dataType : 'json',
                 data: 'row='+JSON.stringify($('#tt_grid_dynamic5').datagrid('getRows'))+'&text='+$('#tt_textAuto').textbox('getText'),
@@ -194,7 +194,7 @@ function search_by_company() {
                 *  @todo buras� dinamik kolon yap�s� i�in denenecek
                  */
                 $.ajax({
-                    url: '../slim_ecoman/index.php/ISPotentialsNew_json_test',
+                    url: '../../../slim_ecoman/index.php/ISPotentialsNew_json_test',
                     type: 'GET',
                     dataType : 'json',
                     //data: 'selectedFlows='+JSON.stringify(columnArray),
@@ -443,7 +443,7 @@ function search_by_company() {
  
          
     $('#tt_tree').tree({
-        url : '../slim_ecoman/index.php/flows',
+        url : '../../../slim_ecoman/index.php/flows',
         method:'get',
         animate:true,
         checkbox:true
@@ -471,7 +471,7 @@ function search_by_company() {
     
 
     $.ajax({
-        url: '../slim_ecoman/index.php/columnflows_json_test',
+        url: '../../../slim_ecoman/index.php/columnflows_json_test',
         type: 'GET',
         dataType : 'json',
         //data: 'rowIndex='+rowData.id,
@@ -483,7 +483,7 @@ function search_by_company() {
                 ctrlSelect:true,*/
                 collapsible:true,
                 /*url:'datagrid_data1.json',*/
-                url:'../slim_ecoman/index.php/companies_json_test2',
+                url:'../../../slim_ecoman/index.php/companies_json_test2',
                 method:'get',
                 idField:'id',
                 toolbar:'#tb',
@@ -500,7 +500,7 @@ function search_by_company() {
                       alert(rowIndex);
                       console.warn(rowData);
                       $.ajax({
-                          url: '../slim_ecoman/index.php/flows',
+                          url: '../../../slim_ecoman/index.php/flows',
                           type: 'GET',
                           dataType : 'json',
                           data: 'rowIndex='+rowData.id,
@@ -551,7 +551,7 @@ function search_by_company() {
                 /*singleSelect:false,
                 ctrlSelect:true,*/
                 collapsible:true,
-                url:'../slim_ecoman/index.php/ISScenarios',
+                url:'../../../slim_ecoman/index.php/ISScenarios',
                 method:'get',
                 idField:'id',
                 /*toolbar:'#tb',*/
