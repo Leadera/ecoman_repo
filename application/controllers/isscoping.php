@@ -16,4 +16,10 @@ class Isscoping extends CI_Controller {
 		$this->load->view('isscoping/auto');
 		$this->load->view('template/footer');
 	}
+        
+        public function tooltip(){
+		//$this->load->view('template/header');
+		$this->load->view('isscoping/tooltip');
+		//$this->load->view('template/footer');
+	}
 }
