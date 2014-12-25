@@ -7,7 +7,7 @@
 <script type="text/javascript" src="<?php echo asset_url('is/locale_IS/IS_lang_tr.js'); ?>"></script>
 <script src="<?php echo asset_url('is/print/jQuery.print.js'); ?>"></script> 
 <script src="<?php echo asset_url('is/src/datagrid-filter.js'); ?>"></script>
-<script src="<?php echo asset_url('is/IS_js/js1_scen.js'); ?>"></script>
+<script src="<?php echo asset_url('is/IS_js/js1_scen_slim2.js'); ?>"></script>
 
 <div class="col-md-12">
     <div id="cc" class="easyui-layout" data-options="fit:true" style="height:1000px;">
