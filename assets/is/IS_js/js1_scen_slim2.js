@@ -194,11 +194,18 @@ function search_by_company() {
                 *  @todo buras� dinamik kolon yap�s� i�in denenecek
                  */
                 $.ajax({
-                    url: '../../../slim2_ecoman/index.php/ISPotentialsNew_json_test',
+                    //url: '../../../slim2_ecoman/index.php/ISPotentialsNew_json_test',
+                    url : '../../../Proxy/SlimProxy.php',   
+                    data : {
+                            url : 'ISPotentialsNew_json_test',
+                            selectedFlows : flowStr,
+                            companies : companyStr,
+                            IS : $('#IS_search').combobox('getValue')
+                    },
                     type: 'GET',
                     dataType : 'json',
                     //data: 'selectedFlows='+JSON.stringify(columnArray),
-                    data: 'selectedFlows='+flowStr+'&companies='+companyStr+'&IS='+$('#IS_search').combobox('getValue'),
+                    //data: 'selectedFlows='+flowStr+'&companies='+companyStr+'&IS='+$('#IS_search').combobox('getValue'),
                     success: function(data, textStatus, jqXHR) {
                         if(!data['notFound']) {
                             //console.warn('success text status-->'+textStatus);
@@ -443,7 +450,9 @@ function search_by_company() {
  
          
     $('#tt_tree').tree({
-        url : '../../../slim2_ecoman/index.php/flows',
+        //url : '../../../slim2_ecoman/index.php/flows',
+        url: '../../../Proxy/SlimProxy.php',
+        queryParams : { url:'flows' },
         method:'get',
         animate:true,
         checkbox:true
@@ -471,7 +480,9 @@ function search_by_company() {
     
 
     $.ajax({
-        url: '../../../slim2_ecoman/index.php/columnflows_json_test',
+        //url: '../../../slim2_ecoman/index.php/columnflows_json_test',
+        url: '../../../Proxy/SlimProxy.php',
+        data: { url:'columnflows_json_test'  },
         type: 'GET',
         dataType : 'json',
         //data: 'rowIndex='+rowData.id,
@@ -483,7 +494,9 @@ function search_by_company() {
                 ctrlSelect:true,*/
                 collapsible:true,
                 /*url:'datagrid_data1.json',*/
-                url:'../../../slim2_ecoman/index.php/companies_json_test2',
+                //url:'../../../slim2_ecoman/index.php/companies_json_test2',
+                url:'../../../Proxy/SlimProxy.php',
+                queryParams : { url:'companies_json_test2'  },
                 method:'get',
                 idField:'id',
                 toolbar:'#tb',
@@ -551,7 +564,11 @@ function search_by_company() {
                 /*singleSelect:false,
                 ctrlSelect:true,*/
                 collapsible:true,
-                url:'../../../slim2_ecoman/index.php/ISScenarios',
+                //url:'../../../slim2_ecoman/index.php/ISScenarios',
+                url : '../../../Proxy/SlimProxy.php',
+                queryParams : {
+                        url : 'ISScenarios'      
+                },
                 method:'get',
                 idField:'id',
                 /*toolbar:'#tb',*/
@@ -633,7 +650,7 @@ function search_by_company() {
      $('#printGridPotentials').click(function() {
         
         $.print("#tt_grid_dynamic5_div");
-    });
+    });   
             
         
    
