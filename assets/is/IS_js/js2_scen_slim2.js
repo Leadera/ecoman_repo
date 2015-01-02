@@ -94,8 +94,7 @@ function beginISPotentialByAllFlows() {
         function beginISPotentialByFlows() {
             $.messager.confirm('Confirm','Are you sure ? New Table with new data will be deployed...',function(r){
                     if (r){
-                        $('#tt_grid2').datagrid('loadData',[]);
-                        //console.warn($('#tt_tree2').tree('getChecked'));
+                        //$('#tt_grid2').datagrid('loadData',[]);
                         var nodes = $('#tt_tree2').tree('getChecked');
                         //var treeRoots = $('#tt_tree2').tree("getRoots");
                         console.warn(nodes);
