@@ -1,7 +1,7 @@
 function beginISPotentialByAllFlows() {
             $.messager.confirm('Confirm','Are you sure ? New Table with new data will be deployed...',function(r){
                     if (r){
-                        $('#tt_grid2').datagrid('loadData',[]);
+                        //$('#tt_grid2').datagrid('loadData',[]);
                         $.ajax({
                         url: '../../../slim2_ecoman/index.php/columnflows_json_test',
                         type: 'GET',
