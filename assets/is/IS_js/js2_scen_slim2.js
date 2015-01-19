@@ -209,7 +209,10 @@ function beginISPotentialByAllFlows() {
                     company2:$('#tt_grid_dynamic3').datagrid('getSelections')[0].company,
                     qntty2:$('#tt_grid_dynamic3').datagrid('getSelections')[0].qntty,
                     flow:$('#tt_grid_dynamic2').datagrid('getSelections')[0].flow,
-                    flowtype:'floww type',});
+                    flowtype:'floww type',
+                    map:''+$('#tt_grid2').datagrid('getSelections')[0].id+','
+                            +$('#tt_grid_dynamic3').datagrid('getSelections')[0].id+'',
+                    });
                     $('#tt_grid_dynamic3').datagrid('clearChecked');
             } else {
                 $.messager.alert('Pick rows','Please select one row from all tables','warning');
@@ -299,11 +302,13 @@ function beginISPotentialByAllFlows() {
                     onCheck: function(node, checked) {
                         if(checked) {
                             if(node.attributes.notroot) {
+                                $('#tt_grid2').datagrid("hideColumn",node.text);
                                 $('#tt_grid2').datagrid("showColumn",node.text);
                             }
                             if(node.children) {
                                 $.each(node.children, function( index, obj ) {
-                                $('#tt_grid2').datagrid("showColumn",obj.text);
+                                    $('#tt_grid2').datagrid("hideColumn",obj.text);
+                                    $('#tt_grid2').datagrid("showColumn",obj.text);
                               });
                             }
                         } else {
@@ -438,6 +443,23 @@ function beginISPotentialByAllFlows() {
                         return s+c;
                     } else {
                          var d = '<button class="btn btn-mini rn_btnDelete" onclick="deleteISPotential(this)">Delete</button>';
+                        return d;
+                    }
+                }
+            },
+            {field:'map',title:'Map',width:200,align:'center',
+                formatter:function(value,row,index){
+                    if (row.editing){
+                        var s = '<a href="#" onclick="saverow(this)">Save</a> ';
+                        var c = '<a href="#" onclick="cancelrow(this)">Cancel</a>';
+                        return s+c;
+                    } else {
+                        //var e = '<a href="#" onclick="editrow(this)">Edit</a> ';
+                        //var d = '<a href="#" onclick="deleteISPotential(this)" >Delete</a>';
+                        console.log('row satır id bilgileri'+row.id);
+                        var arrSplit = row.id.split(",");
+                         var d = '<button class="btn btn-mini rn_btnDelete" onclick="window.open(\'../IS_OpenLayers/map.php?to_company='+arrSplit[1]+'&from_company='+arrSplit[0]+'\',\'mywindow\',\'width=900,height=900\')">See on Map</button>';
+                        //return e+d;
                         return d;
                     }
                 }
