@@ -1,9 +1,11 @@
 // remote connection test
 // remote connection test2
 
+        function selectAllCompanies() {
+            $('#tt_grid').datagrid('selectAll');
+        }
 
-
-function search_by_company() {
+        function search_by_company() {
             
              $('#tt_grid').datagrid('load',{
                 company: $('#company').val()
@@ -156,7 +158,7 @@ function search_by_company() {
             gridCheckedArray = $("#tt_grid").datagrid("getSelections");
             console.warn(checkedArray.length);
             console.warn(gridCheckedArray.length);
-            if (gridCheckedArray.length==0 || checkedArray.length==0){
+            if (gridCheckedArray.length==0 && checkedArray.length==0){
                 $.messager.alert('Pick flow and company ','Please select sub flow and company !','warning');
             } else if(gridCheckedArray.length==0) {
                 $.messager.alert('Pick flow ','Please select  company !','warning');
