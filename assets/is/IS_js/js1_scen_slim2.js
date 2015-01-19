@@ -66,19 +66,26 @@
         }
         
         function addRowAuto() {
-            if($('#tt_grid_dynamic').datagrid('getSelections').length==1  /*&& $('#tt_grid').datagrid('getSelections').length==1*/) {
-                $('#tt_grid_dynamic5').datagrid('appendRow',{id:'' +$('#tt_grid_dynamic').datagrid('getSelections')[0].id+'',
-                    company1:$('#tt_grid_dynamic').datagrid('getSelections')[0].company,
-                    qntty1:$('#tt_grid_dynamic').datagrid('getSelections')[0].qntty,
-                    company2:$('#tt_grid_dynamic').datagrid('getSelections')[0].tocompany,
-                    qntty2:$('#tt_grid_dynamic').datagrid('getSelections')[0].qntty2,
-                    flow:$('#tt_grid_dynamic').datagrid('getSelections')[0].flow,
+            var gridSelections = $('#tt_grid_dynamic').datagrid('getSelections');
+            if(gridSelections.length>0  ) {
+                
+                $.each(gridSelections, function( index, obj ) {
+                     console.warn(obj);
+                     //$('#saveWindowAuto').window('open'); 
+                     
+                     $('#tt_grid_dynamic5').datagrid('appendRow',{id:'' +obj.id+'',
+                    company1:obj.company,
+                    qntty1:obj.qntty,
+                    company2:obj.tocompany,
+                    qntty2:obj.qntty2,
+                    flow:obj.flow,
                     flowtype:'floww type',});
-                    $('#tt_grid_dynamic').datagrid('clearChecked');
+                 });
+                $('#tt_grid_dynamic').datagrid('clearChecked');
+                
             } else {
-                $.messager.alert('Pick rows','Please select only one row from "Dynamic table with IS potentials" table','warning');
+                $.messager.alert('Pick rows','Please select at least one row "Dynamic table with IS potentials" table','warning');
             }
-            
         }
         
         function savePotentialsAuto() {
