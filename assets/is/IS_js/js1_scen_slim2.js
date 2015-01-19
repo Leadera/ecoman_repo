@@ -156,9 +156,15 @@ function search_by_company() {
             gridCheckedArray = $("#tt_grid").datagrid("getSelections");
             console.warn(checkedArray.length);
             console.warn(gridCheckedArray.length);
-            if(/*checkedArray.length==0 &&*/ gridCheckedArray.length==0) {
-                $.messager.alert('Pick flow and company','Please select  company and sub flow!','warning');
-            } else if(checkedArray.length>0 && gridCheckedArray.length>0) {
+            if (gridCheckedArray.length==0 || checkedArray.length==0){
+                $.messager.alert('Pick flow and company ','Please select sub flow and company !','warning');
+            } else if(gridCheckedArray.length==0) {
+                $.messager.alert('Pick flow ','Please select  company !','warning');
+            } 
+            else if (checkedArray.length==0) {
+                $.messager.alert('Pick flow ','Please select sub flow!','warning');
+            }
+            else if(checkedArray.length>0 && gridCheckedArray.length>0) {
                 var flowStr="";
                 var companyStr="";
                 $.each(checkedArray, function( index, obj ) {
@@ -229,32 +235,32 @@ function search_by_company() {
     
     
     
-	$(function() {
-          
+	$(function() { 
         var treeValue;
         $("#tt_tree").tree({
                     onCheck: function(node, checked) {
-                        if(checked) {
-                            if(node.attributes.notroot) {
-                                $('#tt_grid').datagrid("showColumn",node.text);
+                            if(checked) {
+                                if(node.attributes.notroot) {
+                                    $('#tt_grid').datagrid("hideColumn",node.text);
+                                    $('#tt_grid').datagrid("showColumn",node.text);
+                                    console.error($('#tt_grid').datagrid('getColumnFields'));
+                                }
+                                if(node.children) {
+                                    $.each(node.children, function( index, obj ) {
+                                    $('#tt_grid').datagrid("hideColumn",obj.text);
+                                    $('#tt_grid').datagrid("showColumn",obj.text);
+                                  });
+                                }
+                            } else {
+                                if(node.attributes.notroot) {
+                                    $('#tt_grid').datagrid("hideColumn",node.text);
+                                }
+                                if(node.children) {
+                                    $.each(node.children, function( index, obj ) {
+                                    $('#tt_grid').datagrid("hideColumn",obj.text);
+                                  });
+                                } 
                             }
-                            if(node.children) {
-                                $.each(node.children, function( index, obj ) {
-                                $('#tt_grid').datagrid("showColumn",obj.text);
-                              });
-                            }
-                        } else {
-                            if(node.attributes.notroot) {
-                                $('#tt_grid').datagrid("hideColumn",node.text);
-                            }
-                            if(node.children) {
-                                $.each(node.children, function( index, obj ) {
-                                $('#tt_grid').datagrid("hideColumn",obj.text);
-                              });
-                            }
-                            
-                            
-                        }
                     },
                     onClick: function(node){
                     var parentnode=$("#tt_tree").tree("getParent", node.target);
@@ -439,6 +445,23 @@ function search_by_company() {
                         return s+c;
                     } else {
                          var d = '<button class="btn btn-mini rn_btnDelete" onclick="deleteISPotentialAuto(this)">Delete</button>';
+                        return d;
+                    }
+                }
+            },
+            {field:'map',title:'Map',width:150,align:'center',
+                formatter:function(value,row,index){
+                    if (row.editing){
+                        var s = '<a href="#" onclick="saverow(this)">Save</a> ';
+                        var c = '<a href="#" onclick="cancelrow(this)">Cancel</a>';
+                        return s+c;
+                    } else {
+                        //var e = '<a href="#" onclick="editrow(this)">Edit</a> ';
+                        //var d = '<a href="#" onclick="deleteISPotential(this)" >Delete</a>';
+                        console.log('row satır id bilgileri'+row.id);
+                        var arrSplit = row.id.split(",");
+                         var d = '<button class="btn btn-mini rn_btnDelete" onclick="window.open(\'../IS_OpenLayers/map.php?to_company='+arrSplit[1]+'&from_company='+arrSplit[0]+'\',\'mywindow\',\'width=900,height=900\')">See on Map</button>';
+                        //return e+d;
                         return d;
                     }
                 }
