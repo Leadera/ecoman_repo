@@ -173,3 +173,6 @@ label{
 .ultab li a{
     color:rgb(52, 73, 94) !important;
 }
+.form-control{
+    min-width: 100px;
+}
