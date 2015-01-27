@@ -198,7 +198,12 @@ class Cpscoping extends CI_Controller {
 		$allocation_id_array = $this->cpscoping_model->get_allocation_id_from_ids($cmpny_id,$prjct_id);
 		$data['allocation'] = array();
 		foreach ($allocation_id_array as $ids) {
-			$data['allocation'][] = $this->cpscoping_model->get_allocation_from_allocation_id($ids['allocation_id']);
+			if(!empty($ids['allocation_id'])){
+				$veri = $this->cpscoping_model->get_allocation_from_allocation_id($ids['allocation_id']);
+				if(!empty($veri['allocation_id'])){
+					$data['allocation'][] = $veri;
+				}
+			}
 		}
 		header("Content-Type: application/json", true);
 		echo json_encode($data);
@@ -523,12 +528,14 @@ class Cpscoping extends CI_Controller {
 
 			foreach ($allocation_ids as $allo_id) {
 				$query = $this->cpscoping_model->get_allocation_from_allocation_id($allo_id['allocation_id']);
-				if($query['flow_id'] == $flow_id && $query['flow_type_id'] == $flow_type_id && $query['prcss_id'] == $prcss_id){
-					$insert_array = array(
-				      'benchmark_kpi' => $benchmark_kpi,
-				      'best_practice' => $best_practice
-				    );
-				    $this->cpscoping_model->kpi_insert($insert_array,$allo_id['allocation_id']);
+				if(!empty($query['flow_id'])){
+					if($query['flow_id'] == $flow_id && $query['flow_type_id'] == $flow_type_id && $query['prcss_id'] == $prcss_id){
+						$insert_array = array(
+					      'benchmark_kpi' => $benchmark_kpi,
+					      'best_practice' => $best_practice
+					    );
+					    $this->cpscoping_model->kpi_insert($insert_array,$allo_id['allocation_id']);
+					}
 				}
 			}
 		}

@@ -118,20 +118,23 @@
     	?>
 		<?php 
 			foreach ($kpi_values as $kpi){
-	   			$kontrol_prcss[$index_prcss] = $kpi['prcss_name'];
-	   			$deger = 0;
-	   			for($i = 0 ; $i < $index_prcss ; $i++){
-	   				if($kontrol_prcss[$i] == $kpi['prcss_name']){
-	   					$deger = 1;
-	   				}
-	   			}
-	   			$index_prcss++;
-	   			if($deger == 0){
-	   				$prcss_adet++;
-	   			}
+					if(!empty($kpi['prcss_name'])){
+		   			$kontrol_prcss[$index_prcss] = $kpi['prcss_name'];
+		   			$deger = 0;
+		   			for($i = 0 ; $i < $index_prcss ; $i++){
+		   				if($kontrol_prcss[$i] == $kpi['prcss_name']){
+		   					$deger = 1;
+		   				}
+		   			}
+		   			$index_prcss++;
+		   			if($deger == 0){
+		   				$prcss_adet++;
+		   			}
+		   		}
 	   		}
 		?>
 	   	<?php foreach ($kpi_values as $kpi): ?>
+	   		<?php if(!empty($kpi['prcss_name'])): ?>
 	   		<?php
 	   			$kontrol[$index] = $kpi['prcss_name'];
 	   			$deger = 0;
@@ -141,7 +144,7 @@
 	   				}
 	   			}
 	   			$index++;
-	   			if($deger == 0){
+	   			if($deger == 0):
 			 ?>
 		   		<div class="cp-heading-kpi">
 		   			Process: <?php echo $kpi['prcss_name'];?>
@@ -153,6 +156,7 @@
 		    		?>
 	   				<?php 
 	   					for($i = 0 ; $i < sizeof($kpi_values) ; $i++){
+	   						if(!empty($kpi_values[$i]['prcss_name'])){
 		   					if($kpi_values[$i]['prcss_name'] == $kpi['prcss_name']){
 			   					$kontrol_flow[$index_flow] = $kpi_values[$i]['flow_name'];
 			   					$kontrol_flow_type[$index_flow] = $kpi_values[$i]['flow_type_name'];
@@ -174,9 +178,12 @@
 			   					}
 		   					}
 		   				}
+
+		   				}
 	   				?>
 	   			</div>
-		    <?php } ?>
+		    <?php endif ?>
+		    <?php endif ?>
 	   	<?php endforeach ?>
 	</div>
 
