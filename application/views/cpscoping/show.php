@@ -165,21 +165,19 @@
 			<?php $deneme_arrayi = array(); $tekrarsiz = array(); $tekrarsiz[-1] = "0"; $count = 0; $process_adet=0; ?>
 			<?php foreach ($allocation as $a): ?>
 			<?php
-			if(!empty($a['prcss_name'])){
-				$degisken = 1;
-				$deneme_arrayi[$count] = $a['prcss_name'];
-				$count++;
-				for ($i=0; $i < $count-1; $i++) { 
-					if($deneme_arrayi[$i] == $a['prcss_name']){
-					$degisken = 0;
-					break;
-					}
+			$degisken = 1;
+			$deneme_arrayi[$count] = $a['prcss_name'];
+			$count++;
+			for ($i=0; $i < $count-1; $i++) { 
+				if($deneme_arrayi[$i] == $a['prcss_name']){
+				$degisken = 0;
+				break;
 				}
-				if($degisken == 1){
-					$process_adet++;
-					echo "<th>".$a['prcss_name']."</th>";
-					$tekrarsiz[$process_adet-1] = $a['prcss_id']; 
-				}
+			}
+			if($degisken == 1){
+				$process_adet++;
+				echo "<th>".$a['prcss_name']."</th>";
+				$tekrarsiz[$process_adet-1] = $a['prcss_id']; 
 			}
 			?>
 			<?php endforeach ?>
@@ -187,7 +185,6 @@
 			<?php
 				$count = 0; $deneme_array = array(); $flow_type_array = array();
 				foreach ($allocation as $a):
-					if(!empty($a['flow_name'])):
 					$degisken = 1;
 					$deneme_array[$count] = $a['flow_name'];
 					$flow_type_array[$count] = $a['flow_type_id'];
@@ -227,7 +224,6 @@
 					</tr>
 
 				<?php endif ?>
-				<?php endif ?>
 				<?php endforeach ?>
 			</table>
 
@@ -239,21 +235,19 @@
 			<?php $deneme_arrayi = array(); $tekrarsiz = array(); $tekrarsiz[-1] = "0"; $count = 0; $process_adet=0; ?>
 			<?php foreach ($allocation as $a): ?>
 			<?php
-			if(!empty($a['prcss_name'])){
-				$degisken = 1;
-				$deneme_arrayi[$count] = $a['prcss_name'];
-				$count++;
-				for ($i=0; $i < $count-1; $i++) { 
-					if($deneme_arrayi[$i] == $a['prcss_name']){
-					$degisken = 0;
-					break;
-					}
+			$degisken = 1;
+			$deneme_arrayi[$count] = $a['prcss_name'];
+			$count++;
+			for ($i=0; $i < $count-1; $i++) { 
+				if($deneme_arrayi[$i] == $a['prcss_name']){
+				$degisken = 0;
+				break;
 				}
-				if($degisken == 1){
-					$process_adet++;
-					echo "<th>".$a['prcss_name']."</th>";
-					$tekrarsiz[$process_adet-1] = $a['prcss_id']; 
-				}
+			}
+			if($degisken == 1){
+				$process_adet++;
+				echo "<th>".$a['prcss_name']."</th>";
+				$tekrarsiz[$process_adet-1] = $a['prcss_id']; 
 			}
 			?>
 			<?php endforeach ?>
@@ -261,7 +255,6 @@
 			<?php
 				$count = 0; $deneme_array = array();
 				foreach ($allocation as $a):
-					if(!empty($a['flow_name'])){
 					$degisken = 1;
 					$deneme_array[$count] = $a['flow_name'];
 					$count++;
@@ -312,7 +305,6 @@
 						<?php endfor ?>
 					</tr>
 
-				<?php } ?>
 				<?php } ?>
 				<?php endforeach ?>
 			</table>
