@@ -350,26 +350,29 @@ class Cpscoping extends CI_Controller {
 		$prcss_name = "";
 		foreach ($allocation_ids as $allo_id) {
 			$array[$index] = $this->cpscoping_model->get_allocation_from_allocation_id($allo_id['allocation_id']);
-			if($array[$index]['prcss_id'] == $prcss_id){
-				$doviz_array = $this->dolar_euro_parse();
-				$unit = $array[$index]['unit_cost'];
-				$allocation_cost = $array[$index]['allocation_cost'];
-				$allocation_env_impact = $array[$index]['allocation_env_impact'];
+			//print_r($array[$index]);
+			if(!empty($array[$index]['prcss_id'])){
+				if($array[$index]['prcss_id'] == $prcss_id){
+					$doviz_array = $this->dolar_euro_parse();
+					$unit = $array[$index]['unit_cost'];
+					$allocation_cost = $array[$index]['allocation_cost'];
+					$allocation_env_impact = $array[$index]['allocation_env_impact'];
 
-				if($unit == "Dolar"){
-					$cost_value_alt += ($array[$index]['cost'] * ((100-$allocation_cost)/100)) * number_format(($doviz_array['dolar'] / $doviz_array['euro']),4);
-					$cost_value_ust += ($array[$index]['cost'] * ((100+$allocation_cost)/100)) * number_format(($doviz_array['dolar'] / $doviz_array['euro']),4);
-				}else if($unit == "TL"){
-					$cost_value_alt += ($array[$index]['cost'] * ((100-$allocation_cost)/100)) * $doviz_array['euro'];
-					$cost_value_ust += ($array[$index]['cost'] * ((100+$allocation_cost)/100)) * $doviz_array['euro'];
-				}else{
-					$cost_value_alt += ($array[$index]['cost'] * ((100-$allocation_cost)/100));
-					$cost_value_ust += ($array[$index]['cost'] * ((100+$allocation_cost)/100)) * $doviz_array['euro'];
+					if($unit == "Dolar"){
+						$cost_value_alt += ($array[$index]['cost'] * ((100-$allocation_cost)/100)) * number_format(($doviz_array['dolar'] / $doviz_array['euro']),4);
+						$cost_value_ust += ($array[$index]['cost'] * ((100+$allocation_cost)/100)) * number_format(($doviz_array['dolar'] / $doviz_array['euro']),4);
+					}else if($unit == "TL"){
+						$cost_value_alt += ($array[$index]['cost'] * ((100-$allocation_cost)/100)) * $doviz_array['euro'];
+						$cost_value_ust += ($array[$index]['cost'] * ((100+$allocation_cost)/100)) * $doviz_array['euro'];
+					}else{
+						$cost_value_alt += ($array[$index]['cost'] * ((100-$allocation_cost)/100));
+						$cost_value_ust += ($array[$index]['cost'] * ((100+$allocation_cost)/100)) * $doviz_array['euro'];
+					}
+
+					$prcss_name = $array[$index]['prcss_name'];
+					$ep_value_alt += $array[$index]['env_impact'] * ((100-$allocation_env_impact)/100);
+					$ep_value_ust += $array[$index]['env_impact'] * ((100+$allocation_env_impact)/100);
 				}
-
-				$prcss_name = $array[$index]['prcss_name'];
-				$ep_value_alt += $array[$index]['env_impact'] * ((100-$allocation_env_impact)/100);
-				$ep_value_ust += $array[$index]['env_impact'] * ((100+$allocation_env_impact)/100);
 			}
 			$index++;
 		}
