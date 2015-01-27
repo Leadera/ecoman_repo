@@ -169,6 +169,22 @@
 						console.log(parseFloat($("#ltold-<?php echo $i; ?>").val()));
 						*/
 
+						//Ann. costs new option calculation
+						//D3*(J3*(1+J3)^F3)/((1+J3)^F3-1)+E3
+						//capexold*(Discount*(1+Discount)^Lifetimeold)/(((1+Discount)^Lifetimeold)-1)+opexold
+						$("#acnew-<?php echo $i; ?>").val( 
+							parseFloat($("#capexnew-<?php echo $i; ?>").val()*( 
+								$("#disrate-<?php echo $i; ?>").val()/100 * 
+									Math.pow(
+										((1)+parseFloat($("#disrate-<?php echo $i; ?>").val()/100)),$("#ltnew-<?php echo $i; ?>").val()
+									))/(parseFloat(
+									Math.pow(
+										((1)+parseFloat($("#disrate-<?php echo $i; ?>").val()/100)),$("#ltnew-<?php echo $i; ?>").val()
+									)
+								)-(1)))
+							+ parseFloat($("#opexnew-<?php echo $i; ?>").val())
+						);
+
 
 
 
