@@ -55,7 +55,7 @@
 					</tr>
 					<tr>
 						<td>Unit</td>
-						<td><input type="number" name="unit" id="unit-<?php echo $i; ?>" class="form-control"></td>
+						<td>Euro/Year</td>
 					</tr>
 					<tr>
 						<td>Old Consumption</td><td><input type="number" name="oldcons" id="oldcons-<?php echo $i; ?>" class="form-control" value="<?php echo $a['qntty']; ?>"></td>
@@ -143,30 +143,31 @@
 						}
 
 
-						/*Ann. costs old option calculation
+						//Ann. costs old option calculation
 						//D3*(J3*(1+J3)^F3)/((1+J3)^F3-1)+E3
 						//capexold*(Discount*(1+Discount)^Lifetimeold)/(((1+Discount)^Lifetimeold)-1)+opexold
 						$("#acold-<?php echo $i; ?>").val( 
-							parseInt($("#capexold-<?php echo $i; ?>").val()*( 
-								$("#disrate-<?php echo $i; ?>").val() * 
+							parseFloat($("#capexold-<?php echo $i; ?>").val()*( 
+								$("#disrate-<?php echo $i; ?>").val()/100 * 
 									Math.pow(
-										((1)+parseInt($("#disrate-<?php echo $i; ?>").val())),$("#ltold-<?php echo $i; ?>").val()
-									))/(parseInt(
+										((1)+parseFloat($("#disrate-<?php echo $i; ?>").val()/100)),$("#ltold-<?php echo $i; ?>").val()
+									))/(parseFloat(
 									Math.pow(
-										((1)+parseInt($("#disrate-<?php echo $i; ?>").val())),$("#ltold-<?php echo $i; ?>").val()
+										((1)+parseFloat($("#disrate-<?php echo $i; ?>").val()/100)),$("#ltold-<?php echo $i; ?>").val()
 									)
 								)-(1)))
-							+ ($("#opexold-<?php echo $i; ?>").val())
+							+ parseFloat($("#opexold-<?php echo $i; ?>").val())
 						);
 
-
+						/*
 						console.log(
 							Math.pow(
-										((1)+parseInt($("#disrate-<?php echo $i; ?>").val())),$("#ltold-<?php echo $i; ?>").val()
-								)
+										((1)+parseFloat($("#disrate-<?php echo $i; ?>").val()/100)),$("#ltold-<?php echo $i; ?>").val()
+								)-(1)
 						);
-						console.log(parseInt($("#disrate-<?php echo $i; ?>").val()));
-						console.log(parseInt($("#ltold-<?php echo $i; ?>").val()));*/
+						console.log(parseFloat($("#disrate-<?php echo $i; ?>").val()/100));
+						console.log(parseFloat($("#ltold-<?php echo $i; ?>").val()));
+						*/
 
 
 
