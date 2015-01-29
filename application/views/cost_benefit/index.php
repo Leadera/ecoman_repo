@@ -1,3 +1,17 @@
+<link href="<?php echo asset_url('visualize/css/basic.css'); ?>" type="text/css" rel="stylesheet" />
+<link href="<?php echo asset_url('visualize/css/visualize.css'); ?>" type="text/css" rel="stylesheet" />
+<link href="<?php echo asset_url('visualize/css/visualize-light.css'); ?>" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="<?php echo asset_url('visualize/js/enhance.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo asset_url('visualize/js/jquery.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo asset_url('visualize/js/visualize.jQuery.js'); ?>"></script>
+	<script type="text/javascript">
+		// Run the script on DOM ready:
+		$(function(){
+			$('#test').visualize({type: 'bar', width: '400', height: '500'});
+			$('#test').visualize({type: 'area'});
+			$('#test').visualize({type: 'line'});
+		});
+	</script>
 <div class="col-md-8">
 	<p>Cost - Benefit Analysis</p>
 	<?php if (!empty($allocation)): ?>
@@ -199,12 +213,59 @@
 		<?php endif ?>
 </div>
 <div class="col-md-4">
+
+<table id="test">
+	<caption>2009 Employee Sales by Department</caption>
+	<thead>
+		<tr>
+			<td></td>
+			<th scope="col">food</th>
+			<th scope="col">auto</th>
+			<th scope="col">household</th>
+			<th scope="col">furniture</th>
+			<th scope="col">kitchen</th>
+			<th scope="col">bath</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">Mary</th>
+			<td>190</td>
+			<td>160</td>
+			<td>40</td>
+			<td>120</td>
+			<td>30</td>
+			<td>70</td>
+		</tr>
+		<tr>
+			<th scope="row">Tom</th>
+			<td>3</td>
+			<td>40</td>
+			<td>30</td>
+			<td>45</td>
+			<td>35</td>
+			<td>49</td>
+		</tr>
+		<tr>
+			<th scope="row">Brad</th>
+			<td>10</td>
+			<td>180</td>
+			<td>10</td>
+			<td>85</td>
+			<td>25</td>
+			<td>79</td>
+		</tr>
+		<tr>
+			<th scope="row">Kate</th>
+			<td>40</td>
+			<td>80</td>
+			<td>90</td>
+			<td>25</td>
+			<td>15</td>
+			<td>119</td>
+		</tr>		
+	</tbody>
+</table>	
+
 	Graph
 </div>
-
-
-
-
-
-
-

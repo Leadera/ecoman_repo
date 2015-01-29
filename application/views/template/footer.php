@@ -2,7 +2,7 @@
 
 
 
-    <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto"): ?>
+    <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto" and $this->uri->segment(1)!="cost_benefit"): ?>
 
     <script src="<?php echo asset_url('js/flatui-fileinput.js'); ?>"></script>
       <script src="<?php echo asset_url('js/jquery-ui-1.10.3.custom.min.js'); ?>"></script>
