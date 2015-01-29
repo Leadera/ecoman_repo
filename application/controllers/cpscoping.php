@@ -136,7 +136,7 @@ class Cpscoping extends CI_Controller {
 				'importance_env_impact'=>$importance_env_impact,
 				'reference' => $reference,
 				'unit_reference' => $unit_reference,
-				'kpi' => number_format($kpi,4),
+				'kpi' => round($kpi),
 				'unit_kpi' => $unit_kpi,
 				'kpi_error' => $kpi_error
 			);

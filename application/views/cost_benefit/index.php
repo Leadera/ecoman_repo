@@ -7,19 +7,18 @@
 	<script type="text/javascript">
 		// Run the script on DOM ready:
 		$(function(){
-			$('#test').visualize({type: 'bar', width: '400', height: '500'});
-			$('#test').visualize({type: 'area'});
-			$('#test').visualize({type: 'line'});
+			$('#test').graph();
 		});
 	</script>
-<div class="col-md-8">
+
+<div class="col-md-6">
 	<p>Cost - Benefit Analysis</p>
 	<?php if (!empty($allocation)): ?>
 			<?php $i=1; ?>
 			<?php foreach ($allocation as $a): ?>
 
  				<?php $attributes = array('id' => 'form-'.$i); ?>
-				<?php echo form_open('cost-benefit', $attributes); ?>
+				<?php echo form_open('cba/save/'.$a['allocation_id'].'/'.$this->uri->segment(2).'/'.$this->uri->segment(3), $attributes); ?>
 				<table class="costtable">
 					<tr>
 						<td>#</td><td><?php echo $i; ?> (<?php echo $a['allocation_id']; ?>)</td>
@@ -29,60 +28,60 @@
 						<td width="75%"><b><?php echo $a['prcss_name']; ?></b> <small class="text-muted"><?php echo $a['flow_name']; ?>-<?php echo $a['flow_type_name']; ?></small><br><span class="text-info"><?php echo $a['best']; ?></span></td>
 					</tr>
 						<tr><td>CAPEX old option (€)</td>								
-						<td><div class=" has-warning"><input type="number" name="capexold" id="capexold-<?php echo $i; ?>" class="form-control has-warning" placeholder="You should fill this field."></div></td>
+						<td><div class=" has-warning"><input type="text" name="capexold" id="capexold-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['capexold']; ?>" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
 						<td>OPEX old option (€)</td>
-						<td><input type="number" name="opexold" id="opexold-<?php echo $i; ?>" class="form-control"></td>
+						<td><input type="text" name="opexold" id="opexold-<?php echo $i; ?>" class="form-control"></td>
 					</tr>
 					<tr>
 						<td>Lifetime old option (yr)</td>
-						<td><div class=" has-warning"><input type="number" name="ltold" id="ltold-<?php echo $i; ?>" class="form-control" placeholder="You should fill this field."></div></td>
+						<td><div class=" has-warning"><input type="text" name="ltold" id="ltold-<?php echo $i; ?>" value="<?php echo $a['ltold']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
 						<td>CAPEX new option (€)</td>
-						<td><div class=" has-warning"><input type="number" name="capexnew" id="capexnew-<?php echo $i; ?>" class="form-control" placeholder="You should fill this field."></div></td>
+						<td><div class=" has-warning"><input type="text" name="capexnew" id="capexnew-<?php echo $i; ?>" value="<?php echo $a['capexnew']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
 						<td>OPEX new option (€)</td>
-						<td><input type="number" name="opexnew" id="opexnew-<?php echo $i; ?>" class="form-control"></td>
+						<td><input type="text" name="opexnew" id="opexnew-<?php echo $i; ?>" class="form-control"></td>
 					</tr>
 					<tr>
 						<td>Lifetime new option (yr)</td>
-						<td><div class=" has-warning"><input type="number" name="ltnew" id="ltnew-<?php echo $i; ?>" class="form-control" placeholder="You should fill this field."></div></td>
+						<td><div class=" has-warning"><input type="text" name="ltnew" id="ltnew-<?php echo $i; ?>" value="<?php echo $a['ltnew']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
 						<td>Discount rate (%)</td>
-						<td><div class=" has-warning"><input type="number" name="disrate" id="disrate-<?php echo $i; ?>" class="form-control" placeholder="You should fill this field."></div></td>
+						<td><div class=" has-warning"><input type="text" name="disrate" id="disrate-<?php echo $i; ?>"  value="<?php echo $a['disrate']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
 						<td>Ann. costs old option</td>
-						<td><input type="number" name="acold" id="acold-<?php echo $i; ?>" class="form-control"></td>
+						<td><input type="text" name="acold" id="acold-<?php echo $i; ?>" class="form-control"></td>
 					</tr>
 					<tr>
 						<td>Ann. costs new option</td>
-						<td><input type="number" name="acnew" id="acnew-<?php echo $i; ?>" class="form-control"></td>
+						<td><input type="text" name="acnew" id="acnew-<?php echo $i; ?>" class="form-control"></td>
 					</tr>
 					<tr>
 						<td>Economic Cost/Benefit</td>
-						<td><input type="number" name="eco" id="eco-<?php echo $i; ?>" class="form-control"></td>
+						<td><input type="text" name="eco" id="eco-<?php echo $i; ?>" class="form-control"></td>
 					</tr>
 					<tr>
 						<td>Unit</td>
 						<td>Euro/Year</td>
 					</tr>
 					<tr>
-						<td>Old Consumption</td><td><input type="number" name="oldcons" id="oldcons-<?php echo $i; ?>" class="form-control" value="<?php echo $a['qntty']; ?>"></td>
+						<td>Old Consumption</td><td><input type="text" name="oldcons" id="oldcons-<?php echo $i; ?>" class="form-control" value="<?php echo $a['qntty']; ?>"></td>
 					</tr>
 					<tr>
-						<td>Old Total Cost</td><td><input type="number" name="oldcost" id="oldcost-<?php echo $i; ?>" class="form-control" value="<?php echo $a['cost']; ?>"></td>
+						<td>Old Total Cost</td><td><input type="text" name="oldcost" id="oldcost-<?php echo $i; ?>" class="form-control" value="<?php echo $a['cost']; ?>"></td>
 					</tr>
 					<tr>
-						<td>Old Total EP</td><td><input type="number" name="oldep" id="oldep-<?php echo $i; ?>" class="form-control" value="<?php echo $a['ep']; ?>"></td>
+						<td>Old Total EP</td><td><input type="text" name="oldep" id="oldep-<?php echo $i; ?>" class="form-control" value="<?php echo $a['ep']; ?>"></td>
 					</tr>
 					<tr>
 						<td>Estimated new consumption</td>
-						<td><div class=" has-warning"><input type="number" name="newcons" id="newcons-<?php echo $i; ?>" class="form-control" placeholder="You should fill this field."></div></td>
+						<td><div class=" has-warning"><input type="text" name="newcons" id="newcons-<?php echo $i; ?>" value="<?php echo $a['newcons']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
 						<td>Unit</td>
@@ -90,15 +89,15 @@
 					</tr>
 					<tr>
 						<td>€/ Unit</td>
-						<td><input type="number" name="euunit" id="euunit-<?php echo $i; ?>" class="form-control" value="<?php echo round($a['cost']/$a['qntty'],2); ?>" ></td>
+						<td><input type="text" name="euunit" id="euunit-<?php echo $i; ?>" class="form-control" value="<?php echo round($a['cost']/$a['qntty'],2); ?>" ></td>
 					</tr>
 					<tr>
 						<td>EIP/ Unit</td>
-						<td><input type="number" name="eipunit" id="eipunit-<?php echo $i; ?>" class="form-control" value="<?php echo round($a['ep']/$a['qntty'],2); ?>" ></td>
+						<td><input type="text" name="eipunit" id="eipunit-<?php echo $i; ?>" class="form-control" value="<?php echo round($a['ep']/$a['qntty'],2); ?>" ></td>
 					</tr>
 					<tr>
 						<td>Ecological Benefit</td>
-						<td><input type="number" name="ecoben" id="ecoben-<?php echo $i; ?>" class="form-control"></td>
+						<td><input type="text" name="ecoben" id="ecoben-<?php echo $i; ?>" class="form-control"></td>
 					</tr>
 					<tr>
 						<td>Unit</td>
@@ -106,7 +105,7 @@
 					</tr>
 					<tr>
 						<td>Marginal costs</td>
-						<td><input type="number" name="marcos" id="marcos-<?php echo $i; ?>" class="form-control"></td>	
+						<td><input type="text" name="marcos" id="marcos-<?php echo $i; ?>" class="form-control"></td>	
 					</tr>
 					<tr>
 						<td>Unit</td><td>¢/EIP</td>
@@ -133,7 +132,7 @@
 						//console.log("x<?php echo $i; ?>");
 					});
 
-					$('#form-<?php echo $i; ?> input').change(function(e){
+					function calculate(){
 
 						//OPEX OLD calculation
 						$("#opexold-<?php echo $i; ?>").val($("#oldcons-<?php echo $i; ?>").val()*$("#euunit-<?php echo $i; ?>").val());
@@ -141,20 +140,6 @@
 						//OPEX NEW calculation
 						$("#opexnew-<?php echo $i; ?>").val($("#newcons-<?php echo $i; ?>").val()*$("#euunit-<?php echo $i; ?>").val());
 
-						//Ecological Benefit calculation
-						$("#ecoben-<?php echo $i; ?>").val(-$("#eipunit-<?php echo $i; ?>").val() * ($("#newcons-<?php echo $i; ?>").val()-$("#oldcons-<?php echo $i; ?>").val()));
-
-						//Economic cost-benefit calculation
-						$("#eco-<?php echo $i; ?>").val($("#acnew-<?php echo $i; ?>").val()-$("#acold-<?php echo $i; ?>").val());
-
-						//MArgianl-costs calculation
-						//=EĞER(W3>0,M3/W3*100,-M3/W3*100)
-						if($("#ecoben-<?php echo $i; ?>").val()>0){
-							$("#marcos-<?php echo $i; ?>").val($("#eco-<?php echo $i; ?>").val()/$("#ecoben-<?php echo $i; ?>").val()*100);
-						}
-						else{
-							$("#marcos-<?php echo $i; ?>").val(-$("#eco-<?php echo $i; ?>").val()/$("#ecoben-<?php echo $i; ?>").val()*100);
-						}
 
 
 						//Ann. costs old option calculation
@@ -199,20 +184,35 @@
 							+ parseFloat($("#opexnew-<?php echo $i; ?>").val())
 						);
 
+						//Ecological Benefit calculation
+						$("#ecoben-<?php echo $i; ?>").val(-$("#eipunit-<?php echo $i; ?>").val() * ($("#newcons-<?php echo $i; ?>").val()-$("#oldcons-<?php echo $i; ?>").val()));
+						
+						//Economic cost-benefit calculation
+						$("#eco-<?php echo $i; ?>").val($("#acnew-<?php echo $i; ?>").val()-$("#acold-<?php echo $i; ?>").val());
 
 
+						//MArgianl-costs calculation
+						//=EĞER(W3>0,M3/W3*100,-M3/W3*100)
+						if($("#ecoben-<?php echo $i; ?>").val()>0){
+							$("#marcos-<?php echo $i; ?>").val($("#eco-<?php echo $i; ?>").val()/$("#ecoben-<?php echo $i; ?>").val()*100);
+						}
+						else{
+							$("#marcos-<?php echo $i; ?>").val(-$("#eco-<?php echo $i; ?>").val()/$("#ecoben-<?php echo $i; ?>").val()*100);
+						}
+
+					}
 
 
-					});
-
+					$('#form-<?php echo $i; ?> input').change(calculate);
  				</script>
 				<hr>
 				<?php $i++; ?>
 				</form>
+				<script type="text/javascript">	$( document ).ready(calculate);</script>
 			<?php endforeach ?>
 		<?php endif ?>
 </div>
-<div class="col-md-4">
+<div class="col-md-6">
 
 <table id="test">
 	<caption>2009 Employee Sales by Department</caption>
@@ -266,6 +266,4 @@
 		</tr>		
 	</tbody>
 </table>	
-
-	Graph
 </div>

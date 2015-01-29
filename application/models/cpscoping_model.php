@@ -62,7 +62,7 @@ class Cpscoping_model extends CI_Model {
 
 
   public function get_cost_benefit_info($cmpny_id,$prjct_id){
-    $this->db->select('
+    $this->db->select('*,
         t_cmpny_flow.qntty as qntty,
         t_unit.name as qntty_unit,
         t_cmpny_flow.cost as cost,

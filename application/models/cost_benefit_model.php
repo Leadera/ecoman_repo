@@ -26,5 +26,19 @@ class Cost_benefit_model extends CI_Model {
       return false;
     }
   }
+
+  public function set_cba($alloc_id,$prjct_id,$capexold,$ltold,$capexnew,$ltnew,$disrate,$newcons){
+    $data = array(
+              'capexold' => $capexold,
+              'ltold' => $ltold,
+              'capexnew' => $capexnew,
+              'ltnew' => $ltnew,
+              'disrate' => $disrate,
+              'newcons' => $newcons
+            );
+    $this->db->where('id', $alloc_id);
+    $this->db->update('t_cp_allocation', $data); 
+  }
+
 }
 ?>

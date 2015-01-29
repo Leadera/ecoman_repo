@@ -36,8 +36,9 @@ $(document).ready(function() {
 	    $("#reference").change(function() { 
 	    	var amount = $("#amount").val();
 	    	var reference = $("#reference").val();
+	    	var bolum = Math.round(amount/reference);
 	    	if(amount != ""){
-		    	$("#kpi").val(amount/reference);
+		    	$("#kpi").val(bolum);
 	    	}else{
 	    		alert("Amount degeri bos olmamali!");
 	    	}
