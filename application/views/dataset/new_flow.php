@@ -54,6 +54,7 @@
 					<div class="col-md-4">
 						<label for="quantity">Quantity Unit <span style="color:red;">*</span></label>
 						<select id="quantityUnit" class="info select-block" name="quantityUnit">
+							<option value="">Please Select</option>
 							<?php foreach ($units as $unit): ?>
 								<option value="<?php echo $unit['id']; ?>"><?php echo $unit['name']; ?></option>
 							<?php endforeach ?>
