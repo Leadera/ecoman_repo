@@ -40,6 +40,15 @@ class Project_model extends CI_Model {
     return $query->result_array();
   }
 
+  public function get_consultant_projects($cons_id){
+    $this->db->select("*");
+    $this->db->from('t_prj');
+    $this->db->join('t_prj_cnsltnt', 't_prj.id = t_prj_cnsltnt.prj_id');
+    $this->db->where('t_prj_cnsltnt.cnsltnt_id', $cons_id); 
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
   public function get_project($prj_id){
     $this->db->select("*");
     $this->db->from('t_prj');

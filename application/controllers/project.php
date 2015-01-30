@@ -99,7 +99,7 @@ class Project extends CI_Controller{
 		else
 			$data['is_consultant'] = false;
  
-		$data['projects'] = $this->project_model->get_projects();
+		$data['projects'] = $this->project_model->get_consultant_projects($kullanici['id']);
 		$this->load->view('template/header');
 		$this->load->view('project/show_all_project',$data);
 		$this->load->view('template/footer');
