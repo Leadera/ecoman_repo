@@ -112,9 +112,6 @@ class Dataset extends CI_Controller {
 				'flow_type_id'=> $this->sifirla($flowtypeID),
 				'chemical_formula' => $cf,
 				'availability' => $availability,
-				'concentration' => $this->sifirla($conc),
-				'pression' => $this->sifirla($pres),
-				'ph' => $this->sifirla($ph),
 				'state_id' => $state,
 				'quality' => $quality,
 				'output_location' => $oloc,
@@ -122,6 +119,16 @@ class Dataset extends CI_Controller {
 				'description' => $desc,
 				'comment' => $comment
 			);
+			if(!empty($conc)){
+				$flow['concentration'] = $conc;
+			}
+			if(!empty($pres)){
+				$flow['pression'] = $pres;
+			}
+			if(!empty($ph)){
+				$flow['ph'] = $ph;
+			}
+			
 			$this->flow_model->register_flow_to_company($flow);
 
 			//redirect(base_url('new_flow/'.$data['companyID']), 'refresh'); // tablo olusurken ajax kullanılabilir.

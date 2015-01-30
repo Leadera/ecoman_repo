@@ -214,11 +214,11 @@
 					<td><?php echo $flow['cost'].' '.$flow['cost_unit']; ?></td>
 					<td><?php echo $flow['ep'].' '.$flow['ep_unit']; ?></td>
 					<td><?php echo $flow['chemical_formula']; ?></td>
-					<td><?php if($flow['availability']){echo "Available";}else{echo "Not Available";} ?></td>
+					<td><?php if($flow['availability']=="t"){echo "Available";}else{echo "Not Available";} ?></td>
 					<td><?php echo $flow['concentration']; ?></td>
 					<td><?php echo $flow['pression']; ?></td>
 					<td><?php echo $flow['ph']; ?></td>
-					<td><?php echo $flow['state_id']; ?></td>
+					<td><?php if($flow['state_id']=="1"){echo "Solid";}else if($flow['state_id']=="2"){echo "Liquid";}else{echo "Gas";} ?></td>
 					<td><?php echo $flow['quality']; ?></td>
 					<td><?php echo $flow['output_location']; ?></td>
 					<td><?php echo $flow['substitute_potential']; ?></td>
