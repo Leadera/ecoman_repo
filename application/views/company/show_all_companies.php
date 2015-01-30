@@ -14,6 +14,9 @@
 					<li class="list-group-item">
 						<b><a href="<?php echo base_url('company/'.$com['id']) ?>"><?php echo $com['name']; ?></a></b>
 						<span style="color:#999999; font-size:12px;"><?php echo $com['description']; ?></span>
+						<?php if($com['have_permission']==1): ?>
+							<i class="fa fa-check-square-o pull-right"></i>
+						<?php endif ?>
 					</li>
 				<?php endforeach ?>
 				</ul>
@@ -35,6 +38,8 @@
 				<button type="submit" class="btn btn-primary btn-sm">Filter</button>
 			</div>
 			</form>
+
+			<i class="fa fa-check-square-o"></i> means that you have the rights to edit the company.
 		</div>
 	</div>
 </div>

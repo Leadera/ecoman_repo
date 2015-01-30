@@ -153,7 +153,12 @@ class Company extends CI_Controller{
 			$data['cluster_name'] = $this->cluster_model->get_cluster_name($cluster_id);
 		}		
 		$data['clusters'] = $this->cluster_model->get_clusters();
-
+		//permission control
+		$kullanici = $this->session->userdata('user_in');
+		foreach ($data['companies'] as $key => $d) {
+			$data['companies'][$key]['have_permission'] = $this->user_model->can_edit_company($kullanici['id'],$d['id']);
+		}
+		//print_r($data['companies']);
 		$this->load->view('template/header');
 		$this->load->view('company/show_all_companies',$data);
 		$this->load->view('template/footer');
