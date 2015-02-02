@@ -105,12 +105,16 @@ body{
 .cp-heading{
     background: #f0f0f0;
     padding: 10px;
-    border-radius: 4px 4px;
+    /*border-radius: 4px 4px;*/
     font-size: 14px;
+}
+.cp-bar{
+    padding: 10px;
+    border: 2px solid #f0f0f0;
 }
 
 .btn-sm{
-    font-size:12px;
+    font-size:12px !important;
 }
 
 .cp-heading-kpi{

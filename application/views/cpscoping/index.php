@@ -45,15 +45,19 @@ $(document).ready(function() {
     <?php $i = 0; ?>
     <?php foreach ($com_pro as $cp): ?>
         <?php // print_r($cp); ?>
-        <div class="cp-heading">
-            <a style="margin-left:10px;" href="<?php echo base_url('cpscoping/'.$cp['project_id'].'/'.$cp['company_id'].'/show'); ?>" class="btn btn-sm btn-info pull-right">View and Edit Cp Potentials Identifications</a>
-            <a style="margin-left:10px;" href="<?php echo base_url('kpi_calculation/'.$cp['project_id'].'/'.$cp['company_id']); ?>" class="btn btn-sm btn-info pull-right">View and Edit KPI Calculation</a>
-            <a href="<?php echo base_url('cost_benefit/'.$cp['project_id'].'/'.$cp['company_id']); ?>" class="btn btn-sm btn-info pull-right">New Cost-Benefit Analysis</a>
-            <b>Company Name:</b> <?php echo $cp['company_name']; ?><br>
-            <b>Project Name:</b> <?php echo $cp['project_name']; ?>
-        </div>                    
-        <table class="table table-striped" style="font-size:12px;">
         <?php if(sizeof($flow_prcss[$i])>0): ?>
+        <div class="cp-heading">
+            <div class="row">
+                <div class="col-md-6"><b>Company</b><br><a href="<?php echo base_url('company/'.$cp['company_id']); ?>"><?php echo $cp['company_name']; ?></a></div>
+                <div class="col-md-6" style="border-left: 1px solid #C3C3C3;"><b>Project</b><br><a href="<?php echo base_url('project/'.$cp['project_id']); ?>"><?php echo $cp['project_name']; ?></a></div>
+            </div>
+        </div>
+        <div class="cp-bar">
+            <a style="margin-right:10px;" href="<?php echo base_url('cpscoping/'.$cp['project_id'].'/'.$cp['company_id'].'/show'); ?>" class=" btn-sm btn-info">View and Edit Cp Potentials Identifications</a>
+            <a style="margin-right:10px;" href="<?php echo base_url('kpi_calculation/'.$cp['project_id'].'/'.$cp['company_id']); ?>" class=" btn-sm btn-success">View and Edit KPI Calculation</a>
+            <a href="<?php echo base_url('cost_benefit/'.$cp['project_id'].'/'.$cp['company_id']); ?>" class=" btn-sm btn-warning">Cost-Benefit Analysis</a>
+        </div>
+        <table class="table table-striped" style="font-size:12px;">
             <tr>
                 <th>Process Name</th>
                 <th>Flow Name</th>

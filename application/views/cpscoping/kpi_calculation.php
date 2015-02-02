@@ -24,9 +24,9 @@
 							flow_array[index] = data['allocation'][i].flow_name;
 							flow_type_array[index] = data['allocation'][i].flow_type_name;
 
-							kpi[index] = ((data['allocation'][i].benchmark_kpi - data['allocation'][i].kpi) / data['allocation'][i].benchmark_kpi) * 100;
-							if (kpi[index] > 0) {kpi2[index] = 100-kpi[index];}
-							else{kpi2[index] = 100+kpi[index];}
+							kpi[index] = 100-data['allocation'][i].kpi/data['allocation'][i].benchmark_kpi*100;
+							console.log(kpi[index]);
+							kpi2[index] = 100-Math.abs(kpi[index]);
 							index++;
 						}
 					}
@@ -42,24 +42,35 @@
 		          	newData[0][1] = 'Fair Value';
 		          	newData[0][2] = 'Error Value';
 		          	newData[0][3] = { role: 'annotation' };
+		          	newData[0][4] = { role: 'style' };
 
 
 		          	for(var i = 1 ; i < index+1 ; i++){
 		          		newData[i][0] = prcss_array[i-1]+"-"+flow_array[i-1]+"-"+flow_type_array[i-1];
-		          		newData[i][1] = kpi2[i-1];
-		          		newData[i][2] = kpi[i-1];
+		          		if(kpi[i-1]<0){
+		          			newData[i][1] = 100;
+		          		}else{
+		          			newData[i][1] = kpi2[i-1];
+		          		}
+		          		newData[i][2] = Math.abs(kpi[i-1]);
 		          		newData[i][3] = '';
+		          		if(kpi[i-1]<0){
+		          			newData[i][4] = 'red';
+		          		}else{
+		          			newData[i][4] = 'green';
+		          		}
 		          	}
 
 		          	var data = google.visualization.arrayToDataTable(newData);
 
 		          	var options = {
 				        height: 600,
-				        legend: { position: 'top', maxLines: 3 },
+				        legend: { position: 'top', maxLines: 30 },
 				        bar: { groupWidth: '75%' },
 				        isStacked: true,
-				        vAxis: {title: "% (Percentage)",gridlines: { count: 10},format:'0.0' },
-				        hAxis: {title: 'Process Name - Flow Name - Flow Type Name', titleTextStyle: {color: 'red'}}
+				        vAxis: {title: "% (Percentage)"},
+				        hAxis: {title: 'Process Name - Flow Name - Flow Type Name', titleTextStyle: {color: 'green'}},
+				        
 				    };
 				    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
 				    chart.draw(data, options);
@@ -171,7 +182,7 @@
 					   				echo form_open_multipart("kpi_insert/".$this->uri->segment(2)."/".$this->uri->segment(3)."/".$kpi_values[$i]['flow_id']."/".$kpi_values[$i]['flow_type_id']."/".$kpi_values[$i]['prcss_id']);
 					   				echo "<table class='table table-bordered' style='margin-bottom:0px;'>";
 			   						echo "<tr><th colspan='6'>Flow: ".$kpi_values[$i]['flow_name']."-".$kpi_values[$i]['flow_type_name']."</th></tr>";
-			   						echo "<tr><td>Kpi</td><td style='width:130px;'>".$kpi_values[$i]['kpi']."</td><td>Kpi Unit Value</td><td>".$kpi_values[$i]['unit_kpi']."</td><td>Kpi Error Value</td><td>".$kpi_values[$i]['kpi_error']."%</td></tr>";
+			   						echo "<tr><td>Kpi</td><td style='width:130px;'>".$kpi_values[$i]['kpi']."</td><td>Kpi Unit Value</td><td>".$kpi_values[$i]['unit_kpi']."</td></tr>";
 			   						echo "<tr><td>Benchmark KPI</td><td><input type='text' class='form-control' id='benchmark_kpi' name='benchmark_kpi' value='".$kpi_values[$i]['benchmark_kpi']."'></td><td>Best Practice</td><td><textarea class='form-control' id='best_practice' name='best_practice' rows='3'>".$kpi_values[$i]['best_practice']."</textarea></td><td colspan='2'><div class='col-md-4'><button style='margin-bottom:5px;' type='submit' class='btn btn-inverted'>Save Data</button></div></td></tr>";
 			   						echo "</table>";
 			   						echo "</form>";

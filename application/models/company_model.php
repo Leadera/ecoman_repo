@@ -31,6 +31,7 @@ class Company_model extends CI_Model {
   public function get_companies(){
     $this->db->select('*');
     $this->db->from('t_cmpny');
+    $this->db->order_by("name", "asc"); 
     $query = $this->db->get();
     return $query->result_array();
   }
