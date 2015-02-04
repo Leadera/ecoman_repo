@@ -38,7 +38,6 @@
 |
 */
 
-
 //IS scoping
 $route['isscoping'] = "isscoping/index";
 $route['isscopingauto'] = "isscoping/auto";
@@ -87,6 +86,9 @@ $route['register'] = "user/user_register";
 $route['login'] = "user/user_login";
 $route['logout'] = "user/user_logout";
 
+//OPen project
+$route['closeproject'] = "project/close_project";
+$route['openproject'] = "project/open_project";
 $route['update_project/(:any)'] = "project/update_project/$1";
 $route['newproject'] = "project/new_project";
 $route['projects'] = "project/show_all_project";

@@ -7,6 +7,32 @@ class Project extends CI_Controller{
 		$this->load->model('company_model');
 		$this->load->model('user_model');		}
 
+	public function open_project(){
+		$kullanici = $this->session->userdata('user_in');
+		$is_consultant = $this->user_model->is_user_consultant($kullanici['id']);
+		if(!$is_consultant){
+			redirect('', 'refresh');
+		}
+		
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('projectid', 'Project ID', 'trim|required|xss_clean');
+		if ($this->form_validation->run() !== FALSE)
+		{
+			$id = $this->input->post('projectid');
+			$this->session->set_userdata('project_id', $id);
+			redirect('', 'refresh');
+		}
+		$data['projects'] = $this->project_model->get_consultant_projects($kullanici['id']);
+		$this->load->view('template/header');
+		$this->load->view('project/open_project',$data);
+		$this->load->view('template/footer');
+	}
+
+	public function close_project(){
+		$this->session->unset_userdata('project_id');
+		redirect('', 'refresh');
+	}
+
 	public function new_project(){
 		$kullanici = $this->session->userdata('user_in');
 		$is_consultant = $this->user_model->is_user_consultant($kullanici['id']);
