@@ -74,7 +74,7 @@
         <?php endif ?>
       </ul>
     </nav>
-    <div style="background-color: rgb(240, 240, 240); padding: 10px 20px; margin-bottom: 20px; overflow:hidden;">
+    <div style="background-color: rgb(240, 240, 240); padding: 10px 20px; margin-bottom: 20px; ">
       <?php if ($this->session->userdata('user_in') !== FALSE): ?>
         <?php if($this->session->userdata('project_id') !== FALSE): ?>
         <ul class="list-inline" style="margin:0px;">
@@ -86,8 +86,8 @@
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu dropdown-inverse" role="menu" aria-labelledby="dropdownMenu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url('isscoping'); ?>">Manual IS</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url('isscopingauto'); ?>">Automated IS</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url('isScopingPrjBase'); ?>">Manual IS</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url('isScopingAutoPrjBase'); ?>">Automated IS</a></li>
               </ul>
             </div>
           </li>
