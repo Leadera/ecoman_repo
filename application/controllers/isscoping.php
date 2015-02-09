@@ -3,6 +3,9 @@ class Isscoping extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
+                //test
+                // test2
+                //test3
 	}
 
 	public function index(){
