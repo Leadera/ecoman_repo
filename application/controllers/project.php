@@ -20,6 +20,8 @@ class Project extends CI_Controller{
 		{
 			$id = $this->input->post('projectid');
 			$this->session->set_userdata('project_id', $id);
+			$prj = $this->project_model->get_project($id);
+			$this->session->set_userdata('project_name', $prj['name']);
 			redirect('', 'refresh');
 		}
 		$data['projects'] = $this->project_model->get_consultant_projects($kullanici['id']);

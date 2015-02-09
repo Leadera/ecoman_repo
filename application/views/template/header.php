@@ -93,7 +93,7 @@
           </li>
         </ul>
         <ul class="list-inline">
-          <li class="head-li">You are working on project_id: <a href="<?php echo base_url('project/'.$this->session->userdata('project_id')); ?>"><?php echo $this->session->userdata('project_id'); ?></a>
+          <li class="head-li">You are working on a project named: <a href="<?php echo base_url('project/'.$this->session->userdata('project_id')); ?>"><?php echo $this->session->userdata('project_name'); ?></a>
           </li>
           <li class="head-li"><a href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-minus-square-o"></i> Close this project</a></li>
         </ul>

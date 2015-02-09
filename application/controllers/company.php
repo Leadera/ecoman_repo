@@ -34,7 +34,7 @@ class Company extends CI_Controller{
 
 		$this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('companyName', 'Company Name', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('companyName', 'Company Name', 'required|trim|xss_clean|is_unique[t_cmpny.name]');
 		$this->form_validation->set_rules('naceCode', 'Nace Code', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('companyDescription', 'Company Description', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('email', 'E-mail', 'required|trim|xss_clean');
@@ -59,7 +59,6 @@ class Company extends CI_Controller{
 			);
 			$code = $this->input->post('naceCode');
 			$last_id = $this->company_model->insert_company($data);
-
 			$cmpny_data = array(
 				'cmpny_id' => $last_id,
 				'description' => $data['description']
