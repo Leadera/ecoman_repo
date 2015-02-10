@@ -46,7 +46,7 @@
 			success: function(data){
 
 				list.push(data);
-				tuna_graph(list);
+				
 
 				var temp = "";
 				temp += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><th style="text-align:center;">' + data.prcss_name + '</th></tr><tr><td> <b>EP:</b> ' + data.ep_value_alt + ' - ' + data.ep_value_ust + '</td></tr><tr><td> <b>Cost:</b> ' + data.cost_value_alt.toFixed(2) + ' - ' + data.cost_value_ust.toFixed(2) + ' Euro</td></tr></table>';
@@ -276,9 +276,14 @@
 			</table>
 		</div>
 <script type="text/javascript">
+setTimeout(function()
+{
+     tuna_graph(list);
+}, 5000);
+
 
 	function tuna_graph(list){
-	console.log(list);
+	//console.log(list);
 
 	//Tuna Graph
 	var data = list;
