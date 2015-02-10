@@ -20,27 +20,27 @@ class Cpscoping extends CI_Controller {
 		if($this->cpscoping_model->can_consultant_prjct($c_user['id']) == false){
 			redirect('','refresh');
 		}else{
-			$data['c_projects']=$this->user_model->get_consultant_projects_from_userid($c_user['id']);
+			//$data['c_projects']=$this->user_model->get_consultant_projects_from_userid($c_user['id']);
 			$result = array(array());
 			$com_array = array();
 			$i = 0;
-			foreach ($data['c_projects'] as $project_name) {
-				$com_array = $this->project_model->get_prj_companies($project_name['proje_id']);
+			//foreach ($data['c_projects'] as $project_name) {
+				$com_array = $this->project_model->get_prj_companies($this->session->userdata('project_id'));
 				foreach ($com_array as $c) {
 					$com_pro = array(
-						"project_name" => $project_name['name'],
+						"project_name" => $this->session->userdata('project_name'),
 						"company_name" => $c['name'],
-						"project_id" => $project_name['proje_id'],
+						"project_id" => $this->session->userdata('project_id'),
 						"company_id" => $c['id']
 					);
 					$result[$i] = $com_pro;
 					$i++;
 				}
-			}
+			//}
 			$deneme = array(array());
 			$j = 0;
 			foreach ($result as $r) {
-				$flow_prcss = $this->cpscoping_model->get_allocation_values($r['company_id'],$r['project_id']);
+				$flow_prcss = $this->cpscoping_model->get_allocation_values($r['company_id'],$this->session->userdata('project_id'));
 				$deneme[$j] = $flow_prcss;
 				$j++;
 			}

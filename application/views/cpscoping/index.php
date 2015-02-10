@@ -28,6 +28,7 @@ $(document).ready(function() {
 
 <div class="col-md-3">
     <p>Create new cp potentials identification</p>
+    <!--
     <select id="projects" class="btn-group select select-block">
         <option value="0">Nothing Selected</option>
         <?php foreach ($c_projects as $p): ?>
@@ -37,7 +38,12 @@ $(document).ready(function() {
     <select id="companiess" class="btn-group select select-block">
         <option value="0">Nothing Selected</option>
     </select>
-    <a href="#" class="btn btn-default btn-sm" id="cpscopinga">New CP potentials identification</a>
+    <a href="#" class="btn btn-default btn-sm" id="cpscopinga">New CP potentials identification</a>-->
+    <div>Companies under <?php echo $this->session->userdata('project_name'); ?></div><br>
+    <?php foreach ($com_pro as $cp): ?>
+            <a href="<?php echo base_url('cpscoping/'.$this->session->userdata('project_id').'/'.$cp['company_id'].'/allocation'); ?>/" class="btn btn-inverse btn-sm btn-block" id="cpscopinga"><?php echo $cp['company_name']; ?></a>
+    <?php endforeach ?><br>
+    <div>Please select the company you want to create allocation for.</div>
 </div>
 
 <div class="col-md-9">
