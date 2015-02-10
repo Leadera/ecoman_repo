@@ -23,7 +23,7 @@
     <script src="<?php echo asset_url('js/bootstrap.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo asset_url('is/jquery.easyui.min.js'); ?>"></script>
     <!--[if lt IE 9]><script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.0.8/es5-shim.min.js"></script><![endif]-->
-    <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto" and $this->uri->segment(1)!="isScopingAutoPrjBase" and $this->uri->segment(1)!="isScopingPrjBase" and $this->uri->segment(1)!="cost_benefit): ?>
+    <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto" and $this->uri->segment(1)!="isScopingAutoPrjBase" and $this->uri->segment(1)!="isScopingPrjBase" and $this->uri->segment(1)!="cost_benefit"): ?>
       <script src="<?php echo asset_url('js/selectize.min.js'); ?>"></script>
       <script type="text/javascript">
         $(function() {
