@@ -106,12 +106,13 @@ class User extends CI_Controller {
 			$username= $this->input->post('username');
 			$password=md5($this->input->post('password'));
 			$userInfo = $this->user_model->check_user($username,$password);
-
+                        //print_r($userInfo);
 			//session ayaları ve atama
 			$session_array= array(
 				'id' => $userInfo['id'],
 				'username' => $userInfo['user_name'],
-				'email' => $userInfo['email']
+				'email' => $userInfo['email'],
+                                'role_id' => $userInfo['role_id']
 				);
 			$this->session->set_userdata('user_in',$session_array);
 

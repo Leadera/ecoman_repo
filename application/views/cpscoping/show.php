@@ -1,4 +1,4 @@
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
 
 <script type="text/javascript">
 	function yazdir(f,p,k) {
@@ -26,7 +26,6 @@
 	    });
 	};
 
-	google.load("visualization", "1", {packages:["corechart"]});
 	var temp_array = new Array();
 	var temp_index = 0;
 	var ep_alt_temp_array = new Array();
@@ -37,7 +36,7 @@
 	var cost_array_clone = new Array();
 	var cost_index = 0;
 	var index_array = new Array();
-
+	var list=new Array; 
 	function cost_ep_value(prcss_id,process_adet){
 		//alert(prcss_id);
 		$.ajax({
@@ -45,71 +44,13 @@
 			dataType: 'json',
 			url: '<?php echo base_url('cpscoping/cost_ep'); ?>/'+prcss_id+'/'+<?php echo $this->uri->segment(2);?>+'/'+<?php echo $this->uri->segment(3); ?>,
 			success: function(data){
-				//console.log(data);
+
+				list.push(data);
+				tuna_graph(list);
+
 				var temp = "";
 				temp += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><th style="text-align:center;">' + data.prcss_name + '</th></tr><tr><td> <b>EP:</b> ' + data.ep_value_alt + ' - ' + data.ep_value_ust + '</td></tr><tr><td> <b>Cost:</b> ' + data.cost_value_alt.toFixed(2) + ' - ' + data.cost_value_ust.toFixed(2) + ' Euro</td></tr></table>';
 				$("div."+prcss_id).html(temp);
-
-
-				temp_array[temp_index] = data.prcss_name;
-				temp_index++;
-				ep_alt_temp_array[ep_alt_temp_index] = data.ep_value_alt;
-				ep_alt_temp_index++;
-				ep_ust_temp_array[ep_ust_temp_index] = data.ep_value_ust;
-				ep_ust_temp_index++;
-
-				cost_array[cost_index] = data.cost_value_alt;
-				cost_array_clone[cost_index] = data.cost_value_alt;
-				cost_index++;
-
-				if(process_adet == temp_index){
-	          		
-	          		for(var i = 0 ; i < cost_index; i++){
-	          			for(var j = i+1 ; j < cost_index ; j++){
-	          				if(cost_array[i] > cost_array[j]){
-	          					var temp = cost_array[j];
-	          					cost_array[j] = cost_array[i];
-	          					cost_array[i] = temp;
-	          				}
-	          			}
-	          		}
-
-	          		for(var i = 0 ; i < cost_index ; i++){
-	          			for(var j = 0 ; j < cost_index ; j++){
-	          				if(cost_array_clone[j] == cost_array[i]){
-	          					index_array[i] = j;
-	          				}
-	          			}
-	          		}
-
-		          	var newData = new Array(temp_index+1);
-		          	for(var i = 0 ; i < temp_index+1 ; i++){
-		          		newData[i] = new Array(5);
-		          	}
-
-		          	console.log(newData);
-
-		          	newData[0][0] = '';
-		          	newData[0][1] = 0;
-		          	newData[0][2] = 0;
-		          	newData[0][3] = 0;
-		          	newData[0][4] = 0;
-
-		          	for(var i = 0 ; i < temp_index ; i++){
-		          		newData[i+1][0] = temp_array[index_array[i]];
-		          		newData[i+1][1] = ep_alt_temp_array[index_array[i]];
-		          		newData[i+1][2] = ep_alt_temp_array[index_array[i]];
-		          		newData[i+1][3] = ep_ust_temp_array[index_array[i]];
-		          		newData[i+1][4] = ep_ust_temp_array[index_array[i]];
-		          	}
-
-		          	var data = google.visualization.arrayToDataTable(newData, true);
-				    var options = {
-				      legend:'none'
-				    };
-				    var chart = new google.visualization.CandlestickChart(document.getElementById('chart_div'));
-				    chart.draw(data, options);
-	          	}
 			}
 		});
 	};
@@ -153,8 +94,10 @@
 		</div>
 		<div class="col-md-4">
 			<p>Cost and Environmental impact graph of processes</p>
-			<div id="chart_div" style="width: 100%; height: 400px; border:2px solid #f0f0f0;"></div>
 			
+		  <div id="rect-demo-ana">
+		    <div id="rect-demo"></div>
+	    </div>
 		</div>
 		<div class="col-md-8">
 			<p>CP Potentials Identifications</p>
@@ -332,3 +275,61 @@
 				</tr>
 			</table>
 		</div>
+<script type="text/javascript">
+
+	function tuna_graph(list){
+	console.log(list);
+
+	//Tuna Graph
+	var data = list;
+	           console.log(data);
+
+	var margin = {
+	            "top": 10,
+	            "right": 10,
+	            "bottom": 50,
+	            "left": 50
+	        };
+	var width = 400;
+	var height = 400;
+
+	// Set the scales
+	    var x = d3.scale.linear()
+	                          .domain([0, d3.max(data, function(d) { return d.cost_value_alt+d.cost_value_ust; })])
+	        .range([0,width]);
+
+	    var y = d3.scale.linear()
+	        .domain([0, d3.max(data, function(d) { return d.ep_value_ust; })])
+	        .range([height, 0]);
+
+	    var xAxis = d3.svg.axis().scale(x).orient("bottom");
+	    var yAxis = d3.svg.axis().scale(y).orient("left");
+
+
+	// Create the SVG 'canvas'
+	    var svg = d3.select("#rect-demo-ana").append("svg")
+	            .attr("class", "chart")
+	            .attr("width", width + margin.left + margin.right)
+	            .attr("height", height + margin.top + margin.bottom).append("g")
+	            .attr("transform", "translate(" + margin.left + "," + margin.right + ")");
+
+	    svg.append("g")
+	      .attr("class", "x axis")
+	      .attr("transform", "translate(0," + height + ")")
+	      .call(xAxis);
+
+	    svg.append("g")
+	      .attr("class", "y axis")
+	      .call(yAxis);
+
+	svg.selectAll("rect").
+	  data(data).
+	  enter().
+	  append("svg:rect").
+	  attr("x", function(datum,index) { return x(datum.cost_value_alt); }).
+	  attr("y", function(datum,index) { return y(datum.ep_value_ust); }).
+	  attr("height", function(datum,index) { return y(datum.ep_value_alt)-y(datum.ep_value_ust); }).
+	  attr("width", function(datum, index) { return x(datum.cost_value_ust); }).
+	  attr("fill", "rgba(25,155,205,0.8)");
+	}
+</script>

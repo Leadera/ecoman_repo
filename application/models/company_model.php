@@ -8,11 +8,7 @@ class Company_model extends CI_Model {
 
   public function insert_company($data){
     $this->db->insert('t_cmpny',$data);
-    $this->db->select('id');
-    $this->db->from('t_cmpny');
-    $this->db->where('name',$data['name']);
-    $query = $this->db->get()->row_array();
-    return $query['id'];
+    return $this->db->insert_id();
   }
 
   public function set_company_image($last_id,$logo){

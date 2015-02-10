@@ -23,7 +23,7 @@ class User_model extends CI_Model {
   	$this->db->where('user_name',$username);
   	$this->db->where('psswrd',$password);
   	$query = $this->db->get();
-
+        //$this->db->get_compiled_select();
   	if($query -> num_rows() == 1)
   	{
   		return $query->row_array();

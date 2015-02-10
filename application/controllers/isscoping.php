@@ -3,21 +3,128 @@ class Isscoping extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-                //test
-                // test2
-                //test3
 	}
 
 	public function index(){
-		$this->load->view('template/header');
-		$this->load->view('isscoping/index');
-		$this->load->view('template/footer');
+            //print_r($this->session->userdata['user_in']);
+            if(isset($this->session->userdata['user_in'])) {
+                if(empty($this->session->userdata['user_in'])){
+                         redirect(base_url('login'),'refresh');
+                 } 
+             } else {
+                 redirect(base_url('login'),'refresh');  
+             }
+
+             if(isset($this->session->userdata['user_in']['role_id'])) {
+                 if(($this->session->userdata['user_in']['role_id']==null || $this->session->userdata['user_in']['role_id']=='')
+                          || $this->session->userdata['user_in']['role_id']!='3'){
+                        redirect(base_url('company'), 'refresh');
+                 }
+             } else {
+                 redirect(base_url('company'), 'refresh');
+             }
+
+            $this->load->view('template/header');
+            $this->load->view('isscoping/index');
+            $this->load->view('template/footer');
 	}
 
 	public function auto(){
+            //print_r($this->session->userdata['user_in']);
+            $data['userID'] = $this->session->userdata['user_in']['id'];
+                
+            if(isset($this->session->userdata['user_in'])) {
+                if(empty($this->session->userdata['user_in'])){
+                         redirect(base_url('login'),'refresh');
+                 } 
+             } else {
+                 redirect(base_url('login'),'refresh');
+             }
+
+             if(isset($this->session->userdata['user_in']['role_id'])) {
+                 if(($this->session->userdata['user_in']['role_id']==null || $this->session->userdata['user_in']['role_id']=='')
+                          || $this->session->userdata['user_in']['role_id']!='3'){
+                        redirect(base_url('company'), 'refresh');
+                 }
+             } else {
+                 redirect(base_url('company'), 'refresh');
+             }
+
+            $this->load->view('template/header');
+            $this->load->view('isscoping/auto',$data); 
+            $this->load->view('template/footer');
+	}
+        
+        public function autoprjbase(){  
+            //print_r($this->session->userdata['user_in']);
+            //print_r($this->session->userdata);
+            if(isset($this->session->userdata['user_in'])) {
+               if(empty($this->session->userdata['user_in'])){
+			redirect(base_url('login'),'refresh');
+		} 
+            } else {
+                redirect(base_url('login'),'refresh');
+            }
+                
+            if(isset($this->session->userdata['project_id'])) {
+                if($this->session->userdata['project_id']==null || $this->session->userdata['project_id']==''){
+                    redirect(base_url('projects'), 'refresh');
+                }
+            } else {
+                redirect(base_url('projects'), 'refresh');
+            }
+            
+            if(isset($this->session->userdata['user_in']['role_id'])) {
+                if(($this->session->userdata['user_in']['role_id']==null || $this->session->userdata['user_in']['role_id']=='')
+                         || $this->session->userdata['user_in']['role_id']!=1){
+                       redirect(base_url('company'), 'refresh');
+		}
+            } else {
+                redirect(base_url('company'), 'refresh');
+            }
+                
+                
+                
+                $data['userID'] = $this->session->userdata['user_in']['id'];
+                $data['project_id'] = $this->session->userdata['project_id'];
 		$this->load->view('template/header');
-		$this->load->view('isscoping/auto');
+		$this->load->view('isscoping/autoprojectbase',$data); 
 		$this->load->view('template/footer');
+	}
+        
+        public function prjbase(){  
+            //print_r($this->session->userdata);
+            //print_r($this->session->userdata['user_in']['id']);
+            if(isset($this->session->userdata['user_in'])) {
+               if(empty($this->session->userdata['user_in'])){
+			redirect(base_url('login'),'refresh');
+		} 
+            } else {
+                redirect(base_url('login'),'refresh');
+            }
+                
+            if(isset($this->session->userdata['project_id'])) {
+                if($this->session->userdata['project_id']==null || $this->session->userdata['project_id']==''){
+                    redirect(base_url('projects'), 'refresh');
+                }
+            } else {
+                redirect(base_url('projects'), 'refresh');
+            }
+            
+            if(isset($this->session->userdata['user_in']['role_id'])) {
+                if(($this->session->userdata['user_in']['role_id']==null || $this->session->userdata['user_in']['role_id']=='')
+                         || $this->session->userdata['user_in']['role_id']!=1){
+                       redirect(base_url('company'), 'refresh');
+		}
+            } else {
+                redirect(base_url('company'), 'refresh');
+            }
+            
+            $data['userID'] = $this->session->userdata['user_in']['id'];
+            $data['project_id'] = $this->session->userdata['project_id'];
+            $this->load->view('template/header');
+            $this->load->view('isscoping/projectbase',$data); 
+            $this->load->view('template/footer');
 	}
         
         public function tooltip(){

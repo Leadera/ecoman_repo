@@ -79,6 +79,25 @@
                     
                     <a href="#" class="easyui-linkbutton"  data-options="iconCls:'icon-search'" style="width:80px" onclick="search_by_company()">Search</a>-->
                  </div>
+                 <div>
+                    <label style="margin-right:28px;">User Projects:</label>
+                    <input class="easyui-combobox" 
+                       name="IS_project" id="IS_project"
+                       data-options="
+                               url:'../../slim2_ecoman/index.php/get_user_projects?usrId=<?php echo $userID; ?>',  
+                               method:'get',
+                               valueField:'id',   
+                               textField:'text', 
+                               panelHeight:'auto',
+                               icons:[{
+                                   iconCls:'icon-add'
+                               }]
+                       ">
+                     <!--<span>Company Name:</span>
+                    <input id="company" style="line-height:26px;border:1px solid #ccc">
+                    
+                    <a href="#" class="easyui-linkbutton"  data-options="iconCls:'icon-search'" style="width:80px" onclick="search_by_company()">Search</a>-->
+                 </div>
             </div>
                 
             <div id="tb5" style="padding:5px;height:auto">

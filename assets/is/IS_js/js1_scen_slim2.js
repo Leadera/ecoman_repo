@@ -193,10 +193,12 @@
                 $.ajax({
                     url : '../../../Proxy/SlimProxy.php',   
                     data : {
-                            url : 'ISPotentialsNew_json_test',
+                            //url : 'ISPotentialsNew_json_test',
+                            url : 'ISPotentialsNew_json_test_by_project',
                             selectedFlows : flowStr,
                             companies : companyStr,
-                            IS : $('#IS_search').combobox('getValue')
+                            IS : $('#IS_search').combobox('getValue'),
+                            prjId : $('#IS_project').combobox('getValue')
                     },
                     type: 'GET',
                     dataType : 'json',
