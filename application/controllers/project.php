@@ -41,13 +41,29 @@ class Project extends CI_Controller{
 		if(!$is_consultant){
 			redirect('', 'refresh');
 		}
+                
+                $this->load->library('googlemaps');
+		//alert("1:" + event.latLng.lat() + " 2:" + event.latLng.lng());
+		$config['center'] = '39.98280915242299, 32.73923635482788';
+		$config['zoom'] = '15';
+		$config['map_type'] = "HYBRID";
+		$config['onclick'] = '$("#latId").val("Lat:" + event.latLng.lat()); $("#longId").val("Long:" + event.latLng.lng()); $("#lat").val(event.latLng.lat()); $("#long").val(event.latLng.lng());';
+		$config['places'] = TRUE;
+		$config['placesRadius'] = 20;
+		$this->googlemaps->initialize($config);
+
+		$data['map'] = $this->googlemaps->create_map();
+                
+                
 
 		$data['companies']=$this->company_model->get_companies();
 		$data['consultants']=$this->user_model->get_consultants();
 		$data['project_status']=$this->project_model->get_active_project_status();
 
 		$this->load->library('form_validation');
-
+                
+                $this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('assignCompany','Assign Company','required');
@@ -61,9 +77,11 @@ class Project extends CI_Controller{
 			$project = array(
 			'name'=>$this->input->post('projectName'),
 			'description'=>$this->input->post('description'),
-			'start_date'=>date('Y-m-d', strtotime(str_replace('-', '/', $this->input->post('datepicker')))), // mysql icin formatını ayarladık
+			'start_date'=>date('Y-m-d', strtotime(str_replace('-', '/', $this->input->post('datepicker')))), // mysql icin format�n� ayarlad�k
 			'status_id'=>$this->input->post('status'),
-			'active'=>1 //default active:1 olarak kaydediyoruz.
+			'active'=>1, //default active:1 olarak kaydediyoruz.
+                        'latitude'=>$this->input->post('lat'),
+                        'longitude'=>$this->input->post('long'),
 			);
 			$last_inserted_project_id = $this->project_model->create_project($project);
 
@@ -106,7 +124,7 @@ class Project extends CI_Controller{
 	}
 
 	public function contact_person(){
-		$cmpny_id=$this->input->post('company_id'); // 1,2,3 şeklinde company id ler alındı
+		$cmpny_id=$this->input->post('company_id'); // 1,2,3 �eklinde company id ler al�nd�
 		$user = array();
 		if($cmpny_id != 'null'){
 			$cmpny_id_arr = explode(",", $cmpny_id); // explode ile parse edildi. array icinde company id'ler tutuluyor.
@@ -115,7 +133,7 @@ class Project extends CI_Controller{
 				$user[] = $this->user_model->get_company_users($cmpny_id);
 			}
 			//foreach dongusu icinde tek tek company id'ler gonderilip ilgili user'lar bulunacak.
-			//suanda sadece ilk company id ' yi alıp user ları donuyor.
+			//suanda sadece ilk company id ' yi al�p user lar� donuyor.
 		}
 		echo json_encode($user);
 	}
@@ -142,11 +160,36 @@ class Project extends CI_Controller{
 		if(!$is_consultant_of_project && !$is_contactperson_of_project){
 			redirect('','refresh');
 		}
+                
+                
+                
+                
+                
 		$data['projects'] = $this->project_model->get_project($prj_id);
 		$data['status'] = $this->project_model->get_status($prj_id);
 		$data['constant'] = $this->project_model->get_prj_consaltnt($prj_id);
 		$data['companies'] = $this->project_model->get_prj_companies($prj_id);
 		$data['contact'] = $this->project_model->get_prj_cntct_prsnl($prj_id);
+                
+                $this->load->library('googlemaps');
+                $marker = array();
+                if($data['projects']['latitude']!=null && $data['projects']['longitude']!=null) {
+                    $config['center'] = $data['projects']['latitude'].','. $data['projects']['longitude'];
+                    $marker['position'] = $data['projects']['latitude'].','. $data['projects']['longitude'];
+                    
+                } else if ($data['projects']['latitude']==null || $data['projects']['longitude']==null){
+                    $config['center'] = '39.97399584999243,32.746843099594116';
+                    $marker['position'] = '39.97399584999243,32.746843099594116';
+                }
+                
+                $config['zoom'] = '15';
+                $config['places'] = TRUE;
+                $config['placesRadius'] = 20;
+                
+		
+		$this->googlemaps->add_marker($marker);
+		$this->googlemaps->initialize($config);
+                $data['map'] = $this->googlemaps->create_map();
 
 		$kullanici = $this->session->userdata('user_in');
 		$data['is_consultant_of_project'] = $is_consultant_of_project;
@@ -174,19 +217,19 @@ class Project extends CI_Controller{
 		//print_r($data['assignedCompanies'] );
 
 		$companyIDs=array();
-		foreach ($data['assignedCompanies'] as $key) { // bu kısımda sadece id lerden olusan array i alıyorum
+		foreach ($data['assignedCompanies'] as $key) { // bu k�s�mda sadece id lerden olusan array i al�yorum
 			$companyIDs[] = $key['id'];
 		}
 		$data['companyIDs']=$companyIDs;
 
 		$consultantIDs = array();
-		foreach ($data['assignedConsultant'] as $key) { // bu kısımda sadece id lerden olusan array i alıyorum
+		foreach ($data['assignedConsultant'] as $key) { // bu k�s�mda sadece id lerden olusan array i al�yorum
 			$consultantIDs[] = $key['id'];
 		}
 		$data['consultantIDs']=$consultantIDs;
 
 		$contactIDs = array();
-		foreach ($data['assignedContactperson'] as $key) { // bu kısımda sadece id lerden olusan array i alıyorum
+		foreach ($data['assignedContactperson'] as $key) { // bu k�s�mda sadece id lerden olusan array i al�yorum
 			$contactIDs[] = $key['id'];
 		}
 		$data['contactIDs']=$contactIDs;
@@ -200,7 +243,7 @@ class Project extends CI_Controller{
 		$this->load->library('form_validation');
 
 
-		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean|callback_name_control'); // buraya isunique kontrolü ge
+		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean|callback_name_control'); // buraya isunique kontrol� ge
 		$this->form_validation->set_rules('description', 'Description', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('assignCompany','Assign Company','required');
 		$this->form_validation->set_rules('assignConsultant','Assign Consultant','required');
@@ -215,7 +258,7 @@ class Project extends CI_Controller{
 			$project = array(
 			'name'=>$this->input->post('projectName'),
 			'description'=>$this->input->post('description'),
-			'start_date'=>date('Y-m-d', strtotime(str_replace('-', '/', $this->input->post('datepicker')))), // mysql icin formatını ayarladık
+			'start_date'=>date('Y-m-d', strtotime(str_replace('-', '/', $this->input->post('datepicker')))), // mysql icin format�n� ayarlad�k
 			'status_id'=>$this->input->post('status'),
 			'active'=>1 //default active:1 olarak kaydediyoruz.
 			);
@@ -223,7 +266,7 @@ class Project extends CI_Controller{
 
 			$companies = $_POST['assignCompany']; // multiple select , secilen company'ler
 
-			$this->project_model->remove_company_from_project($prjct_id);	// once hepsini siliyoruz projeye bağlı companylerin
+			$this->project_model->remove_company_from_project($prjct_id);	// once hepsini siliyoruz projeye ba�l� companylerin
 
 			foreach ($companies as $company) {
 				$prj_cmpny=array(

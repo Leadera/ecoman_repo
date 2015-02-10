@@ -7,9 +7,9 @@
 <script src="<?php echo asset_url('is/src/datagrid-filter.js'); ?>"></script>
 <script src="<?php echo asset_url('is/IS_js/js2_scen_slim2_project_base.js'); ?>"></script>
 
-<!-- Zeynel DaÄŸlÄ±
+<!-- Zeynel Daðlý
     02-02-2015
-    proje id deÄŸeri session iÃ§inden alÄ±nacak
+    proje id deðeri session içinden alýnacak
 -->
 <input type ="hidden" value="<?php echo $project_id; ?>" id ="prj_id"  name="prj_id"></input>  
 

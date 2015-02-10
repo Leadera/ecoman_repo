@@ -1,3 +1,5 @@
+<?php echo $map['js']; ?>
+
 <div class="container">
 	<p class="lead">Create Project</p>
 
@@ -38,6 +40,19 @@
 	    			<label for="description">Description</label>
 	    			<textarea class="form-control" rows="3" name="description" id="description" placeholder="Description" ><?php echo set_value('description'); ?></textarea>
 	 			</div>
+                                <div class="form-group">
+                                    <label for="coordinates">Coordinates</label>
+                                    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-sm btn-primary pull-right" id="coordinates" >Select on Map</button>
+                                    <div class="row">
+                                            <div class="col-md-6">
+                                                    <input type="text" class="form-control" id="lat" placeholder="Lat" name="lat" style="color:#333333;" value="<?php /*echo set_value('lat');*/ ?>" readonly/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                    <input type="text" class="form-control" id="long" placeholder="Long" name="long" style="color:#333333;" value="<?php /*echo set_value('long');*/ ?>" readonly/>
+                                            </div>
+                                    </div>
+	 			</div>
+                            
 			</div>
 			<div class="col-md-4">
 	 			<div class="form-group">
@@ -75,4 +90,30 @@
 		<button type="submit" class="btn btn-primary">Create Project</button>
 	</form>
 
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" rendered="<?php echo $map['js']; ?>" >
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel">Click Map</h4>
+	        <hr>
+	        <div class="row">
+	        	<div class="col-md-6">
+	        		<input type="text" class="form-control" id="latId" name="lat" style="color:#333333;" readonly/>
+	        	</div>
+	        	<div class="col-md-6">
+	        		<input type="text" class="form-control" id="longId" name="long"  style="color:#333333;" readonly/>
+	        	</div>
+	        </div>
+	      </div>
+	      <div class="modal-body">
+	       <?php echo $map['html']; ?>
+	      </div>
+	      <div class="modal-footer">
+	      </div>
+	    </div>
+	  </div>
+</div>
+        
+        
 </div>

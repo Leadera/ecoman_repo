@@ -50,7 +50,7 @@
 		          		if(kpi[i-1]<0){
 		          			newData[i][1] = 100;
 		          		}else{
-		          			newData[i][1] = kpi2[i-1];
+		          		newData[i][1] = kpi2[i-1];
 		          		}
 		          		newData[i][2] = Math.abs(kpi[i-1]);
 		          		newData[i][3] = '';
@@ -58,7 +58,7 @@
 		          			newData[i][4] = 'red';
 		          		}else{
 		          			newData[i][4] = 'green';
-		          		}
+		          	}
 		          	}
 
 		          	var data = google.visualization.arrayToDataTable(newData);

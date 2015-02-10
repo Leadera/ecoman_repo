@@ -1,3 +1,5 @@
+<?php echo $map['js']; ?>
+
 <?php  
     global $company_ids;
     foreach ($companies as $company) {
@@ -47,6 +49,14 @@
 					</td>
 					<td>
 					<?php echo $projects['description']; ?>
+					</td>
+				</tr>
+                                <tr>
+					<td>
+					Project on map
+					</td>
+					<td>
+					<?php  echo $map['html']; ?>
 					</td>
 				</tr>
 			</table>

@@ -23,7 +23,7 @@
     <script src="<?php echo asset_url('js/bootstrap.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo asset_url('is/jquery.easyui.min.js'); ?>"></script>
     <!--[if lt IE 9]><script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.0.8/es5-shim.min.js"></script><![endif]-->
-    <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto" and $this->uri->segment(1)!="cost_benefit"): ?>
+    <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto" and $this->uri->segment(1)!="isScopingAutoPrjBase" and $this->uri->segment(1)!="isScopingPrjBase" and $this->uri->segment(1)!="cost_benefit): ?>
       <script src="<?php echo asset_url('js/selectize.min.js'); ?>"></script>
       <script type="text/javascript">
         $(function() {
@@ -39,7 +39,7 @@
     <!-- font -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic,500italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   </head>
-  <body <?php if($this->uri->segment(1)=="isscoping" or $this->uri->segment(1)=="isscopingauto"){echo 'class="easyui-layout"';} ?>>
+  <body <?php /*if($this->uri->segment(1)=="isscoping" or $this->uri->segment(1)=="isscopingauto"){echo 'class="easyui-layout"';}*/ ?>>
 
     <nav class="navbar navbar-default navbar-lg" style="margin-bottom:0px;">
       <a class="navbar-brand" href="<?php echo base_url(); ?>" style="color:white;">ECOMAN</a>
@@ -97,7 +97,7 @@
           </li>
           <li class="head-li"><a href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-minus-square-o"></i> Close this project</a></li>
         </ul>
-        <?php else: ?>
+      <?php else: ?>
         <ul class="list-inline" style="margin:0px;">
           <li class="head-li"><a href="<?php echo base_url('openproject'); ?>"><i class="fa fa-plus-square-o"></i> Open a Project</a></li>
         </ul>
