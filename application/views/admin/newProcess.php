@@ -50,7 +50,7 @@
                     if(parentnode==null) {
                         console.log('parent node null');
                     } else {
-                        console.log('parent node null deÄŸil');
+                        console.log('parent node null deðil');
                     }
                     var roots=$("#tt_tree").tree("getRoots");
                     console.log(parentnode.attributes);*/
@@ -222,7 +222,7 @@
 						<li><a href="#"><i class="icon-ban-circle"></i><span class="hidden-tablet"> Error Logs</span></a></li>
 						
 					</ul>
-					<!--<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox">Ajax MenÃ¼</label>-->
+					<!--<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox">Ajax Menü</label>-->
 				</div><!--/.well -->
 			</div><!--/span-->
 			<!-- left menu ends -->
@@ -283,7 +283,7 @@
 				</a>
 			</div>
                         
-                        <!-- zeynel daÄŸlÄ± flow tree ve form -->
+                        <!-- zeynel daðlý flow tree ve form -->
                         <div class="row-fluid sortable">
                             <div class="box span12">
                                     <div class="box-header well" data-original-title>
@@ -344,7 +344,7 @@
 
 		<div class="modal hide fade" id="myModal">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">Ã—</button>
+				<button type="button" class="close" data-dismiss="modal">×</button>
 				<h3>Settings</h3>
 			</div>
 			<div class="modal-body">

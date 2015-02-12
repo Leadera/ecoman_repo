@@ -41,7 +41,7 @@ class Cost_benefit extends CI_Controller {
 			$disrate = $this->input->post('disrate');
 			$newcons = $this->input->post('newcons');
 			$this->cost_benefit_model->set_cba($alloc_id,$prjct_id,$capexold,$ltold,$capexnew,$ltnew,$disrate,$newcons);
-		}
+}
 		redirect('cost_benefit/'.$prjct_id.'/'.$cmpny_id);
 	}
 
