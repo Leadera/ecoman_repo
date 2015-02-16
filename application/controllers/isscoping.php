@@ -5,7 +5,7 @@ class Isscoping extends CI_Controller {
 		parent::__construct();
 	}
 
-	public function index(){
+	public function index(){   
             //print_r($this->session->userdata['user_in']);
             if(isset($this->session->userdata['user_in'])) {
                 if(empty($this->session->userdata['user_in'])){
