@@ -217,67 +217,95 @@
     <div id="rect-demo"></div>
   </div>
 </div>
-<script type="text/javascript">
-setTimeout(function()
-{
-     tuna_graph();
-}, 1000);
+<?php
+	//array defining
+	$t=0;
+	$toplameco=0;
+	foreach ($allocation as $a) {
 
+
+		if($a['marcos']>0){
+			$tuna_array[$t]['ymax']= $a['marcos'];
+		}
+		else{
+			$tuna_array[$t]['ymax']= 0;
+		}
+		
+		$toplameco+=$a['ecoben'];
+		$tuna_array[$t]['xmax']= $toplameco;
+
+		$eksieco = $toplameco - $a['ecoben'] ;
+		$tuna_array[$t]['xmin']= $eksieco;
+
+
+		if($a['marcos']>0){
+			$tuna_array[$t]['ymin']= "0";
+		}
+		else{
+			$tuna_array[$t]['ymin']= $a['marcos'];
+		}
+		$t++;
+	}
+	print_r($tuna_array);
+	echo json_encode($tuna_array);
+?>
+<script type="text/javascript">
+	setTimeout(function()
+	{
+		tuna_graph();
+	}, 1000);
 
 	function tuna_graph(){
 	//console.log(list);
 
 	//Tuna Graph
-	var data = [{cost_value_alt: 0, ep_value_ust: 0.89,cost_value_ust: 750000, ep_value_alt: 0},
-            {cost_value_alt: 750000, ep_value_ust: 0,cost_value_ust: 2250000, ep_value_alt: -0.75}];
+	var data = <?php echo json_encode($tuna_array); ?>;
 
 	var margin = {
 	            "top": 10,
 	            "right": 10,
-	            "bottom": 550,
+	            "bottom": 50,
 	            "left": 50
 	        };
 	var width = 400;
 	var height = 500;
 
 	// Set the scales
-	    var x = d3.scale.linear()
-	            .domain([0, d3.max(data, function(d) { return d.cost_value_alt+d.cost_value_ust; })])
-	        		.range([0,width]).nice();
+  var x = d3.scale.linear()
+          .domain([0, d3.max(data, function(d) { return d.xmin+d.xmax; })])
+      		.range([0,width]).nice();
 
-	    var y = d3.scale.linear()
-	        		.domain([d3.min(data, function(d) { return d.ep_value_alt; }), d3.max(data, function(d) { return d.ep_value_ust; })])
-	        		.range([height, 0]).nice();
+  var y = d3.scale.linear()
+      		.domain([d3.min(data, function(d) { return d.ymin; }), d3.max(data, function(d) { return d.ymax; })])
+      		.range([height, 0]).nice();
 
-	    var xAxis = d3.svg.axis().scale(x).orient("bottom");
-	    var yAxis = d3.svg.axis().scale(y).orient("left");
+  var xAxis = d3.svg.axis().scale(x).orient("bottom");
+  var yAxis = d3.svg.axis().scale(y).orient("left");
 
-			// Create the SVG 'canvas'
-	    var svg = d3.select("#rect-demo-ana").append("svg")
-	            .attr("class", "chart")
-	            .attr("width", width + margin.left + margin.right)
-	            .attr("height", height + margin.top + margin.bottom).append("g")
-	            .attr("transform", "translate(" + margin.left + "," + margin.right + ")");
+	// Create the SVG 'canvas'
+  var svg = d3.select("#rect-demo-ana").append("svg")
+          .attr("class", "chart")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom).append("g")
+          .attr("transform", "translate(" + margin.left + "," + margin.right + ")");
 
-	    svg.append("g")
-	      .attr("class", "x axis")
-	      .attr("transform", "translate(0,"+ y(0) +")")
-	      .call(xAxis);
+  svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0,"+ y(0) +")")
+    .call(xAxis);
 
-
-
-	    svg.append("g")
-	      .attr("class", "y axis")
-	      .call(yAxis);
+  svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis);
 
 	svg.selectAll("rect").
-	  data(data).
-	  enter().
-	  append("svg:rect").
-	  attr("x", function(datum,index) { return x(datum.cost_value_alt); }).
-	  attr("y", function(datum,index) { return y(datum.ep_value_ust); }).
-	  attr("height", function(datum,index) { return y(datum.ep_value_alt)-y(datum.ep_value_ust); }).
-	  attr("width", function(datum, index) { return x(datum.cost_value_ust); }).
-	  attr("fill", function(d, i) { return d.ep_value_ust == 0 ? "rgba(143, 188, 143, 0.76)" : "rgba(25,155,205,0.8)"; });
+		data(data).
+		enter().
+		append("svg:rect").
+		attr("x", function(datum,index) { return x(datum.xmin); }).
+		attr("y", function(datum,index) { return y(datum.ymax); }).
+		attr("height", function(datum,index) { return y(datum.ymin)-y(datum.ymax); }).
+		attr("width", function(datum, index) { return x(datum.xmax); }).
+		attr("fill", function(d, i) { return d.ymax == 0 ? "rgba(143, 188, 143, 0.76)" : "rgba(25,155,205,0.8)"; });
 	}
 </script>
