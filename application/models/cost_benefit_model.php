@@ -27,13 +27,15 @@ class Cost_benefit_model extends CI_Model {
     }
   }
 
-  public function set_cba($alloc_id,$prjct_id,$capexold,$ltold,$capexnew,$ltnew,$disrate,$newcons){
+  public function set_cba($alloc_id,$prjct_id,$capexold,$ltold,$capexnew,$ltnew,$disrate,$newcons,$marcos,$ecoben){
     $data = array(
               'capexold' => $capexold,
               'ltold' => $ltold,
               'capexnew' => $capexnew,
               'ltnew' => $ltnew,
               'disrate' => $disrate,
+              'ecoben' => $ecoben,
+              'marcos' => $marcos,
               'newcons' => $newcons
             );
     $this->db->where('id', $alloc_id);

@@ -1,3 +1,4 @@
+<script src="http://d3js.org/d3.v3.min.js"></script>
 
 <div class="col-md-6">
 	<p>Cost - Benefit Analysis</p>
@@ -201,5 +202,82 @@
 		<?php endif ?>
 </div>
 <div class="col-md-6">
-Graph
+	<?php //print_r($allocation); ?>
+		<?php if (!empty($allocation)): ?>
+			<table>
+				<tr>
+					<th>Process Name</th><th>Marginal Cost</th><th>Econological Benefit</th>
+				</tr>
+			<?php foreach ($allocation as $a): ?>
+				<tr><td><?php echo $a['prcss_name']; ?></td><td><?php echo $a['marcos']; ?></td><td><?php echo $a['ecoben']; ?></td></tr>
+			<?php endforeach ?>
+			</table>
+		<?php endif ?>
+	<div id="rect-demo-ana">
+    <div id="rect-demo"></div>
+  </div>
 </div>
+<script type="text/javascript">
+setTimeout(function()
+{
+     tuna_graph();
+}, 1000);
+
+
+	function tuna_graph(){
+	//console.log(list);
+
+	//Tuna Graph
+	var data = [{cost_value_alt: 0, ep_value_ust: 0.89,cost_value_ust: 750000, ep_value_alt: 0},
+            {cost_value_alt: 750000, ep_value_ust: 0,cost_value_ust: 2250000, ep_value_alt: -0.75}];
+
+	var margin = {
+	            "top": 10,
+	            "right": 10,
+	            "bottom": 550,
+	            "left": 50
+	        };
+	var width = 400;
+	var height = 500;
+
+	// Set the scales
+	    var x = d3.scale.linear()
+	            .domain([0, d3.max(data, function(d) { return d.cost_value_alt+d.cost_value_ust; })])
+	        		.range([0,width]).nice();
+
+	    var y = d3.scale.linear()
+	        		.domain([d3.min(data, function(d) { return d.ep_value_alt; }), d3.max(data, function(d) { return d.ep_value_ust; })])
+	        		.range([height, 0]).nice();
+
+	    var xAxis = d3.svg.axis().scale(x).orient("bottom");
+	    var yAxis = d3.svg.axis().scale(y).orient("left");
+
+			// Create the SVG 'canvas'
+	    var svg = d3.select("#rect-demo-ana").append("svg")
+	            .attr("class", "chart")
+	            .attr("width", width + margin.left + margin.right)
+	            .attr("height", height + margin.top + margin.bottom).append("g")
+	            .attr("transform", "translate(" + margin.left + "," + margin.right + ")");
+
+	    svg.append("g")
+	      .attr("class", "x axis")
+	      .attr("transform", "translate(0,"+ y(0) +")")
+	      .call(xAxis);
+
+
+
+	    svg.append("g")
+	      .attr("class", "y axis")
+	      .call(yAxis);
+
+	svg.selectAll("rect").
+	  data(data).
+	  enter().
+	  append("svg:rect").
+	  attr("x", function(datum,index) { return x(datum.cost_value_alt); }).
+	  attr("y", function(datum,index) { return y(datum.ep_value_ust); }).
+	  attr("height", function(datum,index) { return y(datum.ep_value_alt)-y(datum.ep_value_ust); }).
+	  attr("width", function(datum, index) { return x(datum.cost_value_ust); }).
+	  attr("fill", function(d, i) { return d.ep_value_ust == 0 ? "rgba(143, 188, 143, 0.76)" : "rgba(25,155,205,0.8)"; });
+	}
+</script>

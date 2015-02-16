@@ -31,7 +31,9 @@ class Cost_benefit extends CI_Controller {
 		$this->form_validation->set_rules('ltold', 'Lifetime old option', 'required|numeric|trim|xss_clean');
 		$this->form_validation->set_rules('capexnew', 'CAPEX new option', 'required|numeric|trim|xss_clean');
 		$this->form_validation->set_rules('ltnew', 'Lifetime new option', 'required|numeric|trim|xss_clean');
-		$this->form_validation->set_rules('disrate', 'Discount rate', 'required|numeric|trim|xss_clean');
+		$this->form_validation->set_rules('disrate', 'Discount rate', 'required|numeric|trim|xss_clean');		
+		$this->form_validation->set_rules('ecoben', 'Ecological Benefit', 'required|numeric|trim|xss_clean');		
+		$this->form_validation->set_rules('marcos', 'Marginal Cost', 'required|numeric|trim|xss_clean');
 		$this->form_validation->set_rules('newcons', 'Estimated new consumption', 'required|numeric|trim|xss_clean');
 		if ($this->form_validation->run() !== FALSE){
 			$capexold = $this->input->post('capexold');
@@ -40,7 +42,9 @@ class Cost_benefit extends CI_Controller {
 			$ltnew = $this->input->post('ltnew');
 			$disrate = $this->input->post('disrate');
 			$newcons = $this->input->post('newcons');
-			$this->cost_benefit_model->set_cba($alloc_id,$prjct_id,$capexold,$ltold,$capexnew,$ltnew,$disrate,$newcons);
+			$ecoben = $this->input->post('ecoben');
+			$marcos = $this->input->post('marcos');
+			$this->cost_benefit_model->set_cba($alloc_id,$prjct_id,$capexold,$ltold,$capexnew,$ltnew,$disrate,$newcons,$marcos,$ecoben);
 }
 		redirect('cost_benefit/'.$prjct_id.'/'.$cmpny_id);
 	}
