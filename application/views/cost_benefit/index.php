@@ -1,15 +1,3 @@
-<link href="<?php echo asset_url('visualize/css/basic.css'); ?>" type="text/css" rel="stylesheet" />
-<link href="<?php echo asset_url('visualize/css/visualize.css'); ?>" type="text/css" rel="stylesheet" />
-<link href="<?php echo asset_url('visualize/css/visualize-light.css'); ?>" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="<?php echo asset_url('visualize/js/enhance.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo asset_url('visualize/js/jquery.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo asset_url('visualize/js/visualize.jQuery.js'); ?>"></script>
-	<script type="text/javascript">
-		// Run the script on DOM ready:
-		$(function(){
-			$('#test').graph();
-		});
-	</script>
 
 <div class="col-md-6">
 	<p>Cost - Benefit Analysis</p>
