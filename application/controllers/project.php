@@ -44,7 +44,7 @@ class Project extends CI_Controller{
                 
                 $this->load->library('googlemaps');
 		//alert("1:" + event.latLng.lat() + " 2:" + event.latLng.lng());
-		$config['center'] = '39.98280915242299, 32.73923635482788';
+		$config['center'] = '47.3250690187567,18.52065861225128';
 		$config['zoom'] = '15';
 		$config['map_type'] = "HYBRID";
 		$config['onclick'] = '$("#latId").val("Lat:" + event.latLng.lat()); $("#longId").val("Long:" + event.latLng.lng()); $("#lat").val(event.latLng.lat()); $("#long").val(event.latLng.lng());';
@@ -62,8 +62,9 @@ class Project extends CI_Controller{
 
 		$this->load->library('form_validation');
                 
-                $this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|required|xss_clean');
+                $this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|xss_clean');
+		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|xss_clean');
+                $this->form_validation->set_rules('zoomlevel', 'Zoom Level', 'trim|xss_clean|max_length[2]|numeric');
 		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('assignCompany','Assign Company','required');
@@ -82,6 +83,7 @@ class Project extends CI_Controller{
 			'active'=>1, //default active:1 olarak kaydediyoruz.
                         'latitude'=>$this->input->post('lat'),
                         'longitude'=>$this->input->post('long'),
+                        'zoomlevel'=>$this->input->post('zoomlevel'),
 			);
 			$last_inserted_project_id = $this->project_model->create_project($project);
 
@@ -182,7 +184,14 @@ class Project extends CI_Controller{
                     $marker['position'] = '39.97399584999243,32.746843099594116';
                 }
                 
-                $config['zoom'] = '15';
+                if($data['projects']['zoomlevel']!=null && $data['projects']['zoomlevel']!=null) {
+                    $config['zoom'] = $data['projects']['zoomlevel'];
+                    
+                } else if ($data['projects']['latitude']==null || $data['projects']['longitude']==null){
+                    $config['zoom'] = '15';
+                }
+                
+                
                 $config['places'] = TRUE;
                 $config['placesRadius'] = 20;
                 

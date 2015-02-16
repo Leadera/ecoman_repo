@@ -42,13 +42,16 @@
 	 			</div>
                                 <div class="form-group">
                                     <label for="coordinates">Coordinates</label>
-                                    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-sm btn-primary pull-right" id="coordinates" >Select on Map</button>
+                                    <button type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-sm btn-primary pull-right" id="coordinates" >Select on Map</button>
                                     <div class="row">
                                             <div class="col-md-6">
                                                     <input type="text" class="form-control" id="lat" placeholder="Lat" name="lat" style="color:#333333;" value="<?php /*echo set_value('lat');*/ ?>" readonly/>
                                             </div>
                                             <div class="col-md-6">
                                                     <input type="text" class="form-control" id="long" placeholder="Long" name="long" style="color:#333333;" value="<?php /*echo set_value('long');*/ ?>" readonly/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                    <input type="text" class="form-control" id="zoomlevel" placeholder="Zoom Level" name="zoomlevel" style="color:#333333;" value="<?php /*echo set_value('long');*/ ?>" />
                                             </div>
                                     </div>
 	 			</div>
@@ -90,7 +93,7 @@
 		<button type="submit" class="btn btn-primary">Create Project</button>
 	</form>
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" rendered="<?php echo $map['js']; ?>" >
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" rendered="<?php echo $map['js']; ?>" >
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -117,3 +120,40 @@
         
         
 </div>
+
+
+<script type="text/javascript">
+        var marker;
+        var lat,lon;
+
+        $('#myModal2').on('shown.bs.modal', function (e) {
+            google.maps.event.trigger(map, 'resize'); // modal acildiktan sonra haritanın resize edilmesi gerekiyor.
+
+            map.setZoom(6);
+            if(!marker)
+                map.setCenter(new google.maps.LatLng(47.3250690187567,18.52065861225128));
+            else
+                map.setCenter(marker.getPosition());
+
+            google.maps.event.addListener(map, 'click', function(event) {
+                $("#latId").val("Lat:" + event.latLng.lat()); $("#longId").val("Long:" + event.latLng.lng());
+                $("#lat").val(event.latLng.lat()); $("#long").val(event.latLng.lng());
+                placeMarker(event.latLng);
+            });
+
+        });
+
+
+
+        function placeMarker(location) {
+          if ( marker ) {
+            marker.setPosition(location);
+          } else {
+            marker = new google.maps.Marker({
+              position: location,
+              map: map
+            });
+          }
+        }
+
+    </script>
