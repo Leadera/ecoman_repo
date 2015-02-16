@@ -56,7 +56,7 @@ class Isscoping extends CI_Controller {
 	}
         
         public function autoprjbase(){  
-            print_r('zeynel');
+            //print_r('zeynel');
             //print_r($this->session->userdata['user_in']);
             //print_r($this->session->userdata);
             if(isset($this->session->userdata['user_in'])) {
