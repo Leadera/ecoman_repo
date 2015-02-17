@@ -1,5 +1,4 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
-
 <div class="col-md-6">
 	<p>Cost - Benefit Analysis</p>
 	<?php if (!empty($allocation)): ?>
@@ -202,9 +201,10 @@
 		<?php endif ?>
 </div>
 <div class="col-md-6">
+	<p>Cost - Benefit Graph</p>
 	<?php //print_r($allocation); ?>
 		<?php if (!empty($allocation)): ?>
-			<table>
+			<table class="table" style="font-size:12px;">
 				<tr>
 					<th>Process Name</th><th>Marginal Cost</th><th>Econological Benefit</th>
 				</tr>
@@ -263,7 +263,7 @@
 
 	var margin = {
 	            "top": 10,
-	            "right": 10,
+	            "right": 30,
 	            "bottom": 50,
 	            "left": 50
 	        };

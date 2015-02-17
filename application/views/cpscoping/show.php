@@ -291,9 +291,9 @@ setTimeout(function()
 
 	var margin = {
 	            "top": 10,
-	            "right": 10,
+	            "right": 30,
 	            "bottom": 50,
-	            "left": 50
+	            "left": 80
 	        };
 	var width = 400;
 	var height = 400;
@@ -301,11 +301,11 @@ setTimeout(function()
 	// Set the scales
 	    var x = d3.scale.linear()
 	                          .domain([0, d3.max(data, function(d) { return d.cost_value_alt+d.cost_value_ust; })])
-	        .range([0,width]);
+	        .range([0,width]).nice();
 
 	    var y = d3.scale.linear()
 	        .domain([0, d3.max(data, function(d) { return d.ep_value_ust; })])
-	        .range([height, 0]);
+	        .range([height, 0]).nice();
 
 	    var xAxis = d3.svg.axis().scale(x).orient("bottom");
 	    var yAxis = d3.svg.axis().scale(y).orient("left");
