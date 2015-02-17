@@ -40,21 +40,21 @@
 	    			<label for="description">Description</label>
 	    			<textarea class="form-control" rows="3" name="description" id="description" placeholder="Description" ><?php echo set_value('description'); ?></textarea>
 	 			</div>
-                                <div class="form-group">
-                                    <label for="coordinates">Coordinates</label>
-                                    <button type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-sm btn-primary pull-right" id="coordinates" >Select on Map</button>
-                                    <div class="row">
-                                            <div class="col-md-6">
-                                                    <input type="text" class="form-control" id="lat" placeholder="Lat" name="lat" style="color:#333333;" value="<?php /*echo set_value('lat');*/ ?>" readonly/>
-                                            </div>
-                                            <div class="col-md-6">
-                                                    <input type="text" class="form-control" id="long" placeholder="Long" name="long" style="color:#333333;" value="<?php /*echo set_value('long');*/ ?>" readonly/>
-                                            </div>
-                                            <div class="col-md-6">
-                                                    <input type="text" class="form-control" id="zoomlevel" placeholder="Zoom Level" name="zoomlevel" style="color:#333333;" value="<?php /*echo set_value('long');*/ ?>" />
-                                            </div>
-                                    </div>
-	 			</div>
+				<div class="form-group">
+				<label for="coordinates">Coordinates</label>
+				<button type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-sm btn-primary pull-right" id="coordinates" >Select on Map</button>
+				<div class="row">
+				        <div class="col-md-6">
+				                <input type="text" class="form-control" id="lat" placeholder="Lat" name="lat" style="color:#333333;" value="<?php /*echo set_value('lat');*/ ?>" readonly/>
+				        </div>
+				        <div class="col-md-6">
+				                <input type="text" class="form-control" id="long" placeholder="Long" name="long" style="color:#333333;" value="<?php /*echo set_value('long');*/ ?>" readonly/>
+				        </div>
+				        <div class="col-md-6">
+				                <input type="text" class="form-control" id="zoomlevel" placeholder="Zoom Level" name="zoomlevel" style="color:#333333;" value="<?php /*echo set_value('long');*/ ?>" />
+				        </div>
+				</div>
+ 			</div>
                             
 			</div>
 			<div class="col-md-4">
@@ -78,9 +78,8 @@
 					</select>
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="assignContactPerson">Assign Contact Person</label>
-	    			<select  class="select-block" id="assignContactPerson" name="assignContactPerson">
-
+    			<label for="assignContactPerson">Assign Contact Person</label>
+    			<select  class="select-block" id="assignContactPerson" name="assignContactPerson">
 
 					</select>
 	 			</div>
