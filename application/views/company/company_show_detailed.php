@@ -76,6 +76,7 @@
 					</td>
 				</tr>
 			</table>
+			<?php if($have_permission): ?>
 			<?php if($valid != 0): ?>
 				
 				<table class="table table-bordered">
@@ -167,7 +168,8 @@
 						</tr>
 					<?php endforeach ?>
 				</table>
-			<?php endif ?>
+			<?php endif ?>			
+		<?php endif ?>
 		</div>
 
 		<div class="col-md-3">
