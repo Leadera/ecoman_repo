@@ -44,7 +44,9 @@
     <nav class="navbar navbar-default navbar-lg" style="margin-bottom:0px;">
       <a class="navbar-brand" href="<?php echo base_url(); ?>" style="color:white;">ECOMAN</a>
       <ul class="nav navbar-nav navbar-left">
-        <li><a href="<?php echo base_url('projects'); ?>"><i class="fa fa-globe"></i> Projects</a></li>
+        <?php if ($this->session->userdata('user_in') !== FALSE): ?>
+          <li><a href="<?php echo base_url('projects'); ?>"><i class="fa fa-globe"></i> Projects</a></li>
+        <?php endif ?>
         <li><a href="<?php echo base_url('company'); ?>"><i class="fa fa-building-o"></i> Companies</a></li>
       </ul>
       <form class="navbar-form navbar-left" action="<?php echo base_url('search') ?>" method="post" role="search">
