@@ -69,7 +69,7 @@ class Project extends CI_Controller{
 		$this->form_validation->set_rules('assignCompany','Assign Company','required');
 		$this->form_validation->set_rules('assignConsultant','Assign Consultant','required');
 		$this->form_validation->set_rules('assignContactPerson','Assign Contact Person','required');
-		$this->form_validation->set_rules('zoomlevel','Zoom Level','trim|required|max_length[2]|numeric');
+		$this->form_validation->set_rules('zoomlevel','Zoom Level','trim|xss_clean|max_length[2]|numeric');
 
 		//$this->form_validation->set_rules('surname', 'Password', 'required');
 		//$this->form_validation->set_rules('email', 'Email' ,'trim|required|valid_email');
@@ -84,8 +84,10 @@ class Project extends CI_Controller{
 			'active'=>1, //default active:1 olarak kaydediyoruz.
                         'latitude'=>$this->input->post('lat'),
                         'longitude'=>$this->input->post('long'),
-                        'zoomlevel'=>$this->input->post('zoomlevel'),
 			);
+			if(!empty($this->input->post('zoomlevel'))){
+				$project['zoomlevel'] = $this->input->post('zoomlevel');
+			}
 			$last_inserted_project_id = $this->project_model->create_project($project);
 
 
