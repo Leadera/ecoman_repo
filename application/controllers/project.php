@@ -70,6 +70,7 @@ class Project extends CI_Controller{
 		$this->form_validation->set_rules('assignCompany','Assign Company','required');
 		$this->form_validation->set_rules('assignConsultant','Assign Consultant','required');
 		$this->form_validation->set_rules('assignContactPerson','Assign Contact Person','required');
+		$this->form_validation->set_rules('zoomlevel','Zoom Level','trim|required|numeric');
 
 		//$this->form_validation->set_rules('surname', 'Password', 'required');
 		//$this->form_validation->set_rules('email', 'Email' ,'trim|required|valid_email');
