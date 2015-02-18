@@ -16,8 +16,13 @@
                   console.warn('success text status-->'+textStatus);
                   if(data["found"]==true) {
                       //$.messager.alert('Success','Success inserted Flow family!','info');
-                      noty({text: 'Equipment inserted succesfully', type: 'success'});
-                      $('#tt_tree_equipment').tree('reload');
+                      if(data["id"]>0) {
+                          noty({text: 'Equipment inserted succesfully', type: 'success'});
+                          $('#tt_tree_equipment').tree('reload');
+                      } else {
+                          noty({text: 'Equipment has been inserted before, please enter another Equipment', type: 'warning'});
+                          $('#tt_tree_equipment').tree('reload');
+                      }
                   } else if(data["found"]==false) {         
                       //$.messager.alert('Insert failed','Failed to insert Equipment !','error');
                       noty({text: 'Equipment could not be  inserted ', type: 'error'});  
@@ -62,7 +67,7 @@
                         //var parentnode=$("#tt_tree_equipment").tree("getParent", node.target);
                         parentnode=null;
                         treeNodeId = null;
-                        console.log(parentnode.text);
+                        //console.log(parentnode.text);
                         $('#infoLegend').html('Equipment will be inserted under "'+node.text+'" category');
                     }
                     

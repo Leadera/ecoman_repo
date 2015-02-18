@@ -1,7 +1,7 @@
 <?php  ?>
 <script>
     
-    function submitFormProcessFamily(){  
+    function submitFormProcessFamily(){   
             console.log($('#processFamily').val()); 
             $.ajax({
                 url: '../../../../slim2_ecoman_admin/index.php/insertProcessFamily',
@@ -12,8 +12,13 @@
                   console.warn('success text status-->'+textStatus);
                   if(data["found"]==true) {
                       //$.messager.alert('Success','Success inserted Flow family!','info');
-                      noty({text: 'Process Family inserted succesfully', type: 'success'});
-                      $('#tt_tree_process').tree('reload');
+                      if(data["id"]>0) {
+                          noty({text: 'Process Family inserted succesfully', type: 'success'});
+                          $('#tt_tree_process').tree('reload');
+                      } else {
+                          noty({text: 'Process Family has been inserted before, please enter another Process Family', type: 'warning'});
+                          $('#tt_tree_process').tree('reload');
+                      }
                   } else if(data["found"]==false) {         
                       //$.messager.alert('Insert failed','Failed to insert Flow Family !','error');
                       noty({text: 'Process Family could not be  inserted ', type: 'error'});  
@@ -50,7 +55,7 @@
                     if(parentnode==null) {
                         console.log('parent node null');
                     } else {
-                        console.log('parent node null deðil');
+                        console.log('parent node null deï¿½il');
                     }
                     var roots=$("#tt_tree").tree("getRoots");
                     console.log(parentnode.attributes);*/
@@ -222,7 +227,7 @@
 						<li><a href="#"><i class="icon-ban-circle"></i><span class="hidden-tablet"> Error Logs</span></a></li>
 						
 					</ul>
-					<!--<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox">Ajax Menü</label>-->
+					<!--<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox">Ajax Menï¿½</label>-->
 				</div><!--/.well -->
 			</div><!--/span-->
 			<!-- left menu ends -->
@@ -283,7 +288,7 @@
 				</a>
 			</div>
                         
-                        <!-- zeynel daðlý flow tree ve form -->
+                        <!-- zeynel daï¿½lï¿½ flow tree ve form -->
                         <div class="row-fluid sortable">
                             <div class="box span12">
                                     <div class="box-header well" data-original-title>
@@ -312,7 +317,7 @@
 							<div class="control-group">
 							  <label class="control-label" for="typeahead">Process Family </label>
 							  <div class="controls">
-								<input type="text"  name='processFamily' class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="8" 
+								<input type="text"  name='processFamily' class="span6 typeahead" id="processFamily"  data-provide="typeahead" data-items="8" 
                                                                        data-source='["Main","energy"]'>
 								<p class="help-block">Start typing to activate auto complete!</p>
 							  </div>
@@ -344,7 +349,7 @@
 
 		<div class="modal hide fade" id="myModal">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">×</button>
+				<button type="button" class="close" data-dismiss="modal">ï¿½</button>
 				<h3>Settings</h3>
 			</div>
 			<div class="modal-body">

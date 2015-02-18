@@ -12,8 +12,14 @@
                   console.warn('success text status-->'+textStatus);
                   if(data["found"]==true) {
                       //$.messager.alert('Success','Success inserted Flow family!','info');
-                      noty({text: 'Flow Family inserted succesfully', type: 'success'});
-                      $('#tt_tree').tree('reload');
+                      if(data["id"]>0) {
+                          noty({text: 'Flow Family inserted succesfully', type: 'success'});
+                          $('#tt_tree').tree('reload');
+                      } else {
+                          noty({text: 'Flow Family has been inserted before, please enter another Flow Family', type: 'warning'});
+                          $('#tt_tree').tree('reload');
+                      }
+                      
                   } else if(data["found"]==false) {         
                       //$.messager.alert('Insert failed','Failed to insert Flow Family !','error');
                       noty({text: 'Flow Family could not be  inserted ', type: 'error'});  
