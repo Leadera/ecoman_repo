@@ -68,7 +68,8 @@
                         parentnode=null;
                         treeNodeId = null;
                         //console.log(parentnode.text);
-                        $('#infoLegend').html('Equipment will be inserted under "'+node.text+'" category');
+                        //$('#infoLegend').html('Equipment will be inserted under "'+node.text+'" category');
+                        $('#infoLegend').html('Equipment will be inserted to root level');
                     }
                     
                 },
