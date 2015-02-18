@@ -253,7 +253,7 @@ class Project extends CI_Controller{
 		$this->load->library('form_validation');
 
 
-		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean|callback_name_control'); // buraya isunique kontrol� ge
+		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean'); // buraya isunique kontrol� ge
 		$this->form_validation->set_rules('description', 'Description', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('assignCompany','Assign Company','required');
 		$this->form_validation->set_rules('assignConsultant','Assign Consultant','required');
