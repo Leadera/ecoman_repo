@@ -62,15 +62,14 @@ class Project extends CI_Controller{
 
 		$this->load->library('form_validation');
                 
-                $this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|xss_clean');
+    $this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|xss_clean');
 		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|xss_clean');
-                $this->form_validation->set_rules('zoomlevel', 'Zoom Level', 'trim|xss_clean|max_length[2]|numeric');
 		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('assignCompany','Assign Company','required');
 		$this->form_validation->set_rules('assignConsultant','Assign Consultant','required');
 		$this->form_validation->set_rules('assignContactPerson','Assign Contact Person','required');
-		$this->form_validation->set_rules('zoomlevel','Zoom Level','trim|required|numeric');
+		$this->form_validation->set_rules('zoomlevel','Zoom Level','trim|required|max_length[2]|numeric');
 
 		//$this->form_validation->set_rules('surname', 'Password', 'required');
 		//$this->form_validation->set_rules('email', 'Email' ,'trim|required|valid_email');
