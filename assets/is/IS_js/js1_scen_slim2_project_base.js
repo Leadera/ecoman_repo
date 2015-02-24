@@ -151,12 +151,12 @@
                 if(obj.attributes.notroot) {
                 }                
               });
-            $('#tt_grid_dynamic').datagrid({
+            /*$('#tt_grid_dynamic').datagrid({
                 
                 columns:[
                         columnArray
                 ], 
-            });
+            });*/
         }
         
         function getCompaniesISPotentials() {
@@ -351,6 +351,20 @@
                 toolbar:'#tb5',
                 remoteSort:false,
                 multiSort:false,
+                columns:
+                        [[
+                            //{field:'sirket_id',title:'ID',width:300},
+                            {field: 'ck',title: 'From Company',checkbox:true},
+                            {field: 'company',title: 'From Company'},
+                            {field: 'flow',title: 'Flow'},
+                            {field: 'qntty',title: 'Quantity'},
+                            {field: 'qnttyunit',title: 'Unit'},
+                            {field: 'fromflowtype',title: 'Flow Type'},
+                            {field: 'tocompany',title: ' To Company'},
+                            {field: 'qntty2',title: 'Quantity'},
+                            {field: 'qntty2unit',title: 'Unit'},
+                            {field: 'toflowtype',title: 'Flow Type'},
+                        ]],
                 fit:true,
                 fitColumns : true,
     });

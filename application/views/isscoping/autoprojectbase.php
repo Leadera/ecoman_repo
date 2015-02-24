@@ -19,14 +19,7 @@
         <div data-options="region:'south',split:true" style="height:550px; padding-bottom:200px;">
             <div class="easyui-layout" data-options="fit:true">
                 <div id="zeyn"   data-options="region:'west',split:true" style="width:50%;">
-                    <table  id="tt_grid_dynamic" class="easyui-datagrid" title="Dynamic table with IS potentials" style=""
-                    data-options="singleSelect:true,
-                                    collapsible:true,
-                                    /*url:'datagrid_data1.json',*/
-                                    /*url:'../slim_rest/index.php/companies',*/
-                                    method:'get',
-                                    idField:'id',
-                                    fit:true">
+                    <table  id="tt_grid_dynamic"  title="Dynamic table with IS potentials" >
                         
                     </table>
                 </div>
