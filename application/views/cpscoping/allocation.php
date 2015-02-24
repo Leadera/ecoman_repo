@@ -190,4 +190,10 @@ $(document).ready(function() {
 	function hesapla() { 
 		$("#kpi").val(Number(($("#amount").val()/$("#reference").val()).toFixed(5)));
 	}
+	$("#unit_amount").change(unit_hesapla);
+	$("#unit_reference").change(unit_hesapla);
+	function unit_hesapla(){
+		$("#unit_kpi").val($("#unit_amount option:selected").text()+"/"+$("#unit_reference option:selected").text());
+	}
+
 </script>
