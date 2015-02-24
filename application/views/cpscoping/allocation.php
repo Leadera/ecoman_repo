@@ -30,30 +30,6 @@ $(document).ready(function() {
     });
 });
 </script>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-	    $("#reference").change(function() { 
-	    	var amount = $("#amount").val();
-	    	var reference = $("#reference").val();
-	    	var bolum = Math.round(amount/reference);
-	    	if(amount != ""){
-		    	$("#kpi").val(bolum);
-	    	}else{
-	    		alert("Amount degeri bos olmamali!");
-	    	}
-	    });
-	    $("#unit_reference").change(function() { 
-	    	var unit_amount = $("#unit_amount").val();
-	    	var unit_reference = $("#unit_reference").val();
-	    	if(unit_amount != 0){
-		    	$("#unit_kpi").val(unit_amount+"/"+unit_reference);
-	    	}else{
-	    		alert("Amount unit degeri bos olmamali!");
-	    	}
-	    });
-	});
-</script>
 <?php if(validation_errors() != NULL ): ?>
     <div class="alert">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -208,3 +184,10 @@ $(document).ready(function() {
 		</div>
 	</div>
 </form>
+<script type="text/javascript">
+	$("#amount").change(hesapla);
+	$("#reference").change(hesapla);
+	function hesapla() { 
+		$("#kpi").val(Number(($("#amount").val()/$("#reference").val()).toFixed(5)));
+	}
+</script>

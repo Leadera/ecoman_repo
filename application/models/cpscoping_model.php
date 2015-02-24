@@ -90,7 +90,7 @@ class Cpscoping_model extends CI_Model {
 
 
   public function get_allocation_values($cmpny_id,$prjct_id){
-    $this->db->select('t_prcss.name as prcss_name, t_flow.name as flow_name, t_flow_type.name as flow_type_name');
+    $this->db->select('t_prcss.name as prcss_name, t_flow.name as flow_name, t_flow_type.name as flow_type_name, t_cp_company_project.allocation_id as allocation_id, t_cp_company_project.prjct_id as project_id, t_cp_company_project.cmpny_id as company_id');
     $this->db->from('t_cp_company_project');
     $this->db->join('t_cp_allocation','t_cp_allocation.id = t_cp_company_project.allocation_id');
     $this->db->join('t_flow','t_flow.id = t_cp_allocation.flow_id');
@@ -196,5 +196,16 @@ class Cpscoping_model extends CI_Model {
       return false;
     }
   }
+
+  //allocation delete model
+  public function delete_allocation($allocation_id,$project_id,$company_id){
+    $this->db->where('id', $allocation_id);
+    $this->db->delete('t_cp_allocation');
+    $this->db->where('allocation_id', $allocation_id);
+    $this->db->where('prjct_id', $project_id);
+    $this->db->where('cmpny_id', $company_id);
+    $this->db->delete('t_cp_company_project');
+  }
+
 }
 ?>

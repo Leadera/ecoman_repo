@@ -68,13 +68,16 @@ $(document).ready(function() {
                 <th>Process Name</th>
                 <th>Flow Name</th>
                 <th>Flow Type</th>
+                <th>Manage</th>
             </tr>
         <?php endif ?>
         <?php for($k = 0 ; $k < sizeof($flow_prcss[$i]) ; $k++): ?>
+            <?php //print_r($flow_prcss[$i][$k]); ?>
             <tr>
                 <td><?php echo $flow_prcss[$i][$k]['prcss_name']; ?></td>
                 <td><?php echo $flow_prcss[$i][$k]['flow_name']; ?></td>
                 <td><?php echo $flow_prcss[$i][$k]['flow_type_name']; ?></td>
+                <td><a class="label label-danger" href="<?php echo base_url('cpscoping/delete/'.$flow_prcss[$i][$k]['allocation_id'].'/'.$flow_prcss[$i][$k]['project_id'].'/'.$flow_prcss[$i][$k]['company_id']); ?>">Delete Allocation</a></td>
             </tr>   
         <?php endfor ?>
         </table>

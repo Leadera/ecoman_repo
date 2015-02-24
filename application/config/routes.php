@@ -73,6 +73,7 @@ $route['cpscoping/is_candidate_control/(:any)'] = "cpscoping/cp_is_candidate_con
 $route['cpscoping/cost_ep/(:any)/(:any)/(:any)'] = "cpscoping/cost_ep_value/$1/$2/$3";
 $route['cpscoping/get_allo/(:any)/(:any)/(:any)/(:any)/(:any)'] = "cpscoping/get_allo_from_fname_pname/$1/$2/$3/$4/$5";
 $route['cpscoping/(:any)/(:any)/show'] = "cpscoping/cp_show_allocation/$1/$2";
+$route['cpscoping/delete/(:any)/(:any)/(:any)'] = "cpscoping/delete_allocation/$1/$2/$3";
 $route['cp_allocation_array/(:any)'] = "cpscoping/cp_allocation_array/$1";
 $route['cpscoping/(:any)/(:any)/allocation'] = "cpscoping/cp_allocation/$1/$2";
 $route['cpscoping/pro/(:any)'] = "cpscoping/p_companies/$1";

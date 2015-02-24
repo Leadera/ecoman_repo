@@ -549,4 +549,11 @@ class Cpscoping extends CI_Controller {
 		$this->load->view('cpscoping/kpi_calculation',$data);
 		$this->load->view('template/footer');
 	}
+
+	//to delete allocation
+	public function delete_allocation($allocation_id,$project_id,$company_id){
+		$this->cpscoping_model->delete_allocation($allocation_id,$project_id,$company_id);
+		redirect(base_url('cpscoping'),'refresh');
+	}
+
 }
