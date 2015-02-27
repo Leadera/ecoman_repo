@@ -1,3 +1,9 @@
+function openIsScenarios() {
+            //alert('test');
+           //$('#tt_grid').datagrid('collapse'); 
+           $('#p').panel('collapse');
+        }
+
 function beginISPotentialByAllFlows() {
             $.messager.confirm('Confirm','Are you sure ? New Table with new data will be deployed...',function(r){
                     if (r){
@@ -552,7 +558,7 @@ function beginISPotentialByAllFlows() {
                 fit:true,
                 pagePosition : "top",
                 columns:[[
-                            {field:'prj_name',title:'Project Name',width:300},
+                            {field:'prj_name',title:'IS Table Name',width:300},
                             {field:'syn_name',title:'Synergy Type',width:300},
                             {field:'date',title:' Project Date',width:300},
                             {field:'detail',title:' Details',width:100}

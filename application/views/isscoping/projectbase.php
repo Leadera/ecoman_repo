@@ -7,9 +7,9 @@
 <script src="<?php echo asset_url('is/src/datagrid-filter.js'); ?>"></script>
 <script src="<?php echo asset_url('is/IS_js/js2_scen_slim2_project_base.js'); ?>"></script>
 
-<!-- Zeynel Daðlý
+<!-- Zeynel Daï¿½lï¿½
     02-02-2015
-    proje id deðeri session içinden alýnacak
+    proje id deï¿½eri session iï¿½inden alï¿½nacak
 -->
 <input type ="hidden" value="<?php echo $project_id; ?>" id ="prj_id"  name="prj_id"></input>  
 
@@ -80,10 +80,21 @@
         </div>
         <div id="tt_grid_div2" data-options="region:'center',title:'Manual IS Potential Detection Settings'">
             
-            <table id="tt_grid2" class="easyui-datagrid" title="Company Flow Sets" style="height:100%" 
-            </table>
-            <table id="tt_grid_scenarios2" data-options="fit:true" class="easyui-datagrid" title="IS Scenarios" style="" 
-            </table>
+            <div id="p" class="easyui-panel" title="Company/Flow Panel" style="margin: auto 0;height:440px"
+                 data-options="iconCls:'icon-save',collapsible:true,closable:true">
+                     <table id="tt_grid2" data-options="fit:true" class="easyui-datagrid" title="Company Flow Sets" style="" 
+                           accesskey=""></table>
+                
+            </div>
+            
+            <div id="p2" class="easyui-panel" title="IS Projects Panel" style="margin: auto 0;height:400px;"
+                 data-options="iconCls:'icon-save',collapsible:true,closable:true">
+                   <table id="tt_grid_scenarios2" data-options="fit:true" class="easyui-datagrid" title="IS Scenarios" style=""> 
+                </table>  
+                
+            </div>
+            
+            
             
              <div id="tb" style="padding:5px;height:auto">
                 <div style="margin-bottom:5px">
@@ -91,6 +102,7 @@
                     <a href="#" onclick="beginISPotential();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Begin Manual IS Process</a>
                     <a href="#" onclick="beginISPotentialByAllFlows();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Process By All Flows</a>
                     <a href="#" onclick="beginISPotentialByFlows();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Process By Selected Flows</a>
+                    <a href="#" onclick="openIsScenarios();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Open IS Scenarios</a>
                     <a href="#" id="printGrid2" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
                     <!--<a href="#" onclick="savePotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true">Save a table with relevant IS potentials</a>-->
                 </div>

@@ -1,6 +1,12 @@
 // remote connection test
 // remote connection test2
-
+        
+        function openIsScenarios() {
+            //alert('test');
+           //$('#tt_grid').datagrid('collapse'); 
+           $('#p').panel('collapse'); 
+        }
+        
         function selectAllCompanies() {
             $('#tt_grid').datagrid('selectAll');
         }
@@ -354,7 +360,7 @@
                 toolbar:'#tb5',
                 remoteSort:false,
                 multiSort:false,
-                 view: detailview,
+                /* view: detailview,
                 detailFormatter:function(index,row){
                     return '<div class="ddv" style="padding:5px 0">\n\
                                 <div id="oneri1"></div>\n\
@@ -375,7 +381,7 @@
                         }
                     });
                     $('#tt_grid_dynamic').datagrid('fixDetailRowHeight',index);
-                },
+                },*/
                 columns:
                         [[
                             //{field:'sirket_id',title:'ID',width:300},
@@ -451,7 +457,6 @@
             
             ); 
         
-  
         $('#tt_grid_scenarios').datagrid({
                 collapsible:true,
                 url : '../../../Proxy/SlimProxy.php',
@@ -467,7 +472,7 @@
                 fit:true,
                 pagePosition : "top",
                 columns:[[
-                            {field:'prj_name',title:'Project Name',width:300},
+                            {field:'prj_name',title:'IS Table Name',width:300},
                             {field:'syn_name',title:'Synergy Type',width:300},
                             {field:'date',title:' Project Date',width:300},
                             {field:'detail',title:' Details',width:100}

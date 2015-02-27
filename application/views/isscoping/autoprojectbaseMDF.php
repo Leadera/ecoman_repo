@@ -43,10 +43,21 @@
             <ul id="tt_tree" class="easyui-tree" ></ul>
         </div>
         <div id="tt_grid_div" data-options="region:'center',title:'IS Potentials Analysis Settings'">
-            <table id="tt_grid" data-options="fit:true" class="easyui-datagrid" title="Company Flow Sets" style="" 
-            </table>
-            <table id="tt_grid_scenarios" data-options="fit:true" class="easyui-datagrid" title="IS Scenarios" style="" 
-            </table>
+            
+            <div id="p" class="easyui-panel" title="Company/Flow Panel" style="margin: auto 0;height:440px"
+                 data-options="iconCls:'icon-save',collapsible:true,closable:true">
+                     <table id="tt_grid" data-options="fit:true" class="easyui-datagrid" title="Company Flow Sets" style="" 
+                           accesskey=""></table>
+                
+            </div>
+            
+            <div id="p2" class="easyui-panel" title="IS Projects Panel" style="margin: auto 0;height:400px;"
+                 data-options="iconCls:'icon-save',collapsible:true,closable:true">
+                   <table id="tt_grid_scenarios" data-options="fit:true" class="easyui-datagrid" title="IS Scenarios" style=""> 
+                </table>  
+                
+            </div>
+            
             
              <div id="tb" style="padding:5px;height:auto">
                 <div style="margin-bottom:5px">
@@ -54,6 +65,7 @@
                     <a href="#" onclick="getColumnsDynamic();getCompaniesISPotentials();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Calculate IS Potentials</a>
                     <a href="#" onclick="saveAutoPotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true">Save a table with relevant IS potentials</a>
                     <a href="#" onclick="selectAllCompanies();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Select all companies</a>
+                    <a href="#" onclick="openIsScenarios();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Open IS Scenarios</a>
                     <a href="#" id="printGrid" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
 
                 </div>
