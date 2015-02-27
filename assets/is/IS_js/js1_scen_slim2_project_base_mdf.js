@@ -483,8 +483,11 @@
     //new company flow table
     $('#tt_grid').datagrid({
         sortName : 'company',
+        collapsible:true,
         idField:'id',
         toolbar:'#tb',
+        rownumbers: "true",
+        pagination: "true",
         columns:[[
               {field:'company',title:'Company',width:100},
               {field:'flow',title:'Flow',width:100},

@@ -570,8 +570,11 @@ function beginISPotentialByAllFlows() {
     //new company flow table
     $('#tt_grid2').datagrid({
         sortName : 'company',
+        collapsible:true,
         idField:'id',
         toolbar:'#tb',
+        rownumbers: "true",
+        pagination: "true",
         columns:[[
               {field:'company',title:'Company',width:100},
               {field:'flow',title:'Flow',width:100},
@@ -592,6 +595,28 @@ function beginISPotentialByAllFlows() {
                        prj_id : $('#prj_id').val()
                    }
   });
+  
+  $('#tt_grid_scenarios2').datagrid({
+                collapsible:true,
+                url : '../../../Proxy/SlimProxy.php',
+                queryParams : {
+                        url : 'ISScenarios'      
+                },
+                method:'get',
+                idField:'id',
+                remoteSort:false,
+                multiSort:false,
+                rownumbers: "true",
+                pagination: "true",
+                fit:true,
+                pagePosition : "top",
+                columns:[[
+                            {field:'prj_name',title:'Project Name',width:300},
+                            {field:'syn_name',title:'Synergy Type',width:300},
+                            {field:'date',title:' Project Date',width:300},
+                            {field:'detail',title:' Details',width:100}
+                        ]]
+        });
     
     
     $('#printGrid2').click(function() {
