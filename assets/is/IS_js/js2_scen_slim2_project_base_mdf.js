@@ -484,7 +484,7 @@ function beginISPotentialByAllFlows() {
     /**
     *  @todo buras� dinamik kolon yap�s� i�in denenecek
      */
-    $.ajax({
+    /*$.ajax({
         url: '../../../Proxy/SlimProxy.php',
         data: { url:'columnflows_json_test'  },
         type: 'GET',
@@ -563,7 +563,36 @@ function beginISPotentialByAllFlows() {
         error: function(jqXHR , textStatus, errorThrown) {
           console.warn('error text status-->'+textStatus);
         }
-    }); 
+    }); */
+            
+            
+            
+    //new company flow table
+    $('#tt_grid2').datagrid({
+        sortName : 'company',
+        idField:'id',
+        toolbar:'#tb',
+        columns:[[
+              {field:'company',title:'Company',width:100},
+              {field:'flow',title:'Flow',width:100},
+              {field:'flowtype',title:'I/O',width:100},
+              {field:'flow_family_name',title:'Flow Family',width:100},
+              {field:'qntty',title:'Quantity',width:100},
+              {field:'unit',title:'Unit',width:100},
+              {field:'cost',title:'Cost',width:100},
+              {field:'cost_unit_id',title:'Cost Unit',width:100},
+              //{field:'quality',title:'Quality',width:100},
+              
+              ]]});
+    //$('#tt_grid2').datagrid('loadData', data);
+    $('#tt_grid2').datagrid({
+       url :'../../../Proxy/SlimProxy.php',
+       queryParams : { url : 'flowsAndCompanies_json_test_MDF_manual',
+                       //flows : JSON.stringify(arrayLeaf),
+                       prj_id : $('#prj_id').val()
+                   }
+  });
+    
     
     $('#printGrid2').click(function() {
         

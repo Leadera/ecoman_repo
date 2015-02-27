@@ -8,7 +8,7 @@
 <script type="text/javascript" src="http://www.jeasyui.com/easyui/datagrid-detailview.js"></script>
 <script src="<?php echo asset_url('is/print/jQuery.print.js'); ?>"></script> 
 <script src="<?php echo asset_url('is/src/datagrid-filter.js'); ?>"></script>
-<script src="<?php echo asset_url('is/IS_js/js1_scen_slim2_project_base.js'); ?>"></script>
+<script src="<?php echo asset_url('is/IS_js/js1_scen_slim2_project_base_mdf.js'); ?>"></script>
 
 <!-- Zeynel Dağlı
     02-02-2015

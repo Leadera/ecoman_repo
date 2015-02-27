@@ -90,6 +90,8 @@
               <ul class="dropdown-menu dropdown-inverse" role="menu" aria-labelledby="dropdownMenu1">
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url('isScopingPrjBase'); ?>">Manual IS</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url('isScopingAutoPrjBase'); ?>">Automated IS</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url('isScopingPrjBaseMDF'); ?>">Manual IS(New Company/Flow Grid)</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url('isScopingAutoPrjBaseMDF'); ?>">Automated IS(New Company/Flow Grid)</a></li>
               </ul>
             </div>
           </li>

@@ -397,7 +397,7 @@
     
     
 
-    $.ajax({
+    /*$.ajax({
         url: '../../../Proxy/SlimProxy.php',
         data: { url:'columnflows_json_test'  },
         type: 'GET',
@@ -478,7 +478,56 @@
         error: function(jqXHR , textStatus, errorThrown) {
           console.warn('error text status-->'+textStatus);
         }
-    }); 
+    }); */
+    
+    //new company flow table
+    $('#tt_grid').datagrid({
+        sortName : 'company',
+        idField:'id',
+        toolbar:'#tb',
+        columns:[[
+              {field:'company',title:'Company',width:100},
+              {field:'flow',title:'Flow',width:100},
+              {field:'flowtype',title:'I/O',width:100},
+              {field:'flow_family_name',title:'Flow Family',width:100},
+              {field:'qntty',title:'Quantity',width:100},
+              {field:'unit',title:'Unit',width:100},
+              {field:'cost',title:'Cost',width:100},
+              {field:'cost_unit_id',title:'Cost Unit',width:100},
+              //{field:'quality',title:'Quality',width:100},
+
+              ]]});
+    //$('#tt_grid2').datagrid('loadData', data);
+    $('#tt_grid').datagrid({
+       url :'../../../Proxy/SlimProxy.php',
+       queryParams : { url : 'flowsAndCompanies_json_test_MDF_manual',
+                       //flows : JSON.stringify(arrayLeaf),
+                       prj_id : $('#prj_id').val()
+                   }
+    });
+    
+    
+    $('#tt_grid_scenarios').datagrid({
+                collapsible:true,
+                url : '../../../Proxy/SlimProxy.php',
+                queryParams : {
+                        url : 'ISScenarios'      
+                },
+                method:'get',
+                idField:'id',
+                remoteSort:false,
+                multiSort:false,
+                rownumbers: "true",
+                pagination: "true",
+                fit:true,
+                pagePosition : "top",
+                columns:[[
+                            {field:'prj_name',title:'Project Name',width:300},
+                            {field:'syn_name',title:'Synergy Type',width:300},
+                            {field:'date',title:' Project Date',width:300},
+                            {field:'detail',title:' Details',width:100}
+                        ]]
+        });
     
     
     $('#tt_grid_dynamic5').datagrid({
