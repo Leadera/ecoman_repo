@@ -47,7 +47,9 @@ $route['admin/newEquipment'] = "admin/newEquipment";
 $route['isscoping'] = "isscoping/index";
 $route['isscopingauto'] = "isscoping/auto"; 
 $route['isScopingAutoPrjBase'] = "isscoping/autoprjbase";
+$route['isScopingAutoPrjBaseMDF'] = "isscoping/autoprjbaseMDF";
 $route['isScopingPrjBase'] = "isscoping/prjbase"; 
+$route['isScopingPrjBaseMDF'] = "isscoping/prjbaseMDF";
 $route['isscopingtooltip'] = "isscoping/tooltip";
 $route['isscopingtooltipscenarios'] = "isscoping/tooltipscenarios";
 
