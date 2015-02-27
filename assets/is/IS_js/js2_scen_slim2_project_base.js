@@ -341,6 +341,7 @@ function beginISPotentialByAllFlows() {
                     var imagepath=parentnode.text+"/"+node.text;
                 },
                 onExpand: function(node){
+                    $("#tt_tree2").tree("check",node.target);
                     var root=$("#tt_tree2").tree("getRoot");
                     var parent=$("#tt_tree2").tree("getParent",node.target);
                     if(parent) {

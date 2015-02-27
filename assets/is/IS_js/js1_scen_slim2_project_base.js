@@ -289,6 +289,8 @@
                     var imagepath=parentnode.text+"/"+node.text;
                 },
                 onExpand: function(node){
+                    //alert('test onexpand');
+                    $("#tt_tree").tree("check",node.target);
                     var root=$("#tt_tree").tree("getRoot");
                     var parent=$("#tt_tree").tree("getParent",node.target);
                     if(parent) {
@@ -308,6 +310,7 @@
                     }
                 },
                 onCollapse: function(node){
+                    
                     var root=$("#tt_tree").tree("getRoot");
                     var parent=$("#tt_tree").tree("getParent",node.target);
                     if(parent) {
@@ -344,17 +347,39 @@
     
     
       $('#tt_grid_dynamic').datagrid({
-          singleSelect:false,
+          singleSelect:true,
                 collapsible:true,
                 method:'get',
                 idField:'id',
                 toolbar:'#tb5',
                 remoteSort:false,
                 multiSort:false,
+                 view: detailview,
+                detailFormatter:function(index,row){
+                    return '<div class="ddv" style="padding:5px 0">\n\
+                                <div id="oneri1"></div>\n\
+                                <div id="oneri2"></div>\n\
+                                <div id="oneri3"></div>\n\
+                            </div>';
+                },
+                onExpandRow: function(index,row){
+                    alert('test');
+                    var ddv = $(this).datagrid('getRowDetail',index).find('div.ddv');
+                    ddv.panel({
+                        height:80,
+                        border:false,
+                        cache:false,
+                        href:'',
+                        onLoad:function(){
+                            $('#tt_grid_dynamic').datagrid('fixDetailRowHeight',index);
+                        }
+                    });
+                    $('#tt_grid_dynamic').datagrid('fixDetailRowHeight',index);
+                },
                 columns:
                         [[
                             //{field:'sirket_id',title:'ID',width:300},
-                            {field: 'ck',title: 'From Company',checkbox:true},
+                            //{field: 'ck',title: 'From Company',checkbox:true},
                             {field: 'company',title: 'From Company'},
                             {field: 'flow',title: 'Flow'},
                             {field: 'qntty',title: 'Quantity'},
@@ -367,6 +392,7 @@
                         ]],
                 fit:true,
                 fitColumns : true,
+               
     });
     
     
@@ -397,8 +423,7 @@
                         data
                     ],
                 onDblClickRow: function(rowIndex, rowData){ 
-              }
-
+              },
         });
         
         var gridColumns = $('#tt_grid').datagrid('getColumnFields');
