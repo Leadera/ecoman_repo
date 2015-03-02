@@ -75,26 +75,26 @@ class Cpscoping extends CI_Controller {
 		$this->form_validation->set_rules('flow_type_name', 'Flow Type Name', 'required|trim|xss_clean');
 		
 		$this->form_validation->set_rules('amount', 'Amount', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('allocation_amount', 'Allocation Amount', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('importance_amount', 'Importance Amount', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('allocation_amount', 'Amount Allocation', 'required|trim|integer|max_length[3]|xss_clean');
+		$this->form_validation->set_rules('error_amount', 'Amount Error Rate', 'required|trim|integer|max_length[3]|xss_clean');
 		$this->form_validation->set_rules('unit_amount', 'Unit Amount', 'required|trim|xss_clean');
 
 		$this->form_validation->set_rules('cost', 'Cost', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('allocation_cost', 'Allocation Cost', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('importance_cost', 'Importance Cost', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('allocation_cost', 'Cost Allocation', 'required|trim|integer|max_length[3]|xss_clean');
+		$this->form_validation->set_rules('error_cost', 'Cost Error Rate', 'required|trim|integer|max_length[3]|xss_clean');
 		$this->form_validation->set_rules('unit_cost', 'Unit Cost', 'required|trim|xss_clean');
 		
 		$this->form_validation->set_rules('env_impact', 'Env. Impact', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('allocation_env_impact', 'Allocation Env. Impact', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('importance_env_impact', 'Importance Env. Impact', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('allocation_env_impact', 'Env. Impact Allocation', 'required|integer|trim|max_length[3]|xss_clean');
+		$this->form_validation->set_rules('error_ep', 'Env. Impact Rate', 'required|trim|integer|max_length[3]|xss_clean');
 		$this->form_validation->set_rules('unit_env_impact', 'Unit Env. Impact', 'required|trim|xss_clean');
 
 		$this->form_validation->set_rules('reference', 'Reference', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('unit_reference', 'Unit Reference', 'required|trim|xss_clean');
 		
-		$this->form_validation->set_rules('kpi', 'Ki', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('kpi', 'Kpi', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('unit_kpi', ' Unit Kpi', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('kpi_error', 'Kpi Error', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('kpi_error', 'Kpi Error', 'required|trim|integer|xss_clean');
 		
 		if ($this->form_validation->run() !== FALSE){
 			$prcss_name = $this->input->post('prcss_name');
@@ -102,13 +102,13 @@ class Cpscoping extends CI_Controller {
 			$flow_type_name = $this->input->post('flow_type_name');
 			$amount = $this->input->post('amount');
 			$allocation_amount = $this->input->post('allocation_amount');
-			$importance_amount = $this->input->post('importance_amount');
+			$importance_amount = $this->input->post('error_amount');
 			$cost = $this->input->post('cost');
 			$allocation_cost = $this->input->post('allocation_cost');
-			$importance_cost = $this->input->post('importance_cost');
+			$importance_cost = $this->input->post('error_cost');
 			$env_impact = $this->input->post('env_impact');
 			$allocation_env_impact = $this->input->post('allocation_env_impact');
-			$importance_env_impact = $this->input->post('importance_env_impact');
+			$importance_env_impact = $this->input->post('error_ep');
 			$unit_amount = $this->input->post('unit_amount');
 			$unit_cost = $this->input->post('unit_cost');
 			$unit_env_impact = $this->input->post('unit_env_impact');
@@ -125,15 +125,15 @@ class Cpscoping extends CI_Controller {
 				'amount'=>$amount,
 				'unit_amount'=>$unit_amount,
 				'allocation_amount'=>$allocation_amount,
-				'importance_amount'=>$importance_amount,
+				'error_amount'=>$importance_amount,
 				'cost'=>$cost,
 				'unit_cost'=>$unit_cost,
 				'allocation_cost'=>$allocation_cost,
-				'importance_cost'=>$importance_cost,
+				'error_cost'=>$importance_cost,
 				'env_impact'=>$env_impact,
 				'unit_env_impact'=>$unit_env_impact,
 				'allocation_env_impact'=>$allocation_env_impact,
-				'importance_env_impact'=>$importance_env_impact,
+				'error_ep'=>$importance_env_impact,
 				'reference' => $reference,
 				'unit_reference' => $unit_reference,
 				'kpi' => round($kpi),
