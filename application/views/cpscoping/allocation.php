@@ -82,7 +82,7 @@ $(document).ready(function() {
 				<label class="control-label col-md-3">Amount</label>
 				<label class="control-label col-md-3">Amount Unit</label>
 				<label class="control-label col-md-3">Allocation (%)</label>
-				<label class="control-label col-md-3">Error Rate (%)</label>
+				<label class="control-label col-md-3">Accuracy Rate (%)</label>
 				<div class="col-md-3">
 					<input type="text" class="form-control" value="<?php echo set_value('amount'); ?>" id="amount" placeholder="Number" name="amount">
 				</div>
@@ -107,7 +107,7 @@ $(document).ready(function() {
 				<label class="control-label col-md-3">Cost</label>
 				<label class="control-label col-md-3">Cost Unit</label>
 				<label class="control-label col-md-3">Allocation (%)</label>
-				<label class="control-label col-md-3">Error Rate (%)</label>
+				<label class="control-label col-md-3">Accuracy Rate (%)</label>
 				<div class="col-md-3">
 					<input type="text" class="form-control" value="<?php echo set_value('cost'); ?>" id="cost" placeholder="Number" name="cost">
 				</div>
@@ -131,7 +131,7 @@ $(document).ready(function() {
 				<label class="control-label col-md-3">Environmental Impact</label>
 				<label class="control-label col-md-3">EP</label>
 				<label class="control-label col-md-3">Allocation (%)</label>
-				<label class="control-label col-md-3">Error Rate (%)</label>
+				<label class="control-label col-md-3">Accuracy Rate (%)</label>
 				<div class="col-md-3">
 					<input type="text" class="form-control" value="<?php echo set_value('env_impact'); ?>" id="env_impact" placeholder="Number" name="env_impact">
 				</div>
@@ -163,17 +163,13 @@ $(document).ready(function() {
 			</div>
 			<hr>
 			<div class="form-group clearfix row">
-				<label class="control-label col-md-3">KPI</label>
-				<label class="control-label col-md-3">KPI Unit</label>
-				<label class="control-label col-md-6">KPI Error Rate (%)</label>
-				<div class="col-md-3">
+				<label class="control-label col-md-6">KPI</label>
+				<label class="control-label col-md-6">KPI Unit</label>
+				<div class="col-md-6">
 					<input type="text" class="form-control" id="kpi" placeholder="" name="kpi" readonly>
 				</div>
-				<div class="col-md-3">
-					<input type="text" class="form-control" id="unit_kpi" placeholder="" name="unit_kpi" readonly>
-				</div>
 				<div class="col-md-6">
-					<input type="text" class="form-control" value="<?php echo set_value('kpi_error'); ?>" id="kpi_error" placeholder="Percentage" name="kpi_error">
+					<input type="text" class="form-control" id="unit_kpi" placeholder="" name="unit_kpi" readonly>
 				</div>
 				
 			</div>

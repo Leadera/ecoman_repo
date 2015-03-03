@@ -41,7 +41,11 @@ $(document).ready(function() {
     <a href="#" class="btn btn-default btn-sm" id="cpscopinga">New CP potentials identification</a>-->
     <div>Companies under <?php echo $this->session->userdata('project_name'); ?></div><br>
     <?php foreach ($com_pro as $cp): ?>
-            <a href="<?php echo base_url('cpscoping/'.$this->session->userdata('project_id').'/'.$cp['company_id'].'/allocation'); ?>/" class="btn btn-inverse btn-sm btn-block" id="cpscopinga"><?php echo $cp['company_name']; ?></a>
+        <div class="boxhead"><?php echo $cp['company_name']; ?></div>
+        <div class="boxcontent">
+            <a href="<?php echo base_url('cpscoping/'.$this->session->userdata('project_id').'/'.$cp['company_id'].'/allocation'); ?>/" class="btn btn-inverse btn-sm" id="cpscopinga">Create Allocation</a>
+            <a href="<?php echo base_url('new_flow/'.$cp['company_id']); ?>/" class="btn btn-inverse btn-sm" id="cpscopinga">Dataset Management</a>
+        </div>
     <?php endforeach ?><br>
     <div>Please select the company you want to create allocation for.</div>
 </div>

@@ -217,3 +217,16 @@ label{
   stroke: #000;
   shape-rendering: crispEdges;
 }
+.boxhead{
+    padding: 10px;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px 4px 0 0;
+    background-color: ghostwhite;
+}
+.boxcontent{
+    border: 1px solid #d0d0d0;
+    padding: 10px;
+    border-radius: 0 0 4px 4px;
+    margin-bottom: 15px;
+    border-top: none;
+}

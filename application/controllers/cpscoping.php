@@ -94,7 +94,7 @@ class Cpscoping extends CI_Controller {
 		
 		$this->form_validation->set_rules('kpi', 'Kpi', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('unit_kpi', ' Unit Kpi', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('kpi_error', 'Kpi Error', 'required|trim|integer|xss_clean');
+		//$this->form_validation->set_rules('kpi_error', 'Kpi Error', 'required|trim|integer|xss_clean');
 		
 		if ($this->form_validation->run() !== FALSE){
 			$prcss_name = $this->input->post('prcss_name');
@@ -116,7 +116,7 @@ class Cpscoping extends CI_Controller {
 			$unit_reference = $this->input->post('unit_reference');
 			$kpi = $this->input->post('kpi');
 			$unit_kpi = $this->input->post('unit_kpi');
-			$kpi_error = $this->input->post('kpi_error');
+			//$kpi_error = $this->input->post('kpi_error');
 
 			$array_allocation = array(
 				'prcss_id'=>$prcss_name,
@@ -374,18 +374,18 @@ class Cpscoping extends CI_Controller {
 						$cost_value_alt += ($array[$index]['cost'] * ((100-$error_cost)/100)) * number_format(($doviz_array['dolar'] / $doviz_array['euro']),4);
 						$cost_value_ust += ($array[$index]['cost'] * ((100+$error_cost)/100)) * number_format(($doviz_array['dolar'] / $doviz_array['euro']),4);
 					}else if($unit == "TL"){
-						$cost_value_alt += ($array[$index]['cost'] * ((100-$error_cost)/100)) * $doviz_array['euro'];
-						$cost_value_ust += ($array[$index]['cost'] * ((100+$error_cost)/100)) * $doviz_array['euro'];
+						$cost_value_alt += ($array[$index]['cost'] * ((100-$error_cost/2)/100)) * $doviz_array['euro'];
+						$cost_value_ust += ($array[$index]['cost'] * ((100+$error_cost/2)/100)) * $doviz_array['euro'];
 					}else{
-						$cost_value_alt += ($array[$index]['cost'] * ((100-$error_cost)/100));
-						$cost_value_ust += ($array[$index]['cost'] * ((100+$error_cost)/100));
+						$cost_value_alt += ($array[$index]['cost'] * ((100-$error_cost/2)/100));
+						$cost_value_ust += ($array[$index]['cost'] * ((100+$error_cost/2)/100));
 					}
 
 					$cost_def_value += $array[$index]['cost'];
 					$prcss_name = $array[$index]['prcss_name'];
 					$ep_def_value += $array[$index]['env_impact'];
-					$ep_value_alt += $array[$index]['env_impact'] * ((100-$error_ep)/100);
-					$ep_value_ust += $array[$index]['env_impact'] * ((100+$error_ep)/100);
+					$ep_value_alt += $array[$index]['env_impact'] * ((100-$error_ep/2)/100);
+					$ep_value_ust += $array[$index]['env_impact'] * ((100+$error_ep/2)/100);
 				}
 			}
 			$index++;
