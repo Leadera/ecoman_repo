@@ -295,8 +295,6 @@
                     var imagepath=parentnode.text+"/"+node.text;
                 },
                 onExpand: function(node){
-                    //alert('test onexpand');
-                    $("#tt_tree").tree("check",node.target);
                     var root=$("#tt_tree").tree("getRoot");
                     var parent=$("#tt_tree").tree("getParent",node.target);
                     if(parent) {
@@ -311,6 +309,7 @@
                         }
 
                     }else {
+                        $("#tt_tree").tree("check", node.target);
                         treeValue=node.text;
                         var nodeId = node.id;
                     }

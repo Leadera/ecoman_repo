@@ -211,9 +211,31 @@
                     success: function(data, textStatus, jqXHR) {
                         if(!data['notFound']) {
                             $('#tt_grid_dynamic').datagrid('loadData', data);
-                            $('#tt_grid_dynamic').datagrid({
+                            /*$('#tt_grid_dynamic').datagrid({
+                                    view: detailview,
+                                   detailFormatter:function(index,row){
+                                       return '<div class="ddv" style="padding:5px 0">\n\
+                                                   <div id="oneri1">sssss</div>\n\
+                                                   <div id="oneri2">sss</div>\n\
+                                                   <div id="oneri3">sssss</div>\n\
+                                               </div>';
+                                   },
+                                   onExpandRow: function(index,row){
+                                       alert('test');
+                                       var ddv = $(this).datagrid('getRowDetail',index).find('div.ddv');
+                                       ddv.panel({
+                                           height:80,
+                                           border:false,
+                                           cache:false,
+                                           href:'',
+                                           onLoad:function(){
+                                               $('#tt_grid_dynamic').datagrid('fixDetailRowHeight',index);
+                                           }
+                                       });
+                                       $('#tt_grid_dynamic').datagrid('fixDetailRowHeight',index);
+                                   }
 
-                          });
+                       });*/
                         } else {
                             console.warn('data notfound-->'+textStatus);
                             $.messager.alert('Pick sub flow and company','Please select  a sub flow from flow tree!','warning');
@@ -256,7 +278,7 @@
         var treeValue;
         $("#tt_tree").tree({
                     onCheck: function(node, checked) {
-                            if(checked) {
+                            /*if(checked) {
                                 if(node.attributes.notroot) {
                                     $('#tt_grid').datagrid("hideColumn",node.text);
                                     $('#tt_grid').datagrid("showColumn",node.text);
@@ -277,7 +299,7 @@
                                     $('#tt_grid').datagrid("hideColumn",obj.text);
                                   });
                                 } 
-                            }
+                            }*/
                     },
                     onClick: function(node){
                     var parentnode=$("#tt_tree").tree("getParent", node.target);
@@ -294,11 +316,11 @@
                     var imagepath=parentnode.text+"/"+node.text;
                 },
                 onExpand: function(node){
-                    //alert('test onexpand');
-                    $("#tt_tree").tree("check",node.target);
                     var root=$("#tt_tree").tree("getRoot");
                     var parent=$("#tt_tree").tree("getParent",node.target);
                     if(parent) {
+                        // $("#tt_tree").tree("check",node.target);
+                        //alert('test2');
                         var nodes = $('#tt_tree').tree('getChecked');
                         var s = '';
                         var num = '';
@@ -310,6 +332,8 @@
                         }
 
                     }else {
+                        $("#tt_tree").tree("check", node.target);
+                        //alert('test3');
                         treeValue=node.text;
                         var nodeId = node.id;
                     }
@@ -318,6 +342,7 @@
                     
                     var root=$("#tt_tree").tree("getRoot");
                     var parent=$("#tt_tree").tree("getParent",node.target);
+                    //alert('test');
                     if(parent) {
                     }else {
                         var nodeId = node.id;
@@ -359,12 +384,12 @@
                 toolbar:'#tb5',
                 remoteSort:false,
                 multiSort:false,
-                 view: detailview,
+                view: detailview,
                 detailFormatter:function(index,row){
                     return '<div class="ddv" style="padding:5px 0">\n\
-                                <div id="oneri1"></div>\n\
-                                <div id="oneri2"></div>\n\
-                                <div id="oneri3"></div>\n\
+                                <div id="oneri1">sssss</div>\n\
+                                <div id="oneri2">sss</div>\n\
+                                <div id="oneri3">sssss</div>\n\
                             </div>';
                 },
                 onExpandRow: function(index,row){

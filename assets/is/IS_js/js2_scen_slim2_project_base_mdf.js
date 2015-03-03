@@ -310,7 +310,7 @@ function beginISPotentialByAllFlows() {
         var treeValue;
         $("#tt_tree2").tree({
                     onCheck: function(node, checked) {
-                        if(checked) {
+                       /* if(checked) {
                             if(node.attributes.notroot) {
                                 $('#tt_grid2').datagrid("hideColumn",node.text);
                                 $('#tt_grid2').datagrid("showColumn",node.text);
@@ -330,7 +330,7 @@ function beginISPotentialByAllFlows() {
                                 $('#tt_grid2').datagrid("hideColumn",obj.text);
                               });
                             }
-                        }
+                        }*/
                     },
                     onClick: function(node){
                     var parentnode=$("#tt_tree2").tree("getParent", node.target);
@@ -347,7 +347,6 @@ function beginISPotentialByAllFlows() {
                     var imagepath=parentnode.text+"/"+node.text;
                 },
                 onExpand: function(node){
-                    $("#tt_tree2").tree("check",node.target);
                     var root=$("#tt_tree2").tree("getRoot");
                     var parent=$("#tt_tree2").tree("getParent",node.target);
                     if(parent) {
@@ -362,6 +361,7 @@ function beginISPotentialByAllFlows() {
                         }
 
                     }else {
+                        $("#tt_tree2").tree("check", node.target);
                         treeValue=node.text;
                         var nodeId = node.id;
                     }

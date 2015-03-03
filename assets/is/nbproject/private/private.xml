@@ -1,11 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="39">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="41">
+        <file>
+            <url>postgre_json_test2.html</url>
+            <bookmark id="38">
+                <name/>
+                <line>218</line>
+                <key/>
+            </bookmark>
+            <bookmark id="39">
+                <name/>
+                <line>965</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>IS_js/js1_scen_slim2_project_base_mdf.js</url>
+            <bookmark id="40">
+                <name/>
+                <line>166</line>
+                <key/>
+            </bookmark>
+            <bookmark id="41">
+                <name/>
+                <line>375</line>
+                <key/>
+            </bookmark>
+        </file>
         <file>
             <url>IS_scenario2.html</url>
             <bookmark id="26">
                 <name/>
                 <line>80</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>postgre_json_test_1.html</url>
+            <bookmark id="36">
+                <name/>
+                <line>247</line>
+                <key/>
+            </bookmark>
+            <bookmark id="35">
+                <name/>
+                <line>654</line>
                 <key/>
             </bookmark>
         </file>
@@ -44,62 +83,6 @@
             <bookmark id="25">
                 <name/>
                 <line>708</line>
-                <key/>
-            </bookmark>
-        </file>
-        <file>
-            <url>postgre_json_test_1.html</url>
-            <bookmark id="36">
-                <name/>
-                <line>247</line>
-                <key/>
-            </bookmark>
-            <bookmark id="35">
-                <name/>
-                <line>654</line>
-                <key/>
-            </bookmark>
-        </file>
-        <file>
-            <url>postgre_json_test.html</url>
-            <bookmark id="31">
-                <name/>
-                <line>36</line>
-                <key/>
-            </bookmark>
-            <bookmark id="27">
-                <name/>
-                <line>37</line>
-                <key/>
-            </bookmark>
-            <bookmark id="37">
-                <name/>
-                <line>193</line>
-                <key/>
-            </bookmark>
-            <bookmark id="33">
-                <name/>
-                <line>225</line>
-                <key/>
-            </bookmark>
-            <bookmark id="28">
-                <name/>
-                <line>509</line>
-                <key/>
-            </bookmark>
-            <bookmark id="34">
-                <name/>
-                <line>558</line>
-                <key/>
-            </bookmark>
-            <bookmark id="32">
-                <name/>
-                <line>724</line>
-                <key/>
-            </bookmark>
-            <bookmark id="30">
-                <name/>
-                <line>753</line>
                 <key/>
             </bookmark>
         </file>
@@ -157,15 +140,45 @@
             </bookmark>
         </file>
         <file>
-            <url>postgre_json_test2.html</url>
-            <bookmark id="38">
+            <url>postgre_json_test.html</url>
+            <bookmark id="31">
                 <name/>
-                <line>218</line>
+                <line>36</line>
                 <key/>
             </bookmark>
-            <bookmark id="39">
+            <bookmark id="27">
                 <name/>
-                <line>965</line>
+                <line>37</line>
+                <key/>
+            </bookmark>
+            <bookmark id="37">
+                <name/>
+                <line>193</line>
+                <key/>
+            </bookmark>
+            <bookmark id="33">
+                <name/>
+                <line>225</line>
+                <key/>
+            </bookmark>
+            <bookmark id="28">
+                <name/>
+                <line>509</line>
+                <key/>
+            </bookmark>
+            <bookmark id="34">
+                <name/>
+                <line>558</line>
+                <key/>
+            </bookmark>
+            <bookmark id="32">
+                <name/>
+                <line>724</line>
+                <key/>
+            </bookmark>
+            <bookmark id="30">
+                <name/>
+                <line>753</line>
                 <key/>
             </bookmark>
         </file>
