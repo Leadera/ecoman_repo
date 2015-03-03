@@ -355,6 +355,8 @@ class Cpscoping extends CI_Controller {
 		$cost_value_ust = 0.0;
 		$ep_value_alt = 0.0;
 		$ep_value_ust = 0.0;
+		$cost_def_value = 0.0;
+		$ep_def_value = 0.0;
 		$prcss_name = "";
 		foreach ($allocation_ids as $allo_id) {
 			$array[$index] = $this->cpscoping_model->get_allocation_from_allocation_id($allo_id['allocation_id']);
@@ -379,7 +381,9 @@ class Cpscoping extends CI_Controller {
 						$cost_value_ust += ($array[$index]['cost'] * ((100+$error_cost)/100));
 					}
 
+					$cost_def_value += $array[$index]['cost'];
 					$prcss_name = $array[$index]['prcss_name'];
+					$ep_def_value += $array[$index]['env_impact'];
 					$ep_value_alt += $array[$index]['env_impact'] * ((100-$error_ep)/100);
 					$ep_value_ust += $array[$index]['env_impact'] * ((100+$error_ep)/100);
 				}
@@ -388,6 +392,8 @@ class Cpscoping extends CI_Controller {
 		}
 		$return_array = array(
 			'prcss_name' => $prcss_name,
+			'cost_def_value' => $cost_def_value,
+			'ep_def_value' => $ep_def_value,
 			'ep_value_alt' => $ep_value_alt,
 			'ep_value_ust' => $ep_value_ust,
 			'cost_value_alt' => $cost_value_alt,
