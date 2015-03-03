@@ -230,13 +230,12 @@
 		else{
 			$tuna_array[$t]['ymax']= 0;
 		}
-		
+
 		$toplameco+=$a['ecoben'];
-		$tuna_array[$t]['xmax']= $toplameco;
+		$tuna_array[$t]['xmax']= intval($a['ecoben']);
 
-		$eksieco = $toplameco - $a['ecoben'] ;
+		$eksieco = $toplameco - $a['ecoben'];
 		$tuna_array[$t]['xmin']= $eksieco;
-
 
 		if($a['marcos']>0){
 			$tuna_array[$t]['ymin']= "0";
@@ -246,8 +245,8 @@
 		}
 		$t++;
 	}
-	print_r($tuna_array);
-	echo json_encode($tuna_array);
+	//print_r($tuna_array);
+	//echo json_encode($tuna_array);
 ?>
 <script type="text/javascript">
 	setTimeout(function()
@@ -267,7 +266,7 @@
 	            "bottom": 50,
 	            "left": 50
 	        };
-	var width = 400;
+	var width = 800;
 	var height = 500;
 
 	// Set the scales

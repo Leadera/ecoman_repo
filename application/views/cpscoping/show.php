@@ -5,14 +5,14 @@
 	    $.ajax({
 	      type: "POST",
 	      dataType:'json',
-		  url: '<?php echo base_url('cpscoping/get_allo'); ?>/'+f+'/'+p+'/'+<?php echo $this->uri->segment(3); ?> + '/' + k + '/' + <?php echo $this->uri->segment(2); ?>,
+				url: '<?php echo base_url('cpscoping/get_allo'); ?>/'+f+'/'+p+'/'+<?php echo $this->uri->segment(3); ?> + '/' + k + '/' + <?php echo $this->uri->segment(2); ?>,
 	      success: function(data)
 	      {
 	      	if(!$.isEmptyObject(data)){
 	      		//console.log(data);
 	        	var vPool="";
 	        	if(data.allocation_amount!="none"){
-					vPool += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><td>' + data.amount + ' ' + data.unit_amount + '</td><td rowspan="3" style="width:70px;">%'+data.allocation_rate+'</td></tr><tr><td>' + data.cost + ' ' + data.unit_cost + '</td></tr><tr><td>' + data.env_impact + ' ' + data.unit_env_impact + '</td></tr></table>';
+					vPool += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><td>' + data.amount + ' ' + data.unit_amount + ' <span class="label label-danger">' + data.error_amount + '%</span></td><td rowspan="3" style="width:70px;">%'+data.allocation_rate+'</td></tr><tr><td>' + data.cost + ' ' + data.unit_cost + ' <span class="label label-danger">' + data.error_cost + '%</span></td></tr><tr><td>' + data.env_impact + ' ' + data.unit_env_impact + ' <span class="label label-danger">' + data.error_ep + '%</span></td></tr></table>';
 				}
 				else {
 					vPool += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><td>' + data.amount + ' ' + data.unit_amount + '</td></tr><tr><td>' + data.cost + ' ' + data.unit_cost + '</td></tr><tr><td>' + data.env_impact + ' ' + data.unit_env_impact + '</td></tr></table>';
@@ -36,7 +36,8 @@
 	var cost_array_clone = new Array();
 	var cost_index = 0;
 	var index_array = new Array();
-	var list=new Array; 
+	var list=new Array;
+
 	function cost_ep_value(prcss_id,process_adet){
 		//alert(prcss_id);
 		$.ajax({
@@ -44,10 +45,7 @@
 			dataType: 'json',
 			url: '<?php echo base_url('cpscoping/cost_ep'); ?>/'+prcss_id+'/'+<?php echo $this->uri->segment(2);?>+'/'+<?php echo $this->uri->segment(3); ?>,
 			success: function(data){
-
 				list.push(data);
-				
-
 				var temp = "";
 				temp += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><th style="text-align:center;">' + data.prcss_name + '</th></tr><tr><td> <b>EP:</b> ' + data.ep_value_alt + ' - ' + data.ep_value_ust + '</td></tr><tr><td> <b>Cost:</b> ' + data.cost_value_alt.toFixed(2) + ' - ' + data.cost_value_ust.toFixed(2) + ' Euro</td></tr></table>';
 				$("div."+prcss_id).html(temp);
@@ -66,12 +64,12 @@
 		      	{
 		      		if(!(data.control == 1)){
 		      			$("#"+id).removeClass();
-		    			$("#"+id).addClass("btn btn-success btn-xs");
+		    			$("#"+id).addClass("btn btn-success btn-xs pull-right");
 		    			$("#"+id).html("Selected");
 		    			buton_durum = 1;
 		    		}else{
 		    			$("#"+id).removeClass();
-		    			$("#"+id).addClass("btn btn-default btn-xs");
+		    			$("#"+id).addClass("btn btn-default btn-xs pull-right");
 		    			$("#"+id).html("Dropped");
 		    			buton_durum = 0;
 		    		}
@@ -146,13 +144,12 @@
 					<tr>
 						<td>
 							<b><?php echo $a['flow_name']; ?></b>
-							<br>
 							<?php if ($active[$a['allocation_id']] == 0): ?>
-								<button class="btn btn-default btn-xs" id="<?php echo $a['allocation_id']; ?>" onclick="is_candidate(<?php echo $a['allocation_id'];?>)">
+								<button class="btn btn-default btn-xs pull-right" id="<?php echo $a['allocation_id']; ?>" onclick="is_candidate(<?php echo $a['allocation_id'];?>)">
 									Select as IS candidate
 								</button>
 							<?php else: ?>
-								<button class="btn btn-success btn-xs" id="<?php echo $a['allocation_id']; ?>" onclick="is_candidate(<?php echo $a['allocation_id'];?>)">IS candidate
+								<button class="btn btn-success btn-xs pull-right" id="<?php echo $a['allocation_id']; ?>" onclick="is_candidate(<?php echo $a['allocation_id'];?>)">IS candidate
 								</button>
 							<?php endif ?>
 							
@@ -229,14 +226,13 @@
 					<tr>
 						<td>
 							<b><?php echo $a['flow_name']; ?></b>
-							<br>
 							<?php
 							if($id != 0){
 							if ($active[$id] == 0): ?>
-								<button class="btn btn-default btn-xs" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)">Select as IS candidate
+								<button class="btn btn-default btn-xs pull-right" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)">Select as IS candidate
 								</button>
 							<?php else: ?>
-								<button class="btn btn-success btn-xs" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)">IS Candidate
+								<button class="btn btn-success btn-xs pull-right" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)">IS Candidate
 								</button>
 							<?php endif ?>
 
@@ -300,17 +296,17 @@ setTimeout(function()
 
 	// Set the scales
 	    var x = d3.scale.linear()
-	                          .domain([0, d3.max(data, function(d) { return d.cost_value_alt+d.cost_value_ust; })])
+	        .domain([0, d3.max(data, function(d) { return d.cost_value_ust+100; })])
 	        .range([0,width]).nice();
 
 	    var y = d3.scale.linear()
-	        .domain([0, d3.max(data, function(d) { return d.ep_value_ust; })])
+	        .domain([d3.min(data, function(d) { return d.ep_value_alt; }), d3.max(data, function(d) { return d.ep_value_ust; })])
 	        .range([height, 0]).nice();
 
 	    var xAxis = d3.svg.axis().scale(x).orient("bottom");
 	    var yAxis = d3.svg.axis().scale(y).orient("left");
 
-
+			var color = d3.scale.category20();
 	// Create the SVG 'canvas'
 	    var svg = d3.select("#rect-demo-ana").append("svg")
 	            .attr("class", "chart")
@@ -334,7 +330,7 @@ setTimeout(function()
 	  attr("x", function(datum,index) { return x(datum.cost_value_alt); }).
 	  attr("y", function(datum,index) { return y(datum.ep_value_ust); }).
 	  attr("height", function(datum,index) { return y(datum.ep_value_alt)-y(datum.ep_value_ust); }).
-	  attr("width", function(datum, index) { return x(datum.cost_value_ust); }).
-	  attr("fill", "rgba(25,155,205,0.8)");
+	  attr("width", function(datum, index) { return x(datum.cost_value_ust)-x(datum.cost_value_alt); }).
+	  attr("fill",function(d,i){return color(i);});
 	}
 </script>

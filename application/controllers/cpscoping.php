@@ -75,18 +75,18 @@ class Cpscoping extends CI_Controller {
 		$this->form_validation->set_rules('flow_type_name', 'Flow Type Name', 'required|trim|xss_clean');
 		
 		$this->form_validation->set_rules('amount', 'Amount', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('allocation_amount', 'Amount Allocation', 'required|trim|integer|max_length[3]|xss_clean');
-		$this->form_validation->set_rules('error_amount', 'Amount Error Rate', 'required|trim|integer|max_length[3]|xss_clean');
+		$this->form_validation->set_rules('allocation_amount', 'Amount Allocation', 'required|trim|integer|max_length[3]|greater_than[0]|xss_clean');
+		$this->form_validation->set_rules('error_amount', 'Amount Error Rate', 'required|trim|integer|max_length[3]|greater_than[0]|xss_clean');
 		$this->form_validation->set_rules('unit_amount', 'Unit Amount', 'required|trim|xss_clean');
 
 		$this->form_validation->set_rules('cost', 'Cost', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('allocation_cost', 'Cost Allocation', 'required|trim|integer|max_length[3]|xss_clean');
-		$this->form_validation->set_rules('error_cost', 'Cost Error Rate', 'required|trim|integer|max_length[3]|xss_clean');
+		$this->form_validation->set_rules('allocation_cost', 'Cost Allocation', 'required|trim|integer|max_length[3]|greater_than[0]|xss_clean');
+		$this->form_validation->set_rules('error_cost', 'Cost Error Rate', 'required|trim|integer|max_length[3]|greater_than[0]|xss_clean');
 		$this->form_validation->set_rules('unit_cost', 'Unit Cost', 'required|trim|xss_clean');
 		
 		$this->form_validation->set_rules('env_impact', 'Env. Impact', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('allocation_env_impact', 'Env. Impact Allocation', 'required|integer|trim|max_length[3]|xss_clean');
-		$this->form_validation->set_rules('error_ep', 'Env. Impact Rate', 'required|trim|integer|max_length[3]|xss_clean');
+		$this->form_validation->set_rules('allocation_env_impact', 'Env. Impact Allocation', 'required|integer|trim|max_length[3]|greater_than[0]|xss_clean');
+		$this->form_validation->set_rules('error_ep', 'Env. Impact Rate', 'required|trim|integer|max_length[3]|greater_than[0]|xss_clean');
 		$this->form_validation->set_rules('unit_env_impact', 'Unit Env. Impact', 'required|trim|xss_clean');
 
 		$this->form_validation->set_rules('reference', 'Reference', 'required|trim|xss_clean');
@@ -297,6 +297,9 @@ class Cpscoping extends CI_Controller {
 					'cost' => $cost,
 					'unit_cost'=>$array[0]["unit_cost"],
 					'env_impact' => $env_impact,
+					'error_ep' => $array[0]["error_ep"],
+					'error_cost' => $array[0]["error_cost"],
+					'error_amount' => $array[0]["error_amount"],
 					'unit_env_impact'=>$array[0]["unit_env_impact"],
 					'allocation_amount'=>"none"
 				);
@@ -360,23 +363,25 @@ class Cpscoping extends CI_Controller {
 				if($array[$index]['prcss_id'] == $prcss_id){
 					$doviz_array = $this->dolar_euro_parse();
 					$unit = $array[$index]['unit_cost'];
-					$allocation_cost = $array[$index]['allocation_cost'];
+					$error_cost = $array[$index]['error_cost'];
+					$error_amount = $array[$index]['error_amount'];
+					$error_ep = $array[$index]['error_ep'];
 					$allocation_env_impact = $array[$index]['allocation_env_impact'];
 
 					if($unit == "Dolar"){
-						$cost_value_alt += ($array[$index]['cost'] * ((100-$allocation_cost)/100)) * number_format(($doviz_array['dolar'] / $doviz_array['euro']),4);
-						$cost_value_ust += ($array[$index]['cost'] * ((100+$allocation_cost)/100)) * number_format(($doviz_array['dolar'] / $doviz_array['euro']),4);
+						$cost_value_alt += ($array[$index]['cost'] * ((100-$error_cost)/100)) * number_format(($doviz_array['dolar'] / $doviz_array['euro']),4);
+						$cost_value_ust += ($array[$index]['cost'] * ((100+$error_cost)/100)) * number_format(($doviz_array['dolar'] / $doviz_array['euro']),4);
 					}else if($unit == "TL"){
-						$cost_value_alt += ($array[$index]['cost'] * ((100-$allocation_cost)/100)) * $doviz_array['euro'];
-						$cost_value_ust += ($array[$index]['cost'] * ((100+$allocation_cost)/100)) * $doviz_array['euro'];
+						$cost_value_alt += ($array[$index]['cost'] * ((100-$error_cost)/100)) * $doviz_array['euro'];
+						$cost_value_ust += ($array[$index]['cost'] * ((100+$error_cost)/100)) * $doviz_array['euro'];
 					}else{
-						$cost_value_alt += ($array[$index]['cost'] * ((100-$allocation_cost)/100));
-						$cost_value_ust += ($array[$index]['cost'] * ((100+$allocation_cost)/100)) * $doviz_array['euro'];
+						$cost_value_alt += ($array[$index]['cost'] * ((100-$error_cost)/100));
+						$cost_value_ust += ($array[$index]['cost'] * ((100+$error_cost)/100));
 					}
 
 					$prcss_name = $array[$index]['prcss_name'];
-					$ep_value_alt += $array[$index]['env_impact'] * ((100-$allocation_env_impact)/100);
-					$ep_value_ust += $array[$index]['env_impact'] * ((100+$allocation_env_impact)/100);
+					$ep_value_alt += $array[$index]['env_impact'] * ((100-$error_ep)/100);
+					$ep_value_ust += $array[$index]['env_impact'] * ((100+$error_ep)/100);
 				}
 			}
 			$index++;
