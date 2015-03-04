@@ -23,7 +23,13 @@
     <script src="<?php echo asset_url('js/bootstrap.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo asset_url('is/jquery.easyui.min.js'); ?>"></script>
     <!--[if lt IE 9]><script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.0.8/es5-shim.min.js"></script><![endif]-->
-    <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto" and $this->uri->segment(1)!="isScopingAutoPrjBase" and $this->uri->segment(1)!="isScopingPrjBase" and $this->uri->segment(1)!="cost_benefit"): ?>
+    <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto" 
+            and $this->uri->segment(1)!="isScopingAutoPrjBase" 
+            and $this->uri->segment(1)!="isScopingAutoPrjBaseMDF" 
+            and $this->uri->segment(1)!="isScopingPrjBaseMDF" 
+            and $this->uri->segment(1)!="isScopingPrjBase" 
+            and $this->uri->segment(1)!="scenarios"
+            and $this->uri->segment(1)!="cost_benefit"): ?>
       <script src="<?php echo asset_url('js/selectize.min.js'); ?>"></script>
       <script type="text/javascript">
         $(function() {
@@ -92,6 +98,7 @@
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url('isScopingAutoPrjBase'); ?>">Automated IS</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url('isScopingPrjBaseMDF'); ?>">Manual IS(New Company/Flow Grid)</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url('isScopingAutoPrjBaseMDF'); ?>">Automated IS(New Company/Flow Grid)</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url('isscenarios'); ?>">IS Scenarios</a></li>
               </ul>
             </div>
           </li>

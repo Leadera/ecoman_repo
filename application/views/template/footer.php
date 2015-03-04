@@ -3,9 +3,11 @@
 
 
     <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto" 
+            and $this->uri->segment(1)!="isScopingAutoPrjBaseMDF"
             and $this->uri->segment(1)!="isScopingAutoPrjBase" 
             and $this->uri->segment(1)!="isScopingPrjBase" 
             and $this->uri->segment(1)!="isScopingPrjBaseMDF"
+            and $this->uri->segment(1)!="scenarios"
             and $this->uri->segment(1)!="isScopingAutoPrjBaseMDF") : ?>
 
     <script src="<?php echo asset_url('js/flatui-fileinput.js'); ?>"></script>
