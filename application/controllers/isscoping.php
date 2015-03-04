@@ -213,7 +213,7 @@ class Isscoping extends CI_Controller {
 		//$this->load->view('template/footer');
 	}
         
-        public function scenarios(){  
+        public function isscenarios(){  
             //print_r('zeynel');
             //print_r($this->session->userdata['user_in']);
             //print_r($this->session->userdata);
@@ -247,7 +247,7 @@ class Isscoping extends CI_Controller {
                 $data['userID'] = $this->session->userdata['user_in']['id'];
                 $data['project_id'] = $this->session->userdata['project_id'];
 		$this->load->view('template/header');
-		$this->load->view('isscoping/scenarios',$data); 
+		$this->load->view('isscoping/isscenarios',$data); 
 		$this->load->view('template/footer');
 	}
 }

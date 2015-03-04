@@ -52,7 +52,7 @@ $route['isScopingPrjBase'] = "isscoping/prjbase";
 $route['isScopingPrjBaseMDF'] = "isscoping/prjbaseMDF";
 $route['isscopingtooltip'] = "isscoping/tooltip";
 $route['isscopingtooltipscenarios'] = "isscoping/tooltipscenarios";
-$route['isscenarios'] = "isscoping/scenarios";
+$route['isscenarios'] = "isscoping/isscenarios";
 
 //Cost Benefit
 $route['cost_benefit/(:any)/(:any)'] = "cost_benefit/new_cost_benefit/$1/$2";
