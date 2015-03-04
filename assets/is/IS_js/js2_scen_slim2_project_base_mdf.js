@@ -125,8 +125,13 @@ function beginISPotentialByAllFlows() {
                                         {field:'flow',title:'Flow',width:100},
                                         {field:'unit',title:'Unit',width:100},
                                         {field:'quality',title:'Quality',width:100},
-                                        {field:'flowtype',title:'I/O',width:100}
-                                        ]]});
+                                        {field:'flowtype',title:'I/O',width:100},
+                                        {field:'availability',title:'Availability',width:100},
+                                        {field:'quality',title:'Quality',width:100},
+                                        {field:'output_location',title:'Output Loc.',width:100},
+                                        {field:'substitute_potential',title:'Substi.Pot.',width:100},
+                                        {field:'description',title:'Desc.',width:100},
+                                        ]]}); 
                               $('#tt_grid2').datagrid('loadData', data);
                               $('#tt_grid2').datagrid({
                                  url :'../../../Proxy/SlimProxy.php',
@@ -590,6 +595,11 @@ function beginISPotentialByAllFlows() {
               {field:'unit',title:'Unit',width:100},
               {field:'cost',title:'Cost',width:100},
               {field:'cost_unit_id',title:'Cost Unit',width:100},
+              {field:'availability',title:'Availability',width:100},
+                {field:'quality',title:'Quality',width:100},
+                {field:'output_location',title:'Output Loc.',width:100},
+                {field:'substitute_potential',title:'Substi.Pot.',width:100},
+                {field:'description',title:'Desc.',width:100},
               //{field:'quality',title:'Quality',width:100},
               
               ]]});
