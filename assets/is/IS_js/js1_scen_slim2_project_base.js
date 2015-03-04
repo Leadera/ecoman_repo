@@ -357,7 +357,7 @@
                 method:'get',
                 idField:'id',
                 toolbar:'#tb5',
-                remoteSort:false,
+                remoteSort:true,
                 multiSort:false,
                 /* view: detailview,
                 detailFormatter:function(index,row){
@@ -386,7 +386,7 @@
                             //{field:'sirket_id',title:'ID',width:300},
                             //{field: 'ck',title: 'From Company',checkbox:true},
                             {field: 'company',title: 'From Company'},
-                            {field: 'flow',title: 'Flow'},
+                            {field: 'flow',title: 'Flow', sortable:true},
                             {field: 'qntty',title: 'Quantity'},
                             {field: 'qnttyunit',title: 'Unit'},
                             {field: 'fromflowtype',title: 'Flow Type'},

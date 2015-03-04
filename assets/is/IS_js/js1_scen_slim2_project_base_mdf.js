@@ -144,7 +144,7 @@
             var columnArray = [];
             columnArray.push({field: 'ck',title: 'From Company',width:200,checkbox:true});
             columnArray.push({field: 'company',title: 'From Company',width:100});
-            columnArray.push({field: 'flow',title: 'Flow',width:100});
+            columnArray.push({field: 'flow',title: 'Flow',width:100, sortable:true});
             columnArray.push({field: 'qntty',title: 'Quantity',width:100});
             columnArray.push({field: 'qnttyunit',title: 'Unit',width:100});
             columnArray.push({field: 'fromflowtype',title: 'Flow Type',width:100});
@@ -377,7 +377,9 @@
     
     
       $('#tt_grid_dynamic').datagrid({
-          singleSelect:true,
+                singleSelect:true,
+                url:'../../../Proxy/SlimProxy.php',
+                queryParams : { url:'ISPotentialsNew_json_test_by_project_prj'},
                 collapsible:true,
                 method:'get',
                 idField:'id',
@@ -411,7 +413,7 @@
                             //{field:'sirket_id',title:'ID',width:300},
                             //{field: 'ck',title: 'From Company',checkbox:true},
                             {field: 'company',title: 'From Company'},
-                            {field: 'flow',title: 'Flow'},
+                            {field: 'flow',title: 'Flow'/*,sortable:true*/},
                             {field: 'qntty',title: 'Quantity'},
                             {field: 'qnttyunit',title: 'Unit'},
                             {field: 'fromflowtype',title: 'Flow Type'},
@@ -559,9 +561,11 @@
                             {field:'syn_name',title:'Synergy Type',width:300},
                             {field:'date',title:' Project Date',width:300},
                             {field:'detail',title:' Details',width:100}
-                        ]]
+                        ]],
+                //closed:true,
+                //minimized:true,
         });
-    
+    $('#p2').panel('collapse');
     
     $('#tt_grid_dynamic5').datagrid({
         columns:[[
