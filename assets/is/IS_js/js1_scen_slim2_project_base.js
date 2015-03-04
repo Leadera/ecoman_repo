@@ -492,7 +492,7 @@
             {field:'company2',title:'Company',width:100},
             {field:'qntty2',title:'Quantity',width:100},
             {field:'flow',title:'Flow',width:100},
-            {field:'flowtype',title:'I/O',width:100},
+            {field:'flowtype',title:'Flow Type',width:100},
             {field:'action',title:'Action',width:150,align:'center',
                 formatter:function(value,row,index){
                     if (row.editing){

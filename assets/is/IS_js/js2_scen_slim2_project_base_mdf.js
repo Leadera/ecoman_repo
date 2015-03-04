@@ -125,7 +125,7 @@ function beginISPotentialByAllFlows() {
                                         {field:'flow',title:'Flow',width:100},
                                         {field:'unit',title:'Unit',width:100},
                                         {field:'quality',title:'Quality',width:100},
-                                        {field:'flowtype',title:'I/O',width:100},
+                                        {field:'flowtype',title:'Flow Type',width:100},
                                         {field:'availability',title:'Availability',width:100},
                                         {field:'quality',title:'Quality',width:100},
                                         {field:'output_location',title:'Output Loc.',width:100},
@@ -416,7 +416,7 @@ function beginISPotentialByAllFlows() {
             {field:'qntty',title:'Quantity',width:100},
             {field:'unit',title:'Unit',width:100},
             {field:'quality',title:'Quality',width:100},
-            {field:'flowtype',title:'I/O',width:100}
+            {field:'flowtype',title:'Flow Type',width:100}
         ]],
          idField:'id',
          singleSelect:true,
@@ -431,7 +431,7 @@ function beginISPotentialByAllFlows() {
             {field:'qntty',title:'Quantity',width:100},
             {field:'unit',title:'Unit',width:100},
             {field:'quality',title:'Quality',width:100},
-            {field:'flowtype',title:'I/O',width:100}
+            {field:'flowtype',title:'Flow Type',width:100}
         ]],
          rownumbers: "true",
          pagination: "true",
@@ -450,7 +450,7 @@ function beginISPotentialByAllFlows() {
             {field:'qntty2',title:'Quantity',width:100},
             {field:'flow',title:'Flow',width:100},
             //{field:'quality',title:'Quality',width:100},
-            {field:'flowtype',title:'I/O',width:100},
+            {field:'flowtype',title:'Flow Type',width:100},
             {field:'action',title:'Action',width:150,align:'center',
                 formatter:function(value,row,index){
                     if (row.editing){
@@ -589,7 +589,7 @@ function beginISPotentialByAllFlows() {
         columns:[[
               {field:'company',title:'Company',width:100},
               {field:'flow',title:'Flow',width:100},
-              {field:'flowtype',title:'I/O',width:100},
+              {field:'flowtype',title:'Flow Type',width:100},
               {field:'flow_family_name',title:'Flow Family',width:100},
               {field:'qntty',title:'Quantity',width:100},
               {field:'unit',title:'Unit',width:100},
