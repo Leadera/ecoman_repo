@@ -580,14 +580,16 @@ function beginISPotentialByAllFlows() {
             
     //new company flow table
     $('#tt_grid2').datagrid({
-        sortName : 'flow',
+        //sortName : 'flow',
         collapsible:true,
         idField:'id',
         toolbar:'#tb',
         rownumbers: "true",
         pagination: "true",
+        remoteSort : true,
+        multiSort : true,
         columns:[[
-              {field:'company',title:'Company',width:100},
+              {field:'company',title:'Company',width:100, sortable:true},
               {field:'flow',title:'Flow',width:100,sortable:true},
               {field:'flowtype',title:'Flow Type',width:100},
               {field:'flow_family_name',title:'Flow Family',width:100},
