@@ -514,7 +514,7 @@
     
     //new company flow table
     $('#tt_grid').datagrid({
-        //sortName : 'flow',
+        sortName : 'company',
         collapsible:true,
         idField:'id',
         toolbar:'#tb',
