@@ -16,7 +16,7 @@
 -->
 <input type ="hidden" value='<?php echo $project_id; ?>' id ='prj_id' name='prj_id'></input>
 <div class="col-md-12">
-    <div id="cc" class="easyui-layout" data-options="fit:true" style="height:1000px;">
+    <div id="cc" class="easyui-layout" data-options="fit:true" style="height:700px;">
         <!--<div data-options="region:'north'" style="height:50px"></div>-->
         <div data-options="region:'south',split:true" style="height:550px; padding-bottom:200px;">
             <div class="easyui-layout" data-options="fit:true">
@@ -39,33 +39,34 @@
             </div> 
         </div>
         
-        <div data-options="region:'west',split:true" title="Flow Categories" style="width:10%;">
+        <div data-options="region:'west',split:true" title="Flows" style="width:10%;">
             <ul id="tt_tree" class="easyui-tree" ></ul>
         </div>
         <div id="tt_grid_div" data-options="region:'center',title:'IS Potentials Analysis Settings'">
             
-            <div id="p" class="easyui-panel" title="Company/Flow Panel" style="margin: auto 0;height:440px"
-                 data-options="iconCls:'icon-save',collapsible:true,closable:true">
-                     <table id="tt_grid" data-options="fit:true" class="easyui-datagrid" title="Company Flow Sets" style="" 
+            <div id="p" class="easyui-panel" title="Company/Flow Panel" style="margin: auto 0;"
+                 data-options="iconCls:'icon-save',collapsible:true,closable:true,fit:true">
+                     <table id="tt_grid" data-options="fit:true" class="easyui-datagrid" title="Company Flow Sets" 
+                            style="height:440px" 
                            accesskey=""></table>
                 
             </div>
             
-            <div id="p2" class="easyui-panel" title="IS Projects Panel" style="margin: auto 0;height:400px;"
+            <!--<div id="p2" class="easyui-panel" title="IS Projects Panel" style="margin: auto 0;height:400px;"
                  data-options="iconCls:'icon-save',collapsible:true,closable:true">
                    <table id="tt_grid_scenarios" data-options="fit:true" class="easyui-datagrid" title="IS Scenarios" style=""> 
                 </table>  
                 
-            </div>
+            </div>-->
             
             
              <div id="tb" style="padding:5px;height:auto">
                 <div style="margin-bottom:5px">
                     <!--<a href="#" onclick="loadData();" class="easyui-linkbutton" iconCls="icon-add" plain="true"></a>-->
-                    <a href="#" onclick="getColumnsDynamic();getCompaniesISPotentials();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Calculate IS Potentials</a>
-                    <a href="#" onclick="saveAutoPotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true">Save a table with relevant IS potentials</a>
-                    <a href="#" onclick="selectAllCompanies();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Select all companies</a>
-                    <a href="#" onclick="openIsScenarios();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Table management</a>
+                    <a href="#add" onclick="getColumnsDynamic();getCompaniesISPotentials();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Calculate IS Potentials</a>
+                    <a href="#" onclick="event.preventDefault();saveAutoPotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true">Save a table with relevant IS potentials</a>
+                    <a href="#" onclick="event.preventDefault();selectAllCompanies();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Select all companies</a>
+                    <!--<a href="#" onclick="openIsScenarios();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Table management</a>-->
                     <a href="#" id="printGrid" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
 
                 </div>
@@ -111,8 +112,8 @@
             <div id="tb5" style="padding:5px;height:auto">
                 <div  style="margin-bottom:5px">
                     
-                    <a href="#" onclick="addRowAuto();" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add Potential IS</a>
-                    <a href="#" onclick="deleteAllAutoPotential();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Clear all</a>
+                    <a href="#" name="add" onclick="event.preventDefault();addRowAuto();" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add Potential IS</a>
+                    <a href="#" onclick="event.preventDefault();deleteAllAutoPotential();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Clear all</a>
                     <a href="#" id="printTest" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
                     
                 </div>
@@ -163,8 +164,8 @@
     <div id="tb6" style="padding:5px;height:auto">
         <div style="margin-bottom:5px">
             <!--<a href="#" onclick="deleteISPotential();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">Remove row</a>-->
-            <a href="#" onclick="saveAutoPotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true">Save a table with relevant IS potentials</a>
-            <a href="#" onclick="deleteAllISPotentialAuto();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Clear all</a>
+            <a href="#" onclick="event.preventDefault();saveAutoPotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true">Save a table with relevant IS potentials</a>
+            <a href="#" onclick="event.preventDefault();deleteAllISPotentialAuto();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Clear all</a>
             <a href="#" id="printGridPotentials" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
         </div>
     </div>

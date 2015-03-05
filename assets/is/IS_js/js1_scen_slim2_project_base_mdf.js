@@ -546,7 +546,7 @@
     });
     
     
-    $('#tt_grid_scenarios').datagrid({
+    /*$('#tt_grid_scenarios').datagrid({
                 collapsible:true,
                 url : '../../../Proxy/SlimProxy.php',
                 queryParams : {
@@ -569,7 +569,7 @@
                 //closed:true,
                 //minimized:true,
         });
-    $('#p2').panel('collapse');
+    $('#p2').panel('collapse');*/
     
     $('#tt_grid_dynamic5').datagrid({
         columns:[[

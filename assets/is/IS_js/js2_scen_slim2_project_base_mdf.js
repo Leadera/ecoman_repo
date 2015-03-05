@@ -612,7 +612,7 @@ function beginISPotentialByAllFlows() {
                    }
   });
   
-  $('#tt_grid_scenarios2').datagrid({
+  /*$('#tt_grid_scenarios2').datagrid({
                 collapsible:true,
                 url : '../../../Proxy/SlimProxy.php',
                 queryParams : {
@@ -632,7 +632,7 @@ function beginISPotentialByAllFlows() {
                             {field:'date',title:' Project Date',width:300},
                             {field:'detail',title:' Details',width:100}
                         ]]
-        });
+        });*/
     
     
     $('#printGrid2').click(function() {

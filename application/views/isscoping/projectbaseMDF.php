@@ -15,7 +15,7 @@
 
 
 <div class="col-md-12">
- <div id="cc" class="easyui-layout" style="height:1000px;" data-options="fit:true">
+ <div id="cc" class="easyui-layout" style="height:850px;" data-options="fit:true">
        <!-- <div data-options="region:'north'" style="height:50px"></div>-->
         <div data-options="region:'south',split:true" style="height:550px; padding-bottom:200px;">
            
@@ -74,33 +74,34 @@
             ">-->
             
         </div>
-        <div data-options="region:'west',split:true" title="Flow Categories" style="width:10%;">
+        <div data-options="region:'west',split:true" title="Flows" style="width:10%;">
             <ul id="tt_tree2" class="easyui-tree" ></ul>
             
         </div>
         <div id="tt_grid_div2" data-options="region:'center',title:'Manual IS Potential Detection Settings'">
             
-            <div id="p" class="easyui-panel" title="Company/Flow Panel" style="margin: auto 0;height:440px"
-                 data-options="iconCls:'icon-save',collapsible:true,closable:true">
-                     <table id="tt_grid2" data-options="fit:true" class="easyui-datagrid" title="Company Flow Sets" style="" 
+            <div id="p" class="easyui-panel" title="Company/Flow Panel" style="margin: auto 0;"
+                 data-options="iconCls:'icon-save',collapsible:true,closable:true,fit:true">
+                     <table id="tt_grid2" data-options="fit:true" class="easyui-datagrid" title="Company Flow Sets" 
+                            style="height:440px" 
                            accesskey=""></table>
                 
             </div>
             
-            <div id="p2" class="easyui-panel" title="IS Projects Panel" style="margin: auto 0;height:400px;"
+            <!--<div id="p2" class="easyui-panel" title="IS Projects Panel" style="margin: auto 0;height:400px;"
                  data-options="iconCls:'icon-save',collapsible:true,closable:true">
                    <table id="tt_grid_scenarios2" data-options="fit:true" class="easyui-datagrid" title="IS Scenarios" style=""> 
                 </table>  
                 
-            </div>
+            </div>-->
             
              <div id="tb" style="padding:5px;height:auto">
                 <div style="margin-bottom:5px">
-                    <a href="#" onclick="addRow();" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add Potential IS</a>
-                    <a href="#" onclick="beginISPotential();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Begin Manual IS Process</a>
+                    <!--<a href="#" onclick="addRow();" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add Potential IS</a>-->
+                    <a href="#specificFlow" onclick="beginISPotential();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Begin Manual IS Process</a>
                     <!--<a href="#" onclick="beginISPotentialByAllFlows();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Process By All Flows</a>-->
                     <!--<a href="#" onclick="beginISPotentialByFlows();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Process By Selected Flows</a>-->
-                    <a href="#" onclick="openIsScenarios();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Table management</a>
+                    <!--<a href="#" onclick="openIsScenarios();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Table management</a>-->
                     <a href="#" id="printGrid2" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
                     <!--<a href="#" onclick="savePotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true">Save a table with relevant IS potentials</a>-->
                 </div>
@@ -123,8 +124,8 @@
             
             <div id="tb2" style="padding:5px;height:auto">
                 <div style="margin-bottom:5px">
-                    <a href="#" onclick="beginFlowPotential();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Get specific flow info</a>
-                    <a href="#" onclick="addRow();" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add Potential IS</a>
+                    <a href="#" name="specificFlow" onclick="event.preventDefault();beginFlowPotential();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Get specific flow info</a>
+                    <!--<a href="#" onclick="addRow();" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add Potential IS</a>-->
                     <a href="#" id="printGridPotentials2" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
                 </div>
                 
@@ -133,15 +134,15 @@
             <div id="tb4" style="padding:5px;height:auto">
                 <div style="margin-bottom:5px">
                     <!--<a href="#" onclick="deleteISPotential();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">Remove row</a>-->
-                    <a href="#" onclick="deleteAllISPotential();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Clear all</a>
-                    <a href="#" onclick="savePotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true">Save a table with relevant IS potentials</a>
+                    <a href="#" onclick="event.preventDefault();deleteAllISPotential();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Clear all</a>
+                    <a href="#" onclick="event.preventDefault();savePotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true">Save a table with relevant IS potentials</a>
 
                 </div>
             </div>
             
             <div id="tb3" style="padding:5px;height:auto">
                 <div style="margin-bottom:5px">
-                    <a href="#" onclick="addRow();" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add Potential IS</a>
+                    <a href="#" onclick="event.preventDefault();addRow();" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add Potential IS</a>
                     <a href="#" id="printGridPotentials3" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
                 </div>
             </div>
