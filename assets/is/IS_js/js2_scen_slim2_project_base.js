@@ -118,11 +118,11 @@ function beginISPotentialByAllFlows() {
                             success: function(data, textStatus, jqXHR) {
                               console.warn('success text status-->'+textStatus);
                               $('#tt_grid2').datagrid({
-                                  sortName : 'company',
+                                  sortName : 'flow',
                                   columns:[[
                                         {field:'company',title:'Company',width:100},
                                         {field:'qntty',title:'Quantity',width:100},
-                                        {field:'flow',title:'Flow',width:100},
+                                        {field:'flow',title:'Flow',width:100,sortable:true},
                                         {field:'unit',title:'Unit',width:100},
                                         {field:'quality',title:'Quality',width:100},
                                         {field:'flowtype',title:'Flow Type',width:100}
