@@ -5,6 +5,40 @@
             return parseInt(tr.attr('datagrid-row-index'));
         }
        */
+      
+      function deleteISScenario(target) {
+                //console.warn($('#tt_grid_dynamic5').datagrid('getSelections'));
+                $.messager.confirm('Confirm','Are you sure? Selected row will be deleted...',function(r){
+                    if (r){
+                        var rows = $('#tt_grid_scenarios').datagrid('getRows');
+                        var tr = $(target).closest('tr.datagrid-row');
+			var rowIndex = parseInt(tr.attr('datagrid-row-index'));
+                        var row = rows[rowIndex];
+                        console.log(row);
+                        $.ajax({
+                            url : '../../../Proxy/SlimProxy.php',   
+                            data : {
+                                    url : 'deleteScenario_scn',
+                                    id : row.id
+                            },
+                            type: 'GET',
+                            dataType : 'json',
+                            success: function(data, textStatus, jqXHR) {
+                                $('#tt_grid_scenarios').datagrid('reload');
+                                if(!data['notFound']) {
+                                    
+                                } else {
+                                    /*console.warn('data notfound-->'+textStatus);
+                                    $.messager.alert('Pick sub flow and company','Please select  a sub flow from flow tree!','warning');*/
+                                }
+                            },
+                            error: function(jqXHR , textStatus, errorThrown) {
+                              console.warn('error text status-->'+textStatus);
+                            }
+                        });
+                    }
+                });
+        }
 
         function getColumnsDynamic() {	
             console.warn($("#tt_tree").tree("getChecked"));
@@ -141,7 +175,7 @@
     $(function() { 
         
 
-      $('#tt_grid_dynamic').datagrid({
+      /*$('#tt_grid_dynamic').datagrid({
                 singleSelect:true,
                 url:'../../../Proxy/SlimProxy.php',
                 queryParams : { url:'ISPotentialsNew_json_test_by_project_prj'},
@@ -178,7 +212,7 @@
                             //{field:'sirket_id',title:'ID',width:300},
                             //{field: 'ck',title: 'From Company',checkbox:true},
                             {field: 'company',title: 'From Company'},
-                            {field: 'flow',title: 'Flow'/*,sortable:true*/},
+                            {field: 'flow',title: 'Flow',sortable:true},
                             {field: 'qntty',title: 'Quantity'},
                             {field: 'qnttyunit',title: 'Unit'},
                             {field: 'fromflowtype',title: 'Flow Type'},
@@ -190,7 +224,7 @@
                 fit:true,
                 fitColumns : true,
                
-    });
+    });*/
     
     
     $('#tt_grid_scenarios').datagrid({
@@ -212,7 +246,24 @@
                             {field:'prj_name',title:'IS Table Name',width:300},
                             {field:'syn_name',title:'Synergy Type',width:300},
                             {field:'date',title:' Project Date',width:300},
-                            {field:'detail',title:' Details',width:100}
+                            {field:'detail',title:' Details',width:100},
+                            {field:'action',title:'Action',width:150,align:'center',
+                                formatter:function(value,row,index){
+                                    if (row.editing){
+                                        var s = '<a href="#" onclick="saverow(this)">Save</a> ';
+                                        var c = '<a href="#" onclick="cancelrow(this)">Cancel</a>';
+                                        return s+c;
+                                    } else {
+                                         /*var d = '<button class="btn btn-mini rn_btnDelete" onclick="deleteISScenario(this)">Delete</button>';
+                                        return d;*/
+                                        var d = '<a href="#del" class="easyui-linkbutton" \n\
+                                            plain="true" iconCls="icon-cancel" \n\
+                                            onclick="/*event.prevenDefault();*/\n\
+                                                deleteISScenario(this);">Delete</a> ';
+                                        return d;
+                                    }
+                                }
+                            },
                         ]],
                 singleSelect : true,
                 //closed:true,
@@ -220,7 +271,7 @@
         });
         
         
-        $('#tt_grid_scenarios_details').datagrid({
+        /*$('#tt_grid_scenarios_details').datagrid({
         columns:[[
             {field:'company1',title:'Company',width:100},
             {field:'qntty1',title:'Quantity',width:100},
@@ -240,7 +291,7 @@
                         return d;
                     }
                 }
-            }*/,
+            }*//*,
             /*{field:'map',title:'Map',width:200,align:'center',
                 formatter:function(value,row,index){
                     if (row.editing){
@@ -258,7 +309,7 @@
                     }
                 }
             }*/
-        ]],
+        /*]],
          idField:'id',
          singleSelect:true,
          collapsible:true,
@@ -267,7 +318,7 @@
          onDblClickRow: function(rowIndex, rowData){
                       console.warn(rowData); 
               }
-    });
+    });*/
 
 
 });  
