@@ -388,22 +388,49 @@
                 multiSort:false,
                 view: detailview,
                 detailFormatter:function(index,row){
-                    return '<div class="ddv" style="padding:5px 0">\n\
-                                <div id="oneri1">sssss</div>\n\
-                                <div id="oneri2">sss</div>\n\
-                                <div id="oneri3">sssss</div>\n\
-                            </div>';
+                    return '<div style="padding:2px"><table class="ddv"></table></div>';
                 },
                 onExpandRow: function(index,row){
-                    alert('test');
-                    var ddv = $(this).datagrid('getRowDetail',index).find('div.ddv');
-                    ddv.panel({
-                        height:80,
-                        border:false,
-                        cache:false,
-                        href:'',
-                        onLoad:function(){
+                    var ddv = $(this).datagrid('getRowDetail',index).find('table.ddv');
+                    console.error(row.id);
+                    var strReq = row.id;
+                    var splitArr =strReq.split(",");
+                    console.error(splitArr);
+                    var regArr = {'from':splitArr[0],'to':splitArr[1],'flow':splitArr[2]};
+                    ddv.datagrid({
+                        url:'../../../Proxy/SlimProxy.php',
+                        queryParams : { url:'getFlowDetails_prj',
+                                        items : JSON.stringify(regArr)},
+                        //fitColumns:true,
+                        singleSelect:true,
+                        rownumbers:true,
+                        loadMsg:'',
+                        height:'auto',
+                        columns:[[
+                            {field:'company',title:'Company',width:100},
+                            {field:'potential_energy',title:'Pot.Ener.',width:100},
+                            {field:'potential_energy_unit',title:'Pot.Ener.Un.',width:100},
+                            {field:'supply_cost',title:'Supp.Cost',width:100},
+                            {field:'supply_cost_unit',title:'Supp.Cost.Un.',width:100},
+                            {field:'transport_id',title:'Trans.',width:100},
+                            {field:'entry_date',title:'Ent.Date',width:100},
+                            {field:'concentration',title:'Concen.',width:100},
+                            {field:'pression',title:'Press.',width:100},
+                            {field:'state_id',title:'State',width:100},
+                            {field:'min_flow_rate',title:'Min Flow Rate',width:100},
+                            {field:'min_flow_rate_unit',title:'Min Flow Rate Un.',width:100},
+                            {field:'max_flow_rate',title:'Max Flow Rate',width:100},
+                            {field:'max_flow_rate_unit',title:'Max Flow Rate Un.',width:100},
+                            {field:'ep_unit_id',title:'Ep Un.',width:100},
+                            
+                        ]],
+                        onResize:function(){
                             $('#tt_grid_dynamic').datagrid('fixDetailRowHeight',index);
+                        },
+                        onLoadSuccess:function(){
+                            setTimeout(function(){
+                                $('#tt_grid_dynamic').datagrid('fixDetailRowHeight',index);
+                            },0);
                         }
                     });
                     $('#tt_grid_dynamic').datagrid('fixDetailRowHeight',index);
