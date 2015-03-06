@@ -412,6 +412,7 @@ function beginISPotentialByAllFlows() {
     
       $('#tt_grid_dynamic2').datagrid({
         columns:[[
+            //{field:'cmpny_id',title:'ID',width:10},   
             {field:'flow',title:'Flow Category',width:100},
             {field:'qntty',title:'Quantity',width:100},
             {field:'unit',title:'Unit',width:100},
@@ -423,6 +424,53 @@ function beginISPotentialByAllFlows() {
          collapsible:true,
          fitColumns : true,
          toolbar:'#tb2',
+         view: detailview,
+            detailFormatter:function(index,row){
+                return '<div style="padding:2px"><table class="ddv"></table></div>';
+            },
+            onExpandRow: function(index,row){
+                var ddv = $(this).datagrid('getRowDetail',index).find('table.ddv');
+                console.error(row.company_id);
+                console.error(row.id);
+                var regArr = {'flow':row.id,'company':row.company_id};
+                ddv.datagrid({
+                    url:'../../../Proxy/SlimProxy.php',
+                    queryParams : { url:'getFlowDetailsMan_prj',
+                                    items : JSON.stringify(regArr)},
+                    //fitColumns:true,
+                    singleSelect:true,
+                    rownumbers:true,
+                    loadMsg:'',
+                    height:'auto',
+                    columns:[[
+                        {field:'company',title:'Company',width:100},
+                        {field:'potential_energy',title:'Pot.Ener.',width:100},
+                        {field:'potential_energy_unit',title:'Pot.Ener.Un.',width:100},
+                        {field:'supply_cost',title:'Supp.Cost',width:100},
+                        {field:'supply_cost_unit',title:'Supp.Cost.Un.',width:100},
+                        {field:'transport_id',title:'Trans.',width:100},
+                        {field:'entry_date',title:'Ent.Date',width:100},
+                        {field:'concentration',title:'Concen.',width:100},
+                        {field:'pression',title:'Press.',width:100},
+                        {field:'state_id',title:'State',width:100},
+                        {field:'min_flow_rate',title:'Min Flow Rate',width:100},
+                        {field:'min_flow_rate_unit',title:'Min Flow Rate Un.',width:100},
+                        {field:'max_flow_rate',title:'Max Flow Rate',width:100},
+                        {field:'max_flow_rate_unit',title:'Max Flow Rate Un.',width:100},
+                        {field:'ep_unit_id',title:'Ep Un.',width:100},
+
+                    ]],
+                    onResize:function(){
+                        $('#tt_grid_dynamic2').datagrid('fixDetailRowHeight',index);
+                    },
+                    onLoadSuccess:function(){
+                        setTimeout(function(){
+                            $('#tt_grid_dynamic2').datagrid('fixDetailRowHeight',index);
+                        },0);
+                    }
+                });
+                $('#tt_grid_dynamic').datagrid('fixDetailRowHeight',index);
+            }
     });
     
     $('#tt_grid_dynamic3').datagrid({
