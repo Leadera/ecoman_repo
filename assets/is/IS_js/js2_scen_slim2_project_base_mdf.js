@@ -430,8 +430,8 @@ function beginISPotentialByAllFlows() {
             },
             onExpandRow: function(index,row){
                 var ddv = $(this).datagrid('getRowDetail',index).find('table.ddv');
-                console.error(row.company_id);
-                console.error(row.id);
+                //console.error(row.company_id);
+                //console.error(row.id);
                 var regArr = {'flow':row.id,'company':row.company_id};
                 ddv.datagrid({
                     url:'../../../Proxy/SlimProxy.php',
