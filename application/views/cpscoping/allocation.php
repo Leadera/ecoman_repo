@@ -22,13 +22,19 @@ $(document).ready(function() {
                 $('#flow_type_name').append('<option value="0">Nothing Selected</option>');
            		for(var k = 0 ; k < data.length ; k++){
            			if(data[k].company_process_id == prcss_id){
+           					if(!optionExists(data[k].flow_type_id)){
                     	$('#flow_type_name').append('<option value="'+data[k].flow_type_id+'">'+data[k].flow_type_name+'</option>');
+           					}
                     }
                 }
             }
         });
     });
 });
+
+function optionExists(val) {
+  return $("#flow_type_name option[value='" + val + "']").length !== 0;
+}
 </script>
 <?php if(validation_errors() != NULL ): ?>
     <div class="alert alert-danger">
