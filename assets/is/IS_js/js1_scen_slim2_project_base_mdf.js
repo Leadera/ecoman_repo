@@ -84,7 +84,7 @@
                     company2:obj.tocompany,
                     qntty2:obj.qntty2,
                     flow:obj.flow,
-                    flowtype:'floww type',});
+                    /*flowtype:'floww type',*/});
                  });
                 $('#tt_grid_dynamic').datagrid('clearChecked');
                 

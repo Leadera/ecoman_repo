@@ -223,7 +223,7 @@ function beginISPotentialByAllFlows() {
                     company2:$('#tt_grid_dynamic3').datagrid('getSelections')[0].company,
                     qntty2:$('#tt_grid_dynamic3').datagrid('getSelections')[0].qntty,
                     flow:$('#tt_grid_dynamic2').datagrid('getSelections')[0].flow,
-                    flowtype:'floww type',
+                    /*flowtype:'floww type',*/
                     map:''+$('#tt_grid2').datagrid('getSelections')[0].id+','
                             +$('#tt_grid_dynamic3').datagrid('getSelections')[0].id+'',
                     });
@@ -498,7 +498,7 @@ function beginISPotentialByAllFlows() {
             {field:'qntty2',title:'Quantity',width:100},
             {field:'flow',title:'Flow',width:100},
             //{field:'quality',title:'Quality',width:100},
-            {field:'flowtype',title:'Flow Type',width:100},
+            //{field:'flowtype',title:'Flow Type',width:100},
             {field:'action',title:'Action',width:150,align:'center',
                 formatter:function(value,row,index){
                     if (row.editing){

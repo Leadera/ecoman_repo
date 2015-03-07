@@ -321,60 +321,49 @@
 					row.editing = false;
 					updateActions(index);
 				},
-                        singleSelect : true,
+                        singleSelect : false,
+                        onDblClickRow: function(rowIndex, rowData){ 
+                            $('#tt_grid_scenarios_details').datagrid({
+   
+                            url:'../../../Proxy/SlimProxy.php',
+                            queryParams : { url:'getScenarioDetails_scn',
+                                            id : rowData.id}, 
+                            });
+                            $('#tt_grid_scenarios_details').datagrid('loadData');
+                        },
                         //closed:true,
                         //minimized:true,
         });
         
         
-        /*$('#tt_grid_scenarios_details').datagrid({
-        columns:[[
-            {field:'company1',title:'Company',width:100},
-            {field:'qntty1',title:'Quantity',width:100},
-            {field:'company2',title:'Company',width:100},
-            {field:'qntty2',title:'Quantity',width:100},
-            {field:'flow',title:'Flow',width:100},
-            //{field:'quality',title:'Quality',width:100},
-            {field:'flowtype',title:'Flow Type',width:100},
-            /*{field:'action',title:'Action',width:150,align:'center',
-                formatter:function(value,row,index){
-                    if (row.editing){
-                        var s = '<a href="#" onclick="saverow(this)">Save</a> ';
-                        var c = '<a href="#" onclick="cancelrow(this)">Cancel</a>';
-                        return s+c;
-                    } else {
-                         var d = '<button class="btn btn-mini rn_btnDelete" onclick="deleteISPotential(this)">Delete</button>';
-                        return d;
-                    }
-                }
-            }*//*,
-            /*{field:'map',title:'Map',width:200,align:'center',
-                formatter:function(value,row,index){
-                    if (row.editing){
-                        var s = '<a href="#" onclick="saverow(this)">Save</a> ';
-                        var c = '<a href="#" onclick="cancelrow(this)">Cancel</a>';
-                        return s+c;
-                    } else {
-                        //var e = '<a href="#" onclick="editrow(this)">Edit</a> ';
-                        //var d = '<a href="#" onclick="deleteISPotential(this)" >Delete</a>';
-                        console.log('row satır id bilgileri'+row.id);
-                        var arrSplit = row.id.split(",");
-                         var d = '<button class="btn btn-mini rn_btnDelete" onclick="window.open(\'../IS_OpenLayers/map.php?to_company='+arrSplit[1]+'&from_company='+arrSplit[0]+'\',\'mywindow\',\'width=900,height=900\')">See on Map</button>';
-                        //return e+d;
-                        return d;
-                    }
-                }
-            }*/
-        /*]],
-         idField:'id',
-         singleSelect:true,
-         collapsible:true,
-         fitColumns : true,
-         //toolbar:'#tb4',
-         onDblClickRow: function(rowIndex, rowData){
-                      console.warn(rowData); 
-              }
-    });*/
+        $('#tt_grid_scenarios_details').datagrid({
+                singleSelect:true,
+                url:'../../../Proxy/SlimProxy.php',
+                queryParams : { url:'getScenarioDetails_scn'},
+                collapsible:true,
+                method:'get',
+                idField:'id',
+                toolbar:'#tb5',
+                remoteSort:false,
+                multiSort:false,
+                columns:
+                        [[
+                            //{field:'sirket_id',title:'ID',width:300},
+                            //{field: 'ck',title: 'From Company',checkbox:true},
+                            {field: 'company',title: 'From Company'},
+                            {field: 'flow',title: 'Flow'/*,sortable:true*/},
+                            {field: 'qntty',title: 'Quantity'},
+                            {field: 'qnttyunit',title: 'Unit'},
+                            {field: 'fromflowtype',title: 'Flow Type'},
+                            {field: 'tocompany',title: ' To Company'},
+                            {field: 'qntty2',title: 'Quantity'},
+                            {field: 'qntty2unit',title: 'Unit'},
+                            {field: 'toflowtype',title: 'Flow Type'},
+                        ]],
+                fit:true,
+                fitColumns : true,
+               
+        });
 
 
 });  
