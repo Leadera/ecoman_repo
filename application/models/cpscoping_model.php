@@ -39,6 +39,33 @@ class Cpscoping_model extends CI_Model {
     }
   }
 
+  //get all process info form flow name and flow type
+  public function get_process_id_from_flow_and_type($flow_id,$flow_type_id,$prjct_id){
+    $this->db->select('t_cp_allocation.prcss_id,t_cp_allocation.id');
+    $this->db->from('t_cp_allocation');
+    $this->db->join('t_cp_company_project','t_cp_allocation.id = t_cp_company_project.allocation_id');
+    $this->db->where('t_cp_company_project.prjct_id',$prjct_id);
+    $this->db->where('t_cp_allocation.flow_id',$flow_id);
+    $this->db->where('t_cp_allocation.flow_type_id',$flow_type_id);
+    $query = $this->db->get()->result_array();
+    if(!empty($query)){
+      return $query;
+    }
+  }
+
+  //getting all process of an allocated flow
+  public function get_process_from_allocatedpid_and_cmpny_id($prcss_id,$cmpny_id){
+    $this->db->select('t_prcss.id as id,t_prcss.name as name');
+    $this->db->from('t_prcss');
+    $this->db->join('t_cmpny_prcss','t_prcss.id = t_cmpny_prcss.prcss_id');
+    $this->db->where('t_cmpny_prcss.id',$prcss_id);
+    $this->db->where('t_cmpny_prcss.cmpny_id',$cmpny_id);
+    $query = $this->db->get()->row_array();
+    if(!empty($query)){
+      return $query;
+    }
+  }
+
   public function get_allocation_id_from_ids($company_id,$project_id){
   	$this->db->select('allocation_id');
   	$this->db->from('t_cp_company_project');

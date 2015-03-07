@@ -35,6 +35,39 @@ $(document).ready(function() {
 function optionExists(val) {
   return $("#flow_type_name option[value='" + val + "']").length !== 0;
 }
+
+//already allocated table fill function
+function aatf() {
+/*		$( "#aprocess" ).text($('#prcss_name').val());
+		$( "#aflow" ).text($('#flow_name').val());
+		$( "#atype" ).text($('#flow_type_name').val());*/
+
+		//define variables
+ 		var project_id = "<?php echo $this->session->userdata('project_id'); ?>";
+ 		var process_id = $('#prcss_name').val();
+ 		var flow_id = $('#flow_name').val();
+ 		var flow_type_id = $('#flow_type_name').val();
+ 		var cmpny_id = "<?php echo $this->uri->segment(3); ?>";
+
+		//get other allocation data for a selected flow and flow type
+		$.ajax({ 
+			type: "POST",
+			dataType:'json',
+			url: '<?php echo base_url('cpscoping/allocated_table'); ?>/'+flow_id+'/'+flow_type_id+'/'+cmpny_id+'/'+process_id+'/'+project_id, 
+			success: function(data)
+			{
+				var vPool="";
+				for (var i = 0; i < data.length; i++) {
+					
+					vPool += '<div class="col-md-4"><table style="width:100%;"><tr><td colspan="3" style="height:60px;">' + data[i].prcss_name + '</td></tr><tr><td>Amount</td><td>' + data[i].amount + ' ' + data[i].unit_amount + ' <span class="label label-danger">' + data[i].error_amount + '%</span></td><td style="width:70px;">%'+data[i].allocation_amount+'</td></tr><tr><td>Cost</td><td>' + data[i].cost + ' ' + data[i].unit_cost + ' <span class="label label-danger">' + data[i].error_cost + '%</span></td><td style="width:70px;">%'+data[i].allocation_cost+'</td></tr><tr><td>EP</td><td>' + data[i].env_impact + ' ' + data[i].unit_env_impact + ' <span class="label label-danger">' + data[i].error_ep + '%</span></td><td style="width:70px;">%'+data[i].allocation_env_impact+'</td></tr></table></div>';
+					//alert(data);
+
+				}
+				$( "#aallocated" ).html(vPool);
+				//console.log(data);
+			}
+		});
+	}
 </script>
 <?php if(validation_errors() != NULL ): ?>
     <div class="alert alert-danger">
@@ -53,7 +86,7 @@ function optionExists(val) {
 			<div class="form-group row">
 				<label for="prcss_name" class="control-label col-md-12">Select Process</label>
 				<div class="col-md-12">
-					<select name="prcss_name" id="prcss_name" class="btn-group select select-block">
+					<select name="prcss_name" id="prcss_name" onchange="aatf()" class="btn-group select select-block">
 						<option value="">Nothing Selected</option>
 						<?php $kontrol = array(); $index = 0;?>
 						<?php for($i = 0 ; $i < sizeof($prcss_info) ; $i++): ?>
@@ -66,7 +99,7 @@ function optionExists(val) {
 			<div class="form-group row">
 				<label for="flow_name" class="control-label col-md-12">Select Flow</label>
 				<div class="col-md-12">
-					<select name="flow_name" id="flow_name" class="btn-group select select-block">
+					<select name="flow_name" id="flow_name" onchange="aatf()" class="btn-group select select-block">
 						<option value="">Nothing Selected</option>
 					</select>
 				</div>
@@ -75,7 +108,7 @@ function optionExists(val) {
 			<div class="form-group clearfix row">
 				<label for="flow_type_name" class="control-label col-md-12">Select Flow Type</label>
 				<div class="col-md-12">
-					<select name="flow_type_name" id="flow_type_name" class="btn-group select select-block">
+					<select name="flow_type_name" id="flow_type_name" onchange="aatf()" class="btn-group select select-block">
 						<option value="">Nothing Selected</option>
 					</select>
 				</div>
@@ -180,7 +213,15 @@ function optionExists(val) {
 				
 			</div>
 			<div><button type="submit" class="btn btn-info"><i class="fa fa-floppy-o"></i> Save Allocation Data</button></div>
-		</div>	
+			<div style="margin-top:30px;"><span class="badge">3</span> Check other allocations of selected flow.</div>
+			<hr>
+			<div id="aallocated" class="row">
+<!-- 				<span id="aprocess"></span>
+				<span id="aflow"></span>
+				<span id="atype"></span> -->
+				<div class="col-md-12">There is no previously recorded allocation of selected flow with flow type.</div>
+			</div>
+		</div>
 	</div>
 </form>
 <script type="text/javascript">
