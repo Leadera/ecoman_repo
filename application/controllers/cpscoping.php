@@ -198,6 +198,13 @@ class Cpscoping extends CI_Controller {
 		
 		$data['unit_list'] = $this->flow_model->get_unit_list();
 		$data['allocation'] = $this->cpscoping_model->get_allocation_from_allocation_id($allocation_id);
+		// check if allocation is not set or deleted
+		if(empty($data['allocation'])) { redirect(site_url()); }
+		//check if user has permission to edit
+		$kullanici = $this->session->userdata('user_in');
+		$permission= $this->user_model->can_edit_company($kullanici['id'],$data['allocation']['cmpny_id']);
+		if($permission==FALSE){redirect(site_url());}
+
 
 		$this->form_validation->set_rules('amount', 'Amount', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('allocation_amount', 'Amount Allocation', 'required|trim|integer|max_length[3]|greater_than[0]|xss_clean');
