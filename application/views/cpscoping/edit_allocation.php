@@ -22,7 +22,7 @@
 				var vPool="";
 				for (var i = 0; i < data.length; i++) {
 					
-					vPool += '<div class="col-md-4"><table style="width:100%;"><tr><td colspan="3" style="height:60px;">' + data[i].prcss_name + '</td></tr><tr><td>Amount</td><td>' + data[i].amount + ' ' + data[i].unit_amount + ' <span class="label label-danger">' + data[i].error_amount + '%</span></td><td style="width:70px;">%'+data[i].allocation_amount+'</td></tr><tr><td>Cost</td><td>' + data[i].cost + ' ' + data[i].unit_cost + ' <span class="label label-danger">' + data[i].error_cost + '%</span></td><td style="width:70px;">%'+data[i].allocation_cost+'</td></tr><tr><td>EP</td><td>' + data[i].env_impact + ' ' + data[i].unit_env_impact + ' <span class="label label-danger">' + data[i].error_ep + '%</span></td><td style="width:70px;">%'+data[i].allocation_env_impact+'</td></tr></table></div>';
+					vPool += '<div class="col-md-4"><table style="width:100%;"><tr><td colspan="3" style="height:60px;">' + data[i].prcss_name + '</td></tr><tr><td>Amount</td><td>' + data[i].amount + ' ' + data[i].unit_amount + ' <span class="label label-info">' + data[i].error_amount + '%</span></td><td style="width:70px;">%'+data[i].allocation_amount+'</td></tr><tr><td>Cost</td><td>' + data[i].cost + ' ' + data[i].unit_cost + ' <span class="label label-info">' + data[i].error_cost + '%</span></td><td style="width:70px;">%'+data[i].allocation_cost+'</td></tr><tr><td>EP</td><td>' + data[i].env_impact + ' ' + data[i].unit_env_impact + ' <span class="label label-info">' + data[i].error_ep + '%</span></td><td style="width:70px;">%'+data[i].allocation_env_impact+'</td></tr></table></div>';
 					//alert(data);
 
 				}
@@ -159,7 +159,7 @@
 				</div>
 				
 			</div>
-			<div><button type="submit" class="btn btn-info"><i class="fa fa-floppy-o"></i> Save Edited Allocation Data</button></div>
+			<div><button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> Save Edited Allocation Data</button></div>
 			<div style="margin-top:30px;"><span class="badge">3</span> Check other allocations of selected flow.</div>
 			<hr>
 			<div id="aallocated" class="row">

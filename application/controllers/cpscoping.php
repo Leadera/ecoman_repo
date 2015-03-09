@@ -471,9 +471,9 @@ class Cpscoping extends CI_Controller {
 				if($array[$index]['prcss_id'] == $prcss_id){
 					$doviz_array = $this->dolar_euro_parse();
 					$unit = $array[$index]['unit_cost'];
-					$error_cost = $array[$index]['error_cost'];
-					$error_amount = $array[$index]['error_amount'];
-					$error_ep = $array[$index]['error_ep'];
+					$error_cost = 100-$array[$index]['error_cost'];
+					$error_amount = 100-$array[$index]['error_amount'];
+					$error_ep = 100-$array[$index]['error_ep'];
 					$allocation_env_impact = $array[$index]['allocation_env_impact'];
 
 					if($unit == "Dolar"){
