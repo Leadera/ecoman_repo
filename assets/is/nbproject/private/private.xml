@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="41">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="50">
         <file>
             <url>postgre_json_test2.html</url>
             <bookmark id="38">
@@ -15,15 +15,56 @@
             </bookmark>
         </file>
         <file>
+            <url>IS_js/js2_scen_slim2_project_base_mdf.js</url>
+            <bookmark id="44">
+                <name/>
+                <line>119</line>
+                <key/>
+            </bookmark>
+            <bookmark id="46">
+                <name/>
+                <line>255</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
             <url>IS_js/js1_scen_slim2_project_base_mdf.js</url>
             <bookmark id="40">
                 <name/>
                 <line>166</line>
                 <key/>
             </bookmark>
-            <bookmark id="41">
+            <bookmark id="45">
                 <name/>
-                <line>378</line>
+                <line>390</line>
+                <key/>
+            </bookmark>
+            <bookmark id="43">
+                <name/>
+                <line>577</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>IS_js/scenarios.js</url>
+            <bookmark id="48">
+                <name/>
+                <line>141</line>
+                <key/>
+            </bookmark>
+            <bookmark id="47">
+                <name/>
+                <line>195</line>
+                <key/>
+            </bookmark>
+            <bookmark id="50">
+                <name/>
+                <line>323</line>
+                <key/>
+            </bookmark>
+            <bookmark id="49">
+                <name/>
+                <line>380</line>
                 <key/>
             </bookmark>
         </file>

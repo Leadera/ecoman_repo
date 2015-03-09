@@ -322,7 +322,60 @@
                
         });
         
-        
+        var products = [
+		    {id:'FI-SW-01',name:''},
+		    {id:'K9-DL-01',name:'Dalmation'},
+		    {id:'RP-SN-01',name:'Rattlesnake'},
+		    {id:'RP-LI-02',name:'Iguana'},
+		    {id:'FL-DSH-01',name:'Manx'},
+		    {id:'FL-DLH-02',name:'Persian'},
+		    {id:'AV-CB-01',name:'Amazon Parrot'}
+		];
+        console.log(products);
+        var units = [{id: "1", name: ""},
+                    {id: "2", name: "%"},
+                    {id: "3", name: "1/seconed"},
+                    {id: "4", name: "Amper"},
+                    {id: "5", name: "bar"},
+                    {id: "6", name: "degree"},
+                    {id: "7", name: "dk"},
+                    {id: "8", name: "gram"},
+                    {id: "9", name: "kg"},
+                    {id: "10", name: "KW"},
+                    {id: "11", name: "Liter"},
+                    {id: "12", name: "M"},
+                    {id: "13", name: "m/dk"},
+                    {id: "14", name: "m/min"},
+                    {id: "15", name: "m/s"},
+                    {id: "16", name: "m³/min"},
+                    {id: "17", name: "micrometer"},
+                    {id: "18", name: "mm"},
+                    {id: "19", name: "m²"},
+                    {id: "20", name: "m³"},
+                    {id: "21", name: "mm/s"},
+                    {id: "22", name: "N*m"},
+                    {id: "23", name: "Newton"},
+                    {id: "24", name: "Nm"},
+                    {id: "25", name: "number/pocket"},
+                    {id: "26", name: "Pa"},
+                    {id: "27", name: "Pa/min"},
+                    {id: "28", name: "pocket"},
+                    {id: "29", name: "quantity"},
+                    {id: "30", name: "rpm"},
+                    {id: "31", name: "steps"},
+                    {id: "32", name: "unit"},
+                    {id: "33", name: "unit/min"},
+                    {id: "34", name: "volt"},
+                    {id: "35", name: "volt,Watt"},
+                    {id: "36", name: "year"},
+                    {id: "37", name: "kWh "},
+                    {id: "38", name: "hours/year"},
+                    {id: "39", name: "month(s)"},
+                    {id: "40", name: "week(s)"}];
+        var transport = [];
+        var state = [{id: "1", name: "Solid"},
+                        {id: "2", name: "Liquid"},
+                        {id: "3", name: "Gas"},];
         $('#tt_grid_scenarios_details_edit').datagrid({
                         url:'../../../Proxy/SlimProxy.php',
                         queryParams : { url:'getFlowDetails_prj',
@@ -336,18 +389,119 @@
                         columns:[[
                             {field:'company',title:'Company',width:100},
                             {field:'potential_energy',title:'Pot.Ener.',width:100,editor:{type:'numberbox',options:{precision:2}}},
-                            {field:'potential_energy_unit',title:'Pot.Ener.Un.',width:100},
+                            {field:'potential_energy_unit',title:'Pot.Ener.Un.',width:100,
+                                formatter:function(value){
+                                                    for(var i=0; i<units.length; i++){
+                                                            if (units[i].id == value) return units[i].name;
+                                                    }
+                                                    return value;
+                                            },
+                                editor:{
+                                        type:'combobox',
+                                        options:{
+                                                valueField:'id',
+                                                textField:'name',
+                                                data:units,
+                                                required:false
+                                        }
+                                }
+                            },
                             {field:'supply_cost',title:'Supp.Cost',width:100,editor:{type:'numberbox',options:{precision:2}}},
-                            {field:'supply_cost_unit',title:'Supp.Cost.Un.',width:100},
-                            {field:'transport_id',title:'Trans.',width:100},
+                            {field:'supply_cost_unit',title:'Supp.Cost.Un.',width:100,
+                                formatter:function(value){
+                                                    for(var i=0; i<units.length; i++){
+                                                            if (units[i].id == value) return units[i].name;
+                                                    }
+                                                    return value;
+                                            },
+                                editor:{
+                                        type:'combobox',
+                                        options:{
+                                                valueField:'id',
+                                                textField:'name',
+                                                data:units,
+                                                required:false
+                                        }
+                                }
+                            
+                            },
+                            {field:'transport_id',title:'Trans.',width:100,
+                                formatter:function(value){
+                                                    for(var i=0; i<units.length; i++){
+                                                            if (units[i].id == value) return units[i].name;
+                                                    }
+                                                    return value;
+                                            },
+                                editor:{
+                                        type:'combobox',
+                                        options:{
+                                                valueField:'id',
+                                                textField:'name',
+                                                data:transport,
+                                                required:false
+                                        }
+                                }
+                            
+                            },
                             {field:'entry_date',title:'Ent.Date',width:100},
                             {field:'concentration',title:'Concen.',width:100,editor:{type:'numberbox'}},
                             {field:'pression',title:'Press.',width:100,editor:{type:'numberbox'}},
-                            {field:'state_id',title:'State',width:100},
+                            {field:'state_id',title:'State',width:100,
+                                formatter:function(value){
+                                                    for(var i=0; i<units.length; i++){
+                                                            if (units[i].id == value) return units[i].name;
+                                                    }
+                                                    return value;
+                                            },
+                                editor:{
+                                        type:'combobox',
+                                        options:{
+                                                valueField:'id',
+                                                textField:'name',
+                                                data:state,
+                                                required:false
+                                        }
+                                }
+                            
+                            },
                             {field:'min_flow_rate',title:'Min Flow Rate',width:100,editor:{type:'numberbox',options:{precision:2}}},
-                            {field:'min_flow_rate_unit',title:'Min Flow Rate Un.',width:100},
+                            {field:'min_flow_rate_unit',title:'Min Flow Rate Un.',width:100,
+                            
+                                formatter:function(value){
+                                                    for(var i=0; i<units.length; i++){
+                                                            if (units[i].id == value) return units[i].name;
+                                                    }
+                                                    return value;
+                                            },
+                                editor:{
+                                        type:'combobox',
+                                        options:{
+                                                valueField:'id',
+                                                textField:'name',
+                                                data:units,
+                                                required:false
+                                        }
+                                }
+                            },
                             {field:'max_flow_rate',title:'Max Flow Rate',width:100,editor:{type:'numberbox',options:{precision:2}}},
-                            {field:'max_flow_rate_unit',title:'Max Flow Rate Un.',width:100},
+                            {field:'max_flow_rate_unit',title:'Max Flow Rate Un.',width:100,
+                                formatter:function(value){
+                                                    for(var i=0; i<units.length; i++){
+                                                            if (units[i].id == value) return units[i].name;
+                                                    }
+                                                    return value;
+                                            },
+                                editor:{
+                                        type:'combobox',
+                                        options:{
+                                                valueField:'id',
+                                                textField:'name',
+                                                data:units,
+                                                required:false
+                                        }
+                                }
+                            
+                            },
                             {field:'ep_unit_id',title:'Ep Un.',width:100,editor:'text'},
                             {field:'action',title:'Action',width:80,align:'center',
                                     formatter:function(value,row,index){
@@ -359,14 +513,40 @@
                                             } else {
                                                     var e = '<a href="javascript:void(0)" onclick="editrowCmpnyFlow(this)">Edit</a> ';
                                                     //var d = '<a href="javascript:void(0)" onclick="deleteISScenario(this);">Delete</a>';
-                                                    var d = '<a href="javascript:void(0)" onclick="deleterowCmpnyFlow(this);">Delete</a>';
-                                                    return e+d;
-                                                    //return e;
+                                                    //var d = '<a href="javascript:void(0)" onclick="deleterowCmpnyFlow(this);">Delete</a>';
+                                                    //return e+d;
+                                                    return e;
                                             }
                                     }
                             }
                             
                         ]],
+                        onBeforeLoad: function() {
+                            /*$.ajax({
+                                url: '../../../Proxy/SlimProxy.php',
+                                data : {
+                                        url : 'getUnitsAll_scn',
+                                },
+                                type: 'POST',
+                                dataType : 'json',
+                                success: function(data, textStatus, jqXHR) {
+                                  console.warn('success text status-->'+textStatus);
+                                  console.warn(data);
+                                  //units = data;
+                                  //console.warn(units);
+                                  //var arr = $.map(data, function (value, key) { return value; });
+                                  //console.log(arr);
+                                  $.each(data, function( index, value ) {
+                                        console.log(value);
+                                        //units.push(value);
+                                      });
+                                  console.log(units);
+                                },
+                                error: function(jqXHR , textStatus, errorThrown) {
+                                  console.warn('error text status-->'+textStatus);
+                                }
+                            });*/
+                        },
                         onBeforeEdit:function(index,row){
 					row.editing = true;
 					updateActionsCmpnyFlow(index);
@@ -379,7 +559,7 @@
                             } 
                             else {
                                 row.editing = false;
-                                $.messager.confirm('Confirm','Are you sure? Scenario name will be updated...',function(r){
+                                $.messager.confirm('Confirm','Are you sure? Company Flow data will be updated...',function(r){
                                     if (r){
 
                                         console.log(row);
@@ -403,7 +583,7 @@
                                                     /*console.warn('data notfound-->'+textStatus);
                                                     $.messager.alert('Pick sub flow and company','Please select  a sub flow from flow tree!','warning');*/
                                                 }
-                                                $('#tt_grid_scenarios').datagrid('reload');
+                                                $('#tt_grid_scenarios_details_edit').datagrid('reload');
                                             },
                                             error: function(jqXHR , textStatus, errorThrown) {
                                               console.warn('error text status-->'+textStatus);
