@@ -5,7 +5,7 @@
 <script type="text/javascript" src="<?php echo asset_url('is/jquery.easyui.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo asset_url('is/locale/easyui-lang-tr.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo asset_url('is/locale_IS/IS_lang_tr.js'); ?>"></script>
-<script type="text/javascript" src="http://www.jeasyui.com/easyui/datagrid-detailview.js"></script>
+<!--<script type="text/javascript" src="http://www.jeasyui.com/easyui/datagrid-detailview.js"></script>-->
 
 <!--<script src="<?php /*echo asset_url('is/src/datagrid-filter.js');*/ ?>"></script>-->
 <script src="<?php echo asset_url('is/IS_js/scenarios.js'); ?>"></script>
@@ -42,7 +42,7 @@
         <!--<div data-options="region:'west',split:true" title="Flow Categories" style="width:10%;">
             <ul id="tt_tree" class="easyui-tree" ></ul>
         </div>-->
-        <div id="tt_grid_div" data-options="region:'center',title:'IS Scenarios Analysis Settings'">
+        <!--<div id="tt_grid_div" data-options="region:'center',title:'IS Scenarios Analysis Settings'">-->
             
             <!--<div id="p" class="easyui-panel" title="Company/Flow Panel" style="margin: auto 0;height:440px"
                  data-options="iconCls:'icon-save',collapsible:true,closable:true">
@@ -53,17 +53,26 @@
             
             <div id="p2" class="easyui-panel" title="IS Projects Panel" style="margin: auto 0;height:480px;"
                  data-options="iconCls:'icon-save',collapsible:true,closable:true">
-                   <table id="tt_grid_scenarios" data-options="fit:true" class="easyui-datagrid" title="IS Scenarios" style=""> 
+                   <table id="tt_grid_scenarios" data-options="fit:true"  title="IS Scenarios" style=""> 
                 </table>  
                 
             </div>
             
-            <div id="p3" class="easyui-panel" title="IS Project Details" style="margin: auto 0;height:480px;"
+            <div id="p3" class="easyui-panel" title="IS Project Details" style="margin: auto 0;height:300px;"
                  data-options="iconCls:'icon-save',collapsible:true,closable:true">
-                   <table id="tt_grid_scenarios_details" data-options="fit:true" class="easyui-datagrid"  title="IS Scenario Details" style=""> 
+                   <table id="tt_grid_scenarios_details" data-options="fit:true"   title="IS Scenario Details" style=""> 
                 </table>  
                 
             </div>
+            
+            <div id="p4" class="easyui-panel" title="IS Project Edit Details" style="margin: auto 0;height:200px;"
+                 data-options="iconCls:'icon-save',collapsible:true,closable:true">
+                   <table id="tt_grid_scenarios_details_edit" data-options="fit:true"   title="IS Scenario Details" style=""> 
+                </table>  
+                
+            </div>
+            
+            
             
             
              <div id="tb" style="padding:5px;height:auto">

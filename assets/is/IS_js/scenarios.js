@@ -35,10 +35,10 @@
         }
         
         function updateActions(index){
-            console.log(index);
+            //console.log(index);
             console.log('updateActions');
-            /*var row = $('#tt_grid_scenarios').datagrid('getSelected');
-            console.log('updateActions');
+            var row = $('#tt_grid_scenarios').datagrid('getSelected');
+            /*console.log('updateActions');
             console.log(row);*/
                 $('#tt_grid_scenarios').datagrid('updateRow',{
                         index: index,
@@ -51,6 +51,7 @@
         }
         function editrow(target){
         console.log('editrow');
+        console.log(target);
         var rows = $('#tt_grid_scenarios').datagrid('getRows'); 
         var row = rows[getRowIndex(target)];
         console.log(row);
@@ -126,8 +127,39 @@
         
 
         
+        function updateActionsCmpnyFlow(index){
+            //console.log(index);
+            console.log('updateActionsCmpnyFlow');
+            var row = $('#tt_grid_scenarios_details_edit').datagrid('getSelected');
+            /*console.log('updateActions');
+            console.log(row);*/
+                $('#tt_grid_scenarios_details_edit').datagrid('updateRow',{
+                        index: index,
+                        row:{}
+                });
+        }
         
-        
+        function editrowCmpnyFlow(target){
+        console.log('editrowCmpnyFlow');
+        console.log(target);
+        var rows = $('#tt_grid_scenarios_details_edit').datagrid('getRows'); 
+        var row = rows[getRowIndex(target)];
+        console.log(row);
+        //$('#tt').datagrid('selectRow',getRowIndex(target));
+        $('#tt_grid_scenarios_details_edit').datagrid('beginEdit', getRowIndex(target));
+
+        }
+        function saverowCmpnyFlow(target){
+
+                $('#tt_grid_scenarios_details_edit').datagrid('endEdit', getRowIndex(target));
+                var rows = $('#tt_grid_scenarios_details_edit').datagrid('getRows'); 
+                var row = rows[getRowIndex(target)];
+                console.log(row);
+                //console.error(getRowIndex(target));
+        }
+        function cancelrowCmpnyFlow(target){
+                $('#tt_grid_scenarios_details_edit').datagrid('cancelEdit', getRowIndex(target));
+        }
         
         
         
@@ -181,56 +213,57 @@
 					row.editing = true;
 					updateActions(index);
 				},
-				onAfterEdit:function(index,row){
-                                    console.log(row);
-                                    console.log('onAfterEdit');
-                                    if(row.prj_name==''){
-                                       $.messager.alert('Warning','Fill Scenario Name!','warning');
-                                    } 
-                                    else {
-                                        row.editing = false;
-                                        $.messager.confirm('Confirm','Are you sure? Scenario name will be updated...',function(r){
-                                            if (r){
-                                                
-                                                console.log(row);
-                                                $.ajax({
-                                                    url : '../../../Proxy/SlimProxy.php',   
-                                                    data : {
-                                                            url : 'updateScenario_scn',
-                                                            id : row.id,
-                                                            scenario : row.prj_name
-                                                    },
-                                                    type: 'GET',
-                                                    dataType : 'json',
-                                                    success: function(data, textStatus, jqXHR) {
-                                                        
-                                                        
-                                                        if(!data['notFound']) {
-                                                            if(data['id']>0) $.messager.alert('Scenario Updated','Updated succesfully!','info');
-                                                            //if(data['id']==0) $.messager.alert('Scenario Updated','Updated succesfully!','info');
-                                                        } else {
-                                                            $.messager.alert('Update Failure','Update failure!','error');
-                                                            /*console.warn('data notfound-->'+textStatus);
-                                                            $.messager.alert('Pick sub flow and company','Please select  a sub flow from flow tree!','warning');*/
-                                                        }
-                                                        $('#tt_grid_scenarios').datagrid('reload');
-                                                    },
-                                                    error: function(jqXHR , textStatus, errorThrown) {
-                                                      console.warn('error text status-->'+textStatus);
-                                                      $.messager.alert('Update Failure','Update failure!','error');
-                                                    }
-                                                });
+                        onAfterEdit:function(index,row){
+                            console.log(row);
+                            console.log('onAfterEdit');
+                            if(row.prj_name==''){
+                               $.messager.alert('Warning','Fill Scenario Name!','warning');
+                            } 
+                            else {
+                                row.editing = false;
+                                $.messager.confirm('Confirm','Are you sure? Scenario name will be updated...',function(r){
+                                    if (r){
+
+                                        console.log(row);
+                                        $.ajax({
+                                            url : '../../../Proxy/SlimProxy.php',   
+                                            data : {
+                                                    url : 'updateScenario_scn',
+                                                    id : row.id,
+                                                    scenario : row.prj_name
+                                            },
+                                            type: 'GET',
+                                            dataType : 'json',
+                                            success: function(data, textStatus, jqXHR) {
+
+
+                                                if(!data['notFound']) {
+                                                    if(data['id']>0) $.messager.alert('Scenario Updated','Updated succesfully!','info');
+                                                    //if(data['id']==0) $.messager.alert('Scenario Updated','Updated succesfully!','info');
+                                                } else {
+                                                    $.messager.alert('Update Failure','Update failure!','error');
+                                                    /*console.warn('data notfound-->'+textStatus);
+                                                    $.messager.alert('Pick sub flow and company','Please select  a sub flow from flow tree!','warning');*/
+                                                }
+                                                $('#tt_grid_scenarios').datagrid('reload');
+                                            },
+                                            error: function(jqXHR , textStatus, errorThrown) {
+                                              console.warn('error text status-->'+textStatus);
+                                              $.messager.alert('Update Failure','Update failure!','error');
                                             }
                                         });
-                                        //updateActions(index);
-                                    }	
-				},
-				onCancelEdit:function(index,row){
-				console.log('onCancelEdit');
-					row.editing = false;
-					updateActions(index);
-				},
+                                    }
+                                });
+                                //updateActions(index);
+                            }	
+                        },
+                        onCancelEdit:function(index,row){
+                        console.log('onCancelEdit');
+                                row.editing = false;
+                                updateActions(index);
+                        },
                         singleSelect : false,
+                        multiSelect : false,
                         onDblClickRow: function(rowIndex, rowData){ 
                             $('#tt_grid_scenarios_details').datagrid({
    
@@ -238,11 +271,13 @@
                             queryParams : { url:'getScenarioDetails_scn',
                                             id : rowData.id}, 
                             });
-                            $('#tt_grid_scenarios_details').datagrid('loadData');
                         },
                         //closed:true,
                         //minimized:true,
         });
+        
+        
+        
         
         
         $('#tt_grid_scenarios_details').datagrid({
@@ -271,8 +306,129 @@
                         ]],
                 fit:true,
                 fitColumns : true,
+                onDblClickRow: function(rowIndex, rowData){ 
+                            //console.error(rowData);
+                            var strReq = rowData.id;
+                            var splitArr =strReq.split(",");
+                            var regArr = {'from':splitArr[0],'to':splitArr[1],'flow':splitArr[2]};
+                            $('#tt_grid_scenarios_details_edit').datagrid({
+   
+                            url:'../../../Proxy/SlimProxy.php',
+                            queryParams : { url:'getFlowDetails_prj',
+                                            items : JSON.stringify(regArr),
+                                           }, 
+                            });
+                        },
                
         });
+        
+        
+        $('#tt_grid_scenarios_details_edit').datagrid({
+                        url:'../../../Proxy/SlimProxy.php',
+                        queryParams : { url:'getFlowDetails_prj',
+                                        /*items : JSON.stringify(regArr)*/},
+                        //fitColumns:true,
+                        singleSelect:false,
+                        multiSelect : false,
+                        rownumbers:true,
+                        //loadMsg:'',
+                        height:'auto',
+                        columns:[[
+                            {field:'company',title:'Company',width:100},
+                            {field:'potential_energy',title:'Pot.Ener.',width:100,editor:{type:'numberbox',options:{precision:2}}},
+                            {field:'potential_energy_unit',title:'Pot.Ener.Un.',width:100},
+                            {field:'supply_cost',title:'Supp.Cost',width:100,editor:{type:'numberbox',options:{precision:2}}},
+                            {field:'supply_cost_unit',title:'Supp.Cost.Un.',width:100},
+                            {field:'transport_id',title:'Trans.',width:100},
+                            {field:'entry_date',title:'Ent.Date',width:100},
+                            {field:'concentration',title:'Concen.',width:100,editor:{type:'numberbox'}},
+                            {field:'pression',title:'Press.',width:100,editor:{type:'numberbox'}},
+                            {field:'state_id',title:'State',width:100},
+                            {field:'min_flow_rate',title:'Min Flow Rate',width:100,editor:{type:'numberbox',options:{precision:2}}},
+                            {field:'min_flow_rate_unit',title:'Min Flow Rate Un.',width:100},
+                            {field:'max_flow_rate',title:'Max Flow Rate',width:100,editor:{type:'numberbox',options:{precision:2}}},
+                            {field:'max_flow_rate_unit',title:'Max Flow Rate Un.',width:100},
+                            {field:'ep_unit_id',title:'Ep Un.',width:100,editor:'text'},
+                            {field:'action',title:'Action',width:80,align:'center',
+                                    formatter:function(value,row,index){
+                                            if (row.editing){
+                                                    var s = '<a href="javascript:void(0)" onclick="saverowCmpnyFlow(this)">Save</a> ';
+                                                    var c = '<a href="javascript:void(0)" onclick="cancelrowCmpnyFlow(this)">Cancel</a>';
+                                                    return s+c;
+                                                    //return s;
+                                            } else {
+                                                    var e = '<a href="javascript:void(0)" onclick="editrowCmpnyFlow(this)">Edit</a> ';
+                                                    //var d = '<a href="javascript:void(0)" onclick="deleteISScenario(this);">Delete</a>';
+                                                    var d = '<a href="javascript:void(0)" onclick="deleterowCmpnyFlow(this);">Delete</a>';
+                                                    return e+d;
+                                                    //return e;
+                                            }
+                                    }
+                            }
+                            
+                        ]],
+                        onBeforeEdit:function(index,row){
+					row.editing = true;
+					updateActionsCmpnyFlow(index);
+				},
+                        onAfterEdit:function(index,row){
+                            console.log(row);
+                            console.log('onAfterEdit');
+                            if(row.prj_name==''){
+                               $.messager.alert('Warning','Fill Scenario Name!','warning');
+                            } 
+                            else {
+                                row.editing = false;
+                                $.messager.confirm('Confirm','Are you sure? Scenario name will be updated...',function(r){
+                                    if (r){
+
+                                        console.log(row);
+                                        $.ajax({
+                                            url : '../../../Proxy/SlimProxy.php',   
+                                            data : {
+                                                    url : 'updateScenario_scn',
+                                                    id : row.id,
+                                                    scenario : row.prj_name
+                                            },
+                                            type: 'GET',
+                                            dataType : 'json',
+                                            success: function(data, textStatus, jqXHR) {
+
+
+                                                if(!data['notFound']) {
+                                                    if(data['id']>0) $.messager.alert('Scenario Updated','Updated succesfully!','info');
+                                                    //if(data['id']==0) $.messager.alert('Scenario Updated','Updated succesfully!','info');
+                                                } else {
+                                                    $.messager.alert('Update Failure','Update failure!','error');
+                                                    /*console.warn('data notfound-->'+textStatus);
+                                                    $.messager.alert('Pick sub flow and company','Please select  a sub flow from flow tree!','warning');*/
+                                                }
+                                                $('#tt_grid_scenarios').datagrid('reload');
+                                            },
+                                            error: function(jqXHR , textStatus, errorThrown) {
+                                              console.warn('error text status-->'+textStatus);
+                                              $.messager.alert('Update Failure','Update failure!','error');
+                                            }
+                                        });
+                                    }
+                                });
+                                //updateActions(index);
+                            }	
+                        },
+                        onCancelEdit:function(index,row){
+                        console.log('onCancelEdit');
+                                row.editing = false;
+                                updateActionsCmpnyFlow(index);
+                        },
+                        /*onResize:function(){
+                            $('#tt_grid_dynamic').datagrid('fixDetailRowHeight',index);
+                        },
+                        onLoadSuccess:function(){
+                            setTimeout(function(){
+                                $('#tt_grid_dynamic').datagrid('fixDetailRowHeight',index);
+                            },0);
+                        }*/
+                    });
 
 
 });  
