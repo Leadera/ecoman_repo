@@ -9,12 +9,17 @@ class Cpscoping_model extends CI_Model {
     $this->db->insert('t_cp_allocation',$data);    
   }
 
+  public function update_cp_allocation($data,$id){
+    $this->db->where('t_cp_allocation.id',$id);   
+    $this->db->update('t_cp_allocation',$data); 
+  }
+
   public function set_cp_allocation_main($data){
     $this->db->insert('t_cp_company_project',$data);    
   }
 
   public function get_allocation_from_allocation_id($allocation_id){
-  	$this->db->select('t_cp_allocation.id as allocation_id, t_cp_allocation.prcss_id as prcss_id,t_prcss.name as prcss_name, t_flow.name as flow_name, t_flow_type.name as flow_type_name,amount,unit_amount,allocation_amount,error_amount,cost,unit_cost,allocation_cost,error_cost,env_impact,unit_env_impact,allocation_env_impact,error_ep,t_cp_allocation.flow_id as flow_id,t_cp_allocation.prcss_id as prcss_id,t_cp_allocation.flow_type_id as flow_type_id, kpi, unit_kpi, kpi_error, benchmark_kpi, best_practice');
+  	$this->db->select('t_cp_allocation.id as allocation_id, t_cp_allocation.prcss_id as prcss_id,t_prcss.name as prcss_name, t_flow.name as flow_name, t_flow_type.name as flow_type_name,amount,unit_amount,allocation_amount,error_amount,cost,unit_cost,allocation_cost,error_cost,env_impact,unit_env_impact,allocation_env_impact,error_ep,t_cp_allocation.flow_id as flow_id,t_cp_allocation.prcss_id as prcss_id,t_cp_allocation.flow_type_id as flow_type_id, kpi, unit_kpi, kpi_error, benchmark_kpi, best_practice, reference, unit_reference, t_cmpny_prcss.cmpny_id');
   	$this->db->from('t_cp_allocation');
   	$this->db->join('t_flow','t_flow.id = t_cp_allocation.flow_id');
   	$this->db->join('t_flow_type', 't_flow_type.id = t_cp_allocation.flow_type_id');

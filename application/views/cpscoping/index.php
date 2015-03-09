@@ -81,7 +81,9 @@ $(document).ready(function() {
                 <td><?php echo $flow_prcss[$i][$k]['prcss_name']; ?></td>
                 <td><?php echo $flow_prcss[$i][$k]['flow_name']; ?></td>
                 <td><?php echo $flow_prcss[$i][$k]['flow_type_name']; ?></td>
-                <td><a class="label label-danger" href="<?php echo base_url('cpscoping/delete/'.$flow_prcss[$i][$k]['allocation_id'].'/'.$flow_prcss[$i][$k]['project_id'].'/'.$flow_prcss[$i][$k]['company_id']); ?>">Delete Allocation</a></td>
+                <td>
+                    <a class="label label-info" href="<?php echo base_url('cpscoping/edit_allocation/'.$flow_prcss[$i][$k]['allocation_id']); ?>">Edit Allocation</a>
+                    <a class="label label-danger" href="<?php echo base_url('cpscoping/delete/'.$flow_prcss[$i][$k]['allocation_id'].'/'.$flow_prcss[$i][$k]['project_id'].'/'.$flow_prcss[$i][$k]['company_id']); ?>">Delete Allocation</a></td>
             </tr>   
         <?php endfor ?>
         </table>

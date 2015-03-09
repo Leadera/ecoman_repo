@@ -73,7 +73,7 @@ $route['search_result/(:any)/(:any)'] = "cpscoping/search_result/$1/$2";
 
 //CP
 $route['cpscoping/allocated_table/(:any)/(:any)/(:any)/(:any)/(:any)'] = "cpscoping/get_already_allocated_allocation_except_given/$1/$2/$3/$4/$5";
-
+$route['cpscoping/edit_allocation/(:any)'] = "cpscoping/edit_allocation/$1";
 $route['cpscoping/file_upload/(:any)/(:any)'] = "cpscoping/cp_scoping_file_upload/$1/$2";
 $route['cpscoping/is_candidate_insert/(:any)/(:any)'] = "cpscoping/cp_is_candidate_insert/$1/$2";
 $route['cpscoping/is_candidate_control/(:any)'] = "cpscoping/cp_is_candidate_control/$1";
