@@ -13,13 +13,13 @@ $(document).ready(function() {
             url: '<?php echo base_url('cp_allocation_array');?>/'+cmpny_id, 
             success: function(data)
             {
-            	$('#flow_name').append('<option value="0">Nothing Selected</option>');
+            	$('#flow_name').append('<option value="">Nothing Selected</option>');
            		for(var k = 0 ; k < data.length ; k++){
            			if(data[k].company_process_id == prcss_id){
                     	$('#flow_name').append('<option value="'+data[k].flow_id+'">'+data[k].flowname+'</option>');
                     }
                 }
-                $('#flow_type_name').append('<option value="0">Nothing Selected</option>');
+                $('#flow_type_name').append('<option value="">Nothing Selected</option>');
            		for(var k = 0 ; k < data.length ; k++){
            			if(data[k].company_process_id == prcss_id){
            					if(!optionExists(data[k].flow_type_id)){
