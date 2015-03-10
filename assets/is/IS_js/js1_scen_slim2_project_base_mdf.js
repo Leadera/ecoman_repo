@@ -631,7 +631,7 @@
                         //var d = '<a href="#" onclick="deleteISPotential(this)" >Delete</a>';
                         console.log('row satır id bilgileri'+row.id);
                         var arrSplit = row.id.split(",");
-                         var d = '<button class="btn btn-mini rn_btnDelete" onclick="window.open(\'../IS_OpenLayers/map.php?to_company='+arrSplit[1]+'&from_company='+arrSplit[0]+'\',\'mywindow\',\'width=900,height=900\')">See on Map</button>';
+                         var d = '<button class="btn btn-mini rn_btnDelete" onclick="window.open(\'../IS_OpenLayers/map.php?to_company='+arrSplit[1]+'&from_company='+arrSplit[0]+'&prj_id='+document.getElementById('prj_id').value+'\',\'mywindow\',\'width=900,height=900\')">See on Map</button>';
                         //return e+d;
                         return d;
                     }
