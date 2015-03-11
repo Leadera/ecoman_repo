@@ -156,6 +156,8 @@ class User extends CI_Controller {
 	// User önceden hangi bilgileri girdigini unutmus ise hatırlatma amaclida kullanilir
 	public function user_profile_update(){
 		$data = $this->user_model->get_session_user();
+		$userbilgisi = $this->user_model->cmpny_prsnl($data['id']);
+		//print_r($userbilgisi);
 		//form kontroller
 		$this->form_validation->set_rules('name','Name','trim|required|xss_clean|callback__string_control');
 		$this->form_validation->set_rules('surname','Surname','trim|required|xss_clean|callback__string_control');
@@ -222,13 +224,16 @@ class User extends CI_Controller {
 			$this->session->set_userdata('user_in',$session_array);
 
 			$user_id = $this->session->userdata('user_in')['id'];
-
-			$cmpny_prsnl = array(
-					'user_id' => $user_id,
-					'cmpny_id' => $this->input->post('company'),
-					'is_contact' => '0'
-				);
-			$this->company_model->update_cmpny_prsnl($user_id,$cmpny_prsnl);
+			//echo $userbilgisi['cmpny_id'];
+			//echo $this->input->post('company');
+			if($userbilgisi['cmpny_id']!==$this->input->post('company')){
+				$cmpny_prsnl = array(
+						'user_id' => $user_id,
+						'cmpny_id' => $this->input->post('company'),
+						'is_contact' => '0'
+					);
+				$this->company_model->update_cmpny_prsnl($user_id,$userbilgisi['cmpny_id'],$cmpny_prsnl);
+			}
 
 			redirect('', 'refresh');
 		}

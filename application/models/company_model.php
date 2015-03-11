@@ -140,8 +140,9 @@ class Company_model extends CI_Model {
     $this->db->insert('t_cmpny_prsnl',$data);
   }
 
-  public function update_cmpny_prsnl($user_id,$data){
+  public function update_cmpny_prsnl($user_id,$cmpny_id,$data){
     $this->db->where('user_id', $user_id);
+    $this->db->where('cmpny_id', $cmpny_id);
     $this->db->update('t_cmpny_prsnl', $data);
   }
 
