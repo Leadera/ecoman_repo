@@ -40,6 +40,15 @@ class Company_model extends CI_Model {
     return $query->result_array();
   }
 
+  public function get_my_companies($user_id){
+    $this->db->select('*');
+    $this->db->from('t_cmpny');
+    $this->db->join('t_cmpny_prsnl', 't_cmpny_prsnl.cmpny_id = t_cmpny.id');
+    $this->db->where('t_cmpny_prsnl.user_id', $user_id);
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
   public function get_company($id){
     $this->db->select('*');
     $query = $this->db->get_where('t_cmpny', array('id' => $id));

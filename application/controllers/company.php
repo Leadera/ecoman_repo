@@ -163,6 +163,16 @@ class Company extends CI_Controller{
 		$this->load->view('template/footer');
 	}
 
+	public function show_my_companies(){
+		$kullanici = $this->session->userdata('user_in');
+		$data['companies'] = $this->company_model->get_my_companies($kullanici['id']);
+
+		//print_r($data['companies']);
+		$this->load->view('template/header');
+		$this->load->view('company/show_my_companies',$data);
+		$this->load->view('template/footer');
+	}
+
 	public function companies($term){
 		$this->load->library('googlemaps');
 
