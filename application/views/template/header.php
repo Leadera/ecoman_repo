@@ -50,15 +50,10 @@
 
     <nav class="navbar navbar-default navbar-lg" style="margin-bottom:0px;">
       <a class="navbar-brand" href="<?php echo base_url(); ?>" style="color:white;">ECOMAN</a>
-      <ul class="nav navbar-nav navbar-left">
-        <?php if ($this->session->userdata('user_in') !== FALSE): ?>
-          <li><a href="<?php echo base_url('projects'); ?>"><i class="fa fa-globe"></i> Projects</a></li>
-        <?php endif ?>
-        <li><a href="<?php echo base_url('company'); ?>"><i class="fa fa-building-o"></i> Companies</a></li>
-      </ul>
-      <form class="navbar-form navbar-left" action="<?php echo base_url('search') ?>" method="post" role="search">
+      
+      <form class="navbar-form navbar-left" action="<?php echo base_url('search') ?>" method="post" role="search" style="display: table;">
         <div class="form-group">
-          <div class="input-group">
+          <div class="input-group" style="display:block;">
             <input name="term" class="form-control" id="navbarInput-01" type="search" placeholder="Search">
             <span class="input-group-btn">
               <button type="submit" class="btn"><span class="fui-search"></span></button>
@@ -83,10 +78,46 @@
         <?php endif ?>
       </ul>
     </nav>
-    <div style="background-color: rgb(240, 240, 240); padding: 10px 20px; margin-bottom: 20px; ">
+    <div style="background-color: rgb(240, 240, 240); margin-bottom: 20px;">
+      <ul class="nav navbar-nav navbar-left">
+          <li>
+
+          <div class="dropdown">
+            <button style="font-size: 16px;padding: 15px 21px;line-height: 23px;font-weight: 700;" class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+              <i class="fa fa-globe"></i> Projects
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-inverse" role="menu" aria-labelledby="dropdownMenu1" style="padding:13px;">
+              <?php if ($this->session->userdata('user_in') !== FALSE): ?>
+                <li><a style="color:white;" href="<?php echo base_url('myprojects'); ?>">My Projects</a></li>
+              <?php endif ?>
+              <li><a style="color:white;" href="<?php echo base_url('projects'); ?>">All Projects</a></li>
+            </ul>
+          </div>
+          </li>
+        <li>
+          <div class="dropdown">
+            <button style="font-size: 16px;padding: 15px 21px;line-height: 23px;font-weight: 700;" class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+              <i class="fa fa-user"></i> Members
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-inverse" role="menu" aria-labelledby="dropdownMenu1" style="padding:13px;">
+              <li><a style="color:white;" href="<?php echo base_url('company'); ?>"><i class="fa fa-building-o"></i> Companies</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="<?php echo base_url('whatwedo'); ?>"><i class="fa fa-question-circle"></i> What We Do</a></li>
+        <li><a href="<?php echo base_url('functionalities'); ?>"><i class="fa fa-dashboard"></i> Functionalities</a></li>
+      </ul>
+      <div class="clearfix"></div>
+      </div>
       <?php if ($this->session->userdata('user_in') !== FALSE): ?>
+        <div style=" padding: 10px 20px; margin-bottom: 20px; margin-top:-20px; border-top:1px solid #d0d0d0; border-bottom:1px solid #d0d0d0;">
         <?php if($this->session->userdata('project_id') !== FALSE): ?>
-        <ul class="list-inline" style="margin:0px;">
+          
+
+          <div class="">
+        <ul class="list-inline pull-left" style="margin:0px;">
           <li class="head-li"><a href="<?php echo base_url('cpscoping'); ?>"><i class="fa fa-bar-chart"></i> Cleaner Production Allocations</a></li>
           <li class="head-li">
             <div class="dropdown">
@@ -104,19 +135,22 @@
             </div>
           </li>
         </ul>
-        <ul class="list-inline">
+        <ul class="list-inline pull-right" style="margin: 8px 0 8px 0;">
           <li class="head-li">You are working on a project named: <a href="<?php echo base_url('project/'.$this->session->userdata('project_id')); ?>"><?php echo $this->session->userdata('project_name'); ?></a>
           </li>
-          <li class="head-li"><a href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-minus-square-o"></i> Close this project</a></li>
+          <li class="head-li"><a href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-times-circle"></i> Close this project</a></li>
         </ul>
-      <?php else: ?>
-        <ul class="list-inline" style="margin:0px;">
-          <li class="head-li"><a href="<?php echo base_url('openproject'); ?>"><i class="fa fa-plus-square-o"></i> Open a Project</a></li>
-        </ul>
+        </div>
+        <?php else: ?>
+          <ul class="list-inline" style="margin:0px;">
+            <li class="head-li"><a href="<?php echo base_url('openproject'); ?>"><i class="fa fa-plus-square-o"></i> Open a Project</a></li>
+          </ul>
         <?php endif ?>
-      <?php else: ?>
-        <p style="font-size:14px; margin:0px;">
-          To use the extended features of this web site, please register.
-        </p>
-      <?php endif ?>
-    </div>
+        <div class="clearfix"></div>
+      </div>
+    <?php else: ?>
+      <!-- <p style="font-size:14px; margin:0px;">
+        To use the extended features of this web site, please register.
+      </p> -->
+    <?php endif ?>
+    

@@ -149,10 +149,22 @@ class Project extends CI_Controller{
 			$data['is_consultant'] = $this->user_model->is_user_consultant($kullanici['id']);
 		else
 			$data['is_consultant'] = false;
+		$data['projects'] = $this->project_model->get_projects();
+		$this->load->view('template/header');
+		$this->load->view('project/show_all_project',$data);
+		$this->load->view('template/footer');
+	}
+
+	public function show_my_project(){
+		$kullanici = $this->session->userdata('user_in');
+		if($kullanici['id']!=null)
+			$data['is_consultant'] = $this->user_model->is_user_consultant($kullanici['id']);
+		else
+			$data['is_consultant'] = false;
  
 		$data['projects'] = $this->project_model->get_consultant_projects($kullanici['id']);
 		$this->load->view('template/header');
-		$this->load->view('project/show_all_project',$data);
+		$this->load->view('project/show_my_project',$data);
 		$this->load->view('template/footer');
 	}
 

@@ -109,6 +109,7 @@ $route['openproject'] = "project/open_project";
 $route['update_project/(:any)'] = "project/update_project/$1";
 $route['newproject'] = "project/new_project";
 $route['projects'] = "project/show_all_project";
+$route['myprojects'] = "project/show_my_project";
 $route['contactperson']="project/contact_person";
 $route['project/(:any)'] = "project/view_project/$1";
 

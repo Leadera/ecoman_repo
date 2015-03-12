@@ -236,3 +236,15 @@ label{
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
     padding:8px!important;
 }
+.homemain{
+    background: url('../images/home.jpg');
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin-top: -20px;
+}
+.footer{
+    padding: 15px;
+    border-top: 1px dashed #d0d0d0;
+    margin-top: 30px;
+}

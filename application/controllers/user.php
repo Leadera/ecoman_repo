@@ -9,6 +9,11 @@ class User extends CI_Controller {
 	}
 
 	public function user_register(){
+
+		$kullanici = $this->session->userdata('user_in');
+		if(!empty($kullanici)){
+			redirect('', 'refresh');
+		}
 		//form kontroller
 		$this->form_validation->set_rules('name','Name','required|trim|xss_clean');
 		$this->form_validation->set_rules('surname','Surname','required|trim|xss_clean');
@@ -97,6 +102,10 @@ class User extends CI_Controller {
 	}
 
 	public function user_login(){
+		$kullanici = $this->session->userdata('user_in');
+		if(!empty($kullanici)){
+			redirect('', 'refresh');
+		}
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|xss_clean');
 		$this->form_validation->set_rules('password', 'Password', 'required|xss_clean|trim|callback_check_user');
 
