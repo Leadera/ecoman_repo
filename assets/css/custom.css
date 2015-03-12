@@ -17,9 +17,20 @@ body{
 
 /* bootstrap üstüne */
 .navbar-default{
-    background-color:#1F9832;
     border-radius: 0px;
     color:#f0f0f0;
+    /* IE10 Consumer Preview */ 
+    background-image: -ms-linear-gradient(bottom, #0F6E1E 0%, #1F9832 100%);
+    /* Mozilla Firefox */ 
+    background-image: -moz-linear-gradient(bottom, #0F6E1E 0%, #1F9832 100%);
+    /* Opera */ 
+    background-image: -o-linear-gradient(bottom, #0F6E1E 0%, #1F9832 100%);
+    /* Webkit (Safari/Chrome 10) */ 
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0F6E1E), color-stop(1, #1F9832));
+    /* Webkit (Chrome 11+) */ 
+    background-image: -webkit-linear-gradient(bottom, #0F6E1E 0%, #1F9832 100%);
+    /* W3C Markup, IE10 Release Preview */ 
+    background-image: linear-gradient(to top, #0F6E1E 0%, #1F9832 100%);
 }
 .navbar-default .navbar-nav > li > a{
     color:#fff;
