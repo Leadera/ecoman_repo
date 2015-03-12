@@ -83,7 +83,7 @@
           <li>
 
           <div class="dropdown">
-            <button style="font-size: 16px;padding: 15px 21px;line-height: 23px;font-weight: 700;" class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+            <button style="font-size: 16px;padding: 15px 21px;line-height: 23px;font-weight: 400;" class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
               <i class="fa fa-globe"></i> Projects
               <span class="caret"></span>
             </button>
@@ -97,12 +97,13 @@
           </li>
         <li>
           <div class="dropdown">
-            <button style="font-size: 16px;padding: 15px 21px;line-height: 23px;font-weight: 700;" class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+            <button style="font-size: 16px;padding: 15px 21px;line-height: 23px;font-weight: 400;" class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
               <i class="fa fa-user"></i> Members
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu dropdown-inverse" role="menu" aria-labelledby="dropdownMenu1" style="padding:13px;">
               <li><a style="color:white;" href="<?php echo base_url('company'); ?>"><i class="fa fa-building-o"></i> Companies</a></li>
+              <li><a style="color:white;" href="<?php echo base_url('users'); ?>"><i class="fa fa-group"></i> Consultants</a></li>
             </ul>
           </div>
         </li>

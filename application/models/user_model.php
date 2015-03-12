@@ -90,6 +90,14 @@ class User_model extends CI_Model {
     return $query->result_array();
   }
 
+  public function get_all_users(){
+    $this->db->select('*');
+    $this->db->from('t_user');
+    $this->db->order_by("name", "asc"); 
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
   public function get_worker_projects_from_userid($id){
       $this->db->select('t_prj.name,t_prj.id as proje_id');
       $this->db->from('t_prj');

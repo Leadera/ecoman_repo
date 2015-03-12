@@ -99,6 +99,7 @@ $route['cluster'] = "cluster/cluster_to_match_company";
 $route['become_consultant'] = "user/become_consultant";
 $route['profile_update'] = "user/user_profile_update";
 $route['user/(:any)'] = "user/user_profile/$1";
+$route['users'] = "user/show_all_users";
 $route['register'] = "user/user_register";
 $route['login'] = "user/user_login";
 $route['logout'] = "user/user_logout";
