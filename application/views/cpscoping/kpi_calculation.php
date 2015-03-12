@@ -25,14 +25,14 @@
 							flow_type_array[index] = data['allocation'][i].flow_type_name;
 
 							kpi[index] = 100-data['allocation'][i].kpi/data['allocation'][i].benchmark_kpi*100;
-							console.log(kpi[index]);
+							//console.log(kpi[index]);
 							kpi2[index] = 100-Math.abs(kpi[index]);
 							index++;
 						}
 					}
-					console.log(kpi2);
-					var data = new google.visualization.DataTable();
-
+					//console.log(kpi2);
+					//var data = new google.visualization.DataTable();
+					//console.log(data);
 					var newData = new Array(index);
 		          	for(var i = 0 ; i < index+1 ; i++){
 		          		newData[i] = new Array(4);
@@ -61,7 +61,7 @@
 		          	}
 		          	}
 
-		          	var data = google.visualization.arrayToDataTable(newData);
+		          	var data2 = google.visualization.arrayToDataTable(newData);
 
 		          	var options = {
 				        height: 600,
@@ -73,7 +73,7 @@
 				        
 				    };
 				    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-				    chart.draw(data, options);
+				    chart.draw(data2, options);
 				}
 			}
 		});
@@ -111,7 +111,7 @@
 	<div class="col-md-12" style="margin-bottom: 10px;">
 		<a class="btn btn-default btn-sm" href="<?php echo base_url('cpscoping/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/show'); ?>">Show CP Scoping Data</a>
 	</div>
-	<div class="col-md-8">
+	<div class="col-md-8" id="8lik">
 
 		<?php /*
 
@@ -210,6 +210,7 @@
 			        toolbar: '#tb',
 			        url: '<?php echo base_url("kpi_json/".$this->uri->segment(2).'/'.$this->uri->segment(3)); ?>',
 			        method: 'get',
+			        fitColumns: true,
 			        onClickRow: onClickRow
 			    ">
 				<thead>
@@ -220,7 +221,7 @@
 				        <th data-options="field:'kpi',align:'center',width:100">KPI</th>
 				        <th data-options="field:'unit_kpi',align:'center',width:100">KPI Unit</th>
 				        <th data-options="field:'benchmark_kpi',width:100,align:'center',editor:'numberbox'">Benchmark KPI</th>
-				        <th data-options="field:'best_practice',width:240,align:'center',editor:'text'">Best Practice</th>
+				        <th data-options="field:'best_practice',width:200,align:'center',editor:'text'">Best Practice</th>
 				    </tr>
 				</thead>
 			</table>
@@ -270,7 +271,9 @@
 							      data:row,
 					          success: function(data, textStatus, jqXHR) {
 					          	console.log(data);
-					          	alert(data);
+					          	//alert(data);
+					          	$("#alerts").append(data);
+					          	//$("#alerts").delay(4000).fadeOut( "fast" );
 										},
 								    error: function(jqXHR, textStatus, errorThrown) {
 										  console.log(textStatus, errorThrown);
@@ -287,18 +290,9 @@
             var rows = $('#dg').datagrid('getChanges');
             alert(rows.length+' rows are changed!');
         }
-        var $element=$(window),lastWidth=$element.width(),lastHeight=$element.height();	
-function checkForChanges(){			
-   if ($element.width()!=lastWidth||$element.height()!=lastHeight){	
-	$('#panel').panel('resize');
-	$('#datagrid').datagrid('resize'); 
-	lastWidth = $element.width();lastHeight=$element.height();	 
-   }
-   setTimeout(checkForChanges, 500);
-}
-checkForChanges();
     </script>
 
+    <div id="alerts" style="margin-top: 20px;font-size: 13px;color: darkgrey;"></div>
 
 	</div>
 
@@ -369,3 +363,112 @@ checkForChanges();
 	</div>
 <?php endif ?>
 		    
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+	function deneme() {
+		google.load("visualization", "1", {packages:["corechart"]});
+
+		var prjct_id = <?php echo $this->uri->segment(2); ?>;
+		var cmpny_id = <?php echo $this->uri->segment(3); ?>;
+
+		var prcss_array = new Array();
+		var flow_array = new Array();
+		var flow_type_array = new Array();
+		var kpi = new Array();
+		var kpi2 = new Array();
+		var index = 0;
+		$.ajax({
+			type: "POST",
+			dataType: 'json',
+			url: '<?php echo base_url('kpi_calculation_chart'); ?>/'+prjct_id+'/'+cmpny_id,
+			success: function(data){
+				if(data['allocation'].length != 0){
+					for(var i = 0 ; i < data['allocation'].length ; i++){
+						if(data['allocation'][i].benchmark_kpi != 0){
+							prcss_array[index] = data['allocation'][i].prcss_name;
+							flow_array[index] = data['allocation'][i].flow_name;
+							flow_type_array[index] = data['allocation'][i].flow_type_name;
+
+							kpi[index] = 100-data['allocation'][i].kpi/data['allocation'][i].benchmark_kpi*100;
+							//console.log(kpi[index]);
+							kpi2[index] = 100-Math.abs(kpi[index]);
+							index++;
+						}
+					}
+					//console.log(kpi2);
+					var data = new google.visualization.DataTable();
+					//console.log(data);
+					var newData = new Array(index);
+		          	for(var i = 0 ; i < index+1 ; i++){
+		          		newData[i] = new Array(4);
+		          	}
+
+		          	newData[0][0] = 'Genre';
+		          	newData[0][1] = 'Fair Value';
+		          	newData[0][2] = 'Error Value';
+		          	newData[0][3] = { role: 'annotation' };
+		          	newData[0][4] = { role: 'style' };
+
+
+		          	for(var i = 1 ; i < index+1 ; i++){
+		          		newData[i][0] = prcss_array[i-1]+"-"+flow_array[i-1]+"-"+flow_type_array[i-1];
+		          		if(kpi[i-1]<0){
+		          			newData[i][1] = 100;
+		          		}else{
+		          		newData[i][1] = kpi2[i-1];
+		          		}
+		          		newData[i][2] = Math.abs(kpi[i-1]);
+		          		newData[i][3] = '';
+		          		if(kpi[i-1]<0){
+		          			newData[i][4] = 'red';
+		          		}else{
+		          			newData[i][4] = 'green';
+		          	}
+		          	}
+
+		          	var data2 = google.visualization.arrayToDataTable(newData);
+
+		          	var options = {
+				        height: 600,
+				        legend: { position: 'top', maxLines: 30 },
+				        bar: { groupWidth: '75%' },
+				        isStacked: true,
+				        vAxis: {title: "% (Percentage)"},
+				        hAxis: {title: 'Process Name - Flow Name - Flow Type Name', titleTextStyle: {color: 'green'}},
+				        
+				    };
+				    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+				    chart.draw(data2, options);
+				}
+			}
+		});
+	    /*var data = google.visualization.arrayToDataTable([
+			['API Category', 'Social', 'Error', { role: 'annotation' } ],
+		  	['2011', 98, 53, ''],
+		  	['2012', 151, 34, ''],
+		  	['2013', 69, 27, ''],
+		]);
+
+	    var options = {
+		    width: 1000,
+		    height: 550,
+		    legend: { position: 'top', maxLines: 3, textStyle: {color: 'black', fontSize: 16 } },
+			isStacked: true,
+
+			// Displays tooltip on selection.
+			// tooltip: { trigger: 'selection' }, 
+		 };
+
+	    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+	    chart.draw(data, options);
+
+		// Selects a set point on chart.
+		// chart.setSelection([{row:0,column:1}]) 
+
+		// Renders chart as PNG image 
+		// chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';*/
+	};
+</script>
+<script type="text/javascript">
+	deneme();
+</script>

@@ -53,3 +53,6 @@
   margin: 0 5px;
   padding: 6px;
 }
+.datagrid-header, .datagrid-toolbar, .datagrid-pager, .datagrid-footer-inner{
+	border:none;
+}

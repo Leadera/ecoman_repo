@@ -691,6 +691,7 @@ class Cpscoping extends CI_Controller {
 		//$return = $_POST;
 		
 		//$flag= is_numeric($return['benchmark_kpi']);
+		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 
 		$this->form_validation->set_rules('benchmark_kpi', 'Benchmark Kpi', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('best_practice', 'Best Practice', 'trim|xss_clean');
@@ -710,13 +711,13 @@ class Cpscoping extends CI_Controller {
 					      'best_practice' => $best_practice
 					    );
 					    $this->cpscoping_model->kpi_insert($insert_array,$allo_id['allocation_id']);
-					   	$return = "New data has been saved to database.";
+					   	$return = $query['prcss_name']." ".$query['flow_name']." ".$query['flow_type_name']."'s new data has been saved to database.</br>";
 					}
 				}
 			}
 		}
 		else{
-			$return = validation_errors();
+			$return = "<span style='color:red; font-size:13px;'>".validation_errors()."</span>";
 		}
 		echo json_encode($return);
 
