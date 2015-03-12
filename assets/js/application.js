@@ -51,69 +51,6 @@ String.prototype.repeat = function(num) {
     // Tags Input
     $(".tagsinput").tagsInput();
 
-    // jQuery UI Sliders
-    var $slider = $("#slider");
-    if ($slider.length > 0) {
-      $slider.slider({
-        min: 1,
-        max: 5,
-        value: 3,
-        orientation: "horizontal",
-        range: "min"
-      }).addSliderSegments($slider.slider("option").max);
-    }
-
-    var $slider2 = $("#slider2");
-    if ($slider2.length > 0) {
-      $slider2.slider({
-        min: 1,
-        max: 5,
-        values: [3, 4],
-        orientation: "horizontal",
-        range: true
-      }).addSliderSegments($slider2.slider("option").max);
-    }
-
-    var $slider3 = $("#slider3")
-      , slider3ValueMultiplier = 100
-      , slider3Options;
-
-    if ($slider3.length > 0) {
-      $slider3.slider({
-        min: 1,
-        max: 5,
-        values: [3, 4],
-        orientation: "horizontal",
-        range: true,
-        slide: function(event, ui) {
-          $slider3.find(".ui-slider-value:first")
-            .text("$" + ui.values[0] * slider3ValueMultiplier)
-            .end()
-            .find(".ui-slider-value:last")
-            .text("$" + ui.values[1] * slider3ValueMultiplier);
-        }
-      });
-
-      slider3Options = $slider3.slider("option");
-      $slider3.addSliderSegments(slider3Options.max)
-        .find(".ui-slider-value:first")
-        .text("$" + slider3Options.values[0] * slider3ValueMultiplier)
-        .end()
-        .find(".ui-slider-value:last")
-        .text("$" + slider3Options.values[1] * slider3ValueMultiplier);
-    }
-
-    var $verticalSlider = $("#vertical-slider");
-    if ($verticalSlider.length) {
-      $verticalSlider.slider({
-        min: 1,
-        max: 5,
-        value: 3,
-        orientation: "vertical",
-        range: "min"
-      }).addSliderSegments($verticalSlider.slider("option").max, "vertical");
-    }
-
     // Add style class name to a tooltips
     $(".tooltip").addClass(function() {
       if ($(this).prev().attr("data-tooltip-style")) {
@@ -137,30 +74,6 @@ String.prototype.repeat = function(num) {
     $(document).on('click', 'a[href="#fakelink"]', function (e) {
       e.preventDefault();
     });
-
-    // jQuery UI Spinner
-    $.widget( "ui.customspinner", $.ui.spinner, {
-      widgetEventPrefix: $.ui.spinner.prototype.widgetEventPrefix,
-      _buttonHtml: function() { // Remove arrows on the buttons
-        return "" +
-        "<a class='ui-spinner-button ui-spinner-up ui-corner-tr'>" +
-          "<span class='ui-icon " + this.options.icons.up + "'></span>" +
-        "</a>" +
-        "<a class='ui-spinner-button ui-spinner-down ui-corner-br'>" +
-          "<span class='ui-icon " + this.options.icons.down + "'></span>" +
-        "</a>";
-      }
-    });
-
-    $('#spinner-01, #spinner-02, #spinner-03, #spinner-04, #spinner-05').customspinner({
-      min: -99,
-      max: 99
-    }).on('focus', function () {
-      $(this).closest('.ui-spinner').addClass('focus');
-    }).on('blur', function () {
-      $(this).closest('.ui-spinner').removeClass('focus');
-    });
-
 
     // Focus state for append/prepend inputs
     $('.input-group').on('focus', '.form-control', function () {
@@ -186,22 +99,6 @@ String.prototype.repeat = function(num) {
       $this.closest('tr')[check ? 'addClass' : 'removeClass']('selected-row');
       if (toggle) $this.closest('.table').find('.toggle-all :checkbox').checkbox(checkAll ? 'check' : 'uncheck');
     });
-
-    // jQuery UI Datepicker
-    var datepickerSelector = '#datepicker-01';
-    $(datepickerSelector).datepicker({
-      showOtherMonths: true,
-      selectOtherMonths: true,
-      dateFormat: "yy-mm-dd",
-      yearRange: '-1:+1'
-    }).prev('.btn').on('click', function (e) {
-      e && e.preventDefault();
-      $(datepickerSelector).focus();
-    });
-    $.extend($.datepicker, {_checkOffset:function(inst,offset,isFixed){return offset}});
-
-    // Now let's align datepicker with the prepend button
-    $(datepickerSelector).datepicker('widget').css({'margin-left': -$(datepickerSelector).prev('.input-group-btn').find('.btn').outerWidth()});
 
     // Switch
     $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();

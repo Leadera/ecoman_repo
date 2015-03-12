@@ -104,13 +104,16 @@
 		// chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';*/
 	};
 </script>
-
+<script type="text/javascript">
+	deneme();
+</script>
 <?php if (!empty($kpi_values)): ?>
 	<div class="col-md-12" style="margin-bottom: 10px;">
 		<a class="btn btn-default btn-sm" href="<?php echo base_url('cpscoping/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/show'); ?>">Show CP Scoping Data</a>
 	</div>
-	<div class="col-md-7">
-		<?php 
+	<div class="col-md-8">
+
+		<?php /*
 
 		if(validation_errors() != NULL ){
 		    echo '<div class="alert">';
@@ -123,10 +126,11 @@
 		}
 
 		 ?>
-		<p>KPI View and Edit Table</p>
 		<?php 
-    		$kontrol = array(); $index = 0; $prcss_adet = 0; $kontrol_prcss = array(); $index_prcss = 0; 
-    	?>
+  		$kontrol = array(); $index = 0; $prcss_adet = 0; $kontrol_prcss = array(); $index_prcss = 0; 
+  	?>
+    <table style="width:100%;"><tr><th style="width:100px;">Process</th><th style="width:100px;">Flow</th><th style="width:150px;">KPI</th><th style="width:200px;">Benchmark KPI</th><th>Best Practice</th></tr></table>
+
 		<?php 
 			foreach ($kpi_values as $kpi){
 					if(!empty($kpi['prcss_name'])){
@@ -157,9 +161,6 @@
 	   			$index++;
 	   			if($deger == 0):
 			 ?>
-		   		<div class="cp-heading-kpi">
-		   			Process: <?php echo $kpi['prcss_name'];?>
-		    	</div>
 		    	<div style="margin-bottom: 25px;">
 		    		<?php 
 		    			$kontrol_flow = array(); $index_flow = 0;
@@ -178,15 +179,20 @@
 					   				}
 					   			}
 					   			$index_flow++;
-					   			if($deger_flow == 0){
-					   				echo form_open_multipart("kpi_insert/".$this->uri->segment(2)."/".$this->uri->segment(3)."/".$kpi_values[$i]['flow_id']."/".$kpi_values[$i]['flow_type_id']."/".$kpi_values[$i]['prcss_id']);
-					   				echo "<table class='table table-bordered' style='margin-bottom:0px;'>";
-			   						echo "<tr><th colspan='6'>Flow: ".$kpi_values[$i]['flow_name']."-".$kpi_values[$i]['flow_type_name']."</th></tr>";
-			   						echo "<tr><td>Kpi</td><td style='width:130px;'>".$kpi_values[$i]['kpi']."</td><td>Kpi Unit Value</td><td>".$kpi_values[$i]['unit_kpi']."</td></tr>";
-			   						echo "<tr><td>Benchmark KPI</td><td><input type='text' class='form-control' id='benchmark_kpi' name='benchmark_kpi' value='".$kpi_values[$i]['benchmark_kpi']."'></td><td>Best Practice</td><td><textarea class='form-control' id='best_practice' name='best_practice' rows='3'>".$kpi_values[$i]['best_practice']."</textarea></td><td colspan='2'><div class='col-md-4'><button style='margin-bottom:5px;' type='submit' class='btn btn-inverted'>Save Data</button></div></td></tr>";
-			   						echo "</table>";
-			   						echo "</form>";
-			   					}
+					   			 if($deger_flow == 0): ?>
+					   				<?php echo form_open_multipart("kpi_insert/".$this->uri->segment(2)."/".$this->uri->segment(3)."/".$kpi_values[$i]['flow_id']."/".$kpi_values[$i]['flow_type_id']."/".$kpi_values[$i]['prcss_id']); ?>
+					   				<table class='table table-bordered' style='margin-bottom:0px;'>
+					   				<tr>
+					   					<td style="width:100px;"><?php echo $kpi_values[$i]['prcss_name']; ?></td>
+					   					<td style="width:100px;"><?php echo $kpi_values[$i]['flow_name']."-".$kpi_values[$i]['flow_type_name']; ?></td>
+					   					<td style="width:150px;"><?php echo $kpi_values[$i]['kpi']." ".$kpi_values[$i]['unit_kpi']; ?></td>
+					   					<td style="width:200px;"><input type='text' class='form-control' id='benchmark_kpi' name='benchmark_kpi' value='<?php echo $kpi_values[$i]['benchmark_kpi']; ?>'></td>
+					   					<td><textarea class='form-control' id='best_practice' name='best_practice' rows='3'><?php echo $kpi_values[$i]['best_practice']; ?></textarea></td>
+					   				</tr>
+
+			   						</table>
+			   						</form>
+			   					<?php endif;
 		   					}
 		   				}
 
@@ -195,11 +201,109 @@
 	   			</div>
 		    <?php endif ?>
 		    <?php endif ?>
-	   	<?php endforeach ?>
+	   	<?php endforeach */ ?>
+
+			<table id="dg" class="easyui-datagrid"
+			    data-options="
+			        iconCls: 'icon-edit',
+			        singleSelect: true,
+			        toolbar: '#tb',
+			        url: '<?php echo base_url("kpi_json/".$this->uri->segment(2).'/'.$this->uri->segment(3)); ?>',
+			        method: 'get',
+			        onClickRow: onClickRow
+			    ">
+				<thead>
+				    <tr>
+				        <th data-options="field:'prcss_name',align:'center',width:100">Process</th>
+				        <th data-options="field:'flow_name',align:'center',width:100">Flow</th>
+				        <th data-options="field:'flow_type_name',align:'center',width:80">Flow Type</th>
+				        <th data-options="field:'kpi',align:'center',width:100">KPI</th>
+				        <th data-options="field:'unit_kpi',align:'center',width:100">KPI Unit</th>
+				        <th data-options="field:'benchmark_kpi',width:100,align:'center',editor:'numberbox'">Benchmark KPI</th>
+				        <th data-options="field:'best_practice',width:200,align:'center',editor:'text'">Best Practice</th>
+				    </tr>
+				</thead>
+			</table>
+    <div id="tb">
+    			<p style="float:left;">KPI View and Edit Table</p>
+
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()">Save All Changes</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()">Cancel All Changes</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges()">See Changes</a>
+    </div>
+    
+    <script type="text/javascript">
+        var editIndex = undefined;
+        function endEditing(){
+            if (editIndex == undefined){return true}
+            if ($('#dg').datagrid('validateRow', editIndex)){
+                $('#dg').datagrid('endEdit', editIndex);
+                editIndex = undefined;
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function onClickRow(index){
+            if (editIndex != index){
+                if (endEditing()){
+                    $('#dg').datagrid('selectRow', index)
+                            .datagrid('beginEdit', index);
+                    editIndex = index;
+                } else {
+                    $('#dg').datagrid('selectRow', editIndex);
+                }
+            }
+        }
+        function accept(){
+            if (endEditing()){
+            	var rows = $('#dg').datagrid('getRows');
+        			var prjct_id = <?php echo $this->uri->segment(2); ?>;
+							var cmpny_id = <?php echo $this->uri->segment(3); ?>;
+							$.each(rows, function(i, row) {
+							  $('#dg').datagrid('endEdit', i);
+							  /* var url = row.isNewRecord ? 'test.php?savetest=true' : 'test.php?updatetest=true'; */
+							  var url = '../../kpi_insert/'+prjct_id+'/'+cmpny_id+'/'+row.flow_id+'/'+row.flow_type_id+'/'+row.prcss_id;
+							  $.ajax(url, {
+							      type:'POST',
+							      dataType:'json',
+							      data:row,
+					          success: function(data, textStatus, jqXHR) {
+					          	console.log(data);
+					          	alert(data);
+										},
+								    error: function(jqXHR, textStatus, errorThrown) {
+										  console.log(textStatus, errorThrown);
+										}
+							  });
+							});
+            }
+        }
+        function reject(){
+            $('#dg').datagrid('rejectChanges');
+            editIndex = undefined;
+        }
+        function getChanges(){
+            var rows = $('#dg').datagrid('getChanges');
+            alert(rows.length+' rows are changed!');
+        }
+        var $element=$(window),lastWidth=$element.width(),lastHeight=$element.height();	
+function checkForChanges(){			
+   if ($element.width()!=lastWidth||$element.height()!=lastHeight){	
+	$('#panel').panel('resize');
+	$('#datagrid').datagrid('resize'); 
+	lastWidth = $element.width();lastHeight=$element.height();	 
+   }
+   setTimeout(checkForChanges, 500);
+}
+checkForChanges();
+    </script>
+
+
 	</div>
 
-	<div class="col-md-5">
-		<p>Company KPIs vs Benchmark KPIs Comparison Graph</p>
+	<div class="col-md-4">
+		<p>KPIs vs Benchmark KPIs Comparison Graph</p>
 		<div id="chart_div" style="border:2px solid #f0f0f0;"></div>
 		<hr>
 		<p>Search for Documents</p>
@@ -253,9 +357,7 @@
 		</div>
 	</div>
 
-	<script type="text/javascript">
-		deneme();
-	</script>
+
 <?php else: ?>
 	<div class="container">
 		<div class="col-md-4"></div>

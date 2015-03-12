@@ -29,7 +29,8 @@
             and $this->uri->segment(1)!="isScopingPrjBaseMDF" 
             and $this->uri->segment(1)!="isScopingPrjBase" 
             and $this->uri->segment(1)!="scenarios"
-            and $this->uri->segment(1)!="cost_benefit"): ?>
+            and $this->uri->segment(1)!="cost_benefit"
+            and $this->uri->segment(1)!="kpi_calculation"): ?>
       <script src="<?php echo asset_url('js/selectize.min.js'); ?>"></script>
       <script type="text/javascript">
         $(function() {

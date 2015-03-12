@@ -230,3 +230,9 @@ label{
     margin-bottom: 15px;
     border-top: none;
 }
+.table-bordered{
+    font-size: 13px;
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+    padding:8px!important;
+}

@@ -66,12 +66,14 @@ $route['cp_allocation/deneme'] = "cpscoping/deneme";
 $route['cp_allocation/deneme_json'] = "cpscoping/deneme_json";
 
 //KPI 
+$route['kpi_json/(:any)/(:any)'] = "cpscoping/kpi_json/$1/$2";
 $route['kpi_calculation_chart/(:any)/(:any)'] = "cpscoping/kpi_calculation_chart/$1/$2";
 $route['kpi_insert/(:any)/(:any)/(:any)/(:any)/(:any)'] = "cpscoping/kpi_insert/$1/$2/$3/$4/$5";
 $route['kpi_calculation/(:any)/(:any)'] = "cpscoping/kpi_calculation/$1/$2";
 $route['search_result/(:any)/(:any)'] = "cpscoping/search_result/$1/$2";
 
 //CP
+$route['cpscoping/deneme'] = "cpscoping/deneme";
 $route['cpscoping/allocated_table/(:any)/(:any)/(:any)/(:any)/(:any)'] = "cpscoping/get_already_allocated_allocation_except_given/$1/$2/$3/$4/$5";
 $route['cpscoping/edit_allocation/(:any)'] = "cpscoping/edit_allocation/$1";
 $route['cpscoping/file_upload/(:any)/(:any)'] = "cpscoping/cp_scoping_file_upload/$1/$2";

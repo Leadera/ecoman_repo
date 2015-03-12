@@ -11,10 +11,6 @@
             and $this->uri->segment(1)!="isScopingAutoPrjBaseMDF") : ?>
 
     <script src="<?php echo asset_url('js/flatui-fileinput.js'); ?>"></script>
-      <script src="<?php echo asset_url('js/jquery-ui-1.10.3.custom.min.js'); ?>"></script>
-      <script src="<?php echo asset_url('js/jquery.ui.touch-punch.min.js'); ?>"></script>
-      <script src="<?php echo asset_url('js/jquery-ui-1.10.4.custom.js'); ?>"></script>
-
     <script src="<?php echo asset_url('js/bootstrap-select.js'); ?>"></script>
     <script src="<?php echo asset_url('js/bootstrap-switch.js'); ?>"></script>
     <script src="<?php echo asset_url('js/flatui-checkbox.js'); ?>"></script>
@@ -22,8 +18,11 @@
     <script src="<?php echo asset_url('js/jquery.tagsinput.js'); ?>"></script>
     <script src="<?php echo asset_url('js/jquery.placeholder.js'); ?>"></script>
     <script src="<?php echo asset_url('js/holder.js'); ?>"></script>
-    <script src="<?php echo asset_url('js/jquery.autocomplete.multiselect.js'); ?>"></script>
     <script src="<?php echo asset_url('js/application.js'); ?>"></script>
+
+    <link rel="stylesheet" type="text/css" href="<?php echo asset_url('is/themes/bootstrap/easyui.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo asset_url('is/themes/icon.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo asset_url('css/easyui-tuna.css'); ?>">
 
     <script type="text/javascript">
         var marker;
@@ -59,16 +58,6 @@
           }
         }
 
-    </script>
-
-    <!-- AutoComplete trigger JS Code -->
-    <script type="text/javascript">
-    $(function(){
-      $("#companySearch").autocomplete({
-        source: "companySearch", // path to the company_search method
-        multiselect: true
-      });
-    });
     </script>
 
     <script type="text/javascript">
