@@ -108,6 +108,7 @@
         </li>
         <li><a href="<?php echo base_url('whatwedo'); ?>"><i class="fa fa-question-circle"></i> What We Do</a></li>
         <li><a href="<?php echo base_url('functionalities'); ?>"><i class="fa fa-dashboard"></i> Functionalities</a></li>
+        <li><a href="<?php echo base_url('contactus'); ?>"><i class="fa fa-envelope"></i> Contact Us</a></li>
       </ul>
       <div class="clearfix"></div>
       </div>
