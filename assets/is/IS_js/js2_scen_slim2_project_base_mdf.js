@@ -457,7 +457,11 @@ function beginISPotentialByAllFlows() {
                         {field:'min_flow_rate_unit',title:'Min Flow Rate Unit',width:100},
                         {field:'max_flow_rate',title:'Max Flow Rate',width:100},
                         {field:'max_flow_rate_unit',title:'Max Flow Rate Unit',width:100},
+                        {field:'substitute_potential',title:'Substitute Potential',width:100},
+                        {field:'quality',title:'Quality',width:100},
                         {field:'ep_unit_id',title:'Ep Unit',width:100},
+                        {field:'comment',title:'Comment',width:100},
+                        {field:'description',title:'Description',width:100},
                         {field:'link',title:'Link',width:80,align:'center',
                             formatter:function(value,row,index){
                                     var link = '<a href="new_flow/'+row.id+'" onclick="" class="easyui-linkbutton" iconCls="icon-back" plain="true">Dataset Management</a>';
