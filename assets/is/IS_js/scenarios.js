@@ -265,6 +265,7 @@
                         singleSelect : false,
                         multiSelect : false,
                         onDblClickRow: function(rowIndex, rowData){ 
+                            $('#tt_scenario_name').textbox('setText',rowData.prj_name);
                             $('#tt_grid_scenarios_details').datagrid({
    
                             url:'../../../Proxy/SlimProxy.php',
@@ -287,13 +288,14 @@
                 collapsible:true,
                 method:'get',
                 idField:'id',
-                toolbar:'#tb5',
+                toolbar:'#tb_scenario_details',
                 remoteSort:false,
                 multiSort:false,
                 columns:
                         [[
                             //{field:'sirket_id',title:'ID',width:300},
                             //{field: 'ck',title: 'From Company',checkbox:true},
+                            //{field: 'IS Scenario',title: 'IS Scenario'},
                             {field: 'company',title: 'From Company'},
                             {field: 'flow',title: 'Flow'/*,sortable:true*/},
                             {field: 'qntty',title: 'Quantity'},
@@ -308,6 +310,8 @@
                 fitColumns : true,
                 onDblClickRow: function(rowIndex, rowData){ 
                             //console.error(rowData);
+                            
+                            
                             var strReq = rowData.id;
                             var splitArr =strReq.split(",");
                             var regArr = {'from':splitArr[0],'to':splitArr[1],'flow':splitArr[2]};

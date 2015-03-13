@@ -89,6 +89,24 @@
                 </div>
                  
                  
+                 <div id="tb_scenario_details" style="padding:5px;height:auto">
+                <div style="margin-bottom:5px">
+                    Scenario Name : <input id="tt_scenario_name" class="easyui-textbox" style="width:400px" data-options="
+                            //readonly : true,
+                            prompt: 'Scenario name will be displayed here!',
+                            iconWidth: 22,
+                            icons: [{
+                                iconCls:'icon-search',
+                                /*handler: function(e){
+                                    var v = $(e.data.target).textbox('getValue');
+                                    alert('The inputed value is ' + (v ? v : 'empty'));
+                                }*/
+                            }]
+                            ">
+
+                </div>
+                 
+                 
                  <!--<div>
                     <label style="margin-right:7px;">IS Scenario Type:</label>
                     <input class="easyui-combobox" 
