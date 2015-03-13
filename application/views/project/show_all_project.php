@@ -1,6 +1,38 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8">
+						<!-- harita -->
+				<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+				<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+				<?php
+				$project_array = array();
+			 	foreach ($projects as $prj => $k) {	 
+					$project_array[$prj][0] = $k['latitude'];
+					$project_array[$prj][1] = $k['longitude'];
+					$project_array[$prj][2] = "<a href='".base_url('project/'.$k['id'])."'>".$k['name']."</a>";
+				} 
+				//print_r($company_array);
+				?>
+				<div id="map"></div>
+				<script type="text/javascript">
+  			var project = <?php echo json_encode($project_array); ?>;
+  			var bounds = new L.LatLngBounds(project);
+
+        var map = L.map('map');
+        map.fitBounds(bounds);
+        mapLink = 
+            '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+				}).addTo(map);
+
+				for (var i = 0; i < project.length; i++) {
+					marker = new L.marker([project[i][0],project[i][1]])
+						.bindPopup(project[i][2])
+						.addTo(map);
+				}
+				</script>
+				<!-- harita bitti -->
 			<div class="lead pull-left">Show All Projects</div>
 			<?php if($is_consultant):?>
 			<a class="pull-right btn btn-info btn-embossed btn-sm" href="<?php echo base_url("newproject"); ?>">Create Project</a>
