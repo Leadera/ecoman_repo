@@ -221,7 +221,8 @@
 				        <th data-options="field:'kpi',align:'center',width:100">KPI</th>
 				        <th data-options="field:'unit_kpi',align:'center',width:100">KPI Unit</th>
 				        <th data-options="field:'benchmark_kpi',width:100,align:'center',editor:'numberbox'">Benchmark KPI</th>
-				        <th data-options="field:'best_practice',width:200,align:'center',editor:'text'">Best Practice</th>
+				        <th data-options="field:'best_practice',width:200,align:'center',editor:'text'">Comments / Remarks</th>
+				        <th data-options="field:'option',width:60,align:'center',editor:{type:'checkbox',options:{on:'Option',off:'Not An Option'}}">Is Option?</th>
 				    </tr>
 				</thead>
 			</table>
@@ -261,6 +262,8 @@
             	var rows = $('#dg').datagrid('getRows');
         			var prjct_id = <?php echo $this->uri->segment(2); ?>;
 							var cmpny_id = <?php echo $this->uri->segment(3); ?>;
+							$("#alerts").html("");
+							$("#alerts").fadeIn( "fast" );
 							$.each(rows, function(i, row) {
 							  $('#dg').datagrid('endEdit', i);
 							  /* var url = row.isNewRecord ? 'test.php?savetest=true' : 'test.php?updatetest=true'; */
@@ -273,13 +276,15 @@
 					          	console.log(data);
 					          	//alert(data);
 					          	$("#alerts").append(data);
-					          	//$("#alerts").delay(4000).fadeOut( "fast" );
+					          	deneme();
 										},
 								    error: function(jqXHR, textStatus, errorThrown) {
 										  console.log(textStatus, errorThrown);
 										}
 							  });
 							});
+							$("#alerts").delay(5000).fadeOut( "fast" );
+
             }
         }
         function reject(){
@@ -291,13 +296,13 @@
             alert(rows.length+' rows are changed!');
         }
     </script>
-
     <div id="alerts" style="margin-top: 20px;font-size: 13px;color: darkgrey;"></div>
 
 	</div>
 
 	<div class="col-md-4">
 		<p>KPIs vs Benchmark KPIs Comparison Graph</p>
+<!-- 		<div class="label label-danger">After a save, you should reload the page to see updated graph.</div> -->		
 		<div id="chart_div" style="border:2px solid #f0f0f0;"></div>
 		<hr>
 		<p>Search for Documents</p>
