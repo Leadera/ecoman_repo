@@ -173,6 +173,16 @@ class Company extends CI_Controller{
 		$this->load->view('template/footer');
 	}
 
+	public function show_project_companies(){
+		$project_id = $this->session->userdata('project_id');
+		$data['companies'] = $this->company_model->get_project_companies($project_id);
+
+		//print_r($data['companies']);
+		$this->load->view('template/header');
+		$this->load->view('company/show_project_companies',$data);
+		$this->load->view('template/footer');
+	}
+
 	public function companies($term){
 		$this->load->library('googlemaps');
 

@@ -265,3 +265,4 @@ label{
 .label {
   font-size: 85%;
 }
+#map { height: 380px; margin-bottom: 30px; border-radius: 5px 5px 5px 5px; border:1px solid #d0d0d0;}

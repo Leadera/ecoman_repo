@@ -102,7 +102,13 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu dropdown-inverse" role="menu" aria-labelledby="dropdownMenu1" style="padding:13px;">
-              <li><a style="color:white;" href="<?php echo base_url('company'); ?>"><i class="fa fa-building-o"></i> Companies</a></li>
+              <li><a style="color:white;" href="<?php echo base_url('companies'); ?>"><i class="fa fa-building-o"></i> All Companies</a></li>
+              <?php if ($this->session->userdata('user_in') !== FALSE): ?>
+                <li><a style="color:white;" href="<?php echo base_url('mycompanies'); ?>"><i class="fa fa-building-o"></i> My Companies</a></li>
+                <?php if($this->session->userdata('project_id') !== FALSE): ?>
+                  <li><a style="color:white;" href="<?php echo base_url('projectcompanies'); ?>"><i class="fa fa-building-o"></i> Project Companies</a></li>
+                <?php endif ?>
+              <?php endif ?>
               <li><a style="color:white;" href="<?php echo base_url('users'); ?>"><i class="fa fa-group"></i> Consultants</a></li>
             </ul>
           </div>
