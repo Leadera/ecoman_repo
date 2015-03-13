@@ -394,8 +394,8 @@
                         height:'auto',
                         columns:[[
                             {field:'company',title:'Company',width:100},
-                            {field:'potential_energy',title:'Pot.Ener.',width:100,editor:{type:'numberbox',options:{precision:2}}},
-                            {field:'potential_energy_unit',title:'Pot.Ener.Un.',width:100,
+                            {field:'potential_energy',title:'Potential Energy',width:100,editor:{type:'numberbox',options:{precision:2}}},
+                            {field:'potential_energy_unit',title:'Potential Energy Unit',width:100,
                                 formatter:function(value){
                                                     for(var i=0; i<units.length; i++){
                                                             if (units[i].id == value) return units[i].name;
@@ -412,8 +412,8 @@
                                         }
                                 }
                             },
-                            {field:'supply_cost',title:'Supp.Cost',width:100,editor:{type:'numberbox',options:{precision:2}}},
-                            {field:'supply_cost_unit',title:'Supp.Cost.Un.',width:100,
+                            {field:'supply_cost',title:'Supply Cost',width:100,editor:{type:'numberbox',options:{precision:2}}},
+                            {field:'supply_cost_unit',title:'Supply Cost Unit',width:100,
                                 formatter:function(value){
                                                     for(var i=0; i<units.length; i++){
                                                             if (units[i].id == value) return units[i].name;
@@ -431,7 +431,7 @@
                                 }
                             
                             },
-                            {field:'transport_id',title:'Trans.',width:100,
+                            {field:'transport_id',title:'Transport',width:100,
                                 formatter:function(value){
                                                     for(var i=0; i<units.length; i++){
                                                             if (units[i].id == value) return units[i].name;
@@ -449,8 +449,8 @@
                                 }
                             
                             },
-                            {field:'entry_date',title:'Ent.Date',width:100},
-                            {field:'concentration',title:'Concen.',width:100,editor:{type:'numberbox'}},
+                            {field:'entry_date',title:'Entry Date',width:100},
+                            {field:'concentration',title:'Concentration',width:100,editor:{type:'numberbox'}},
                             {field:'pression',title:'Press.',width:100,editor:{type:'numberbox'}},
                             {field:'state_id',title:'State',width:100,
                                 formatter:function(value){
@@ -471,7 +471,7 @@
                             
                             },
                             {field:'min_flow_rate',title:'Min Flow Rate',width:100,editor:{type:'numberbox',options:{precision:2}}},
-                            {field:'min_flow_rate_unit',title:'Min Flow Rate Un.',width:100,
+                            {field:'min_flow_rate_unit',title:'Min Flow Rate Unit',width:100,
                             
                                 formatter:function(value){
                                                     for(var i=0; i<units.length; i++){
@@ -490,7 +490,7 @@
                                 }
                             },
                             {field:'max_flow_rate',title:'Max Flow Rate',width:100,editor:{type:'numberbox',options:{precision:2}}},
-                            {field:'max_flow_rate_unit',title:'Max Flow Rate Un.',width:100,
+                            {field:'max_flow_rate_unit',title:'Max Flow Rate Unit',width:100,
                                 formatter:function(value){
                                                     for(var i=0; i<units.length; i++){
                                                             if (units[i].id == value) return units[i].name;
@@ -508,7 +508,30 @@
                                 }
                             
                             },
-                            {field:'ep_unit_id',title:'Ep Un.',width:100,editor:'text'},
+                            {field:'qntty',title:'Quantity',width:100,editor:{type:'numberbox',options:{precision:2}}},
+                            {field:'qntty_unit_id',title:'Quantity',width:100,
+                                formatter:function(value){
+                                                    for(var i=0; i<units.length; i++){
+                                                            if (units[i].id == value) return units[i].name;
+                                                    }
+                                                    return value;
+                                            },
+                                editor:{
+                                        type:'combobox',
+                                        options:{
+                                                valueField:'id',
+                                                textField:'name',
+                                                data:units,
+                                                required:false
+                                        }
+                                }
+                            
+                            },
+                            {field:'substitute_potential',title:'Substitute Potential',width:100,editor:'text'},
+                            {field:'quality',title:'Quality',width:100,editor:'text'},
+                            {field:'ep_unit_id',title:'Ep Unit',width:100,editor:'text'},
+                            {field:'comment',title:'Comment',width:100,editor:'text'},
+                            {field:'description',title:'Description',width:100,editor:'text'},
                             {field:'action',title:'Action',width:80,align:'center',
                                     formatter:function(value,row,index){
                                             if (row.editing){
