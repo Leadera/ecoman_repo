@@ -380,6 +380,8 @@
         var state = [{id: "1", name: "Solid"},
                         {id: "2", name: "Liquid"},
                         {id: "3", name: "Gas"},];
+                    
+                    
         $('#tt_grid_scenarios_details_edit').datagrid({
                         url:'../../../Proxy/SlimProxy.php',
                         queryParams : { url:'getFlowDetails_prj',
@@ -523,6 +525,15 @@
                                             }
                                     }
                             }
+                            ,
+                            {field:'link',title:'Link',width:80,align:'center',
+                                    formatter:function(value,row,index){
+                                            var link = '<a href="new_flow/'+row.id+'" onclick="" class="easyui-linkbutton" iconCls="icon-back" plain="true">Dataset Management</a>';
+                                            return link
+                                    }
+                            }
+                            
+                            
                             
                         ]],
                         onBeforeLoad: function() {
