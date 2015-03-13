@@ -458,6 +458,12 @@ function beginISPotentialByAllFlows() {
                         {field:'max_flow_rate',title:'Max Flow Rate',width:100},
                         {field:'max_flow_rate_unit',title:'Max Flow Rate Un.',width:100},
                         {field:'ep_unit_id',title:'Ep Un.',width:100},
+                        {field:'link',title:'Link',width:80,align:'center',
+                            formatter:function(value,row,index){
+                                    var link = '<a href="new_flow/'+row.id+'" onclick="" class="easyui-linkbutton" iconCls="icon-back" plain="true">Dataset Management</a>';
+                                    return link
+                            }
+                        }
 
                     ]],
                     onResize:function(){
