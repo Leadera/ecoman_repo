@@ -509,7 +509,7 @@
                             
                             },
                             {field:'qntty',title:'Quantity',width:100,editor:{type:'numberbox',options:{precision:2}}},
-                            {field:'qntty_unit_id',title:'Quantity',width:100,
+                            {field:'qntty_unit_id',title:'Quantity Unit',width:100,
                                 formatter:function(value){
                                                     for(var i=0; i<units.length; i++){
                                                             if (units[i].id == value) return units[i].name;
