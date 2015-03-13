@@ -643,8 +643,14 @@ class Cpscoping extends CI_Controller {
 	public function kpi_json($prjct_id,$cmpny_id){
 		$data['cp_files'] = $this->cpscoping_model->get_cp_scoping_files($prjct_id,$cmpny_id);
 		$allocation_ids = $this->cpscoping_model->get_allocation_id_from_ids($cmpny_id,$prjct_id);
-		foreach ($allocation_ids as $allocation_id) {
-			$data['kpi_values'][] = $this->cpscoping_model->get_allocation_from_allocation_id($allocation_id['allocation_id']);
+		foreach ($allocation_ids as $a => $key) {
+			$data['kpi_values'][$a] = $this->cpscoping_model->get_allocation_from_allocation_id($key['allocation_id']);
+			//print_r($data['kpi_values']);
+			if($data['kpi_values'][$a]['option']==1){
+				$data['kpi_values'][$a]['option']="Option";
+			}else{
+				$data['kpi_values'][$a]['option']="Not An Option";
+			}
 		}
 		header("Content-Type: application/json", true);
 		echo json_encode($data['kpi_values']);
@@ -701,6 +707,8 @@ class Cpscoping extends CI_Controller {
 		if ($this->form_validation->run() !== FALSE){
 			$benchmark_kpi = $_POST['benchmark_kpi'];
 			$best_practice = $_POST['best_practice'];
+			$option = $_POST['option'];
+			if($option=="Option"){$option=1;}else{$option=0;}
 
 			foreach ($allocation_ids as $allo_id) {
 				$query = $this->cpscoping_model->get_allocation_from_allocation_id($allo_id['allocation_id']);
@@ -708,7 +716,8 @@ class Cpscoping extends CI_Controller {
 					if($query['flow_id'] == $flow_id && $query['flow_type_id'] == $flow_type_id && $query['prcss_id'] == $prcss_id){
 						$insert_array = array(
 					      'benchmark_kpi' => $benchmark_kpi,
-					      'best_practice' => $best_practice
+					      'best_practice' => $best_practice,
+					      'option' => $option
 					    );
 					    $this->cpscoping_model->kpi_insert($insert_array,$allo_id['allocation_id']);
 					   	$return = $query['prcss_name']." ".$query['flow_name']." ".$query['flow_type_name']."'s new data has been saved to database.</br>";
