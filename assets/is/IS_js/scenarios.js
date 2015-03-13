@@ -195,18 +195,18 @@
                             {field:'date',title:' Project Date',width:300},
                             {field:'detail',title:' Details',width:100},
                             {field:'action',title:'Action',width:80,align:'center',
-                                    formatter:function(value,row,index){
-                                            if (row.editing){
-                                                    var s = '<a href="javascript:void(0)" onclick="saverow(this)">Save</a> ';
-                                                    var c = '<a href="javascript:void(0)" onclick="cancelrow(this)">Cancel</a>';
-                                                    return s+c;
-                                            } else {
-                                                    var e = '<a href="javascript:void(0)" onclick="editrow(this)">Edit</a> ';
-                                                    //var d = '<a href="javascript:void(0)" onclick="deleteISScenario(this);">Delete</a>';
-                                                    var d = '<a href="javascript:void(0)" onclick="deleterow(this);">Delete</a>';
-                                                    return e+d;
-                                            }
-                                    }
+                                formatter:function(value,row,index){
+                                        if (row.editing){
+                                                var s = '<a href="javascript:void(0)" onclick="saverow(this)">Save</a> ';
+                                                var c = '<a href="javascript:void(0)" onclick="cancelrow(this)">Cancel</a>';
+                                                return s+c;
+                                        } else {
+                                                var e = '<a href="javascript:void(0)" onclick="editrow(this)">Edit</a> ';
+                                                //var d = '<a href="javascript:void(0)" onclick="deleteISScenario(this);">Delete</a>';
+                                                var d = '<a href="javascript:void(0)" onclick="deleterow(this);">Delete</a>';
+                                                return e+d;
+                                        }
+                                }
                             }
                         ]],
                         onBeforeEdit:function(index,row){
