@@ -626,7 +626,7 @@
                         return s+c;
                     } else {
                          //var d = '<button class="btn btn-mini rn_btnDelete" onclick="deleteISPotentialAuto(this)">Delete</button>';
-                         var d = '<a href="#add" class="easyui-linkbutton" onclick="deleteISPotentialAuto(this)">Delete</button>';
+                         var d = '<a href="#add" class="easyui-linkbutton" onclick="deleteISPotentialAuto(this)">Delete</a>';
                         return d;
                     }
                 }
@@ -647,7 +647,7 @@
                                             \'mywindow\',\'width=900,height=900\')">\n\
                                                 See on Map</button>';
                         //var x = '<button onclick="document.getElementById(\'myFrame\').setAttribute(\'src\',\'../IS_OpenLayers/map.php?to_company='+arrSplit[1]+'&from_company='+arrSplit[0]+'&prj_id='+document.getElementById('prj_id').value+'\')"> See on Map</button>';
-                        var x = '<a href="#add" class="easyui-linkbutton" iconCls="icon-save" onclick="document.getElementById(\'myFrame\').setAttribute(\'src\',\'../IS_OpenLayers/map.php?to_company='+arrSplit[1]+'&from_company='+arrSplit[0]+'&prj_id='+document.getElementById('prj_id').value+'\')"> See on Map</button>';
+                        var x = '<a href="#add" class="easyui-linkbutton" iconCls="icon-save" onclick="document.getElementById(\'myFrame\').setAttribute(\'src\',\'../IS_OpenLayers/map.php?to_company='+arrSplit[1]+'&from_company='+arrSplit[0]+'&prj_id='+document.getElementById('prj_id').value+'\')"> See on Map</a>';
                         //return e+d;
                         return x;
                     }

@@ -1,13 +1,27 @@
-function openIsScenarios() {
+
+function closeMapPanel() {
+    //var panelWest = $('#cc').layout('panel','south');
+    //var panelSouthNorth = $('#cc2').layout('panel','north');
+    $('#cc2').layout('collapse','north');  
+}
+
+function showMapPanelExpand() {
+    //var panelWest = $('#cc').layout('panel','south');
+    //var panelSouthNorth = $('#cc2').layout('panel','north');
+    $('#cc2').layout('expand','north');  
+}
+
+
+function openIsScenarios() {     
             //alert('test');
            //$('#tt_grid').datagrid('collapse'); 
-           $('#p').panel('collapse');
-        }
+           $('#p').panel('collapse');     
+        }       
 
 function beginISPotentialByAllFlows() {
             $.messager.confirm('Confirm','Are you sure ? New Table with new data will be deployed...',function(r){
                     if (r){
-                        $.ajax({
+                        $.ajax({   
                         url: '../../../Proxy/SlimProxy.php',
                         data: { url:'columnflows_json_test'  },
                         type: 'GET',
@@ -516,7 +530,8 @@ function beginISPotentialByAllFlows() {
                         var c = '<a href="#" onclick="cancelrow(this)">Cancel</a>';
                         return s+c;
                     } else {
-                         var d = '<button class="btn btn-mini rn_btnDelete" onclick="deleteISPotential(this)">Delete</button>';
+                         //var d = '<button class="btn btn-mini rn_btnDelete" onclick="deleteISPotential(this)">Delete</button>';
+                         var d = '<a href="#" class="easyui-linkbutton" onclick="deleteISPotential(this);event.preventDefault();">Delete</a>';
                         return d;
                     }
                 }
@@ -532,7 +547,12 @@ function beginISPotentialByAllFlows() {
                         //var d = '<a href="#" onclick="deleteISPotential(this)" >Delete</a>';
                         console.log('row satır id bilgileri'+row.id);
                         var arrSplit = row.id.split(",");
-                         var d = '<button class="btn btn-mini rn_btnDelete" onclick="window.open(\'../IS_OpenLayers/map.php?to_company='+arrSplit[1]+'&from_company='+arrSplit[0]+'\',\'mywindow\',\'width=900,height=900\')">See on Map</button>';
+                         //var d = '<button class="btn btn-mini rn_btnDelete" onclick="window.open(\'../IS_OpenLayers/map.php?to_company='+arrSplit[1]+'&from_company='+arrSplit[0]+'\',\'mywindow\',\'width=900,height=900\')">See on Map</button>';
+                         //var d = '<a href="#add" class="easyui-linkbutton" iconCls="icon-save" onclick="document.getElementById(\'myFrame\').setAttribute(\'src\',\'../IS_OpenLayers/map.php?to_company='+arrSplit[1]+'&from_company='+arrSplit[0]+'&prj_id='+document.getElementById('prj_id').value+'\')"> See on Map</a>';
+                         var d = '<a href="#" class="easyui-linkbutton" iconCls="icon-save" \n\
+                            onclick="showMapPanelExpand();\n\
+                            document.getElementById(\'myFrame\').setAttribute(\'src\',\'../IS_OpenLayers/map.php?to_company='+arrSplit[1]+'&from_company='+arrSplit[0]+'&prj_id='+document.getElementById('prj_id').value+'\')\n\
+                            ;event.preventDefault();"> See on Map</a>';
                         //return e+d;
                         return d;
                     }
