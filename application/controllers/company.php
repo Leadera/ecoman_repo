@@ -101,7 +101,7 @@ class Company extends CI_Controller{
 				);
 				$this->company_model->set_company_image($last_id,$logo);
 			}
-			redirect('company', 'refresh');
+			redirect('company/'.last_id, 'refresh');
 		}
 		$data['all_nace_codes'] = $this->company_model->get_all_nace_codes();
 
