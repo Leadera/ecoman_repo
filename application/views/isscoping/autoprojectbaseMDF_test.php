@@ -16,10 +16,70 @@
     proje id değeri session içinden alınacak
 -->
 <input type ="hidden" value='<?php echo $project_id; ?>' id ='prj_id' name='prj_id'></input>
-<div class="col-md-12">
-    <div id="cc" class="easyui-layout" data-options="fit:true" style="height:900px;">
+<!--<div class="col-md-12">-->
+
+    <div class="easyui-layout" data-options="" style="width:100%;height:1320px;">
         <!--<div data-options="region:'north'" style="height:50px"></div>-->
-        <div data-options="region:'south',split:true" style="height:550px; padding-bottom:200px;">
+        <div data-options="region:'south',split:true" style="height:800px;">
+            
+            
+            <div class="easyui-layout" data-options="fit:true">
+                <!--<div data-options="region:'north',split:true,border:false" style="height:50px"></div>-->
+                <div data-options="region:'west',split:true,border:true" style="width:50%;height:300px">
+                    <table  id="tt_grid_dynamic"  title="Dynamic table with IS potentials" style="height:300px">
+                        
+                    </table>
+                </div>
+                <!--<div data-options="region:'east',split:true,border:false" style="width:50%"></div>-->
+                <div data-options="region:'center',border:true,split:true" style="width:50%;">
+                    <table id="tt_grid_dynamic5" class="easyui-datagrid" title="IS potentials" style="height:300px"
+                        data-options="singleSelect:false,
+                                    collapsible:true,
+                                    /*url:'datagrid_data1.json',*/
+                                    /*url:'../slim_rest/index.php/companies',*/
+                                    method:'get',
+                                    idField:'id'">
+
+                    </table>
+                    
+                </div>
+                <div data-options="region:'south',split:true,border:true"  style="width:100%;">
+                    <div id="p" class="easyui-panel" title="IS Companies Location" data-options="" style="margin: auto 0;height:500px">  
+                            <iframe src="http://jquery.com/" id="myFrame" width="100%" marginwidth="0" 
+                                height="100%" 
+                                marginheight="0" 
+                                align="middle" 
+                                scrolling="auto">
+                            </iframe>
+                        </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        <!--<div data-options="region:'east',split:true" title="East" style="width:100px;"></div>-->
+        <div data-options="region:'west',split:true" title="Flows" style="width:150px;">
+            <ul id="tt_tree" class="easyui-tree" ></ul>
+            
+        </div>
+        <div data-options="region:'center',title:'IS Potentials Analysis Settings',iconCls:'icon-ok'">
+            
+            <div id="p" class="easyui-panel" title="Company/Flow Panel" style="margin: auto 0;"
+                 data-options="iconCls:'icon-save',collapsible:true,closable:true,fit:true">
+                     <table id="tt_grid" data-options="fit:true" class="easyui-datagrid" title="Company Flow Sets" 
+                            style="height:440px" 
+                           accesskey=""></table>
+                
+            </div>
+            
+        </div>
+    </div>
+
+
+
+    <!--<div id="cc" class="easyui-layout" data-options="fit:true" style="height:900px;">
+        <!--<div data-options="region:'north'" style="height:50px"></div>-->
+        <!--<div data-options="region:'south',split:true" style="height:550px; padding-bottom:200px;">
             <div class="easyui-layout" data-options="fit:true">
                 <div id="zeyn"   data-options="region:'west',split:true" style="width:25%;">
                     <table  id="tt_grid_dynamic"  title="Dynamic table with IS potentials" >
@@ -53,21 +113,8 @@
             </div> 
         </div>
         
-        <div data-options="region:'west',split:true" title="Flows" style="width:10%;">
-            <ul id="tt_tree" class="easyui-tree" ></ul>
-        </div>
-        <div id="tt_grid_div" data-options="region:'center',title:'IS Potentials Analysis Settings'">
-            
-            <div id="p" class="easyui-panel" title="Company/Flow Panel" style="margin: auto 0;"
-                 data-options="iconCls:'icon-save',collapsible:true,closable:true,fit:true">
-                     <table id="tt_grid" data-options="fit:true" class="easyui-datagrid" title="Company Flow Sets" 
-                            style="height:440px" 
-                           accesskey=""></table>
-                
-            </div>
-            
-        </div>
-    </div>
+        
+    </div>-->
     
     <div id="tb" style="padding:5px;height:auto">
                 <div style="margin-bottom:5px">
@@ -175,4 +222,4 @@
             <a href="#" id="printGridPotentials" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
         </div>
     </div>
-</div>
+<!--</div>-->

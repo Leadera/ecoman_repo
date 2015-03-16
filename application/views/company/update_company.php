@@ -99,7 +99,7 @@
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <button type="button" class="close" onclick="getCountryIdName();alert('test');" data-dismiss="modal" aria-hidden="true">&times;</button>
 	        <h4 class="modal-title" id="myModalLabel">Click Map</h4>
 	        <hr>
 	        <div class="row">
@@ -125,4 +125,41 @@
 	$('#selectize').selectize({
     create: false
   });
+  
+  
+  function getCountryIdName() {
+      //alert($('#latId').val());
+      //alert($('#longId').val());
+      
+      if($('#latId').val()!=""  && $('#longId').val()!="") {
+          //alert($('#latId').val());
+          $.ajax({
+            url : '../../../Proxy/SlimProxy.php',   
+            data : {
+                    url : 'deleteScenario_scn',
+                    lat : $('#latId').val(),
+                    long : $('#longId').val()
+            },
+            type: 'GET',
+            dataType : 'json',
+            success: function(data, textStatus, jqXHR) {
+                $('#tt_grid_scenarios').datagrid('reload');
+                if(!data['notFound']) {
+
+                } else {
+                    console.warn('data notfound-->'+textStatus);
+
+                }
+            },
+            error: function(jqXHR , textStatus, errorThrown) {
+              console.warn('error text status-->'+textStatus);
+            }
+    });
+          
+      }
+      
+      
+
+      
+  }
 </script>
