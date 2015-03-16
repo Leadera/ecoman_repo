@@ -76,45 +76,6 @@
     </div>
 
 
-
-    <!--<div id="cc" class="easyui-layout" data-options="fit:true" style="height:900px;">
-        <!--<div data-options="region:'north'" style="height:50px"></div>-->
-        <!--<div data-options="region:'south',split:true" style="height:550px; padding-bottom:200px;">
-            <div class="easyui-layout" data-options="fit:true">
-                <div id="zeyn"   data-options="region:'west',split:true" style="width:25%;">
-                    <table  id="tt_grid_dynamic"  title="Dynamic table with IS potentials" >
-                        
-                    </table>
-                </div>
-                <div id="tt_grid_dynamic5_div" data-options="region:'center'" style="width:25%;">
-                    <table id="tt_grid_dynamic5" class="easyui-datagrid" title="IS potentials" style="height:100%"
-                        data-options="singleSelect:false,
-                                    collapsible:true,
-                                    /*url:'datagrid_data1.json',*/
-                                    /*url:'../slim_rest/index.php/companies',*/
-                                    method:'get',
-                                    idField:'id'">
-
-                    </table>
-                </div>  
-                <div id="tt_grid_dynamic5_div" data-options="region:'east',split:true" style="width:50%;">
-                        <div id="p" class="easyui-panel" title="Company/Flow Panel" data-options="fit:true" style="margin: auto 0;">
-                            <iframe src="http://jquery.com/" id="myFrame" width="100%" marginwidth="0" 
-                                height="100%" 
-                                marginheight="0" 
-                                align="middle" 
-                                scrolling="auto">
-                            </iframe>
-                        </div>
-                    
-                </div>
-                
-                
-            </div> 
-        </div>
-        
-        
-    </div>-->
     
     <div id="tb" style="padding:5px;height:auto">
                 <div style="margin-bottom:5px">
