@@ -5,6 +5,7 @@ class Cpscoping extends CI_Controller {
 		parent::__construct();
 		$this->load->model('user_model');
 		$this->load->model('project_model');		
+		$this->load->model('product_model');		
 		$this->load->model('process_model');
 		$this->load->model('cpscoping_model');
 		$this->load->model('flow_model');
@@ -151,6 +152,8 @@ class Cpscoping extends CI_Controller {
 		}
 		$data['project_id'] = $project_id;
 		$data['company_id'] = $company_id;
+		$data['product'] = $this->product_model->get_product_list($company_id);
+		$data['company_flows']=$this->flow_model->get_company_flow_list($company_id);
 		$data['prcss_info'] = $this->process_model->get_cmpny_flow_prcss($company_id);
 		$data['unit_list'] = $this->flow_model->get_unit_list();
 

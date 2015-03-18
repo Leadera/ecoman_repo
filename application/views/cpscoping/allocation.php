@@ -113,6 +113,20 @@ function aatf() {
 					</select>
 				</div>
 			</div>
+			<?php print_r($company_flows); ?>
+			<div>Company Products</div>
+			<?php if(!empty($product)): ?>
+				<table>
+					<tr>
+						<th>Name</th><th>Quantity</th><th>Cost</th><th>Period</th>
+					</tr>
+				<?php foreach ($product as $p ): ?>
+					<tr><td><?php echo $p['name']; ?></td><td><?php echo $p['quantities']; ?></td><td><?php echo $p['ucost']; ?> <?php echo $p['ucostu']; ?></td><td><?php echo $p['tper']; ?></td></tr>
+				<?php endforeach ?>
+				</table>
+			<?php else: ?>
+				There is no product info for this company.
+			<?php endif ?>
 		</div>
 		<div class="col-md-9">
 			<div><span class="badge">2</span> Please fill all the boxes.</div>
