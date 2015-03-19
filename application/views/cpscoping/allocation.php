@@ -113,10 +113,25 @@ function aatf() {
 					</select>
 				</div>
 			</div>
-			<?php print_r($company_flows); ?>
+			<?php //print_r($company_flows); ?>
+			<div>Company Flows</div>
+			<hr>
+			<?php if(!empty($company_flows)): ?>
+				<table class="table" style="font-size:12px;">
+					<tr>
+						<th>Name</th><th>Amount</th><th>Cost</th>
+					</tr>
+				<?php foreach ($company_flows as $f ): ?>
+					<tr><td><?php echo $f['flowname']; ?></td><td><?php echo $f['qntty']; ?> <?php echo $f['qntty_unit_name']; ?></td><td><?php echo $f['cost']; ?> <?php echo $f['cost_unit']; ?></td></tr>
+				<?php endforeach ?>
+				</table>
+			<?php else: ?>
+				There is no product info for this company.
+			<?php endif ?>
 			<div>Company Products</div>
+			<hr>
 			<?php if(!empty($product)): ?>
-				<table>
+				<table class="table" style="font-size:12px;">
 					<tr>
 						<th>Name</th><th>Quantity</th><th>Cost</th><th>Period</th>
 					</tr>
