@@ -90,7 +90,7 @@
 		<div class="col-md-12" style="margin-bottom: 10px;">
 			<a class="btn btn-default btn-sm" href="<?php echo base_url('kpi_calculation/'.$this->uri->segment(2).'/'.$this->uri->segment(3)); ?>">Show KPI Calculation Data</a>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-4" id="sol4">
 			<p>Cost and Environmental impact graph of processes</p>
 			
 		  <div id="rect-demo-ana">
@@ -276,9 +276,9 @@
 				<thead>
 				    <tr>
 				        <th data-options="field:'prcss_name',align:'center',width:100">Process</th>
-				        <th data-options="field:'ep_def_value',align:'center',width:110">Ep Value</th>
-				        <th data-options="field:'ep_value_alt',align:'center',width:80">Min Ep Value</th>
-				        <th data-options="field:'ep_value_ust',align:'center',width:80">Max Ep Value</th>
+				        <th data-options="field:'ep_def_value',align:'center',width:100">Ep Value</th>
+				        <th data-options="field:'ep_value_alt',align:'center',width:100">Min Ep Value</th>
+				        <th data-options="field:'ep_value_ust',align:'center',width:100">Max Ep Value</th>
 				        <th data-options="field:'cost_def_value',align:'center',width:100">Cost Value</th>
 				        <th data-options="field:'cost_value_alt',align:'center',width:100">Min Cost Value</th>
 				        <th data-options="field:'cost_value_ust',align:'center',width:100">Max Cost Value</th>
@@ -371,7 +371,7 @@ setTimeout(function()
 
 	//Tuna Graph
 	var data = list;
-	           console.log(data);
+	console.log(data);
 
 	//datagrid'in içini doldurma
 	$('#dg').datagrid('loadData', data);  
@@ -379,40 +379,55 @@ setTimeout(function()
 	var margin = {
 	            "top": 10,
 	            "right": 30,
-	            "bottom": 50,
+	            "bottom": 200,
 	            "left": 80
 	        };
-	var width = 400;
+	var width = $('#sol4').width()-110;
 	var height = 400;
 
 	// Set the scales
-	    var x = d3.scale.linear()
-	        .domain([0, d3.max(data, function(d) { return d.cost_value_ust+100; })])
-	        .range([0,width]).nice();
+  var x = d3.scale.linear()
+      .domain([0, d3.max(data, function(d) { return d.cost_value_ust+100; })])
+      .range([0,width]).nice();
 
-	    var y = d3.scale.linear()
-	        .domain([d3.min(data, function(d) { return d.ep_value_alt; }), d3.max(data, function(d) { return d.ep_value_ust; })])
-	        .range([height, 0]).nice();
+  var y = d3.scale.linear()
+      .domain([d3.min(data, function(d) { return d.ep_value_alt; }), d3.max(data, function(d) { return d.ep_value_ust; })])
+      .range([height, 0]).nice();
 
-	    var xAxis = d3.svg.axis().scale(x).orient("bottom");
-	    var yAxis = d3.svg.axis().scale(y).orient("left");
+  var xAxis = d3.svg.axis().scale(x).orient("bottom");
+  var yAxis = d3.svg.axis().scale(y).orient("left");
 
-			var color = d3.scale.category20();
+	// var color = d3.scale.category20();
 	// Create the SVG 'canvas'
-	    var svg = d3.select("#rect-demo-ana").append("svg")
-	            .attr("class", "chart")
-	            .attr("width", width + margin.left + margin.right)
-	            .attr("height", height + margin.top + margin.bottom).append("g")
-	            .attr("transform", "translate(" + margin.left + "," + margin.right + ")");
+  var svg = d3.select("#rect-demo-ana").append("svg")
+    .attr("class", "chart")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom).append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.right + ")");
 
-	    svg.append("g")
-	      .attr("class", "x axis")
-	      .attr("transform", "translate(0," + height + ")")
-	      .call(xAxis);
+  svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
 
-	    svg.append("g")
-	      .attr("class", "y axis")
-	      .call(yAxis);
+  svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis);
+
+	//x axis label
+	svg.append("text")
+		.attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom - 155) + ")")
+		.style("text-anchor", "middle")
+		.text("Cost Value");
+
+	//y axis label
+	svg.append("text")
+		.attr("transform", "rotate(-90)")
+		.attr("y", 0 - margin.left)
+		.attr("x", 0 - (height / 2))
+		.attr("dy", "1em")
+		.style("text-anchor", "middle")
+		.text("Ep Value");
 
 	svg.selectAll("rect").
 	  data(data).
@@ -422,6 +437,45 @@ setTimeout(function()
 	  attr("y", function(datum,index) { return y(datum.ep_value_ust); }).
 	  attr("height", function(datum,index) { return y(datum.ep_value_alt)-y(datum.ep_value_ust); }).
 	  attr("width", function(datum, index) { return x(datum.cost_value_ust)-x(datum.cost_value_alt); }).
-	  attr("fill",function(d,i){return color(i);});
+	  attr("fill",function(datum,index) { return datum.color; })
+  	.on("mouseover", function(datum,index){return tooltip.style("visibility", "visible").html(datum.prcss_name+"<br>EP Range:"+datum.ep_value_alt+"-"+datum.ep_value_ust+"<br>Cost Range:"+datum.cost_value_alt+"-"+datum.cost_value_ust);})
+		.on("mousemove", function(datum,index){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px").html(datum.prcss_name+"<br>EP Range:"+datum.ep_value_alt+"-"+datum.ep_value_ust+"<br>Cost Range:"+datum.cost_value_alt+"-"+datum.cost_value_ust);})
+		.on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+
+		var tooltip = d3.select("body")
+		.append("div")
+		.style("position", "absolute")
+		.style("z-index", "10")
+		.style("visibility", "hidden")
+		.style("background-color", "white")
+		.style("color", "darkblue");
+
+	// add legend   
+	var legend = svg.append("g")
+	  .attr("class", "legend")
+        //.attr("x", w - 65)
+        //.attr("y", 50)
+	  .attr("height", 100)
+	  .attr("width", 100)
+    .attr('transform', 'translate(-20,50)')    
+      
+    legend.selectAll('rect')
+      .data(data)
+      .enter()
+      .append("rect")
+	  .attr("x", 9)
+      .attr("y", function(d, i){ return 410 + (i *  20);})
+	  .attr("width", 10)
+	  .attr("height", 10)
+	  .style("fill", function(datum,index) { return datum.color; })
+      
+    legend.selectAll('text')
+      .data(data)
+      .enter()
+      .append("text")
+	  .attr("x", 22)
+    .attr("y", function(d, i){ return i *  20 + 419;})
+	  .text(function(datum,index) { return datum.prcss_name; });
+
 	}
 </script>

@@ -521,7 +521,8 @@ class Cpscoping extends CI_Controller {
 			'ep_value_ust' => $ep_value_ust,
 			'cost_value_alt' => $cost_value_alt,
 			'cost_value_ust' => $cost_value_ust,
-			'comment' => $process['comment']
+			'comment' => $process['comment'],
+			'color' => '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT)
 		);
 		header("Content-Type: application/json", true);
 		echo json_encode($return_array);
