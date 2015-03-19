@@ -1,5 +1,99 @@
 // remote connection test
 // remote connection test2
+         function updateActions(index){
+            //console.log(index);
+            console.log('updateActions');
+            var row = $('#tt_grid').datagrid('getSelected');
+            /*console.log('updateActions');
+            console.log(row);*/
+                $('#tt_grid').datagrid('updateRow',{
+                        index: index,
+                        row:{}
+                });
+        }
+        function getRowIndex(target){
+                var tr = $(target).closest('tr.datagrid-row');
+                return parseInt(tr.attr('datagrid-row-index'));
+        }
+        function editrow(target){
+        console.log('editrow');
+        console.log(target);
+        var rows = $('#tt_grid').datagrid('getRows'); 
+        var row = rows[getRowIndex(target)];
+        console.log(row);
+        //$('#tt').datagrid('selectRow',getRowIndex(target));
+                $('#tt_grid').datagrid('beginEdit', getRowIndex(target));
+
+        }
+        function deleterow(target){
+                /*$.messager.confirm('Confirm','Are you sure?',function(r){
+                        if (r){
+                                $('#tt_grid_scenarios').datagrid('deleteRow', getRowIndex(target));
+                        }
+                });*/
+            $.messager.confirm('Confirm','Are you sure? Selected row will be deleted...',function(r){
+                if (r){
+                    var rows = $('#tt_grid').datagrid('getRows');
+                    var tr = $(target).closest('tr.datagrid-row');
+                    var rowIndex = parseInt(tr.attr('datagrid-row-index'));
+                    var row = rows[rowIndex];
+                    console.log(row);
+                    $.ajax({
+                        url : '../../../Proxy/SlimProxy.php',   
+                        data : {
+                                url : 'deleteScenario_scn',
+                                id : row.id
+                        },
+                        type: 'GET',
+                        dataType : 'json',
+                        success: function(data, textStatus, jqXHR) {
+                            $('#tt_grid').datagrid('reload');
+                            if(!data['notFound']) {
+
+                            } else {
+                                /*console.warn('data notfound-->'+textStatus);
+                                $.messager.alert('Pick sub flow and company','Please select  a sub flow from flow tree!','warning');*/
+                            }
+                        },
+                        error: function(jqXHR , textStatus, errorThrown) {
+                          console.warn('error text status-->'+textStatus);
+                        }
+                    });
+                }
+            });
+        }
+        function saverow(target){
+
+                $('#tt_grid').datagrid('endEdit', getRowIndex(target));
+                var rows = $('#tt_grid').datagrid('getRows'); 
+                var row = rows[getRowIndex(target)];
+                console.log(row);
+                //console.error(getRowIndex(target));
+        }
+        function cancelrow(target){
+                $('#tt_grid').datagrid('cancelEdit', getRowIndex(target));
+        }
+        function insert(){
+                var row = $('#tt_grid').datagrid('getSelected');
+                if (row){
+                        var index = $('#tt_grid').datagrid('getRowIndex', row);
+                } else {
+                        index = 0;
+                }
+                /*$('#tt_grid_scenarios').datagrid('insertRow', {
+                        index: index,
+                        row:{
+                                status:'P'
+                        }
+                });*/
+                $('#tt_grid').datagrid('selectRow',index);
+                $('#tt_grid').datagrid('beginEdit',index);
+        }
+
+
+
+
+
         function openIsScenarios() {
             //alert('test');
            //$('#tt_grid').datagrid('collapse'); 
@@ -564,17 +658,87 @@
               {field:'flow',title:'Flow',width:100,sortable:true},
               {field:'flowtype',title:'Flow Type',width:100},
               {field:'flow_family_name',title:'Flow Family',width:100},
-              {field:'qntty',title:'Quantity',width:100},
+              {field:'qntty',title:'Quantity',width:100, editor:{type:'numberbox',options:{precision:2}}},
               {field:'unit',title:'Unit',width:100},
-              {field:'cost',title:'Cost',width:100},
+              {field:'cost',title:'Cost',width:100,editor:{type:'numberbox',options:{precision:2}}},
               {field:'availability',title:'Availability',width:100},
-              {field:'quality',title:'Quality',width:100},
-              {field:'output_location',title:'Output Loc.',width:100},
-              {field:'substitute_potential',title:'Substi.Pot.',width:100},
-              {field:'description',title:'Desc.',width:100},
+              {field:'quality',title:'Quality',width:100, editor:{type:'textbox'}},   
+              {field:'output_location',title:'Output Location',width:100, editor:{type:'textbox'}},
+              {field:'substitute_potential',title:'Substite Potential',width:100, editor:{type:'textbox'}},
+              {field:'description',title:'Description',width:100,  editor:{type:'textbox'}},
+              {field:'action',title:'Action',width:80,align:'center',
+                formatter:function(value,row,index){
+                        if (row.editing){
+                                var s = '<a href="javascript:void(0)" onclick="saverow(this)">Save</a> ';
+                                var c = '<a href="javascript:void(0)" onclick="cancelrow(this)">Cancel</a>';
+                                return s+c;
+                        } else {
+                                var e = '<a href="javascript:void(0)" onclick="editrow(this)">Edit</a> ';
+                                //var d = '<a href="javascript:void(0)" onclick="deleteISScenario(this);">Delete</a>';
+                                var d = '<a href="javascript:void(0)" onclick="deleterow(this);">Delete</a>';
+                                return e+d;
+                        }
+                }
+            }
               //{field:'quality',title:'Quality',width:100},
 
-              ]]});
+              ]],
+              onBeforeEdit:function(index,row){
+                row.editing = true;
+                updateActions(index);
+            },
+            onAfterEdit:function(index,row){
+                console.log(row);
+                console.log('onAfterEdit');
+                if(/*row.prj_name==''*/true){
+                   $.messager.alert('Warning','Fill Scenario Name!','warning');
+                } 
+                else {
+                    /*row.editing = false;
+                    $.messager.confirm('Confirm','Are you sure? Scenario name will be updated...',function(r){
+                        if (r){
+
+                            console.log(row);
+                            $.ajax({
+                                url : '../../../Proxy/SlimProxy.php',   
+                                data : {
+                                        url : 'updateScenario_scn',
+                                        id : row.id,
+                                        scenario : row.prj_name
+                                },
+                                type: 'GET',
+                                dataType : 'json',
+                                success: function(data, textStatus, jqXHR) {
+
+
+                                    if(!data['notFound']) {
+                                        if(data['id']>0) $.messager.alert('Scenario Updated','Updated succesfully!','info');
+                                        //if(data['id']==0) $.messager.alert('Scenario Updated','Updated succesfully!','info');
+                                    } else {
+                                        $.messager.alert('Update Failure','Update failure!','error');
+                                        /*console.warn('data notfound-->'+textStatus);
+                                        $.messager.alert('Pick sub flow and company','Please select  a sub flow from flow tree!','warning');*/
+                                    /*}
+                                    $('#tt_grid_scenarios').datagrid('reload');
+                                },
+                                error: function(jqXHR , textStatus, errorThrown) {
+                                  console.warn('error text status-->'+textStatus);
+                                  $.messager.alert('Update Failure','Update failure!','error');
+                                }
+                            });
+                        }
+                    });*/
+                    //updateActions(index);
+                }	
+            },
+            onCancelEdit:function(index,row){
+                console.log('onCancelEdit');
+                row.editing = false;
+                updateActions(index);
+            }
+            
+            
+            });
     //$('#tt_grid2').datagrid('loadData', data);
     $('#tt_grid').datagrid({
        url :'../../../Proxy/SlimProxy.php',

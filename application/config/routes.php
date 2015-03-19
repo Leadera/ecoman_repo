@@ -55,6 +55,9 @@ $route['isscopingtooltip'] = "isscoping/tooltip";
 $route['isscopingtooltipscenarios'] = "isscoping/tooltipscenarios";
 $route['isscenarios'] = "isscoping/isscenarios";
 
+//map
+$route['map'] = "map/index";   
+
 //Cost Benefit
 $route['cost_benefit/(:any)/(:any)'] = "cost_benefit/new_cost_benefit/$1/$2";
 $route['cba/save/(:any)/(:any)/(:any)'] = "cost_benefit/save/$1/$2/$3";
