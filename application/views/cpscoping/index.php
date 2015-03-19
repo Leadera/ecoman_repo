@@ -63,9 +63,9 @@ $(document).ready(function() {
             </div>
         </div>
         <div class="cp-bar">
-            <a style="margin-right:10px;" href="<?php echo base_url('cpscoping/'.$cp['project_id'].'/'.$cp['company_id'].'/show'); ?>" class=" btn-sm btn-info">View and Edit Cp Potentials Identifications</a>
+            <a style="margin-right:10px;" href="<?php echo base_url('cpscoping/'.$cp['project_id'].'/'.$cp['company_id'].'/show'); ?>" class=" btn-sm btn-info">View CP Potentials Identifications</a>
             <a style="margin-right:10px;" href="<?php echo base_url('kpi_calculation/'.$cp['project_id'].'/'.$cp['company_id']); ?>" class=" btn-sm btn-success">View and Edit KPI Calculation</a>
-            <a href="<?php echo base_url('cost_benefit/'.$cp['project_id'].'/'.$cp['company_id']); ?>" class=" btn-sm btn-warning">Cost-Benefit Analysis</a>
+            <a href="<?php echo base_url('cost_benefit/'.$cp['project_id'].'/'.$cp['company_id']); ?>" class=" btn-sm btn-warning">View Cost-Benefit Analysis</a>
         </div>
         <table class="table table-striped" style="font-size:12px;">
             <tr>

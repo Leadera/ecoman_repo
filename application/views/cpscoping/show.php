@@ -46,9 +46,9 @@
 			url: '<?php echo base_url('cpscoping/cost_ep'); ?>/'+prcss_id+'/'+<?php echo $this->uri->segment(2);?>+'/'+<?php echo $this->uri->segment(3); ?>,
 			success: function(data){
 				list.push(data);
-				var temp = "";
-				temp += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><th style="text-align:center;">' + data.prcss_name + '</th></tr><tr><td> <b>EP Value:</b> ' + data.ep_def_value + '  <b>EP Range:</b> ' + data.ep_value_alt + ' - ' + data.ep_value_ust + '</td></tr><tr><td> <b>Cost Value:</b> ' + data.cost_def_value + '   <b>Cost Range:</b> ' + data.cost_value_alt.toFixed(2) + ' - ' + data.cost_value_ust.toFixed(2) + ' Euro</td></tr></table>';
-				$("div."+prcss_id).html(temp);
+				// var temp = "";
+				// temp += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><th style="text-align:center;">' + data.prcss_name + '</th></tr><tr><td> <b>EP Value:</b> ' + data.ep_def_value + '  <b>EP Range:</b> ' + data.ep_value_alt + ' - ' + data.ep_value_ust + '</td></tr><tr><td> <b>Cost Value:</b> ' + data.cost_def_value + '   <b>Cost Range:</b> ' + data.cost_value_alt.toFixed(2) + ' - ' + data.cost_value_ust.toFixed(2) + ' Euro</td></tr></table>';
+				// $("div."+prcss_id).html(temp);
 			}
 		});
 	};
@@ -255,21 +255,109 @@
 				<?php } ?>
 				<?php endforeach ?>
 			</table>
-			<p>Cost and Environmental impact data of processes</p>
-			<table class="table table-bordered">
-				<tr>
-					<?php for($i = 0 ; $i < $process_adet ; $i++): ?>
-						<script type="text/javascript">
-							cost_ep_value(<?php echo $tekrarsiz[$i]; ?>,<?php echo $process_adet; ?>);
-						</script>
-						<td style="padding:0px !important;">
-							<div class="<?php echo $tekrarsiz[$i]; ?>">
-								
-							</div>
-						</td>
-					<?php endfor ?>
-				</tr>
+
+			<hr>
+			<?php for($i = 0 ; $i < $process_adet ; $i++): ?>
+				<script type="text/javascript">
+					cost_ep_value(<?php echo $tekrarsiz[$i]; ?>,<?php echo $process_adet; ?>);
+				</script>
+			<?php endfor ?>
+
+
+			<table id="dg" class="easyui-datagrid"
+			    data-options="
+			        iconCls: 'icon-edit',
+			        singleSelect: true,
+			        toolbar: '#tb',
+			        method: 'get',
+			        fitColumns: true,
+			        onClickRow: onClickRow
+			    ">
+				<thead>
+				    <tr>
+				        <th data-options="field:'prcss_name',align:'center',width:100">Process</th>
+				        <th data-options="field:'ep_def_value',align:'center',width:110">Ep Value</th>
+				        <th data-options="field:'ep_value_alt',align:'center',width:80">Min Ep Value</th>
+				        <th data-options="field:'ep_value_ust',align:'center',width:80">Max Ep Value</th>
+				        <th data-options="field:'cost_def_value',align:'center',width:100">Cost Value</th>
+				        <th data-options="field:'cost_value_alt',align:'center',width:100">Min Cost Value</th>
+				        <th data-options="field:'cost_value_ust',align:'center',width:100">Max Cost Value</th>
+				        <th data-options="field:'comment',width:200,align:'center',editor:'text'">Comments / Remarks</th>
+				      
+				    </tr>
+				</thead>
 			</table>
+    <div id="tb">
+    		<p style="float:left;">Cost and Environmental impact data of processes</p>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()">Save All Changes</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()">Cancel All Changes</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges()">See Changes</a>
+    </div>
+    
+    <script type="text/javascript">
+        var editIndex = undefined;
+        function endEditing(){
+            if (editIndex == undefined){return true}
+            if ($('#dg').datagrid('validateRow', editIndex)){
+                $('#dg').datagrid('endEdit', editIndex);
+                editIndex = undefined;
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function onClickRow(index){
+            if (editIndex != index){
+                if (endEditing()){
+                    $('#dg').datagrid('selectRow', index)
+                            .datagrid('beginEdit', index);
+                    editIndex = index;
+                } else {
+                    $('#dg').datagrid('selectRow', editIndex);
+                }
+            }
+        }
+        function accept(){
+            if (endEditing()){
+            	var rows = $('#dg').datagrid('getRows');
+        			var prjct_id = <?php echo $this->uri->segment(2); ?>;
+							var cmpny_id = <?php echo $this->uri->segment(3); ?>;
+							$("#alerts").html("");
+							$("#alerts").fadeIn( "fast" );
+							$.each(rows, function(i, row) {
+							  $('#dg').datagrid('endEdit', i);
+							  /* var url = row.isNewRecord ? 'test.php?savetest=true' : 'test.php?updatetest=true'; */
+							  var url = '../../kpi_insert/'+prjct_id+'/'+cmpny_id+'/'+row.flow_id+'/'+row.flow_type_id+'/'+row.prcss_id;
+							  $.ajax(url, {
+							      type:'POST',
+							      dataType:'json',
+							      data:row,
+					          success: function(data, textStatus, jqXHR) {
+					          	console.log(data);
+					          	//alert(data);
+					          	$("#alerts").append(data);
+					          	deneme();
+										},
+								    error: function(jqXHR, textStatus, errorThrown) {
+										  console.log(textStatus, errorThrown);
+										}
+							  });
+							});
+							$("#alerts").delay(5000).fadeOut( "fast" );
+
+            }
+        }
+        function reject(){
+            $('#dg').datagrid('rejectChanges');
+            editIndex = undefined;
+        }
+        function getChanges(){
+            var rows = $('#dg').datagrid('getChanges');
+            alert(rows.length+' rows are changed!');
+        }
+    </script>
+
+
 		</div>
 <script type="text/javascript">
 setTimeout(function()
@@ -284,6 +372,9 @@ setTimeout(function()
 	//Tuna Graph
 	var data = list;
 	           console.log(data);
+
+	//datagrid'in içini doldurma
+	$('#dg').datagrid('loadData', data);  
 
 	var margin = {
 	            "top": 10,

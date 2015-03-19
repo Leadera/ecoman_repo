@@ -14,6 +14,14 @@ class Process_model extends CI_Model {
 		return $this->db->get()->row_array();
 	}
 
+	public function get_cmpny_prcss_from_id($cmpny_id,$prcss_id){
+		$this->db->select('*');
+		$this->db->from('t_cmpny_prcss');
+		$this->db->where('cmpny_id',$cmpny_id);
+		$this->db->where('prcss_id',$prcss_id);
+		return $this->db->get()->row_array();
+	}
+
 	public function get_processfamily_list(){
 		$this->db->select('*');
 		$this->db->from('t_prcss_family');
