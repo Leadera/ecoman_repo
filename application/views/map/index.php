@@ -113,7 +113,7 @@ Ostim.layout = {
 			region: 'north',
 			layout: 'border',
 			width: '100%',
-			height: 80,
+			height: 50,
 			bodyBorder: false,
 			border: false,
 			items :  [
@@ -124,7 +124,7 @@ Ostim.layout = {
 					bodyBorder: false,
 					border: false,
 					autoLoad: {
-						url: 'resources/north-logo.html'
+						url: 'http://88.249.18.205:8090/ecoman_zeynel/mapHeader'
 					},
 					height: 55
 
@@ -609,6 +609,6 @@ Ostim.layout = {
 
 </script>
 
- <div id="mapdiv" style="margin: 30px"></div>       
+ <!--<div id="mapdiv" style="margin: 30px"></div> -->     
         
         
