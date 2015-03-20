@@ -1,18 +1,19 @@
 
-<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/extjs/3.4.1-1/resources/css/ext-all.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo asset_url('map/thirdPartyResources/ext-js/3.4.1.1/resources/css/ext-all.css'); ?>"/>
 <!--<link rel="stylesheet" type="text/css" href="../../resources/themes/greenery/css/xtheme-greenery.css"/>-->
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/extjs/3.4.1-1/adapter/ext/ext-base.js"></script>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/extjs/3.4.1-1/ext-all.js"></script>
+
+<script type="text/javascript" src="<?php echo asset_url('map/thirdPartyResources/ext-js/3.4.1.1/adapter/ext/ext-base.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo asset_url('map/thirdPartyResources/ext-js/3.4.1.1/ext-all.js'); ?>"></script>
 
 <!-- External lib: Google Maps -->
-<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/openlayers/2.12/theme/default/style.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo asset_url('map/thirdPartyResources/openlayers/2.12/theme/default/style.css'); ?>"/>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
 <!-- External lib: OpenLayers -->
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/openlayers/2.12/OpenLayers.js"></script>
+<script type="text/javascript" src="<?php echo asset_url('map/thirdPartyResources/openlayers/2.12/OpenLayers.js'); ?>"></script>
 
 <!-- External lib: GeoExt 1.0 -->
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/geoext/1.1/script/GeoExt.js"></script>
+<script type="text/javascript" src="<?php echo asset_url('map/thirdPartyResources/geoext/1.1/script/GeoExt.js'); ?>"></script>
 
 
 <script type="text/javascript" src="<?php echo asset_url('map/lib/i18n/tr_TR.js'); ?>"></script>
@@ -124,7 +125,8 @@ Ostim.layout = {
 					bodyBorder: false,
 					border: false,
 					autoLoad: {
-						url: 'http://88.249.18.205:8090/ecoman_zeynel/mapHeader'
+						//url: 'http://88.249.18.205:8090/ecoman_zeynel/mapHeader'
+                                                url: 'mapHeader'
 					},
 					height: 55
 
