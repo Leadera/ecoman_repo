@@ -32,7 +32,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo asset_url('map/resources/css/default.css'); ?>"/>
 <link rel="stylesheet" href="<?php echo asset_url('map/ux/oleditor/ole/client/theme/geosilk/geosilk.css'); ?>" type="text/css" />
 <!--<script type="text/javascript" src="../../script/Ostim.js"></script>-->
-<script type="text/javascript" src="<?php echo asset_url('map/DefaultOptionsWorld.js'); ?>"></script>
+<!--<script type="text/javascript" src="<?php echo asset_url('map/DefaultOptionsWorld.js'); ?>"></script>-->
 <!--<script type="text/javascript" src="../featureinfopanel/Config.js"></script>-->
 <!--<script type="text/javascript" src="Config.js"></script>-->
 

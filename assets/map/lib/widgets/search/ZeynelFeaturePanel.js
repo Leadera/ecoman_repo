@@ -404,33 +404,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
             this.map = Ostim.App.getMap();
             this.map.addLayer(this.layer);
             
-            // zeynel dağlı
-            // test layer ekleme işlemi
-            /*if(!this.map.getLayer('test')) {
-                /*console.error(this.map.getLayersByName('Flow Akış Katmanı'));
-                console.error(this.layerTest);*/
-               /* this.layerTest = new OpenLayers.Layer.WMS(
-                                        "Flow Akış Katmanı",
-                                        'http://localhost:8080/geoserver/ostim1/wms?',
-                                        {id: "test",layers: "ostim1:GIS_test", transparent: true, format: 'image/png'},
-                                        {singleTile: true, opacity: 0.9, isBaseLayer: false, visibility: true, noLegend: false, featureInfoFormat: 'application/vnd.ogc.gml', transitionEffect: 'resize'
-                                           ,
-                                       metadata: {
-                                                wfs: {
-                                                    protocol: 'fromWMSLayer',
-                                                    featurePrefix: 'ostim1:GIS_test',
-                                                    featureNS: 'http://localhost:8080/geoserver/ostim1',
-                                                    downloadFormats: Ostim.options.wfs.downloadFormats,
-
-                                                }
-                                            }
-                                        }
-                                    );
-                // zeynel dağlı
-                // test layer haritaya ekleniyor
-                this.map.addLayer(this.layerTest);
-                //this.layerTest = true;
-            }*/
+            
             
 
             var self = this;
@@ -500,18 +474,24 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
         
         Ext.ns('Example');
         Example.Grid = Ext.extend(Ext.grid.GridPanel, {
-        featureID: null,
+        //featureID: null,
 	initComponent:function() {
+            console.log('example grid init()');
 		var config = {
                          title : 'grid 1' 
                          ,height:200
                          ,layout: 'auto'
+                         /*,proxy : new Ext.data.HttpProxy({
+                            url : '../../../slim_rest/index.php/companyFlows_json_test'  
+                         })*/
 			 ,store:new Ext.data.JsonStore({
 				 id: 'flowgrid'
                                 ,restful: true
 				,totalProperty:'totalCount'
 				,root:'rows'
 				,url:'../../../slim_rest/index.php/companyFlows_json_test?id='+this.featureID
+                                //,url:'../../../slim_rest/index.php/companyFlows_json_test'
+                                ,proxy : this.proxy
 				,fields:[
                                     {name: 'id'},
                                     {name: 'flow', allowBlank: true},
@@ -522,7 +502,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
 				]
                                 
 			})
-			,columns:[{header: "ID", width: 40, sortable: true, dataIndex: 'id'},
+			,columns:[{header: "ID333", width: 40, sortable: true, dataIndex: 'id'},
                                   {header: "Akış", width: 100, sortable: true, dataIndex: 'flow', editor: new Ext.form.TextField({})},
                                   {header: "Miktar", width: 50, sortable: true, dataIndex: 'qntty', editor: new Ext.form.TextField({})},
                                   {header: "Birim", width: 50, sortable: true, dataIndex: 'unit', editor: new Ext.form.TextField({})},
@@ -574,20 +554,30 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
 
         Example.Grid2 = Ext.extend(Ext.grid.GridPanel, {
         
-        featureID: null,
-	initComponent:function() {
+        //featureID: null,
+        sm: this.sm,
+	initComponent:function(sm) {
+            console.log('example grid2 init()');
+                //console.log();
+                //console.error(scope);
 		var config = {
+                    sm : sm,
                          title : 'grid 2' 
                          ,height:200
                          ,layout: 'auto'
+                         /*,proxy : new Ext.data.HttpProxy({
+                            url : '../../../slim_rest/index.php/companyFlows_json_test'  
+                         })*/
 			 ,store:new Ext.data.JsonStore({
 				 id: 'flowgrid'
                                 ,restful: true
 				,totalProperty:'totalCount'
 				,root:'rows'
 				,url:'../../../slim_rest/index.php/companyFlows_json_test?id='+this.featureID
+                                //,url:'../../../slim_rest/index.php/companyFlows_json_test'
+                                ,proxy :this.proxy
 				,fields:[
-                                    //{name: 'id'},
+                                    {name: 'id'},
                                     {name: 'flow', allowBlank: true},
                                     {name: 'qntty', allowBlank: true},
                                     {name: 'unit', allowBlank: true},
@@ -596,7 +586,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
 				]
                                 
 			})
-			,columns:[{header: "ID", width: 40, sortable: true, dataIndex: 'id'},
+			,columns:[{header: "ID222", width: 40, sortable: true, dataIndex: 'id'},
                                   {header: "Akış", width: 100, sortable: true, dataIndex: 'flow', editor: new Ext.form.TextField({})},
                                   {header: "Miktar", width: 50, sortable: true, dataIndex: 'qntty', editor: new Ext.form.TextField({})},
                                   {header: "Birim", width: 50, sortable: true, dataIndex: 'unit', editor: new Ext.form.TextField({})},
@@ -623,7 +613,8 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                             //deferEmptyText: false
                         }
 		}; // eo config object
-                console.log(this);
+                console.warn(this);
+                console.warn(this.sm);
 		// apply config
                 Ext.apply(this, Ext.apply(this.initialConfig, config));
 
@@ -650,7 +641,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
          * zeynel dağlı
          */
         // Create a standard HttpProxy instance.
-        var proxy = new Ext.data.HttpProxy({
+        /*var proxy = new Ext.data.HttpProxy({
             url : '../../../slim_rest/index.php/companyFlows_json_test'  
         });
         
@@ -693,11 +684,11 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
             {header: "Kalite", width: 50, sortable: true, dataIndex: 'quality', editor: new Ext.form.TextField({})},
             {header: "Akış Tipi", width: 50, sortable: true, dataIndex: 'flowtype', editor: new Ext.form.TextField({})},
             //{header: "Miktar", width: 50, sortable: true, dataIndex: 'last', editor: new Ext.form.TextField({})}
-        ];
+        ];*/
         
         // Create a typical GridPanel with RowEditor plugin
     //var userGrid = new Ext.grid.GridPanel({
-    this.flowGrid = new Ext.grid.GridPanel({
+    /*this.flowGrid = new Ext.grid.GridPanel({
         //renderTo: 'user-grid',
         id : 'test',
         iconCls: 'icon-grid',
@@ -715,114 +706,26 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
             text: 'Delete',
             iconCls: 'silk-delete',
             //handler: onDelete
-        }, '-'],*/
+        }, '-'],*//*
         viewConfig: {
             forceFit: true,
             emptyText: 'No records',
             deferEmptyText: false
         },
-    });
+    });*/
     
     
-     /**
-         * zeynel dağlı
-         */
-        // Create a standard HttpProxy instance.
-        var proxy2 = new Ext.data.HttpProxy({
-            //url: 'app.php/users'
-            //url : 'http://127.0.0.1:8999/examples/featureinfopanel/users.json'
-            //url : 'http://127.0.0.1:8999/examples/ostim/users.json'
-            //url : 'http://localhost/ostim_map_05_12/examples/ostim/users.json'
-            //url : '../../examples/ostim/users.json'
-            url : '../../../slim_rest/index.php/companyFlows_json_test'  
-        });
 
-        // Typical JsonReader.  Notice additional meta-data params for defining the core attributes of your json-response
-        /*var reader = new Ext.data.JsonReader({
-            totalProperty: 'total',
-            successProperty: 'success',
-            idProperty: 'id',
-            root: 'data',
-            messageProperty: 'message'  // <-- New "messageProperty" meta-data
-        }, [
-            {name: 'id'},
-            {name: 'company', allowBlank: true},
-            {name: 'flow', allowBlank: true},
-            {name: 'quantity', allowBlank: true}
-        ]);*/
-        
-        var reader2 = new Ext.data.JsonReader({
-            totalProperty: 'total',
-            successProperty: 'success',
-            idProperty: 'id2',
-            root: 'rows',
-            messageProperty: 'message'  // <-- New "messageProperty" meta-data
-        }, [
-            {name: 'id'},
-            {name: 'flow', allowBlank: true},
-            {name: 'qntty', allowBlank: true},
-            {name: 'unit', allowBlank: true},
-            {name: 'quality', allowBlank: true},
-            {name: 'flowtype', allowBlank: true}
-        ]);
-
-        // The new DataWriter component.
-        var writer2 = new Ext.data.JsonWriter({
-            encode: false   // <-- don't return encoded JSON -- causes Ext.Ajax#request to send data using jsonData config rather than HTTP params
-        });
-
-        // Typical Store collecting the Proxy, Reader and Writer together.
-        var store2 = new Ext.data.Store({
-            //autoDestroy: false,
-            id: 'flowgrid2',
-            restful: true,     // <-- This Store is RESTful
-            proxy: proxy2,
-            reader: reader2,
-            writer: writer2,    // <-- plug a DataWriter into the store just as you would a Reader
-            autoLoad: false
-        });
-        
-        var userColumns2 =  [
-            {header: "ID", width: 40, sortable: true, dataIndex: 'id'},
-            {header: "Akış", width: 100, sortable: true, dataIndex: 'flow', editor: new Ext.form.TextField({})},
-            {header: "Miktar", width: 50, sortable: true, dataIndex: 'qntty', editor: new Ext.form.TextField({})},
-            {header: "Birim", width: 50, sortable: true, dataIndex: 'unit', editor: new Ext.form.TextField({})},
-            {header: "Kalite", width: 50, sortable: true, dataIndex: 'quality', editor: new Ext.form.TextField({})},
-            {header: "Akış Tipi", width: 50, sortable: true, dataIndex: 'flowtype', editor: new Ext.form.TextField({})},
-            //{header: "Miktar", width: 50, sortable: true, dataIndex: 'last', editor: new Ext.form.TextField({})}
-        ];
-    
-    this.flowGrid2 = new Ext.grid.GridPanel({
-        //renderTo: 'user-grid',
-        id : 'test',
-        iconCls: 'icon-grid',
-        frame: true,
-        title: 'Şirket Akış Şeması2',
-        height: 300,
-        store: store2,
-        //plugins: [editor],
-        columns : userColumns2,
-       
-        viewConfig: {
-            forceFit: true,
-            emptyText: 'No records',
-            deferEmptyText: false
-        }
-    });
-    
-    // load the store immeditately
-        store.load();
-        store2.load();
         
         //userGrid.on('celldblclick', function (grid, rowIndex, columnIndex, e) {
-        this.flowGrid.on('celldblclick', function (grid, rowIndex, columnIndex, e) {
+        /*this.flowGrid.on('celldblclick', function (grid, rowIndex, columnIndex, e) {
                 //console.log('featureGrid panel celldblclick() event');
                 var record = grid.getStore().getAt(rowIndex);
                 alert('test');
                 console.warn(record.data.first);
                 //var feature = record.getFeature();
                 //self.zoomToFeature(self, feature.geometry);
-            });
+            });*/
         
         
         
@@ -934,7 +837,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
         // Create main panel with card layout
         this.mainPanel = new Ext.Panel({
             border: false,
-            activeItem : 'processcard',
+            activeItem : 'flowcard',
             layout: "card",
             //items: this.cardPanels,
             items :[ {
@@ -951,8 +854,11 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
 		} ]
         });
         
-        this.setCompanyNameToProcessGridTitle(this.mainPanel.getComponent('processcard'),this);
-        this.setCompanyIDToService(this.mainPanel.getComponent('processcard'),this);
+        this.setCompanyNameToProcessGridTitle(this.mainPanel.getComponent('flowcard'),this);
+        this.setCompanyIDToService(this.mainPanel.getComponent('flowcard'),this);
+        
+        /*this.setCompanyNameToProcessGridTitle(this.mainPanel.getLayout().getActiveItem(),this);
+        this.setCompanyIDToService(this.mainPanel.getLayout().getActiveItem(),this);*/
 
         // Add main panel
         this.add(this.mainPanel);
@@ -1010,7 +916,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
      *  activate the displaypanel of choice
      */
     setCompanyNameToProcessGridTitle: function (dataGrid, scope) {
-        //console.log('ZeynelFeaturePanel setCompanyNameToFlowGridTitle()');
+        console.log('ZeynelFeaturePanel setCompanyNameToProcessGridTitle()');
         //console.log('featureCompanyName-->'+scope.featureCompanyName);
         if(scope.featureCompanyName!=null) {
             //console.log('setCompanyNameToFlowGridTitle companyname-->'+scope.featureCompanyName);
@@ -1026,6 +932,8 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
      */
     setCompanyIDToService: function (dataGrid, scope) {
         console.log('ZeynelFeaturePanel setCompanyIDToService()');
+        console.log(dataGrid);
+        console.log(dataGrid.featureID);
         console.log('featureCompanyID-->'+scope.featureID);
         if(scope.featureID!=null) {
             //console.log('setCompanyIDToService companyID-->'+scope.featureID);
@@ -1041,8 +949,10 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                                         );
             
             flowGridmask2.show();*/
-            dataGrid.getStore().load();
             console.log('datagrid store url2-->'+dataGrid.getStore().url);
+            dataGrid.getStore().load();
+            
+            
             console.log('datagrid featureID-->'+dataGrid.featureID);
         }
     },
@@ -1257,11 +1167,12 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                                                 removeMask: false,
                                                 store: activeItem.getStore()}
                                         );
-                
+                activeItem.getStore().proxy.setUrl('../../../slim_rest/index.php/companyFlows_json_test?companyid='+this.featureID);
                 activeItem.getStore().load();
                 console.log('feature company nameee--->'+this.featureCompanyName);
-                console.log(this);
-                this.setCompanyNameToFlowGridTitle(activeItem, this);
+                console.log('feature company ideeeee--->'+this.featureID);
+                
+                this.setCompanyNameToProcessGridTitle(activeItem, this);
                 flowGridmask.show();
                 //console.warn(activeItem.featureID);
 
