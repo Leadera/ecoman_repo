@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" type="text/css" href="<?php echo asset_url('map/thirdPartyResources/ext-js/3.4.1.1/resources/css/ext-all.css'); ?>"/>
+<link rel="stylesheet" type="text/css" href="<?php echo asset_url('map/thirdPartyResources/ext-js/3.4.1.1/resources/css/ext-all-theme-easyui.css'); ?>"/>
 <!--<link rel="stylesheet" type="text/css" href="../../resources/themes/greenery/css/xtheme-greenery.css"/>-->
 
 <script type="text/javascript" src="<?php echo asset_url('map/thirdPartyResources/ext-js/3.4.1.1/adapter/ext/ext-base.js'); ?>"></script>
@@ -29,7 +29,8 @@
 
 
 <script src="<?php echo asset_url('map/lib/DynLoader.js'); ?>" type="text/javascript"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo asset_url('map/resources/css/default.css'); ?>"/>
+<!--<link rel="stylesheet" type="text/css" href="<?php echo asset_url('map/resources/css/default.css'); ?>"/>-->
+<link rel="stylesheet" type="text/css" href="<?php echo asset_url('map/resources/css/default-theme-easyui.css'); ?>"/>
 <link rel="stylesheet" href="<?php echo asset_url('map/ux/oleditor/ole/client/theme/geosilk/geosilk.css'); ?>" type="text/css" />
 <!--<script type="text/javascript" src="../../script/Ostim.js"></script>-->
 <!--<script type="text/javascript" src="<?php echo asset_url('map/DefaultOptionsWorld.js'); ?>"></script>-->
