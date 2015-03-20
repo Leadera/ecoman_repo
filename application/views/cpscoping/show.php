@@ -327,16 +327,16 @@
 							$.each(rows, function(i, row) {
 							  $('#dg').datagrid('endEdit', i);
 							  /* var url = row.isNewRecord ? 'test.php?savetest=true' : 'test.php?updatetest=true'; */
-							  var url = '../../kpi_insert/'+prjct_id+'/'+cmpny_id+'/'+row.flow_id+'/'+row.flow_type_id+'/'+row.prcss_id;
+							  var url = '../../comment_save/'+cmpny_id+'/'+row.prcss_id;
 							  $.ajax(url, {
 							      type:'POST',
 							      dataType:'json',
 							      data:row,
 					          success: function(data, textStatus, jqXHR) {
+					          	console.log(row.prcss_id);
 					          	console.log(data);
 					          	//alert(data);
 					          	$("#alerts").append(data);
-					          	deneme();
 										},
 								    error: function(jqXHR, textStatus, errorThrown) {
 										  console.log(textStatus, errorThrown);
@@ -356,6 +356,8 @@
             alert(rows.length+' rows are changed!');
         }
     </script>
+    <div id="alerts" style="margin-top: 20px;font-size: 13px;color: darkgrey;"></div>
+
 
 
 		</div>

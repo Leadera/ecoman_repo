@@ -22,6 +22,16 @@ class Process_model extends CI_Model {
 		return $this->db->get()->row_array();
 	}
 
+	//update comment of a process
+	public function update_process_comment($cmpny_id,$prcss_id,$comment){
+		$data = array(
+               'comment' => $comment
+            );
+		$this->db->where('cmpny_id',$cmpny_id);
+		$this->db->where('prcss_id',$prcss_id);
+    $this->db->update('t_cmpny_prcss',$data); 
+	}
+
 	public function get_processfamily_list(){
 		$this->db->select('*');
 		$this->db->from('t_prcss_family');
@@ -44,6 +54,16 @@ class Process_model extends CI_Model {
     $query = $this->db->get();
     return $query->row_array();
 	}
+
+	public function get_process_from_process_id($prcss_id){
+		$this->db->select('*');
+    	$this->db->from('t_prcss');
+        $this->db->where('id',$prcss_id);
+
+    $query = $this->db->get();
+    return $query->row_array();
+	}
+	
 	
 	public function get_main_process(){
 		$this->db->select('*');
