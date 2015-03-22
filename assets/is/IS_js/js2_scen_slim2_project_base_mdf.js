@@ -1,3 +1,36 @@
+ function saveISScenario() {
+     $.messager.progress();
+     $('#ff').form({
+    ajax : true,
+    url:'../../../slim2_ecoman/index.php/insertIS',
+    queryParams : {
+        row : JSON.stringify($('#tt_grid_dynamic4').datagrid('getRows')),
+        text : $('#tt_text').textbox('getText')
+        //'row='+JSON.stringify($('#tt_grid_dynamic5').datagrid('getRows'))+'&text='+$('#tt_textAuto').textbox('getText')
+    },
+    onSubmit:function(){
+        var isValid = $(this).form('validate');
+        if (!isValid){
+                $.messager.progress('close');
+        }
+        //$.messager.alert('is valid ');
+        return isValid;	// return false will stop the form submission
+    },
+    success:function(data){
+        var jsonObj = $.parseJSON(data);
+        if(jsonObj['found']==true)
+        {
+            $.messager.alert('Succesfully saved');
+            $.messager.progress('close');	// hide progress bar while submit successfully
+        } else {
+            $.messager.alert('Save Error');
+            $.messager.progress('close');	// hide progress bar while submit successfully
+        }
+    }
+    });
+    $('#ff').submit();
+ }
+
 function updateActions(index){
     //console.log(index);
     console.log('updateActions');
@@ -888,6 +921,10 @@ function beginISPotentialByAllFlows() {
         
         $.print("#tt_grid_dynamic3_div");
     });
+    
+    
+    
+    
     
      
 });  

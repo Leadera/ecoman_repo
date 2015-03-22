@@ -158,7 +158,7 @@
         </div>
     </div>
 
-    <div id="saveWindow" class="easyui-window" IS_synergy ="test" title="Save IS Scenario" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:500px;height:200px;padding:10px;">
+    <div id="saveWindow" class="easyui-window" IS_synergy ="test" title="Save IS Scenario" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:500px;height:300px;padding:10px;">
         <div class="easyui-layout" data-options="fit:true">
             <!--<div data-options="region:'east',split:true" style="width:100px"></div>-->
             <div data-options="region:'center'" style="padding:10px;">
@@ -172,11 +172,11 @@
                 <form id="ff" method="post">
                 <div style="padding:10px 60px 20px 60px">
                     <div style="margin-bottom: 7px;">
-                        <label style="margin-right:7px;">IS Group Name:</label>
+                        <label style="margin-right:30px;">IS Group Name:</label>
                         <input id="tt_text" class="easyui-textbox" type="text" name="name" data-options="required:true"></input>
                     </div>
                     <div style="margin-left:-8px;">
-                        <label style="margin-right:7px;">IS Scenario Type:</label>
+                        <label style="margin-right:27px;">IS Scenario Type:</label>
                         <input class="easyui-combobox" 
                             name="IS" id="IS"
                             data-options="
@@ -190,13 +190,34 @@
                                     }]
                             ">
                     </div>
+                    <div style="margin-left:-8px;">
+                        <label style="margin-right: 17px;
+                                        padding-bottom: 3px;">IS Scenario Status:</label>
+                        <input class="easyui-combobox" 
+                            name="IS_status" id="IS_status"
+                            data-options="
+                                    
+                                    url :'../../../Proxy/SlimProxy.php?url=getScanarioStatus_scn',
+                                    //queryParams : { url : 'getScanarioStatus_scn},
+                                    method:'get',
+                                    valueField:'id',
+                                    textField:'text',
+                                    panelHeight:'auto',
+                                    icons:[{
+                                        iconCls:'icon-add'
+                                    }],
+                                    required:true,
+                            ">
+                    </div>
                     
                 </div>
                
                    
             </div>
             <div data-options="region:'south',border:false" style="text-align:right;padding:5px 0 0;">
-                <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="submitForm();" style="">Save IS potentials table</a>
+                <!--<input type="submit" value="Save IS potentials table">-->
+                <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="saveISScenario();" style="">Save IS potentials table</a>
+                <!--<a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="submitForm();" style="">Save IS potentials table</a>-->
                 <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="windowManualISQuitWithoutSaving();" style="">Quit without saving</a>
             </div>
             </form>

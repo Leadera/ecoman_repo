@@ -127,30 +127,37 @@
             </div>
     
     <div id="tb5" style="padding:5px;height:auto">
-                <div  style="margin-bottom:5px">
-                    
-                    <a href="#" name="add" onclick="event.preventDefault();addRowAuto();" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add Potential IS</a>
-                    <a href="#" onclick="event.preventDefault();deleteAllAutoPotential();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Clear all</a>
-                    <a href="#" id="printTest" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
-                    
-                </div>
-            </div>
+        <div  style="margin-bottom:5px">
+
+            <a href="#" name="add" onclick="event.preventDefault();addRowAuto();" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add Potential IS</a>
+            <a href="#" onclick="event.preventDefault();deleteAllAutoPotential();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Clear all</a>
+            <a href="#" id="printTest" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
+
+        </div>
+    </div>
     
     
-    
-    
-        <div id="saveWindowAuto" class="easyui-window" title="Save IS Scenario" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:500px;height:200px;padding:10px;">
+    <div id="saveWindowAuto" class="easyui-window" IS_synergy ="test" title="Save IS Scenario" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:500px;height:300px;padding:10px;">
         <div class="easyui-layout" data-options="fit:true">
             <!--<div data-options="region:'east',split:true" style="width:100px"></div>-->
             <div data-options="region:'center'" style="padding:10px;">
+                <script>
+                  /*console.log($("#saveWindow"));
+                  console.log($("#saveWindow").attr( "IS_synergy" ));
+                  console.log($("#saveWindow").attr( "IS_synergy" , "testtttt"));
+                  console.log($("#saveWindow").attr( "IS_synergy" ));*/
+                    
+                </script>
                 <form id="ff" method="post">
                 <div style="padding:10px 60px 20px 60px">
-                    
-                    <div style="margin-bottom: -8px;"><label style="margin-right:7px;">IS Group Name:</label><input id="tt_textAuto" class="easyui-textbox" type="text" name="name" data-options="required:true"></input></div></br>
-                    <div style="margin-left:-11px;">
-                        <label style="margin-right:7px;">IS Scenario Type:</label>
+                    <div style="margin-bottom: 7px;margin-left: -8px;">
+                        <label style="margin-right:18px;">IS Scenario Name:</label>
+                        <input id="tt_textAuto" class="easyui-textbox" type="text" name="name" data-options="required:true"></input>
+                    </div>
+                    <div style="margin-left:-8px;">
+                        <label style="margin-right:27px;">IS Scenario Type:</label>
                         <input class="easyui-combobox" 
-                            name="IS"
+                            name="IS_auto" id="IS"
                             data-options="
                                     url:'<?php echo asset_url('is/combobox_data1.json'); ?>',
                                     method:'get',
@@ -162,18 +169,42 @@
                                     }]
                             ">
                     </div>
+                    <div style="margin-left:-8px;">
+                        <label style="margin-right: 17px;
+                                        padding-bottom: 3px;">IS Scenario Status:</label>
+                        <input class="easyui-combobox" 
+                            name="IS_statusAuto" id="IS_status"
+                            data-options="
+                                    
+                                    url :'../../../Proxy/SlimProxy.php?url=getScanarioStatus_scn',
+                                    //queryParams : { url : 'getScanarioStatus_scn},
+                                    method:'get',
+                                    valueField:'id',
+                                    textField:'text',
+                                    panelHeight:'auto',
+                                    icons:[{
+                                        iconCls:'icon-add'
+                                    }],
+                                    required:true,
+                            ">
+                    </div>
                     
                 </div>
                
                    
             </div>
             <div data-options="region:'south',border:false" style="text-align:right;padding:5px 0 0;">
-                <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="submitFormAuto();" style="">Save IS potentials table</a>
-                <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="windowAutoISQuitWithoutSaving();" style="">Quit without saving</a>
+                <!--<input type="submit" value="Save IS potentials table">-->
+                <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="saveISScenarioAuto();" style="">Save IS potentials table</a>
+                <!--<a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="submitForm();" style="">Save IS potentials table</a>-->
+                <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="windowManualISQuitWithoutSaving();" style="">Quit without saving</a>
             </div>
             </form>
         </div>
     </div>
+    
+        
+
     
     <div id="tb6" style="padding:5px;height:auto">
         <div style="margin-bottom:5px">
