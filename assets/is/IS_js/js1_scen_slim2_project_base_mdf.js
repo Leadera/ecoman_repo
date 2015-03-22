@@ -664,7 +664,7 @@
               {field:'availability',title:'Availability',width:100},
               {field:'quality',title:'Quality',width:100, editor:{type:'textbox'}},   
               {field:'output_location',title:'Output Location',width:100, editor:{type:'textbox'}},
-              {field:'substitute_potential',title:'Substite Potential',width:100, editor:{type:'textbox'}},
+              {field:'substitute_potential',title:'Substitute Potential',width:100, editor:{type:'textbox'}},
               {field:'description',title:'Description',width:100,  editor:{type:'textbox'}},
               {field:'action',title:'Action',width:80,align:'center',
                 formatter:function(value,row,index){
