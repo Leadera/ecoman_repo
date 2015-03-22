@@ -173,7 +173,7 @@
                         <label style="margin-right: 17px;
                                         padding-bottom: 3px;">IS Scenario Status:</label>
                         <input class="easyui-combobox" 
-                            name="IS_statusAuto" id="IS_status"
+                            name="IS_status" id="IS_status"
                             data-options="
                                     
                                     url :'../../../Proxy/SlimProxy.php?url=getScanarioStatus_scn',
