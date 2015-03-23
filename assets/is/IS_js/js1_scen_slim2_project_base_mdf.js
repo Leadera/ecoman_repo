@@ -7,7 +7,8 @@
     url:'../../../slim2_ecoman/index.php/insertIS',
     queryParams : {
         row : JSON.stringify($('#tt_grid_dynamic5').datagrid('getRows')),
-        text : $('#tt_textAuto').textbox('getText')
+        text : $('#tt_textAuto').textbox('getText'),
+        consultant_id : document.getElementById('consultant_id').value
         //'row='+JSON.stringify($('#tt_grid_dynamic5').datagrid('getRows'))+'&text='+$('#tt_textAuto').textbox('getText')
     },
     onSubmit:function(){
@@ -250,6 +251,8 @@
                 $.messager.alert('Select row','Select at least one IS Potental row','warning');
             } else if($('#tt_grid_dynamic5').datagrid('getRows').length>0) {
                 rowArray = $('#tt_grid_dynamic5').datagrid('getRows');
+                var IS_search = $('#IS_search').combobox('getValue');
+                $('#IS').combobox('setValue', IS_search);
                 $.each(rowArray, function( index, obj ) {
                      console.warn(obj)              ;
                      $('#saveWindowAuto').window('open');

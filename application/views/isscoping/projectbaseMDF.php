@@ -13,6 +13,7 @@
     proje id de�eri session i�inden al�nacak
 -->
 <input type ="hidden" value="<?php echo $project_id; ?>" id ="prj_id"  name="prj_id"></input>  
+<input type ="hidden" value="<?php echo $userID; ?>" id ="consultant_id"  name="consultant_id"></input>
 
 
     <div class="easyui-layout" id="cc" data-options="" style="width:100%;height:1000px;">
@@ -172,7 +173,8 @@
                 <form id="ff" method="post">
                 <div style="padding:10px 60px 20px 60px">
                     <div style="margin-bottom: 7px;">
-                        <label style="margin-right:30px;">IS Group Name:</label>
+                        <label style="margin-right: 19px;
+                                      margin-left: -8px;">IS Scenario Name:</label>
                         <input id="tt_text" class="easyui-textbox" type="text" name="name" data-options="required:true"></input>
                     </div>
                     <div style="margin-left:-8px;">

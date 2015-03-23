@@ -16,6 +16,7 @@
     proje id değeri session içinden alınacak
 -->
 <input type ="hidden" value='<?php echo $project_id; ?>' id ='prj_id' name='prj_id'></input>
+<input type ="hidden" value="<?php echo $userID; ?>" id ="consultant_id"  name="consultant_id"></input>
 <!--<div class="col-md-12">-->
 
     <div class="easyui-layout" data-options="" style="width:100%;height:1320px;">
@@ -150,14 +151,14 @@
                 </script>
                 <form id="ff" method="post">
                 <div style="padding:10px 60px 20px 60px">
-                    <div style="margin-bottom: 7px;margin-left: -8px;">
+                    <div style="margin-bottom: 4px;margin-left: -8px;">
                         <label style="margin-right:18px;">IS Scenario Name:</label>
                         <input id="tt_textAuto" class="easyui-textbox" type="text" name="name" data-options="required:true"></input>
                     </div>
                     <div style="margin-left:-8px;">
                         <label style="margin-right:27px;">IS Scenario Type:</label>
                         <input class="easyui-combobox" 
-                            name="IS_auto" id="IS"
+                            name="IS" id="IS"
                             data-options="
                                     url:'<?php echo asset_url('is/combobox_data1.json'); ?>',
                                     method:'get',

@@ -5,7 +5,8 @@
     url:'../../../slim2_ecoman/index.php/insertIS',
     queryParams : {
         row : JSON.stringify($('#tt_grid_dynamic4').datagrid('getRows')),
-        text : $('#tt_text').textbox('getText')
+        text : $('#tt_text').textbox('getText'),
+        consultant_id : document.getElementById('consultant_id').value
         //'row='+JSON.stringify($('#tt_grid_dynamic5').datagrid('getRows'))+'&text='+$('#tt_textAuto').textbox('getText')
     },
     onSubmit:function(){
@@ -20,10 +21,10 @@
         var jsonObj = $.parseJSON(data);
         if(jsonObj['found']==true)
         {
-            $.messager.alert('Succesfully saved');
+            $.messager.alert('Succesfully saved','Data succesfully saved');
             $.messager.progress('close');	// hide progress bar while submit successfully
         } else {
-            $.messager.alert('Save Error');
+            $.messager.alert('Save Error', 'Error occured');
             $.messager.progress('close');	// hide progress bar while submit successfully
         }
     }
@@ -328,12 +329,12 @@ function beginISPotentialByAllFlows() {
         }
         
         function deleteISPotential(target) {
-                console.warn($('#tt_grid_dynamic4').datagrid('getSelections'));
-                $.messager.confirm('Confirm','Are you sure? Selected row will be deleted...',function(r){
-                    if (r){
-                        $('#tt_grid_dynamic4').datagrid('deleteRow', getRowIndex(target));
-                    }
-                });
+            console.warn($('#tt_grid_dynamic4').datagrid('getSelections'));
+            $.messager.confirm('Confirm','Are you sure? Selected row will be deleted...',function(r){
+                if (r){
+                    $('#tt_grid_dynamic4').datagrid('deleteRow', getRowIndex(target));
+                }
+            });
         }
         
         function savePotentials() {
@@ -341,9 +342,14 @@ function beginISPotentialByAllFlows() {
                 $.messager.alert('Fill IS Potentials','Please fill IS Potentials table','warning');
             } else if($('#tt_grid_dynamic4').datagrid('getRows').length>0) {
                 rowArray = $('#tt_grid_dynamic4').datagrid('getRows');
+                var IS_search = $('#IS_search2').combobox('getValue');
+                console.log(IS_search);
+                console.log(document.getElementById('consultant_id').value);
+                //console.log('user id ---->'.$('#consultant_id').attr("value"));
+                 $('#IS').combobox('setValue', IS_search);
                  $("#saveWindow").attr( "IS_synergy" , $('#IS_search2').combobox('getValue'));
                  $('#saveWindow').window('open'); 
-                 $("#IS").combobox("setValue",$("#saveWindow").attr( "IS_synergy"));
+                 //$("#IS").combobox("setValue",$("#saveWindow").attr( "IS_synergy"));
             }
             
         }
