@@ -8,13 +8,14 @@
 <script type="text/javascript" src="http://www.jeasyui.com/easyui/datagrid-detailview.js"></script>
 
 <!--<script src="<?php /*echo asset_url('is/src/datagrid-filter.js');*/ ?>"></script>-->
-<script src="<?php echo asset_url('is/IS_js/scenarios.js'); ?>"></script>
+<script src="<?php echo asset_url('is/IS_js/scenariosCns.js'); ?>"></script>
 
 <!-- Zeynel Dağlı
     02-02-2015
     proje id değeri session içinden alınacak
 -->
 <input type ="hidden" value='<?php echo $project_id; ?>' id ='prj_id' name='prj_id'></input>
+<input type ="hidden" value="<?php echo $userID; ?>" id ="consultant_id"  name="consultant_id"></input>
 <div class="col-md-12">
     <div id="cc" class="easyui-layout" data-options="fit:true" style="height:1000px;">
 
