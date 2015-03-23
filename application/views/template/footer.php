@@ -9,6 +9,7 @@
             and $this->uri->segment(1)!="isScopingPrjBase" 
             and $this->uri->segment(1)!="isScopingPrjBaseMDF"
             and $this->uri->segment(1)!="isscenarios"
+            and $this->uri->segment(1)!="isscenariosCns"
             and $this->uri->segment(1)!="isScopingAutoPrjBaseMDFTest"
             and $this->uri->segment(1)!="isScopingAutoPrjBaseMDF") : ?>
 

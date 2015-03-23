@@ -54,6 +54,7 @@ $route['isScopingPrjBaseMDF'] = "isscoping/prjbaseMDF";
 $route['isscopingtooltip'] = "isscoping/tooltip";
 $route['isscopingtooltipscenarios'] = "isscoping/tooltipscenarios";
 $route['isscenarios'] = "isscoping/isscenarios";
+$route['isscenariosCns'] = "isscoping/isscenariosCns";
 
 //map
 $route['map'] = "map/index"; 
