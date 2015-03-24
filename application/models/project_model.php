@@ -36,6 +36,7 @@ class Project_model extends CI_Model {
   public function get_projects(){
     $this->db->select("*");
     $this->db->from('t_prj');
+    $this->db->order_by("name", "asc"); 
     $query = $this->db->get();
     return $query->result_array();
   }
@@ -45,6 +46,7 @@ class Project_model extends CI_Model {
     $this->db->from('t_prj');
     $this->db->join('t_prj_cnsltnt', 't_prj.id = t_prj_cnsltnt.prj_id');
     $this->db->where('t_prj_cnsltnt.cnsltnt_id', $cons_id); 
+    $this->db->order_by("t_prj.name", "asc"); 
     $query = $this->db->get();
     return $query->result_array();
   }
