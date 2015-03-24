@@ -502,7 +502,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
 				]
                                 
 			})
-			,columns:[{header: "ID333", width: 40, sortable: true, dataIndex: 'id'},
+			,columns:[{header: "ID", width: 40, sortable: true, dataIndex: 'id'},
                                   {header: "Akış", width: 100, sortable: true, dataIndex: 'flow', editor: new Ext.form.TextField({})},
                                   {header: "Miktar", width: 50, sortable: true, dataIndex: 'qntty', editor: new Ext.form.TextField({})},
                                   {header: "Birim", width: 50, sortable: true, dataIndex: 'unit', editor: new Ext.form.TextField({})},
@@ -549,7 +549,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
 
 });
 
-            Ext.reg('examplegrid', Example.Grid);
+        Ext.reg('examplegrid', Example.Grid);
         
 
         Example.Grid2 = Ext.extend(Ext.grid.GridPanel, {
@@ -562,7 +562,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                 //console.error(scope);
 		var config = {
                     sm : sm,
-                         title : 'grid 2' 
+                         title : 'grid company processes' 
                          ,height:200
                          ,layout: 'auto'
                          /*,proxy : new Ext.data.HttpProxy({
@@ -573,25 +573,29 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                                 ,restful: true
 				,totalProperty:'totalCount'
 				,root:'rows'
-				,url:'../../../slim_rest/index.php/companyFlows_json_test?id='+this.featureID
+				,url:'../../../slim2_ecoman/map.php/getProcess_map?id='+this.featureID
                                 //,url:'../../../slim_rest/index.php/companyFlows_json_test'
                                 ,proxy :this.proxy
 				,fields:[
                                     {name: 'id'},
-                                    {name: 'flow', allowBlank: true},
-                                    {name: 'qntty', allowBlank: true},
-                                    {name: 'unit', allowBlank: true},
-                                    {name: 'quality', allowBlank: true},
-                                    {name: 'flowtype', allowBlank: true}
+                                    {name: 'process_name', allowBlank: true},
+                                    {name: 'min_rate_util', allowBlank: true},
+                                    {name: 'min_rate_util_unit', allowBlank: true},
+                                    {name: 'typ_rate_util', allowBlank: true},
+                                    {name: 'typ_rate_util_unit', allowBlank: true},
+                                    {name: 'max_rate_util', allowBlank: true},
+                                    {name: 'max_rate_util_unit', allowBlank: true},
 				]
                                 
 			})
-			,columns:[{header: "ID222", width: 40, sortable: true, dataIndex: 'id'},
-                                  {header: "Akış", width: 100, sortable: true, dataIndex: 'flow', editor: new Ext.form.TextField({})},
-                                  {header: "Miktar", width: 50, sortable: true, dataIndex: 'qntty', editor: new Ext.form.TextField({})},
-                                  {header: "Birim", width: 50, sortable: true, dataIndex: 'unit', editor: new Ext.form.TextField({})},
-                                  {header: "Kalite", width: 50, sortable: true, dataIndex: 'quality', editor: new Ext.form.TextField({})},
-                                  {header: "Akış Tipi", width: 50, sortable: true, dataIndex: 'flowtype', editor: new Ext.form.TextField({})},
+			,columns:[{header: "ID", width: 40, sortable: true, dataIndex: 'id'},
+                                  {header: "Process", width: 100, sortable: true, dataIndex: 'process_name', editor: new Ext.form.TextField({})},
+                                  {header: "Min.Rate", width: 50, sortable: true, dataIndex: 'min_rate_util', editor: new Ext.form.TextField({})},
+                                  {header: "Min.Rate.Un", width: 50, sortable: true, dataIndex: 'min_rate_util_unit', editor: new Ext.form.TextField({})},
+                                  {header: "Type.Rate", width: 50, sortable: true, dataIndex: 'typ_rate_util', editor: new Ext.form.TextField({})},
+                                  {header: "Type.Rate.Un", width: 50, sortable: true, dataIndex: 'typ_rate_util_unit', editor: new Ext.form.TextField({})},
+                                  {header: "Max.Rate", width: 50, sortable: true, dataIndex: 'max_rate_util', editor: new Ext.form.TextField({})},
+                                  {header: "Max.Rate.Un", width: 50, sortable: true, dataIndex: 'max_rate_util_unit', editor: new Ext.form.TextField({})},
                               ]
                         ,reader :new Ext.data.JsonReader({
                                 totalProperty: 'total',
@@ -601,11 +605,13 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                                 messageProperty: 'message'  // <-- New "messageProperty" meta-data
                             }, [
                                 {name: 'id'},
-                                {name: 'flow', allowBlank: true},
-                                {name: 'qntty', allowBlank: true},
-                                {name: 'unit', allowBlank: true},
-                                {name: 'quality', allowBlank: true},
-                                {name: 'flowtype', allowBlank: true}
+                                {name: 'process_name', allowBlank: true},
+                                {name: 'min_rate_util', allowBlank: true},
+                                {name: 'min_rate_util_unit', allowBlank: true},
+                                {name: 'typ_rate_util', allowBlank: true},
+                                {name: 'typ_rate_util_unit', allowBlank: true},
+                                {name: 'max_rate_util', allowBlank: true},
+                                {name: 'max_rate_util_unit', allowBlank: true},
                             ])
 			,viewConfig: {
                             forceFit: true,
@@ -634,7 +640,78 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
         
 });
 
-            Ext.reg('examplegrid2', Example.Grid2);       
+        Ext.reg('examplegrid2', Example.Grid2); 
+            
+            
+        Example.GridEquipment = Ext.extend(Ext.grid.GridPanel, {
+        //featureID: null,
+	initComponent:function() {
+		var config = {
+                         title : 'grid equipment' 
+                         ,height:200
+                         ,layout: 'auto'
+                         /*,proxy : new Ext.data.HttpProxy({
+                            url : '../../../slim_rest/index.php/companyFlows_json_test'  
+                         })*/
+			 ,store:new Ext.data.JsonStore({
+				 id: 'flowgrid'
+                                ,restful: true
+				,totalProperty:'totalCount'
+				,root:'rows'
+				,url:'../../../slim2_ecoman/map.php/getEquipment_map?id='+this.featureID
+                                //,url:'../../../slim_rest/index.php/companyFlows_json_test'
+                                ,proxy : this.proxy
+				,fields:[
+                                    {name: 'id'},
+                                    {name: 'equipment_name', allowBlank: true},
+                                    {name: 'equipment_type_name', allowBlank: true},
+                                    
+				]
+                                
+			})
+			,columns:[{header: "ID", width: 40, sortable: true, dataIndex: 'id'},
+                                  {header: "Equipment Name", width: 100, sortable: true, dataIndex: 'equipment_name', editor: new Ext.form.TextField({})},
+                                  {header: "Equipment Type Name", width: 50, sortable: true, dataIndex: 'equipment_type_name', editor: new Ext.form.TextField({})},
+                                  
+                              ]
+                        ,reader :new Ext.data.JsonReader({
+                                totalProperty: 'total',
+                                successProperty: 'success',
+                                idProperty: 'id2',
+                                root: 'rows',
+                                messageProperty: 'message'  // <-- New "messageProperty" meta-data
+                            }, [
+                                {name: 'id'},
+                                {name: 'equipment_name', allowBlank: true},
+                                {name: 'equipment_type_name', allowBlank: true},
+                            ])
+			,viewConfig: {
+                            forceFit: true,
+                            emptyText: __('No features found'),
+                            //deferEmptyText: false
+                        }
+		}; // eo config object
+
+		// apply config
+                Ext.apply(this, Ext.apply(this.initialConfig, config));
+
+
+		// call parent
+		Example.GridEquipment.superclass.initComponent.apply(this, arguments);
+
+		// load the store at the latest possible moment
+		/*this.on({
+			afterlayout:{scope:this, single:true, fn:function() {
+				//this.store.load({params:{start:0, limit:30}});
+                                this.store.load();
+			}}
+		});*/
+
+	} // eo function initComponent
+
+});
+
+        Ext.reg('examplegrid3', Example.GridEquipment);
         
         
         /**
@@ -843,15 +920,21 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
             items :[ {
 			 id:'processcard'
 			,bodyStyle:'border-bottom:none'
-			,xtype:'examplegrid'
+			,xtype:'examplegrid2'
 			,autoScroll:true
 		},
                 {
 			 id:'flowcard'
 			,bodyStyle:'border-bottom:none'
-			,xtype:'examplegrid2'
+			,xtype:'examplegrid'
 			,autoScroll:true
-		} ]
+		},
+                {
+			 id:'equipmentcard'
+			,bodyStyle:'border-bottom:none'
+			,xtype:'examplegrid3'
+			,autoScroll:true
+		}]
         });
         
         this.setCompanyNameToProcessGridTitle(this.mainPanel.getComponent('flowcard'),this);
@@ -1167,10 +1250,47 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                                                 removeMask: false,
                                                 store: activeItem.getStore()}
                                         );
-                activeItem.getStore().proxy.setUrl('../../../slim_rest/index.php/companyFlows_json_test?companyid='+this.featureID);
+                //activeItem.getStore().proxy.setUrl('../../../slim2_ecoman/map.php/getProcess_map?id='+this.featureID);
+                activeItem.getStore().proxy.setUrl('../../../slim2_ecoman/map.php/getProcess_map');
                 activeItem.getStore().load();
                 console.log('feature company nameee--->'+this.featureCompanyName);
                 console.log('feature company ideeeee--->'+this.featureID);
+                
+                this.setCompanyNameToProcessGridTitle(activeItem, this);
+                flowGridmask.show();
+                //console.warn(activeItem.featureID);
+
+            }
+        });
+        
+        /**
+        * zeynel dağlı
+        * firma proseslerini gösteren toolbar
+        *  button
+        * @since 10-12-2014
+        */
+        tbarItems.push('->');
+        tbarItems.push({
+            itemId: 'EquipmentButton',
+            text: __('Get equipment grid'),
+            cls: 'x-btn-text-icon',
+            iconCls: 'icon-table-clear',
+            tooltip: __('Remove all results'),
+            scope: this,
+            handler: function () {
+                this.mainPanel.getLayout().setActiveItem('equipmentcard')
+                //var activeItem = this.mainPanel.getLayout().getItem('processcard');
+                var activeItem = this.mainPanel.getComponent('equipmentcard');
+                var flowGridmask = new Ext.LoadMask(activeItem.getEl(), 
+                                                {msg:__('Grid loading'),
+                                                removeMask: false,
+                                                store: activeItem.getStore()}
+                                        );
+                //activeItem.getStore().proxy.setUrl('../../../slim2_ecoman/map.php/getEquipment_map?id='+this.featureID);
+                activeItem.getStore().proxy.setUrl('../../../slim2_ecoman/map.php/getEquipment_map');
+                activeItem.getStore().load();
+                console.log('feature company name equipment--->'+this.featureCompanyName);
+                console.log('feature company id equipment--->'+this.featureID);
                 
                 this.setCompanyNameToProcessGridTitle(activeItem, this);
                 flowGridmask.show();
