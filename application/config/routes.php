@@ -60,10 +60,15 @@ $route['isscenariosCns'] = "isscoping/isscenariosCns";
 $route['map'] = "map/index"; 
 $route['mapHeader'] = "map/mapHeader";  
 
+
+//Ecotracking
+$route['ecotracking/(:any)/(:any)/(:any)/(:any)/(:any)'] = "ecotracking/save/$1/$2/$3/$4/$5";
+$route['ecotracking/(:any)/(:any)'] = "ecotracking/show/$1/$2";
+$route['ecotracking'] = "ecotracking/index";
+
 //Cost Benefit
 $route['cost_benefit/(:any)/(:any)'] = "cost_benefit/new_cost_benefit/$1/$2";
 $route['cost_benefit'] = "cost_benefit/index";
-
 $route['cba/save/(:any)/(:any)/(:any)/(:any)'] = "cost_benefit/save/$1/$2/$3/$4";
 
 //Html Parse
