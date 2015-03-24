@@ -321,7 +321,7 @@
                             $('#tt_grid_scenarios_details_edit').datagrid({
    
                             url:'../../../Proxy/SlimProxy.php',
-                            queryParams : { url:'getFlowDetails_prj',
+                            queryParams : { url:'getFlowDetailsCns_prj',
                                             items : JSON.stringify(regArr),
                                            }, 
                             });
