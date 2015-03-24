@@ -1,4 +1,14 @@
+        function closeMapPanel() {
+            //var panelWest = $('#cc').layout('panel','south');
+            //var panelSouthNorth = $('#cc2').layout('panel','north');
+            $('#p').panel('collapse');  
+        }
 
+        function showMapPanelExpand() {
+            //var panelWest = $('#cc').layout('panel','south');
+            //var panelSouthNorth = $('#cc2').layout('panel','north');
+            $('#p').panel('expand');  
+        }
       
       function deleteISScenario(target) {
                 //console.warn($('#tt_grid_dynamic5').datagrid('getSelections'));
@@ -208,7 +218,26 @@
                                                 return e+d;
                                         }
                                 }
+                            },
+                            {field:'map',title:'Map',width:150,align:'center',
+                                formatter:function(value,row,index){
+                                    if (row.editing){
+                                        var s = '<a href="#" onclick="saverow(this)">Save</a> ';
+                                        var c = '<a href="#" onclick="cancelrow(this)">Cancel</a>';
+                                        return s+c;
+                                    } else {
+                                        //var e = '<a href="#" onclick="editrow(this)">Edit</a> ';
+                                        //var d = '<a href="#" onclick="deleteISPotential(this)" >Delete</a>';
+                                        console.log(row);
+                                        
+                                        //var x = '<button onclick="document.getElementById(\'myFrame\').setAttribute(\'src\',\'../IS_OpenLayers/map.php?to_company='+arrSplit[1]+'&from_company='+arrSplit[0]+'&prj_id='+document.getElementById('prj_id').value+'\')"> See on Map</button>';
+                                        var x = '<a href="#add" class="easyui-linkbutton" iconCls="icon-save" onclick="showMapPanelExpand();document.getElementById(\'myFrame\').setAttribute(\'src\',\'../IS_OpenLayers/map_prj.php?prj_id='+row.id+'\')"> See on Map</a>';
+                                        //return e+d;
+                                        return x;
+                                    }
+                                }
                             }
+                            
                         ]],
                         onBeforeEdit:function(index,row){
 					row.editing = true;

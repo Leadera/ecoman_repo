@@ -16,7 +16,7 @@
 -->
 <input type ="hidden" value='<?php echo $project_id; ?>' id ='prj_id' name='prj_id'></input>
 <div class="col-md-12">
-    <div id="cc" class="easyui-layout" data-options="fit:true" style="height:1000px;">
+    <div id="cc" class="easyui-layout" data-options="fit:true" style="height:1500px;">
 
         <!--<div data-options="region:'south',split:true" style="height:550px; padding-bottom:200px;">
             <div class="easyui-layout" data-options="fit:true">
@@ -58,6 +58,19 @@
                 
             </div>
             
+            <div id="p" class="easyui-panel" title="IS Companies Location" 
+                 data-options="collapsed:true" 
+                 style="margin: auto 0;height:400px">  
+                <a href="#" name="add" onclick="event.preventDefault();" 
+                     ></a>  
+                <iframe src="" id="myFrame" width="100%" marginwidth="0" 
+                      height="100%" 
+                      marginheight="0" 
+                      align="middle" 
+                      scrolling="auto">
+                  </iframe>
+            </div>
+            
             <div id="p3" class="easyui-panel" title="IS Project Details" style="margin: auto 0;height:300px;"
                  data-options="iconCls:'icon-save',collapsible:true,closable:true">
                    <table id="tt_grid_scenarios_details" data-options="fit:true"   title="IS Scenario Details" style=""> 
@@ -81,6 +94,7 @@
                     <a href="#" name="del" onclick="getColumnsDynamic();getCompaniesISPotentials();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Scenario Details</a>
                     <a href="<?php echo base_url('isScopingPrjBaseMDF'); ?>" onclick="" class="easyui-linkbutton" iconCls="icon-back" plain="true">GoTo IS Manual Page</a>
                     <a href="<?php echo base_url('isScopingAutoPrjBaseMDF'); ?>" onclick="" class="easyui-linkbutton" iconCls="icon-back" plain="true">GoTo IS Auto Page</a>
+                    <a href="#" onclick="closeMapPanel();event.preventDefault();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Close Map</a>
                     <!--<a href="#" onclick="saveAutoPotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true">Save a table with relevant IS potentials</a>
                     <a href="#" onclick="selectAllCompanies();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Select all companies</a>
                     <a href="#" onclick="openIsScenarios();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Table management</a>
