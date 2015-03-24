@@ -27,20 +27,63 @@ class Cost_benefit_model extends CI_Model {
     }
   }
 
-  public function set_cba($alloc_id,$prjct_id,$capexold,$ltold,$capexnew,$ltnew,$disrate,$newcons,$marcos,$ecoben){
-    $data = array(
-              'capexold' => $capexold,
-              'ltold' => $ltold,
-              'capexnew' => $capexnew,
-              'ltnew' => $ltnew,
-              'disrate' => $disrate,
-              'ecoben' => $ecoben,
-              'marcos' => $marcos,
-              'newcons' => $newcons
-            );
-    $this->db->where('id', $alloc_id);
-    $this->db->update('t_cp_allocation', $data); 
-}
+  public function set_cba($capexold,$ltold,$capexnew,$ltnew,$disrate,$newcons,$marcos,$ecoben,$id,$cp_or_is){
+    $flag = $this->is_cb_exist($id);
+    if($cp_or_is=="is"){
+      $data = array(
+                'capexold' => $capexold,
+                'ltold' => $ltold,
+                'capexnew' => $capexnew,
+                'ltnew' => $ltnew,
+                'disrate' => $disrate,
+                'ecoben' => $ecoben,
+                'marcos' => $marcos,
+                'newcons' => $newcons,
+                'is_id' => $id
+              );
+
+        if($flag){
+          $this->db->where('is_id', $id);
+          $this->db->update('t_costbenefit_temp', $data); 
+        }
+        else{
+          $this->db->insert('t_costbenefit_temp', $data); 
+        }
+    }else{
+      $data = array(
+                'capexold' => $capexold,
+                'ltold' => $ltold,
+                'capexnew' => $capexnew,
+                'ltnew' => $ltnew,
+                'disrate' => $disrate,
+                'ecoben' => $ecoben,
+                'marcos' => $marcos,
+                'newcons' => $newcons,
+                'cp_id' => $id
+      );
+      if($flag){
+        $this->db->where('cp_id', $id);
+        $this->db->update('t_costbenefit_temp', $data); 
+      }
+      else{
+        $this->db->insert('t_costbenefit_temp', $data); 
+      }
+    }
+  }
+
+  public function is_cb_exist($id){
+    $where = "(t_costbenefit_temp.is_id='".$id."' or t_costbenefit_temp.cp_id='".$id."') ";
+    $this->db->select('*');
+    $this->db->from('t_costbenefit_temp');
+    $this->db->where($where);
+    $query = $this->db->get()->row_array();
+    if(!empty($query)){
+      return true;
+    }else{
+      return false;
+    }
+
+  }
 
 }
 ?>

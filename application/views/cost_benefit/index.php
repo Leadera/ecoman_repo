@@ -1,19 +1,27 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <div class="col-md-6">
-	<p>Cost - Benefit Analysis</p>
+<?php  $allocation = array_merge($allocation, $is);  //print_r($allocation); ?>
+	<p>Cost - Benefit Analysis, CP and IS Potentials</p>
 	<?php if (!empty($allocation)): ?>
 			<?php $i=1; ?>
 			<?php foreach ($allocation as $a): ?>
-
+				<?php if(!empty($a['cp_id'])){$iid=$a['cp_id']; $tip="cp";}else{$iid=$a['is_id'];$tip="is";} ?>
  				<?php $attributes = array('id' => 'form-'.$i); ?>
-				<?php echo form_open('cba/save/'.$a['allocation_id'].'/'.$this->uri->segment(2).'/'.$this->uri->segment(3), $attributes); ?>
+				<?php echo form_open('cba/save/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/'.$iid.'/'.$tip, $attributes); ?>
 				<table class="costtable">
 					<tr>
-						<td>#</td><td><?php echo $i; ?> (<?php echo $a['allocation_id']; ?>)</td>
+						<td>#</td><td><?php echo $i; ?></td>
 					</tr>
 					<tr>
 						<td width="250">Option</td>
-						<td width="75%"><b><?php echo $a['prcss_name']; ?></b> <small class="text-muted"><?php echo $a['flow_name']; ?>-<?php echo $a['flow_type_name']; ?></small><br><span class="text-info"><?php echo $a['best']; ?></span></td>
+						<td width="75%">
+
+							<b><?php if(!empty($a['prcss_name'])) {echo $a['prcss_name'];} else {echo "IS potential"; } ?></b> 
+							<small class="text-muted"><?php echo $a['flow_name']; ?><?php if(!empty($a['prcss_name'])) {echo "-".$a['flow_type_name']; } ?></small><br>
+							<span class="text-info">
+								<?php if(empty($a['cmpny_from_name'])) {echo $a['best'];} else {echo "IS potential with ".$a['cmpny_from_name']; } ?>
+							</span>
+						</td>
 					</tr>
 						<tr><td>CAPEX old option (€)</td>								
 						<td><div class=" has-warning"><input type="text" name="capexold" id="capexold-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['capexold']; ?>" placeholder="You should fill this field."></div></td>
@@ -183,11 +191,19 @@
 						//=EĞER(W3>0,M3/W3*100,-M3/W3*100)
 						if($("#ecoben-<?php echo $i; ?>").val()>0){
 							$("#marcos-<?php echo $i; ?>").val($("#eco-<?php echo $i; ?>").val()/$("#ecoben-<?php echo $i; ?>").val()*100);
+							$("#marcos-<?php echo $i; ?>").val(toFixed($("#marcos-<?php echo $i; ?>").val(),2));
 						}
 						else{
 							$("#marcos-<?php echo $i; ?>").val(-$("#eco-<?php echo $i; ?>").val()/$("#ecoben-<?php echo $i; ?>").val()*100);
+							$("#marcos-<?php echo $i; ?>").val(toFixed($("#marcos-<?php echo $i; ?>").val(),2));
 						}
 
+					}
+
+					function toFixed ( number, precision ) {
+					    var multiplier = Math.pow( 10, precision + 1 ),
+					        wholeNumber = Math.floor( number * multiplier );
+					    return Math.round( wholeNumber / 10 ) * 10 / multiplier;
 					}
 
 
@@ -200,19 +216,23 @@
 			<?php endforeach ?>
 		<?php endif ?>
 </div>
-<div class="col-md-6">
-	<p>Cost - Benefit Graph</p>
+<div class="col-md-6" id="sag4">
+	<p>Cost - Benefit Analysis Summary Table</p>
 	<?php //print_r($allocation); ?>
 		<?php if (!empty($allocation)): ?>
 			<table class="table" style="font-size:12px;">
 				<tr>
-					<th>Process Name</th><th>Marginal Cost</th><th>Econological Benefit</th>
+					<th>Option and Process Name</th><th>Marginal Cost</th><th>Econological Benefit</th>
 				</tr>
 			<?php foreach ($allocation as $a): ?>
-				<tr><td><?php echo $a['prcss_name']; ?></td><td><?php echo $a['marcos']; ?></td><td><?php echo $a['ecoben']; ?></td></tr>
+				<tr>
+					<td><?php if(empty($a['cmpny_from_name'])) {echo $a['best']."-".$a['prcss_name'];} else {echo "IS potential with ".$a['cmpny_from_name']; } ?></td>
+					<td><?php echo $a['marcos']; ?></td>
+					<td><?php echo $a['ecoben']; ?></td></tr>
 			<?php endforeach ?>
 			</table>
 		<?php endif ?>
+			<p>Cost - Benefit Analysis Graph</p>
 	<div id="rect-demo-ana">
     <div id="rect-demo"></div>
   </div>
@@ -222,8 +242,9 @@
 	$t=0;
 	$toplameco=0;
 	foreach ($allocation as $a) {
-
-
+		if(empty($a['cmpny_from_name'])) { $tuna_array[$t]['name']=$a['best']."-".$a['prcss_name'];} else {$tuna_array[$t]['name']="IS potential with ".$a['cmpny_from_name']; }
+		
+		$tuna_array[$t]['color']='#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
 		if($a['marcos']>0){
 			$tuna_array[$t]['ymax']= $a['marcos'];
 		}
@@ -259,14 +280,15 @@
 
 	//Tuna Graph
 	var data = <?php echo json_encode($tuna_array); ?>;
+	console.log(data);
 
 	var margin = {
 	            "top": 10,
 	            "right": 30,
-	            "bottom": 50,
+	            "bottom": 350,
 	            "left": 50
 	        };
-	var width = 800;
+	var width = $('#sag4').width()-80;
 	var height = 500;
 
 	// Set the scales
@@ -275,7 +297,7 @@
       		.range([0,width]).nice();
 
   var y = d3.scale.linear()
-      		.domain([d3.min(data, function(d) { return d.ymin; }), d3.max(data, function(d) { return d.ymax; })])
+      		.domain([d3.min(data, function(d) { return d.ymin-0.1; }), d3.max(data, function(d) { return d.ymax; })])
       		.range([height, 0]).nice();
 
   var xAxis = d3.svg.axis().scale(x).orient("bottom");
@@ -297,6 +319,21 @@
     .attr("class", "y axis")
     .call(yAxis);
 
+  //x axis label
+	svg.append("text")
+		.attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom - 305) + ")")
+		.style("text-anchor", "middle")
+		.text("Econological Benefit");
+
+	//y axis label
+	svg.append("text")
+		.attr("transform", "rotate(-90)")
+		.attr("y", 0 - margin.left)
+		.attr("x", 0 - (height / 2))
+		.attr("dy", "1em")
+		.style("text-anchor", "middle")
+		.text("Marginal Cost");
+
 	svg.selectAll("rect").
 		data(data).
 		enter().
@@ -305,6 +342,47 @@
 		attr("y", function(datum,index) { return y(datum.ymax); }).
 		attr("height", function(datum,index) { return y(datum.ymin)-y(datum.ymax); }).
 		attr("width", function(datum, index) { return x(datum.xmax); }).
-		attr("fill", function(d, i) { return d.ymax == 0 ? "rgba(143, 188, 143, 0.76)" : "rgba(25,155,205,0.8)"; });
+		attr("fill", function(d, i) { return d.color; })
+		.style("opacity", '0.5')
+		.on("mouseover", function(datum,index){return tooltip.style("visibility", "visible").html(datum.name);})
+		.on("mousemove", function(datum,index){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px").html(datum.name);})
+		.on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+
+		var tooltip = d3.select("body")
+		.append("div")
+		.style("position", "absolute")
+		.style("z-index", "10")
+		.style("visibility", "hidden")
+		.style("background-color", "white")
+		.style("color", "darkblue");
+
+		// add legend   
+		var legend = svg.append("g")
+	  .attr("class", "legend")
+        //.attr("x", w - 65)
+        //.attr("y", 50)
+	  .attr("height", 100)
+	  .attr("width", 100)
+    .attr('transform', 'translate(-20,50)')    
+      
+    legend.selectAll('rect')
+      .data(data)
+      .enter()
+      .append("rect")
+	  .attr("x", 9)
+      .attr("y", function(d, i){ return 520 + (i *  20);})
+	  .attr("width", 10)
+	  .attr("height", 10)
+	  .style("fill", function(datum,index) { return datum.color; })
+	 	.style("opacity", '0.5')
+
+      
+    legend.selectAll('text')
+      .data(data)
+      .enter()
+      .append("text")
+	  .attr("x", 22)
+    .attr("y", function(d, i){ return i *  20 + 539;})
+	  .text(function(datum,index) { return datum.name; });
 	}
 </script>

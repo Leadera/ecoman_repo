@@ -95,6 +95,7 @@ class Cpscoping_model extends CI_Model {
 
   public function get_cost_benefit_info($cmpny_id,$prjct_id){
     $this->db->select('*,
+        t_cp_allocation.id as cp_id,
         t_cmpny_flow.qntty as qntty,
         t_unit.name as qntty_unit,
         t_cmpny_flow.cost as cost,
@@ -114,11 +115,34 @@ class Cpscoping_model extends CI_Model {
     $this->db->join('t_prcss','t_prcss.id = t_cmpny_prcss.prcss_id');
     $this->db->join('t_cmpny_flow','t_cmpny_flow.flow_id = t_cp_allocation.flow_id and t_cmpny_flow.cmpny_id = t_cp_company_project.cmpny_id');
     $this->db->join('t_unit','t_unit.id = t_cmpny_flow.qntty_unit_id');
+    $this->db->join('t_costbenefit_temp','t_costbenefit_temp.cp_id = t_cp_allocation.id', 'left');
     $this->db->where('t_cp_company_project.prjct_id',$prjct_id);
     $this->db->where('t_cp_company_project.cmpny_id',$cmpny_id);
     $this->db->order_by("t_cp_allocation.id", "asc"); 
     return $this->db->get()->result_array();
   }
+
+
+  public function get_cost_benefit_info_is($cmpny_id,$prjct_id){
+    $this->db->select('*,
+        t_is_prj_details.id as is_id,
+        t_cmpny_flow.qntty as qntty,
+        t_unit.name as qntty_unit,
+        t_cmpny_flow.cost as cost,
+        t_cmpny_flow.ep as ep,
+        t_flow.name as flow_name,        
+        t_cmpny.name as cmpny_from_name,
+        ');
+    $this->db->from('t_is_prj_details');
+    $this->db->join('t_flow','t_flow.id = t_is_prj_details.flow_id');
+    $this->db->join('t_cmpny','t_cmpny.id = t_is_prj_details.cmpny_from_id');
+    $this->db->join('t_cmpny_flow','t_cmpny_flow.flow_id = t_is_prj_details.flow_id and t_cmpny_flow.cmpny_id = t_is_prj_details.cmpny_to_id');
+    $this->db->join('t_unit','t_unit.id = t_cmpny_flow.qntty_unit_id');
+    $this->db->join('t_costbenefit_temp','t_costbenefit_temp.is_id = t_is_prj_details.id', 'left');
+    $this->db->where('t_is_prj_details.cmpny_to_id',$cmpny_id);
+    return $this->db->get()->result_array();
+  }
+
 
 
   public function get_allocation_values($cmpny_id,$prjct_id){

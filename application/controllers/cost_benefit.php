@@ -6,6 +6,12 @@ class Cost_benefit extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->model('cost_benefit_model');
 		$this->load->model('cpscoping_model');
+		$this->load->model('user_model');
+		$this->load->model('project_model');
+		$c_user = $this->user_model->get_session_user();
+		if($this->cpscoping_model->can_consultant_prjct($c_user['id']) == false){
+			redirect('','refresh');
+		}
 	}
 
 	public function new_cost_benefit($prjct_id,$cmpny_id){
@@ -19,14 +25,23 @@ class Cost_benefit extends CI_Controller {
 		// }
 
 		$data['allocation']=$this->cpscoping_model->get_cost_benefit_info($cmpny_id,$prjct_id);
+		$data['is']=$this->cpscoping_model->get_cost_benefit_info_is($cmpny_id,$prjct_id);
 		//print_r($data['allocation']);
 		$this->load->view('template/header');
 		$this->load->view('cost_benefit/index',$data);
 		$this->load->view('template/footer');
 	}
 
+	public function index(){
+		$data['com_pro'] = $this->project_model->get_prj_companies($this->session->userdata('project_id'));
+
+		$this->load->view('template/header');
+		$this->load->view('cost_benefit/list',$data);
+		$this->load->view('template/footer');
+	}
+
 	//cost-benefit analysis form saving
-	public function save($alloc_id,$prjct_id,$cmpny_id){
+	public function save($prjct_id,$cmpny_id,$id,$cp_or_is){
 		$this->form_validation->set_rules('capexold', 'CAPEX old option', 'required|numeric|trim|xss_clean');		
 		$this->form_validation->set_rules('ltold', 'Lifetime old option', 'required|numeric|trim|xss_clean');
 		$this->form_validation->set_rules('capexnew', 'CAPEX new option', 'required|numeric|trim|xss_clean');
@@ -44,8 +59,8 @@ class Cost_benefit extends CI_Controller {
 			$newcons = $this->input->post('newcons');
 			$ecoben = $this->input->post('ecoben');
 			$marcos = $this->input->post('marcos');
-			$this->cost_benefit_model->set_cba($alloc_id,$prjct_id,$capexold,$ltold,$capexnew,$ltnew,$disrate,$newcons,$marcos,$ecoben);
-}
+			$this->cost_benefit_model->set_cba($capexold,$ltold,$capexnew,$ltnew,$disrate,$newcons,$marcos,$ecoben,$id,$cp_or_is);
+		}
 		redirect('cost_benefit/'.$prjct_id.'/'.$cmpny_id);
 	}
 

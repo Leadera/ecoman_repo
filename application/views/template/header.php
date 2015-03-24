@@ -146,6 +146,8 @@
             </div>
           </li>
           <li class="head-li"><a href="<?php echo base_url('map'); ?>"><i class="fa fa-globe"></i> GIS</a></li>
+          <li class="head-li"><a href="<?php echo base_url('cost_benefit'); ?>"><i class="fa fa-eur"></i> Cost - Benefit Analysis</a></li>
+
         </ul>
         <ul class="list-inline pull-right" style="margin: 8px 0 8px 0;">
           <li class="head-li">You are working on a project named: <a href="<?php echo base_url('project/'.$this->session->userdata('project_id')); ?>"><?php echo $this->session->userdata('project_name'); ?></a>

@@ -363,9 +363,9 @@
 		</div>
 <script type="text/javascript">
 setTimeout(function()
-{
-     tuna_graph(list);
-}, 5000);
+		{
+		  tuna_graph(list);
+		}, 5000);
 
 
 	function tuna_graph(list){
@@ -440,6 +440,7 @@ setTimeout(function()
 	  attr("height", function(datum,index) { return y(datum.ep_value_alt)-y(datum.ep_value_ust); }).
 	  attr("width", function(datum, index) { return x(datum.cost_value_ust)-x(datum.cost_value_alt); }).
 	  attr("fill",function(datum,index) { return datum.color; })
+	  .style("opacity", '0.9')
   	.on("mouseover", function(datum,index){return tooltip.style("visibility", "visible").html(datum.prcss_name+"<br>EP Range:"+datum.ep_value_alt+"-"+datum.ep_value_ust+"<br>Cost Range:"+datum.cost_value_alt+"-"+datum.cost_value_ust);})
 		.on("mousemove", function(datum,index){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px").html(datum.prcss_name+"<br>EP Range:"+datum.ep_value_alt+"-"+datum.ep_value_ust+"<br>Cost Range:"+datum.cost_value_alt+"-"+datum.cost_value_ust);})
 		.on("mouseout", function(){return tooltip.style("visibility", "hidden");});
@@ -470,7 +471,9 @@ setTimeout(function()
 	  .attr("width", 10)
 	  .attr("height", 10)
 	  .style("fill", function(datum,index) { return datum.color; })
-      
+    .style("opacity", '0.9')
+
+
     legend.selectAll('text')
       .data(data)
       .enter()
