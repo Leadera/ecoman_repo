@@ -173,16 +173,16 @@
 		</div>
 
 		<div class="col-md-3">
-		<div>
+		<div style="margin-bottom:30px;">
 			<?php if($companies['logo'] == null) 
 					$companies['logo'] = '.jpg';
 				if(file_exists("assets/company_pictures/".$companies['logo'])): ?>
-				<img class="img-responsive thumbnail" src="<?php echo asset_url('company_pictures/'.$companies['logo']);?>" />
+				<img style="width:100%; max-width:250px;" src="<?php echo asset_url('company_pictures/'.$companies['logo']);?>" />
 			<?php else: ?>
-				<img class="img-responsive thumbnail" src="<?php echo asset_url("company_pictures/default.jpg"); ?>">
+				<img style="width:100%; max-width:250px;" src="<?php echo asset_url("company_pictures/default.jpg"); ?>">
 			<?php endif ?>
 		</div>
-			<div class="form-group">
+			<div class="form-group" style="margin-bottom:20px;">
 				<ul class="nav nav-list">
 					<li class="nav-header" style="font-size:15px;">Company project</li>
 				<?php foreach ($prjname as $prj): ?>

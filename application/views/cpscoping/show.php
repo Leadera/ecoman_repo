@@ -442,7 +442,7 @@ setTimeout(function()
 	  attr("fill",function(datum,index) { return datum.color; })
 	  .style("opacity", '0.9')
   	.on("mouseover", function(datum,index){return tooltip.style("visibility", "visible").html(datum.prcss_name+"<br>EP Range:"+datum.ep_value_alt+"-"+datum.ep_value_ust+"<br>Cost Range:"+datum.cost_value_alt+"-"+datum.cost_value_ust);})
-		.on("mousemove", function(datum,index){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px").html(datum.prcss_name+"<br>EP Range:"+datum.ep_value_alt+"-"+datum.ep_value_ust+"<br>Cost Range:"+datum.cost_value_alt+"-"+datum.cost_value_ust);})
+		.on("mousemove", function(datum,index){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").html(datum.prcss_name+"<br>EP Range:"+datum.ep_value_alt+"-"+datum.ep_value_ust+"<br>Cost Range:"+datum.cost_value_alt+"-"+datum.cost_value_ust);})
 		.on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
 		var tooltip = d3.select("body")

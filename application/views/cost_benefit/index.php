@@ -222,7 +222,7 @@
 		<?php if (!empty($allocation)): ?>
 			<table class="table" style="font-size:12px;">
 				<tr>
-					<th>Option and Process Name</th><th>Marginal Cost</th><th>Econological Benefit</th>
+					<th>Option and Process Name</th><th>Marginal Cost</th><th>Ecological Benefit</th>
 				</tr>
 			<?php foreach ($allocation as $a): ?>
 				<tr>
@@ -323,7 +323,7 @@
 	svg.append("text")
 		.attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom - 305) + ")")
 		.style("text-anchor", "middle")
-		.text("Econological Benefit");
+		.text("Ecological Benefit");
 
 	//y axis label
 	svg.append("text")
@@ -345,7 +345,7 @@
 		attr("fill", function(d, i) { return d.color; })
 		.style("opacity", '0.5')
 		.on("mouseover", function(datum,index){return tooltip.style("visibility", "visible").html(datum.name);})
-		.on("mousemove", function(datum,index){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px").html(datum.name);})
+		.on("mousemove", function(datum,index){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").html(datum.name);})
 		.on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
 		var tooltip = d3.select("body")
