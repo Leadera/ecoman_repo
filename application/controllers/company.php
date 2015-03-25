@@ -97,8 +97,7 @@ class Company extends CI_Controller{
 				$this->image_lib->resize();
 
 				$logo = array(
-					'logo'=>$last_id.'.jpg',
-					'raw_logo'=>'http://88.249.18.205:8090/ecoman/assets/company_pictures/'.$last_id.'.jpg'
+					'logo'=>$last_id.'.jpg'
 				);
 				$this->company_model->set_company_image($last_id,$logo);
 			}
@@ -339,8 +338,7 @@ class Company extends CI_Controller{
 				'logo'=>$resim.'.jpg',
 				'active'=>'1',
 				'latitude'=>$this->input->post('lat'),
-				'longitude'=>$this->input->post('long'),
-				'raw_logo'=>'http://88.249.18.205:8090/ecoman/assets/company_pictures/'.$resim.'.jpg'
+				'longitude'=>$this->input->post('long')
 			);
 
 		    $this->company_model->update_company($data2,$term);
