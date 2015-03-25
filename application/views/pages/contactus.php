@@ -18,9 +18,9 @@
 
 <div><b>Tuna Çağlar Gümüş,</b> <a href="mailto:tunacaglargumus@gmail.tr">tgumus@etu.edu.tr</a>, TOBB University of Economics and Technology, 06560, Ankara, Turkey</div>
 
-<div><b>Mustafa Zeynel Dağlı,</b> <a href="mailto:mustafa.zeynel@ostim.com.tr ">mustafa.zeynel@ostim.com.tr</a>, Ostim Technology Co., Ankara, Turkey</div>
+<div><b>Ostim Teknoloji</b> <a href="mailto:ostimteknoloji@ostim.com.tr ">ostimteknoloji@ostim.com.tr</a>, Ostim Technology Co., Ankara, Turkey</div>
 
-<div><b>Okan Cıran,</b><a href="mailto:okan.ciran@ostim.com.tr">okan.ciran@ostim.com.tr</a>, Ostim Technology Co., Ankara, Turkey</div>
+
 
 </div>
 <?php
