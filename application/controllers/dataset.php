@@ -29,6 +29,7 @@ class Dataset extends CI_Controller {
 		$this->form_validation->set_rules('quantities', 'Product Quantity', 'trim|numeric|xss_clean');
 		$this->form_validation->set_rules('ucost', 'Unit Cost', 'trim|numeric|xss_clean');
 		$this->form_validation->set_rules('ucostu', 'Unit Cost Unit', 'trim|xss_clean');
+		$this->form_validation->set_rules('qunit', 'Quantity Unit', 'trim|xss_clean');
 		$this->form_validation->set_rules('tper', 'Time Period', 'trim|xss_clean');
 
 		if($this->form_validation->run() !== FALSE) {
@@ -38,6 +39,7 @@ class Dataset extends CI_Controller {
 					'quantities' => $this->sifirla($this->input->post('quantities')),
 					'ucost' => $this->sifirla($this->input->post('ucost')),
 					'ucostu' => $this->input->post('ucostu'),
+					'qunit' => $this->input->post('qunit'),
 					'tper' => $this->input->post('tper'),
 				);
 			$this->product_model->set_product($productArray);
@@ -46,7 +48,7 @@ class Dataset extends CI_Controller {
 		$data['product'] = $this->product_model->get_product_list($companyID);
 		$data['companyID'] = $companyID;
 		$data['company_info'] = $this->company_model->get_company($companyID);
-
+		$data['units'] = $this->flow_model->get_unit_list();
 
 		$this->load->view('template/header');
 		$this->load->view('dataset/dataSetLeftSide',$data);
@@ -56,8 +58,8 @@ class Dataset extends CI_Controller {
 
 	public function new_flow($companyID)
 	{
-		$this->form_validation->set_rules('flowname', 'Flow Name', 'trim|alpha_dash|required|xss_clean|strip_tags');
-		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|required|xss_clean|strip_tags');
+		$this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean|strip_tags|callback__alpha_dash_space');
+		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|required|xss_clean|strip_tags|callback_flow_varmi');
 		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|xss_clean|strip_tags|numeric');
 		$this->form_validation->set_rules('quantityUnit', 'Quantity Unit', 'trim|required|xss_clean|strip_tags');
 		$this->form_validation->set_rules('cost', 'Cost', 'trim|required|xss_clean|strip_tags|numeric');
@@ -80,7 +82,9 @@ class Dataset extends CI_Controller {
 			$cf = $this->input->post('cf');
 			$availability = $this->input->post('availability');
 			$conc = $this->input->post('conc');
+			$concunit = $this->input->post('concunit');
 			$pres = $this->input->post('pres');
+			$presunit = $this->input->post('presunit');
 			$ph = $this->input->post('ph');
 			$state = $this->input->post('state');
 			$quality = $this->input->post('quality');
@@ -97,9 +101,6 @@ class Dataset extends CI_Controller {
 			//CHECK IF FLOW IS NEW?
 			$flowID = $this->process_model->is_new_flow($flowID,$flowfamilyID);
 
-			if(!$this->flow_model->has_same_flow($flowID,$flowtypeID,$companyID)){
-				redirect(base_url('new_flow/'.$companyID));
-			}
 			$flow = array(
 				'cmpny_id'=>$companyID,
 				'flow_id'=>$flowID,
@@ -121,9 +122,11 @@ class Dataset extends CI_Controller {
 			);
 			if(!empty($conc)){
 				$flow['concentration'] = $conc;
+				$flow['concunit'] = $concunit;
 			}
 			if(!empty($pres)){
 				$flow['pression'] = $pres;
+				$flow['presunit'] = $presunit;
 			}
 			if(!empty($ph)){
 				$flow['ph'] = $ph;
@@ -143,8 +146,6 @@ class Dataset extends CI_Controller {
 		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
 		$data['companyID'] = $companyID;
 		$data['company_info'] = $this->company_model->get_company($companyID);
-
-
 		$data['units'] = $this->flow_model->get_unit_list();
 
 		$this->load->view('template/header');
@@ -153,6 +154,27 @@ class Dataset extends CI_Controller {
 		$this->load->view('template/footer');
 
 	}
+
+	function flow_varmi()
+	{
+		$flowID = $this->input->post('flowname');
+		$flowtypeID = $this->input->post('flowtype');
+		$companyID = $this->uri->segment(2);
+		print_r($companyID);
+		if(!$this->flow_model->has_same_flow($flowID,$flowtypeID,$companyID)){
+			$this->form_validation->set_message('flow_varmi', 'Flow name already exists, please choose another name or edit existing flow.');
+      return false;
+		}
+		else{
+			return true;
+		}
+		//return false;
+	} 
+
+	function alpha_dash_space($str)
+	{
+	  return ( ! preg_match("/^([-a-z_ ])+$/i", $str)) ? FALSE : TRUE;
+	} 
 
 	public function new_component($companyID){
 		

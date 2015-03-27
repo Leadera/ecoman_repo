@@ -8,11 +8,12 @@
 		</p>
 	</div>
 	<?php endif ?>
-	<div style="margin-bottom:20px;">
-		<h6><b><?php echo $company_info['name']; ?></b></h6>
+	<div style="margin-bottom:20px; overflow:hidden;">
+		<div class="pull-left"><b><a href="<?php echo base_url('company/'.$company_info['id']); ?>"><?php echo $company_info['name']; ?></a> Dataset Services</b></div>
+		<div class="pull-right">
 		<span class="label label-default"><b>Email:</b> <?php echo $company_info['email']; ?></span>
 		<span class="label label-default"><b>Phone:</b> <?php echo $company_info['phone_num_1']; ?></span>
-		<span><a href="<?php echo base_url('company/'.$company_info['id']); ?>" class="label label-primary">Go to company page</a></span>
+		<span><a href="<?php echo base_url('company/'.$company_info['id']); ?>" class="label label-primary">Go to company page</a></span></div>
 	</div>
 	<div>
 		<ul class="list-inline ultab">

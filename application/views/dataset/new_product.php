@@ -6,9 +6,22 @@
 						<input class="form-control" id="product" name="product" placeholder="Enter Product Name">
 				</div>				
 				<div class="form-group">
-					<label for="quantities">Quantities</label>
-					<input class="form-control" id="quantities" name="quantities" placeholder="Enter Quantities">
-				</div>				
+					<div class="row">
+							<div class="col-md-8">
+								<label for="quantities">Quantities</label>
+								<input class="form-control" id="quantities" name="quantities" placeholder="Enter Quantities">
+							</div>
+							<div class="col-md-4">
+								<label for="qunit">Quantities Unit</label>
+								<select id="qunit" class="info select-block" name="qunit">
+									<option value="">Please Select</option>
+									<?php foreach ($units as $unit): ?>
+										<option value="<?php echo $unit['name']; ?>"><?php echo $unit['name']; ?></option>
+									<?php endforeach ?>
+								</select>
+							</div>
+						</div>
+					</div>				
 				<div class="form-group">
 					<div class="row">
 						<div class="col-md-8">
@@ -55,8 +68,8 @@
 			<?php foreach ($product as $pro): ?>
 			<tr>	
 				<td><?php echo $pro['name']; ?></td>
-				<td><?php if(empty($pro['quantities']) or $pro['quantities'] == 0){echo "";} else {echo $pro['quantities']; } ?></td>
-				<td><?php if(empty($pro['ucost']) or $pro['ucost'] == 0){echo "";} else {echo $pro['ucost']; echo $pro['ucostu']; } ?></td>
+				<td><?php if(empty($pro['quantities']) or $pro['quantities'] == 0){echo "";} else {echo $pro['quantities'].' '.$pro['qunit']; } ?></td>
+				<td><?php if(empty($pro['ucost']) or $pro['ucost'] == 0){echo "";} else {echo $pro['ucost'].' '.$pro['ucostu']; } ?></td>
 				<td><?php echo $pro['tper']; ?></td>
 				<td><a href="<?php echo base_url('delete_product/'.$companyID.'/'.$pro['id']);?>" class="label label-danger" value="<?php echo $pro['id']; ?>"><span class="fa fa-times"></span> Delete</button></td>
 			</tr>

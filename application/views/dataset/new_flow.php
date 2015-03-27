@@ -105,13 +105,38 @@
 				</div>
 
 				<div class="form-group">
-					<label for="conc">Concentration</label>
-					<input class="form-control" id="conc" name="conc" placeholder="Concentration">
+					<div class="row">
+						<div class="col-md-8">
+							<label for="conc">Concentration</label>
+							<input class="form-control" id="conc" name="conc" placeholder="Concentration">
+						</div>
+						<div class="col-md-4">
+							<label for="concunit">Concentration Unit</label>
+							<select id="concunit" class="info select-block" name="concunit">
+								<option value="">Please Select</option>
+								<option value="%">%</option>
+								<option value="kg/m3">kg/m3</option>								
+							</select>
+						</div>
+					</div>
 				</div>				
 
 				<div class="form-group">
-					<label for="pres">Pression</label>
-					<input class="form-control" id="pres" name="pres" placeholder="Pression">
+					<div class="row">
+						<div class="col-md-8">
+							<label for="pres">Pressure</label>
+							<input class="form-control" id="pres" name="pres" placeholder="Pressure">
+						</div>
+						<div class="col-md-4">
+							<label for="presunit">Pressure Unit</label>
+							<select id="presunit" class="info select-block" name="presunit">
+								<option value="">Please Select</option>
+								<option value="Pascal (Pa)">Pascal (Pa)</option>
+								<option value="bar (Bar)">bar (Bar)</option>
+								<option value="Standard atmosphere (atm)">Standard atmosphere (atm)</option>								
+							</select>
+						</div>
+					</div>
 				</div>				
 
 				<div class="form-group">
@@ -195,7 +220,7 @@
 				<th>Chemical Formula</th>
 				<th>Availability</th>
 				<th>Concentration</th>
-				<th>Pression</th>
+				<th>Pressure</th>
 				<th>PH</th>
 				<th>State</th>
 				<th>Quality</th>
@@ -215,8 +240,8 @@
 					<td><?php echo $flow['ep'].' '.$flow['ep_unit']; ?></td>
 					<td><?php echo $flow['chemical_formula']; ?></td>
 					<td><?php if($flow['availability']=="t"){echo "Available";}else{echo "Not Available";} ?></td>
-					<td><?php echo $flow['concentration']; ?></td>
-					<td><?php echo $flow['pression']; ?></td>
+					<td><?php echo $flow['concentration'].' '.$flow['concunit']; ?></td>
+					<td><?php echo $flow['pression'].' '.$flow['presunit']; ?></td>
 					<td><?php echo $flow['ph']; ?></td>
 					<td><?php if($flow['state_id']=="1"){echo "Solid";}else if($flow['state_id']=="2"){echo "Liquid";}else{echo "Gas";} ?></td>
 					<td><?php echo $flow['quality']; ?></td>
