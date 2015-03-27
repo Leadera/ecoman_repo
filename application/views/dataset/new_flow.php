@@ -49,7 +49,7 @@
 				<div class="row">
 					<div class="col-md-8">
 						<label for="quantity">Quantity (Annual) <span style="color:red;">*</span></label>
-						<input class="form-control" id="quantity" name="quantity" placeholder="Enter Quantity of Flow">
+						<input class="form-control" id="quantity" name="quantity" placeholder="Enter Quantity of Flow" value="<?php echo set_value('quantity'); ?>">
 					</div>
 					<div class="col-md-4">
 						<label for="quantity">Quantity Unit <span style="color:red;">*</span></label>
@@ -66,7 +66,7 @@
 		    	<div class="row">
 						<div class="col-md-8">
 							<label for="cost">Cost (Annual) <span style="color:red;">*</span></label>
-		    			<input class="form-control" id="cost" name="cost" placeholder="Cost of flow (number)">
+		    			<input class="form-control" id="cost" name="cost" placeholder="Cost of flow (number)" value="<?php echo set_value('cost'); ?>">
 			    	</div>
 						<div class="col-md-4">
 							<label for="cost">Cost Unit <span style="color:red;">*</span></label>
@@ -81,11 +81,11 @@
 		  	<div class="form-group">
 		  		<div class="row">
 						<div class="col-md-8">
-				  		<label for="amount">EP (Annual) <span style="color:red;">*</span></label>
-				    	<input class="form-control" id="ep" name="ep" placeholder="Enter EP">
+				  		<label for="ep">EP (Annual) <span style="color:red;">*</span></label>
+				    	<input class="form-control" id="ep" name="ep" placeholder="Enter EP" value="<?php echo set_value('ep'); ?>">
 				    </div>
 						<div class="col-md-4">
-							<label for="amount">EP Unit <span style="color:red;">*</span></label>
+							<label for="epUnit">EP Unit <span style="color:red;">*</span></label>
 							<input type="text" class="form-control" id="epUnit" value="EP" name="epUnit" readonly>
 						</div>
 		  		</div>
