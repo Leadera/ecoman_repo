@@ -160,7 +160,7 @@ class Dataset extends CI_Controller {
 		$flowID = $this->input->post('flowname');
 		$flowtypeID = $this->input->post('flowtype');
 		$companyID = $this->uri->segment(2);
-		print_r($companyID);
+		//print_r($companyID);
 		if(!$this->flow_model->has_same_flow($flowID,$flowtypeID,$companyID)){
 			$this->form_validation->set_message('flow_varmi', 'Flow name already exists, please choose another name or edit existing flow.');
       return false;
