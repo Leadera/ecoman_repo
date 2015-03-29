@@ -1,30 +1,18 @@
-<script src="http://d3js.org/d3.v3.min.js"></script>
+<?php 
+/*foreach ($allocation as $rows => $row)
+{
+	echo "<table border='1'><tr>";
+	foreach ($row as $col => $cell)
+	{
+		echo "<td>" . $cell . "</td>";
+	}	
+  echo "</tr></table>";
+}
+print_r($allocation[0]);*/
+?>
 
+<script src="http://d3js.org/d3.v3.min.js"></script>
 <script type="text/javascript">
-	function yazdir(f,p,k) {
-	    $.ajax({
-	      type: "POST",
-	      dataType:'json',
-				url: '<?php echo base_url('cpscoping/get_allo'); ?>/'+f+'/'+p+'/'+<?php echo $this->uri->segment(3); ?> + '/' + k + '/' + <?php echo $this->uri->segment(2); ?>,
-	      success: function(data)
-	      {
-	      	if(!$.isEmptyObject(data)){
-	      		//console.log(data);
-	        	var vPool="";
-	        	if(data.allocation_amount!="none"){
-							vPool += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><td>' + data.amount + ' ' + data.unit_amount + ' <span class="label label-info">' + data.error_amount + '%</span></td><td rowspan="3" style="width:70px;">%'+data.allocation_rate+'</td></tr><tr><td>' + data.cost + ' ' + data.unit_cost + ' <span class="label label-info">' + data.error_cost + '%</span></td></tr><tr><td>' + data.env_impact + ' ' + data.unit_env_impact + ' <span class="label label-info">' + data.error_ep + '%</span></td></tr></table>';
-						}
-						else {
-							vPool += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><td>' + data.amount + ' ' + data.unit_amount + '</td></tr><tr><td>' + data.cost + ' ' + data.unit_cost + '</td></tr><tr><td>' + data.env_impact + ' ' + data.unit_env_impact + '</td></tr></table>';
-						}
-					$("div."+f+p+k).html(vPool);
-	      	}
-	      	else{
-	      		$("div."+f+p+k).html(" ");
-	      	}      	
-	      }
-	    });
-	};
 
 	var temp_array = new Array();
 	var temp_index = 0;
@@ -37,19 +25,27 @@
 	var cost_index = 0;
 	var index_array = new Array();
 	var list=new Array;
+	var veri = 0;
 
 	function cost_ep_value(prcss_id,process_adet){
 		//alert(prcss_id);
 		$.ajax({
-			type: "POST",
+			type: "GET",
 			dataType: 'json',
 			url: '<?php echo base_url('cpscoping/cost_ep'); ?>/'+prcss_id+'/'+<?php echo $this->uri->segment(2);?>+'/'+<?php echo $this->uri->segment(3); ?>,
 			success: function(data){
 				list.push(data);
+				//datagrid'in içini doldurma
+				$('#dg').datagrid('loadData', list);
+				veri = veri +1;
+				if(veri == process_adet){
+					tuna_graph(list);
+				}
 				// var temp = "";
 				// temp += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><th style="text-align:center;">' + data.prcss_name + '</th></tr><tr><td> <b>EP Value:</b> ' + data.ep_def_value + '  <b>EP Range:</b> ' + data.ep_value_alt + ' - ' + data.ep_value_ust + '</td></tr><tr><td> <b>Cost Value:</b> ' + data.cost_def_value + '   <b>Cost Range:</b> ' + data.cost_value_alt.toFixed(2) + ' - ' + data.cost_value_ust.toFixed(2) + ' Euro</td></tr></table>';
 				// $("div."+prcss_id).html(temp);
 			}
+			
 		});
 	};
 
@@ -156,11 +152,18 @@
 						</td>
 						<?php for ($t=0; $t < $process_adet+1; $t++): ?>
 							<script type="text/javascript">
-								yazdir(<?php echo $a['flow_id']; ?>,<?php echo $tekrarsiz[$t-1]; ?>,1);
+								//yazdir(<?php echo $a['flow_id']; ?>,<?php echo $tekrarsiz[$t-1]; ?>,1);
 							</script>
 							<td style="padding:0px !important;">
 								<div class="<?php echo $a['flow_id'].''.$tekrarsiz[$t-1]; ?>1">
-									
+									<?php 
+										$bak = $a['flow_id'].'-'.$tekrarsiz[$t-1].'-1';
+										if(!empty($allocationveri[$bak])):
+									?>
+										<?php print_r($allocationveri[$bak]); ?>
+									<?php	else: ?>
+										<?php echo $bak; ?>
+									<?php	endif ?>
 								</div>
 							</td>
 						<?php endfor ?>
@@ -241,11 +244,18 @@
 						</td>
 						<?php for ($t=0; $t < $process_adet+1; $t++): ?>
 							<script type="text/javascript">
-								yazdir(<?php echo $a['flow_id']; ?>,<?php echo $tekrarsiz[$t-1]; ?>,2);
+								//yazdir(<?php echo $a['flow_id']; ?>,<?php echo $tekrarsiz[$t-1]; ?>,2);
 							</script>
 							<td style="padding:0px !important;">
 								<div class="<?php echo $a['flow_id'].''.$tekrarsiz[$t-1]; ?>2">
-									
+									<?php 
+										$bak = $a['flow_id'].'-'.$tekrarsiz[$t-1].'-2';
+										if(!empty($allocationveri[$bak])):
+									?>
+										<?php print_r($allocationveri[$bak]); ?>
+									<?php	else: ?>
+										<?php echo $bak; ?>
+									<?php	endif ?>
 								</div>
 							</td>
 						<?php endfor ?>
@@ -362,11 +372,6 @@
 
 		</div>
 <script type="text/javascript">
-setTimeout(function()
-		{
-		  tuna_graph(list);
-		}, 5000);
-
 
 	function tuna_graph(list){
 	//console.log(list);
@@ -375,13 +380,10 @@ setTimeout(function()
 	var data = list;
 	console.log(data);
 
-	//datagrid'in içini doldurma
-	$('#dg').datagrid('loadData', data);  
-
 	var margin = {
 	            "top": 10,
 	            "right": 30,
-	            "bottom": 200,
+	            "bottom": 300,
 	            "left": 80
 	        };
 	var width = $('#sol4').width()-110;
@@ -418,7 +420,7 @@ setTimeout(function()
 
 	//x axis label
 	svg.append("text")
-		.attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom - 155) + ")")
+		.attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom - 255) + ")")
 		.style("text-anchor", "middle")
 		.text("Cost Value");
 

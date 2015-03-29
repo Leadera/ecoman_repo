@@ -187,10 +187,28 @@ class Cpscoping extends CI_Controller {
 		$allocation_id_array = $this->cpscoping_model->get_allocation_id_from_ids($company_id,$project_id);
 		$data['allocation'] = array();
 		foreach ($allocation_id_array as $ids) {
+
+			$ilkveri = $this->cpscoping_model->get_allocation_from_allocation_id($ids['allocation_id']);
+			//print_r($ilkveri);
+			
+			if($ilkveri['prcss_id']!='0'){
+				$prcss_name = $ilkveri['flow_id'].'-'.$ilkveri['prcss_id'].'-'.$ilkveri['flow_type_id'];
+				$data['allocationveri'][$prcss_name] = $ilkveri;
+				$prcss_total = $ilkveri['flow_id'].'-0-'.$ilkveri['flow_type_id'];
+				if(!isset($data['allocationveri'][$prcss_total]['amount'])){
+					$data['allocationveri'][$prcss_total]['amount'] = '';
+				}
+				$data['allocationveri'][$prcss_total]['amount'] += $ilkveri['amount'];
+			}
+
 			$data['allocation'][] = $this->cpscoping_model->get_allocation_from_allocation_id($ids['allocation_id']);
+			//print_r($data['allocationveri']);
+			//echo "<hr>";
 			$data['allocation_output'][] = $this->cpscoping_model->get_allocation_from_allocation_id_output($ids['allocation_id']);
 			$data['active'][$ids['allocation_id']] = $this->cpscoping_model->get_is_candidate_active_position($ids['allocation_id']);
+
 		}
+		//print_r($data);
 		$this->load->view('template/header');
 		$this->load->view('cpscoping/show',$data);
 		$this->load->view('template/footer');
@@ -656,9 +674,10 @@ class Cpscoping extends CI_Controller {
 	public function kpi_json($prjct_id,$cmpny_id){
 		$data['cp_files'] = $this->cpscoping_model->get_cp_scoping_files($prjct_id,$cmpny_id);
 		$allocation_ids = $this->cpscoping_model->get_allocation_id_from_ids($cmpny_id,$prjct_id);
+		//print_r($allocation_ids);
 		foreach ($allocation_ids as $a => $key) {
+			//echo $a.'.';
 			$data['kpi_values'][$a] = $this->cpscoping_model->get_allocation_from_allocation_id($key['allocation_id']);
-			//print_r($data['kpi_values']);
 			if($data['kpi_values'][$a]['option']==1){
 				$data['kpi_values'][$a]['option']="Option";
 			}else{
@@ -667,6 +686,7 @@ class Cpscoping extends CI_Controller {
 		}
 		header("Content-Type: application/json", true);
 		echo json_encode($data['kpi_values']);
+		//print_r($this->cpscoping_model->get_allocation_from_allocation_id('76'));
 	}
 
 	/*
