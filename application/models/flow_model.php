@@ -63,7 +63,7 @@ class Flow_model extends CI_Model {
 		return $query->result_array();
 	}
 
-	public function get_company_flow($companyID,$flow_id){
+	public function get_company_flow($companyID,$flow_id,$flow_type_id){
 		$this->db->select('*,t_cmpny_flow.id as id,t_flow.name as flowname,t_flow_type.name  as flowtype,t_cmpny_flow.id as cmpny_flow_id,t_cmpny_flow.qntty as qntty,unit1.name as qntty_unit_name,t_cmpny_flow.cost as cost,t_cmpny_flow.ep as ep,t_cmpny_flow.ep_unit_id as ep_unit, t_cmpny_flow.cost_unit_id as cost_unit');
 		$this->db->from("t_cmpny_flow");
 		$this->db->join('t_flow','t_flow.id = t_cmpny_flow.flow_id');
@@ -71,6 +71,7 @@ class Flow_model extends CI_Model {
 		$this->db->join('t_unit as unit1','unit1.id = t_cmpny_flow.qntty_unit_id');
 		$this->db->where('cmpny_id',$companyID);
 		$this->db->where('flow_id',$flow_id);
+		$this->db->where('flow_type_id',$flow_type_id);
 		$query = $this->db->get();
 		return $query->row_array();
 	}
@@ -102,6 +103,13 @@ class Flow_model extends CI_Model {
 	public function delete_flow($id){
 		$this->db->where('id', $id);
 		$this->db->delete('t_cmpny_flow'); 
+	}
+
+	public function update_flow_info($companyID,$flow_id,$flow_type_id,$flow){
+    $this->db->where('t_cmpny_flow.cmpny_id',$companyID);   
+    $this->db->where('t_cmpny_flow.flow_id',$flow_id);   
+    $this->db->where('t_cmpny_flow.flow_type_id',$flow_type_id); 
+    $this->db->update('t_cmpny_flow',$flow); 
 	}
 
 }

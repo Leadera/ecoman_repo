@@ -158,7 +158,7 @@ class Dataset extends CI_Controller {
 
 	}
 
-	public function edit_flow($companyID,$flow_id)
+	public function edit_flow($companyID,$flow_id,$flow_type_id)
 	{
 		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|xss_clean|strip_tags|numeric');
 		$this->form_validation->set_rules('quantityUnit', 'Quantity Unit', 'trim|required|xss_clean|strip_tags');
@@ -205,7 +205,6 @@ class Dataset extends CI_Controller {
 				'cost_unit_id' =>$costUnit,
 				'ep' => $this->sifirla($ep),
 				'ep_unit_id' => $epUnit,
-				'flow_type_id'=> $this->sifirla($flowtypeID),
 				'chemical_formula' => $cf,
 				'availability' => $availability,
 				'state_id' => $state,
@@ -227,14 +226,14 @@ class Dataset extends CI_Controller {
 				$flow['ph'] = $ph;
 			}
 			
-			$this->flow_model->update_flow_info($companyID,$flow_id);
+			$this->flow_model->update_flow_info($companyID,$flow_id,$flow_type_id,$flow);
 
 			redirect(base_url('new_flow/'.$companyID), 'refresh'); // tablo olusurken ajax kullanýlabilir.
 			//þuan sayfa yenileniyor her seferinde database'den satýrlar ekleniyor.
 
 		}
 
-		$data['flow']=$this->flow_model->get_company_flow($companyID,$flow_id);
+		$data['flow']=$this->flow_model->get_company_flow($companyID,$flow_id,$flow_type_id);
 		if(empty($data['flow'])){
 			redirect(base_url(), 'refresh'); // tablo olusurken ajax kullanýlabilir.
 		}

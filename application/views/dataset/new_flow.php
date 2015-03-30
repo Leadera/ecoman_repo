@@ -231,6 +231,7 @@
 				<th style="width:100px;">Delete</th>
 			</tr>
 			<?php foreach ($company_flows as $flow): ?>
+				<?php //print_r($flow); ?>
 				<tr>	
 					<td><?php echo $flow['flowname']; ?></td>
 					<td><?php echo $flow['flowtype']; ?></td>
@@ -252,7 +253,7 @@
 
 
 					<td>
-						<a href="<?php echo base_url('edit_flow/'.$companyID.'/'.$flow['flow_id']);?>" class="label label-warning"><span class="fa fa-edit"></span> Edit</button>
+						<a href="<?php echo base_url('edit_flow/'.$companyID.'/'.$flow['flow_id'].'/'.$flow['flow_type_id']);?>" class="label label-warning"><span class="fa fa-edit"></span> Edit</button>
 						<a href="<?php echo base_url('delete_flow/'.$companyID.'/'.$flow['id']);?>" class="label label-danger" onclick="return confirm('Are you sure you want to delete this flow?');"><span class="fa fa-times"></span> Delete</button>
 					</td>
 			
