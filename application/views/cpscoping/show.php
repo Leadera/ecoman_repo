@@ -47,7 +47,7 @@ print_r($allocation[0]);*/
 				else{
 					$('#graph_text').text("Please wait for graph to appear until all analysis data are calculated in the table. ("+veri+"/"+process_adet+")");
 	       	clearTimeout(timer);
-	       	timer = setTimeout(function() { tuna_graph(list) }, 6000);
+	       	timer = setTimeout(function() { tuna_graph(list); 					$('#graph_text').text("* You wont be able to see every range on the graph, if one of them are really huge."); }, 6000);
 				}
 				// var temp = "";
 				// temp += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><th style="text-align:center;">' + data.prcss_name + '</th></tr><tr><td> <b>EP Value:</b> ' + data.ep_def_value + '  <b>EP Range:</b> ' + data.ep_value_alt + ' - ' + data.ep_value_ust + '</td></tr><tr><td> <b>Cost Value:</b> ' + data.cost_def_value + '   <b>Cost Range:</b> ' + data.cost_value_alt.toFixed(2) + ' - ' + data.cost_value_ust.toFixed(2) + ' Euro</td></tr></table>';
