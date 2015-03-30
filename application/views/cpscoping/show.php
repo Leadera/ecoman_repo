@@ -92,7 +92,8 @@ print_r($allocation[0]);*/
 	};
 </script>
 		<div class="col-md-12" style="margin-bottom: 10px;">
-			<a class="btn btn-default btn-sm" href="<?php echo base_url('kpi_calculation/'.$this->uri->segment(2).'/'.$this->uri->segment(3)); ?>">Show KPI Calculation Data</a>
+			<a class="btn btn-inverse btn-sm" href="<?php echo base_url('kpi_calculation/'.$this->uri->segment(2).'/'.$this->uri->segment(3)); ?>">Go to KPI Calculation Page</a>
+			<a href="<?php echo base_url('new_flow/'.$this->uri->segment(3)); ?>/" class="btn btn-inverse btn-sm" id="cpscopinga">Go to Dataset Management Page</a>
 		</div>
 		<div class="col-md-4" id="sol4">
 			<p>Cost and Environmental impact graph of processes</p>

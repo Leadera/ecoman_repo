@@ -142,6 +142,7 @@ class Process_model extends CI_Model {
 		$this->db->join('t_flow_type','t_flow_type.id = t_cmpny_flow.flow_type_id');
 		$this->db->join('t_prcss','t_prcss.id = t_cmpny_prcss.prcss_id');
 		$this->db->where('t_cmpny_flow.cmpny_id',$id);
+		$this->db->order_by("t_prcss.name", "asc"); 
 		$query = $this->db->get();
 	    return $query->result_array();
 	}

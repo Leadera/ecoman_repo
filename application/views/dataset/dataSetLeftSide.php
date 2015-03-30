@@ -17,11 +17,11 @@
 	</div>
 	<div>
 		<ul class="list-inline ultab">
-			<li <?php if ($this->uri->segment(1) == "new_flow"){ echo "class='active'"; } ?>><a href="<?php echo base_url('new_flow/'.$companyID); ?>">Flow</a></li>
-			<li <?php if ($this->uri->segment(1) == "new_component"){ echo "class='active'"; } ?>><a class="" href="<?php echo base_url('new_component/'.$companyID); ?>"><span +>Component</span></a></li>
-			<li <?php if ($this->uri->segment(1) == "new_process"){ echo "class='active'"; } ?>><a class="" href="<?php echo base_url('new_process/'.$companyID); ?>">Process</a></li>
-			<li <?php if ($this->uri->segment(1) == "new_equipment"){ echo "class='active'"; } ?>><a class="" href="<?php echo base_url('new_equipment/'.$companyID); ?>">Equipment</a></li>
-			<li <?php if ($this->uri->segment(1) == "new_product"){ echo "class='active'"; } ?>><a class="" href="<?php echo base_url('new_product/'.$companyID); ?>">Product</a></li>
+			<li <?php if ($this->uri->segment(1) == "new_flow"){ echo "class='btn-inverse'"; } ?>><a href="<?php echo base_url('new_flow/'.$companyID); ?>">Flow</a></li>
+			<li <?php if ($this->uri->segment(1) == "new_component"){ echo "class='btn-inverse'"; } ?>><a class="" href="<?php echo base_url('new_component/'.$companyID); ?>"><span +>Component</span></a></li>
+			<li <?php if ($this->uri->segment(1) == "new_process"){ echo "class='btn-inverse'"; } ?>><a class="" href="<?php echo base_url('new_process/'.$companyID); ?>">Process</a></li>
+			<li <?php if ($this->uri->segment(1) == "new_equipment"){ echo "class='btn-inverse'"; } ?>><a class="" href="<?php echo base_url('new_equipment/'.$companyID); ?>">Equipment</a></li>
+			<li <?php if ($this->uri->segment(1) == "new_product"){ echo "class='btn-inverse'"; } ?>><a class="" href="<?php echo base_url('new_product/'.$companyID); ?>">Product</a></li>
 			</ul>
 	</div>
 </div>

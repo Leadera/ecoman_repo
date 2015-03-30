@@ -66,6 +66,9 @@ class Dataset extends CI_Controller {
 		$this->form_validation->set_rules('costUnit', 'Cost Unit', 'trim|required|xss_clean|strip_tags');
 		$this->form_validation->set_rules('ep', 'EP', 'trim|required|xss_clean|strip_tags|numeric');
 		$this->form_validation->set_rules('epUnit', 'EP Unit', 'trim|required|xss_clean|strip_tags');
+		$this->form_validation->set_rules('conc', 'Concentration', 'trim|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('pres', 'Pressure', 'trim|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('ph', 'PH', 'trim|xss_clean|strip_tags|numeric');
 
 		if($this->form_validation->run() !== FALSE) {
 
@@ -151,6 +154,96 @@ class Dataset extends CI_Controller {
 		$this->load->view('template/header');
 		$this->load->view('dataset/dataSetLeftSide',$data);
 		$this->load->view('dataset/new_flow',$data);
+		$this->load->view('template/footer');
+
+	}
+
+	public function edit_flow($companyID,$flow_id)
+	{
+		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('quantityUnit', 'Quantity Unit', 'trim|required|xss_clean|strip_tags');
+		$this->form_validation->set_rules('cost', 'Cost', 'trim|required|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('costUnit', 'Cost Unit', 'trim|required|xss_clean|strip_tags');
+		$this->form_validation->set_rules('ep', 'EP', 'trim|required|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('epUnit', 'EP Unit', 'trim|required|xss_clean|strip_tags');
+		$this->form_validation->set_rules('conc', 'Concentration', 'trim|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('pres', 'Pressure', 'trim|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('ph', 'PH', 'trim|xss_clean|strip_tags|numeric');
+
+		if($this->form_validation->run() !== FALSE) {
+
+			$ep = $this->input->post('ep');
+			$epUnit = $this->input->post('epUnit');
+			$cost = $this->input->post('cost');
+			$costUnit = $this->input->post('costUnit');
+			$quantity = $this->input->post('quantity');
+			$quantityUnit = $this->input->post('quantityUnit');
+			
+			$cf = $this->input->post('cf');
+			$availability = $this->input->post('availability');
+			$conc = $this->input->post('conc');
+			$concunit = $this->input->post('concunit');
+			$pres = $this->input->post('pres');
+			$presunit = $this->input->post('presunit');
+			$ph = $this->input->post('ph');
+			$state = $this->input->post('state');
+			$quality = $this->input->post('quality');
+			$oloc = $this->input->post('oloc');
+			//$odis = $this->input->post('odis');
+			//$otrasmean = $this->input->post('otrasmean');			
+			//$sdis = $this->input->post('sdis');
+			//$strasmean = $this->input->post('strasmean');
+			//$rtech = $this->input->post('rtech');
+			$desc = $this->input->post('desc');
+			$spot = $this->input->post('spot');
+			$comment = $this->input->post('comment');
+
+			$flow = array(
+				'qntty'=>$this->sifirla($quantity),
+				'qntty_unit_id'=>$this->sifirla($quantityUnit),
+				'cost' =>$this->sifirla($cost),
+				'cost_unit_id' =>$costUnit,
+				'ep' => $this->sifirla($ep),
+				'ep_unit_id' => $epUnit,
+				'flow_type_id'=> $this->sifirla($flowtypeID),
+				'chemical_formula' => $cf,
+				'availability' => $availability,
+				'state_id' => $state,
+				'quality' => $quality,
+				'output_location' => $oloc,
+				'substitute_potential' => $spot,
+				'description' => $desc,
+				'comment' => $comment
+			);
+			if(!empty($conc)){
+				$flow['concentration'] = $conc;
+				$flow['concunit'] = $concunit;
+			}
+			if(!empty($pres)){
+				$flow['pression'] = $pres;
+				$flow['presunit'] = $presunit;
+			}
+			if(!empty($ph)){
+				$flow['ph'] = $ph;
+			}
+			
+			$this->flow_model->update_flow_info($companyID,$flow_id);
+
+			redirect(base_url('new_flow/'.$companyID), 'refresh'); // tablo olusurken ajax kullanýlabilir.
+			//þuan sayfa yenileniyor her seferinde database'den satýrlar ekleniyor.
+
+		}
+
+		$data['flow']=$this->flow_model->get_company_flow($companyID,$flow_id);
+		if(empty($data['flow'])){
+			redirect(base_url(), 'refresh'); // tablo olusurken ajax kullanýlabilir.
+		}
+		$data['companyID'] = $companyID;
+		$data['company_info'] = $this->company_model->get_company($companyID);
+		$data['units'] = $this->flow_model->get_unit_list();
+
+		$this->load->view('template/header');
+		$this->load->view('dataset/edit_flow',$data);
 		$this->load->view('template/footer');
 
 	}

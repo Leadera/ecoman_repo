@@ -155,6 +155,7 @@ class Cpscoping_model extends CI_Model {
     $this->db->join('t_prcss','t_prcss.id = t_cmpny_prcss.prcss_id');
     $this->db->where('t_cp_company_project.prjct_id',$prjct_id);
     $this->db->where('t_cp_company_project.cmpny_id',$cmpny_id);
+    $this->db->order_by("t_prcss.name", "asc"); 
     return $this->db->get()->result_array();
   }
 
