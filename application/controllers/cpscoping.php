@@ -197,8 +197,18 @@ class Cpscoping extends CI_Controller {
 				$prcss_total = $ilkveri['flow_id'].'-0-'.$ilkveri['flow_type_id'];
 				if(!isset($data['allocationveri'][$prcss_total]['amount'])){
 					$data['allocationveri'][$prcss_total]['amount'] = '';
+					$data['allocationveri'][$prcss_total]['unit_amount'] = '';
+					$data['allocationveri'][$prcss_total]['cost'] = '';
+					$data['allocationveri'][$prcss_total]['unit_cost'] = '';
+					$data['allocationveri'][$prcss_total]['env_impact'] = '';
+					$data['allocationveri'][$prcss_total]['unit_env_impact'] = '';
 				}
 				$data['allocationveri'][$prcss_total]['amount'] += $ilkveri['amount'];
+				$data['allocationveri'][$prcss_total]['unit_amount'] = $ilkveri['unit_amount'];
+				$data['allocationveri'][$prcss_total]['cost'] += $ilkveri['cost'];
+				$data['allocationveri'][$prcss_total]['unit_cost'] = $ilkveri['unit_cost'];
+				$data['allocationveri'][$prcss_total]['env_impact'] += $ilkveri['env_impact'];
+				$data['allocationveri'][$prcss_total]['unit_env_impact'] = 'EP';
 			}
 
 			$data['allocation'][] = $this->cpscoping_model->get_allocation_from_allocation_id($ids['allocation_id']);

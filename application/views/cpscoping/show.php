@@ -40,6 +40,10 @@ print_r($allocation[0]);*/
 				veri = veri +1;
 				if(veri == process_adet){
 					tuna_graph(list);
+					$('#graph_text').text("* You wont be able to see every range on the graph, if one of them are really huge.");
+				}
+				else{
+					$('#graph_text').text("Please wait for graph to appear until all analysis data are calculated in the table. ("+veri+"/"+process_adet+")");
 				}
 				// var temp = "";
 				// temp += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><th style="text-align:center;">' + data.prcss_name + '</th></tr><tr><td> <b>EP Value:</b> ' + data.ep_def_value + '  <b>EP Range:</b> ' + data.ep_value_alt + ' - ' + data.ep_value_ust + '</td></tr><tr><td> <b>Cost Value:</b> ' + data.cost_def_value + '   <b>Cost Range:</b> ' + data.cost_value_alt.toFixed(2) + ' - ' + data.cost_value_ust.toFixed(2) + ' Euro</td></tr></table>';
@@ -88,7 +92,7 @@ print_r($allocation[0]);*/
 		</div>
 		<div class="col-md-4" id="sol4">
 			<p>Cost and Environmental impact graph of processes</p>
-			
+			<div class="label label-info" id="graph_text"></div>
 		  <div id="rect-demo-ana">
 		    <div id="rect-demo"></div>
 	    </div>
@@ -97,8 +101,8 @@ print_r($allocation[0]);*/
 			<p>CP Potentials Identifications</p>
 			<table class="table table-bordered">
 			<tr>
-			<th>Input Flows</th>
-			<th>Total</th>
+			<th style="width:150px;">Input Flows</th>
+			<th style="width:150px;">Total</th>
 			<?php $deneme_arrayi = array(); $tekrarsiz = array(); $tekrarsiz[-1] = "0"; $count = 0; $process_adet=0; ?>
 			<?php foreach ($allocation as $a): ?>
 			<?php
@@ -114,7 +118,7 @@ print_r($allocation[0]);*/
 				}
 				if($degisken == 1){
 					$process_adet++;
-					echo "<th>".$a['prcss_name']."</th>";
+					echo "<th style='width:200px;'>".$a['prcss_name']."</th>";
 					$tekrarsiz[$process_adet-1] = $a['prcss_id']; 
 				}
 			}
@@ -160,9 +164,22 @@ print_r($allocation[0]);*/
 										$bak = $a['flow_id'].'-'.$tekrarsiz[$t-1].'-1';
 										if(!empty($allocationveri[$bak])):
 									?>
-										<?php print_r($allocationveri[$bak]); ?>
+										<?php if(!empty($allocationveri[$bak]['error_amount'])): ?>
+											<table style="font-size:11px; width: 100%; text-align:center;" frame="void">
+												<tr><td><?php echo $allocationveri[$bak]['amount']; ?> <?php echo $allocationveri[$bak]['unit_amount']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_amount']; ?>%</span> </td></tr>
+												<tr><td><?php echo $allocationveri[$bak]['cost']; ?> <?php echo $allocationveri[$bak]['unit_cost']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_cost']; ?>%</span></td></tr>
+												<tr><td><?php echo $allocationveri[$bak]['env_impact']; ?> <?php echo $allocationveri[$bak]['unit_env_impact']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_ep']; ?>%</span></td></tr>
+											</table>
+										<?php else: ?>
+											<table style="font-size:11px; width: 100%; text-align:center;" frame="void">
+												<tr><td><?php echo $allocationveri[$bak]['amount']; ?> <?php echo $allocationveri[$bak]['unit_amount']; ?> </td></tr>
+												<tr><td><?php echo $allocationveri[$bak]['cost']; ?> <?php echo $allocationveri[$bak]['unit_cost']; ?></td></tr>
+												<tr><td><?php echo $allocationveri[$bak]['env_impact']; ?> <?php echo $allocationveri[$bak]['unit_env_impact']; ?></td></tr>
+											</table>
+										<?php endif ?>
+										<?php //print_r($allocationveri[$bak]); ?>
 									<?php	else: ?>
-										<?php echo $bak; ?>
+										<?php //echo $bak; ?>
 									<?php	endif ?>
 								</div>
 							</td>
@@ -177,8 +194,8 @@ print_r($allocation[0]);*/
 			<!-- Output Table -->
 			<table class="table table-bordered">
 			<tr>
-			<th>Output Flows</th>
-			<th>Total</th>
+			<th style="width:150px;">Output Flows</th>
+			<th style="width:150px;">Total</th>
 			<?php $deneme_arrayi = array(); $tekrarsiz = array(); $tekrarsiz[-1] = "0"; $count = 0; $process_adet=0; ?>
 			<?php foreach ($allocation as $a): ?>
 			<?php
@@ -194,7 +211,7 @@ print_r($allocation[0]);*/
 				}
 				if($degisken == 1){
 					$process_adet++;
-					echo "<th>".$a['prcss_name']."</th>";
+					echo "<th style='width:200px;'>".$a['prcss_name']."</th>";
 					$tekrarsiz[$process_adet-1] = $a['prcss_id']; 
 				}
 			}
@@ -252,9 +269,22 @@ print_r($allocation[0]);*/
 										$bak = $a['flow_id'].'-'.$tekrarsiz[$t-1].'-2';
 										if(!empty($allocationveri[$bak])):
 									?>
-										<?php print_r($allocationveri[$bak]); ?>
+										<?php if(!empty($allocationveri[$bak]['error_amount'])): ?>
+											<table style="font-size:11px; width: 100%; text-align:center;" frame="void">
+												<tr><td><?php echo $allocationveri[$bak]['amount']; ?> <?php echo $allocationveri[$bak]['unit_amount']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_amount']; ?>%</span> </td></tr>
+												<tr><td><?php echo $allocationveri[$bak]['cost']; ?> <?php echo $allocationveri[$bak]['unit_cost']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_cost']; ?>%</span></td></tr>
+												<tr><td><?php echo $allocationveri[$bak]['env_impact']; ?> <?php echo $allocationveri[$bak]['unit_env_impact']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_ep']; ?>%</span></td></tr>
+											</table>
+										<?php else: ?>
+											<table style="font-size:11px; width: 100%; text-align:center;" frame="void">
+												<tr><td><?php echo $allocationveri[$bak]['amount']; ?> <?php echo $allocationveri[$bak]['unit_amount']; ?> </td></tr>
+												<tr><td><?php echo $allocationveri[$bak]['cost']; ?> <?php echo $allocationveri[$bak]['unit_cost']; ?></td></tr>
+												<tr><td><?php echo $allocationveri[$bak]['env_impact']; ?> <?php echo $allocationveri[$bak]['unit_env_impact']; ?></td></tr>
+											</table>
+										<?php endif ?>
+										<?php //print_r($allocationveri[$bak]); ?>
 									<?php	else: ?>
-										<?php echo $bak; ?>
+										<?php //echo $bak; ?>
 									<?php	endif ?>
 								</div>
 							</td>
@@ -285,7 +315,7 @@ print_r($allocation[0]);*/
 			    ">
 				<thead>
 				    <tr>
-				        <th data-options="field:'prcss_name',align:'center',width:100">Process</th>
+				        <th data-options="field:'prcss_name',align:'center',width:150">Process</th>
 				        <th data-options="field:'ep_def_value',align:'center',width:100">Ep Value</th>
 				        <th data-options="field:'ep_value_alt',align:'center',width:100">Min Ep Value</th>
 				        <th data-options="field:'ep_value_ust',align:'center',width:100">Max Ep Value</th>
