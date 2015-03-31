@@ -71,7 +71,9 @@
 				<td><?php if(empty($pro['quantities']) or $pro['quantities'] == 0){echo "";} else {echo $pro['quantities'].' '.$pro['qunit']; } ?></td>
 				<td><?php if(empty($pro['ucost']) or $pro['ucost'] == 0){echo "";} else {echo $pro['ucost'].' '.$pro['ucostu']; } ?></td>
 				<td><?php echo $pro['tper']; ?></td>
-				<td><a href="<?php echo base_url('delete_product/'.$companyID.'/'.$pro['id']);?>" class="label label-danger" value="<?php echo $pro['id']; ?>"><span class="fa fa-times"></span> Delete</button></td>
+				<td>
+				<a href="<?php echo base_url('edit_product/'.$companyID.'/'.$pro['id']);?>" class="label label-warning"><span class="fa fa-edit"></span> Edit</button>
+				<a href="<?php echo base_url('delete_product/'.$companyID.'/'.$pro['id']);?>" class="label label-danger"><span class="fa fa-times"></span> Delete</button></td>
 			</tr>
 			<?php endforeach ?>
 

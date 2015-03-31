@@ -149,6 +149,7 @@ $route['delete_flow/(:any)/(:any)'] = "dataset/delete_flow/$1/$2";
 $route['delete_component/(:any)/(:any)'] = "dataset/delete_component/$1/$2";
 
 $route['new_product/(:any)'] = "dataset/new_product/$1";
+$route['edit_product/(:any)/(:any)'] = "dataset/edit_product/$1/$2";
 $route['product'] = "dataset/product";
 $route['delete_product/(:any)/(:any)'] = "dataset/delete_product/$1/$2";
 

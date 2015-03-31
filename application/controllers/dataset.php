@@ -56,6 +56,40 @@ class Dataset extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function edit_product($companyID,$product_id)
+	{
+		$this->form_validation->set_rules('product', 'Product Field', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('quantities', 'Product Quantity', 'trim|numeric|xss_clean');
+		$this->form_validation->set_rules('ucost', 'Unit Cost', 'trim|numeric|xss_clean');
+		$this->form_validation->set_rules('ucostu', 'Unit Cost Unit', 'trim|xss_clean');
+		$this->form_validation->set_rules('qunit', 'Quantity Unit', 'trim|xss_clean');
+		$this->form_validation->set_rules('tper', 'Time Period', 'trim|xss_clean');
+
+		if($this->form_validation->run() !== FALSE) {
+			$productArray = array(
+					'cmpny_id' => $companyID,
+					'name' => $this->input->post('product'),
+					'quantities' => $this->sifirla($this->input->post('quantities')),
+					'ucost' => $this->sifirla($this->input->post('ucost')),
+					'ucostu' => $this->input->post('ucostu'),
+					'qunit' => $this->input->post('qunit'),
+					'tper' => $this->input->post('tper'),
+				);
+			$this->product_model->update_product($companyID,$product_id,$productArray);
+			redirect(base_url('new_product/'.$companyID), 'refresh'); // tablo olusurken ajax kullanýlabilir.
+
+		}
+
+		$data['product'] = $this->product_model->get_product_by_cid_pid($companyID,$product_id);
+		$data['companyID'] = $companyID;
+		$data['company_info'] = $this->company_model->get_company($companyID);
+		$data['units'] = $this->flow_model->get_unit_list();
+
+		$this->load->view('template/header');
+		$this->load->view('dataset/edit_product',$data);
+		$this->load->view('template/footer');
+	}
+
 	public function new_flow($companyID)
 	{
 		$this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean|strip_tags|callback__alpha_dash_space');
