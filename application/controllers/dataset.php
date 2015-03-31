@@ -415,7 +415,6 @@ class Dataset extends CI_Controller {
 		$this->form_validation->set_rules('max_rate_util','Maximum rate of utilization','trim|numeric|xss_clean');
 		$this->form_validation->set_rules('comment','Comment','trim|alpha_numeric|xss_clean');
 
-
 		if ($this->form_validation->run() !== FALSE)
 		{
 			//cant change flow and process since they affect other tables on database and also need lots of control for now.
@@ -429,19 +428,16 @@ class Dataset extends CI_Controller {
 				'comment' => $this->input->post('comment'),
 			);
 			$this->process_model->update_cmpny_flow_prcss($companyID,$process_id,$cmpny_prcss);
+			redirect(base_url('new_process/'.$companyID), 'refresh');
 		}
 
-		$data['process'] = $this->process_model->get_main_process();
-		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
-		$data['cmpny_flow_prcss'] = $this->process_model->get_cmpny_flow_prcss($companyID);
+		$data['process'] = $this->process_model->get_cmpny_prcss_from_rid($companyID,$process_id);
 		$data['companyID'] = $companyID;
 		$data['company_info'] = $this->company_model->get_company($companyID);
-		$data['processfamilys'] = $this->process_model->get_processfamily_list();
 		$data['units'] = $this->flow_model->get_unit_list();
 
 		$this->load->view('template/header');
-		$this->load->view('dataset/dataSetLeftSide',$data);
-		$this->load->view('dataset/new_process',$data);
+		$this->load->view('dataset/edit_process',$data);
 		$this->load->view('template/footer');
 	}
 

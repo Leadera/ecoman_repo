@@ -122,7 +122,10 @@
 					<td><?php echo $attribute['typ_rate_util']; ?> <?php echo $attribute['typrateu']; ?></td>
 					<td><?php echo $attribute['max_rate_util']; ?> <?php echo $attribute['maxrateu']; ?></td>
 					<td><?php echo $attribute['comment']; ?></td>
-					<td><a href="<?php echo base_url('delete_process/'.$companyID.'/'.$attribute['company_process_id'].'/'.$attribute['company_flow_id']);?>" class="label label-danger" value="<?php echo $attribute['prcessid']; ?>"><span class="fa fa-times"></span> Delete</button></td>
+					<td>
+						<a href="<?php echo base_url('edit_process/'.$companyID.'/'.$attribute['company_process_id']);?>" class="label label-warning" value="<?php echo $attribute['prcessid']; ?>"><span class="fa fa-edit"></span> Edit</button>
+						<a href="<?php echo base_url('delete_process/'.$companyID.'/'.$attribute['company_process_id'].'/'.$attribute['company_flow_id']);?>" class="label label-danger" value="<?php echo $attribute['prcessid']; ?>"><span class="fa fa-times"></span> Delete</button>
+					</td>
 				</tr>
 				<?php endforeach ?>
 			</table>

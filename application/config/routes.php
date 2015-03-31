@@ -153,6 +153,7 @@ $route['edit_product/(:any)/(:any)'] = "dataset/edit_product/$1/$2";
 $route['product'] = "dataset/product";
 $route['delete_product/(:any)/(:any)'] = "dataset/delete_product/$1/$2";
 
+$route['edit_process/(:any)/(:any)'] = "dataset/edit_process/$1/$2";
 $route['new_process/(:any)'] = "dataset/new_process/$1";
 $route['delete_process/(:any)/(:any)/(:any)'] = "dataset/delete_process/$1/$2/$3";
 $route['get_sub_process'] = "dataset/get_sub_process";
