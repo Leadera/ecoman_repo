@@ -408,6 +408,43 @@ class Dataset extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function edit_process($companyID,$process_id){
+
+		$this->form_validation->set_rules('min_rate_util','Minimum rate of utilization','trim|numeric|xss_clean');
+		$this->form_validation->set_rules('typ_rate_util','Typical rate of utilization','trim|numeric|xss_clean');
+		$this->form_validation->set_rules('max_rate_util','Maximum rate of utilization','trim|numeric|xss_clean');
+		$this->form_validation->set_rules('comment','Comment','trim|alpha_numeric|xss_clean');
+
+
+		if ($this->form_validation->run() !== FALSE)
+		{
+			//cant change flow and process since they affect other tables on database and also need lots of control for now.
+			$cmpny_prcss = array(
+				'min_rate_util' => $this->sifirla($this->input->post('min_rate_util')),
+				'min_rate_util_unit' => $this->sifirla($this->input->post('min_rate_util_unit')),					
+				'typ_rate_util' => $this->sifirla($this->input->post('typ_rate_util')),
+				'typ_rate_util_unit' => $this->sifirla($this->input->post('typ_rate_util_unit')),
+				'max_rate_util' => $this->sifirla($this->input->post('max_rate_util')),
+				'max_rate_util_unit' => $this->sifirla($this->input->post('max_rate_util_unit')),
+				'comment' => $this->input->post('comment'),
+			);
+			$this->process_model->update_cmpny_flow_prcss($companyID,$process_id,$cmpny_prcss);
+		}
+
+		$data['process'] = $this->process_model->get_main_process();
+		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
+		$data['cmpny_flow_prcss'] = $this->process_model->get_cmpny_flow_prcss($companyID);
+		$data['companyID'] = $companyID;
+		$data['company_info'] = $this->company_model->get_company($companyID);
+		$data['processfamilys'] = $this->process_model->get_processfamily_list();
+		$data['units'] = $this->flow_model->get_unit_list();
+
+		$this->load->view('template/header');
+		$this->load->view('dataset/dataSetLeftSide',$data);
+		$this->load->view('dataset/new_process',$data);
+		$this->load->view('template/footer');
+	}
+
 	public function new_equipment($companyID){				
 
 		$this->form_validation->set_rules('usedprocess','Used Process','required');
