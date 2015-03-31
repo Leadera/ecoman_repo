@@ -347,6 +347,45 @@ class Dataset extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function edit_component($companyID,$id){
+
+		$this->form_validation->set_rules('component_name', 'Component Name', 'trim|required|xss_clean');
+
+		if($this->form_validation->run() !== FALSE) {
+			$component_array = array(
+				'name' => $this->input->post('component_name'),
+				'name_tr' => $this->input->post('component_name'),
+			);
+			$component_id = $this->component_model->update_cmpnnt($component_array,$id,$companyID);
+
+			$cmpny_flow_cmpnnt = array(
+				'description' => $this->input->post('description'),
+				'qntty' => $this->sifirla($this->input->post('quantity')),
+				'qntty_unit_id' => $this->sifirla($this->input->post('quantityUnit')),
+				'supply_cost' => $this->sifirla($this->input->post('cost')),
+				'supply_cost_unit' => $this->input->post('costUnit'),
+				'output_cost' => $this->sifirla($this->input->post('ocost')),
+				'output_cost_unit' => $this->input->post('ocostunit'),
+				'data_quality' => $this->input->post('quality'),
+				'substitute_potential' => $this->input->post('spot'),
+				'comment' => $this->input->post('comment'),
+				'cmpnt_type_id' =>$this->sifirla($this->input->post('component_type')),
+			);
+			$this->component_model->update_cmpny_flow_cmpnnt($cmpny_flow_cmpnnt,$id);
+			redirect('new_component/'.$companyID, 'refresh');
+		}
+		
+		$data['component'] = $this->component_model->get_cmpnnt_info($companyID,$id);
+		$data['units'] = $this->flow_model->get_unit_list();
+		$data['ctypes'] = $this->component_model->get_cmpnnt_type();
+		$data['companyID'] = $companyID;
+		$data['company_info'] = $this->company_model->get_company($companyID);
+
+		$this->load->view('template/header');
+		$this->load->view('dataset/edit_component',$data);
+		$this->load->view('template/footer');
+	}
+
 	public function new_process($companyID){
 
 		$this->form_validation->set_rules('process','Process','required');
