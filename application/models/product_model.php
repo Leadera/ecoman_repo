@@ -18,6 +18,15 @@ class Product_model extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function get_product_by_cid_pid($companyID,$product_id){
+		$this->db->select("*");
+		$this->db->from("t_prdct");
+		$this->db->where("t_prdct.cmpny_id",$companyID);
+		$this->db->where("t_prdct.id",$product_id);
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+
 	public function set_product($data){
 		$this->db->insert('t_prdct',$data);
 	}
@@ -25,5 +34,11 @@ class Product_model extends CI_Model {
 	public function delete_product($id){
 		$this->db->where('id', $id);
 		$this->db->delete('t_prdct'); 
+	}
+
+	public function update_product($companyID,$product_id,$productArray){
+    $this->db->where('t_prdct.cmpny_id',$companyID);   
+    $this->db->where('t_prdct.id',$product_id);   
+    $this->db->update('t_prdct',$productArray); 
 	}
 }

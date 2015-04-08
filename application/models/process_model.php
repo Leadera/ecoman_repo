@@ -22,6 +22,14 @@ class Process_model extends CI_Model {
 		return $this->db->get()->row_array();
 	}
 
+	public function get_cmpny_prcss_from_rid($cmpny_id,$prcss_id){
+		$this->db->select('*');
+		$this->db->from('t_cmpny_prcss');
+		$this->db->where('cmpny_id',$cmpny_id);
+		$this->db->where('id',$prcss_id);
+		return $this->db->get()->row_array();
+	}
+
 	//update comment of a process
 	public function update_process_comment($cmpny_id,$prcss_id,$comment){
 		$data = array(
@@ -97,7 +105,7 @@ class Process_model extends CI_Model {
 		}
 		else{
 			$data = array(
-				'name' => $flowID,
+				'name' => mb_strtolower($flowID,'UTF-8'),
 				'flow_family_id' => $flowfamilyID,
 				'active' => 1,
 			);
@@ -142,6 +150,7 @@ class Process_model extends CI_Model {
 		$this->db->join('t_flow_type','t_flow_type.id = t_cmpny_flow.flow_type_id');
 		$this->db->join('t_prcss','t_prcss.id = t_cmpny_prcss.prcss_id');
 		$this->db->where('t_cmpny_flow.cmpny_id',$id);
+		$this->db->order_by("t_prcss.name", "asc"); 
 		$query = $this->db->get();
 	    return $query->result_array();
 	}
@@ -224,6 +233,12 @@ class Process_model extends CI_Model {
 	public function delete_cmpny_eqpmnt($companyID){
 		$this->db->where('cmpny_id',$companyID);
 		$this->db->delete('t_cmpny_eqpmnt');
+	}
+
+	public function update_cmpny_flow_prcss($companyID,$process_id,$cmpny_prcss){
+		$this->db->where('t_cmpny_prcss.cmpny_id',$companyID);   
+    $this->db->where('t_cmpny_prcss.id',$process_id);   
+    $this->db->update('t_cmpny_prcss',$cmpny_prcss); 
 	}
 }
 ?>

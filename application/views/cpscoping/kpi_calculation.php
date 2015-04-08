@@ -109,7 +109,8 @@
 </script>
 <?php if (!empty($kpi_values)): ?>
 	<div class="col-md-12" style="margin-bottom: 10px;">
-		<a class="btn btn-default btn-sm" href="<?php echo base_url('cpscoping/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/show'); ?>">Show CP Scoping Data</a>
+		<a class="btn btn-inverse btn-sm" href="<?php echo base_url('cpscoping/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/show'); ?>">Go to CP Scoping Page</a>
+		<a href="<?php echo base_url('new_flow/'.$this->uri->segment(3)); ?>/" class="btn btn-inverse btn-sm" id="cpscopinga">Go to Dataset Management Page</a>
 	</div>
 	<div class="col-md-8" id="8lik">
 

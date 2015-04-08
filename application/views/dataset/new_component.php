@@ -122,13 +122,16 @@
 					<td><?php echo $component['component_name']; ?></td>
 					<td><?php echo $component['type_name']; ?></td>
 					<td><?php echo $component['description']; ?></td>
-					<td><?php echo $component['qntty']; ?> <?php echo $component['qntty_unit_id']; ?></td>
+					<td><?php echo $component['qntty']; ?> <?php echo $component['qntty_name']; ?></td>
 					<td><?php echo $component['supply_cost']; ?> <?php echo $component['supply_cost_unit']; ?></td>
 					<td><?php echo $component['output_cost']; ?> <?php echo $component['output_cost_unit']; ?></td>
 					<td><?php echo $component['data_quality']; ?></td>
 					<td><?php echo $component['substitute_potential']; ?></td>
 					<td><?php echo $component['comment']; ?></td>
-					<td><a href="<?php echo base_url('delete_component/'.$companyID.'/'.$component['id']);?>" class="label label-danger" value="<?php echo $component['id']; ?>"><span class="fa fa-times"></span> Delete</a></td>
+					<td>
+						<a href="<?php echo base_url('edit_component/'.$companyID.'/'.$component['id']);?>" class="label label-warning" value="<?php echo $component['id']; ?>"><span class="fa fa-edit"></span> Edit</a>
+						<a href="<?php echo base_url('delete_component/'.$companyID.'/'.$component['id']);?>" class="label label-danger" value="<?php echo $component['id']; ?>"><span class="fa fa-times"></span> Delete</a>
+					</td>
 			
 				</tr>
 			<?php endforeach ?>

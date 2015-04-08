@@ -29,6 +29,7 @@ class Dataset extends CI_Controller {
 		$this->form_validation->set_rules('quantities', 'Product Quantity', 'trim|numeric|xss_clean');
 		$this->form_validation->set_rules('ucost', 'Unit Cost', 'trim|numeric|xss_clean');
 		$this->form_validation->set_rules('ucostu', 'Unit Cost Unit', 'trim|xss_clean');
+		$this->form_validation->set_rules('qunit', 'Quantity Unit', 'trim|xss_clean');
 		$this->form_validation->set_rules('tper', 'Time Period', 'trim|xss_clean');
 
 		if($this->form_validation->run() !== FALSE) {
@@ -38,6 +39,7 @@ class Dataset extends CI_Controller {
 					'quantities' => $this->sifirla($this->input->post('quantities')),
 					'ucost' => $this->sifirla($this->input->post('ucost')),
 					'ucostu' => $this->input->post('ucostu'),
+					'qunit' => $this->input->post('qunit'),
 					'tper' => $this->input->post('tper'),
 				);
 			$this->product_model->set_product($productArray);
@@ -46,7 +48,7 @@ class Dataset extends CI_Controller {
 		$data['product'] = $this->product_model->get_product_list($companyID);
 		$data['companyID'] = $companyID;
 		$data['company_info'] = $this->company_model->get_company($companyID);
-
+		$data['units'] = $this->flow_model->get_unit_list();
 
 		$this->load->view('template/header');
 		$this->load->view('dataset/dataSetLeftSide',$data);
@@ -54,16 +56,53 @@ class Dataset extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function edit_product($companyID,$product_id)
+	{
+		$this->form_validation->set_rules('product', 'Product Field', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('quantities', 'Product Quantity', 'trim|numeric|xss_clean');
+		$this->form_validation->set_rules('ucost', 'Unit Cost', 'trim|numeric|xss_clean');
+		$this->form_validation->set_rules('ucostu', 'Unit Cost Unit', 'trim|xss_clean');
+		$this->form_validation->set_rules('qunit', 'Quantity Unit', 'trim|xss_clean');
+		$this->form_validation->set_rules('tper', 'Time Period', 'trim|xss_clean');
+
+		if($this->form_validation->run() !== FALSE) {
+			$productArray = array(
+					'cmpny_id' => $companyID,
+					'name' => $this->input->post('product'),
+					'quantities' => $this->sifirla($this->input->post('quantities')),
+					'ucost' => $this->sifirla($this->input->post('ucost')),
+					'ucostu' => $this->input->post('ucostu'),
+					'qunit' => $this->input->post('qunit'),
+					'tper' => $this->input->post('tper'),
+				);
+			$this->product_model->update_product($companyID,$product_id,$productArray);
+			redirect(base_url('new_product/'.$companyID), 'refresh'); // tablo olusurken ajax kullanýlabilir.
+
+		}
+
+		$data['product'] = $this->product_model->get_product_by_cid_pid($companyID,$product_id);
+		$data['companyID'] = $companyID;
+		$data['company_info'] = $this->company_model->get_company($companyID);
+		$data['units'] = $this->flow_model->get_unit_list();
+
+		$this->load->view('template/header');
+		$this->load->view('dataset/edit_product',$data);
+		$this->load->view('template/footer');
+	}
+
 	public function new_flow($companyID)
 	{
-		$this->form_validation->set_rules('flowname', 'Flow Name', 'trim|alpha_dash|required|xss_clean|strip_tags');
-		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|required|xss_clean|strip_tags');
+		$this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean|strip_tags|callback__alpha_dash_space');
+		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|required|xss_clean|strip_tags|callback_flow_varmi');
 		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|xss_clean|strip_tags|numeric');
 		$this->form_validation->set_rules('quantityUnit', 'Quantity Unit', 'trim|required|xss_clean|strip_tags');
 		$this->form_validation->set_rules('cost', 'Cost', 'trim|required|xss_clean|strip_tags|numeric');
 		$this->form_validation->set_rules('costUnit', 'Cost Unit', 'trim|required|xss_clean|strip_tags');
 		$this->form_validation->set_rules('ep', 'EP', 'trim|required|xss_clean|strip_tags|numeric');
 		$this->form_validation->set_rules('epUnit', 'EP Unit', 'trim|required|xss_clean|strip_tags');
+		$this->form_validation->set_rules('conc', 'Concentration', 'trim|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('pres', 'Pressure', 'trim|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('ph', 'PH', 'trim|xss_clean|strip_tags|numeric');
 
 		if($this->form_validation->run() !== FALSE) {
 
@@ -80,7 +119,9 @@ class Dataset extends CI_Controller {
 			$cf = $this->input->post('cf');
 			$availability = $this->input->post('availability');
 			$conc = $this->input->post('conc');
+			$concunit = $this->input->post('concunit');
 			$pres = $this->input->post('pres');
+			$presunit = $this->input->post('presunit');
 			$ph = $this->input->post('ph');
 			$state = $this->input->post('state');
 			$quality = $this->input->post('quality');
@@ -97,9 +138,6 @@ class Dataset extends CI_Controller {
 			//CHECK IF FLOW IS NEW?
 			$flowID = $this->process_model->is_new_flow($flowID,$flowfamilyID);
 
-			if(!$this->flow_model->has_same_flow($flowID,$flowtypeID,$companyID)){
-				redirect(base_url('new_flow/'.$companyID));
-			}
 			$flow = array(
 				'cmpny_id'=>$companyID,
 				'flow_id'=>$flowID,
@@ -121,9 +159,11 @@ class Dataset extends CI_Controller {
 			);
 			if(!empty($conc)){
 				$flow['concentration'] = $conc;
+				$flow['concunit'] = $concunit;
 			}
 			if(!empty($pres)){
 				$flow['pression'] = $pres;
+				$flow['presunit'] = $presunit;
 			}
 			if(!empty($ph)){
 				$flow['ph'] = $ph;
@@ -143,8 +183,6 @@ class Dataset extends CI_Controller {
 		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
 		$data['companyID'] = $companyID;
 		$data['company_info'] = $this->company_model->get_company($companyID);
-
-
 		$data['units'] = $this->flow_model->get_unit_list();
 
 		$this->load->view('template/header');
@@ -153,6 +191,116 @@ class Dataset extends CI_Controller {
 		$this->load->view('template/footer');
 
 	}
+
+	public function edit_flow($companyID,$flow_id,$flow_type_id)
+	{
+		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('quantityUnit', 'Quantity Unit', 'trim|required|xss_clean|strip_tags');
+		$this->form_validation->set_rules('cost', 'Cost', 'trim|required|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('costUnit', 'Cost Unit', 'trim|required|xss_clean|strip_tags');
+		$this->form_validation->set_rules('ep', 'EP', 'trim|required|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('epUnit', 'EP Unit', 'trim|required|xss_clean|strip_tags');
+		$this->form_validation->set_rules('conc', 'Concentration', 'trim|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('pres', 'Pressure', 'trim|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('ph', 'PH', 'trim|xss_clean|strip_tags|numeric');
+
+		if($this->form_validation->run() !== FALSE) {
+
+			$ep = $this->input->post('ep');
+			$epUnit = $this->input->post('epUnit');
+			$cost = $this->input->post('cost');
+			$costUnit = $this->input->post('costUnit');
+			$quantity = $this->input->post('quantity');
+			$quantityUnit = $this->input->post('quantityUnit');
+			
+			$cf = $this->input->post('cf');
+			$availability = $this->input->post('availability');
+			$conc = $this->input->post('conc');
+			$concunit = $this->input->post('concunit');
+			$pres = $this->input->post('pres');
+			$presunit = $this->input->post('presunit');
+			$ph = $this->input->post('ph');
+			$state = $this->input->post('state');
+			$quality = $this->input->post('quality');
+			$oloc = $this->input->post('oloc');
+			//$odis = $this->input->post('odis');
+			//$otrasmean = $this->input->post('otrasmean');			
+			//$sdis = $this->input->post('sdis');
+			//$strasmean = $this->input->post('strasmean');
+			//$rtech = $this->input->post('rtech');
+			$desc = $this->input->post('desc');
+			$spot = $this->input->post('spot');
+			$comment = $this->input->post('comment');
+
+			$flow = array(
+				'qntty'=>$this->sifirla($quantity),
+				'qntty_unit_id'=>$this->sifirla($quantityUnit),
+				'cost' =>$this->sifirla($cost),
+				'cost_unit_id' =>$costUnit,
+				'ep' => $this->sifirla($ep),
+				'ep_unit_id' => $epUnit,
+				'chemical_formula' => $cf,
+				'availability' => $availability,
+				'state_id' => $state,
+				'quality' => $quality,
+				'output_location' => $oloc,
+				'substitute_potential' => $spot,
+				'description' => $desc,
+				'comment' => $comment
+			);
+			if(!empty($conc)){
+				$flow['concentration'] = $conc;
+				$flow['concunit'] = $concunit;
+			}
+			if(!empty($pres)){
+				$flow['pression'] = $pres;
+				$flow['presunit'] = $presunit;
+			}
+			if(!empty($ph)){
+				$flow['ph'] = $ph;
+			}
+			
+			$this->flow_model->update_flow_info($companyID,$flow_id,$flow_type_id,$flow);
+
+			redirect(base_url('new_flow/'.$companyID), 'refresh'); // tablo olusurken ajax kullanýlabilir.
+			//þuan sayfa yenileniyor her seferinde database'den satýrlar ekleniyor.
+
+		}
+
+		$data['flow']=$this->flow_model->get_company_flow($companyID,$flow_id,$flow_type_id);
+		if(empty($data['flow'])){
+			redirect(base_url(), 'refresh'); // tablo olusurken ajax kullanýlabilir.
+		}
+		$data['companyID'] = $companyID;
+		$data['company_info'] = $this->company_model->get_company($companyID);
+		$data['units'] = $this->flow_model->get_unit_list();
+
+		$this->load->view('template/header');
+		$this->load->view('dataset/edit_flow',$data);
+		$this->load->view('template/footer');
+
+	}
+
+	function flow_varmi()
+	{
+		$flowID = $this->input->post('flowname');
+		$flowtypeID = $this->input->post('flowtype');
+		$companyID = $this->uri->segment(2);
+		//print_r($companyID);
+		if(!$this->flow_model->has_same_flow($flowID,$flowtypeID,$companyID)){
+			$this->form_validation->set_message('flow_varmi', 'Flow name already exists, please choose another name or edit existing flow.');
+      return false;
+		}
+		else{
+			return true;
+		}
+		//return false;
+	} 
+
+	function alpha_dash_space($str)
+	{
+	  return ( ! preg_match("/^([-a-z_ ])+$/i", $str)) ? FALSE : TRUE;
+	} 
 
 	public function new_component($companyID){
 		
@@ -196,6 +344,45 @@ class Dataset extends CI_Controller {
 		$this->load->view('template/header');
 		$this->load->view('dataset/dataSetLeftSide',$data);
 		$this->load->view('dataset/new_component',$data);
+		$this->load->view('template/footer');
+	}
+
+	public function edit_component($companyID,$id){
+
+		$this->form_validation->set_rules('component_name', 'Component Name', 'trim|required|xss_clean');
+
+		if($this->form_validation->run() !== FALSE) {
+			$component_array = array(
+				'name' => $this->input->post('component_name'),
+				'name_tr' => $this->input->post('component_name'),
+			);
+			$component_id = $this->component_model->update_cmpnnt($component_array,$id,$companyID);
+
+			$cmpny_flow_cmpnnt = array(
+				'description' => $this->input->post('description'),
+				'qntty' => $this->sifirla($this->input->post('quantity')),
+				'qntty_unit_id' => $this->sifirla($this->input->post('quantityUnit')),
+				'supply_cost' => $this->sifirla($this->input->post('cost')),
+				'supply_cost_unit' => $this->input->post('costUnit'),
+				'output_cost' => $this->sifirla($this->input->post('ocost')),
+				'output_cost_unit' => $this->input->post('ocostunit'),
+				'data_quality' => $this->input->post('quality'),
+				'substitute_potential' => $this->input->post('spot'),
+				'comment' => $this->input->post('comment'),
+				'cmpnt_type_id' =>$this->sifirla($this->input->post('component_type')),
+			);
+			$this->component_model->update_cmpny_flow_cmpnnt($cmpny_flow_cmpnnt,$id);
+			redirect('new_component/'.$companyID, 'refresh');
+		}
+		
+		$data['component'] = $this->component_model->get_cmpnnt_info($companyID,$id);
+		$data['units'] = $this->flow_model->get_unit_list();
+		$data['ctypes'] = $this->component_model->get_cmpnnt_type();
+		$data['companyID'] = $companyID;
+		$data['company_info'] = $this->company_model->get_company($companyID);
+
+		$this->load->view('template/header');
+		$this->load->view('dataset/edit_component',$data);
 		$this->load->view('template/footer');
 	}
 
@@ -257,6 +444,39 @@ class Dataset extends CI_Controller {
 		$this->load->view('template/header');
 		$this->load->view('dataset/dataSetLeftSide',$data);
 		$this->load->view('dataset/new_process',$data);
+		$this->load->view('template/footer');
+	}
+
+	public function edit_process($companyID,$process_id){
+
+		$this->form_validation->set_rules('min_rate_util','Minimum rate of utilization','trim|numeric|xss_clean');
+		$this->form_validation->set_rules('typ_rate_util','Typical rate of utilization','trim|numeric|xss_clean');
+		$this->form_validation->set_rules('max_rate_util','Maximum rate of utilization','trim|numeric|xss_clean');
+		$this->form_validation->set_rules('comment','Comment','trim|alpha_numeric|xss_clean');
+
+		if ($this->form_validation->run() !== FALSE)
+		{
+			//cant change flow and process since they affect other tables on database and also need lots of control for now.
+			$cmpny_prcss = array(
+				'min_rate_util' => $this->sifirla($this->input->post('min_rate_util')),
+				'min_rate_util_unit' => $this->sifirla($this->input->post('min_rate_util_unit')),					
+				'typ_rate_util' => $this->sifirla($this->input->post('typ_rate_util')),
+				'typ_rate_util_unit' => $this->sifirla($this->input->post('typ_rate_util_unit')),
+				'max_rate_util' => $this->sifirla($this->input->post('max_rate_util')),
+				'max_rate_util_unit' => $this->sifirla($this->input->post('max_rate_util_unit')),
+				'comment' => $this->input->post('comment'),
+			);
+			$this->process_model->update_cmpny_flow_prcss($companyID,$process_id,$cmpny_prcss);
+			redirect(base_url('new_process/'.$companyID), 'refresh');
+		}
+
+		$data['process'] = $this->process_model->get_cmpny_prcss_from_rid($companyID,$process_id);
+		$data['companyID'] = $companyID;
+		$data['company_info'] = $this->company_model->get_company($companyID);
+		$data['units'] = $this->flow_model->get_unit_list();
+
+		$this->load->view('template/header');
+		$this->load->view('dataset/edit_process',$data);
 		$this->load->view('template/footer');
 	}
 

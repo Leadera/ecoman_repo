@@ -1,30 +1,18 @@
-<script src="http://d3js.org/d3.v3.min.js"></script>
+<?php 
+/*foreach ($allocation as $rows => $row)
+{
+	echo "<table border='1'><tr>";
+	foreach ($row as $col => $cell)
+	{
+		echo "<td>" . $cell . "</td>";
+	}	
+  echo "</tr></table>";
+}
+print_r($allocation[0]);*/
+?>
 
+<script src="http://d3js.org/d3.v3.min.js"></script>
 <script type="text/javascript">
-	function yazdir(f,p,k) {
-	    $.ajax({
-	      type: "POST",
-	      dataType:'json',
-				url: '<?php echo base_url('cpscoping/get_allo'); ?>/'+f+'/'+p+'/'+<?php echo $this->uri->segment(3); ?> + '/' + k + '/' + <?php echo $this->uri->segment(2); ?>,
-	      success: function(data)
-	      {
-	      	if(!$.isEmptyObject(data)){
-	      		//console.log(data);
-	        	var vPool="";
-	        	if(data.allocation_amount!="none"){
-							vPool += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><td>' + data.amount + ' ' + data.unit_amount + ' <span class="label label-info">' + data.error_amount + '%</span></td><td rowspan="3" style="width:70px;">%'+data.allocation_rate+'</td></tr><tr><td>' + data.cost + ' ' + data.unit_cost + ' <span class="label label-info">' + data.error_cost + '%</span></td></tr><tr><td>' + data.env_impact + ' ' + data.unit_env_impact + ' <span class="label label-info">' + data.error_ep + '%</span></td></tr></table>';
-						}
-						else {
-							vPool += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><td>' + data.amount + ' ' + data.unit_amount + '</td></tr><tr><td>' + data.cost + ' ' + data.unit_cost + '</td></tr><tr><td>' + data.env_impact + ' ' + data.unit_env_impact + '</td></tr></table>';
-						}
-					$("div."+f+p+k).html(vPool);
-	      	}
-	      	else{
-	      		$("div."+f+p+k).html(" ");
-	      	}      	
-	      }
-	    });
-	};
 
 	var temp_array = new Array();
 	var temp_index = 0;
@@ -37,19 +25,35 @@
 	var cost_index = 0;
 	var index_array = new Array();
 	var list=new Array;
+	var veri = 0;
+	var timer = null;
 
 	function cost_ep_value(prcss_id,process_adet){
 		//alert(prcss_id);
 		$.ajax({
-			type: "POST",
+			type: "GET",
 			dataType: 'json',
 			url: '<?php echo base_url('cpscoping/cost_ep'); ?>/'+prcss_id+'/'+<?php echo $this->uri->segment(2);?>+'/'+<?php echo $this->uri->segment(3); ?>,
 			success: function(data){
 				list.push(data);
+				//datagrid'in içini doldurma
+				$('#dg').datagrid('loadData', list);
+				veri = veri +1;
+				if(veri == process_adet){
+					tuna_graph(list);
+					$('#graph_text').text("* You wont be able to see every range on the graph, if one of them are really huge.");
+					clearTimeout(timer);
+				}
+				else{
+					$('#graph_text').text("Please wait for graph to appear until all analysis data are calculated in the table. ("+veri+"/"+process_adet+")");
+	       	clearTimeout(timer);
+	       	timer = setTimeout(function() { tuna_graph(list); 					$('#graph_text').text("* You wont be able to see every range on the graph, if one of them are really huge."); }, 6000);
+				}
 				// var temp = "";
 				// temp += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><th style="text-align:center;">' + data.prcss_name + '</th></tr><tr><td> <b>EP Value:</b> ' + data.ep_def_value + '  <b>EP Range:</b> ' + data.ep_value_alt + ' - ' + data.ep_value_ust + '</td></tr><tr><td> <b>Cost Value:</b> ' + data.cost_def_value + '   <b>Cost Range:</b> ' + data.cost_value_alt.toFixed(2) + ' - ' + data.cost_value_ust.toFixed(2) + ' Euro</td></tr></table>';
 				// $("div."+prcss_id).html(temp);
 			}
+			
 		});
 	};
 
@@ -88,11 +92,12 @@
 	};
 </script>
 		<div class="col-md-12" style="margin-bottom: 10px;">
-			<a class="btn btn-default btn-sm" href="<?php echo base_url('kpi_calculation/'.$this->uri->segment(2).'/'.$this->uri->segment(3)); ?>">Show KPI Calculation Data</a>
+			<a class="btn btn-inverse btn-sm" href="<?php echo base_url('kpi_calculation/'.$this->uri->segment(2).'/'.$this->uri->segment(3)); ?>">Go to KPI Calculation Page</a>
+			<a href="<?php echo base_url('new_flow/'.$this->uri->segment(3)); ?>/" class="btn btn-inverse btn-sm" id="cpscopinga">Go to Dataset Management Page</a>
 		</div>
 		<div class="col-md-4" id="sol4">
 			<p>Cost and Environmental impact graph of processes</p>
-			
+			<div class="label label-info" id="graph_text"></div>
 		  <div id="rect-demo-ana">
 		    <div id="rect-demo"></div>
 	    </div>
@@ -101,8 +106,8 @@
 			<p>CP Potentials Identifications</p>
 			<table class="table table-bordered">
 			<tr>
-			<th>Input Flows</th>
-			<th>Total</th>
+			<th style="width:150px;">Input Flows</th>
+			<th style="width:150px;">Total</th>
 			<?php $deneme_arrayi = array(); $tekrarsiz = array(); $tekrarsiz[-1] = "0"; $count = 0; $process_adet=0; ?>
 			<?php foreach ($allocation as $a): ?>
 			<?php
@@ -118,7 +123,7 @@
 				}
 				if($degisken == 1){
 					$process_adet++;
-					echo "<th>".$a['prcss_name']."</th>";
+					echo "<th style='width:200px;'>".$a['prcss_name']."</th>";
 					$tekrarsiz[$process_adet-1] = $a['prcss_id']; 
 				}
 			}
@@ -156,11 +161,31 @@
 						</td>
 						<?php for ($t=0; $t < $process_adet+1; $t++): ?>
 							<script type="text/javascript">
-								yazdir(<?php echo $a['flow_id']; ?>,<?php echo $tekrarsiz[$t-1]; ?>,1);
+								//yazdir(<?php echo $a['flow_id']; ?>,<?php echo $tekrarsiz[$t-1]; ?>,1);
 							</script>
 							<td style="padding:0px !important;">
 								<div class="<?php echo $a['flow_id'].''.$tekrarsiz[$t-1]; ?>1">
-									
+									<?php 
+										$bak = $a['flow_id'].'-'.$tekrarsiz[$t-1].'-1';
+										if(!empty($allocationveri[$bak])):
+									?>
+										<?php if(!empty($allocationveri[$bak]['error_amount'])): ?>
+											<table style="font-size:11px; width: 100%; text-align:center;" frame="void">
+												<tr><td><?php echo $allocationveri[$bak]['amount']; ?> <?php echo $allocationveri[$bak]['unit_amount']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_amount']; ?>%</span> </td></tr>
+												<tr><td><?php echo $allocationveri[$bak]['cost']; ?> <?php echo $allocationveri[$bak]['unit_cost']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_cost']; ?>%</span></td></tr>
+												<tr><td><?php echo $allocationveri[$bak]['env_impact']; ?> <?php echo $allocationveri[$bak]['unit_env_impact']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_ep']; ?>%</span></td></tr>
+											</table>
+										<?php else: ?>
+											<table style="font-size:11px; width: 100%; text-align:center;" frame="void">
+												<tr><td><?php echo $allocationveri[$bak]['amount']; ?> <?php echo $allocationveri[$bak]['unit_amount']; ?> </td></tr>
+												<tr><td><?php echo $allocationveri[$bak]['cost']; ?> <?php echo $allocationveri[$bak]['unit_cost']; ?></td></tr>
+												<tr><td><?php echo $allocationveri[$bak]['env_impact']; ?> <?php echo $allocationveri[$bak]['unit_env_impact']; ?></td></tr>
+											</table>
+										<?php endif ?>
+										<?php //print_r($allocationveri[$bak]); ?>
+									<?php	else: ?>
+										<?php //echo $bak; ?>
+									<?php	endif ?>
 								</div>
 							</td>
 						<?php endfor ?>
@@ -174,8 +199,8 @@
 			<!-- Output Table -->
 			<table class="table table-bordered">
 			<tr>
-			<th>Output Flows</th>
-			<th>Total</th>
+			<th style="width:150px;">Output Flows</th>
+			<th style="width:150px;">Total</th>
 			<?php $deneme_arrayi = array(); $tekrarsiz = array(); $tekrarsiz[-1] = "0"; $count = 0; $process_adet=0; ?>
 			<?php foreach ($allocation as $a): ?>
 			<?php
@@ -191,7 +216,7 @@
 				}
 				if($degisken == 1){
 					$process_adet++;
-					echo "<th>".$a['prcss_name']."</th>";
+					echo "<th style='width:200px;'>".$a['prcss_name']."</th>";
 					$tekrarsiz[$process_adet-1] = $a['prcss_id']; 
 				}
 			}
@@ -241,11 +266,31 @@
 						</td>
 						<?php for ($t=0; $t < $process_adet+1; $t++): ?>
 							<script type="text/javascript">
-								yazdir(<?php echo $a['flow_id']; ?>,<?php echo $tekrarsiz[$t-1]; ?>,2);
+								//yazdir(<?php echo $a['flow_id']; ?>,<?php echo $tekrarsiz[$t-1]; ?>,2);
 							</script>
 							<td style="padding:0px !important;">
 								<div class="<?php echo $a['flow_id'].''.$tekrarsiz[$t-1]; ?>2">
-									
+									<?php 
+										$bak = $a['flow_id'].'-'.$tekrarsiz[$t-1].'-2';
+										if(!empty($allocationveri[$bak])):
+									?>
+										<?php if(!empty($allocationveri[$bak]['error_amount'])): ?>
+											<table style="font-size:11px; width: 100%; text-align:center;" frame="void">
+												<tr><td><?php echo $allocationveri[$bak]['amount']; ?> <?php echo $allocationveri[$bak]['unit_amount']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_amount']; ?>%</span> </td></tr>
+												<tr><td><?php echo $allocationveri[$bak]['cost']; ?> <?php echo $allocationveri[$bak]['unit_cost']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_cost']; ?>%</span></td></tr>
+												<tr><td><?php echo $allocationveri[$bak]['env_impact']; ?> <?php echo $allocationveri[$bak]['unit_env_impact']; ?> <span class="label label-info"><?php echo $allocationveri[$bak]['error_ep']; ?>%</span></td></tr>
+											</table>
+										<?php else: ?>
+											<table style="font-size:11px; width: 100%; text-align:center;" frame="void">
+												<tr><td><?php echo $allocationveri[$bak]['amount']; ?> <?php echo $allocationveri[$bak]['unit_amount']; ?> </td></tr>
+												<tr><td><?php echo $allocationveri[$bak]['cost']; ?> <?php echo $allocationveri[$bak]['unit_cost']; ?></td></tr>
+												<tr><td><?php echo $allocationveri[$bak]['env_impact']; ?> <?php echo $allocationveri[$bak]['unit_env_impact']; ?></td></tr>
+											</table>
+										<?php endif ?>
+										<?php //print_r($allocationveri[$bak]); ?>
+									<?php	else: ?>
+										<?php //echo $bak; ?>
+									<?php	endif ?>
 								</div>
 							</td>
 						<?php endfor ?>
@@ -275,7 +320,7 @@
 			    ">
 				<thead>
 				    <tr>
-				        <th data-options="field:'prcss_name',align:'center',width:100">Process</th>
+				        <th data-options="field:'prcss_name',align:'center',width:150">Process</th>
 				        <th data-options="field:'ep_def_value',align:'center',width:100">Ep Value</th>
 				        <th data-options="field:'ep_value_alt',align:'center',width:100">Min Ep Value</th>
 				        <th data-options="field:'ep_value_ust',align:'center',width:100">Max Ep Value</th>
@@ -362,11 +407,6 @@
 
 		</div>
 <script type="text/javascript">
-setTimeout(function()
-		{
-		  tuna_graph(list);
-		}, 5000);
-
 
 	function tuna_graph(list){
 	//console.log(list);
@@ -375,13 +415,10 @@ setTimeout(function()
 	var data = list;
 	console.log(data);
 
-	//datagrid'in içini doldurma
-	$('#dg').datagrid('loadData', data);  
-
 	var margin = {
 	            "top": 10,
 	            "right": 30,
-	            "bottom": 200,
+	            "bottom": 300,
 	            "left": 80
 	        };
 	var width = $('#sol4').width()-110;
@@ -418,7 +455,7 @@ setTimeout(function()
 
 	//x axis label
 	svg.append("text")
-		.attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom - 155) + ")")
+		.attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom - 255) + ")")
 		.style("text-anchor", "middle")
 		.text("Cost Value");
 
