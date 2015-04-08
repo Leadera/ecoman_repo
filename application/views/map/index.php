@@ -299,7 +299,7 @@ Ostim.layout = {
                                                                     {layers: "GEONETWORK:esri_cities_12764", transparent: true, format: 'image/png'},
                                                                     {singleTile: true, opacity: 0.9, isBaseLayer: false, visibility: false, noLegend: false, featureInfoFormat: "application/vnd.ogc.gml"}
                                                             ),*/
-                                                         new OpenLayers.Layer.WMS(
+                                                        new OpenLayers.Layer.WMS(
                                                                 "World Cities (FAO)",
                                                                 'http://data.fao.org/geoserver/ows?',
                                                                 {layers: "GEONETWORK:esri_cities_12764", transparent: true, format: 'image/png'},
@@ -323,7 +323,7 @@ Ostim.layout = {
                                                                 }
                                                             }
                                                         ),
-                                                            new OpenLayers.Layer.WMS(
+                                                        new OpenLayers.Layer.WMS(
                                                             "Ostim Savunma Kümelenmesi",
                                                             'http://88.249.18.205:8445/geoserver/ecoman/wms?',
                                                             {layers: "ecoman:GIS_Savunma", transparent: true, format: 'image/png'},
@@ -341,7 +341,7 @@ Ostim.layout = {
                                                                 }
                                                             }
                                                         ),
-                                                             new OpenLayers.Layer.WMS(
+                                                        new OpenLayers.Layer.WMS(
                                                             "Ostim Medikal Kümelenmesi",
                                                             'http://88.249.18.205:8445/geoserver/ecoman/wms?',
                                                             {layers: "ecoman:GIS_Medical", transparent: true, format: 'image/png'},
@@ -352,14 +352,14 @@ Ostim.layout = {
                                                                         protocol: 'fromWMSLayer',
                                                                         featurePrefix: 'ecoman:GIS_Medical',
                                                                         //featureNS: 'http://rdinfo.geonovum.nl',
-                                                                       featureNS: 'http://88.249.18.205:8445/geoserver/ecoman',
+                                                                        featureNS: 'http://88.249.18.205:8445/geoserver/ecoman',
                                                                         downloadFormats: Ostim.options.wfs.downloadFormats,
                                                                         
                                                                     }
                                                                 }
                                                             }
                                                         ),
-                                                            new OpenLayers.Layer.WMS(
+                                                        new OpenLayers.Layer.WMS(
                                                             "Ostim Kauçuk Kümelenmesi",
                                                             'http://88.249.18.205:8445/geoserver/ecoman/wms?',
                                                             {layers: "ecoman:GIS_Kaucuk", transparent: true, format: 'image/png'},
@@ -377,7 +377,7 @@ Ostim.layout = {
                                                                 }
                                                             }
                                                         ),
-                                                            new OpenLayers.Layer.WMS(
+                                                        new OpenLayers.Layer.WMS(
                                                             "Ostim İş ve İş Makinaları Kümelenmesi",
                                                             'http://88.249.18.205:8445/geoserver/ecoman/wms?',
                                                             {layers: "ecoman:GIS_isim", transparent: true, format: 'image/png'},
@@ -395,18 +395,24 @@ Ostim.layout = {
                                                                 }
                                                             }
                                                         ),
-                                                            new OpenLayers.Layer.WMS(
+                                                        new OpenLayers.Layer.WMS(
                                                             "Anadolu Raylı Sistemler Kümelenmesi",
                                                             'http://88.249.18.205:8445/geoserver/ecoman/wms?',
                                                             {layers: "ecoman:GIs_Arus", transparent: true, format: 'image/png'},
-                                                            {singleTile: true, opacity: 0.9, isBaseLayer: false, visibility: true, noLegend: false, featureInfoFormat: 'application/vnd.ogc.gml', transitionEffect: 'resize'
+                                                            {singleTile: true, 
+                                                             opacity: 0.9, 
+                                                             isBaseLayer: false, 
+                                                             visibility: true, 
+                                                             noLegend: false, 
+                                                             featureInfoFormat: 'application/vnd.ogc.gml', 
+                                                             transitionEffect: 'resize'
                                                                ,
                                                            metadata: {
                                                                     wfs: {
                                                                         protocol: 'fromWMSLayer',
                                                                         featurePrefix: 'ecoman:GIs_Arus',
                                                                         //featureNS: 'http://rdinfo.geonovum.nl',
-                                                                       featureNS: 'http://88.249.18.205:8445/geoserver/ecoman',
+                                                                        featureNS: 'http://88.249.18.205:8445/geoserver/ecoman',
                                                                         downloadFormats: Ostim.options.wfs.downloadFormats,
                                                                         
                                                                     }
@@ -540,12 +546,12 @@ Ostim.layout = {
 								{name: 'Well-Known-Text (WKT)', fileExt: '.wkt', mimeType: 'text/plain', formatter: 'OpenLayers.Format.WKT'},
 								{name: 'Geographic Markup Language - v2 (GML2)', fileExt: '.gml', mimeType: 'text/xml', formatter: new OpenLayers.Format.GML.v2({featureType: 'oledit', featureNS: 'http://geops.de'})},
 								{name: 'GeoJSON', fileExt: '.json', mimeType: 'text/plain', formatter: 'OpenLayers.Format.GeoJSON'},
-                                {name: 'GPS Exchange Format (GPX)', fileExt: '.gpx', mimeType: 'text/xml', formatter: 'OpenLayers.Format.GPX', fileProjection: new OpenLayers.Projection('EPSG:4326')},
-                                {name: 'Keyhole Markup Language (KML)', fileExt: '.kml', mimeType: 'text/xml', formatter: 'OpenLayers.Format.KML', fileProjection: new OpenLayers.Projection('EPSG:4326')},
-                                {name: 'ESRI Shapefile (zipped, Google projection)', fileExt: '.zip', mimeType: 'application/zip', formatter: 'OpenLayers.Format.GeoJSON', targetFormat: 'ESRI Shapefile', fileProjection: new OpenLayers.Projection('EPSG:900913')},
-                                {name: 'ESRI Shapefile (zipped, WGS84)', fileExt: '.zip', mimeType: 'application/zip', formatter: 'OpenLayers.Format.GeoJSON', targetFormat: 'ESRI Shapefile', fileProjection: new OpenLayers.Projection('EPSG:4326')},
-                                {name: 'OGC GeoPackage (Google projection)', fileExt: '.gpkg', mimeType: 'application/binary', formatter: 'OpenLayers.Format.GeoJSON', targetFormat: 'GPKG', fileProjection: new OpenLayers.Projection('EPSG:900913')},
-                                {name: 'OGC GeoPackage (WGS84)', fileExt: '.gpkg', mimeType: 'application/binary', formatter: 'OpenLayers.Format.GeoJSON', targetFormat: 'GPKG', fileProjection: new OpenLayers.Projection('EPSG:4326')}
+                                                                {name: 'GPS Exchange Format (GPX)', fileExt: '.gpx', mimeType: 'text/xml', formatter: 'OpenLayers.Format.GPX', fileProjection: new OpenLayers.Projection('EPSG:4326')},
+                                                                {name: 'Keyhole Markup Language (KML)', fileExt: '.kml', mimeType: 'text/xml', formatter: 'OpenLayers.Format.KML', fileProjection: new OpenLayers.Projection('EPSG:4326')},
+                                                                {name: 'ESRI Shapefile (zipped, Google projection)', fileExt: '.zip', mimeType: 'application/zip', formatter: 'OpenLayers.Format.GeoJSON', targetFormat: 'ESRI Shapefile', fileProjection: new OpenLayers.Projection('EPSG:900913')},
+                                                                {name: 'ESRI Shapefile (zipped, WGS84)', fileExt: '.zip', mimeType: 'application/zip', formatter: 'OpenLayers.Format.GeoJSON', targetFormat: 'ESRI Shapefile', fileProjection: new OpenLayers.Projection('EPSG:4326')},
+                                                                {name: 'OGC GeoPackage (Google projection)', fileExt: '.gpkg', mimeType: 'application/binary', formatter: 'OpenLayers.Format.GeoJSON', targetFormat: 'GPKG', fileProjection: new OpenLayers.Projection('EPSG:900913')},
+                                                                {name: 'OGC GeoPackage (WGS84)', fileExt: '.gpkg', mimeType: 'application/binary', formatter: 'OpenLayers.Format.GeoJSON', targetFormat: 'GPKG', fileProjection: new OpenLayers.Projection('EPSG:4326')}
 
 							],
 							// For custom projections use Proj4.js
@@ -557,15 +563,15 @@ Ostim.layout = {
 								{name: 'Well-Known-Text (WKT)', fileExt: '.wkt', mimeType: 'text/plain', formatter: 'OpenLayers.Format.WKT'},
 								{name: 'Geographic Markup Language - v2 (GML2)', fileExt: '.gml', mimeType: 'text/xml', formatter: 'OpenLayers.Format.GML'},
 								{name: 'GeoJSON', fileExt: '.json', mimeType: 'text/plain', formatter: 'OpenLayers.Format.GeoJSON'},
-                                {name: 'GPS Exchange Format (GPX)', fileExt: '.gpx', mimeType: 'text/xml', formatter: 'OpenLayers.Format.GPX', fileProjection: new OpenLayers.Projection('EPSG:4326')},
-                                {name: 'Keyhole Markup Language (KML)', fileExt: '.kml', mimeType: 'text/xml', formatter: 'OpenLayers.Format.KML', fileProjection: new OpenLayers.Projection('EPSG:4326')},
-                                {name: 'CSV (with X,Y in WGS84)', fileExt: '.csv', mimeType: 'text/plain', formatter: 'OpenLayers.Format.GeoJSON', fileProjection: new OpenLayers.Projection('EPSG:4326')},
-                                {name: 'ESRI Shapefile (zipped, Google projection)', fileExt: '.zip', mimeType: 'text/plain', formatter: 'OpenLayers.Format.GeoJSON', fileProjection: new OpenLayers.Projection('EPSG:900913')},
-                                {name: 'ESRI Shapefile (zipped, WGS84)', fileExt: '.zip', mimeType: 'text/plain', formatter: 'OpenLayers.Format.GeoJSON', fileProjection: new OpenLayers.Projection('EPSG:4326')},
-                                {name: 'OGC GeoPackage (Google projection)', fileExt: '.gpkg', mimeType: 'text/plain', formatter: 'OpenLayers.Format.GeoJSON', fileProjection: new OpenLayers.Projection('EPSG:900913')},
-                                {name: 'OGC GeoPackage (1 layer, WGS84)', fileExt: '.gpkg', mimeType: 'text/plain', formatter: 'OpenLayers.Format.GeoJSON', fileProjection: new OpenLayers.Projection('EPSG:4326')}
+                                                                {name: 'GPS Exchange Format (GPX)', fileExt: '.gpx', mimeType: 'text/xml', formatter: 'OpenLayers.Format.GPX', fileProjection: new OpenLayers.Projection('EPSG:4326')},
+                                                                {name: 'Keyhole Markup Language (KML)', fileExt: '.kml', mimeType: 'text/xml', formatter: 'OpenLayers.Format.KML', fileProjection: new OpenLayers.Projection('EPSG:4326')},
+                                                                {name: 'CSV (with X,Y in WGS84)', fileExt: '.csv', mimeType: 'text/plain', formatter: 'OpenLayers.Format.GeoJSON', fileProjection: new OpenLayers.Projection('EPSG:4326')},
+                                                                {name: 'ESRI Shapefile (zipped, Google projection)', fileExt: '.zip', mimeType: 'text/plain', formatter: 'OpenLayers.Format.GeoJSON', fileProjection: new OpenLayers.Projection('EPSG:900913')},
+                                                                {name: 'ESRI Shapefile (zipped, WGS84)', fileExt: '.zip', mimeType: 'text/plain', formatter: 'OpenLayers.Format.GeoJSON', fileProjection: new OpenLayers.Projection('EPSG:4326')},
+                                                                {name: 'OGC GeoPackage (Google projection)', fileExt: '.gpkg', mimeType: 'text/plain', formatter: 'OpenLayers.Format.GeoJSON', fileProjection: new OpenLayers.Projection('EPSG:900913')},
+                                                                {name: 'OGC GeoPackage (1 layer, WGS84)', fileExt: '.gpkg', mimeType: 'text/plain', formatter: 'OpenLayers.Format.GeoJSON', fileProjection: new OpenLayers.Projection('EPSG:4326')}
 
-                            ],
+                                                        ],
 							// For custom projections use Proj4.js
 							fileProjection: new OpenLayers.Projection('EPSG:4326')
 						}

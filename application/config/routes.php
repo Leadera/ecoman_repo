@@ -43,6 +43,9 @@ $route['admin/newFlow'] = "admin/newFlow";
 $route['admin/newProcess'] = "admin/newProcess";
 $route['admin/newEquipment'] = "admin/newEquipment";
 
+//Report
+$route['admin/report'] = "admin/report";
+
 //IS scoping
 $route['isscoping'] = "isscoping/index";
 $route['isscopingauto'] = "isscoping/auto"; 
