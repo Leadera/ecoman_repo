@@ -134,10 +134,12 @@ class Dataset extends CI_Controller {
 			$desc = $this->input->post('desc');
 			$spot = $this->input->post('spot');
 			$comment = $this->input->post('comment');
+			//echo "d";
 
 			//CHECK IF FLOW IS NEW?
 			$flowID = $this->process_model->is_new_flow($flowID,$flowfamilyID);
-
+			//echo $flowID;
+//exit;
 			$flow = array(
 				'cmpny_id'=>$companyID,
 				'flow_id'=>$flowID,
@@ -287,13 +289,18 @@ class Dataset extends CI_Controller {
 		$flowtypeID = $this->input->post('flowtype');
 		$companyID = $this->uri->segment(2);
 		//print_r($companyID);
-		if(!$this->flow_model->has_same_flow($flowID,$flowtypeID,$companyID)){
-			$this->form_validation->set_message('flow_varmi', 'Flow name already exists, please choose another name or edit existing flow.');
-      return false;
+		if(is_numeric($flowID)){
+			if(!$this->flow_model->has_same_flow($flowID,$flowtypeID,$companyID)){
+				$this->form_validation->set_message('flow_varmi', 'Flow name already exists, please choose another name or edit existing flow.');
+	      return false;
+	      //echo "1";
+			}
+			else{
+				//echo "s";
+				return true;
+			}
 		}
-		else{
-			return true;
-		}
+		//echo "s";
 		//return false;
 	} 
 

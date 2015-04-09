@@ -110,6 +110,8 @@ class Process_model extends CI_Model {
 				'active' => 1,
 			);
 			$this->db->insert('t_flow',$data);
+			//echo "d";
+			//exit;
 			//echo $this->db->last_query();
 			return $this->db->insert_id('t_flow_id_seq');
 		}
