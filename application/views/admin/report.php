@@ -550,7 +550,7 @@
 						<h2><i class="icon-user"></i>Report Attributes</h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+							<!--<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>-->
 						</div>
 					</div>
 					<div class="box-content" style='padding: 0px;'>
@@ -567,7 +567,7 @@
 						<h2><i class="icon-user"></i> Save Report</h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+							<!--<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>-->
 						</div>
 					</div>
 					
@@ -642,9 +642,9 @@
                                     <div class="box-header well" data-original-title>
                                             <h2><i class="icon-th"></i>  Reports Datagrid</h2>
                                             <div class="box-icon">
-                                                    <a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+                                                    <!--<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>-->
                                                     <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-                                                    <a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+                                                    <!--<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>-->
                                             </div>
                                     </div>
                                     <div class="box-content" style="padding: 0px;">
