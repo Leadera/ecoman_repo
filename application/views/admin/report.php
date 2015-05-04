@@ -246,7 +246,20 @@
                                     onclick="document.getElementById(\'myFrame\').setAttribute(\'src\',\n\
                                     \'http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?Configuration_ID='+row.id+'\')"> See Report</a>';
                         //return e+d;
-                        return x;
+                        return x;        
+                        
+                    }  
+                },
+                {field:'flow_details',title:'Flow Details',width:150,align:'center',
+                    formatter:function(value,row,index){
+                        //console.log('row satır id bilgileri'+row.id);
+
+                        var y = '<a href="#add" class="easyui-linkbutton" \n\
+                                    iconCls="icon-save" \n\
+                                    onclick="document.getElementById(\'myFrame\').setAttribute(\'src\',\n\
+                                    \'http://88.249.18.205:8445/Ecoman_flow_detil/master/index.php?Configuration_ID='+row.id+'\')"> See Flow Details</a>';
+                        //return e+d;
+                        return y;
                         
                     }
                 },
