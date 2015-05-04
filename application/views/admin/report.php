@@ -229,6 +229,7 @@
             remoteSort : true,
             multiSort : true,
             singleSelect : true,
+            scroll : true,
             columns:[[
                   {field:'report_name',title:'Report Name',width:100,sortable:true},
                   {field:'r_date',title:'Report Date',width:100,sortable:true},
@@ -237,33 +238,33 @@
                   {field:'user_name',title:'User Name',width:100},
                   {field:'name',title:'Name',width:100},
                   {field:'surname',title:'Surname',width:100},
-                  {field:'report',title:'Report',width:150,align:'center',
+                  {field:'report',title:'Report',width:100,align:'center',
                     formatter:function(value,row,index){
                         //console.log('row satır id bilgileri'+row.id);
 
                         var x = '<a href="#add" class="easyui-linkbutton" \n\
                                     iconCls="icon-save" \n\
                                     onclick="document.getElementById(\'myFrame\').setAttribute(\'src\',\n\
-                                    \'http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?Configuration_ID='+row.id+'\')"> See Report</a>';
+                                    \'http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?Configuration_ID='+row.id+'&Rapor_ID=1\')"> See Report</a>';
                         //return e+d;
                         return x;        
                         
                     }  
                 },
-                {field:'flow_details',title:'Flow Details',width:150,align:'center',
+                {field:'flow_details',title:'Flow Details',width:100,align:'center',
                     formatter:function(value,row,index){
                         //console.log('row satır id bilgileri'+row.id);
 
                         var y = '<a href="#add" class="easyui-linkbutton" \n\
                                     iconCls="icon-save" \n\
                                     onclick="document.getElementById(\'myFrame\').setAttribute(\'src\',\n\
-                                    \'http://88.249.18.205:8445/Ecoman_flow_detil/master/index.php?Configuration_ID='+row.id+'\')"> See Flow Details</a>';
+                                    \'http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?Configuration_ID='+row.id+'&Rapor_ID=2\')"> See Flow Details</a>';
                         //return e+d;
                         return y;
                         
                     }
                 },
-                {field:'edit',title:'Edit',width:150,align:'center',
+                {field:'edit',title:'Edit',width:50,align:'center',
                     formatter:function(value,row,index){
                         //console.log('row satır id bilgileri'+row.id);
                         //console.log('row satır name bilgileri'+row.report_name);
