@@ -181,7 +181,7 @@ class Project extends CI_Controller{
                 
                 
                 
-                
+                $data['prj_id'] = $prj_id;
 		$data['projects'] = $this->project_model->get_project($prj_id);
 		$data['status'] = $this->project_model->get_status($prj_id);
 		$data['constant'] = $this->project_model->get_prj_consaltnt($prj_id);

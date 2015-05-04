@@ -9,15 +9,44 @@
 ?>
 <script>
     console.log('<?php echo $company_ids;  ?>');
+    function showMapPanelExpand() {
+            //var panelWest = $('#cc').layout('panel','south');
+            //var panelSouthNorth = $('#cc2').layout('panel','north');
+            //$('#p').panel('expand');  
+            document.getElementById('myFrame').setAttribute('width','100%');
+            document.getElementById('myFrame').setAttribute('height','500');
+        }
+        
+        function showMapPanelCollapse() {
+            //var panelWest = $('#cc').layout('panel','south');
+            //var panelSouthNorth = $('#cc2').layout('panel','north');
+            //$('#p').panel('expand');  
+            document.getElementById('myFrame').setAttribute('width','0');
+            document.getElementById('myFrame').setAttribute('height','0');
+        }
+    
 </script>
 <div class="container">
 	<div class="row">
 		<div class="col-md-9">
 			<div class="lead pull-left"><?php echo $projects['name']; ?></div>
 			<?php if($is_consultant_of_project): ?>
+                            <div class="lead pull-right">
 				<a class="btn btn-info btn-sm pull-right" href="<?php echo base_url("update_project/".$projects['id']); ?>">Update Project Info</a>
-                                <a onclick="event.preventDefault();window.open('../../IS_OpenLayers/map_prj.php?cmpny=<?php echo $company_ids; ?>','mywindow','width=900,height=900');" style = 'margin-right: 20px;' class="btn btn-info btn-sm pull-right" >See Project Companies On map</a>
+                                <!--<a onclick="event.preventDefault();window.open('../../IS_OpenLayers/map_prj.php?cmpny=<?php echo $company_ids; ?>','mywindow','width=900,height=900');" style = 'margin-right: 20px;' class="btn btn-info btn-sm pull-right" >See Project Companies On map</a>-->
+                                <a onclick="showMapPanelExpand();document.getElementById('myFrame').setAttribute('src','../../IS_OpenLayers/map_prj_prj.php?prj_id=<?php echo $prj_id; ?>');event.preventDefault();" style = 'margin-right: 20px;' class="btn btn-info btn-sm pull-right" >See Project Companies On map</a>
+                                <a class="btn btn-info btn-sm pull-right" style='margin-right: 20px;' href="#" onclick="showMapPanelCollapse();event.preventDefault();">Close Companies Map</a>
+                                
+                                </div>
 			<?php endif ?>
+                                <div><iframe src="" id="myFrame"  marginwidth="0" 
+                                        width='0'
+                                        height='0'
+                                        marginheight="0" 
+                                        align="middle" 
+                                        scrolling="auto">
+                                    </iframe>
+                                </div>
 			<table class="table table-bordered">
 				<tr>
 					<td style="width:150px;">
