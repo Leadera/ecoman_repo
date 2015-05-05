@@ -25,9 +25,11 @@
         {
             $.messager.alert('Succesfully saved', 'Data succesfully saved');
             $.messager.progress('close');	// hide progress bar while submit successfully
+            $('#saveWindowAuto').window('close');
         } else {
             $.messager.alert('Save Error', 'Error occured');
             $.messager.progress('close');	// hide progress bar while submit successfully
+            $('#saveWindowAuto').window('close');
         }
         
     }
