@@ -159,6 +159,15 @@
         </div>
     </div>
 
+    <div id="tb5" style="padding:5px;height:auto">
+        <div style="margin-bottom:5px">
+            <!--<a href="#" onclick="deleteISPotential();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">Remove row</a>-->
+            <a href="#" onclick="event.preventDefault();deleteAllISPotential();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Clear all</a>
+            <a href="#" onclick="event.preventDefault();savePotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true">Save a table with relevant IS potentials</a>
+            <a href="#" onclick="closeMapPanel();event.preventDefault();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Close Map</a>
+        </div>
+    </div>
+
     <div id="saveWindow" class="easyui-window" IS_synergy ="test" title="Save IS Scenario" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:500px;height:300px;padding:10px;">
         <div class="easyui-layout" data-options="fit:true">
             <!--<div data-options="region:'east',split:true" style="width:100px"></div>-->
