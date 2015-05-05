@@ -24,7 +24,34 @@
         <div data-options="region:'south',split:true" style="height:800px;">
             
             
-            <div class="easyui-layout" data-options="fit:true">
+            <div id="cc2" class="easyui-layout" data-options="fit:true">
+                
+                
+                <div data-options="region:'north',split:true,border:true,collapsed:true" style="width:100%;height:400px">
+                      <div id="p" class="easyui-panel" title="IS Companies Location" data-options="" style="margin: auto 0;height:400px">  
+                          <a href="#" name="add" onclick="event.preventDefault();" 
+                               ></a>  
+                          <iframe src="../IS_OpenLayers/mapDefault.php" id="myFrame" width="100%" marginwidth="0" 
+                                height="100%" 
+                                marginheight="0" 
+                                align="middle" 
+                                scrolling="auto">
+                            </iframe>
+                        </div>
+                </div>
+                
+                <!--<div data-options="region:'south',split:true,border:true"  style="width:100%;">
+                    <div id="p" class="easyui-panel" title="IS Companies Location" data-options="" style="margin: auto 0;height:500px">  
+                            <iframe src="../IS_OpenLayers/mapDefault.php" id="myFrame" width="100%" marginwidth="0" 
+                                height="100%" 
+                                marginheight="0" 
+                                align="middle" 
+                                scrolling="auto">
+                            </iframe>
+                        </div>
+                </div>-->
+                
+                
                 <!--<div data-options="region:'north',split:true,border:false" style="height:50px"></div>-->
                 <div data-options="region:'west',split:true,border:true" style="width:50%;height:300px">
                     <table  id="tt_grid_dynamic"  title="Dynamic table with IS potentials" style="height:300px">
@@ -44,16 +71,7 @@
                     </table>
                     
                 </div>
-                <div data-options="region:'south',split:true,border:true"  style="width:100%;">
-                    <div id="p" class="easyui-panel" title="IS Companies Location" data-options="" style="margin: auto 0;height:500px">  
-                            <iframe src="../IS_OpenLayers/mapDefault.php" id="myFrame" width="100%" marginwidth="0" 
-                                height="100%" 
-                                marginheight="0" 
-                                align="middle" 
-                                scrolling="auto">
-                            </iframe>
-                        </div>
-                </div>
+                
                 
             </div>
             
@@ -77,18 +95,19 @@
     </div>
 
 
-    
-    <div id="tb" style="padding:5px;height:auto">
+          
+    <div id="tb" style="padding:5px;height:auto">                   
                 <div style="margin-bottom:5px">
                     <!--<a href="#" onclick="loadData();" class="easyui-linkbutton" iconCls="icon-add" plain="true"></a>-->
                     <a href="#add" onclick="getColumnsDynamic();getCompaniesISPotentials();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Calculate IS Potentials</a>
                     <a href="#" onclick="event.preventDefault();saveAutoPotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true">Save a table with relevant IS potentials</a>
+                    <a href="#" onclick="closeMapPanel();event.preventDefault();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Close Map</a>
                     <a href="#" onclick="event.preventDefault();selectAllCompanies();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Select all companies</a>
                     <!--<a href="#" onclick="openIsScenarios();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Table management</a>-->
                     <a href="#" id="printGrid" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
 
                 </div>
-                 
+                    
                  
                  <div>
                     <label style="margin-right:7px;">IS Scenario Type:</label>

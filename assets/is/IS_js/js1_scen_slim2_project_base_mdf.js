@@ -1,5 +1,18 @@
 // remote connection test
 // remote connection test2
+function closeMapPanel() {
+    //var panelWest = $('#cc').layout('panel','south');
+    //var panelSouthNorth = $('#cc2').layout('panel','north');
+    $('#cc2').layout('collapse','north');  
+}
+
+function showMapPanelExpand() {
+    //var panelWest = $('#cc').layout('panel','south');
+    //var panelSouthNorth = $('#cc2').layout('panel','north');
+    $('#cc2').layout('expand','north');  
+}
+
+
  function saveISScenarioAuto() {
      $.messager.progress();
      $('#ff').form({
@@ -852,7 +865,13 @@
                                             \'mywindow\',\'width=900,height=900\')">\n\
                                                 See on Map</button>';
                         //var x = '<button onclick="document.getElementById(\'myFrame\').setAttribute(\'src\',\'../IS_OpenLayers/map.php?to_company='+arrSplit[1]+'&from_company='+arrSplit[0]+'&prj_id='+document.getElementById('prj_id').value+'\')"> See on Map</button>';
-                        var x = '<a href="#add" class="easyui-linkbutton" iconCls="icon-save" onclick="document.getElementById(\'myFrame\').setAttribute(\'src\',\'../IS_OpenLayers/map.php?to_company='+arrSplit[1]+'&from_company='+arrSplit[0]+'&prj_id='+document.getElementById('prj_id').value+'\')"> See on Map</a>';
+                        /*var x = '<a href="#add" class="easyui-linkbutton" iconCls="icon-save" \n\
+                                    onclick="document.getElementById(\'myFrame\').setAttribute(\'src\',\'../IS_OpenLayers/map.php?to_company='+arrSplit[1]+'&from_company='+arrSplit[0]+'&prj_id='+document.getElementById('prj_id').value+'\')"> See on Map</a>';*/
+                        
+                        var x = '<a href="#" class="easyui-linkbutton" iconCls="icon-save" \n\
+                            onclick="showMapPanelExpand();\n\
+                            document.getElementById(\'myFrame\').setAttribute(\'src\',\'../IS_OpenLayers/map.php?to_company='+arrSplit[1]+'&from_company='+arrSplit[0]+'&prj_id='+document.getElementById('prj_id').value+'\')\n\
+                            ;event.preventDefault();"> See on Map</a>';
                         //return e+d;
                         return x;
                     }
