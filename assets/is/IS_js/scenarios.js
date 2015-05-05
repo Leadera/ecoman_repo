@@ -202,6 +202,7 @@
 							}}
                             },*/
                             {field:'syn_name',title:'Synergy Type',width:300},
+                            {field:'status',title:'Status',width:300},
                             {field:'date',title:' Project Date',width:300},
                             {field:'detail',title:' Details',width:100},
                             {field:'action',title:'Action',width:80,align:'center',
