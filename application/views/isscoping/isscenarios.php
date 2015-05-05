@@ -59,7 +59,7 @@
             </div>
             
             <div id="p" class="easyui-panel" title="IS Companies Location" 
-                 data-options="collapsed:true" 
+                 data-options="collapsed:true"   
                  style="margin: auto 0;height:400px">  
                 <a href="#" name="add" onclick="event.preventDefault();" 
                      ></a>  
@@ -84,6 +84,8 @@
                 </table>  
                 
             </div>
+            
+            
             
             
             

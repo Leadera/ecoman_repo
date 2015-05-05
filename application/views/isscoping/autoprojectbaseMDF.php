@@ -215,4 +215,11 @@
             <a href="#" id="printGridPotentials" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
         </div>
     </div>
+
+    <div id="tt_test">    
+        <a href="javascript:void(0)" class="icon-add" onclick="javascript:alert('add')"></a>
+        <a href="javascript:void(0)" class="icon-edit" onclick="javascript:alert('edit')"></a>
+        <a href="javascript:void(0)" class="icon-cut" onclick="javascript:alert('cut')"></a>
+        <a href="javascript:void(0)" class="icon-help" onclick="javascript:alert('help')"></a>
+    </div>
 <!--</div>-->
