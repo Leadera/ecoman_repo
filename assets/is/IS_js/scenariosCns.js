@@ -314,8 +314,9 @@
         
         $('#tt_grid_scenarios_details').datagrid({
                 singleSelect:true,
-                url:'../../../Proxy/SlimProxy.php',
-                queryParams : { url:'getScenarioDetailsCns_scn',
+                //url:'../../../Proxy/SlimProxy.php',
+                url : '../../../slim2_ecoman/prj.php/getFlowDetailsCns_prj',
+                queryParams : { url:'getFlowDetailsCns_prj',
                                 consultant_id : document.getElementById('consultant_id').value 
                         },
                 collapsible:true,
@@ -350,12 +351,13 @@
                             var regArr = {'from':splitArr[0],'to':splitArr[1],'flow':splitArr[2]};
                             $('#tt_grid_scenarios_details_edit').datagrid({
    
-                            url:'../../../Proxy/SlimProxy.php',
+                            //url:'../../../Proxy/SlimProxy.php',
+                            url : '../../../slim2_ecoman/prj.php/getFlowDetailsCns_prj',
                             queryParams : { url:'getFlowDetailsCns_prj',
                                             items : JSON.stringify(regArr),
                                            }, 
                             });
-                        },
+                        }, 
                
         });
         
