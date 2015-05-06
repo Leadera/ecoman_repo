@@ -195,16 +195,16 @@
                 fit:true,
                 pagePosition : "both",
                 columns:[[
-                            {field:'prj_name',title:'IS Table Name',width:300,editor:'text'},
+                            {field:'prj_name',title:'IS Table Name',width:100,editor:'text'},
                             /*{field:'prj_name',title:'IS Table Name',width:300,editor:{
 							type:'text',
 							options:{
 								required:true
 							}}
                             },*/
-                            {field:'syn_name',title:'Synergy Type',width:300},
-                            {field:'status',title:'Status',width:300},
-                            {field:'date',title:' Project Date',width:300},
+                            {field:'syn_name',title:'Synergy Type',width:150},
+                            {field:'status',title:'Status',width:100},
+                            {field:'date',title:' Project Date',width:150},
                             {field:'detail',title:' Details',width:100},
                             {field:'action',title:'Action',width:80,align:'center',
                                 formatter:function(value,row,index){
