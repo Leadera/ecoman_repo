@@ -426,6 +426,9 @@ function showMapPanelExpand() {
         var treeValue;
         $("#tt_tree").tree({
                     onCheck: function(node, checked) {
+                            //alert('on check test');  
+                            $("#tt_tree").tree('expand', node.target);
+                            //alert('on check test2'); 
                             /*if(checked) {
                                 if(node.attributes.notroot) {
                                     $('#tt_grid').datagrid("hideColumn",node.text);
