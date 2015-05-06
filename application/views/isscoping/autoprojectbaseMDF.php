@@ -54,13 +54,13 @@
                 
                 <!--<div data-options="region:'north',split:true,border:false" style="height:50px"></div>-->
                 <div data-options="region:'west',split:true,border:true" style="width:50%;height:300px">
-                    <table  id="tt_grid_dynamic"  title="Dynamic table with IS potentials" style="height:300px">
+                    <table  id="tt_grid_dynamic"  title="Step 3: Dynamic table with IS potentials" style="height:300px">
                         
                     </table>
                 </div>
                 <!--<div data-options="region:'east',split:true,border:false" style="width:50%"></div>-->
                 <div data-options="region:'center',border:true,split:true" style="width:50%;height:300px">
-                    <table id="tt_grid_dynamic5" class="easyui-datagrid" title="IS potentials" style="height:300px"
+                    <table id="tt_grid_dynamic5" class="easyui-datagrid" title="Step 4: IS potentials" style="height:300px"
                         data-options="singleSelect:false,
                                     collapsible:true,
                                     /*url:'datagrid_data1.json',*/
@@ -77,7 +77,7 @@
             
         </div>
         <!--<div data-options="region:'east',split:true" title="East" style="width:100px;"></div>-->
-        <div data-options="region:'west',split:true" title="Flows" style="width:150px;">
+        <div data-options="region:'west',split:true" title="Step 1: Flows" style="width:150px;">
             <ul id="tt_tree" class="easyui-tree" ></ul>
             
         </div>
@@ -85,7 +85,7 @@
             
             <div id="p" class="easyui-panel" title="Company/Flow Panel" style="margin: auto 0;"
                  data-options="iconCls:'icon-save',collapsible:true,closable:true,fit:true">
-                     <table id="tt_grid" data-options="fit:true" class="easyui-datagrid" title="Company Flow Sets" 
+                     <table id="tt_grid" data-options="fit:true" class="easyui-datagrid" title="Step 2: Company flow set" 
                             style="height:440px" 
                            accesskey=""></table>
                 

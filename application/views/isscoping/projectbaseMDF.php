@@ -37,7 +37,7 @@
                 </div>
                 
                 <div data-options="region:'west',split:true,border:true" style="width:50%;height:200px">
-                    <table id="tt_grid_dynamic2" class="easyui-datagrid" title="Dynamic table with IS potentials" style=""
+                    <table id="tt_grid_dynamic2" class="easyui-datagrid" title="Step 2: Select flow from selected company" style=""
                     data-options="singleSelect:false,
                                     collapsible:true,
                                     /*url:'datagrid_data1.json',*/
@@ -49,8 +49,8 @@
                     </table>
                 </div>
                 <!--<div data-options="region:'east',split:true,border:false" style="width:50%"></div>-->
-                <div data-options="region:'center',border:true,split:true" style="width:50%;height:200px">
-                     <table id="tt_grid_dynamic3"  title="Dynamic table with IS potentials" style=""
+                <div data-options="region:'center',border:true,split:true" style="width:50%;height:200px">   
+                      <table id="tt_grid_dynamic3"  title="Step 3: Specific flow" style=""
                     data-options="singleSelect:false,
                                     collapsible:true,
                                     /*url:'datagrid_data1.json',*/
@@ -76,22 +76,22 @@
             
         </div>
         <!--<div data-options="region:'east',split:true" title="East" style="width:100px;"></div>-->
-        <div data-options="region:'west',split:true" title="Flows" style="width:10%;">
+        <!--<div data-options="region:'west',split:true" title="Step 1: Flows" style="width:10%;">
             <ul id="tt_tree2" class="easyui-tree" ></ul>
             
-        </div>
+        </div>-->
         <div data-options="region:'center',title:'IS Potentials Analysis Settings',iconCls:'icon-ok'">
             
             <div id="p" class="easyui-panel" title="Manual IS Potential Detection Settings" style="margin: auto 0;"
                  data-options="iconCls:'icon-save',collapsible:true,closable:true,fit:true">
-                     <table id="tt_grid2" data-options="fit:true" class="easyui-datagrid" title="Company Flow Sets" 
+                     <table id="tt_grid2" data-options="fit:true" class="easyui-datagrid" title="Step 1: Company flow sets" 
                             style="height:440px" 
                            accesskey=""></table>
                 
             </div>
             
         </div>
-        <div data-options="region:'east',split:true" title="Flows" style="width:30%;">
+        <div data-options="region:'east',split:true" title="IS potential" style="width:30%;">
             <table id="tt_grid_dynamic4" class="easyui-datagrid" title="IS potentials" style="height:100%"
                 data-options="singleSelect:false,
                             collapsible:true,

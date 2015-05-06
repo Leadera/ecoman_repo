@@ -442,6 +442,7 @@ function beginISPotentialByAllFlows() {
             } else {
                 $.messager.alert('Pick a company','Please select  company!','warning');
             }
+            $('#tt_grid_dynamic2').datagrid('getPanel').panel("setTitle","Select flow from "+$('#tt_grid2').datagrid('getSelections')[0].company);
         }
         
         function getTreeRoots() {
