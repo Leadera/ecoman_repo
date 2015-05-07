@@ -608,7 +608,9 @@ function beginISPotentialByAllFlows() {
                         {field:'description',title:'Description',width:100},
                         {field:'link',title:'Link',width:80,align:'center',
                             formatter:function(value,row,index){
-                                    var link = '<a href="new_flow/'+row.id+'" onclick="" class="easyui-linkbutton" iconCls="icon-back" plain="true">Dataset Management</a>';
+                                    //var link = '<a href="new_flow/'+row.id+'" onclick="" class="easyui-linkbutton" iconCls="icon-back" plain="true">Dataset Management</a>';
+                                    var link = '<a href="#" onclick="event.preventDefault();window.open(\'new_flow/'+row.id+'\', \'_blank\')" class="easyui-linkbutton" iconCls="icon-back" plain="true">Dataset Management</a>';
+                                    
                                     return link
                             }
                         }
