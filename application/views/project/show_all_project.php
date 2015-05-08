@@ -6,20 +6,48 @@
 				<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 				<?php
 				$project_array = array();
-			 	foreach ($projects as $prj => $k) {	 
-					$project_array[$prj][0] = $k['latitude'];
+                                $counter=0;
+			 	foreach ($projects as $prj => $k) {
+//print_r($prj);
+//print_r($k);
+                                    if($k['latitude']!="" || $k['longitude']!="") {
+                                        $project_array[$prj][0] = $k['latitude'];
+					$project_array[$prj][1] = $k['longitude'];
+					$project_array[$counter][2] = "<a href='".base_url('project/'.$k['id'])."'>".$k['name']."</a>";
+                                    } else {
+                                        $project_array[$prj][0] = '39';
+					$project_array[$prj][1] = '32';
+					$project_array[$prj][2] = "<a href='".base_url('project/'.$k['id'])."'>".$k['name']."</a>";
+                                    }
+                                    /*if($k['latitude']!="" && $k['longitude']!="") {
+                                        $project_array[$prj][0] = $k['latitude'];
 					$project_array[$prj][1] = $k['longitude'];
 					$project_array[$prj][2] = "<a href='".base_url('project/'.$k['id'])."'>".$k['name']."</a>";
+                                    }*/
+                                    
+                                    /*$project_array[$prj][0] = $k['latitude'];
+                                    $project_array[$prj][1] = $k['longitude'];
+                                    $project_array[$prj][2] = "<a href='".base_url('project/'.$k['id'])."'>".$k['name']."</a>";
+
+                                     */
+                                    $counter++;
 				} 
-				//print_r($company_array);
+				//print_r($project_array);
 				?>
 				<div id="map"></div>
 				<script type="text/javascript">
+                                
   			var project = <?php echo json_encode($project_array); ?>;
+                        //console.log(project);
   			var bounds = new L.LatLngBounds(project);
 
         var map = L.map('map');
         map.fitBounds(bounds);
+        /*var map = L.map('map', {
+    center: [51.505, -0.09],
+    zoom: 13
+});*/
+        
         mapLink = 
             '<a href="http://openstreetmap.org">OpenStreetMap</a>';
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -27,9 +55,15 @@
 				}).addTo(map);
 
 				for (var i = 0; i < project.length; i++) {
-					marker = new L.marker([project[i][0],project[i][1]])
+                                    /*if(project[i][0]!=null || project[i][1]!=null) {
+                                        marker = new L.marker([project[i][0],project[i][1]])
 						.bindPopup(project[i][2])
 						.addTo(map);
+                                    }*/
+                                    marker = new L.marker([project[i][0],project[i][1]])
+						.bindPopup(project[i][2])
+						.addTo(map);
+					
 				}
 				</script>
 				<!-- harita bitti -->

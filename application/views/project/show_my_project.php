@@ -18,7 +18,7 @@
   			var project = <?php echo json_encode($project_array); ?>;
   			var bounds = new L.LatLngBounds(project);
 
-        var map = L.map('map').setView([41.83683, 19.33594], 4);
+        var map = L.map('map').setView([41.83683, 19.33594], 1);
         map.fitBounds(bounds);
         mapLink = 
             '<a href="http://openstreetmap.org">OpenStreetMap</a>';
