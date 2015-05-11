@@ -321,7 +321,7 @@ function showMapPanelExpand() {
             if (gridCheckedArray.length==0 && checkedArray.length==0){
                 $.messager.alert('Pick flow and company ','Please select sub flow and company !','warning');
             } else if(gridCheckedArray.length==0) {
-                $.messager.alert('Pick flow ','Please select  company !','warning');
+                $.messager.alert('Pick company ','Please select  company !','warning');
             } 
             else if (checkedArray.length==0) {
                 $.messager.alert('Pick flow ','Please select sub flow!','warning');
@@ -705,7 +705,7 @@ function showMapPanelExpand() {
     $('#tt_grid').datagrid({
         sortName : 'company',
         collapsible:true,
-        idField:'id',
+        //idField:'id',
         toolbar:'#tb',
         rownumbers: "true",
         pagination: "true",
