@@ -386,7 +386,8 @@ function showMapPanelExpand() {
                        });*/
                         } else {
                             console.warn('data notfound-->'+textStatus);
-                            $.messager.alert('Pick sub flow and company','Please select  a sub flow from flow tree!','warning');
+                            //$.messager.alert('Pick sub flow and company','Please select  a sub flow from flow tree!','warning');
+                            $.messager.alert('Pick other options','There is no IS potentials for the selected company with this flow category. Please select another company and/or flow category','warning');
                         }
                     },
                     error: function(jqXHR , textStatus, errorThrown) {
