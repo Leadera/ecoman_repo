@@ -19,7 +19,11 @@
   			var bounds = new L.LatLngBounds(planes);
 
         var map = L.map('map').setView([41.83683, 19.33594], 4);
-        map.fitBounds(bounds);
+                map.fitWorld().zoomIn();
+
+				map.on('resize', function(e) {
+				    map.fitWorld({reset: true}).zoomIn();
+				});
         mapLink = 
             '<a href="http://openstreetmap.org">OpenStreetMap</a>';
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
