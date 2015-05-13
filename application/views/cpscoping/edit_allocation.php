@@ -58,7 +58,7 @@
 				<label class="control-label col-md-3">Amount</label>
 				<label class="control-label col-md-3">Amount Unit</label>
 				<label class="control-label col-md-3">Allocation (%)</label>
-				<label class="control-label col-md-3">Accuracy Rate (%)</label>
+				<label class="control-label col-md-3"  data-toggle="tooltip">Accuracy Rate (%) <i style="color:red;" class="fa fa-question-circle"></i></label>
 				<div class="col-md-3">
 					<input type="text" class="form-control" value="<?php echo set_value('amount',$allocation['amount']); ?>" id="amount" placeholder="Number" name="amount">
 				</div>
@@ -85,7 +85,7 @@
 				<label class="control-label col-md-3">Cost</label>
 				<label class="control-label col-md-3">Cost Unit</label>
 				<label class="control-label col-md-3">Allocation (%)</label>
-				<label class="control-label col-md-3">Accuracy Rate (%)</label>
+				<label class="control-label col-md-3" data-toggle="tooltip">Accuracy Rate (%) <i style="color:red;" class="fa fa-question-circle"></i></label>
 				<div class="col-md-3">
 					<input type="text" class="form-control" value="<?php echo set_value('cost',$allocation['cost']); ?>" id="cost" placeholder="Number" name="cost">
 				</div>
@@ -115,7 +115,7 @@
 				<label class="control-label col-md-3">Environmental Impact</label>
 				<label class="control-label col-md-3">EP</label>
 				<label class="control-label col-md-3">Allocation (%)</label>
-				<label class="control-label col-md-3">Accuracy Rate (%)</label>
+				<label class="control-label col-md-3" data-toggle="tooltip">Accuracy Rate (%) <i style="color:red;" class="fa fa-question-circle"></i></label>
 				<div class="col-md-3">
 					<input type="text" class="form-control" value="<?php echo set_value('env_impact',$allocation['env_impact']); ?>" id="env_impact" placeholder="Number" name="env_impact">
 				</div>
@@ -184,3 +184,15 @@
 	}
 </script>
 <script type="text/javascript">	$( document ).ready(aatf); $( document ).ready(unit_hesapla); $( document ).ready(hesapla);</script>
+<script type="text/javascript">
+$('[data-toggle="tooltip"]').tooltip({
+    position: 'top',
+    content: '<span style="color:#fff">Example: </br> Amount=10kg </br> Accuracy rate=90% </br> means the amount varies by 10% or +/- 5%, </br> thus between  9.5kg and 10.5kg</span>',
+    onShow: function(){
+        $(this).tooltip('tip').css({
+            backgroundColor: '#999',
+            borderColor: '#999'
+        });
+    }
+});
+</script>
