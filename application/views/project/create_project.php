@@ -1,3 +1,6 @@
+<!-- for datepicker -->
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 <?php echo $map['js']; ?>
 
 <div class="container">
@@ -21,7 +24,7 @@
 	 				<label for="datePicker">Start Date</label>
 	    			<div class="input-group">
 				    	<span class="input-group-btn">
-				      		<button class="btn" type="button"><span class="fui-calendar"></span></button>
+				      		<button class="btn" type="button" style="height: 38px; border: 1px solid;"><span class="fui-calendar"></span></button>
 				    	</span>
 				    	<input type="text" class="form-control" value="<?php echo set_value('datepicker'); ?>" id="datepicker-01" name="datepicker">
 				  	</div>
@@ -122,37 +125,54 @@
 
 
 <script type="text/javascript">
-        var marker;
-        var lat,lon;
+    var marker;
+    var lat,lon;
 
-        $('#myModal2').on('shown.bs.modal', function (e) {
-            google.maps.event.trigger(map, 'resize'); // modal acildiktan sonra haritanın resize edilmesi gerekiyor.
+    $('#myModal2').on('shown.bs.modal', function (e) {
+        google.maps.event.trigger(map, 'resize'); // modal acildiktan sonra haritanın resize edilmesi gerekiyor.
 
-            map.setZoom(6);
-            if(!marker)
-                map.setCenter(new google.maps.LatLng(47.3250690187567,18.52065861225128));
-            else
-                map.setCenter(marker.getPosition());
+        map.setZoom(6);
+        if(!marker)
+            map.setCenter(new google.maps.LatLng(47.3250690187567,18.52065861225128));
+        else
+            map.setCenter(marker.getPosition());
 
-            google.maps.event.addListener(map, 'click', function(event) {
-                $("#latId").val("Lat:" + event.latLng.lat()); $("#longId").val("Long:" + event.latLng.lng());
-                $("#lat").val(event.latLng.lat()); $("#long").val(event.latLng.lng());
-                placeMarker(event.latLng);
-            });
-
+        google.maps.event.addListener(map, 'click', function(event) {
+            $("#latId").val("Lat:" + event.latLng.lat()); $("#longId").val("Long:" + event.latLng.lng());
+            $("#lat").val(event.latLng.lat()); $("#long").val(event.latLng.lng());
+            placeMarker(event.latLng);
         });
 
+    });
 
 
-        function placeMarker(location) {
-          if ( marker ) {
-            marker.setPosition(location);
-          } else {
-            marker = new google.maps.Marker({
-              position: location,
-              map: map
-            });
-          }
-        }
 
-    </script>
+    function placeMarker(location) {
+      if ( marker ) {
+        marker.setPosition(location);
+      } else {
+        marker = new google.maps.Marker({
+          position: location,
+          map: map
+        });
+      }
+    }
+
+</script>
+<script type="text/javascript">
+  // Datepicker on projects
+  // jQuery UI Datepicker JS init
+  var datepickerSelector = '#datepicker-01';
+  $(datepickerSelector).datepicker({
+    showOtherMonths: true,
+    selectOtherMonths: true,
+    dateFormat: "yy-mm-dd",
+    yearRange: '-1:+1'
+  }).prev('.btn').on('click', function (e) {
+    e && e.preventDefault();
+    $(datepickerSelector).focus();
+  });
+
+  // Now let's align datepicker with the prepend button
+  $(datepickerSelector).datepicker('widget').css({'margin-left': -$(datepickerSelector).prev('.btn').outerWidth()});
+</script>

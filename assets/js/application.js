@@ -45,9 +45,6 @@ String.prototype.repeat = function(num) {
       $(this).tab("show");
     })
 
-    // Tooltips
-    $("[data-toggle=tooltip]").tooltip("show");
-
     // Tags Input
     $(".tagsinput").tagsInput();
 

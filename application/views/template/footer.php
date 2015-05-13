@@ -1,7 +1,6 @@
     <div class="clearfix"></div>
-    <div class="footer">Design & Execution : Ostim Technology Co. © 2013-2015 ecoman</div>
+    <div class="footer">© 2013-2015 ecoman</div>
     <div style="overflow: hidden;display: block;padding-top: 50px;clear: both;">&nbsp;</div>
-
 
     <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto" 
             and $this->uri->segment(1)!="isScopingAutoPrjBaseMDF"
@@ -47,8 +46,6 @@
             });
 
         });
-
-
 
         function placeMarker(location) {
           if ( marker ) {

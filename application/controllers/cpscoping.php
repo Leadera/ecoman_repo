@@ -137,7 +137,7 @@ class Cpscoping extends CI_Controller {
 				'error_ep'=>$importance_env_impact,
 				'reference' => $reference,
 				'unit_reference' => $unit_reference,
-				'kpi' => round($kpi),
+				'kpi' => $kpi,
 				'unit_kpi' => $unit_kpi
 			);
 			$this->cpscoping_model->set_cp_allocation($array_allocation);
@@ -294,7 +294,7 @@ class Cpscoping extends CI_Controller {
 				'error_ep'=>$importance_env_impact,
 				'reference' => $reference,
 				'unit_reference' => $unit_reference,
-				'kpi' => round($kpi),
+				'kpi' => $kpi,
 				'unit_kpi' => $unit_kpi
 			);
 			$this->cpscoping_model->update_cp_allocation($array_allocation,$allocation_id);
