@@ -44,9 +44,9 @@
         var map = L.map('map');
         map.fitWorld().zoomIn();
 
-map.on('resize', function(e) {
-    map.fitWorld({reset: true}).zoomIn();
-});
+				map.on('resize', function(e) {
+				    map.fitWorld({reset: true}).zoomIn();
+				});
         /*var map = L.map('map', {
     center: [51.505, -0.09],
     zoom: 13
