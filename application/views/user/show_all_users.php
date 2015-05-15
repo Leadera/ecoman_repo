@@ -2,7 +2,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8">
-				<p class="lead">Consultants</p>
+				<p class="swissheader">Consultants</p>
 				<ul class="list-group" style="clear:both;">
 				<?php foreach ($users as $com): ?>
 					<li class="list-group-item">

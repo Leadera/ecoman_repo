@@ -33,7 +33,7 @@
 				}
 				</script>
 				<!-- harita bitti -->
-			<div class="lead pull-left">Show My Companies</div>
+			<div class="swissheader pull-left">Show My Companies</div>
 				<?php 
 					$temp = $this->session->userdata('user_in');
 					if($temp['id'] != null): ?>

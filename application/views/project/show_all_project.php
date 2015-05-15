@@ -71,7 +71,7 @@
 				}
 				</script>
 				<!-- harita bitti -->
-			<div class="lead pull-left">Show All Projects</div>
+			<div class="swissheader pull-left">Show All Projects</div>
 			<?php if($is_consultant):?>
 			<a class="pull-right btn btn-info btn-embossed btn-sm" href="<?php echo base_url("newproject"); ?>">Create Project</a>
 			<?php endif ?>

@@ -37,7 +37,7 @@
 				}
 				</script>
 				<!-- harita bitti -->
-				<div class="lead pull-left">Show <?php echo $cluster_name['name'];?></div>
+				<div class="swissheader pull-left">Show <?php echo $cluster_name['name'];?></div>
 				<?php 
 					$temp = $this->session->userdata('user_in');
 					if($temp['id'] != null): ?>
