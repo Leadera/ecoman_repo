@@ -80,7 +80,7 @@
             <ul id="tt_tree2" class="easyui-tree" ></ul>
             
         </div>-->
-        <div data-options="region:'center',title:'IS Potentials Analysis Settings',iconCls:'icon-ok'">
+        <div data-options="region:'center',title:'Industrial Symbiosis Potentials Analysis Settings',iconCls:'icon-ok'">
             
             <div id="p" class="easyui-panel" title="Manual IS Potential Detection Settings" style="margin: auto 0;"
                  data-options="iconCls:'icon-save',collapsible:true,closable:true,fit:true">

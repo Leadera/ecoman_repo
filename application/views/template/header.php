@@ -128,11 +128,11 @@
 
           <div class="">
         <ul class="list-inline pull-left" style="margin:6px 0 4px 0;">
-          <li class="head-li"><a href="<?php echo base_url('cpscoping'); ?>"><i class="fa fa-recycle"></i> Cleaner Production Allocations</a></li>
+          <li class="head-li"><a href="<?php echo base_url('cpscoping'); ?>"><i class="fa fa-recycle"></i> CP - Potential Identification</a></li>
           <li class="head-li">
             <div class="dropdown">
               <button class="btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                <i class="fa fa-exchange"></i> Industrial Symbiosis Allocations
+                <i class="fa fa-exchange"></i> IS - Potential Identification
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu dropdown-inverse" role="menu" aria-labelledby="dropdownMenu1">

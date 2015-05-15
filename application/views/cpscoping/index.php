@@ -27,7 +27,7 @@ $(document).ready(function() {
 
 
 <div class="col-md-3">
-    <p>Create new cp potentials identification</p>
+    <p>Cleaner Production Potentials Identification</p>
     <!--
     <select id="projects" class="btn-group select select-block">
         <option value="0">Nothing Selected</option>
@@ -51,7 +51,7 @@ $(document).ready(function() {
 </div>
 
 <div class="col-md-9">
-    <p>View and Edit Allocated CP Potentials Identifications</p>
+    <p>View and Edit Allocated Cleaner Production Potentials Identifications</p>
     <?php $i = 0; ?>
     <?php foreach ($com_pro as $cp): ?>
         <?php // print_r($cp); ?>
