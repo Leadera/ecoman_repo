@@ -1,4 +1,6 @@
 <div class="container">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4 swissbox">
 	<p class="lead">Open Project</p>
 
 	<?php if(validation_errors() != NULL ): ?>
@@ -20,4 +22,6 @@
 		</div>
 		<button type="submit" class="btn btn-primary">Open Project</button>
 	</form>
+</div>
+</div>
 </div>

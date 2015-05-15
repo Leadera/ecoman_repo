@@ -23,11 +23,15 @@
 							</span>
 						</td>
 					</tr>
-						<tr><td>CAPEX old option (€)</td>								
+					<tr>
+						<td>Discount rate (%)</td>
+						<td><div class=" has-warning"><input type="text" name="disrate" id="disrate-<?php echo $i; ?>"  value="<?php echo $a['disrate']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
+					</tr>
+						<tr><td>CAPEX old option (€/year)</td>								
 						<td><div class=" has-warning"><input type="text" name="capexold" id="capexold-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['capexold']; ?>" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
-						<td>OPEX old option (€)</td>
+						<td>OPEX old option (€/year)</td>
 						<td><input type="text" name="opexold" id="opexold-<?php echo $i; ?>" class="form-control"></td>
 					</tr>
 					<tr>
@@ -35,20 +39,16 @@
 						<td><div class=" has-warning"><input type="text" name="ltold" id="ltold-<?php echo $i; ?>" value="<?php echo $a['ltold']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
-						<td>CAPEX new option (€)</td>
+						<td>CAPEX new option (€/year)</td>
 						<td><div class=" has-warning"><input type="text" name="capexnew" id="capexnew-<?php echo $i; ?>" value="<?php echo $a['capexnew']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
-						<td>OPEX new option (€)</td>
+						<td>OPEX new option (€/year)</td>
 						<td><input type="text" name="opexnew" id="opexnew-<?php echo $i; ?>" class="form-control"></td>
 					</tr>
 					<tr>
 						<td>Lifetime new option (yr)</td>
 						<td><div class=" has-warning"><input type="text" name="ltnew" id="ltnew-<?php echo $i; ?>" value="<?php echo $a['ltnew']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
-					</tr>
-					<tr>
-						<td>Discount rate (%)</td>
-						<td><div class=" has-warning"><input type="text" name="disrate" id="disrate-<?php echo $i; ?>"  value="<?php echo $a['disrate']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
 						<td>Ann. costs old option</td>

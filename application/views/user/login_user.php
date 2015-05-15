@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
+		<div class="col-md-4 col-md-offset-4 swissbox">
 			<p class="lead">Login User</p>
 
 			<?php if(validation_errors() != NULL ): ?>

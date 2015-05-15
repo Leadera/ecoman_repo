@@ -72,13 +72,13 @@
           <li class="head-li"><a href="<?php echo base_url('logout'); ?>"><i class="fa fa-sign-out"></i>
  Logout</a></li>
         <?php else: ?>
-          <li class="head-li"><a href="<?php echo base_url('login'); ?>"><i class="fa fa-sign-in"></i>
+          <li class="head-li"><a href="<?php echo base_url('login'); ?>" class="kutua"><i class="fa fa-sign-in"></i>
  Login</a></li>
-          <li class="head-li"><a href="<?php echo base_url('register'); ?>">Register</a></li>
+          <li class="head-li"><a href="<?php echo base_url('register'); ?>" class="kutua"><i class="fa fa-plus"></i> Register</a></li>
         <?php endif ?>
       </ul>
     </nav>
-    <div style="background-color: rgb(240, 240, 240); margin-bottom: 20px;">
+    <div style="margin-bottom: 30px;">
       <ul class="nav navbar-nav navbar-left">
           <li>
 
@@ -122,7 +122,7 @@
       <div class="clearfix"></div>
       </div>
       <?php if ($this->session->userdata('user_in') !== FALSE): ?>
-        <div style=" padding: 10px 20px; margin-bottom: 20px; margin-top:-20px; border-top:1px solid #d0d0d0; border-bottom:1px solid #d0d0d0;">
+        <div style=" padding: 10px 20px;margin-bottom: 20px; margin-top: -40px;">
         <?php if($this->session->userdata('project_id') !== FALSE): ?>
           
 
