@@ -39,6 +39,7 @@ body{
     font-size:22px;
     font-family: 'Roboto', cursive;
     font-weight: 600;
+    color:#CF324C;
 }
 
 /*auto complete  */
@@ -270,4 +271,12 @@ label{
     padding: 20px;
     border: 1px solid #CF324C;
     border-radius: 4px 4px 4px 4px;
+}
+.swissheader{
+    color: white;
+  font-size: 15px;
+  background-color: #CF324C;
+  padding: 3px 15px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
