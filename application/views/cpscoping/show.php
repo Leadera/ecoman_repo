@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?php echo asset_url('js/easy-ui-1.4.2.js'); ?>"></script>
 <?php 
 /*foreach ($allocation as $rows => $row)
 {
@@ -41,13 +42,13 @@ print_r($allocation[0]);*/
 				veri = veri +1;
 				if(veri == process_adet){
 					tuna_graph(list);
-					$('#graph_text').text("* You wont be able to see every range on the graph, if one of them are really huge.");
+					$('#graph_text').text("* You wont be able to see every range on the graph, if one of them is really huge.");
 					clearTimeout(timer);
 				}
 				else{
 					$('#graph_text').text("Please wait for graph to appear until all analysis data are calculated in the table. ("+veri+"/"+process_adet+")");
 	       	clearTimeout(timer);
-	       	timer = setTimeout(function() { tuna_graph(list); 					$('#graph_text').text("* You wont be able to see every range on the graph, if one of them are really huge."); }, 6000);
+	       	timer = setTimeout(function() { tuna_graph(list); 					$('#graph_text').text("* You wont be able to see every range on the graph, if one of them are really huge."); }, 7000);
 				}
 				// var temp = "";
 				// temp += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><th style="text-align:center;">' + data.prcss_name + '</th></tr><tr><td> <b>EP Value:</b> ' + data.ep_def_value + '  <b>EP Range:</b> ' + data.ep_value_alt + ' - ' + data.ep_value_ust + '</td></tr><tr><td> <b>Cost Value:</b> ' + data.cost_def_value + '   <b>Cost Range:</b> ' + data.cost_value_alt.toFixed(2) + ' - ' + data.cost_value_ust.toFixed(2) + ' Euro</td></tr></table>';
@@ -321,14 +322,13 @@ print_r($allocation[0]);*/
 				<thead>
 				    <tr>
 				        <th data-options="field:'prcss_name',align:'center',width:150">Process</th>
-				        <th data-options="field:'ep_def_value',align:'center',width:100">Ep Value</th>
-				        <th data-options="field:'ep_value_alt',align:'center',width:100">Min Ep Value</th>
-				        <th data-options="field:'ep_value_ust',align:'center',width:100">Max Ep Value</th>
-				        <th data-options="field:'cost_def_value',align:'center',width:100">Cost Value</th>
-				        <th data-options="field:'cost_value_alt',align:'center',width:100">Min Cost Value</th>
-				        <th data-options="field:'cost_value_ust',align:'center',width:100">Max Cost Value</th>
+				        <th data-options="field:'ep_def_value',align:'center',width:80" formatter="formatPrice">Ep Value</th>
+				        <th data-options="field:'ep_value_alt',align:'center',width:100" formatter="formatPrice">Min Ep Value</th>
+				        <th data-options="field:'ep_value_ust',align:'center',width:100" formatter="formatPrice">Max Ep Value</th>
+				        <th data-options="field:'cost_def_value',align:'center',width:100" formatter="formatPrice">Cost Value</th>
+				        <th data-options="field:'cost_value_alt',align:'center',width:110" formatter="formatPrice">Min Cost Value</th>
+				        <th data-options="field:'cost_value_ust',align:'center',width:110" formatter="formatPrice">Max Cost Value</th>
 				        <th data-options="field:'comment',width:200,align:'center',editor:'text'">Comments / Remarks</th>
-				      
 				    </tr>
 				</thead>
 			</table>
@@ -338,7 +338,19 @@ print_r($allocation[0]);*/
         <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()">Cancel All Changes</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges()">See Changes</a>
     </div>
-    
+    <script type="text/javascript">
+    function formatPrice(input,row){
+    	input = input.toFixed(2);
+  		    var output = input
+			    if (parseFloat(input)) {
+			        input = new String(input); // so you can perform string operations
+			        var parts = input.split("."); // remove the decimal part
+			        parts[0] = parts[0].split("").reverse().join("").replace(/(\d{3})(?!$)/g, "$1,").split("").reverse().join("");
+			        output = parts.join(".");
+			    }
+	    return output;
+		}
+		</script>
     <script type="text/javascript">
         var editIndex = undefined;
         function endEditing(){

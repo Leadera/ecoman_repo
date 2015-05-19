@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?php echo asset_url('js/easy-ui-1.4.2.js'); ?>"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
 	function deneme() {
@@ -221,7 +222,7 @@
 				        <th data-options="field:'flow_type_name',align:'center',width:80">Flow Type</th>
 				        <th data-options="field:'kpi',align:'center',width:100">KPI</th>
 				        <th data-options="field:'unit_kpi',align:'center',width:100">KPI Unit</th>
-				        <th data-options="field:'benchmark_kpi',width:100,align:'center',editor:'numberbox'">Benchmark KPI</th>
+				        <th data-options="field:'benchmark_kpi',width:100,align:'center',editor:{type:'numberbox',options:{precision:5}}">Benchmark KPI</th>
 				        <th data-options="field:'best_practice',width:200,align:'center',editor:'text'">Comments / Remarks</th>
 				        <th data-options="field:'option',width:60,align:'center',editor:{type:'checkbox',options:{on:'Option',off:'Not An Option'}}">Is Option?</th>
 				    </tr>
