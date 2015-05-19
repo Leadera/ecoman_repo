@@ -213,11 +213,12 @@
 			        url: '<?php echo base_url("kpi_json/".$this->uri->segment(2).'/'.$this->uri->segment(3)); ?>',
 			        method: 'get',
 			        fitColumns: true,
+			        nowrap: false,
 			        onClickRow: onClickRow
 			    ">
 				<thead>
 				    <tr>
-				        <th data-options="field:'allocation_name',align:'left',width:150">Allocation Name</th>
+				        <th data-options="field:'allocation_name',align:'left',width:250">Allocation Name</th>
 <!-- 				        <th data-options="field:'flow_name',align:'center',width:110">Flow</th>
 				        <th data-options="field:'flow_type_name',align:'center',width:80">Flow Type</th> -->
 				        <th data-options="field:'kpi',align:'center',width:100">KPI</th>

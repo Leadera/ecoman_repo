@@ -688,7 +688,7 @@ class Cpscoping extends CI_Controller {
 		foreach ($allocation_ids as $a => $key) {
 			//echo $a.'.';
 			$data['kpi_values'][$a] = $this->cpscoping_model->get_allocation_from_allocation_id($key['allocation_id']);
-			$data['kpi_values'][$a]['allocation_name']=$data['kpi_values'][$a]['prcss_name']."-".$data['kpi_values'][$a]['flow_name']."-".$data['kpi_values'][$a]['flow_type_name'];
+			$data['kpi_values'][$a]['allocation_name']=$data['kpi_values'][$a]['prcss_name']." - ".$data['kpi_values'][$a]['flow_name']." - ".$data['kpi_values'][$a]['flow_type_name'];
 			if($data['kpi_values'][$a]['option']==1){
 				$data['kpi_values'][$a]['option']="Option";
 			}else{
