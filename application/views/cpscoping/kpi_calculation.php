@@ -239,7 +239,7 @@
     <script>
 			function formatDetail(value,row){
 				var href = 'cpscoping/edit_allocation/'+value;
-				return '<a href="<?php echo base_url("' + href + '"); ?>">Edit</a>';
+				return '<a class="label label-info" href="<?php echo base_url("' + href + '"); ?>">Edit</a>';
 			}
 		</script>
     <script type="text/javascript">
