@@ -206,9 +206,9 @@ class Project extends CI_Controller{
 		$config['places'] = TRUE;
 		$config['placesRadius'] = 20;
 
-		$this->googlemaps->add_marker($marker);
-		$this->googlemaps->initialize($config);
-    $data['map'] = $this->googlemaps->create_map();
+		// $this->googlemaps->add_marker($marker);
+		// $this->googlemaps->initialize($config);
+  	// $data['map'] = $this->googlemaps->create_map();
 
 		$kullanici = $this->session->userdata('user_in');
 		$data['is_consultant_of_project'] = $is_consultant_of_project;

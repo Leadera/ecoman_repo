@@ -1,4 +1,4 @@
-<?php echo $map['js']; ?>
+<?php // echo $map['js']; ?>
 <?php  
     global $company_ids;
     foreach ($companies as $company) {
@@ -47,8 +47,8 @@
 				<?php endif ?>
 			<a class="btn btn-info btn-sm pull-right" href="<?php echo base_url("update_project/".$projects['id']); ?>">Update Project Info</a>
 			    <!--<a onclick="event.preventDefault();window.open('../../IS_OpenLayers/map_prj.php?cmpny=<?php echo $company_ids; ?>','mywindow','width=900,height=900');" style = 'margin-right: 20px;' class="btn btn-info btn-sm pull-right" >See Project Companies On map</a>-->
-			    <a onclick="showMapPanelExpand();document.getElementById('myFrame').setAttribute('src','../../IS_OpenLayers/map_prj_prj.php?prj_id=<?php echo $prj_id; ?>');event.preventDefault();"  class="btn btn-inverse btn-sm" >See Project Companies On map</a>
-			    <a class="btn btn-inverse btn-sm" href="#" onclick="showMapPanelCollapse();event.preventDefault();">Close Companies Map</a>
+<!-- 			    <a onclick="showMapPanelExpand();document.getElementById('myFrame').setAttribute('src','../../IS_OpenLayers/map_prj_prj.php?prj_id=<?php echo $prj_id; ?>');event.preventDefault();"  class="btn btn-inverse btn-sm" >See Project Companies On map</a>
+			    <a class="btn btn-inverse btn-sm" href="#" onclick="showMapPanelCollapse();event.preventDefault();">Close Companies Map</a> -->
 			    
 			 </div>
 			<?php endif ?>
@@ -93,7 +93,7 @@
 					</td>
 					<td>
 					<iframe src="../../IS_OpenLayers/map_prj_prj.php?prj_id=<?php echo $prj_id; ?>" id="myFrame"  marginwidth="0" width='100%' height='500' marginheight="0"  align="middle" scrolling="auto"></iframe>
-					<?php  echo $map['html']; ?>
+					<?php //echo $map['html']; ?>
 					</td>
 				</tr>
 			</table>
