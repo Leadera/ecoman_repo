@@ -1,6 +1,9 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8">
+			<?php if(!empty($this->session->flashdata('project_error'))): ?>
+				<div class="alert alert-warning"><?php echo $this->session->flashdata('project_error'); ?></div>
+			<?php endif ?>
 						<!-- harita -->
 				<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 				<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>

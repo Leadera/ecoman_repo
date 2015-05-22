@@ -177,7 +177,10 @@ class Project extends CI_Controller{
 		$is_contactperson_of_project = $this->user_model->is_contactperson_of_project_by_user_id($kullanici['id'],$prj_id);
 		
 		if(!$is_consultant_of_project && !$is_contactperson_of_project){
-			redirect('','refresh');
+			//Cillop gibi çalışan bir error kodu.
+			//show_error('Sorry, you dont have permission to access this project information.');
+			$this->session->set_flashdata('project_error', '<i class="fa fa-exclamation"></i> Sorry, you dont have permission to access this project information.');
+			redirect('projects','refresh');
 		}
 
     $data['prj_id'] = $prj_id;

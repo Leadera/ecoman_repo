@@ -38,11 +38,11 @@
 			<?php if($is_consultant_of_project): ?>
 			<div style="margin-bottom:20px; overflow:hidden; margin-top:10px;">
 				<?php if($this->session->userdata('project_id')==$projects['id']): ?>
-					<a class="btn btn-inverse btn-sm" href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-times-circle"></i> Close this project</a>
+					<a class="btn btn-inverse btn-sm" href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-times-circle"></i> Close This Project</a>
 				<?php else: ?>
 					<?php echo form_open('openproject'); ?>
 						<input type="hidden" name="projectid" value="<?php echo $projects['id']; ?>">
-						<button type="submit" class="btn btn-sm btn-primary pull-left" style="margin-right:5px;"><i class="fa fa-plus-square-o"></i> Open Project</button>
+						<button type="submit" class="btn btn-sm btn-primary pull-left" style="margin-right:5px;"><i class="fa fa-plus-square-o"></i> Open This Project</button>
 					</form>
 				<?php endif ?>
 			<a class="btn btn-inverse btn-sm" href="<?php echo base_url("update_project/".$projects['id']); ?>"><i class="fa fa-pencil-square-o"></i> Update Project Info</a>

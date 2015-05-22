@@ -281,3 +281,6 @@ label{
   margin-bottom: 10px;
   text-transform: uppercase;
 }
+.alert{
+    color:#FF3737 !important;
+}
