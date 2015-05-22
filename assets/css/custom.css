@@ -116,6 +116,7 @@ body{
 
 .btn-sm{
     font-size:12px !important;
+    padding: 6px !important;
 }
 .btn-inverse{
     color:black;

@@ -18,11 +18,12 @@ class Project extends CI_Controller{
 		$this->form_validation->set_rules('projectid', 'Project ID', 'trim|required|xss_clean');
 		if ($this->form_validation->run() !== FALSE)
 		{
+			$this->session->unset_userdata('project_id');
 			$id = $this->input->post('projectid');
 			$this->session->set_userdata('project_id', $id);
 			$prj = $this->project_model->get_project($id);
 			$this->session->set_userdata('project_name', $prj['name']);
-			redirect('', 'refresh');
+			redirect('project/'.$id, 'refresh');
 		}
 		$data['projects'] = $this->project_model->get_consultant_projects($kullanici['id']);
 		$this->load->view('template/header');
@@ -178,43 +179,36 @@ class Project extends CI_Controller{
 		if(!$is_consultant_of_project && !$is_contactperson_of_project){
 			redirect('','refresh');
 		}
-                
-                
-                
-                
-                $data['prj_id'] = $prj_id;
+
+    $data['prj_id'] = $prj_id;
 		$data['projects'] = $this->project_model->get_project($prj_id);
 		$data['status'] = $this->project_model->get_status($prj_id);
 		$data['constant'] = $this->project_model->get_prj_consaltnt($prj_id);
 		$data['companies'] = $this->project_model->get_prj_companies($prj_id);
 		$data['contact'] = $this->project_model->get_prj_cntct_prsnl($prj_id);
                 
-                $this->load->library('googlemaps');
-                $marker = array();
-                if($data['projects']['latitude']!=null && $data['projects']['longitude']!=null) {
-                    $config['center'] = $data['projects']['latitude'].','. $data['projects']['longitude'];
-                    $marker['position'] = $data['projects']['latitude'].','. $data['projects']['longitude'];
-                    
-                } else if ($data['projects']['latitude']==null || $data['projects']['longitude']==null){
-                    $config['center'] = '39.97399584999243,32.746843099594116';
-                    $marker['position'] = '39.97399584999243,32.746843099594116';
-                }
-                
-                if($data['projects']['zoomlevel']!=null && $data['projects']['zoomlevel']!=null) {
-                    $config['zoom'] = $data['projects']['zoomlevel'];
-                    
-                } else if ($data['projects']['latitude']==null || $data['projects']['longitude']==null){
-                    $config['zoom'] = '15';
-                }
-                
-                
-                $config['places'] = TRUE;
-                $config['placesRadius'] = 20;
-                
-		
+		$this->load->library('googlemaps');
+		$marker = array();
+		if($data['projects']['latitude']!=null && $data['projects']['longitude']!=null) {
+			$config['center'] = $data['projects']['latitude'].','. $data['projects']['longitude'];
+			$marker['position'] = $data['projects']['latitude'].','. $data['projects']['longitude'];  
+		} else if ($data['projects']['latitude']==null || $data['projects']['longitude']==null){
+	    $config['center'] = '39.97399584999243,32.746843099594116';
+	    $marker['position'] = '39.97399584999243,32.746843099594116';
+		}
+
+		if($data['projects']['zoomlevel']!=null && $data['projects']['zoomlevel']!=null) {
+		  $config['zoom'] = $data['projects']['zoomlevel'];
+		} else if ($data['projects']['latitude']==null || $data['projects']['longitude']==null){
+		  $config['zoom'] = '15';
+		}
+
+		$config['places'] = TRUE;
+		$config['placesRadius'] = 20;
+
 		$this->googlemaps->add_marker($marker);
 		$this->googlemaps->initialize($config);
-                $data['map'] = $this->googlemaps->create_map();
+    $data['map'] = $this->googlemaps->create_map();
 
 		$kullanici = $this->session->userdata('user_in');
 		$data['is_consultant_of_project'] = $is_consultant_of_project;

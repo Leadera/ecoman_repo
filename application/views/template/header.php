@@ -150,7 +150,7 @@
           <li class="head-li"><a href="<?php echo base_url('ecotracking'); ?>"><i class="fa fa-area-chart"></i> Eco Tracking</a></li>
         </ul>
         <ul class="list-inline pull-right" style="margin: 8px 0 8px 0;">
-          <li class="head-li">You are working on a project named: <a href="<?php echo base_url('project/'.$this->session->userdata('project_id')); ?>"><?php echo $this->session->userdata('project_name'); ?></a>
+          <li class="head-li"><a href="<?php echo base_url('project/'.$this->session->userdata('project_id')); ?>"><?php echo $this->session->userdata('project_name'); ?></a>
           </li>
           <li class="head-li"><a href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-times-circle"></i> Close this project</a></li>
         </ul>
