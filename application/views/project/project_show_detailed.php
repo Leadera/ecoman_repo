@@ -36,7 +36,7 @@
 			</div>
 			<div class="clearfix"></div>
 			<?php if($is_consultant_of_project): ?>
-			<div style="margin-bottom:20px;">
+			<div style="margin-bottom:20px; overflow:hidden; margin-top:10px;">
 				<?php if($this->session->userdata('project_id')==$projects['id']): ?>
 					<a class="btn btn-inverse btn-sm" href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-times-circle"></i> Close this project</a>
 				<?php else: ?>
@@ -45,14 +45,14 @@
 						<button type="submit" class="btn btn-sm btn-primary pull-left" style="margin-right:5px;"><i class="fa fa-plus-square-o"></i> Open Project</button>
 					</form>
 				<?php endif ?>
-			<a class="btn btn-info btn-sm pull-right" href="<?php echo base_url("update_project/".$projects['id']); ?>">Update Project Info</a>
+			<a class="btn btn-inverse btn-sm" href="<?php echo base_url("update_project/".$projects['id']); ?>">Update Project Info</a>
 			    <!--<a onclick="event.preventDefault();window.open('../../IS_OpenLayers/map_prj.php?cmpny=<?php echo $company_ids; ?>','mywindow','width=900,height=900');" style = 'margin-right: 20px;' class="btn btn-info btn-sm pull-right" >See Project Companies On map</a>-->
 <!-- 			    <a onclick="showMapPanelExpand();document.getElementById('myFrame').setAttribute('src','../../IS_OpenLayers/map_prj_prj.php?prj_id=<?php echo $prj_id; ?>');event.preventDefault();"  class="btn btn-inverse btn-sm" >See Project Companies On map</a>
 			    <a class="btn btn-inverse btn-sm" href="#" onclick="showMapPanelCollapse();event.preventDefault();">Close Companies Map</a> -->
 			    
 			 </div>
 			<?php endif ?>
-						 <div class="clearfix"></div>
+			<div class="clearfix"></div>
 
 			<table class="table table-bordered">
 				<tr>
