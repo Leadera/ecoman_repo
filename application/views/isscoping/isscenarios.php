@@ -15,6 +15,7 @@
     proje id değeri session içinden alınacak
 -->
 <input type ="hidden" value='<?php echo $project_id; ?>' id ='prj_id' name='prj_id'></input>
+<input type ="hidden" value='<?php echo $userID; ?>' id ='userID' name='userID'></input>
 <div class="col-md-12">
     <div id="cc" class="easyui-layout" data-options="fit:true" style="height:1500px;">
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="56">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="62">
         <file>
             <url>postgre_json_test2.html</url>
             <bookmark id="38">
@@ -18,22 +18,32 @@
             <url>IS_js/js2_scen_slim2_project_base_mdf.js</url>
             <bookmark id="44">
                 <name/>
-                <line>255</line>
+                <line>257</line>
                 <key/>
             </bookmark>
             <bookmark id="55">
                 <name/>
-                <line>339</line>
+                <line>341</line>
+                <key/>
+            </bookmark>
+            <bookmark id="58">
+                <name/>
+                <line>395</line>
                 <key/>
             </bookmark>
             <bookmark id="46">
                 <name/>
-                <line>396</line>
+                <line>398</line>
+                <key/>
+            </bookmark>
+            <bookmark id="59">
+                <name/>
+                <line>427</line>
                 <key/>
             </bookmark>
             <bookmark id="53">
                 <name/>
-                <line>678</line>
+                <line>683</line>
                 <key/>
             </bookmark>
         </file>
@@ -41,22 +51,27 @@
             <url>IS_js/js1_scen_slim2_project_base_mdf.js</url>
             <bookmark id="54">
                 <name/>
-                <line>156</line>
+                <line>171</line>
+                <key/>
+            </bookmark>
+            <bookmark id="60">
+                <name/>
+                <line>290</line>
                 <key/>
             </bookmark>
             <bookmark id="40">
                 <name/>
-                <line>299</line>
+                <line>314</line>
                 <key/>
             </bookmark>
-            <bookmark id="45">
+            <bookmark id="62">
                 <name/>
-                <line>523</line>
+                <line>388</line>
                 <key/>
             </bookmark>
-            <bookmark id="43">
+            <bookmark id="61">
                 <name/>
-                <line>790</line>
+                <line>705</line>
                 <key/>
             </bookmark>
         </file>
@@ -69,32 +84,32 @@
             </bookmark>
             <bookmark id="47">
                 <name/>
-                <line>205</line>
+                <line>206</line>
                 <key/>
             </bookmark>
             <bookmark id="56">
                 <name/>
-                <line>232</line>
+                <line>233</line>
                 <key/>
             </bookmark>
             <bookmark id="51">
                 <name/>
-                <line>296</line>
+                <line>297</line>
                 <key/>
             </bookmark>
             <bookmark id="52">
                 <name/>
-                <line>311</line>
+                <line>312</line>
                 <key/>
             </bookmark>
             <bookmark id="50">
                 <name/>
-                <line>355</line>
+                <line>356</line>
                 <key/>
             </bookmark>
             <bookmark id="49">
                 <name/>
-                <line>414</line>
+                <line>415</line>
                 <key/>
             </bookmark>
         </file>

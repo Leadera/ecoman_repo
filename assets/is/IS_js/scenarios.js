@@ -183,7 +183,8 @@
                 collapsible:true,
                 url : '../../../Proxy/SlimProxy.php',
                 queryParams : {
-                        url : 'ISScenarios'      
+                        url : 'ISScenarios',
+                        userID : $('#userID').val()
                 },
                 method:'get',
                 idField:'id',
