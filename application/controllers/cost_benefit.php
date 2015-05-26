@@ -7,6 +7,7 @@ class Cost_benefit extends CI_Controller {
 		$this->load->model('cost_benefit_model');
 		$this->load->model('cpscoping_model');
 		$this->load->model('user_model');
+		$this->load->model('company_model');
 		$this->load->model('project_model');
 		$c_user = $this->user_model->get_session_user();
 		if($this->cpscoping_model->can_consultant_prjct($c_user['id']) == false){
@@ -23,7 +24,7 @@ class Cost_benefit extends CI_Controller {
 		// 		$data['cost_benefit'][] = $this->cpscoping_model->get_allocation_from_allocation_id($allo_id['allocation_id']);
 		// 	}
 		// }
-
+		$data['company']=$this->company_model->get_company($cmpny_id);
 		$data['allocation']=$this->cpscoping_model->get_cost_benefit_info($cmpny_id,$prjct_id);
 		$data['is']=$this->cpscoping_model->get_cost_benefit_info_is($cmpny_id,$prjct_id);
 		//print_r($data['allocation']);

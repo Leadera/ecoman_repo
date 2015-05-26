@@ -1,4 +1,5 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
+<div class="col-md-12"><div class="lead"><?php echo $company['name']; ?></div></div>
 <div class="col-md-6">
 <?php  $allocation = array_merge($allocation, $is);  //print_r($allocation); ?>
 	<p>Cost - Benefit Analysis, CP and IS Potentials</p>
@@ -15,11 +16,11 @@
 					<tr>
 						<td width="250">Option</td>
 						<td width="75%">
-
+						<?php //print_r($a); ?>
 							<b><?php if(!empty($a['prcss_name'])) {echo $a['prcss_name'];} else {echo "IS potential"; } ?></b> 
 							<small class="text-muted"><?php echo $a['flow_name']; ?><?php if(!empty($a['prcss_name'])) {echo "-".$a['flow_type_name']; } ?></small><br>
 							<span class="text-info">
-								<?php if(empty($a['cmpny_from_name'])) {echo $a['best'];} else {echo "IS potential with ".$a['cmpny_from_name']; } ?>
+								<?php if(empty($a['cmpny_from_name'])) {echo $a['best'];} else {echo $a['flow_name']." input IS potential from ".$a['cmpny_from_name']; } ?>
 							</span>
 						</td>
 					</tr>
@@ -85,11 +86,11 @@
 					</tr>
 					<tr>
 						<td>€/ Unit</td>
-						<td><input type="text" name="euunit" id="euunit-<?php echo $i; ?>" class="form-control" value="<?php echo round($a['cost']/$a['qntty'],2); ?>" ></td>
+						<td><input type="text" name="euunit" id="euunit-<?php echo $i; ?>" class="form-control" value="<?php echo ($a['cost']/$a['qntty']); ?>" ></td>
 					</tr>
 					<tr>
 						<td>EIP/ Unit</td>
-						<td><input type="text" name="eipunit" id="eipunit-<?php echo $i; ?>" class="form-control" value="<?php echo round($a['ep']/$a['qntty'],2); ?>" ></td>
+						<td><input type="text" name="eipunit" id="eipunit-<?php echo $i; ?>" class="form-control" value="<?php echo ($a['ep']/$a['qntty']); ?>" ></td>
 					</tr>
 					<tr>
 						<td>Ecological Benefit</td>
@@ -226,7 +227,8 @@
 				</tr>
 			<?php foreach ($allocation as $a): ?>
 				<tr>
-					<td><?php if(empty($a['cmpny_from_name'])) {echo $a['best']."-".$a['prcss_name'];} else {echo "IS potential with ".$a['cmpny_from_name']; } ?></td>
+					<td>
+					<?php if(empty($a['cmpny_from_name'])) {echo $a['best']."-".$a['prcss_name'];} else {echo $a['flow_name']." input IS potential from ".$a['cmpny_from_name']; } ?></td>
 					<td><?php echo $a['marcos']; ?></td>
 					<td><?php echo $a['ecoben']; ?></td></tr>
 			<?php endforeach ?>
@@ -242,7 +244,7 @@
 	$t=0;
 	$toplameco=0;
 	foreach ($allocation as $a) {
-		if(empty($a['cmpny_from_name'])) { $tuna_array[$t]['name']=$a['best']."-".$a['prcss_name'];} else {$tuna_array[$t]['name']="IS potential with ".$a['cmpny_from_name']; }
+		if(empty($a['cmpny_from_name'])) { $tuna_array[$t]['name']=$a['best']."-".$a['prcss_name'];} else {$tuna_array[$t]['name']=$a['flow_name']." input IS potential from ".$a['cmpny_from_name']; }
 		
 		$tuna_array[$t]['color']='#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
 		if($a['marcos']>0){
