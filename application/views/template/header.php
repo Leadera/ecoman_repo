@@ -81,7 +81,6 @@
     <div style="margin-bottom: 30px;">
       <ul class="nav navbar-nav navbar-left">
           <li>
-
           <div class="dropdown">
             <button style="font-size: 16px;padding: 15px 21px;line-height: 23px;font-weight: 400;" class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
               <i class="fa fa-globe"></i> Projects
@@ -98,7 +97,7 @@
         <li>
           <div class="dropdown">
             <button style="font-size: 16px;padding: 15px 21px;line-height: 23px;font-weight: 400;" class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-              <i class="fa fa-user"></i> Members
+              <i class="fa fa-user"></i> Companies
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu dropdown-inverse" role="menu" aria-labelledby="dropdownMenu1" style="padding:13px;">
@@ -109,10 +108,10 @@
                   <li><a style="color:white;" href="<?php echo base_url('projectcompanies'); ?>"><i class="fa fa-building-o"></i> Project Companies</a></li>
                 <?php endif ?>
               <?php endif ?>
-              <li><a style="color:white;" href="<?php echo base_url('users'); ?>"><i class="fa fa-group"></i> Consultants</a></li>
             </ul>
           </div>
         </li>
+        <li><a href="<?php echo base_url('users'); ?>"><i class="fa fa-group"></i> Consultants</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="<?php echo base_url('whatwedo'); ?>"><i class="fa fa-question-circle"></i> What We Do</a></li>
@@ -157,9 +156,9 @@
         </div>
         <?php else: ?>
           <ul class="list-inline" style="margin:0px;">
-            <li class="head-li"><a href="<?php echo base_url('openproject'); ?>"><i class="fa fa-plus-square-o"></i> Open Project</a></li>
-            <li class="head-li"><a href="<?php echo base_url('newproject'); ?>"><i class="fa fa-plus-circle"></i> Create Project</a></li>
             <li class="head-li"><a href="<?php echo base_url('newcompany'); ?>"><i class="fa fa-plus-square"></i> Create Company</a></li>
+            <li class="head-li"><a href="<?php echo base_url('newproject'); ?>"><i class="fa fa-plus-circle"></i> Create Project</a></li>
+            <li class="head-li"><a href="<?php echo base_url('openproject'); ?>"><i class="fa fa-plus-square-o"></i> Open Project</a></li>
           </ul>
         <?php endif ?>
         <div class="clearfix"></div>

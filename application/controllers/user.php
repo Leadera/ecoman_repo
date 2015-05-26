@@ -297,7 +297,7 @@ class User extends CI_Controller {
 	}
 
 	public function show_all_users(){
-		$data['users']=$this->user_model->get_all_users();
+		$data['users']=$this->user_model->get_consultants();
 
 		$this->load->view('template/header');
 		$this->load->view('user/show_all_users',$data);
