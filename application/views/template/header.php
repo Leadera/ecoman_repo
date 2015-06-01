@@ -93,8 +93,8 @@
         <li class="head-li"><a href="<?php echo base_url('profile_update'); ?>" ><i class="fa fa-pencil-square-o"></i> Update Profile</a></li>
         <li class="head-li"><a href="<?php echo base_url('logout'); ?>"><i class="fa fa-sign-out"></i> Logout</a></li>
       <?php else: ?>
-        <li class="head-li"><a href="<?php echo base_url('login'); ?>" class="kutua"><i class="fa fa-sign-in"></i> Login</a></li>
-        <li class="head-li"><a href="<?php echo base_url('register'); ?>" class="kutua"><i class="fa fa-plus"></i> Register</a></li>
+        <li class="head-li"><a href="<?php echo base_url('login'); ?>"><i class="fa fa-sign-in"></i> Login</a></li>
+        <li class="head-li"><a href="<?php echo base_url('register'); ?>"><i class="fa fa-plus"></i> Register</a></li>
       <?php endif ?>
     </ul>
 
