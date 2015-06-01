@@ -339,9 +339,12 @@ print_r($allocation[0]);*/
         <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges()">See Changes</a>
     </div>
     <script type="text/javascript">
-    function formatPrice(input,row){
-    	input = input.toFixed(2);
-  		    var output = input
+    function formatPrice(input){
+    	console.log(input);
+    	if (input !== undefined){
+    		input = input.toFixed(2);
+    	}
+  		    var output = input;
 			    if (parseFloat(input)) {
 			        input = new String(input); // so you can perform string operations
 			        var parts = input.split("."); // remove the decimal part

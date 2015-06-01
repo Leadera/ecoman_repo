@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>CPIS Tool</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <!-- Loading Bootstrap -->
-    <link href="<?php echo asset_url('bootstrap/css/bootstrap.css'); ?>" rel="stylesheet">
+<head>
+  <meta charset="utf-8">
+  <title>CPIS Tool</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <!-- Loading Bootstrap -->
+  <link href="<?php echo asset_url('bootstrap/css/bootstrap.css'); ?>" rel="stylesheet">
 
-    <!-- Loading Flat UI -->
-    <link href="<?php echo asset_url('css/flat-ui.css'); ?>" rel="stylesheet">
-    <link href="<?php echo asset_url('css/custom.css'); ?>" rel="stylesheet">
-    <link href="<?php echo asset_url('css/selectize.css'); ?>" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo asset_url('css/font-awesome.min.css'); ?>">
+  <!-- Loading Flat UI -->
+  <link href="<?php echo asset_url('css/flat-ui.css'); ?>" rel="stylesheet">
+  <link href="<?php echo asset_url('css/custom.css'); ?>" rel="stylesheet">
+  <link href="<?php echo asset_url('css/selectize.css'); ?>" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo asset_url('css/font-awesome.min.css'); ?>">
     <!--<link href="<?php // echo asset_url('css/jquery-ui-1.10.4.custom.css'); ?>" rel="stylesheet"> 
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
-    <![endif]-->
+      <![endif]-->
 
-    <script src="<?php echo asset_url('js/jquery-1.10.2.min.js'); ?>"></script>
-    <script src="<?php echo asset_url('js/bootstrap.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php echo asset_url('is/jquery.easyui.min.js'); ?>"></script>
-    <!--[if lt IE 9]><script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.0.8/es5-shim.min.js"></script><![endif]-->
-    <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto" 
-            and $this->uri->segment(1)!="isScopingAutoPrjBase" 
-            and $this->uri->segment(1)!="isScopingAutoPrjBaseMDF" 
-            and $this->uri->segment(1)!="isScopingPrjBaseMDF" 
-            and $this->uri->segment(1)!="isScopingPrjBase" 
-            and $this->uri->segment(1)!="scenarios"
-            and $this->uri->segment(1)!="cost_benefit"
-            and $this->uri->segment(1)!="kpi_calculation"): ?>
-      <script src="<?php echo asset_url('js/selectize.min.js'); ?>"></script>
-      <script type="text/javascript">
-        $(function() {
-          $('#selectize').selectize({
-            create: true,
-            sortField: 'text'
-          });
+      <script src="<?php echo asset_url('js/jquery-1.10.2.min.js'); ?>"></script>
+      <script src="<?php echo asset_url('js/bootstrap.min.js'); ?>"></script>
+      <script type="text/javascript" src="<?php echo asset_url('is/jquery.easyui.min.js'); ?>"></script>
+      <!--[if lt IE 9]><script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.0.8/es5-shim.min.js"></script><![endif]-->
+      <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto" 
+        and $this->uri->segment(1)!="isScopingAutoPrjBase" 
+        and $this->uri->segment(1)!="isScopingAutoPrjBaseMDF" 
+        and $this->uri->segment(1)!="isScopingPrjBaseMDF" 
+        and $this->uri->segment(1)!="isScopingPrjBase" 
+        and $this->uri->segment(1)!="scenarios"
+        and $this->uri->segment(1)!="cost_benefit"
+        and $this->uri->segment(1)!="kpi_calculation"): ?>
+        <script src="<?php echo asset_url('js/selectize.min.js'); ?>"></script>
+        <script type="text/javascript">
+          $(function() {
+            $('#selectize').selectize({
+              create: true,
+              sortField: 'text'
+            });
           //$( "select" ).selectize();
         });
       </script>
@@ -51,7 +51,7 @@
     <nav class="navbar navbar-default navbar-lg" style="margin-bottom:0px;">
       <a class="navbar-brand" href="<?php echo base_url(); ?>" style="color:white;">ECOMAN</a>
       
-      <form class="navbar-form navbar-left" action="<?php echo base_url('search') ?>" method="post" role="search" style="display: table;">
+      <form class="navbar-form navbar-right" action="<?php echo base_url('search') ?>" method="post" role="search" style="display: table;">
         <div class="form-group">
           <div class="input-group" style="display:block;">
             <input name="term" class="form-control" id="navbarInput-01" type="search" placeholder="Search">
@@ -62,75 +62,73 @@
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <?php
-          //print_r($this->session->userdata('user_in'));
-          if ($this->session->userdata('user_in') !== FALSE):
-            $tmp = $this->session->userdata('user_in');
-        ?>
-          <li class="head-li"><a href="<?php echo base_url('user/'.$tmp['username']); ?>" style="text-transform: capitalize;"><i class="fa fa-user"></i>
- <?php echo $tmp['username']; ?></a></li>
-          <li class="head-li"><a href="<?php echo base_url('logout'); ?>"><i class="fa fa-sign-out"></i>
- Logout</a></li>
-        <?php else: ?>
-          <li class="head-li"><a href="<?php echo base_url('login'); ?>" class="kutua"><i class="fa fa-sign-in"></i>
- Login</a></li>
-          <li class="head-li"><a href="<?php echo base_url('register'); ?>" class="kutua"><i class="fa fa-plus"></i> Register</a></li>
-        <?php endif ?>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-left ust-nav">
+        <li class="navtus" data-rel="profiles"><a id="l1" href="#"><i class="fa fa-group"></i> Profiles</a></li>
+        <li class="navtus" data-rel="companies"><a id="l2" href="#"><i class="fa fa-building-o"></i> Companies</a></li>
+        <li class="navtus" data-rel="projects"><a id="l3" href="#"><i class="fa fa-globe"></i> Projects</a></li>
+        <li class="navtus" data-rel="analysis"><a id="l4" href="#"><i class="fa fa-recycle"></i> Analysis</a></li>
       </ul>
     </nav>
-    <div style="margin-bottom: 30px;">
-      <ul class="nav navbar-nav navbar-left">
-          <li>
-          <div class="dropdown">
-            <button style="font-size: 16px;padding: 15px 21px;line-height: 23px;font-weight: 400;" class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-              <i class="fa fa-globe"></i> Projects
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu dropdown-inverse" role="menu" aria-labelledby="dropdownMenu1" style="padding:13px;">
-              <?php if ($this->session->userdata('user_in') !== FALSE): ?>
-                <li><a style="color:white;" href="<?php echo base_url('myprojects'); ?>">My Projects</a></li>
-              <?php endif ?>
-              <li><a style="color:white;" href="<?php echo base_url('projects'); ?>">All Projects</a></li>
-            </ul>
-          </div>
-          </li>
-        <li>
-          <div class="dropdown">
-            <button style="font-size: 16px;padding: 15px 21px;line-height: 23px;font-weight: 400;" class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-              <i class="fa fa-user"></i> Companies
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu dropdown-inverse" role="menu" aria-labelledby="dropdownMenu1" style="padding:13px;">
-              <li><a style="color:white;" href="<?php echo base_url('companies'); ?>"><i class="fa fa-building-o"></i> All Companies</a></li>
-              <?php if ($this->session->userdata('user_in') !== FALSE): ?>
-                <li><a style="color:white;" href="<?php echo base_url('mycompanies'); ?>"><i class="fa fa-building-o"></i> My Companies</a></li>
-                <?php if($this->session->userdata('project_id') !== FALSE): ?>
-                  <li><a style="color:white;" href="<?php echo base_url('projectcompanies'); ?>"><i class="fa fa-building-o"></i> Project Companies</a></li>
-                <?php endif ?>
-              <?php endif ?>
-            </ul>
-          </div>
-        </li>
-        <li><a href="<?php echo base_url('users'); ?>"><i class="fa fa-group"></i> Consultants</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="<?php echo base_url('whatwedo'); ?>"><i class="fa fa-question-circle"></i> What We Do</a></li>
-        <li><a href="<?php echo base_url('functionalities'); ?>"><i class="fa fa-dashboard"></i> Functionalities</a></li>
-        <li><a href="<?php echo base_url('contactus'); ?>"><i class="fa fa-envelope"></i> Contact Us</a></li>
-      </ul>
-      <div class="clearfix"></div>
-      </div>
-      <?php if ($this->session->userdata('user_in') !== FALSE): ?>
-        <div style=" padding: 10px 20px;margin-bottom: 20px; margin-top: -40px;">
-        <?php if($this->session->userdata('project_id') !== FALSE): ?>
-          
 
-          <div class="">
-        <ul class="list-inline pull-left" style="margin:6px 0 4px 0;">
-          <li class="head-li"><a href="<?php echo base_url('cpscoping'); ?>"><i class="fa fa-recycle"></i> CP - Potential Identification</a></li>
-          <li class="head-li">
+    <div class="content-container" style="margin-bottom: 20px;display: block;height: 52px;">
+
+      <ul id="homies" class="nav navbar-nav alt-nav">
+        <li><a href="#" class="nav-info">Get to know</a></li>
+        <li><a href="<?php echo base_url('contactus'); ?>"><i class="fa fa-envelope"></i> Who we are?</a></li>
+        <li><a href="<?php echo base_url('whatwedo'); ?>"><i class="fa fa-question-circle"></i> What We Do?</a></li>
+        <li><a href="<?php echo base_url('functionalities'); ?>"><i class="fa fa-dashboard"></i> Functionalities</a></li>
+      </ul>
+
+      <ul id="profiles" class="nav navbar-nav alt-nav" style="display:none;">
+        <li><a href="#" class="nav-info">User Profiles</a></li>
+        <li><a href="<?php echo base_url('users'); ?>"><i class="fa fa-group"></i> Consultants</a></li>
+        <?php
+              //print_r($this->session->userdata('user_in'));
+        if ($this->session->userdata('user_in') !== FALSE):
+          $tmp = $this->session->userdata('user_in');
+        ?>
+        <li class="head-li"><a href="<?php echo base_url('user/'.$tmp['username']); ?>" style="text-transform: capitalize;"><i class="fa fa-user"></i> <?php echo $tmp['username']; ?></a></li>
+        <li class="head-li"><a href="<?php echo base_url('profile_update'); ?>" ><i class="fa fa-pencil-square-o"></i> Update Profile</a></li>
+        <li class="head-li"><a href="<?php echo base_url('logout'); ?>"><i class="fa fa-sign-out"></i> Logout</a></li>
+      <?php else: ?>
+        <li class="head-li"><a href="<?php echo base_url('login'); ?>" class="kutua"><i class="fa fa-sign-in"></i> Login</a></li>
+        <li class="head-li"><a href="<?php echo base_url('register'); ?>" class="kutua"><i class="fa fa-plus"></i> Register</a></li>
+      <?php endif ?>
+    </ul>
+
+    <ul id="companies" class="nav navbar-nav alt-nav" style="display:none;">
+      <li><a href="#" class="nav-info">Companies</a></li>
+      <li><a href="<?php echo base_url('companies'); ?>"><i class="fa fa-building-o"></i> All Companies</a></li>
+      <?php if ($this->session->userdata('user_in') !== FALSE): ?>
+        <li><a href="<?php echo base_url('mycompanies'); ?>"><i class="fa fa-building-o"></i> My Companies</a></li>
+        <?php if($this->session->userdata('project_id') !== FALSE): ?>
+          <li><a href="<?php echo base_url('projectcompanies'); ?>"><i class="fa fa-building-o"></i> Project Companies</a></li>
+        <?php endif ?>
+        <li class="head-li"><a href="<?php echo base_url('newcompany'); ?>"><i class="fa fa-plus-square"></i> Create Company</a></li>
+      <?php endif ?>
+    </ul>
+
+    <ul id="projects" class="nav navbar-nav alt-nav" style="display:none;">
+      <li><a href="#" class="nav-info">Projects</a></li>
+      <?php if ($this->session->userdata('user_in') !== FALSE): ?>
+        <li><a href="<?php echo base_url('myprojects'); ?>"><i class="fa fa-globe"></i> My Projects</a></li>
+      <?php endif ?>
+      <li><a href="<?php echo base_url('projects'); ?>"><i class="fa fa-globe"></i> All Projects</a></li>
+      <?php if ($this->session->userdata('user_in') !== FALSE): ?>
+        <li><a href="<?php echo base_url('newproject'); ?>"><i class="fa fa-plus-circle"></i> Create Project</a></li>
+      <?php endif ?>
+    </ul>
+
+    <ul id="analysis" class="nav navbar-nav alt-nav" style="display:none;">
+      <li><a href="#" class="nav-info">Analysis</a></li>
+      <?php if ($this->session->userdata('user_in') !== FALSE): ?>
+        <?php if($this->session->userdata('project_id') !== FALSE): ?>
+          <li><a href="<?php echo base_url('cpscoping'); ?>"><i class="fa fa-recycle"></i> CP - Potential Identification</a></li>
+          <li>
             <div class="dropdown">
-              <button class="btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+              <button class="btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" style="padding: 12px 0px;">
                 <i class="fa fa-exchange"></i> IS - Potential Identification
                 <span class="caret"></span>
               </button>
@@ -144,28 +142,65 @@
               </ul>
             </div>
           </li>
-          <li class="head-li"><a href="<?php echo base_url('map'); ?>"><i class="fa fa-globe"></i> GIS</a></li>
-          <li class="head-li"><a href="<?php echo base_url('cost_benefit'); ?>"><i class="fa fa-eur"></i> Cost - Benefit Analysis</a></li>
-          <li class="head-li"><a href="<?php echo base_url('ecotracking'); ?>"><i class="fa fa-area-chart"></i> Eco Tracking</a></li>
-        </ul>
-        <ul class="list-inline pull-right" style="margin: 8px 0 8px 0;">
-          <li class="head-li"><a href="<?php echo base_url('project/'.$this->session->userdata('project_id')); ?>"><?php echo $this->session->userdata('project_name'); ?></a>
+          <li><a href="<?php echo base_url('map'); ?>"><i class="fa fa-globe"></i> GIS</a></li>
+          <li><a href="<?php echo base_url('cost_benefit'); ?>"><i class="fa fa-eur"></i> Cost - Benefit Analysis</a></li>
+          <li><a href="<?php echo base_url('ecotracking'); ?>"><i class="fa fa-area-chart"></i> Eco Tracking</a></li>
+
+          <li><a href="<?php echo base_url('project/'.$this->session->userdata('project_id')); ?>"><?php echo $this->session->userdata('project_name'); ?></a>
           </li>
-          <li class="head-li"><a href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-times-circle"></i> Close this project</a></li>
-        </ul>
-        </div>
+          <li><a href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-times-circle"></i> Close this project</a></li>
+
+
         <?php else: ?>
-          <ul class="list-inline" style="margin:0px;">
-            <li class="head-li"><a href="<?php echo base_url('newcompany'); ?>"><i class="fa fa-plus-square"></i> Create Company</a></li>
-            <li class="head-li"><a href="<?php echo base_url('newproject'); ?>"><i class="fa fa-plus-circle"></i> Create Project</a></li>
+          <li>You need to open a project to work on the tools</li> 
+ <!--          <ul class="list-inline" style="margin:0px;">
             <li class="head-li"><a href="<?php echo base_url('openproject'); ?>"><i class="fa fa-plus-square-o"></i> Open Project</a></li>
-          </ul>
+          </ul> -->
         <?php endif ?>
-        <div class="clearfix"></div>
-      </div>
-    <?php else: ?>
-      <!-- <p style="font-size:14px; margin:0px;">
-        To use the extended features of this web site, please register.
-      </p> -->
-    <?php endif ?>
-    
+      <?php endif ?>
+
+    </ul>
+
+
+  </div>
+  <div class="clearfix"></div>
+  <!-- <p style="font-size:14px; margin:0px;">
+    To use the extended features of this web site, please register.
+  </p> -->
+  <script type="text/javascript">
+    $( document ).ready(function() {
+      var pathname = window.location.pathname;
+      console.log(pathname);
+      //alert(pathname);
+      if ((pathname.toLowerCase().indexOf("user") >= 0) || (pathname.toLowerCase().indexOf("profile") >= 0)){
+        $('#l1').css('background-color', '#CF324C');
+        $('.content-container ul.nav').hide();
+        $('#profiles').fadeIn('slow');
+      }
+      else if ((pathname.toLowerCase().indexOf("companies") >= 0) || (pathname.toLowerCase().indexOf("newcompany") >= 0)){
+        $('#l2').css('background-color', '#CF324C');
+        $('.content-container ul.nav').hide();
+        $('#companies').fadeIn('slow');
+      }
+      else if ((pathname.toLowerCase().indexOf("project") >= 0) || (pathname.toLowerCase().indexOf("newcompany") >= 0)){
+        $('#l3').css('background-color', '#CF324C');
+        $('.content-container ul.nav').hide();
+        $('#projects').fadeIn('slow');
+      }
+      else if ((pathname.toLowerCase().indexOf("cpscoping") >= 0) || (pathname.toLowerCase().indexOf("isscoping") >= 0) || (pathname.toLowerCase().indexOf("cost_benefit") >= 0) || (pathname.toLowerCase().indexOf("kpi_calculation") >= 0) || (pathname.toLowerCase().indexOf("ecotracking") >= 0)){
+        $('#l4').css('background-color', '#CF324C');
+        $('.content-container ul.nav').hide();
+        $('#analysis').fadeIn('slow');
+      }
+      else {
+        $('.content-container ul.nav').hide();
+        $('#homies').fadeIn('slow');
+      }
+    });
+
+    $(".navtus").click(function(e) {
+      e.preventDefault();
+      $('.content-container ul.nav').hide();
+      $('#' + $(this).data('rel')).fadeIn('slow');
+    });
+  </script>

@@ -15,6 +15,11 @@ class Company_model extends CI_Model {
     return $query['id'];
   }
 
+  /**
+   * Saves company icon information
+   * @param [compnay id]
+   * @param [logo address]
+   */
   public function set_company_image($last_id,$logo){
     $this->db->where('id', $last_id);
     $this->db->update('t_cmpny', $logo);

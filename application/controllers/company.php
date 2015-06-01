@@ -110,7 +110,7 @@ class Company extends CI_Controller{
 		$this->load->view('template/footer');
 	}
 
-	//bu kod telefon numaralarýna - boþluk ve _ koymaya yarar
+	//bu kod telefon numaralarÄ±na - boÅŸluk ve _ koymaya yarar
 	function alpha_dash_space($str_in = '')
 	{
 		if (! preg_match("/^([-a-z0-9_ ])+$/i", $str_in)){
@@ -215,7 +215,7 @@ class Company extends CI_Controller{
 		//$data['users_without_company']= $this->user_model->users_without_company();
 		if(empty($data['nacecode'])){$data['nacecode']['code']="";$data['nacecode']['name_tr']="";}
 
-		//kullanýcýnýn company'i editleme hakký varmý kontrolü
+		//kullanÄ±cÄ±nÄ±n company'i editleme hakkÄ± varmÄ± kontrolÃ¼
 		$kullanici = $this->session->userdata('user_in');
 		$data['have_permission'] = $this->user_model->can_edit_company($kullanici['id'],$term);
 
@@ -235,7 +235,7 @@ class Company extends CI_Controller{
 	}
 
 	public function addUsertoCompany($term){
-		//kullanýcýnýn company'i editleme hakký varmý kontrolü
+		//kullanÃ½cÃ½nÃ½n company'i editleme hakkÃ½ varmÃ½ kontrolÃ¼
 		$kullanici = $this->session->userdata('user_in');
 		if(!$this->user_model->can_edit_company($kullanici['id'],$term)){
 			redirect(base_url(),'refresh');
@@ -258,7 +258,7 @@ class Company extends CI_Controller{
 
 	public function update_company($term){
 
-		//kullanýcýnýn company'i editleme hakký varmý kontrolü
+		//kullanÃ½cÃ½nÃ½n company'i editleme hakkÃ½ varmÃ½ kontrolÃ¼
 		$kullanici = $this->session->userdata('user_in');
 		if(!$this->user_model->can_edit_company($kullanici['id'],$term)){
 			redirect(base_url(),'refresh');
@@ -305,7 +305,7 @@ class Company extends CI_Controller{
 			$config['file_name']	= $this->uri->segment(2).'.jpg';
 			$this->load->library('upload', $config);
 			$this->upload->overwrite = true;
-			//Resmi servera yükleme
+			//Resmi servera yÃ¼kleme
 			$resim = "";
 			if (!$this->upload->do_upload())
 			{
@@ -313,7 +313,7 @@ class Company extends CI_Controller{
 				//hata vermeye gerek yok , resim secmeyebilir.
 			}
 			else{
-			//Yüklenen resmi boyutlandýrma ve çevirme
+			//YÃ¼klenen resmi boyutlandÃ½rma ve Ã§evirme
 				$config['image_library'] = 'gd2';
 				$config['source_image']	= './assets/company_pictures/'.$this->uri->segment(2).'.jpg';
 				$config['maintain_ratio'] = TRUE;
