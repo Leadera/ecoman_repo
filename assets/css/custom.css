@@ -359,3 +359,40 @@ td {
     text-align: right;
     cursor: default;
 }
+
+#l1,#l2,#l3,#l4{
+    color: white;
+    text-decoration: none;
+}
+#profiles{
+    background-color: #C85A1F; 
+    color:white;
+    width: 100%;
+}
+#profiles a{
+    color:white;
+}
+#companies{
+    background-color: #901F0F; 
+    color:white;
+    width: 100%;
+}
+#companies a{
+    color:white;
+}
+#projects{
+    background-color: #15474A; 
+    color:white;
+    width: 100%;
+}
+#projects a{
+    color:white;
+}
+#analysis{
+    background-color: #84BFC3; 
+    color:white;
+    width: 100%;
+}
+#analysis a{
+    color:white;
+}

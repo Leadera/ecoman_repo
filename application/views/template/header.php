@@ -65,10 +65,10 @@
 
       </ul>
       <ul class="nav navbar-nav navbar-left ust-nav">
-        <li class="navtus" data-rel="profiles"><a id="l1" href="#"><i class="fa fa-group"></i> Profiles</a></li>
-        <li class="navtus" data-rel="companies"><a id="l2" href="#"><i class="fa fa-building-o"></i> Companies</a></li>
-        <li class="navtus" data-rel="projects"><a id="l3" href="#"><i class="fa fa-globe"></i> Projects</a></li>
-        <li class="navtus" data-rel="analysis"><a id="l4" href="#"><i class="fa fa-recycle"></i> Analysis</a></li>
+        <li class="navtus" data-rel="profiles"><a id="l1" href="#" ><i class="fa fa-group"></i> Profiles</a></li>
+        <li class="navtus" data-rel="companies"><a id="l2" href="#" ><i class="fa fa-building-o"></i> Companies</a></li>
+        <li class="navtus" data-rel="projects"><a id="l3" href="#" ><i class="fa fa-globe"></i> Projects</a></li>
+        <li class="navtus" data-rel="analysis"><a id="l4" href="#" ><i class="fa fa-recycle"></i> Analysis</a></li>
       </ul>
     </nav>
 
@@ -173,22 +173,22 @@
       console.log(pathname);
       //alert(pathname);
       if ((pathname.toLowerCase().indexOf("user") >= 0) || (pathname.toLowerCase().indexOf("profile") >= 0)){
-        $('#l1').css('background-color', '#CF324C');
+        $('#l1').css('background-color', '#C85A1F');
         $('.content-container ul.nav').hide();
         $('#profiles').fadeIn('slow');
       }
       else if ((pathname.toLowerCase().indexOf("companies") >= 0) || (pathname.toLowerCase().indexOf("newcompany") >= 0)){
-        $('#l2').css('background-color', '#CF324C');
+        $('#l2').css('background-color', '#901F0F');
         $('.content-container ul.nav').hide();
         $('#companies').fadeIn('slow');
       }
       else if ((pathname.toLowerCase().indexOf("project") >= 0) || (pathname.toLowerCase().indexOf("newcompany") >= 0)){
-        $('#l3').css('background-color', '#CF324C');
+        $('#l3').css('background-color', '#15474A');
         $('.content-container ul.nav').hide();
         $('#projects').fadeIn('slow');
       }
       else if ((pathname.toLowerCase().indexOf("cpscoping") >= 0) || (pathname.toLowerCase().indexOf("isscoping") >= 0) || (pathname.toLowerCase().indexOf("cost_benefit") >= 0) || (pathname.toLowerCase().indexOf("kpi_calculation") >= 0) || (pathname.toLowerCase().indexOf("ecotracking") >= 0)){
-        $('#l4').css('background-color', '#CF324C');
+        $('#l4').css('background-color', '#84BFC3');
         $('.content-container ul.nav').hide();
         $('#analysis').fadeIn('slow');
       }
@@ -202,5 +202,18 @@
       e.preventDefault();
       $('.content-container ul.nav').hide();
       $('#' + $(this).data('rel')).fadeIn('slow');
+      if($(this).data('rel') == "profiles"){
+        $('#l1').css('background-color', '#C85A1F');
+      }
+      else if($(this).data('rel') == "companies"){
+        $('#l2').css('background-color', '#901F0F');
+      }      
+      else if($(this).data('rel') == "projects"){
+        $('#l3').css('background-color', '#15474A');
+      }      
+      else if($(this).data('rel') == "analysis"){
+        $('#l4').css('background-color', '#84BFC3');
+      }
+      $(this).siblings().find("a").css( "background-color", "#2D8B42" );
     });
   </script>
