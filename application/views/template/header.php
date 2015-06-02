@@ -44,7 +44,7 @@
     <?php endif ?>
 
     <!-- font -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic,500italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   </head>
   <body <?php /*if($this->uri->segment(1)=="isscoping" or $this->uri->segment(1)=="isscopingauto"){echo 'class="easyui-layout"';}*/ ?>>
 
