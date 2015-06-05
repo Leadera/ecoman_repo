@@ -1,9 +1,10 @@
 <div class="container">
+	<?php if(!empty($this->session->flashdata('project_error'))): ?>
+		<div class="alert alert-warning"><?php echo $this->session->flashdata('project_error'); ?></div>
+	<?php endif ?>
 	<div class="row">
 		<div class="col-md-8">
-			<?php if(!empty($this->session->flashdata('project_error'))): ?>
-				<div class="alert alert-warning"><?php echo $this->session->flashdata('project_error'); ?></div>
-			<?php endif ?>
+				<div class="swissheader">All Projects</div>
 						<!-- harita -->
 				<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 				<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
@@ -74,20 +75,30 @@
 				}
 				</script>
 				<!-- harita bitti -->
-			<div class="swissheader pull-left">Show All Projects</div>
-			<?php if($is_consultant):?>
-			<a class="pull-right btn btn-info btn-embossed btn-sm" href="<?php echo base_url("newproject"); ?>">Create Project</a>
-			<?php endif ?>
-			<ul class="list-group" style="clear:both;">
+			<table class="table-hover" style="clear:both;">
 			<?php foreach ($projects as $pro): ?>
-				<li class="list-group-item">
-					<b><a href="<?php echo base_url('project/'.$pro['id']) ?>"><?php echo $pro['name']; ?></a></b>
-					<span style="color:#999999; font-size:12px;"><?php echo $pro['description']; ?></span>
-				</li>
+				<tr>
+				<td style="padding: 10px 15px;">
+					<a href="<?php echo base_url('project/'.$pro['id']) ?>">
+					<div class="row">
+						<div class="col-md-9">
+							<div><b><?php echo $pro['name']; ?></b></div>
+							<div><span style="color:#999999; font-size:12px;"><?php echo $pro['description']; ?></span></div>
+						</div>
+						<div class="col-md-3">
+							
+						</div>
+					</div>
+					</a>
+				</td>
+				</tr>
 			<?php endforeach ?>
-			</ul>
+			</table>
 		</div>	
 		<div class="col-md-4">
+			<div class="well">
+				You are now seeing all the projects at the system. You can only access and open the projects that you are involved.
+			</div>
 		</div>
 	</div>
 </div>

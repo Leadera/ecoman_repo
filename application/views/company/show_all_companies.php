@@ -1,6 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8">
+				<div class="swissheader"><?php echo $cluster_name['name'];?></div>
 				<!-- harita -->
 				<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 				<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
@@ -37,30 +38,34 @@
 				}
 				</script>
 				<!-- harita bitti -->
-				<div class="swissheader pull-left">Show <?php echo $cluster_name['name'];?></div>
-				<?php 
-					$temp = $this->session->userdata('user_in');
-					if($temp['id'] != null): ?>
-					<a class="pull-right btn btn-info btn-sm" href="<?php echo base_url("newcompany"); ?>">Create a Company</a>
-					<?php endif	?>	
-
-				<ul class="list-group" style="clear:both;">
+				<table style="clear:both;" class="table-hover">
 				<?php foreach ($companies as $com): ?>
-					<li class="list-group-item">
-						<b><a href="<?php echo base_url('company/'.$com['id']) ?>"><?php echo $com['name']; ?></a></b>
-						<span style="color:#999999; font-size:12px;"><?php echo $com['description']; ?></span>
-						<?php if($com['have_permission']==1): ?>
-							<i class="fa fa-check-square-o pull-right"></i>
-						<?php endif ?>
-					</li>
+					<tr>
+						<td style="padding: 10px 15px;">
+						<a href="<?php echo base_url('company/'.$com['id']) ?>" style="display: block; cursor:pointer;">
+						<div class="row">
+							<div class="col-md-9">
+								<div><b><?php echo $com['name']; ?></b></div>
+								<div><span style="color:#999999; font-size:12px;"><?php echo $com['description']; ?></span></div>
+							</div>
+							<div class="col-md-3">
+								<?php if($com['have_permission']==1): ?>
+										<a class="btn btn-tuna" href="<?php echo base_url("new_flow/".$com['id']); ?>"><i class="fa fa-database"></i> Edit Company Data</a>
+										<a class="btn btn-tuna" href="<?php echo base_url("update_company/".$com['id']); ?>"><i class="fa fa-pencil-square-o"></i> Edit Company Info</a>
+								<?php endif ?>
+							</div>
+						</div>
+						</a>
+						</td>
+					</tr>
 				<?php endforeach ?>
-				</ul>
+				</table>
 		</div>	
 		<div class="col-md-4">
 
-			<a class="btn btn-default btn-sm" href="<?php echo base_url('cluster'); ?>">Add company to a cluster</a>
-			<?php echo form_open_multipart('companies'); ?>
+			<div class="well">You are seeing all companies in the system. You can access management pages if you have permission for the company.</div>
 
+			<?php echo form_open_multipart('companies'); ?>
 			<div class="well" style="margin-top: 20px;">
 				<label for="cluster">Select Cluster</label>
 				<select title="Choose at least one" class="select-block" id="cluster" name="cluster">
@@ -72,8 +77,8 @@
 				<button type="submit" class="btn btn-primary btn-sm">Filter</button>
 			</div>
 			</form>
+			<a class="btn btn-default btn-sm" href="<?php echo base_url('cluster'); ?>">Add company to a cluster</a>
 
-			<i class="fa fa-check-square-o"></i> means that you have the rights to edit the company.
 		</div>
 	</div>
 </div>

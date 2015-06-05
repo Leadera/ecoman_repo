@@ -1,6 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8">
+				<div class="swissheader">Companies belongs to the opened project</div>
 				<!-- harita -->
 				<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 				<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
@@ -33,20 +34,26 @@
 				}
 				</script>
 				<!-- harita bitti -->
-			<div class="swissheader pull-left">Show Opened Project Companies</div>
-				<?php 
-					$temp = $this->session->userdata('user_in');
-					if($temp['id'] != null): ?>
-					<a class="pull-right  btn btn-info btn-sm" href="<?php echo base_url("newcompany"); ?>">Create a Company</a>
-					<?php endif	?>	
-				<ul class="list-group" style="clear:both; margin-top:20px;">
-				<?php foreach ($companies as $com): ?>
-					<li class="list-group-item">
-						<b><a href="<?php echo base_url('company/'.$com['id']) ?>"><?php echo $com['name']; ?></a></b>
-						<span style="color:#999999; font-size:12px;"><?php echo $com['description']; ?></span>
-					</li>
-				<?php endforeach ?>
-				</ul>
+				<table class="table-hover" style="clear:both;">
+					<?php foreach ($companies as $com): ?>
+						<tr>
+						<td style="padding: 10px 15px;">
+							<a href="<?php echo base_url('company/'.$com['id']) ?>">
+							<div class="row">
+								<div class="col-md-9">
+									<div><b><?php echo $com['name'] ?></b></div>
+									<div><span style="color:#999999; font-size:12px;"><?php echo $com['description']; ?></span></div>
+								</div>
+								<div class="col-md-3">
+									<a class="btn btn-tuna" href="<?php echo base_url("new_flow/".$com['id']); ?>"><i class="fa fa-database"></i> Edit Company Data</a>
+									<a class="btn btn-tuna" href="<?php echo base_url("update_company/".$com['id']); ?>"><i class="fa fa-pencil-square-o"></i> Edit Company Info</a>
+								</div>
+							</div>
+							</a>
+						</td>
+						</tr>
+					<?php endforeach ?>
+				</table>
 		</div>	
 		<div class="col-md-4">
 			

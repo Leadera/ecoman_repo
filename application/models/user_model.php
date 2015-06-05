@@ -34,11 +34,16 @@ class User_model extends CI_Model {
   	}
   }
 
+  /**
+   * [get_consultants description]
+   * @return all consultant information in the system ordered by name
+   */   
   public function get_consultants(){
     $this->db->select('t_user.id as id,t_user.user_name as user_name,t_user.name as name,t_user.surname as surname,t_user.description as description');
     $this->db->from('t_user');
     $this->db->join('t_role', 't_role.id = t_user.role_id');
     $this->db->where('t_role.short_code', 'CNS');
+    $this->db->order_by("name", "asc"); 
     $query = $this->db->get();
     return $query->result_array();
 
@@ -171,8 +176,6 @@ class User_model extends CI_Model {
     }
   }
 
-
-
   public function check_user_email($email){
     $this->db->from('t_user');
     $this->db->where('email',$email);
@@ -240,6 +243,7 @@ class User_model extends CI_Model {
       return TRUE;
     }
   }
+
   public function is_consultant_of_project_by_user_id($user_id,$prj_id){
     $this->db->select('*');
     $this->db->from('t_prj_cnsltnt');
@@ -252,6 +256,7 @@ class User_model extends CI_Model {
       return TRUE;
     }
   }
+
   public function is_contactperson_of_project_by_user_id($user_id,$prj_id){
     $this->db->select('*');
     $this->db->from('t_prj_cntct_prsnl');
@@ -264,7 +269,6 @@ class User_model extends CI_Model {
       return TRUE;
     }
   }
-
 
   public function cmpny_prsnl($user_id){
     $this->db->select('cmpny_id');

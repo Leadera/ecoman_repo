@@ -50,6 +50,7 @@ class Company_model extends CI_Model {
     $this->db->from('t_cmpny');
     $this->db->join('t_cmpny_prsnl', 't_cmpny_prsnl.cmpny_id = t_cmpny.id');
     $this->db->where('t_cmpny_prsnl.user_id', $user_id);
+    $this->db->order_by("name", "asc"); 
     $query = $this->db->get();
     return $query->result_array();
   }
@@ -59,6 +60,7 @@ class Company_model extends CI_Model {
     $this->db->from('t_cmpny');
     $this->db->join('t_prj_cmpny', 't_prj_cmpny.cmpny_id = t_cmpny.id');
     $this->db->where('t_prj_cmpny.prj_id', $project_id);
+    $this->db->order_by("name", "asc"); 
     $query = $this->db->get();
     return $query->result_array();
   }

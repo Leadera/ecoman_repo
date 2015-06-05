@@ -128,7 +128,7 @@
           <li><a href="<?php echo base_url('cpscoping'); ?>"><i class="fa fa-recycle"></i> CP - Potential Identification</a></li>
           <li>
             <div class="dropdown">
-              <button class="btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" style="padding: 12px 0px;">
+              <button class="btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" style="padding: 12px 0px; color:white;">
                 <i class="fa fa-exchange"></i> IS - Potential Identification
                 <span class="caret"></span>
               </button>
@@ -152,18 +152,19 @@
 
 
         <?php else: ?>
-          <li>You need to open a project to work on the tools</li> 
+          <li><a href="#">You need to open a project to work on the tools.</a></li> 
  <!--          <ul class="list-inline" style="margin:0px;">
             <li class="head-li"><a href="<?php echo base_url('openproject'); ?>"><i class="fa fa-plus-square-o"></i> Open Project</a></li>
           </ul> -->
         <?php endif ?>
+      <?php else: ?>
+      <li><a href="#">You need to login and open a project to use analysis tools.</a></li>
       <?php endif ?>
-
     </ul>
 
 
   </div>
-  <div class="clearfix"></div>
+  <div class="clearfix" style="margin-bottom: 10px;"></div>
   <!-- <p style="font-size:14px; margin:0px;">
     To use the extended features of this web site, please register.
   </p> -->
@@ -177,7 +178,7 @@
         $('.content-container ul.nav').hide();
         $('#profiles').fadeIn('slow');
       }
-      else if ((pathname.toLowerCase().indexOf("companies") >= 0) || (pathname.toLowerCase().indexOf("newcompany") >= 0)){
+      else if ((pathname.toLowerCase().indexOf("company") >= 0) || (pathname.toLowerCase().indexOf("companies") >= 0) || (pathname.toLowerCase().indexOf("newcompany") >= 0)){
         $('#l2').css('background-color', '#901F0F');
         $('.content-container ul.nav').hide();
         $('#companies').fadeIn('slow');
@@ -187,7 +188,7 @@
         $('.content-container ul.nav').hide();
         $('#projects').fadeIn('slow');
       }
-      else if ((pathname.toLowerCase().indexOf("cpscoping") >= 0) || (pathname.toLowerCase().indexOf("isscoping") >= 0) || (pathname.toLowerCase().indexOf("cost_benefit") >= 0) || (pathname.toLowerCase().indexOf("kpi_calculation") >= 0) || (pathname.toLowerCase().indexOf("ecotracking") >= 0)){
+      else if ((pathname.toLowerCase().indexOf("cpscoping") >= 0) || (pathname.toLowerCase().indexOf("isscoping") >= 0) || (pathname.toLowerCase().indexOf("cost_benefit") >= 0) || (pathname.toLowerCase().indexOf("kpi_calculation") >= 0) || (pathname.toLowerCase().indexOf("product") >= 0) || (pathname.toLowerCase().indexOf("flow") >= 0) || (pathname.toLowerCase().indexOf("component") >= 0) || (pathname.toLowerCase().indexOf("process") >= 0) || (pathname.toLowerCase().indexOf("equipment") >= 0) || (pathname.toLowerCase().indexOf("ecotracking") >= 0)){
         $('#l4').css('background-color', '#84BFC3');
         $('.content-container ul.nav').hide();
         $('#analysis').fadeIn('slow');

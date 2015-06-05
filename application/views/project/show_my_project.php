@@ -1,6 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8">
+				<div class="swissheader">My Projects</div>
 				<!-- harita -->
 				<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 				<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
@@ -37,20 +38,39 @@
 				}
 				</script>
 				<!-- harita bitti -->
-			<div class="swissheader pull-left">Show My Projects</div>
-			<?php if($is_consultant):?>
-			<a class="pull-right btn btn-info btn-embossed btn-sm" href="<?php echo base_url("newproject"); ?>">Create Project</a>
-			<?php endif ?>
-			<ul class="list-group" style="clear:both;">
+			<table class="table-hover" style="clear:both;">
 			<?php foreach ($projects as $pro): ?>
-				<li class="list-group-item">
-					<b><a href="<?php echo base_url('project/'.$pro['id']) ?>"><?php echo $pro['name']; ?></a></b>
-					<span style="color:#999999; font-size:12px;"><?php echo $pro['description']; ?></span>
-				</li>
+				<tr>
+				<td style="padding: 10px 15px;">
+					<a href="<?php echo base_url('project/'.$pro['id']) ?>">
+					<div class="row">
+						<div class="col-md-9">
+							<div><b><?php echo $pro['name']; ?></b></div>
+							<div><span style="color:#999999; font-size:12px;"><?php echo $pro['description']; ?></span></div>
+						</div>
+						<div class="col-md-3">
+							<div style="overflow:hidden;">
+								<?php if($this->session->userdata('project_id')==$pro['id']): ?>
+									<a class="btn btn-tuna" href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-times-circle"></i> Close This Project</a>
+								<?php else: ?>
+									<?php echo form_open('openproject'); ?>
+										<input type="hidden" name="projectid" value="<?php echo $pro['id']; ?>">
+										<button type="submit" class="btn btn-tuna"><i class="fa fa-plus-square-o"></i> Open This Project</button>
+									</form>
+								<?php endif ?>
+							<a class="btn btn-tuna" href="<?php echo base_url("update_project/".$pro['id']); ?>"><i class="fa fa-pencil-square-o"></i> Edit Project Info</a>
+						</div>
+					</div>
+					</a>
+				</td>
+				</tr>
 			<?php endforeach ?>
-			</ul>
+			</table>
 		</div>	
 		<div class="col-md-4">
+			<div class="well">
+				You are seeing all the project that you work as a consultant or contact person.
+			</div>
 		</div>
 	</div>
 </div>

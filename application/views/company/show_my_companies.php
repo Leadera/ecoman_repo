@@ -1,55 +1,68 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8">
-				<!-- harita -->
-				<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-				<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-				<?php
-				$company_array = array();
-			 	foreach ($companies as $com => $k) {	 
-					$company_array[$com][0] = $k['latitude'];
-					$company_array[$com][1] = $k['longitude'];
-					$company_array[$com][2] = "<a href='".base_url('company/'.$k['id'])."'>".$k['name']."</a>";
-				} 
+			<div class="swissheader">My Companies</div>
+			<!-- harita -->
+			<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+			<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+			<?php
+			$company_array = array();
+			foreach ($companies as $com => $k) {	 
+				$company_array[$com][0] = $k['latitude'];
+				$company_array[$com][1] = $k['longitude'];
+				$company_array[$com][2] = "<a href='".base_url('company/'.$k['id'])."'>".$k['name']."</a>";
+			} 
 				//print_r($company_array);
-				?>
-				<div id="map"></div>
-				<script type="text/javascript">
-  			var planes = <?php echo json_encode($company_array); ?>;
-  			var bounds = new L.LatLngBounds(planes);
+			?>
+			<div id="map"></div>
+			<script type="text/javascript">
+				var planes = <?php echo json_encode($company_array); ?>;
+				var bounds = new L.LatLngBounds(planes);
 
-        var map = L.map('map').setView([41.83683, 19.33594], 4);
-        map.fitBounds(bounds);
-        mapLink = 
-            '<a href="http://openstreetmap.org">OpenStreetMap</a>';
-        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				var map = L.map('map').setView([41.83683, 19.33594], 4);
+
+				map.fitBounds(bounds,{padding: [50,50]});
+				mapLink = 
+				'<a href="http://openstreetmap.org">OpenStreetMap</a>';
+				L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 				}).addTo(map);
 
 				for (var i = 0; i < planes.length; i++) {
 					marker = new L.marker([planes[i][0],planes[i][1]])
-						.bindPopup(planes[i][2])
-						.addTo(map);
+					.bindPopup(planes[i][2])
+					.addTo(map);
 				}
-				</script>
-				<!-- harita bitti -->
-			<div class="swissheader pull-left">Show My Companies</div>
-				<?php 
-					$temp = $this->session->userdata('user_in');
-					if($temp['id'] != null): ?>
-					<a class="pull-right  btn btn-info btn-sm" href="<?php echo base_url("newcompany"); ?>">Create a Company</a>
-					<?php endif	?>	
-				<ul class="list-group" style="clear:both; margin-top:20px;">
+			</script>
+			<!-- harita bitti -->
+			<?php 
+			$temp = $this->session->userdata('user_in');
+			if($temp['id'] != null): ?>
+<!-- 	<a class="pull-right  btn btn-info btn-sm" href="<?php echo base_url("newcompany"); ?>">Create a Company</a> -->				
+			<table class="table-hover" style="clear:both;">
 				<?php foreach ($companies as $com): ?>
-					<li class="list-group-item">
-						<b><a href="<?php echo base_url('company/'.$com['id']) ?>"><?php echo $com['name']; ?></a></b>
-						<span style="color:#999999; font-size:12px;"><?php echo $com['description']; ?></span>
-					</li>
+					<tr>
+					<td style="padding: 10px 15px;">
+						<a href="<?php echo base_url('company/'.$com['id']) ?>">
+						<div class="row">
+							<div class="col-md-9">
+								<div><b><?php echo $com['name'] ?></b></div>
+								<div><span style="color:#999999; font-size:12px;"><?php echo $com['description']; ?></span></div>
+							</div>
+							<div class="col-md-3">
+								<a class="btn btn-tuna" href="<?php echo base_url("new_flow/".$com['id']); ?>"><i class="fa fa-database"></i> Edit Company Data</a>
+								<a class="btn btn-tuna" href="<?php echo base_url("update_company/".$com['id']); ?>"><i class="fa fa-pencil-square-o"></i> Edit Company Info</a>
+							</div>
+						</div>
+						</a>
+					</td>
+					</tr>
 				<?php endforeach ?>
-				</ul>
+			</table>
+			<?php endif	?>
 		</div>	
 		<div class="col-md-4">
-			
+			<div class="well">You are now seeing the companies created by you or the companies that you belong as a user.</div>
 		</div>
 	</div>
 </div>

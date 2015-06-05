@@ -302,7 +302,7 @@ td {
 
 #map {
     height: 380px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     border-radius: 5px 5px 5px 5px;
     border: 1px solid #d0d0d0;
 }
@@ -329,14 +329,16 @@ td {
 .swissheader {
     color: white;
     font-size: 15px;
-    background-color: #CF324C;
-    padding: 3px 15px;
+    background-color: #787878;
+    padding: 5px 15px;
     margin-bottom: 10px;
     text-transform: uppercase;
 }
 
 .alert {
     color: #FF3737 !important;
+    border-radius: 0px;
+    font-size:14px;
 }
 
 .alt-nav li>a {
@@ -395,4 +397,26 @@ td {
 }
 #analysis a{
     color:white;
+}
+.well{
+    min-height: 20px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    box-shadow: none;
+    border-radius: 0px;
+}
+.gribar{
+    border-top: 1px dashed #d0d0d0;
+}
+.btn-tuna{
+    padding: 0px;
+    color: #b8b7d1;
+    margin-right: 10px;
+    font-size:12px;
+    background: none;
+}
+.btn-tuna:hover{
+    color:#0099ff;
 }

@@ -1,4 +1,4 @@
-<div class="homemain">
+<div class="homemain" style="margin-top: -30px;">
 	<div class="container text-center">
 		<div style="color: white;font-size: 28px;padding: 10px;margin-top: 60px;">License-free web-based decision support software <br> for Cleaner Production and Industrial Symbiosis</div>
 		<?php if ($this->session->userdata('user_in') == FALSE): ?>
