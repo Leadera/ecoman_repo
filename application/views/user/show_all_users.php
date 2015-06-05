@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-md-8">
 				<div class="swissheader">All Consultants</div>
-				<table class="table-hover" style="clear:both;">
+				<table class="table-hover" style="clear:both; width: 100px;">
 				<?php foreach ($users as $com): ?>
 					<tr>
 					<td style="padding: 10px 15px;">

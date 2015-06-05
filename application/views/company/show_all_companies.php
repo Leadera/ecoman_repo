@@ -38,7 +38,7 @@
 				}
 				</script>
 				<!-- harita bitti -->
-				<table style="clear:both;" class="table-hover">
+				<table style="clear:both; width: 100px;" class="table-hover">
 				<?php foreach ($companies as $com): ?>
 					<tr>
 						<td style="padding: 10px 15px;">
