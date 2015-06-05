@@ -39,7 +39,7 @@
 			$temp = $this->session->userdata('user_in');
 			if($temp['id'] != null): ?>
 <!-- 	<a class="pull-right  btn btn-info btn-sm" href="<?php echo base_url("newcompany"); ?>">Create a Company</a> -->				
-			<table class="table-hover" style="clear:both; width: 100px;">
+			<table class="table-hover" style="clear:both; width: 100%;">
 				<?php foreach ($companies as $com): ?>
 					<tr>
 					<td style="padding: 10px 15px;">
