@@ -917,7 +917,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
             activeItem : 'flowcard',
             layout: "card",
             //items: this.cardPanels,
-            items :[ {
+            /*items :[ {
 			 id:'processcard'
 			,bodyStyle:'border-bottom:none'
 			,xtype:'examplegrid2'
@@ -934,7 +934,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
 			,bodyStyle:'border-bottom:none'
 			,xtype:'examplegrid3'
 			,autoScroll:true
-		}]
+		}]*/
         });
         
         this.setCompanyNameToProcessGridTitle(this.mainPanel.getComponent('flowcard'),this);
