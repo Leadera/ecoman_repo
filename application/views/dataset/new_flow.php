@@ -18,7 +18,7 @@
 
 	<div class="col-md-4 borderli">
 		<?php echo form_open_multipart('new_flow/'.$companyID); ?>
-			<p class="lead">Add new flow to company</p>
+			<p class="lead">Add flow</p>
 			<div class="form-group">
 				<label for="selectize">Flow Name <span style="color:red;">*</span></label>
 				<select id="selectize" onchange="getFlowId()" class="info select-block" name="flowname">

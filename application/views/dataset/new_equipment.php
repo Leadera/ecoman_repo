@@ -1,5 +1,5 @@
 	<div class="col-md-4 borderli">
-		<div class="lead">Add new equipment to company</div>
+		<div class="lead">Add new Equipment and asign it to process</div>
 			<?php echo form_open_multipart('new_equipment/'.$companyID); ?>
 			<div class="form-group">
 					<label for="status">Equipment Name <span style="color:red;">*</span></label>

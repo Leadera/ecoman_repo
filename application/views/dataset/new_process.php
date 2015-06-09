@@ -19,7 +19,7 @@
 		<div class="col-md-4 borderli">
 		<?php echo form_open_multipart('new_process/'.$companyID); ?>
 
-			<p class="lead">Assign new process and set a flow to the company</p>
+			<p class="lead">Add process and assign flow to process</p>
 			<div class="form-group">
 	    	<label for="status">Process Name <span style="color:red;">*</span></label>
 				<select id="selectize" onchange="getProcessId()" name="process">

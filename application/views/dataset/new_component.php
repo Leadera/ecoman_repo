@@ -1,6 +1,6 @@
 	<div class="col-md-4 borderli">
 		<?php echo form_open_multipart('new_component/'.$companyID); ?>
-			<p class="lead">Add new component to company</p>
+			<p class="lead">Add component to flow</p>
 			<div class="form-group">
 			    <label for="component_name">Component Name <span style="color:red;">*</span></label>
 			   	<input class="form-control" id="component_name" name="component_name" placeholder="Enter Component Name">
