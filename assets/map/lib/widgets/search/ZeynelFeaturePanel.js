@@ -1119,7 +1119,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
 
             if (downloadMenuItems.length > 0) {
                 /* Add to toolbar. */
-                tbarItems.push({
+               /* tbarItems.push({
                     itemId: 'download',
                     text: __('Download'),
                     cls: 'x-btn-text-icon',
@@ -1131,7 +1131,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                         },
                         items: downloadMenuItems
                     })
-                });
+                });*/
             }
         }
 

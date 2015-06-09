@@ -365,7 +365,8 @@ function beginISPotentialByAllFlows() {
                     qntty1:$('#tt_grid_dynamic2').datagrid('getSelections')[0].qntty,
                     company2:$('#tt_grid_dynamic3').datagrid('getSelections')[0].company,
                     qntty2:$('#tt_grid_dynamic3').datagrid('getSelections')[0].qntty,
-                    flow:$('#tt_grid_dynamic2').datagrid('getSelections')[0].flow,
+                    //flow:$('#tt_grid_dynamic2').datagrid('getSelections')[0].flow,
+                    flow:$('#tt_grid_dynamic3').datagrid('getSelections')[0].flow,
                     /*flowtype:'floww type',*/
                     map:''+$('#tt_grid2').datagrid('getSelections')[0].id+','
                             +$('#tt_grid_dynamic3').datagrid('getSelections')[0].id+'',
@@ -632,6 +633,7 @@ function beginISPotentialByAllFlows() {
     $('#tt_grid_dynamic3').datagrid({
         columns:[[
             {field:'company',title:'Company',width:100},
+            {field:'flow',title:'Flow',width:100},
             {field:'qntty',title:'Quantity',width:100},
             {field:'unit',title:'Unit',width:100},
             {field:'quality',title:'Quality',width:100},
