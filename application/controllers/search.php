@@ -10,7 +10,10 @@ class Search extends CI_Controller {
 		if($term=="")
 		{
 			$term = $this->input->post('term');
-			redirect(base_url('search/'.$term), 'refresh');
+			if(!empty($term))
+				redirect(base_url('search/'.$term), 'refresh');
+			else
+				redirect(base_url('','refresh'));
 		}
 
 		$data['companies'] = $this->search_model->search_company($term);
