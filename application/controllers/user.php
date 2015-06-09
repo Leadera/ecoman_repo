@@ -18,12 +18,12 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('name','Name','required|trim|xss_clean');
 		$this->form_validation->set_rules('surname','Surname','required|trim|xss_clean');
 		$this->form_validation->set_rules('jobTitle','Job Title','required|trim|xss_clean');
-		$this->form_validation->set_rules('description','Description','required|trim|xss_clean');
-		$this->form_validation->set_rules('email', 'e-mail' ,'required|trim|xss_clean');
-		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('fax', 'Fax Number', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('description','Description','trim|xss_clean');
+		$this->form_validation->set_rules('email', 'e-mail' ,'required|trim|xss_clean|is_unique[t_user.email]');
+		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'trim|xss_clean');
+		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'trim|xss_clean');
+		$this->form_validation->set_rules('fax', 'Fax Number', 'trim|xss_clean');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean|alpha_numeric|is_unique[t_user.user_name]');
 		$this->form_validation->set_rules('password', 'Password', 'required|trim|xss_clean');
 
 		if ($this->form_validation->run() !== FALSE)

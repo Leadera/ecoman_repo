@@ -1,5 +1,4 @@
 <div class="container">
-	<p class="lead">Create User</p>
 
 	<?php if(validation_errors() != NULL ): ?>
     <div class="alert">
@@ -10,7 +9,9 @@
 
 	<?php echo form_open_multipart('register'); ?>
 		<div class="row">
-			<div class="col-md-4">
+
+			<div class="col-md-6 col-md-offset-3 swissbox">
+			<p class="lead">Create User</p>
 
 				<div class="form-group">
 						<label for="username">Username</label>
@@ -21,7 +22,7 @@
 						<input type="password" class="form-control" id="password" placeholder="Password" name="password">
 				</div>
 				<div class="form-group">
-						<label for="rePassword">RePassword</label>
+						<label for="rePassword">Password Again</label>
 						<input type="password" class="form-control" id="rePassword" placeholder="Retype password" name="rePassword">
 				</div>
 				<div class="form-group">
@@ -40,8 +41,6 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-4">
 				<div class="form-group">
 	    			<label for="email">E-mail</label>
 	    			<input type="text" class="form-control" id="email" placeholder="E-mail" value="<?php echo set_value('email'); ?>"  name="email">
@@ -58,8 +57,6 @@
 	    			<label for="fax">Fax Number</label>
 	    			<input type="text" class="form-control" id="fax" value="<?php echo set_value('fax'); ?>" placeholder="Fax Number" name="fax">
 	 			</div>
-			</div>
-			<div class="col-md-4">
 				<div class="form-group">
 						<label for="name">Name</label>
 						<input type="text" class="form-control" id="name" placeholder="Enter name" value="<?php echo set_value('name'); ?>" name="name">
@@ -76,8 +73,9 @@
 						<label for="jobDescription">Description</label>
 						<textarea class="form-control" rows="3" name="description" value="<?php echo set_value('description'); ?>" id="description" placeholder="Description"></textarea>
 				</div>
+						<button type="submit" class="btn btn-info">Create User Profile</button>
+
 			</div>
 		</div>
-		<button type="submit" class="btn btn-info pull-right">Create User Profile</button>
 	</form>
 </div>
