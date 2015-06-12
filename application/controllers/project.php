@@ -11,9 +11,10 @@ class Project extends CI_Controller{
 		$kullanici = $this->session->userdata('user_in');
 		$is_consultant = $this->user_model->is_user_consultant($kullanici['id']);
 		if(!$is_consultant){
-			redirect('', 'refresh');
+			$this->session->set_flashdata('project_error', '<i class="fa fa-exclamation-circle"></i> Sorry, you dont have permission to open this project.');
+			redirect('project', 'refresh');
 		}
-		
+
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('projectid', 'Project ID', 'trim|required|xss_clean');
 		if ($this->form_validation->run() !== FALSE)
@@ -33,17 +34,18 @@ class Project extends CI_Controller{
 
 	public function close_project(){
 		$this->session->unset_userdata('project_id');
-		redirect('', 'refresh');
+		redirect('myprojects', 'refresh');
 	}
 
 	public function new_project(){
 		$kullanici = $this->session->userdata('user_in');
 		$is_consultant = $this->user_model->is_user_consultant($kullanici['id']);
 		if(!$is_consultant){
-			redirect('', 'refresh');
+			$this->session->set_flashdata('project_error', '<i class="fa fa-exclamation-circle"></i> Sorry, you need to be a consultant to create a new project.');
+			redirect('projects', 'refresh');
 		}
-                
-                $this->load->library('googlemaps');
+
+    $this->load->library('googlemaps');
 		//alert("1:" + event.latLng.lat() + " 2:" + event.latLng.lng());
 		$config['center'] = '47.3250690187567,18.52065861225128';
 		$config['zoom'] = '15';
@@ -54,15 +56,15 @@ class Project extends CI_Controller{
 		$this->googlemaps->initialize($config);
 
 		$data['map'] = $this->googlemaps->create_map();
-                
-                
+
+
 
 		$data['companies']=$this->company_model->get_companies();
 		$data['consultants']=$this->user_model->get_consultants();
 		$data['project_status']=$this->project_model->get_active_project_status();
 
 		$this->load->library('form_validation');
-                
+
     $this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|xss_clean');
 		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|xss_clean');
 		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean');
@@ -145,13 +147,20 @@ class Project extends CI_Controller{
 	}
 
 	public function show_all_project(){
-		$kullanici = $this->session->userdata('user_in');
-		if($kullanici['id']!=null)
-			$data['is_consultant'] = $this->user_model->is_user_consultant($kullanici['id']);
-		else
-			$data['is_consultant'] = false;
 		$data['projects'] = $this->project_model->get_projects();
-                //print_r($data['projects']);
+
+		$kullanici = $this->session->userdata('user_in');
+		if($kullanici['id']!=null){
+			$data['is_consultant'] = $this->user_model->is_user_consultant($kullanici['id']);
+			foreach ($data['projects'] as $key => $d) {
+				$data['projects'][$key]['have_permission'] = $this->project_model->can_update_project_information($kullanici['id'],$d['id']);
+			}
+		}
+		else{
+			$data['is_consultant'] = false;
+		}
+
+    //var_dump($data['projects']);
 		$this->load->view('template/header');
 		$this->load->view('project/show_all_project',$data);
 		$this->load->view('template/footer');
@@ -163,7 +172,7 @@ class Project extends CI_Controller{
 			$data['is_consultant'] = $this->user_model->is_user_consultant($kullanici['id']);
 		else
 			$data['is_consultant'] = false;
- 
+
 		$data['projects'] = $this->project_model->get_consultant_projects($kullanici['id']);
 		$this->load->view('template/header');
 		$this->load->view('project/show_my_project',$data);
@@ -175,11 +184,11 @@ class Project extends CI_Controller{
 		$kullanici = $this->session->userdata('user_in');
 		$is_consultant_of_project = $this->user_model->is_consultant_of_project_by_user_id($kullanici['id'],$prj_id);
 		$is_contactperson_of_project = $this->user_model->is_contactperson_of_project_by_user_id($kullanici['id'],$prj_id);
-		
+
 		if(!$is_consultant_of_project && !$is_contactperson_of_project){
 			//Cillop gibi çalışan bir error kodu.
 			//show_error('Sorry, you dont have permission to access this project information.');
-			$this->session->set_flashdata('project_error', '<i class="fa fa-exclamation"></i> Sorry, you dont have permission to access this project information.');
+			$this->session->set_flashdata('project_error', '<i class="fa fa-exclamation-circle"></i> Sorry, you dont have permission to access this project information.');
 			redirect('projects','refresh');
 		}
 
@@ -189,12 +198,12 @@ class Project extends CI_Controller{
 		$data['constant'] = $this->project_model->get_prj_consaltnt($prj_id);
 		$data['companies'] = $this->project_model->get_prj_companies($prj_id);
 		$data['contact'] = $this->project_model->get_prj_cntct_prsnl($prj_id);
-                
+
 		$this->load->library('googlemaps');
 		$marker = array();
 		if($data['projects']['latitude']!=null && $data['projects']['longitude']!=null) {
 			$config['center'] = $data['projects']['latitude'].','. $data['projects']['longitude'];
-			$marker['position'] = $data['projects']['latitude'].','. $data['projects']['longitude'];  
+			$marker['position'] = $data['projects']['latitude'].','. $data['projects']['longitude'];
 		} else if ($data['projects']['latitude']==null || $data['projects']['longitude']==null){
 	    $config['center'] = '39.97399584999243,32.746843099594116';
 	    $marker['position'] = '39.97399584999243,32.746843099594116';

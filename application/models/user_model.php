@@ -37,13 +37,13 @@ class User_model extends CI_Model {
   /**
    * [get_consultants description]
    * @return all consultant information in the system ordered by name
-   */   
+   */
   public function get_consultants(){
     $this->db->select('t_user.id as id,t_user.user_name as user_name,t_user.name as name,t_user.surname as surname,t_user.description as description');
     $this->db->from('t_user');
     $this->db->join('t_role', 't_role.id = t_user.role_id');
     $this->db->where('t_role.short_code', 'CNS');
-    $this->db->order_by("name", "asc"); 
+    $this->db->order_by("name", "asc");
     $query = $this->db->get();
     return $query->result_array();
 
@@ -98,7 +98,7 @@ class User_model extends CI_Model {
   public function get_all_users(){
     $this->db->select('*');
     $this->db->from('t_user');
-    $this->db->order_by("name", "asc"); 
+    $this->db->order_by("name", "asc");
     $query = $this->db->get();
     return $query->result_array();
   }
@@ -129,6 +129,7 @@ class User_model extends CI_Model {
       $this->db->join('t_prj_cnsltnt', 't_prj_cnsltnt.prj_id = t_prj.id');
       $this->db->join('t_user', 't_user.id = t_prj_cnsltnt.cnsltnt_id');
       $this->db->where('t_user.id', $id);
+      $this->db->order_by("t_prj.name", "asc");
       $query = $this->db->get();
       return $query->result_array();
   }
