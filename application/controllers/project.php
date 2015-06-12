@@ -158,6 +158,9 @@ class Project extends CI_Controller{
 		}
 		else{
 			$data['is_consultant'] = false;
+			foreach ($data['projects'] as $key => $d) {
+				$data['projects'][$key]['have_permission'] = false;
+			}
 		}
 
     //var_dump($data['projects']);
