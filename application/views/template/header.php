@@ -12,7 +12,7 @@
   <link href="<?php echo asset_url('css/custom.css'); ?>" rel="stylesheet">
   <link href="<?php echo asset_url('css/selectize.css'); ?>" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo asset_url('css/font-awesome.min.css'); ?>">
-    <!--<link href="<?php // echo asset_url('css/jquery-ui-1.10.4.custom.css'); ?>" rel="stylesheet"> 
+    <!--<link href="<?php // echo asset_url('css/jquery-ui-1.10.4.custom.css'); ?>" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
@@ -23,11 +23,11 @@
       <script src="<?php echo asset_url('js/bootstrap.min.js'); ?>"></script>
       <script type="text/javascript" src="<?php echo asset_url('is/jquery.easyui.min.js'); ?>"></script>
       <!--[if lt IE 9]><script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.0.8/es5-shim.min.js"></script><![endif]-->
-      <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto" 
-        and $this->uri->segment(1)!="isScopingAutoPrjBase" 
-        and $this->uri->segment(1)!="isScopingAutoPrjBaseMDF" 
-        and $this->uri->segment(1)!="isScopingPrjBaseMDF" 
-        and $this->uri->segment(1)!="isScopingPrjBase" 
+      <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto"
+        and $this->uri->segment(1)!="isScopingAutoPrjBase"
+        and $this->uri->segment(1)!="isScopingAutoPrjBaseMDF"
+        and $this->uri->segment(1)!="isScopingPrjBaseMDF"
+        and $this->uri->segment(1)!="isScopingPrjBase"
         and $this->uri->segment(1)!="scenarios"
         and $this->uri->segment(1)!="cost_benefit"
         and $this->uri->segment(1)!="kpi_calculation"): ?>
@@ -50,7 +50,7 @@
 
     <nav class="navbar navbar-default navbar-lg" style="margin-bottom:0px;">
       <a class="navbar-brand" href="<?php echo base_url(); ?>" style="color:white;">ECOMAN</a>
-      
+
       <form class="navbar-form navbar-right" action="<?php echo base_url('search') ?>" method="post" role="search" style="display: table;">
         <div class="form-group">
           <div class="input-group" style="display:block;">
@@ -152,7 +152,7 @@
 
 
         <?php else: ?>
-          <li><a href="#">You need to open a project to work on the tools.</a></li> 
+          <li><a href="#">You need to open a project to work on the tools.</a></li>
  <!--          <ul class="list-inline" style="margin:0px;">
             <li class="head-li"><a href="<?php echo base_url('openproject'); ?>"><i class="fa fa-plus-square-o"></i> Open Project</a></li>
           </ul> -->
@@ -173,7 +173,7 @@
       var pathname = window.location.pathname;
       console.log(pathname);
       //alert(pathname);
-      if ((pathname.toLowerCase().indexOf("user") >= 0) || (pathname.toLowerCase().indexOf("profile") >= 0)){
+      if ((pathname.toLowerCase().indexOf("user") >= 0) || (pathname.toLowerCase().indexOf("profile") >= 0) || (pathname.toLowerCase().indexOf("login") >= 0) || (pathname.toLowerCase().indexOf("register") >= 0)){
         $('#l1').css('background-color', '#C85A1F');
         $('.content-container ul.nav').hide();
         $('#profiles').fadeIn('slow');
@@ -208,10 +208,10 @@
       }
       else if($(this).data('rel') == "companies"){
         $('#l2').css('background-color', '#901F0F');
-      }      
+      }
       else if($(this).data('rel') == "projects"){
         $('#l3').css('background-color', '#15474A');
-      }      
+      }
       else if($(this).data('rel') == "analysis"){
         $('#l4').css('background-color', '#84BFC3');
       }
