@@ -23,10 +23,11 @@
 			<div class="swissheader" style="margin: 15px 0;"><?php echo $userInfo["name"].' '.$userInfo["surname"].' Profile'; ?></div>
 			<table class="table table-striped table-bordered">
 				<tr>
-					<td>
+					<td style="width:120px;">
 					User Info
 					</td>
 					<td>
+						<div><?php echo $userInfo['title']; ?></div>
 						<div><?php echo $userInfo['description']; ?></div>
 					</td>
 				</tr>

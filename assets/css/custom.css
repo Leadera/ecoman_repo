@@ -114,7 +114,7 @@ body {
     background: #f0f0f0;
     padding: 10px;
     /*border-radius: 4px 4px;*/
-    
+
     font-size: 14px;
 }
 
@@ -137,10 +137,10 @@ body {
     /* Chrome10+,Safari5.1+ */
     /* Opera 11.10+ */
     /* IE10+ */
-    
+
     background: linear-gradient(to bottom, rgba(227, 234, 239, 1) 0%, rgba(199, 213, 224, 1) 100%);
     /* W3C */
-    
+
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#e3eaef', endColorstr='#c7d5e0', GradientType=0);
     /* IE6-9 */
 }
@@ -367,7 +367,7 @@ td {
     text-decoration: none;
 }
 #profiles{
-    background-color: #C85A1F; 
+    background-color: #C85A1F;
     color:white;
     width: 100%;
 }
@@ -375,7 +375,7 @@ td {
     color:white;
 }
 #companies{
-    background-color: #901F0F; 
+    background-color: #901F0F;
     color:white;
     width: 100%;
 }
@@ -383,7 +383,7 @@ td {
     color:white;
 }
 #projects{
-    background-color: #15474A; 
+    background-color: #15474A;
     color:white;
     width: 100%;
 }
@@ -391,7 +391,7 @@ td {
     color:white;
 }
 #analysis{
-    background-color: #84BFC3; 
+    background-color: #84BFC3;
     color:white;
     width: 100%;
 }
