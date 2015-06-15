@@ -38,6 +38,9 @@
 |
 */
 
+// Language
+$route['language/switch/(:any)'] = "langswitch/switchLanguage/$1";
+
 // ADMIN
 $route['admin/newFlow'] = "admin/newFlow";
 $route['admin/newProcess'] = "admin/newProcess";
@@ -48,11 +51,11 @@ $route['admin/report'] = "admin/report";
 
 //IS scoping
 $route['isscoping'] = "isscoping/index";
-$route['isscopingauto'] = "isscoping/auto"; 
+$route['isscopingauto'] = "isscoping/auto";
 $route['isScopingAutoPrjBase'] = "isscoping/autoprjbase";
 $route['isScopingAutoPrjBaseMDF'] = "isscoping/autoprjbaseMDF";
 $route['isScopingAutoPrjBaseMDFTest'] = "isscoping/autoprjbaseMDFTest";
-$route['isScopingPrjBase'] = "isscoping/prjbase"; 
+$route['isScopingPrjBase'] = "isscoping/prjbase";
 $route['isScopingPrjBaseMDF'] = "isscoping/prjbaseMDF";
 $route['isscopingtooltip'] = "isscoping/tooltip";
 $route['isscopingtooltipscenarios'] = "isscoping/tooltipscenarios";
@@ -60,8 +63,8 @@ $route['isscenarios'] = "isscoping/isscenarios";
 $route['isscenariosCns'] = "isscoping/isscenariosCns";
 
 //map
-$route['map'] = "map/index"; 
-$route['mapHeader'] = "map/mapHeader";  
+$route['map'] = "map/index";
+$route['mapHeader'] = "map/mapHeader";
 
 
 //Ecotracking
@@ -81,7 +84,7 @@ $route['euro_dolar'] = "cpscoping/dolar_euro_parse";
 $route['cp_allocation/deneme'] = "cpscoping/deneme";
 $route['cp_allocation/deneme_json'] = "cpscoping/deneme_json";
 
-//KPI 
+//KPI
 $route['kpi_json/(:any)/(:any)'] = "cpscoping/kpi_json/$1/$2";
 $route['kpi_calculation_chart/(:any)/(:any)'] = "cpscoping/kpi_calculation_chart/$1/$2";
 $route['kpi_insert/(:any)/(:any)/(:any)/(:any)/(:any)'] = "cpscoping/kpi_insert/$1/$2/$3/$4/$5";
