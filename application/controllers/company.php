@@ -5,10 +5,10 @@ class Company extends CI_Controller{
 		parent::__construct();
 		$this->load->model('company_model');
 		$this->load->model('user_model');
-		$this->load->model('cluster_model');	
-		$this->load->model('flow_model');	
-		$this->load->model('process_model');	
-		$this->load->model('component_model');	
+		$this->load->model('cluster_model');
+		$this->load->model('flow_model');
+		$this->load->model('process_model');
+		$this->load->model('component_model');
 		$this->load->model('equipment_model');
 		$this->load->model('product_model');
 		$this->load->library('form_validation');
@@ -142,7 +142,7 @@ class Company extends CI_Controller{
 			$data['help'] = "0";
 			//redirect('', 'refresh');
 		}
-		
+
 		if($cluster_id == null || $cluster_id == 0){
 			$data['cluster_name']['name'] = 'All Companies';
 			$data['companies'] = $this->company_model->get_companies();
@@ -150,7 +150,7 @@ class Company extends CI_Controller{
 		else{
 			$data['companies'] = $this->company_model->get_companies_with_cluster($cluster_id);
 			$data['cluster_name'] = $this->cluster_model->get_cluster_name($cluster_id);
-		}		
+		}
 		$data['clusters'] = $this->cluster_model->get_clusters();
 		//permission control
 		$kullanici = $this->session->userdata('user_in');
@@ -160,6 +160,28 @@ class Company extends CI_Controller{
 		//print_r($data['companies']);
 		$this->load->view('template/header');
 		$this->load->view('company/show_all_companies',$data);
+		$this->load->view('template/footer');
+	}
+
+	public function show_tuna(){
+		$cluster_id = $this->input->post('cluster');
+		if($cluster_id == null || $cluster_id == 0){
+			$data['cluster_name']['name'] = 'All Companies';
+			$data['companies'] = $this->company_model->get_companies();
+		}
+		else{
+			$data['companies'] = $this->company_model->get_companies_with_cluster($cluster_id);
+			$data['cluster_name'] = $this->cluster_model->get_cluster_name($cluster_id);
+		}
+		$data['clusters'] = $this->cluster_model->get_clusters();
+		//permission control
+		$kullanici = $this->session->userdata('user_in');
+		// foreach ($data['companies'] as $key => $d) {
+		// 	$data['companies'][$key]['have_permission'] = $this->user_model->can_edit_company($kullanici['id'],$d['id']);
+		// }
+		//print_r($data['companies']);
+		$this->load->view('template/header');
+		$this->load->view('company/show_tuna',$data);
 		$this->load->view('template/footer');
 	}
 
@@ -398,5 +420,17 @@ class Company extends CI_Controller{
 			return false;
 		}
 	}
+
+	public function get_company_info($company_id){
+		$data['company_info'] = $this->company_model->get_company($company_id);
+		$data['company_flows'] = $this->flow_model->get_company_flow_list($company_id);
+		$data['company_prcss'] = $this->process_model->get_cmpny_flow_prcss($company_id);
+		$data['company_component'] = $this->component_model->get_cmpnnt($company_id);
+		$data['company_equipment'] = $this->equipment_model->all_information_of_equipment($company_id);
+		$data['company_product'] = $this->product_model->get_product_list($company_id);
+		header("Content-Type: application/json", true);
+		echo json_encode($data);
+	}
+
 }
 ?>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 class Flow_model extends CI_Model {
 
 	public function __construct()
@@ -41,7 +41,7 @@ class Flow_model extends CI_Model {
 		$query = $this->db->get();
 		return $query->result_array();
 	}
-	
+
 	public function get_flowfamily_list(){
 		$this->db->select("*");
 		$this->db->from("t_flow_family");
@@ -58,7 +58,7 @@ class Flow_model extends CI_Model {
 		$this->db->join('t_flow_type','t_flow_type.id = t_cmpny_flow.flow_type_id');
 		$this->db->join('t_unit as unit1','unit1.id = t_cmpny_flow.qntty_unit_id');
 		$this->db->where('cmpny_id',$companyID);
-		$this->db->order_by("t_flow.name", "asc"); 
+		$this->db->order_by("t_flow.name", "asc");
 		$query = $this->db->get();
 		return $query->result_array();
 	}
@@ -80,7 +80,7 @@ class Flow_model extends CI_Model {
 		$this->db->select("*");
 		$this->db->from("t_unit");
 		$this->db->where('active',1);
-		$this->db->order_by("name", "asc"); 
+		$this->db->order_by("name", "asc");
 		$query = $this->db->get();
 		return $query->result_array();
 	}
@@ -102,14 +102,14 @@ class Flow_model extends CI_Model {
 
 	public function delete_flow($id){
 		$this->db->where('id', $id);
-		$this->db->delete('t_cmpny_flow'); 
+		$this->db->delete('t_cmpny_flow');
 	}
 
 	public function update_flow_info($companyID,$flow_id,$flow_type_id,$flow){
-    $this->db->where('t_cmpny_flow.cmpny_id',$companyID);   
-    $this->db->where('t_cmpny_flow.flow_id',$flow_id);   
-    $this->db->where('t_cmpny_flow.flow_type_id',$flow_type_id); 
-    $this->db->update('t_cmpny_flow',$flow); 
+    $this->db->where('t_cmpny_flow.cmpny_id',$companyID);
+    $this->db->where('t_cmpny_flow.flow_id',$flow_id);
+    $this->db->where('t_cmpny_flow.flow_type_id',$flow_type_id);
+    $this->db->update('t_cmpny_flow',$flow);
 	}
 
 }

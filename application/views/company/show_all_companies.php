@@ -7,11 +7,11 @@
 				<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 				<?php
 				$company_array = array();
-			 	foreach ($companies as $com => $k) {	 
+			 	foreach ($companies as $com => $k) {
 					$company_array[$com][0] = $k['latitude'];
 					$company_array[$com][1] = $k['longitude'];
 					$company_array[$com][2] = "<a href='".base_url('company/'.$k['id'])."'>".$k['name']."</a>";
-				} 
+				}
 				//print_r($company_array);
 				?>
 				<div id="map"></div>
@@ -25,7 +25,7 @@
 				map.on('resize', function(e) {
 				    map.fitWorld({reset: true}).zoomIn();
 				});
-        mapLink = 
+        mapLink =
             '<a href="http://openstreetmap.org">OpenStreetMap</a>';
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -60,7 +60,7 @@
 					</tr>
 				<?php endforeach ?>
 				</table>
-		</div>	
+		</div>
 		<div class="col-md-4">
 
 			<div class="well">You are seeing all companies in the system. You can access management pages if you have permission for the company.</div>

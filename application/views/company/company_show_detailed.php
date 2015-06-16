@@ -78,7 +78,7 @@
 			</table>
 			<?php if($have_permission): ?>
 			<?php if($valid != 0): ?>
-				
+
 				<table class="table table-bordered">
 					<tr class="success">
 						<th colspan="5">Company Flows</th>
@@ -91,7 +91,7 @@
 						<th>EP</th>
 					</tr>
 					<?php foreach ($company_flows as $flows): ?>
-						<tr>	
+						<tr>
 							<td><?php echo $flows['flowname']; ?></td>
 							<td><?php echo $flows['flowtype']; ?></td>
 							<td><?php echo $flows['qntty'].' '.$flows['qntty_unit_name']; ?></td>
@@ -100,7 +100,7 @@
 						</tr>
 					<?php endforeach ?>
 				</table>
-				
+
 				<table class="table table-bordered">
 					<tr class="success">
 						<th colspan="3">Company Process</th>
@@ -111,7 +111,7 @@
 						<th>Flow Type</th>
 					</tr>
 					<?php foreach ($company_prcss as $prcss): ?>
-						<tr>	
+						<tr>
 							<td><?php echo $prcss['prcessname']; ?></td>
 							<td><?php echo $prcss['flowname']; ?></td>
 							<td><?php echo $prcss['flow_type_name']?></td>
@@ -128,7 +128,7 @@
 						<th>Component Name</th>
 					</tr>
 					<?php foreach ($company_component as $cmpnnt): ?>
-						<tr>	
+						<tr>
 							<td><?php echo $cmpnnt['flow_name']; ?></td>
 							<td><?php echo $cmpnnt['component_name']; ?></td>
 						</tr>
@@ -146,7 +146,7 @@
 						<th>Used Process</th>
 					</tr>
 					<?php foreach ($company_equipment as $eqpmnt): ?>
-						<tr>	
+						<tr>
 							<td><?php echo $eqpmnt['eqpmnt_name']; ?></td>
 							<td><?php echo $eqpmnt['eqpmnt_type_name']; ?></td>
 							<td><?php echo $eqpmnt['eqpmnt_type_attrbt_name']; ?></td>
@@ -163,18 +163,18 @@
 						<th>Product Name</th>
 					</tr>
 					<?php foreach ($company_product as $prdct): ?>
-						<tr>	
+						<tr>
 							<td><?php echo $prdct['name']; ?></td>
 						</tr>
 					<?php endforeach ?>
 				</table>
-			<?php endif ?>			
+			<?php endif ?>
 		<?php endif ?>
 		</div>
 
 		<div class="col-md-3">
 		<div style="margin-bottom:30px;">
-			<?php if($companies['logo'] == null) 
+			<?php if($companies['logo'] == null)
 					$companies['logo'] = '.jpg';
 				if(file_exists("assets/company_pictures/".$companies['logo'])): ?>
 				<img style="width:100%; max-width:250px;" src="<?php echo asset_url('company_pictures/'.$companies['logo']);?>" />
