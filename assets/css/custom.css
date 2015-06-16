@@ -420,3 +420,5 @@ td {
 .btn-tuna:hover{
     color:#0099ff;
 }
+
+.heightlimit { max-height:650px; border:1px solid d0d0d0; overflow:auto; }

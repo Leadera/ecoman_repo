@@ -24,7 +24,7 @@
     </div>
     <div class="col-md-5">
 
-      <div class="" id="info">
+      <div class="heightlimit" id="info">
         <div class="alert">Please select a company to see detailed information.</div>
       </div>
       <div class="well">
@@ -214,5 +214,4 @@
       });
 
   }
-
 </script>
