@@ -163,11 +163,16 @@ class Company extends CI_Controller{
 		$this->load->view('template/footer');
 	}
 
-	public function show_tuna(){
+	public function show_tuna($flow_id=FALSE){
 		$cluster_id = $this->input->post('cluster');
 		if($cluster_id == null || $cluster_id == 0){
-			$data['cluster_name']['name'] = 'All Companies';
-			$data['companies'] = $this->company_model->get_companies();
+			if(!empty($flow_id)){
+				$data['cluster_name']['name'] = 'All Companies in selected flow';
+				$data['companies'] = $this->company_model->get_companies_from_flow($flow_id);
+			}else{
+				$data['cluster_name']['name'] = 'All Companies';
+				$data['companies'] = $this->company_model->get_companies();
+			}
 		}
 		else{
 			$data['companies'] = $this->company_model->get_companies_with_cluster($cluster_id);

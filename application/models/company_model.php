@@ -211,6 +211,16 @@ class Company_model extends CI_Model {
     $query = $this->db->get()->result_array();
     return $query;
   }
+
+  public function get_companies_from_flow($flow_id){
+    $this->db->select('*,t_cmpny.id as id');
+    $this->db->from('t_cmpny');
+    $this->db->join('t_cmpny_flow','t_cmpny_flow.cmpny_id = t_cmpny.id');
+    $this->db->where('t_cmpny_flow.flow_id',$flow_id);
+    $query = $this->db->get()->result_array();
+    return $query;
+  }
+
   public function have_project_name($cmpny_id,$cmpny_name){
     $this->db->select('id');
     $this->db->from('t_cmpny');

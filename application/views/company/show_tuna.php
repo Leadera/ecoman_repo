@@ -7,6 +7,7 @@
             <div class="swissheader">Select a Company</div>
       <div class="heightlimit">
       <table style="clear:both; width: 100%;" class="table-hover">
+      <?php //print_r($companies); ?>
         <?php foreach ($companies as $com): ?>
           <tr>
             <td style="padding: 10px 15px;">
@@ -35,7 +36,7 @@
             <option value="<?php echo $cluster['id']; ?>"><?php echo $cluster['name']; ?></option>
           <?php endforeach ?>
         </select>
-        <button type="submit" class="btn btn-primary btn-sm">Filter</button>
+        <button type="submit" class="btn btn-primary">Show</button>
       </div>
       </form>
     </div>
@@ -226,7 +227,7 @@
 
   var company_flows_transform =
     {"tag":"tr","children":[
-      {"tag":"td","html":"${flowname}"},
+      {"tag":"td","html":"<a href='tuna/${flow_id}'>${flowname}</a>"},
       {"tag":"td","html":"${flowtype}"},
       {"tag":"td","html":"${qntty} ${cost_unit}"},
       {"tag":"td","html":"${cost} ${qntty_unit_name}"},
@@ -262,7 +263,6 @@
 
         //harita oynatma
         var cM = map.project(e.popup._latlng);
-        cM.y -= e.popup._container.clientHeight/2;
         map.setView(map.unproject(cM),16, {animate: true});
   }
 </script>

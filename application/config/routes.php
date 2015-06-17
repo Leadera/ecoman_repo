@@ -139,6 +139,7 @@ $route['companySearch']="company/company_search";
 $route['update_company/(:any)'] = "company/update_company/$1";
 $route['newcompany'] = "company/new_company";
 $route['companies'] = "company/show_all_companies";
+$route['tuna/(:any)'] = "company/show_tuna/$1";
 $route['tuna'] = "company/show_tuna";
 $route['mycompanies'] = "company/show_my_companies";
 $route['projectcompanies'] = "company/show_project_companies";
