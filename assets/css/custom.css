@@ -422,3 +422,7 @@ td {
 }
 
 .heightlimit { max-height:650px; border:1px solid d0d0d0; overflow:auto; }
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}

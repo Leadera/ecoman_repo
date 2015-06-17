@@ -3,7 +3,43 @@
 
 <div class="">
   <div class="">
-    <div class="col-md-7">
+    <div class="col-md-3">
+            <div class="swissheader">Select a Company</div>
+      <div class="heightlimit">
+      <table style="clear:both; width: 100%;" class="table-hover">
+        <?php foreach ($companies as $com): ?>
+          <tr>
+            <td style="padding: 10px 15px;">
+            <a class="a" href="javascript:;" id="<?php echo $com['id']; ?>" style="display: block; cursor:pointer;">
+            <div class="row">
+              <div class="col-md-9">
+                <div><b><?php echo $com['name']; ?></b></div>
+                <div><span style="color:#999999; font-size:12px;"><?php echo $com['description']; ?></span></div>
+              </div>
+              <div class="col-md-3">
+
+              </div>
+            </div>
+            </a>
+            </td>
+          </tr>
+        <?php endforeach ?>
+        </table>
+        </div>
+      <?php echo form_open_multipart('tuna'); ?>
+      <div class="well" style="margin-top: 20px;">
+        <label for="cluster">Select Cluster</label>
+        <select title="Choose at least one" class="select-block" id="cluster" name="cluster">
+          <option value="0">All of the Companies</option>
+          <?php foreach ($clusters as $cluster): ?>
+            <option value="<?php echo $cluster['id']; ?>"><?php echo $cluster['name']; ?></option>
+          <?php endforeach ?>
+        </select>
+        <button type="submit" class="btn btn-primary btn-sm">Filter</button>
+      </div>
+      </form>
+    </div>
+    <div class="col-md-5">
         <div class="swissheader"><?php echo $cluster_name['name'];?></div>
         <!-- harita -->
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
@@ -18,11 +54,10 @@
         }
         //print_r($company_array);
         ?>
-        <div id="map" style="height: 600px;"></div>
-
-
+        <div id="map" style="height: 650px;"></div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-4">
+        <div class="swissheader">Detailed information</div>
 
       <div class="heightlimit" id="info">
         <div class="alert">Please select a company to see detailed information.</div>
@@ -30,31 +65,25 @@
       <div class="well">
         Non-exist data will be shown as empty.
       </div>
-      <?php echo form_open_multipart('tuna'); ?>
-      <div class="well" style="margin-top: 20px;">
-        <label for="cluster">Select Cluster</label>
-        <select title="Choose at least one" class="select-block" id="cluster" name="cluster">
-          <option value="0">All of the Companies</option>
-          <?php foreach ($clusters as $cluster): ?>
-            <option value="<?php echo $cluster['id']; ?>"><?php echo $cluster['name']; ?></option>
-          <?php endforeach ?>
-        </select>
-        <button type="submit" class="btn btn-primary btn-sm">Filter</button>
-      </div>
-      </form>
+
 <!--       <a class="btn btn-default btn-sm" href="<?php echo base_url('cluster'); ?>">Add company to a cluster</a>
  -->
     </div>
   </div>
 </div>
 <script type="text/javascript">
+   $(".a").click(function(){
+        markerFunction($(this)[0].id);
+        //alert("as");
+    });
+</script>
+<script type="text/javascript">
           var planes = <?php echo json_encode($company_array); ?>;
           var bounds = new L.LatLngBounds(planes);
 
           var map = L.map('map').setView([41.83683, 19.33594], 4);
-                  map.fitWorld().zoomIn();
 
-        map.fitBounds(bounds,{padding: [50,50]});
+          map.fitBounds(bounds,{padding: [50,50]});
 
           mapLink =
               '<a href="http://openstreetmap.org">OpenStreetMap</a>';
@@ -62,15 +91,33 @@
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           }).addTo(map);
 
+          var markers = [];
           for (var i = 0; i < planes.length; i++) {
             marker = new L.marker([planes[i][0],planes[i][1]], {id: planes[i][3]})
               .bindPopup(planes[i][2])
               .addTo(map)
-              .on('click', onClick);
+              .on('popupopen', onClick);
+
+              markers.push(marker);
+
+          }
+          //console.log(markers);
+          //console.log(markers['0'].options.id);
+
+
+          function markerFunction(id){
+              for (var i in planes){
+                  var markerID = markers[i].options.id;
+                  if (markerID == id){
+                      markers[i].openPopup();
+                      //alert("asd");
+                  };
+              }
           }
 
           function onClick(e) {
               //console.log(e.target);
+
               var company_id = e.target.options.id;
               $.ajax({
                   url: '<?php echo base_url('tuna_json'); ?>/'+company_id,
@@ -94,7 +141,7 @@
     {"tag":"tbody","children":[
         {"tag":"tr","children":[
             {"tag":"td","html":"Company Info"},
-            {"tag":"td","colspan":"4","html":"${company_info.name}"}
+            {"tag":"td","colspan":"4","html":"<h4>${company_info.name}</h4>"}
           ]},
         {"tag":"tr","children":[
             {"tag":"td","html":"E-mail"},
@@ -213,5 +260,9 @@
           type: 'GET'
       });
 
+        //harita oynatma
+        var cM = map.project(e.popup._latlng);
+        cM.y -= e.popup._container.clientHeight/2;
+        map.setView(map.unproject(cM),16, {animate: true});
   }
 </script>
