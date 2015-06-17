@@ -227,7 +227,7 @@
 
   var company_flows_transform =
     {"tag":"tr","children":[
-      {"tag":"td","html":"<a href='tuna/${flow_id}'>${flowname}</a>"},
+      {"tag":"td","children":[{"tag":"a","href":"<?php echo base_url("tuna"); ?>/${flow_id}","html":"${flowname}"}]},
       {"tag":"td","html":"${flowtype}"},
       {"tag":"td","html":"${qntty} ${cost_unit}"},
       {"tag":"td","html":"${cost} ${qntty_unit_name}"},
