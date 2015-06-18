@@ -51,8 +51,7 @@
     <nav class="navbar navbar-default navbar-lg" style="margin-bottom:0px;">
       <a class="navbar-brand" href="<?php echo base_url(); ?>" style="color:white;">ECOMAN</a>
       <?php echo lang("msg_first_name"); ?>
-      <a href='<?php echo base_url('language/switch/turkish'); ?>'>Türkçe</a>
-      <a href='<?php echo base_url('language/switch/english'); ?>'>English</a>
+
       <form class="navbar-form navbar-right" action="<?php echo base_url('search'); ?>" method="post" role="search" style="display: table;">
         <div class="form-group">
           <div class="input-group" style="display:block;">
@@ -64,7 +63,8 @@
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
-
+        <li><a href='<?php echo base_url('language/switch/turkish'); ?>'>TR</a></li>
+        <li><a href='<?php echo base_url('language/switch/english'); ?>'>EN</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-left ust-nav">
         <li class="navtus" data-rel="profiles"><a id="l1" href="#" ><i class="fa fa-group"></i> Profiles</a></li>
