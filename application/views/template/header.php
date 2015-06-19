@@ -121,8 +121,10 @@
       <?php if ($this->session->userdata('user_in') !== FALSE): ?>
         <li><a href="<?php echo base_url('newproject'); ?>"><i class="fa fa-plus-circle"></i> <?php echo lang("createproject"); ?></a></li>
       <?php endif ?>
-      <li class="pull-right"><a href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-times-circle"></i> <?php echo lang("closeproject"); ?></a></li>
-      <li class="pull-right"><a href="<?php echo base_url('project/'.$this->session->userdata('project_id')); ?>"><?php echo $this->session->userdata('project_name'); ?></a></li>
+      <?php if($this->session->userdata('project_id') !== FALSE): ?>
+        <li class="pull-right"><a href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-times-circle"></i> <?php echo lang("closeproject"); ?></a></li>
+        <li class="pull-right"><a href="<?php echo base_url('project/'.$this->session->userdata('project_id')); ?>"><?php echo $this->session->userdata('project_name'); ?></a></li>
+      <?php endif ?>
     </ul>
 
     <ul id="analysis" class="nav navbar-nav alt-nav" style="display:none;">
