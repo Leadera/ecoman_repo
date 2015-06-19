@@ -121,6 +121,8 @@
       <?php if ($this->session->userdata('user_in') !== FALSE): ?>
         <li><a href="<?php echo base_url('newproject'); ?>"><i class="fa fa-plus-circle"></i> <?php echo lang("createproject"); ?></a></li>
       <?php endif ?>
+      <li class="pull-right"><a href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-times-circle"></i> <?php echo lang("closeproject"); ?></a></li>
+      <li class="pull-right"><a href="<?php echo base_url('project/'.$this->session->userdata('project_id')); ?>"><?php echo $this->session->userdata('project_name'); ?></a></li>
     </ul>
 
     <ul id="analysis" class="nav navbar-nav alt-nav" style="display:none;">
@@ -147,14 +149,9 @@
           <li><a href="<?php echo base_url('map'); ?>"><i class="fa fa-globe"></i> <?php echo lang("gis"); ?></a></li>
           <li><a href="<?php echo base_url('cost_benefit'); ?>"><i class="fa fa-eur"></i> <?php echo lang("costbenefitanalysis"); ?></a></li>
           <li><a href="<?php echo base_url('ecotracking'); ?>"><i class="fa fa-area-chart"></i> <?php echo lang("ecotracking"); ?></a></li>
-          <li><a href="<?php echo base_url('project/'.$this->session->userdata('project_id')); ?>"><?php echo $this->session->userdata('project_name'); ?></a>
-          </li>
-          <li><a href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-times-circle"></i> <?php echo lang("closeproject"); ?></a></li>
-
-
         <?php else: ?>
           <li><a href="#"><?php echo lang("analysisinfo"); ?></a></li>
- <!--          <ul class="list-inline" style="margin:0px;">
+          <!--<ul class="list-inline" style="margin:0px;">
             <li class="head-li"><a href="<?php echo base_url('openproject'); ?>"><i class="fa fa-plus-square-o"></i> Open Project</a></li>
           </ul> -->
         <?php endif ?>
@@ -179,17 +176,17 @@
         $('.content-container ul.nav').hide();
         $('#profiles').fadeIn('slow');
       }
-      else if ((pathname.toLowerCase().indexOf("company") >= 0) || (pathname.toLowerCase().indexOf("companies") >= 0) || (pathname.toLowerCase().indexOf("newcompany") >= 0)){
+      else if ((pathname.toLowerCase().indexOf("company") >= 0) || (pathname.toLowerCase().indexOf("companies") >= 0) || (pathname.toLowerCase().indexOf("product") >= 0) || (pathname.toLowerCase().indexOf("flow") >= 0) || (pathname.toLowerCase().indexOf("component") >= 0) || (pathname.toLowerCase().indexOf("process") >= 0) || (pathname.toLowerCase().indexOf("equipment") >= 0)){
         $('#l2').css('background-color', '#901F0F');
         $('.content-container ul.nav').hide();
         $('#companies').fadeIn('slow');
       }
-      else if ((pathname.toLowerCase().indexOf("project") >= 0) || (pathname.toLowerCase().indexOf("newcompany") >= 0)){
+      else if ((pathname.toLowerCase().indexOf("project") >= 0)){
         $('#l3').css('background-color', '#15474A');
         $('.content-container ul.nav').hide();
         $('#projects').fadeIn('slow');
       }
-      else if ((pathname.toLowerCase().indexOf("cpscoping") >= 0) || (pathname.toLowerCase().indexOf("isscoping") >= 0) || (pathname.toLowerCase().indexOf("cost_benefit") >= 0) || (pathname.toLowerCase().indexOf("kpi_calculation") >= 0) || (pathname.toLowerCase().indexOf("product") >= 0) || (pathname.toLowerCase().indexOf("flow") >= 0) || (pathname.toLowerCase().indexOf("component") >= 0) || (pathname.toLowerCase().indexOf("process") >= 0) || (pathname.toLowerCase().indexOf("equipment") >= 0) || (pathname.toLowerCase().indexOf("ecotracking") >= 0)){
+      else if ((pathname.toLowerCase().indexOf("cpscoping") >= 0) || (pathname.toLowerCase().indexOf("isscoping") >= 0) || (pathname.toLowerCase().indexOf("cost_benefit") >= 0) || (pathname.toLowerCase().indexOf("kpi_calculation") >= 0) || (pathname.toLowerCase().indexOf("ecotracking") >= 0)){
         $('#l4').css('background-color', '#84BFC3');
         $('.content-container ul.nav').hide();
         $('#analysis').fadeIn('slow');
