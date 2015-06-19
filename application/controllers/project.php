@@ -123,7 +123,7 @@ class Project extends CI_Controller{
 
 			$this->project_model->insert_project_contact_person($prj_cntct_prsnl);
 
-			redirect('projects', 'refresh');
+			redirect('myprojects', 'refresh');
 		}
 
 		$this->load->view('template/header');

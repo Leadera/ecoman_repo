@@ -1,5 +1,5 @@
 <?php // echo $map['js']; ?>
-<?php  
+<?php
     global $company_ids;
     foreach ($companies as $company) {
         $company_ids.= $company['name'].',';
@@ -11,22 +11,72 @@
     function showMapPanelExpand() {
             //var panelWest = $('#cc').layout('panel','south');
             //var panelSouthNorth = $('#cc2').layout('panel','north');
-            //$('#p').panel('expand');  
+            //$('#p').panel('expand');
             document.getElementById('myFrame').setAttribute('width','100%');
             document.getElementById('myFrame').setAttribute('height','500');
         }
-        
+
         function showMapPanelCollapse() {
             //var panelWest = $('#cc').layout('panel','south');
             //var panelSouthNorth = $('#cc2').layout('panel','north');
-            //$('#p').panel('expand');  
+            //$('#p').panel('expand');
             document.getElementById('myFrame').setAttribute('width','0');
             document.getElementById('myFrame').setAttribute('height','0');
         }
-    
+
 </script>
 <div class="container">
 	<div class="row">
+
+		<div class="col-md-4">
+
+					<?php if($is_consultant_of_project): ?>
+			<div style="margin-bottom:20px; overflow:hidden;">
+				<?php if($this->session->userdata('project_id')==$projects['id']): ?>
+					<a class="btn btn-inverse btn-block" href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-times-circle"></i> Close This Project</a>
+				<?php else: ?>
+					<?php echo form_open('openproject'); ?>
+						<input type="hidden" name="projectid" value="<?php echo $projects['id']; ?>">
+						<button type="submit" class="btn btn-primary btn-block"><i class="fa fa-plus-square-o"></i> Open This Project</button>
+					</form>
+				<?php endif ?>
+			<a style="margin-top: 10px;" class="btn btn-inverse btn-block" href="<?php echo base_url("update_project/".$projects['id']); ?>"><i class="fa fa-pencil-square-o"></i> Update Project Info</a>
+			    <!--<a onclick="event.preventDefault();window.open('../../IS_OpenLayers/map_prj.php?cmpny=<?php echo $company_ids; ?>','mywindow','width=900,height=900');" style = 'margin-right: 20px;' class="btn btn-info btn-sm pull-right" >See Project Companies On map</a>-->
+					<!--<a onclick="showMapPanelExpand();document.getElementById('myFrame').setAttribute('src','../../IS_OpenLayers/map_prj_prj.php?prj_id=<?php echo $prj_id; ?>');event.preventDefault();"  class="btn btn-inverse btn-sm" >See Project Companies On map</a>
+			    <a class="btn btn-inverse btn-sm" href="#" onclick="showMapPanelCollapse();event.preventDefault();">Close Companies Map</a> -->
+
+			 </div>
+			<?php endif ?>
+			<div class="clearfix"></div>
+
+			<div class="form-group">
+				<div class="swissheader" style="font-size:15px;"><i class="fa fa-users"></i> Project Consultants</div>
+					<ul class="nav nav-list">
+				<?php foreach ($constant as $cons): ?>
+					<li><a style="text-transform:capitalize;" href="<?php echo base_url('user/'.$cons['user_name']); ?>"> <?php echo $cons['name'].' '.$cons['surname']; ?></a></li>
+				<?php endforeach ?>
+				</ul>
+			</div>
+
+			<div class="form-group">
+				<div class="swissheader" style="font-size:15px;"><i class="fa fa-building"></i> Project Companies</div>
+					<ul class="nav nav-list">
+				<?php foreach ($companies as $company): ?>
+					<li><a style="text-transform:capitalize;" href="<?php echo base_url('company/'.$company['id']); ?>"> <?php echo $company['name'];?></a></li>
+				<?php endforeach ?>
+				</ul>
+			</div>
+
+			<div class="form-group">
+				<div class="swissheader" style="font-size:15px;"><i class="fa fa-phone"></i> Contact Person</div>
+					<ul class="nav nav-list">
+				<?php foreach ($contact as $con): ?>
+					<li><a style="text-transform:capitalize;" href="<?php echo base_url('user/'.$con['user_name']); ?>"> <?php echo $con['name'].' '.$con['surname'];?></a></li>
+				<?php endforeach ?>
+				</ul>
+			</div>
+		</div>
+
 		<div class="col-md-8">
 			<div class="swissheader">
 			<?php echo $projects['name']; ?>
@@ -35,24 +85,7 @@
 				<?php endif ?>
 			</div>
 			<div class="clearfix"></div>
-			<?php if($is_consultant_of_project): ?>
-			<div style="margin-bottom:20px; overflow:hidden; margin-top:10px;">
-				<?php if($this->session->userdata('project_id')==$projects['id']): ?>
-					<a class="btn btn-inverse btn-sm" href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-times-circle"></i> Close This Project</a>
-				<?php else: ?>
-					<?php echo form_open('openproject'); ?>
-						<input type="hidden" name="projectid" value="<?php echo $projects['id']; ?>">
-						<button type="submit" class="btn btn-sm btn-primary pull-left" style="margin-right:5px;"><i class="fa fa-plus-square-o"></i> Open This Project</button>
-					</form>
-				<?php endif ?>
-			<a class="btn btn-inverse btn-sm" href="<?php echo base_url("update_project/".$projects['id']); ?>"><i class="fa fa-pencil-square-o"></i> Update Project Info</a>
-			    <!--<a onclick="event.preventDefault();window.open('../../IS_OpenLayers/map_prj.php?cmpny=<?php echo $company_ids; ?>','mywindow','width=900,height=900');" style = 'margin-right: 20px;' class="btn btn-info btn-sm pull-right" >See Project Companies On map</a>-->
-<!-- 			    <a onclick="showMapPanelExpand();document.getElementById('myFrame').setAttribute('src','../../IS_OpenLayers/map_prj_prj.php?prj_id=<?php echo $prj_id; ?>');event.preventDefault();"  class="btn btn-inverse btn-sm" >See Project Companies On map</a>
-			    <a class="btn btn-inverse btn-sm" href="#" onclick="showMapPanelCollapse();event.preventDefault();">Close Companies Map</a> -->
-			    
-			 </div>
-			<?php endif ?>
-			<div class="clearfix"></div>
+
 
 			<table class="table table-bordered" style="font-size:14px;">
 				<tr>
@@ -93,35 +126,6 @@
 			</div>
 			<iframe src="../../IS_OpenLayers/map_prj_prj.php?prj_id=<?php echo $prj_id; ?>" id="myFrame"  marginwidth="0" width='100%' height='500' marginheight="0"  align="middle" scrolling="auto"></iframe>
 			<?php //echo $map['html']; ?>
-		</div>
-		<div class="col-md-4">
-			<div class="form-group">
-				<div class="swissheader" style="font-size:15px;"><i class="fa fa-users"></i> Project Consultants</div>
-					<ul class="nav nav-list">
-				<?php foreach ($constant as $cons): ?>
-					<li><a style="text-transform:capitalize;" href="<?php echo base_url('user/'.$cons['user_name']); ?>"> <?php echo $cons['name'].' '.$cons['surname']; ?></a></li>
-				<?php endforeach ?>
-				</ul>
-			</div>
-
-			<div class="form-group">
-				<div class="swissheader" style="font-size:15px;"><i class="fa fa-building"></i> Project Companies</div>
-					<ul class="nav nav-list">
-				<?php foreach ($companies as $company): ?>
-					<li><a style="text-transform:capitalize;" href="<?php echo base_url('company/'.$company['id']); ?>"> <?php echo $company['name'];?></a></li>
-				<?php endforeach ?>
-				</ul>
-			</div>
-
-			<div class="form-group">
-				<div class="swissheader" style="font-size:15px;"><i class="fa fa-phone"></i> Contact Person</div>
-					<ul class="nav nav-list">
-				<?php foreach ($contact as $con): ?>
-					<li><a style="text-transform:capitalize;" href="<?php echo base_url('user/'.$con['user_name']); ?>"> <?php echo $con['name'].' '.$con['surname'];?></a></li>
-				<?php endforeach ?>
-				</ul>
-			</div>
-
 		</div>
 	</div>
 </div>
