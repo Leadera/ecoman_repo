@@ -55,7 +55,7 @@
       <form class="navbar-form navbar-right" action="<?php echo base_url('search'); ?>" method="post" role="search" style="display: table;">
         <div class="form-group">
           <div class="input-group" style="display:block;">
-            <input name="term" class="form-control" id="navbarInput-01" type="search" placeholder="Search">
+            <input name="term" class="form-control" id="navbarInput-01" type="search" placeholder="<?php echo lang("search"); ?>">
             <span class="input-group-btn">
               <button type="submit" class="btn"><span class="fui-search"></span></button>
             </span>
@@ -63,14 +63,14 @@
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href='<?php echo base_url('language/switch/turkish'); ?>'>TR</a></li>
-        <li><a href='<?php echo base_url('language/switch/english'); ?>'>EN</a></li>
+        <li><a href='<?php echo base_url('language/switch/turkish'); ?>' style="padding-right: 0px; padding-bottom:25px; "><img src="<?php echo asset_url('images/Turkey.png'); ?>"></a></li>
+        <li><a href='<?php echo base_url('language/switch/english'); ?>' style="padding-bottom: 25px;"><img src="<?php echo asset_url('images/United-States.png'); ?>"></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-left ust-nav">
-        <li class="navtus" data-rel="profiles"><a id="l1" href="#" ><i class="fa fa-group"></i> Profiles</a></li>
-        <li class="navtus" data-rel="companies"><a id="l2" href="#" ><i class="fa fa-building-o"></i> Companies</a></li>
-        <li class="navtus" data-rel="projects"><a id="l3" href="#" ><i class="fa fa-globe"></i> Projects</a></li>
-        <li class="navtus" data-rel="analysis"><a id="l4" href="#" ><i class="fa fa-recycle"></i> Analysis</a></li>
+        <li class="navtus" data-rel="profiles"><a id="l1" href="#" ><i class="fa fa-group"></i> <?php echo lang("profiles"); ?></a></li>
+        <li class="navtus" data-rel="companies"><a id="l2" href="#" ><i class="fa fa-building-o"></i> <?php echo lang("companies"); ?></a></li>
+        <li class="navtus" data-rel="projects"><a id="l3" href="#" ><i class="fa fa-globe"></i> <?php echo lang("projects"); ?></a></li>
+        <li class="navtus" data-rel="analysis"><a id="l4" href="#" ><i class="fa fa-recycle"></i> <?php echo lang("analysis"); ?></a></li>
       </ul>
     </nav>
 
@@ -78,48 +78,48 @@
 
       <ul id="homies" class="nav navbar-nav alt-nav">
         <!-- <li><a href="#" class="nav-info"></a></li> -->
-        <li><a href="<?php echo base_url('contactus'); ?>"><i class="fa fa-envelope"></i> Who we are?</a></li>
-        <li><a href="<?php echo base_url('whatwedo'); ?>"><i class="fa fa-question-circle"></i> What We Do?</a></li>
-        <li><a href="<?php echo base_url('functionalities'); ?>"><i class="fa fa-dashboard"></i> Functionalities</a></li>
+        <li><a href="<?php echo base_url('contactus'); ?>"><i class="fa fa-envelope"></i> <?php echo lang("whoarewe"); ?></a></li>
+        <li><a href="<?php echo base_url('whatwedo'); ?>"><i class="fa fa-question-circle"></i> <?php echo lang("whatwedo"); ?></a></li>
+        <li><a href="<?php echo base_url('functionalities'); ?>"><i class="fa fa-dashboard"></i> <?php echo lang("functionalities"); ?></a></li>
       </ul>
 
       <ul id="profiles" class="nav navbar-nav alt-nav" style="display:none;">
         <!--  <li><a href="#" class="nav-info"></a></li> -->
-        <li><a href="<?php echo base_url('users'); ?>"><i class="fa fa-group"></i> Consultants</a></li>
+        <li><a href="<?php echo base_url('users'); ?>"><i class="fa fa-group"></i> <?php echo lang("consultants"); ?></a></li>
         <?php
               //print_r($this->session->userdata('user_in'));
         if ($this->session->userdata('user_in') !== FALSE):
           $tmp = $this->session->userdata('user_in');
         ?>
         <li class="head-li"><a href="<?php echo base_url('user/'.$tmp['username']); ?>" style="text-transform: capitalize;"><i class="fa fa-user"></i> <?php echo $tmp['username']; ?></a></li>
-        <li class="head-li"><a href="<?php echo base_url('profile_update'); ?>" ><i class="fa fa-pencil-square-o"></i> Update Profile</a></li>
-        <li class="head-li"><a href="<?php echo base_url('logout'); ?>"><i class="fa fa-sign-out"></i> Logout</a></li>
+        <li class="head-li"><a href="<?php echo base_url('profile_update'); ?>" ><i class="fa fa-pencil-square-o"></i> <?php echo lang("updateprofile"); ?></a></li>
+        <li class="head-li"><a href="<?php echo base_url('logout'); ?>"><i class="fa fa-sign-out"></i> <?php echo lang("logout"); ?></a></li>
       <?php else: ?>
-        <li class="head-li"><a href="<?php echo base_url('login'); ?>"><i class="fa fa-sign-in"></i> Login</a></li>
-        <li class="head-li"><a href="<?php echo base_url('register'); ?>"><i class="fa fa-plus"></i> Register</a></li>
+        <li class="head-li"><a href="<?php echo base_url('login'); ?>"><i class="fa fa-sign-in"></i> <?php echo lang("login"); ?></a></li>
+        <li class="head-li"><a href="<?php echo base_url('register'); ?>"><i class="fa fa-plus"></i> <?php echo lang("register"); ?></a></li>
       <?php endif ?>
     </ul>
 
     <ul id="companies" class="nav navbar-nav alt-nav" style="display:none;">
         <!--  <li><a href="#" class="nav-info"></a></li> -->
-      <li><a href="<?php echo base_url('companies'); ?>"><i class="fa fa-building-o"></i> All Companies</a></li>
+      <li><a href="<?php echo base_url('companies'); ?>"><i class="fa fa-building-o"></i> <?php echo lang("allcompanies"); ?></a></li>
       <?php if ($this->session->userdata('user_in') !== FALSE): ?>
-        <li><a href="<?php echo base_url('mycompanies'); ?>"><i class="fa fa-building-o"></i> My Companies</a></li>
+        <li><a href="<?php echo base_url('mycompanies'); ?>"><i class="fa fa-building-o"></i> <?php echo lang("mycompanies"); ?></a></li>
         <?php if($this->session->userdata('project_id') !== FALSE): ?>
           <li><a href="<?php echo base_url('projectcompanies'); ?>"><i class="fa fa-building-o"></i> Project Companies</a></li>
         <?php endif ?>
-        <li class="head-li"><a href="<?php echo base_url('newcompany'); ?>"><i class="fa fa-plus-square"></i> Create Company</a></li>
+        <li class="head-li"><a href="<?php echo base_url('newcompany'); ?>"><i class="fa fa-plus-square"></i> <?php echo lang("createcompany"); ?></a></li>
       <?php endif ?>
     </ul>
 
     <ul id="projects" class="nav navbar-nav alt-nav" style="display:none;">
         <!--  <li><a href="#" class="nav-info"></a></li> -->
       <?php if ($this->session->userdata('user_in') !== FALSE): ?>
-        <li><a href="<?php echo base_url('myprojects'); ?>"><i class="fa fa-globe"></i> My Projects</a></li>
+        <li><a href="<?php echo base_url('myprojects'); ?>"><i class="fa fa-globe"></i> <?php echo lang("myprojects"); ?></a></li>
       <?php endif ?>
-      <li><a href="<?php echo base_url('projects'); ?>"><i class="fa fa-globe"></i> All Projects</a></li>
+      <li><a href="<?php echo base_url('projects'); ?>"><i class="fa fa-globe"></i> <?php echo lang("allprojects"); ?></a></li>
       <?php if ($this->session->userdata('user_in') !== FALSE): ?>
-        <li><a href="<?php echo base_url('newproject'); ?>"><i class="fa fa-plus-circle"></i> Create Project</a></li>
+        <li><a href="<?php echo base_url('newproject'); ?>"><i class="fa fa-plus-circle"></i> <?php echo lang("createproject"); ?></a></li>
       <?php endif ?>
     </ul>
 
@@ -127,11 +127,11 @@
         <!--  <li><a href="#" class="nav-info"></a></li> -->
       <?php if ($this->session->userdata('user_in') !== FALSE): ?>
         <?php if($this->session->userdata('project_id') !== FALSE): ?>
-          <li><a href="<?php echo base_url('cpscoping'); ?>"><i class="fa fa-recycle"></i> CP - Potential Identification</a></li>
+          <li><a href="<?php echo base_url('cpscoping'); ?>"><i class="fa fa-recycle"></i> <?php echo lang("cpidentification"); ?></a></li>
           <li>
             <div class="dropdown">
               <button class="btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" style="padding: 12px 0px; color:white;">
-                <i class="fa fa-exchange"></i> IS - Potential Identification
+                <i class="fa fa-exchange"></i> <?php echo lang("isidentification"); ?>
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu dropdown-inverse" role="menu" aria-labelledby="dropdownMenu1">
@@ -144,23 +144,22 @@
               </ul>
             </div>
           </li>
-          <li><a href="<?php echo base_url('map'); ?>"><i class="fa fa-globe"></i> GIS</a></li>
-          <li><a href="<?php echo base_url('cost_benefit'); ?>"><i class="fa fa-eur"></i> Cost - Benefit Analysis</a></li>
-          <li><a href="<?php echo base_url('ecotracking'); ?>"><i class="fa fa-area-chart"></i> Eco Tracking</a></li>
-
+          <li><a href="<?php echo base_url('map'); ?>"><i class="fa fa-globe"></i> <?php echo lang("gis"); ?></a></li>
+          <li><a href="<?php echo base_url('cost_benefit'); ?>"><i class="fa fa-eur"></i> <?php echo lang("costbenefitanalysis"); ?></a></li>
+          <li><a href="<?php echo base_url('ecotracking'); ?>"><i class="fa fa-area-chart"></i> <?php echo lang("ecotracking"); ?></a></li>
           <li><a href="<?php echo base_url('project/'.$this->session->userdata('project_id')); ?>"><?php echo $this->session->userdata('project_name'); ?></a>
           </li>
-          <li><a href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-times-circle"></i> Close this project</a></li>
+          <li><a href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-times-circle"></i> <?php echo lang("closeproject"); ?></a></li>
 
 
         <?php else: ?>
-          <li><a href="#">You need to open a project to work on the tools.</a></li>
+          <li><a href="#"><?php echo lang("analysisinfo"); ?></a></li>
  <!--          <ul class="list-inline" style="margin:0px;">
             <li class="head-li"><a href="<?php echo base_url('openproject'); ?>"><i class="fa fa-plus-square-o"></i> Open Project</a></li>
           </ul> -->
         <?php endif ?>
       <?php else: ?>
-      <li><a href="#">You need to login and open a project to use analysis tools.</a></li>
+      <li><a href="#"><?php echo lang("analysisinfo2"); ?></a></li>
       <?php endif ?>
     </ul>
 
