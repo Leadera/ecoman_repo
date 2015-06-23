@@ -77,14 +77,14 @@
     <div class="content-container" style="margin-bottom: 20px;display: block;height: 52px;">
 
       <ul id="homies" class="nav navbar-nav alt-nav">
-        <!-- <li><a href="#" class="nav-info"></a></li> -->
+        <li><a href="#" class="nav-info"></a></li>
         <li><a href="<?php echo base_url('contactus'); ?>"><i class="fa fa-envelope"></i> <?php echo lang("whoarewe"); ?></a></li>
         <li><a href="<?php echo base_url('whatwedo'); ?>"><i class="fa fa-question-circle"></i> <?php echo lang("whatwedo"); ?></a></li>
         <li><a href="<?php echo base_url('functionalities'); ?>"><i class="fa fa-dashboard"></i> <?php echo lang("functionalities"); ?></a></li>
       </ul>
 
       <ul id="profiles" class="nav navbar-nav alt-nav" style="display:none;">
-        <!--  <li><a href="#" class="nav-info"></a></li> -->
+         <li><a href="#" class="nav-info"></a></li>
         <li><a href="<?php echo base_url('users'); ?>"><i class="fa fa-group"></i> <?php echo lang("consultants"); ?></a></li>
         <?php
               //print_r($this->session->userdata('user_in'));
@@ -101,7 +101,7 @@
     </ul>
 
     <ul id="companies" class="nav navbar-nav alt-nav" style="display:none;">
-        <!--  <li><a href="#" class="nav-info"></a></li> -->
+         <li><a href="#" class="nav-info"></a></li>
       <li><a href="<?php echo base_url('companies'); ?>"><i class="fa fa-building-o"></i> <?php echo lang("allcompanies"); ?></a></li>
       <?php if ($this->session->userdata('user_in') !== FALSE): ?>
         <li><a href="<?php echo base_url('mycompanies'); ?>"><i class="fa fa-building-o"></i> <?php echo lang("mycompanies"); ?></a></li>
@@ -113,7 +113,7 @@
     </ul>
 
     <ul id="projects" class="nav navbar-nav alt-nav" style="display:none;">
-        <!--  <li><a href="#" class="nav-info"></a></li> -->
+         <li><a href="#" class="nav-info"></a></li>
       <?php if ($this->session->userdata('user_in') !== FALSE): ?>
         <li><a href="<?php echo base_url('myprojects'); ?>"><i class="fa fa-globe"></i> <?php echo lang("myprojects"); ?></a></li>
       <?php endif ?>
@@ -128,7 +128,7 @@
     </ul>
 
     <ul id="analysis" class="nav navbar-nav alt-nav" style="display:none;">
-        <!--  <li><a href="#" class="nav-info"></a></li> -->
+         <li><a href="#" class="nav-info"></a></li>
       <?php if ($this->session->userdata('user_in') !== FALSE): ?>
         <?php if($this->session->userdata('project_id') !== FALSE): ?>
           <li><a href="<?php echo base_url('cpscoping'); ?>"><i class="fa fa-recycle"></i> <?php echo lang("cpidentification"); ?></a></li>

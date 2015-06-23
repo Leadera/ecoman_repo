@@ -73,8 +73,13 @@
 						<label for="jobDescription">Description</label>
 						<textarea class="form-control" rows="3" name="description" value="<?php echo set_value('description'); ?>" id="description" placeholder="Description"></textarea>
 				</div>
-						<button type="submit" class="btn btn-info">Create User Profile</button>
-
+		  	<?php
+					echo 'Lütfen aşağıda gördüğünüz kodu giriniz. <br>';
+					echo $image;
+					echo '<br><br><input class="form-control" type="text" name="captcha" value="" placeholder="kod alanı"/>';
+				?>
+				<hr>
+				<button type="submit" class="btn btn-info">Create User Profile</button>
 			</div>
 		</div>
 	</form>

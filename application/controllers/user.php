@@ -15,6 +15,27 @@ class User extends CI_Controller {
 			redirect('', 'refresh');
 		}
 		//form kontroller
+
+		$this->load->helper('captcha');
+		$vals = array(
+	    'img_path'	 => './assets/captcha/',
+			'img_url'	 => asset_url('captcha').'/',
+			'img_width'	 => '200',
+			'img_height' => 42,
+	    'expiration' => 1024
+    	);
+		if(strtolower($this->input->post('captcha')) == strtolower($this->session->userdata('word'))){
+			$captcha_control = true;
+		}
+		else{
+			$captcha_control = false;
+		}
+
+		$cap = create_captcha($vals);
+		//print_r($cap);
+		$data['image'] = $cap['image'];
+		$this->session->set_userdata('word', $cap['word']);
+
 		$this->form_validation->set_rules('name','Name','required|trim|xss_clean');
 		$this->form_validation->set_rules('surname','Surname','required|trim|xss_clean');
 		$this->form_validation->set_rules('jobTitle','Job Title','required|trim|xss_clean');
@@ -26,10 +47,10 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean|alpha_numeric|is_unique[t_user.user_name]');
 		$this->form_validation->set_rules('password', 'Password', 'required|trim|xss_clean');
 
-		if ($this->form_validation->run() !== FALSE)
+		if ($this->form_validation->run() !== FALSE  && $captcha_control)
 		{
 			//inserting data to database
-			$data = array(
+			$data2 = array(
 				'name'=>$this->input->post('name'),
 				'surname'=>$this->input->post('surname'),
 				'title'=>$this->input->post('jobTitle'),
@@ -42,7 +63,7 @@ class User extends CI_Controller {
 				'psswrd'=>md5($this->input->post('password'))
 				//'photo'=>$this->input->post('username').'.jpg'
 			);
-			$last_inserted_user_id = $this->user_model->create_user($data);
+			$last_inserted_user_id = $this->user_model->create_user($data2);
 
 			//file properties
 			$config['upload_path'] = './assets/user_pictures/';
@@ -81,14 +102,14 @@ class User extends CI_Controller {
 		}
 
 		$this->load->view('template/header');
-		$this->load->view('user/create_user');
+		$this->load->view('user/create_user',$data);
 		$this->load->view('template/footer');
 	}
 
 	function string_control($str)
 	{
 	    return (!preg_match("/^([-a-üöçşığz A-ÜÖÇŞİĞZ_ ])+$/i", $str)) ? FALSE : TRUE;
-	}	 
+	}
 	//bu kod telefon numaralarına - boşluk ve _ koymaya yarar
 	function alpha_dash_space($str_in = '')
 	{
@@ -177,7 +198,7 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|callback_alpha_dash_space|min_length[11]|xss_clean');
 		$this->form_validation->set_rules('fax', 'Fax Number', 'required|callback_alpha_dash_space|min_length[11]|xss_clean');
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]|xss_clean|callback_username_check|alpha_numeric');
-		
+
 		if ($this->form_validation->run() !== FALSE)
 		{
 			//file properties
@@ -194,7 +215,7 @@ class User extends CI_Controller {
 				//print_r($this->upload->display_errors());
 				//hata vermeye gerek yok , resim secmeyebilir.
 			}
-			/*  upload'un ne yazdırğını kontrol için 
+			/*  upload'un ne yazdırğını kontrol için
 			else{
 				$photo_user = array('upload_data' => $this->upload->data());
 			}*/
@@ -223,7 +244,7 @@ class User extends CI_Controller {
 
 			$this->user_model->update_user($update);
 
-			//session ayaları ve atama 
+			//session ayaları ve atama
 			//username ve email degistigi icin session tekrar olusturuluyor.
 			$session_array= array(
 				'id' => $data['id'],
@@ -266,7 +287,7 @@ class User extends CI_Controller {
 		else{
 			$this->form_validation->set_message('email_check', 'Please provide an acceptable email address.');
 			return false;
-		} 
+		}
 
 	}
 
@@ -282,7 +303,7 @@ class User extends CI_Controller {
 		else{
 			$this->form_validation->set_message('username_check', 'Please provide an acceptable username.');
 			return false;
-		} 
+		}
 	}
 
 	public function become_consultant(){
