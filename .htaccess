@@ -6,3 +6,4 @@ RewriteRule ^(.*)$ index.php/$1 [L,QSA]
 
 Order Deny,Allow
 Deny from 78.170.132.163
+Deny from 91.93.170.146
