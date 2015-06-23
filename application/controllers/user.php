@@ -16,7 +16,9 @@ class User extends CI_Controller {
 		}
 		//form kontroller
 
-		$this->load->helper('captcha');
+		$this->load->library('recaptcha');
+
+/*		$this->load->helper('captcha');
 		$vals = array(
 	    'img_path'	 => './assets/captcha/',
 			'img_url'	 => asset_url('captcha').'/',
@@ -34,7 +36,8 @@ class User extends CI_Controller {
 		$cap = create_captcha($vals);
 		//print_r($cap);
 		$data['image'] = $cap['image'];
-		$this->session->set_userdata('word', $cap['word']);
+		$this->session->set_userdata('word', $cap['word']);*/
+
 
 		$this->form_validation->set_rules('name','Name','required|trim|xss_clean');
 		$this->form_validation->set_rules('surname','Surname','required|trim|xss_clean');
@@ -47,7 +50,8 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean|alpha_numeric|is_unique[t_user.user_name]');
 		$this->form_validation->set_rules('password', 'Password', 'required|trim|xss_clean');
 
-		if ($this->form_validation->run() !== FALSE  && $captcha_control)
+		$this->recaptcha->recaptcha_check_answer();
+		if ($this->form_validation->run() !== FALSE  && $this->recaptcha->getIsValid())
 		{
 			//inserting data to database
 			$data2 = array(
@@ -100,6 +104,8 @@ class User extends CI_Controller {
 			//process completed
 			redirect('completed', 'refresh');
 		}
+
+		$data['recaptcha_html'] = $this->recaptcha->recaptcha_get_html();
 
 		$this->load->view('template/header');
 		$this->load->view('user/create_user',$data);

@@ -6,6 +6,7 @@
       <?php echo validation_errors(); ?>
     </div>
     <?php endif ?>
+    <?php print_r($this->recaptcha->getError()); ?>
 
 	<?php echo form_open_multipart('register'); ?>
 		<div class="row">
@@ -73,10 +74,12 @@
 						<label for="jobDescription">Description</label>
 						<textarea class="form-control" rows="3" name="description" value="<?php echo set_value('description'); ?>" id="description" placeholder="Description"></textarea>
 				</div>
+				<p><a href="<?php echo $this->recaptcha->recaptcha_get_signup_url(); ?>" >Get your API Code HERE</a></p>
+   		 	<?php echo $recaptcha_html; ?>
 		  	<?php
-					echo 'Lütfen aşağıda gördüğünüz kodu giriniz. <br>';
+/*					echo 'Lütfen aşağıda gördüğünüz kodu giriniz. <br>';
 					echo $image;
-					echo '<br><br><input class="form-control" type="text" name="captcha" value="" placeholder="kod alanı"/>';
+					echo '<br><br><input class="form-control" type="text" name="captcha" value="" placeholder="kod alanı"/>';*/
 				?>
 				<hr>
 				<button type="submit" class="btn btn-info">Create User Profile</button>

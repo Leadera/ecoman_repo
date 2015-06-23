@@ -4,12 +4,12 @@
  *
  * File     : recaptcha.php
  * Created  : May 14, 2013 | 4:22:40 PM
- * 
+ *
  * Author   : Andi Irwandi Langgara <irwandi@ourbluecode.com>
  */
 
-$config['public_key']   = 'YOUR PUBLIC KEY';
-$config['private_key']  = 'YOUR PRIVATE KEY';
+$config['public_key']   = '6LcLxggTAAAAADuWuSjpGZNUNkcTQ5gmwgsuU50M';
+$config['private_key']  = '6LcLxggTAAAAANwN017v7YUEjLUV9KXNWm-b5c7o';
 
 // Set Recaptcha options
 // Reference at https://developers.google.com/recaptcha/docs/customization
