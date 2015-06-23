@@ -102,12 +102,14 @@
 
     <ul id="companies" class="nav navbar-nav alt-nav" style="display:none;">
          <li><a href="#" class="nav-info"></a></li>
-      <li><a href="<?php echo base_url('companies'); ?>"><i class="fa fa-building-o"></i> <?php echo lang("allcompanies"); ?></a></li>
       <?php if ($this->session->userdata('user_in') !== FALSE): ?>
         <li><a href="<?php echo base_url('mycompanies'); ?>"><i class="fa fa-building-o"></i> <?php echo lang("mycompanies"); ?></a></li>
         <?php if($this->session->userdata('project_id') !== FALSE): ?>
           <li><a href="<?php echo base_url('projectcompanies'); ?>"><i class="fa fa-building-o"></i> Project Companies</a></li>
         <?php endif ?>
+      <?php endif ?>
+        <li><a href="<?php echo base_url('companies'); ?>"><i class="fa fa-building-o"></i> <?php echo lang("allcompanies"); ?></a></li>
+      <?php if ($this->session->userdata('user_in') !== FALSE): ?>
         <li class="head-li"><a href="<?php echo base_url('newcompany'); ?>"><i class="fa fa-plus-square"></i> <?php echo lang("createcompany"); ?></a></li>
       <?php endif ?>
     </ul>
