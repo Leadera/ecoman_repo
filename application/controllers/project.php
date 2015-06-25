@@ -57,18 +57,16 @@ class Project extends CI_Controller{
 
 		$data['map'] = $this->googlemaps->create_map();
 
-
-
 		$data['companies']=$this->company_model->get_companies();
 		$data['consultants']=$this->user_model->get_consultants();
 		$data['project_status']=$this->project_model->get_active_project_status();
 
 		$this->load->library('form_validation');
 
-    $this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|xss_clean');
-		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|xss_clean');
-		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean|strtolower|is_unique[t_prj.name]');
-		$this->form_validation->set_rules('description', 'Description', 'trim|required|xss_clean');
+ 		$this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|xss_clean|required');
+		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|xss_clean|required');
+		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean|max_length[200]|mb_strtolower|is_unique[t_prj.name]');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required|max_length[200]|xss_clean');
 		$this->form_validation->set_rules('assignCompany','Assign Company','required');
 		$this->form_validation->set_rules('assignConsultant','Assign Consultant','required');
 		$this->form_validation->set_rules('assignContactPerson','Assign Contact Person','required');
@@ -85,8 +83,8 @@ class Project extends CI_Controller{
 			'start_date'=>date('Y-m-d', strtotime(str_replace('-', '/', $this->input->post('datepicker')))), // mysql icin format�n� ayarlad�k
 			'status_id'=>$this->input->post('status'),
 			'active'=>1, //default active:1 olarak kaydediyoruz.
-                        'latitude'=>$this->input->post('lat'),
-                        'longitude'=>$this->input->post('long'),
+			'latitude'=>$this->input->post('lat'),
+			'longitude'=>$this->input->post('long'),
 			);
 			if(!empty($this->input->post('zoomlevel'))){
 				$project['zoomlevel'] = $this->input->post('zoomlevel');
@@ -283,10 +281,11 @@ class Project extends CI_Controller{
 		   $is_unique =  '';
 		}
 
-		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|strtolower|xss_clean'.$is_unique); // buraya isunique kontrol� ge
-		$this->form_validation->set_rules('description', 'Description', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|max_length[200]|mb_strtolower|xss_clean'.$is_unique); // buraya isunique kontrolü
+		$this->form_validation->set_rules('description', 'Description', 'trim|required|max_length[200]|xss_clean');
 		$this->form_validation->set_rules('assignCompany','Assign Company','required');
 		$this->form_validation->set_rules('assignConsultant','Assign Consultant','required');
+		$this->form_validation->set_rules('assignContactPerson','Assign Contact Person','required');
 
 		//$this->form_validation->set_rules('surname', 'Password', 'required');
 		//$this->form_validation->set_rules('email', 'Email' ,'trim|required|valid_email');
@@ -298,7 +297,7 @@ class Project extends CI_Controller{
 			$project = array(
 			'name'=>$this->input->post('projectName'),
 			'description'=>$this->input->post('description'),
-			'start_date'=>date('Y-m-d', strtotime(str_replace('-', '/', $this->input->post('datepicker')))), // mysql icin format�n� ayarlad�k
+			'start_date'=>date('Y-m-d', strtotime(str_replace('-', '/', $this->input->post('datepicker')))), // mysql icin formatını ayarladık
 			'status_id'=>$this->input->post('status'),
 			'active'=>1 //default active:1 olarak kaydediyoruz.
 			);
@@ -351,9 +350,10 @@ class Project extends CI_Controller{
 		if($this->project_model->have_project_name($project_id,$project_name))
 			return true;
 		else{
-			$this->form_validation->set_message('name_control','Project Name must be required');
+			$this->form_validation->set_message('name_control','Project name is required');
 			return false;
 		}
 	}
+
 }
 ?>
