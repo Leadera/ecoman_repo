@@ -227,6 +227,7 @@ class Project extends CI_Controller{
 
 		$kullanici = $this->session->userdata('user_in');
 		$data['is_consultant_of_project'] = $is_consultant_of_project;
+		$data['is_contactperson_of_project'] = $is_contactperson_of_project;
 
 		$this->load->view('template/header');
 		$this->load->view('project/project_show_detailed',$data);
@@ -248,7 +249,7 @@ class Project extends CI_Controller{
 		$data['assignedConsultant'] = $this->project_model->get_prj_consaltnt($prjct_id);
 		$data['assignedContactperson'] = $this->project_model->get_prj_cntct_prsnl($prjct_id);
 
-		//print_r($data['assignedCompanies'] );
+		//print_r($data['projects']);
 
 		$companyIDs=array();
 		foreach ($data['assignedCompanies'] as $key) { // bu k�s�mda sadece id lerden olusan array i al�yorum
@@ -276,8 +277,13 @@ class Project extends CI_Controller{
 
 		$this->load->library('form_validation');
 
+		if($this->input->post('projectName') != $data['projects']['name']) {
+		   $is_unique =  '|is_unique[t_prj.name]';
+		} else {
+		   $is_unique =  '';
+		}
 
-		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean'); // buraya isunique kontrol� ge
+		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean'.$is_unique); // buraya isunique kontrol� ge
 		$this->form_validation->set_rules('description', 'Description', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('assignCompany','Assign Company','required');
 		$this->form_validation->set_rules('assignConsultant','Assign Consultant','required');
