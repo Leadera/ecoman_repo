@@ -237,7 +237,7 @@ class Project extends CI_Controller{
 
 	public function update_project($prjct_id){
 		$kullanici = $this->session->userdata('user_in');
-		if(!$this->user_model->is_consultant_of_project_by_user_id($kullanici['id'],$prjct_id)){
+		if(!$this->user_model->is_consultant_of_project_by_user_id($kullanici['id'],$prjct_id) and !$this->user_model->is_contactperson_of_project_by_user_id($kullanici['id'],$prjct_id)){
 			redirect('','refresh');
 		}
 		$data['projects'] = $this->project_model->get_project($prjct_id);
@@ -348,6 +348,38 @@ class Project extends CI_Controller{
 			$this->form_validation->set_message('name_control','Project Name must be required');
 			return false;
 		}
+	}
+
+	public function _unique_username($username) {
+
+		if ($username == $this->old_username) {
+		    return true;
+		}
+
+		if ($this->user_manager->username_exists($username)) {
+
+		    $this->form_validation->set_message('_unique_username', $this->lang->line('non_unique_username'));
+
+		    return false;
+		}
+
+	return true;
+	}
+
+	public function _unique_email($email) {
+
+		if ($email == $this->old_email) {
+		    return true;
+		}
+
+		if ($this->user_manager->email_exists($email)) {
+
+		    $this->form_validation->set_message('_unique_email', $this->lang->line('non_unique_email'));
+
+		    return false;
+		}
+
+		return true;
 	}
 }
 ?>
