@@ -32,26 +32,27 @@ class Company extends CI_Controller{
 
 		$data['map'] = $this->googlemaps->create_map();
 
+
+		$this->form_validation->set_rules('companyName', 'Company Name', 'required|trim|xss_clean|mb_strtolower|max_length[254]|is_unique[t_cmpny.name]');
+		$this->form_validation->set_rules('naceCode', 'Nace Code', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('companyDescription', 'Company Description', 'required|trim|xss_clean|max_length[200]');
+		$this->form_validation->set_rules('email', 'E-mail', 'required|trim|max_length[150]|xss_clean');
+		//$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|trim|max_length[49]|xss_clean');
+		$this->form_validation->set_rules('fax', 'Fax Number', 'required|trim|max_length[49]|xss_clean');
+		$this->form_validation->set_rules('address', 'Address', 'required|trim|xss_clean|max_length[100]');
 		$this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('companyName', 'Company Name', 'required|trim|xss_clean|strtolower|is_unique[t_cmpny.name]');
-		$this->form_validation->set_rules('naceCode', 'Nace Code', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('companyDescription', 'Company Description', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('email', 'E-mail', 'required|trim|xss_clean');
-		//$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('fax', 'Fax Number', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('address', 'Address', 'required|trim|xss_clean');
 
 		if ($this->form_validation->run() !== FALSE)
 		{
 			$data = array(
-				'name'=>$this->input->post('companyName'),
+				'name'=>mb_strtolower($this->input->post('companyName')),
 				//'phone_num_1'=>$this->input->post('cellPhone'),
 				'phone_num_2'=>$this->input->post('workPhone'),
 				'fax_num'=>$this->input->post('fax'),
-				'address'=>$this->input->post('address'),
-				'description'=>$this->input->post('companyDescription'),
+				'address'=>substr($this->input->post('address'), 0, 99),
+				'description'=>substr($this->input->post('companyDescription'), 0, 199),
 				'email'=>$this->input->post('email'),
 				'latitude'=>$this->input->post('lat'),
 				'longitude'=>$this->input->post('long'),
@@ -61,7 +62,7 @@ class Company extends CI_Controller{
 			$last_id = $this->company_model->insert_company($data);
 			$cmpny_data = array(
 				'cmpny_id' => $last_id,
-				'description' => $data['description']
+				'description' => substr($data['description'], 0, 199)
 			);
 
 		    $nace_code_id = $this->company_model->search_nace_code($code);
@@ -321,15 +322,15 @@ class Company extends CI_Controller{
 
 		$this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('companyName', 'Company Name', 'trim|required|xss_clean'.$is_unique);
+		$this->form_validation->set_rules('companyName', 'Company Name', 'trim|required|mb_strtolower|max_length[254]|xss_clean'.$is_unique);
 		$this->form_validation->set_rules('naceCode', 'Nace Code', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('coordinates', 'Coordinates', 'trim|xss_clean');
-		$this->form_validation->set_rules('companyDescription', 'Company Description', 'trim|xss_clean');
-		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email');
+		$this->form_validation->set_rules('companyDescription', 'Company Description', 'trim|xss_clean|max_length[200]');
+		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|max_length[49]|valid_email');
 		//$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
-		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|min_length[5]|xss_clean');
-		$this->form_validation->set_rules('fax', 'Fax Number', 'required|min_length[5]|xss_clean');
-		$this->form_validation->set_rules('address', 'Address', 'trim|xss_clean');
+		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|min_length[5]|max_length[49]|xss_clean');
+		$this->form_validation->set_rules('fax', 'Fax Number', 'required|min_length[5]|max_length[49]|xss_clean');
+		$this->form_validation->set_rules('address', 'Address', 'trim|xss_clean|max_length[100]');
 
 		if ($this->form_validation->run() !== FALSE)
 		{
@@ -361,12 +362,12 @@ class Company extends CI_Controller{
 			}
 
 			$data2 = array(
-				'name'=>$this->input->post('companyName'),
+				'name'=>mb_strtolower($this->input->post('companyName')),
 				//'phone_num_1'=>$this->input->post('cellPhone'),
 				'phone_num_2'=>$this->input->post('workPhone'),
 				'fax_num'=>$this->input->post('fax'),
-				'address'=>$this->input->post('address'),
-				'description'=>$this->input->post('companyDescription'),
+				'address'=>substr($this->input->post('address'), 0, 99),
+				'description'=>substr($this->input->post('companyDescription'), 0, 199),
 				'email'=>$this->input->post('email'),
 				'postal_code'=>'NULL',
 				'logo'=>$resim.'.jpg',
@@ -381,7 +382,7 @@ class Company extends CI_Controller{
 
 				$cmpny_data = array(
 					'cmpny_id' => $data['companies']['id'],
-					'description' => $data['companies']['description']
+					'description' => substr($data['companies']['description'], 0, 199)
 				);
 
 		  	$this->company_model->update_cmpny_data($cmpny_data,$data['companies']['id']);
