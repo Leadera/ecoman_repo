@@ -1,12 +1,59 @@
 <?php echo $map['js']; ?>
 <div class="container">
 	<div class="row">
-		<div class="col-md-9">
-			<div class="lead pull-left"><?php echo $companies['name']; ?></div>
+			<div class="col-md-4">
+			<div style="margin-bottom:10px;">
+				<?php if($companies['logo'] == null)
+						$companies['logo'] = '.jpg';
+					if(file_exists("assets/company_pictures/".$companies['logo'])): ?>
+					<img style="width:100%;" class="thumbnail" src="<?php echo asset_url('company_pictures/'.$companies['logo']);?>" />
+				<?php else: ?>
+					<img style="width:100%;" class="thumbnail" src="<?php echo asset_url("company_pictures/default.jpg"); ?>">
+				<?php endif ?>
+			</div>
 			<?php if($have_permission): ?>
-			<a style="margin-left:10px;" class="btn btn-info btn-sm pull-right" href="<?php echo base_url("new_flow/".$companies['id']); ?>">Dataset Management</a>
-			<a class="btn btn-info btn-sm pull-right" href="<?php echo base_url("update_company/".$companies['id']); ?>">Update Company</a>
+			<a class="btn btn-inverse btn-block" style="margin-bottom: 10px;" href="<?php echo base_url("new_flow/".$companies['id']); ?>"><i class="fa fa-database"></i> Edit Company Data</a>
+			<a class="btn btn-inverse btn-block" style="margin-bottom: 10px;" href="<?php echo base_url("update_company/".$companies['id']); ?>"><i class="fa fa-pencil-square-o"></i> Edit Company Info</a>
+			<button class="btn btn-block btn-inverse" style="width:100%; margin-bottom: 10px;" onclick="$('#target').toggle();">Add New User</button>
+
+			<div id="target" class="well" style="display: none">
+				<p>
+					Select user to add
+				</p>
+				<div class="content">
+					<?php echo form_open('addUsertoCompany/'.$companies['id']); ?>
+						<p>
+							<select id="users" class="info select-block" name="users">
+							<?php foreach ($users_without_company as $users): ?>
+								<option value="<?php echo $users['id']; ?>"><?php echo $users['name'].' '.$users['surname']; ?></option>
+								<?php endforeach ?>
+							</select>
+							<button type="submit" class="btn btn-primary">Add</button>
+						</form>
+					</p>
+				</div>
+			</div>
 			<?php endif ?>
+			<div class="form-group" style="margin-bottom:20px;">
+				<div class="swissheader" style="font-size:15px;">Company project</div>
+				<ul class="nav nav-list">
+				<?php foreach ($prjname as $prj): ?>
+					<li><a style="text-transform:capitalize;" href="<?php echo base_url('project/'.$prj['proje_id']); ?>"> <?php echo $prj["name"]; ?></a></li>
+				<?php endforeach ?>
+				</ul>
+			</div>
+
+			<div class="form-group">
+				<div class="swissheader" style="font-size:15px;">Company users</div>
+				<ul class="nav nav-list">
+				<?php foreach ($cmpnyperson as $cmpprsn): ?>
+					<li><a style="text-transform:capitalize;" href="<?php echo base_url('user/'.$cmpprsn["user_name"]); ?>"> <?php echo $cmpprsn["name"].' '.$cmpprsn["surname"]; ?></a></li>
+				<?php endforeach ?>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="swissheader"><?php echo $companies['name']; ?></div>
 
 			<table class="table table-bordered">
 				<tr>
@@ -25,14 +72,14 @@
 					<?php echo $companies['email']; ?>
 					</td>
 				</tr>
-				<tr>
+<!-- 				<tr>
 					<td>
 					Phone
 					</td>
 					<td>
 					<?php echo $companies['phone_num_1']; ?>
 					</td>
-				</tr>
+				</tr> -->
 				<tr>
 					<td>
 					Work Phone
@@ -170,60 +217,6 @@
 				</table>
 			<?php endif ?>
 		<?php endif ?>
-		</div>
-
-		<div class="col-md-3">
-		<div style="margin-bottom:30px;">
-			<?php if($companies['logo'] == null)
-					$companies['logo'] = '.jpg';
-				if(file_exists("assets/company_pictures/".$companies['logo'])): ?>
-				<img style="width:100%; max-width:250px;" src="<?php echo asset_url('company_pictures/'.$companies['logo']);?>" />
-			<?php else: ?>
-				<img style="width:100%; max-width:250px;" src="<?php echo asset_url("company_pictures/default.jpg"); ?>">
-			<?php endif ?>
-		</div>
-			<div class="form-group" style="margin-bottom:20px;">
-				<ul class="nav nav-list">
-					<li class="nav-header" style="font-size:15px;">Company project</li>
-				<?php foreach ($prjname as $prj): ?>
-					<li><a style="text-transform:capitalize;" href="<?php echo base_url('project/'.$prj['proje_id']); ?>"> <?php echo $prj["name"]; ?></a></li>
-				<?php endforeach ?>
-				</ul>
-			</div>
-
-			<div class="form-group">
-				<ul class="nav nav-list">
-					<li class="nav-header" style="font-size:15px;">Company users</li>
-				<?php foreach ($cmpnyperson as $cmpprsn): ?>
-					<li><a style="text-transform:capitalize;" href="<?php echo base_url('user/'.$cmpprsn["user_name"]); ?>"> <?php echo $cmpprsn["name"].' '.$cmpprsn["surname"]; ?></a></li>
-				<?php endforeach ?>
-				</ul>
-			</div>
-
-
-			<?php if($have_permission): ?>
-			<button class="btn btn-sm btn-success" style="width:100%" onclick="$('#target').toggle();">Add New User</button>
-
-			<div id="target" class="well" style="display: none">
-				<p>
-					Select user to add
-				</p>
-				<div class="content">
-					<?php echo form_open('addUsertoCompany/'.$companies['id']); ?>
-						<p>
-							<select id="users" class="info select-block" name="users">
-							<?php foreach ($users_without_company as $users): ?>
-								<option value="<?php echo $users['id']; ?>"><?php echo $users['name'].' '.$users['surname']; ?></option>
-								<?php endforeach ?>
-							</select>
-							<button type="submit" class="btn btn-primary">Add</button>
-						</form>
-					</p>
-				</div>
-			</div>
-			<?php endif ?>
-
-
 		</div>
 	</div>
 </div>
