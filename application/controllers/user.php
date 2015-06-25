@@ -192,9 +192,10 @@ class User extends CI_Controller {
 	// User önceden hangi bilgileri girdigini unutmus ise hatırlatma amaclida kullanilir
 	public function user_profile_update(){
 		$data = $this->user_model->get_session_user();
-		$userbilgisi = $this->user_model->cmpny_prsnl($data['id']);
+		//$userbilgisi = $this->user_model->cmpny_prsnl($data['id']);
 		//print_r($userbilgisi);
 		//form kontroller
+
 		$this->form_validation->set_rules('name','Name','trim|required|xss_clean|callback__string_control');
 		$this->form_validation->set_rules('surname','Surname','trim|required|xss_clean|callback__string_control');
 		$this->form_validation->set_rules('jobTitle','Job Title','required|trim|xss_clean');
@@ -262,19 +263,19 @@ class User extends CI_Controller {
 			$user_id = $this->session->userdata('user_in')['id'];
 			//echo $userbilgisi['cmpny_id'];
 			//echo $this->input->post('company');
-			if($userbilgisi['cmpny_id']!==$this->input->post('company')){
+			/*if($userbilgisi['cmpny_id']!==$this->input->post('company')){
 				$cmpny_prsnl = array(
 						'user_id' => $user_id,
 						'cmpny_id' => $this->input->post('company'),
 						'is_contact' => '0'
 					);
 				$this->company_model->update_cmpny_prsnl($user_id,$userbilgisi['cmpny_id'],$cmpny_prsnl);
-			}
+			}*/
 
-			redirect('', 'refresh');
+			redirect('user/'.$update['user_name'], 'refresh');
 		}
 
-		$data['companies'] = $this->company_model->get_companies();
+		//$data['companies'] = $this->company_model->get_companies();
 
 		$this->load->view('template/header');
 		$this->load->view('user/profile_update',$data);

@@ -355,37 +355,5 @@ class Project extends CI_Controller{
 			return false;
 		}
 	}
-
-	public function _unique_username($username) {
-
-		if ($username == $this->old_username) {
-		    return true;
-		}
-
-		if ($this->user_manager->username_exists($username)) {
-
-		    $this->form_validation->set_message('_unique_username', $this->lang->line('non_unique_username'));
-
-		    return false;
-		}
-
-	return true;
-	}
-
-	public function _unique_email($email) {
-
-		if ($email == $this->old_email) {
-		    return true;
-		}
-
-		if ($this->user_manager->email_exists($email)) {
-
-		    $this->form_validation->set_message('_unique_email', $this->lang->line('non_unique_email'));
-
-		    return false;
-		}
-
-		return true;
-	}
 }
 ?>

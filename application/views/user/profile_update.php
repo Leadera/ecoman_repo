@@ -16,7 +16,7 @@
 						<div class="fileinput fileinput-new" data-provides="fileinput">
 							<div class="fileinput-new thumbnail">
 								<img class="img-rounded" style="width:120px;" src="<?php echo asset_url("user_pictures/".$photo); ?>">
-							
+
 							</div>
 							<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
 							<div>
@@ -62,7 +62,7 @@
 						<label for="surname">Surname</label>
 						<input type="text" class="form-control" id="surname" placeholder="Enter surname" value="<?php echo set_value('surname',$surname); ?>"  name="surname">
 				</div>
-				<div class="form-group">
+<!-- 				<div class="form-group">
 					<label for="company">Company</label>
 
 					<select title="Choose at least one" class="select-block" id="company" name="company">
@@ -71,7 +71,7 @@
 						<?php endforeach ?>
 					</select>
 
-				</div>
+				</div> -->
 				<div class="form-group">
 						<label for="jobTitle">Job Title</label>
 						<input type="text" class="form-control" id="jobTitle" value="<?php echo set_value('jobTitle',$title); ?>" placeholder="Job Title" name="jobTitle">
