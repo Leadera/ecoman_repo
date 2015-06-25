@@ -38,17 +38,16 @@ class User extends CI_Controller {
 		$data['image'] = $cap['image'];
 		$this->session->set_userdata('word', $cap['word']);*/
 
-
-		$this->form_validation->set_rules('name','Name','required|trim|xss_clean');
-		$this->form_validation->set_rules('surname','Surname','required|trim|xss_clean');
-		$this->form_validation->set_rules('jobTitle','Job Title','required|trim|xss_clean');
-		$this->form_validation->set_rules('description','Description','trim|xss_clean');
-		$this->form_validation->set_rules('email', 'e-mail' ,'required|trim|xss_clean|strtolower|is_unique[t_user.email]');
-		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'trim|xss_clean');
-		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'trim|xss_clean');
-		$this->form_validation->set_rules('fax', 'Fax Number', 'trim|xss_clean');
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean|strtolower|alpha_numeric|is_unique[t_user.user_name]');
-		$this->form_validation->set_rules('password', 'Password', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean|mb_strtolower|alpha_numeric|min_length[5]|max_length[50]|is_unique[t_user.user_name]');
+		$this->form_validation->set_rules('name','Name','required|trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('surname','Surname','required|trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('jobTitle','Job Title','required|trim|xss_clean|max_length[150]');
+		$this->form_validation->set_rules('description','Description','trim|xss_clean|max_length[200]');
+		$this->form_validation->set_rules('email', 'e-mail' ,'required|trim|xss_clean|valid_email|max_length[100]|mb_strtolower|is_unique[t_user.email]');
+		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('fax', 'Fax Number', 'trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('password', 'Password', 'required|trim|xss_clean|max_length[40]');
 
 		$this->recaptcha->recaptcha_check_answer();
 		if ($this->form_validation->run() !== FALSE  && $this->recaptcha->getIsValid())
@@ -203,15 +202,16 @@ class User extends CI_Controller {
 		   $is_unique =  '';
 		}
 
-		$this->form_validation->set_rules('name','Name','trim|required|xss_clean|callback__string_control');
-		$this->form_validation->set_rules('surname','Surname','trim|required|xss_clean|callback__string_control');
-		$this->form_validation->set_rules('jobTitle','Job Title','required|trim|xss_clean');
-		$this->form_validation->set_rules('description','Description','trim|xss_clean');
-		$this->form_validation->set_rules('email', 'e-mail' ,'trim|required|valid_email|strtolower|callback_email_check');
-		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|min_length[11]|xss_clean');
-		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|min_length[11]|xss_clean');
-		$this->form_validation->set_rules('fax', 'Fax Number', 'required|min_length[11]|xss_clean');
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]|xss_clean|strtolower|alpha_numeric'.$is_unique);
+
+		$this->form_validation->set_rules('name','Name','required|trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('surname','Surname','required|trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('jobTitle','Job Title','required|trim|xss_clean|max_length[150]');
+		$this->form_validation->set_rules('description','Description','trim|xss_clean|max_length[200]');
+		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('fax', 'Fax Number', 'trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('email', 'e-mail' ,'trim|required|valid_email|mb_strtolower|xss_clean|callback_email_check');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[50]|xss_clean|mb_strtolower|alpha_numeric'.$is_unique);
 
 		if ($this->form_validation->run() !== FALSE)
 		{

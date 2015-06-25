@@ -23,10 +23,6 @@
 						<input type="password" class="form-control" id="password" placeholder="Password" name="password">
 				</div>
 				<div class="form-group">
-						<label for="rePassword">Password Again</label>
-						<input type="password" class="form-control" id="rePassword" placeholder="Retype password" name="rePassword">
-				</div>
-				<div class="form-group">
 					<div class="fileinput fileinput-new" data-provides="fileinput">
 						<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
 								<img data-src="holder.js/100%x100%" alt="...">
