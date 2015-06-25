@@ -71,13 +71,15 @@
 							<?php endforeach ?>
 					</select>
 	 			</div>
-
+	 			<br>
+				<button type="submit" class="btn btn-success col-md-9">Update Project Info</button>
+    		<a href="<?php echo base_url('project/'.$projects['id']); ?>" class="btn btn-warning col-md-2 col-md-offset-1">Cancel</a>
 			</div>
 			<div class="col-md-4">
 
 			</div>
 		</div>
-		<button type="submit" class="btn btn-primary">Update Project</button>
+
 	</form>
 
 </div>

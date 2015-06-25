@@ -98,14 +98,6 @@
 				</tr>
 				<tr>
 					<td>
-					End Date
-					</td>
-					<td>
-					<?php echo $projects['end_date']; ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
 					Status
 					</td>
 					<td>

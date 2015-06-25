@@ -15,7 +15,7 @@
 
 	<?php echo form_open('newproject'); ?>
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-8">
 				<div class="form-group">
 	    			<label for="projectName">Project Name</label>
 	    			<input type="text" class="form-control" id="projectName" placeholder="Enter Project Name" value="<?php echo set_value('projectName'); ?>" name="projectName">
@@ -45,22 +45,20 @@
 	 			</div>
 				<div class="form-group">
 				<label for="coordinates">Coordinates</label>
-				<button type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-sm btn-primary pull-right" id="coordinates" >Select on Map</button>
+				<button type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-block btn-inverse" id="coordinates" >Select Coordinates on Map</button><br>
 				<div class="row">
-				        <div class="col-md-6">
-				                <input type="text" class="form-control" id="lat" placeholder="Lat" name="lat" style="color:#333333;" value="<?php /*echo set_value('lat');*/ ?>" readonly/>
-				        </div>
-				        <div class="col-md-6">
-				                <input type="text" class="form-control" id="long" placeholder="Long" name="long" style="color:#333333;" value="<?php /*echo set_value('long');*/ ?>" readonly/>
-				        </div>
-				        <div class="col-md-6">
-				                <input type="text" class="form-control" id="zoomlevel" placeholder="Zoom Level" name="zoomlevel" style="color:#333333;" value="<?php /*echo set_value('long');*/ ?>" />
-				        </div>
+            <div class="col-md-4">
+            <input type="text" class="form-control" id="lat" placeholder="Lat" name="lat" style="color:#333333;" value="<?php /*echo set_value('lat');*/ ?>" readonly/>
+            </div>
+            <div class="col-md-4">
+            <input type="text" class="form-control" id="long" placeholder="Long" name="long" style="color:#333333;" value="<?php /*echo set_value('long');*/ ?>" readonly/>
+            </div>
+            <div class="col-md-4">
+            <input type="text" class="form-control" id="zoomlevel" placeholder="Zoom Level" name="zoomlevel" style="color:#333333;" value="<?php /*echo set_value('long');*/ ?>" />
+            </div>
 				</div>
  			</div>
-                            
-			</div>
-			<div class="col-md-4">
+
 	 			<div class="form-group">
 	    			<label for="assignedCompanies">Assign Company</label>
 	    			<!--  <input type="text" id="companySearch" />	-->
@@ -80,19 +78,20 @@
 						<?php endforeach ?>
 					</select>
 	 			</div>
+        <?php $mevcut = $this->session->userdata('user_in'); ?>
 	 			<div class="form-group">
     			<label for="assignContactPerson">Assign Contact Person</label>
     			<select  class="select-block" id="assignContactPerson" name="assignContactPerson">
-
+            <option value="<?php echo $mevcut['id']; ?>">Creator of the project (<?php echo $mevcut['username']; ?>)</option>
 					</select>
 	 			</div>
+        <button type="submit" class="btn btn-block btn-primary">Create Project</button>
 
 			</div>
 			<div class="col-md-4">
 
 			</div>
 		</div>
-		<button type="submit" class="btn btn-primary">Create Project</button>
 	</form>
 
     <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" rendered="<?php echo $map['js']; ?>" >
@@ -119,8 +118,8 @@
 	    </div>
 	  </div>
 </div>
-        
-        
+
+
 </div>
 
 
@@ -175,4 +174,32 @@
 
   // Now let's align datepicker with the prepend button
   $(datepickerSelector).datepicker('widget').css({'margin-left': -$(datepickerSelector).prev('.btn').outerWidth()});
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#assignCompany').change(function () {
+      var company = $(this).val();
+      $.ajax({
+        url: "<?php echo base_url('contactperson');?>",
+        async: false,
+        type: "POST",
+        data: "company_id="+company,
+        dataType: "json",
+        success: function(data) {
+          //$('#assignContactPerson option').remove();
+
+          for (var k = 0; k < data.length; k++) {
+            for (var i = 0; i < data[k].length; i++) {
+              var opt =data[k][i]['id'];
+              if($("#assignContactPerson option[value='"+ opt +"']").length == 0)
+              {
+                $("#assignContactPerson").append(new Option(data[k][i]['name']+' '+data[k][i]['surname']+' - '+data[k][i]['cmpny_name'],data[k][i]['id']));
+              }
+            }
+          }
+        }
+      })
+    });
+  });
 </script>
