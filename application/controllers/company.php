@@ -38,7 +38,7 @@ class Company extends CI_Controller{
 		$this->form_validation->set_rules('naceCode', 'Nace Code', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('companyDescription', 'Company Description', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('email', 'E-mail', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|trim|xss_clean');
+		//$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('fax', 'Fax Number', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('address', 'Address', 'required|trim|xss_clean');
@@ -47,7 +47,7 @@ class Company extends CI_Controller{
 		{
 			$data = array(
 				'name'=>$this->input->post('companyName'),
-				'phone_num_1'=>$this->input->post('cellPhone'),
+				//'phone_num_1'=>$this->input->post('cellPhone'),
 				'phone_num_2'=>$this->input->post('workPhone'),
 				'fax_num'=>$this->input->post('fax'),
 				'address'=>$this->input->post('address'),
@@ -312,14 +312,21 @@ class Company extends CI_Controller{
 
 		$data['map'] = $this->googlemaps->create_map();
 
+		//print_r($data['companies']);
+		if($this->input->post('companyName') != $data['companies']['name']) {
+		   $is_unique =  '|is_unique[t_cmpny.name]';
+		} else {
+		   $is_unique =  '';
+		}
+
 		$this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('companyName', 'Company Name', 'trim|required|xss_clean|callback_name_control');
+		$this->form_validation->set_rules('companyName', 'Company Name', 'trim|required|xss_clean'.$is_unique);
 		$this->form_validation->set_rules('naceCode', 'Nace Code', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('coordinates', 'Coordinates', 'trim|xss_clean');
 		$this->form_validation->set_rules('companyDescription', 'Company Description', 'trim|xss_clean');
-		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email|callback_is_unique_email');
-		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
+		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email');
+		//$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
 		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
 		$this->form_validation->set_rules('fax', 'Fax Number', 'required|callback_alpha_dash_space|min_length[5]|xss_clean');
 		$this->form_validation->set_rules('address', 'Address', 'trim|xss_clean');
@@ -355,7 +362,7 @@ class Company extends CI_Controller{
 
 			$data2 = array(
 				'name'=>$this->input->post('companyName'),
-				'phone_num_1'=>$this->input->post('cellPhone'),
+				//'phone_num_1'=>$this->input->post('cellPhone'),
 				'phone_num_2'=>$this->input->post('workPhone'),
 				'fax_num'=>$this->input->post('fax'),
 				'address'=>$this->input->post('address'),
@@ -392,17 +399,6 @@ class Company extends CI_Controller{
 		$this->load->view('template/footer');
 	}
 
-	public function is_unique_email(){
-		$email = $this->input->post('email');
-		$cmpny_id = $this->uri->segment(2);
-		if($this->company_model->unique_control_email($email,$cmpny_id) == true)
-			return true;
-		else{
-			$this->form_validation->set_message('is_unique_email','Email must be unique.');
-			return false;
-		}
-	}
-
 	public function create_company_control(){
 		$temp = $this->session->userdata('user_in');
 		$cmpny = $this->user_model->cmpny_prsnl($temp['id']);
@@ -414,17 +410,6 @@ class Company extends CI_Controller{
 		}
 	}
 
-	function name_control(){
-		$cmpny_id = $this->uri->segment(2);
-		$cmpny_name = $this->input->post('companyName');
-		if($this->company_model->have_project_name($cmpny_id,$cmpny_name)){
-			return true;
-		}
-		else{
-			$this->form_validation->set_message('name_control','Company Name must be required');
-			return false;
-		}
-	}
 
 	public function get_company_info($company_id){
 		$data['company_info'] = $this->company_model->get_company($company_id);

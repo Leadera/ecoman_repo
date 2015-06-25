@@ -18,12 +18,12 @@
 			<div class="col-md-4">
 				<div class="form-group">
 	  				<div class="fileinput fileinput-new" data-provides="fileinput">
-	    				<div class="fileinput-new thumbnail">
-	      					<img class="img-rounded" style="max-width: 200px; max-height: 150px;" src="<?php echo asset_url("company_pictures/".$companies['logo']);?>">
+	    				<div class="fileinput-new thumbnail" style="width:100%;">
+	      					<img class="img-rounded" style="width:100%;" src="<?php echo asset_url("company_pictures/".$companies['logo']);?>">
 	    				</div>
-	    				<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+	    				<div class="fileinput-preview fileinput-exists thumbnail" ></div>
 	    				<div>
-	      					<span class="btn btn-primary  btn-file">
+	      					<span class="btn btn-primary btn-file btn-block">
 						        <span class="fileinput-new"><span class="fui-image"></span>  Select image</span>
 						        <span class="fileinput-exists"><span class="fui-gear"></span>  Change</span>
 						        <input type="file" name="userfile">
@@ -32,6 +32,8 @@
 	    				</div>
 	  				</div>
 				</div>
+      </div>
+      <div class="col-md-8">
 				<div class="form-group">
 	    			<label for="companyName">Company Name</label>
 	    			<input type="text" class="form-control" id="companyName" placeholder="Enter Company Name" value="<?php echo set_value('companyName',$companies['name']); ?>" name="companyName">
@@ -44,36 +46,27 @@
 							<option value="<?php echo $anc['code']; ?>" <?php echo set_select('naceCode', $anc['code'], $d); ?> ><?php echo $anc['code']; ?> - <?php echo $anc['name_tr']; ?></option>
 						<?php endforeach ?>
 					</select>
-					<a target="_blank" href="http://tobb.org.tr/faaliyet/Sayfalar/nace-sorgulama.php">Nace Codes</a>
 	 			</div>
-
-
-
-			</div>
-			<div class="col-md-4">
 				<div class="form-group">
 	    			<label for="email">E-mail</label>
 	    			<input type="text" class="form-control" id="email" placeholder="E-mail" value="<?php echo set_value('email',$companies['email']); ?>"  name="email">
 	 			</div>
-	 			<div class="form-group">
+<!-- 	 			<div class="form-group">
 	    			<label for="cellPhone">Cell Phone</label>
 	    			<input type="text" class="form-control" id="cellPhone" placeholder="Cell Phone" value="<?php echo set_value('cellPhone',$companies['phone_num_1']); ?>" name="cellPhone">
-	 			</div>
+	 			</div> -->
 	 			<div class="form-group">
 	    			<label for="workPhone">Work Phone</label>
 	    			<input type="text" class="form-control" id="workPhone" placeholder="Work Phone" value="<?php echo set_value('workPhone',$companies['phone_num_2']); ?>" name="workPhone">
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="fax">Fax Number</label>
+	    			<label for="fax">Fax Phone</label>
 	    			<input type="text" class="form-control" id="fax" placeholder="Fax Number" value="<?php echo set_value('fax',$companies['fax_num']); ?>" name="fax">
 	 			</div>
-
-			</div>
-			<div class="col-md-4">
 				<div class="form-group">
-	    			<label for="coordinates">Coordinates</label>
-	    			<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-sm btn-primary pull-right" id="coordinates" >Select on Map</button>
-	    			<div class="row">
+	    			<label for="coordinates">Coordinates</label><br>
+	    			<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-block" id="coordinates" >Select coordinates on Map</button>
+	    			<div class="row" style="margin-top: 10px;">
 		    			<div class="col-md-6">
 		    				<input type="text" class="form-control" id="lat" placeholder="Lat" name="lat" style="color:#333333;" value="<?php echo set_value('lat',$companies['latitude']); ?>" readonly/>
 		    			</div>
@@ -82,18 +75,18 @@
 		    			</div>
 	    			</div>
 	 			</div>
-
 	 			<div class="form-group">
 	    			<label for="address">Address</label>
 	    			<textarea class="form-control" rows="3" name="address" id="address" placeholder="Address"><?php echo set_value('address',$companies['address']); ?></textarea>
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="companyDescription">Company Description</label>
+	    			<label for="companyDescription">Company Info</label>
 	    			<textarea class="form-control" rows="3" name="companyDescription" id="companyDescription" placeholder="Company Description"><?php echo set_value('companyDescription',$companies['description']); ?></textarea>
 	 			</div>
+        <button type="submit" class="btn btn-inverse col-md-9">Update Company Info</button>
+        <a href="<?php echo base_url('company/'.$companies['id']); ?>" class="btn btn-warning col-md-2 col-md-offset-1">Cancel</a>
 			</div>
 		</div>
-		<button type="submit" class="btn btn-primary pull-right">Update Company</button>
 	</form>
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" rendered="<?php echo $map['js']; ?>">
 	  <div class="modal-dialog">
@@ -125,16 +118,16 @@
 	$('#selectize').selectize({
     create: false
   });
-  
-  
+
+
   function getCountryIdName() {
       //alert($('#latId').val());
       //alert($('#longId').val());
-      
+
       if($('#latId').val()!=""  && $('#longId').val()!="") {
           //alert($('#latId').val());
           $.ajax({
-            url : '../../../Proxy/SlimProxy.php',   
+            url : '../../../Proxy/SlimProxy.php',
             data : {
                     url : 'deleteScenario_scn',
                     lat : $('#latId').val(),
@@ -155,11 +148,11 @@
               console.warn('error text status-->'+textStatus);
             }
     });
-          
-      }
-      
-      
 
-      
+      }
+
+
+
+
   }
 </script>
