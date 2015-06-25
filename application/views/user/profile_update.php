@@ -10,12 +10,11 @@
 
 	<?php echo form_open_multipart('profile_update'); ?>
 		<div class="row">
-			<div class="col-md-4">
-
+			<div class="col-md-3">
 				<div class="form-group">
 						<div class="fileinput fileinput-new" data-provides="fileinput">
-							<div class="fileinput-new thumbnail">
-								<img class="img-rounded" style="width:120px;" src="<?php echo asset_url("user_pictures/".$photo); ?>">
+							<div class="fileinput-new thumbnail" style="width:100%;">
+								<img class="img-rounded" style="width:100%;" src="<?php echo asset_url("user_pictures/".$photo); ?>">
 
 							</div>
 							<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
@@ -29,13 +28,12 @@
 							</div>
 						</div>
 				</div>
+			</div>
+			<div class="col-md-9">
 				<div class="form-group">
 						<label for="username">Username</label>
 						<input type="text" class="form-control" id="username" value="<?php echo set_value('username',$user_name); ?>" placeholder="Username" name="username">
 				</div>
-
-			</div>
-			<div class="col-md-4">
 				<div class="form-group">
 	    			<label for="email">E-mail</label>
 	    			<input type="text" class="form-control" id="email" placeholder="E-mail" value="<?php echo set_value('email',$email); ?>"  name="email">
@@ -49,11 +47,9 @@
 	    			<input type="text" class="form-control" id="workPhone" value="<?php echo set_value('workPhone',$phone_num_2); ?>" placeholder="Work Phone" name="workPhone">
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="fax">Fax Number</label>
+	    			<label for="fax">Fax Phone</label>
 	    			<input type="text" class="form-control" id="fax" value="<?php echo set_value('fax',$fax_num); ?>" placeholder="Fax Number" name="fax">
 	 			</div>
-			</div>
-			<div class="col-md-4">
 				<div class="form-group">
 						<label for="name">Name</label>
 						<input type="text" class="form-control" id="name" placeholder="Enter name" value="<?php echo set_value('name',$name); ?>" name="name">
@@ -80,8 +76,9 @@
 						<label for="jobDescription">Description</label>
 						<textarea class="form-control" rows="3" name="description" id="description" placeholder="Description"><?php echo set_value('description',$description); ?></textarea>
 				</div>
+				<button type="submit" class="btn btn-inverse col-md-9">Update My Info</button>
+				<a href="<?php echo base_url('user/'.$user_name); ?>" class="btn btn-warning col-md-2 col-md-offset-1">Cancel</a>
 			</div>
 		</div>
-		<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
 </div>
