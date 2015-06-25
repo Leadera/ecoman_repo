@@ -10,7 +10,7 @@
 
 	<?php echo form_open_multipart('profile_update'); ?>
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-md-4">
 				<div class="form-group">
 						<div class="fileinput fileinput-new" data-provides="fileinput">
 							<div class="fileinput-new thumbnail" style="width:100%;">
@@ -19,7 +19,7 @@
 							</div>
 							<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
 							<div>
-									<span class="btn btn-primary btn-embossed btn-file" name="photo">
+									<span class="btn btn-primary btn-block btn-file" name="photo">
 										<span class="fileinput-new"><span class="fui-image"></span>  Select image</span>
 										<span class="fileinput-exists"><span class="fui-gear"></span>  Change</span>
 										<input type="file" name="userfile">
@@ -29,7 +29,7 @@
 						</div>
 				</div>
 			</div>
-			<div class="col-md-9">
+			<div class="col-md-8">
 				<div class="form-group">
 						<label for="username">Username</label>
 						<input type="text" class="form-control" id="username" value="<?php echo set_value('username',$user_name); ?>" placeholder="Username" name="username">
