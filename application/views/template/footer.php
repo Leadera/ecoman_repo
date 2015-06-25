@@ -1,11 +1,10 @@
     <div class="clearfix"></div>
     <div class="footer">© 2013-2015 ecoman</div>
-    <div style="overflow: hidden;display: block;padding-top: 50px;clear: both;">&nbsp;</div>
 
-    <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto" 
+    <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto"
             and $this->uri->segment(1)!="isScopingAutoPrjBaseMDF"
-            and $this->uri->segment(1)!="isScopingAutoPrjBase" 
-            and $this->uri->segment(1)!="isScopingPrjBase" 
+            and $this->uri->segment(1)!="isScopingAutoPrjBase"
+            and $this->uri->segment(1)!="isScopingPrjBase"
             and $this->uri->segment(1)!="isScopingPrjBaseMDF"
             and $this->uri->segment(1)!="isscenarios"
             and $this->uri->segment(1)!="isscenariosCns"
@@ -134,7 +133,7 @@
     </script>
     <?php endif ?>
 
-    <?php /* 
+    <?php /*
     <script type="text/javascript">
       $(document).ready(function () {
         $('#process').bind('change',function () {
@@ -178,7 +177,7 @@
                   $("[id*="+i+"subprocess]").remove();
                   $("#processList div:last-child").remove();
                 }
-               
+
               }
               stage += 1;
               get_sub_process($(this).val(),stage);
