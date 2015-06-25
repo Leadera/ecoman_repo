@@ -67,7 +67,7 @@ class Project extends CI_Controller{
 
     $this->form_validation->set_rules('lat', 'Coordinates Latitude', 'trim|xss_clean');
 		$this->form_validation->set_rules('long', 'Coordinates Longitude', 'trim|xss_clean');
-		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean|is_unique[t_prj.name]');
+		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean|strtolower|is_unique[t_prj.name]');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('assignCompany','Assign Company','required');
 		$this->form_validation->set_rules('assignConsultant','Assign Consultant','required');
@@ -283,7 +283,7 @@ class Project extends CI_Controller{
 		   $is_unique =  '';
 		}
 
-		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|xss_clean'.$is_unique); // buraya isunique kontrol� ge
+		$this->form_validation->set_rules('projectName', 'Project Name', 'trim|required|strtolower|xss_clean'.$is_unique); // buraya isunique kontrol� ge
 		$this->form_validation->set_rules('description', 'Description', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('assignCompany','Assign Company','required');
 		$this->form_validation->set_rules('assignConsultant','Assign Consultant','required');

@@ -24,7 +24,7 @@
 				    	<span class="input-group-btn">
 				      		<button class="btn" type="button" style="height: 38px; border: 1px solid;"><span class="fui-calendar"></span></button>
 				    	</span>
-				    	<input type="text" class="form-control" value="<?php echo set_value('projectName',$projects['start_date']); ?>" id="datepicker-01" name="datepicker" />
+				    	<input type="text" class="form-control" value="<?php echo set_value('datepicker',$projects['start_date']); ?>" id="datepicker-01" name="datepicker" />
 				  	</div>
 	 			</div>
 	 			<div class="form-group">
