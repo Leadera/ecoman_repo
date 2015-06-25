@@ -6,7 +6,7 @@
       <?php echo validation_errors(); ?>
     </div>
     <?php endif ?>
-    <?php print_r($this->recaptcha->getError()); ?>
+    <?php //print_r($this->recaptcha->getError()); ?>
 
 	<?php echo form_open_multipart('register'); ?>
 		<div class="row">
