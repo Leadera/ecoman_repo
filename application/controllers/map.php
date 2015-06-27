@@ -15,13 +15,13 @@ class Map extends CI_Controller {
                 redirect(base_url('login'),'refresh');
             }
                 
-            if(isset($this->session->userdata['project_id'])) {
+            /*if(isset($this->session->userdata['project_id'])) {
                 if($this->session->userdata['project_id']==null || $this->session->userdata['project_id']==''){
                     redirect(base_url('projects'), 'refresh');
                 }
             } else {
                 redirect(base_url('projects'), 'refresh');
-            }
+            }*/
             
             if(isset($this->session->userdata['user_in']['role_id'])) {
                 if(($this->session->userdata['user_in']['role_id']==null || $this->session->userdata['user_in']['role_id']=='')
