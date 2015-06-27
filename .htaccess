@@ -2,12 +2,3 @@ RewriteEngine on
 RewriteCond $1 !^(index\.php|resources|robots\.txt)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-<<<<<<< HEAD
-RewriteRule ^(.*)$ index.php/$1 [L,QSA]
-=======
-RewriteRule ^(.*)$ index.php/$1 [L,QSA]
-
-Options All -Indexes
-
-Order Deny,Allow
->>>>>>> origin/master
