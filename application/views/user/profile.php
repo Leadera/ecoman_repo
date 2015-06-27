@@ -1,26 +1,26 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-4">
 			<?php if(file_exists("assets/user_pictures/".$userInfo['photo'])): ?>
-					<img class="img-responsive thumbnail" src="<?php echo asset_url("user_pictures/".$userInfo['photo']); ?>">
+					<img class="img-responsive thumbnail" style="width: 100%" src="<?php echo asset_url("user_pictures/".$userInfo['photo']); ?>">
 				<?php else: ?>
-					<img class="img-responsive thumbnail" src="<?php echo asset_url("user_pictures/default.jpg"); ?>">
-				<?php endif ?>
-		</div>
-		<div class="col-md-9">
-			<div style="overflow:hidden; margin-bottom: 10px;">
+					<img class="img-responsive thumbnail" style="width: 100%" src="<?php echo asset_url("user_pictures/default.jpg"); ?>">
+			<?php endif ?>
+			<div style="margin-top: 10px;">
 				<?php  if($userInfo['id']==$this->session->userdata('user_in')['id']): ?>
-		  	<a style="margin-left:10px;" class="btn btn-info btn-sm pull-right" href="<?php echo base_url("profile_update"); ?>">Update User Info</a>
-		  	<a class="btn btn-default btn-sm pull-right" href="<?php echo base_url('send_email_for_change_pass'); ?>" style="text-transform: capitalize;">Change Password</a>
+		  	<a class="btn btn-inverse btn-block" style="margin-bottom: 10px;" href="<?php echo base_url("profile_update"); ?>">Update User Info</a>
+		  	<a class="btn btn-inverse btn-block" style="margin-bottom: 10px;" href="<?php echo base_url('send_email_for_change_pass'); ?>" style="text-transform: capitalize;">Change Password</a>
 		  	<?php endif ?>
 		  	<?php if(($userInfo['role_id']=='2') && $this->session->userdata('user_in')['id'] == $userInfo['id']): ?>
-		  	<a class="btn btn-success btn-sm pull-right" style="margin-right:15px;" href="<?php echo base_url("become_consultant"); ?>">Become a Consultant</a>
+		  	<a class="btn btn-success btn-block" href="<?php echo base_url("become_consultant"); ?>">Become a Consultant</a>
 		  	<?php endif ?>
 		  	<?php if($userInfo['role_id']=="1"): ?>
-		  	<div class="label label-default">This user is a consultant</div>
+		  	<div class="btn btn-success btn-block" style="cursor: default;">This user is a consultant</div>
 		  	<?php endif ?>
 		  </div>
-			<div class="swissheader" style="margin: 15px 0;"><?php echo $userInfo["name"].' '.$userInfo["surname"].' Profile'; ?></div>
+		</div>
+		<div class="col-md-8">
+			<div class="swissheader"><?php echo $userInfo["name"].' '.$userInfo["surname"].' Profile'; ?></div>
 			<table class="table table-striped table-bordered">
 				<tr>
 					<td style="width:120px;">

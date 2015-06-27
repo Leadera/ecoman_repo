@@ -6,7 +6,7 @@
       <?php echo validation_errors(); ?>
     </div>
     <?php endif ?>
-    <?php print_r($this->recaptcha->getError()); ?>
+    <?php //print_r($this->recaptcha->getError()); ?>
 
 	<?php echo form_open_multipart('register'); ?>
 		<div class="row">
@@ -21,10 +21,6 @@
 				<div class="form-group">
 						<label for="password">Password</label>
 						<input type="password" class="form-control" id="password" placeholder="Password" name="password">
-				</div>
-				<div class="form-group">
-						<label for="rePassword">Password Again</label>
-						<input type="password" class="form-control" id="rePassword" placeholder="Retype password" name="rePassword">
 				</div>
 				<div class="form-group">
 					<div class="fileinput fileinput-new" data-provides="fileinput">
@@ -74,7 +70,6 @@
 						<label for="jobDescription">Description</label>
 						<textarea class="form-control" rows="3" name="description" value="<?php echo set_value('description'); ?>" id="description" placeholder="Description"></textarea>
 				</div>
-				<p><a href="<?php echo $this->recaptcha->recaptcha_get_signup_url(); ?>" >Get your API Code HERE</a></p>
    		 	<?php echo $recaptcha_html; ?>
 		  	<?php
 /*					echo 'Lütfen aşağıda gördüğünüz kodu giriniz. <br>';

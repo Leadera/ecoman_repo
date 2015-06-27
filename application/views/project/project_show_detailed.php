@@ -30,7 +30,7 @@
 
 		<div class="col-md-4">
 
-					<?php if($is_consultant_of_project): ?>
+					<?php if($is_consultant_of_project or $is_contactperson_of_project): ?>
 			<div style="margin-bottom:20px; overflow:hidden;">
 				<?php if($this->session->userdata('project_id')==$projects['id']): ?>
 					<a class="btn btn-inverse btn-block" href="<?php echo base_url('closeproject'); ?>"><i class="fa fa-times-circle"></i> Close This Project</a>
@@ -94,14 +94,6 @@
 					</td>
 					<td>
 					<?php echo $projects['start_date']; ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-					End Date
-					</td>
-					<td>
-					<?php echo $projects['end_date']; ?>
 					</td>
 				</tr>
 				<tr>

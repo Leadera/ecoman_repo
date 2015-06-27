@@ -38,17 +38,16 @@ class User extends CI_Controller {
 		$data['image'] = $cap['image'];
 		$this->session->set_userdata('word', $cap['word']);*/
 
-
-		$this->form_validation->set_rules('name','Name','required|trim|xss_clean');
-		$this->form_validation->set_rules('surname','Surname','required|trim|xss_clean');
-		$this->form_validation->set_rules('jobTitle','Job Title','required|trim|xss_clean');
-		$this->form_validation->set_rules('description','Description','trim|xss_clean');
-		$this->form_validation->set_rules('email', 'e-mail' ,'required|trim|xss_clean|is_unique[t_user.email]');
-		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'trim|xss_clean');
-		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'trim|xss_clean');
-		$this->form_validation->set_rules('fax', 'Fax Number', 'trim|xss_clean');
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean|alpha_numeric|is_unique[t_user.user_name]');
-		$this->form_validation->set_rules('password', 'Password', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean|mb_strtolower|alpha_numeric|min_length[5]|max_length[50]|is_unique[t_user.user_name]');
+		$this->form_validation->set_rules('name','Name','required|trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('surname','Surname','required|trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('jobTitle','Job Title','required|trim|xss_clean|max_length[150]');
+		$this->form_validation->set_rules('description','Description','trim|xss_clean|max_length[200]');
+		$this->form_validation->set_rules('email', 'e-mail' ,'required|trim|xss_clean|valid_email|max_length[100]|mb_strtolower|is_unique[t_user.email]');
+		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('fax', 'Fax Number', 'trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('password', 'Password', 'required|trim|xss_clean|max_length[40]');
 
 		$this->recaptcha->recaptcha_check_answer();
 		if ($this->form_validation->run() !== FALSE  && $this->recaptcha->getIsValid())
@@ -192,18 +191,27 @@ class User extends CI_Controller {
 	// User önceden hangi bilgileri girdigini unutmus ise hatırlatma amaclida kullanilir
 	public function user_profile_update(){
 		$data = $this->user_model->get_session_user();
-		$userbilgisi = $this->user_model->cmpny_prsnl($data['id']);
+		//$userbilgisi = $this->user_model->cmpny_prsnl($data['id']);
 		//print_r($userbilgisi);
 		//form kontroller
-		$this->form_validation->set_rules('name','Name','trim|required|xss_clean|callback__string_control');
-		$this->form_validation->set_rules('surname','Surname','trim|required|xss_clean|callback__string_control');
-		$this->form_validation->set_rules('jobTitle','Job Title','required|trim|xss_clean');
-		$this->form_validation->set_rules('description','Description','trim|xss_clean');
-		$this->form_validation->set_rules('email', 'e-mail' ,'trim|required|valid_email|callback_email_check');
-		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'required|callback_alpha_dash_space|min_length[11]|xss_clean');
-		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'required|callback_alpha_dash_space|min_length[11]|xss_clean');
-		$this->form_validation->set_rules('fax', 'Fax Number', 'required|callback_alpha_dash_space|min_length[11]|xss_clean');
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]|xss_clean|callback_username_check|alpha_numeric');
+
+		//print_r($data);
+		if($this->input->post('username') != $data['user_name']) {
+		   $is_unique =  '|is_unique[t_user.user_name]';
+		} else {
+		   $is_unique =  '';
+		}
+
+
+		$this->form_validation->set_rules('name','Name','required|trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('surname','Surname','required|trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('jobTitle','Job Title','required|trim|xss_clean|max_length[150]');
+		$this->form_validation->set_rules('description','Description','trim|xss_clean|max_length[200]');
+		$this->form_validation->set_rules('cellPhone', 'Cell Phone Number', 'trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('workPhone', 'Work Phone Number', 'trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('fax', 'Fax Number', 'trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('email', 'e-mail' ,'trim|required|valid_email|mb_strtolower|xss_clean|callback_email_check');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[50]|xss_clean|mb_strtolower|alpha_numeric'.$is_unique);
 
 		if ($this->form_validation->run() !== FALSE)
 		{
@@ -262,19 +270,19 @@ class User extends CI_Controller {
 			$user_id = $this->session->userdata('user_in')['id'];
 			//echo $userbilgisi['cmpny_id'];
 			//echo $this->input->post('company');
-			if($userbilgisi['cmpny_id']!==$this->input->post('company')){
+			/*if($userbilgisi['cmpny_id']!==$this->input->post('company')){
 				$cmpny_prsnl = array(
 						'user_id' => $user_id,
 						'cmpny_id' => $this->input->post('company'),
 						'is_contact' => '0'
 					);
 				$this->company_model->update_cmpny_prsnl($user_id,$userbilgisi['cmpny_id'],$cmpny_prsnl);
-			}
+			}*/
 
-			redirect('', 'refresh');
+			redirect('user/'.$update['user_name'], 'refresh');
 		}
 
-		$data['companies'] = $this->company_model->get_companies();
+		//$data['companies'] = $this->company_model->get_companies();
 
 		$this->load->view('template/header');
 		$this->load->view('user/profile_update',$data);
@@ -297,6 +305,7 @@ class User extends CI_Controller {
 
 	}
 
+<<<<<<< HEAD
 	function username_check(){  
 		$usernameForm = $this->input->post('username'); // formdan gelen yeni girilen username
 
@@ -312,6 +321,8 @@ class User extends CI_Controller {
 		}
 	}
 
+=======
+>>>>>>> origin/master
 	public function become_consultant(){
 		$tmp = $this->session->userdata('user_in');
 		if(empty($tmp) || $this->user_model->is_user_consultant($tmp['id'])){

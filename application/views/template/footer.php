@@ -1,11 +1,10 @@
     <div class="clearfix"></div>
     <div class="footer">© 2013-2015 ecoman</div>
-    <div style="overflow: hidden;display: block;padding-top: 50px;clear: both;">&nbsp;</div>
 
-    <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto" 
+    <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto"
             and $this->uri->segment(1)!="isScopingAutoPrjBaseMDF"
-            and $this->uri->segment(1)!="isScopingAutoPrjBase" 
-            and $this->uri->segment(1)!="isScopingPrjBase" 
+            and $this->uri->segment(1)!="isScopingAutoPrjBase"
+            and $this->uri->segment(1)!="isScopingPrjBase"
             and $this->uri->segment(1)!="isScopingPrjBaseMDF"
             and $this->uri->segment(1)!="isscenarios"
             and $this->uri->segment(1)!="isscenariosCns"
@@ -62,34 +61,6 @@
 
     <script type="text/javascript">
       $(document).ready(function () {
-        $('#assignCompany').change(function () {
-          var company = $(this).val();
-          $.ajax({
-            url: "<?php echo base_url('contactperson');?>",
-            async: false,
-            type: "POST",
-            data: "company_id="+company,
-            dataType: "json",
-            success: function(data) {
-              $('#assignContactPerson option').remove();
-
-              for (var k = 0; k < data.length; k++) {
-                for (var i = 0; i < data[k].length; i++) {
-                  var opt =data[k][i]['id'];
-                  if($("#assignContactPerson option[value='"+ opt +"']").length == 0)
-                  {
-                    $("#assignContactPerson").append(new Option(data[k][i]['name']+' '+data[k][i]['surname']+' - '+data[k][i]['cmpny_name'],data[k][i]['id']));
-                  }
-                }
-              }
-            }
-          })
-        });
-      });
-    </script>
-
-    <script type="text/javascript">
-      $(document).ready(function () {
         $('#equipment').bind('change',function () {
           var equipmentID = $(this).val();
           $.ajax({
@@ -134,7 +105,7 @@
     </script>
     <?php endif ?>
 
-    <?php /* 
+    <?php /*
     <script type="text/javascript">
       $(document).ready(function () {
         $('#process').bind('change',function () {
@@ -178,7 +149,7 @@
                   $("[id*="+i+"subprocess]").remove();
                   $("#processList div:last-child").remove();
                 }
-               
+
               }
               stage += 1;
               get_sub_process($(this).val(),stage);
