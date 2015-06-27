@@ -297,7 +297,7 @@ class User extends CI_Controller {
 
 	}
 
-	function username_check(){
+	function username_check(){  
 		$usernameForm = $this->input->post('username'); // formdan gelen yeni girilen username
 
 		$tmp = $this->session->userdata('user_in');
