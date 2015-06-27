@@ -305,7 +305,7 @@ class User extends CI_Controller {
 
 	}
 
-<<<<<<< HEAD
+
 	function username_check(){  
 		$usernameForm = $this->input->post('username'); // formdan gelen yeni girilen username
 
@@ -321,8 +321,7 @@ class User extends CI_Controller {
 		}
 	}
 
-=======
->>>>>>> origin/master
+
 	public function become_consultant(){
 		$tmp = $this->session->userdata('user_in');
 		if(empty($tmp) || $this->user_model->is_user_consultant($tmp['id'])){
