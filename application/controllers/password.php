@@ -129,7 +129,7 @@ class Password extends CI_Controller{
 				);
 				$this->password_model->change_pass($user_id,$control);
 
-				$message = 'Sifreniz degistirildi. Yeni sifreniz: '.$new_pass;
+				$message = 'Your password has been changed. Your new password is: '.$new_pass;
 				$email = $this->password_model->get_email($user_id);
 
 				$send_email = array(
