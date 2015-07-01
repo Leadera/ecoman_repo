@@ -138,14 +138,14 @@ class User extends CI_Controller {
 
 		if ($this->form_validation->run() !== FALSE)
 		{
-			$username= $this->input->post('username');
+			$username= mb_strtolower($this->input->post('username'));
 			$password=md5($this->input->post('password'));
 			$userInfo = $this->user_model->check_user($username,$password);
                         //print_r($userInfo);
 			//session ayaları ve atama
 			$session_array= array(
 				'id' => $userInfo['id'],
-				'username' => $userInfo['user_name'],
+				'username' => mb_strtolower($userInfo['user_name']),
 				'email' => $userInfo['email'],
                                 'role_id' => $userInfo['role_id']
 				);
@@ -161,7 +161,7 @@ class User extends CI_Controller {
 	}
 
 	public function check_user(){
-		$username= $this->input->post('username');
+		$username= mb_strtolower($this->input->post('username'));
 		$password=md5($this->input->post('password'));
 		$userInfo=$this->user_model->check_user($username,$password);
 
@@ -306,7 +306,7 @@ class User extends CI_Controller {
 	}
 
 
-	function username_check(){  
+	function username_check(){
 		$usernameForm = $this->input->post('username'); // formdan gelen yeni girilen username
 
 		$tmp = $this->session->userdata('user_in');
