@@ -168,7 +168,7 @@ class User extends CI_Controller {
 		if($userInfo!== FALSE){
 			return true;
 		}else{
-			$this->form_validation->set_message('check_user', 'Şifre veya E-posta hatalı.');
+			$this->form_validation->set_message('check_user', 'Password or Username is incorrect.');
 			return false;
 		}
 	}
