@@ -5,7 +5,7 @@ class Password extends CI_Controller{
 		parent::__construct();
 		$this->load->model('password_model');
 		$this->load->library('form_validation');
-	}	
+	}
 
 	public function send_email_for_change_pass(){
 
@@ -51,7 +51,7 @@ class Password extends CI_Controller{
 					$this->password_model->change_pass($user_id,$control);
 				}
 
-				$message = 'Sifreniz degistirildi. Yeni sifreniz: '.$new_pass;
+				$message = 'Your password has been changed. Your new password is: '.$new_pass;
 				$email = $this->password_model->get_email($user_id);
 
 				$send_email = array(
@@ -86,14 +86,14 @@ class Password extends CI_Controller{
 		$this->form_validation->set_rules('email', 'E-mail', 'trim|xss_clean|required');
 
 		if ($this->form_validation->run() !== FALSE){
-			
+
 			$email = $this->input->post('email');
 
 			$user_id = $this->password_model->get_id($email);
 
 			$random_str = $this->generateRandomString();
 			$asd = base_url("new_password/".$random_str);
-			
+
 			$message = '<a href='.$asd.'>Change Password</a>';
 
 			$rnd_str = array(
@@ -112,7 +112,7 @@ class Password extends CI_Controller{
 		$this->load->view('template/header');
 		$this->load->view('password/new_password_email');
 		$this->load->view('template/footer');
-	}	
+	}
 
 	public function new_password($rnd_string){
 		$data['random_string'] = $rnd_string;
@@ -128,7 +128,7 @@ class Password extends CI_Controller{
 					'psswrd' => md5($new_pass)
 				);
 				$this->password_model->change_pass($user_id,$control);
-				
+
 				$message = 'Sifreniz degistirildi. Yeni sifreniz: '.$new_pass;
 				$email = $this->password_model->get_email($user_id);
 
@@ -145,7 +145,7 @@ class Password extends CI_Controller{
 				$this->password_model->set_random_string_zero($rnd_string,$rnd_str);
 
 				redirect('login','refresh');
-			}	
+			}
 		}
 
 		$this->load->view('template/header');
@@ -171,7 +171,7 @@ class Password extends CI_Controller{
 		$this->email->set_newline("\r\n");
 		$this->email->from('ostimteknoloji@gmail.com'); // change it to yours
 		$this->email->to($data['email']);// change it to yours
-		$this->email->subject('Bilgilendirme!');
+		$this->email->subject('About your ecoman account!');
 		$this->email->message($data['message']);
 		if($this->email->send())
 		{
