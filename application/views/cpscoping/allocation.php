@@ -3,14 +3,14 @@ var pathname = window.location.pathname;
 var prj_id = pathname.split("/")[3];
 var cmpny_id = pathname.split("/")[4];
 $(document).ready(function() {
-    $("#prcss_name").change(function() { 
+    $("#prcss_name").change(function() {
     	var prcss_id = $( "#prcss_name").val();
         $('#flow_name').children().remove();
         $('#flow_type_name').children().remove();
-        $.ajax({ 
+        $.ajax({
             type: "POST",
             dataType:'json',
-            url: '<?php echo base_url('cp_allocation_array');?>/'+cmpny_id, 
+            url: '<?php echo base_url('cp_allocation_array');?>/'+cmpny_id,
             success: function(data)
             {
             	$('#flow_name').append('<option value="">Nothing Selected</option>');
@@ -50,16 +50,16 @@ function aatf() {
  		var cmpny_id = "<?php echo $this->uri->segment(3); ?>";
 
 		//get other allocation data for a selected flow and flow type
-		$.ajax({ 
+		$.ajax({
 			type: "POST",
 			dataType:'json',
-			url: '<?php echo base_url('cpscoping/allocated_table'); ?>/'+flow_id+'/'+flow_type_id+'/'+cmpny_id+'/'+process_id+'/'+project_id, 
+			url: '<?php echo base_url('cpscoping/allocated_table'); ?>/'+flow_id+'/'+flow_type_id+'/'+cmpny_id+'/'+process_id+'/'+project_id,
 			success: function(data)
 			{
 				var vPool="";
 				for (var i = 0; i < data.length; i++) {
-					
-					vPool += '<div class="col-md-4"><table style="width:100%;"><tr><td colspan="3" style="height:60px;">' + data[i].prcss_name + '</td></tr><tr><td>Amount</td><td>' + data[i].amount + ' ' + data[i].unit_amount + ' <span class="label label-info">' + data[i].error_amount + '%</span></td><td style="width:70px;">%'+data[i].allocation_amount+'</td></tr><tr><td>Cost</td><td>' + data[i].cost + ' ' + data[i].unit_cost + ' <span class="label label-info">' + data[i].error_cost + '%</span></td><td style="width:70px;">%'+data[i].allocation_cost+'</td></tr><tr><td>EP</td><td>' + data[i].env_impact + ' ' + data[i].unit_env_impact + ' <span class="label label-info">' + data[i].error_ep + '%</span></td><td style="width:70px;">%'+data[i].allocation_env_impact+'</td></tr></table></div>';
+
+					vPool += '<div class="col-md-4"><table style="width:100%;"><tr><td colspan="3" style="height:60px;">Process: ' + data[i].prcss_name + '</td></tr><tr><td>Amount</td><td>' + data[i].amount + ' ' + data[i].unit_amount + ' <span class="label label-info">' + data[i].error_amount + '%</span></td><td style="width:70px;">Allocation rate: '+data[i].allocation_amount+'%</td></tr><tr><td>Cost</td><td>' + data[i].cost + ' ' + data[i].unit_cost + ' <span class="label label-info">' + data[i].error_cost + '%</span></td><td style="width:70px;">Allocation rate: '+data[i].allocation_cost+'%</td></tr><tr><td>EP</td><td>' + data[i].env_impact + ' ' + data[i].unit_env_impact + ' <span class="label label-info">' + data[i].error_ep + '%</span></td><td style="width:70px;">Allocation rate: '+data[i].allocation_env_impact+'%</td></tr></table></div>';
 					//alert(data);
 
 				}
@@ -239,7 +239,7 @@ function aatf() {
 				<div class="col-md-6">
 					<input type="text" class="form-control" id="unit_kpi" placeholder="" name="unit_kpi" readonly>
 				</div>
-				
+
 			</div>
 			<div><button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> Save Allocation Data</button></div>
 			<div style="margin-top:30px;"><span class="badge">3</span> Check other allocations of selected flow.</div>
@@ -256,7 +256,7 @@ function aatf() {
 <script type="text/javascript">
 	$("#amount").change(hesapla);
 	$("#reference").change(hesapla);
-	function hesapla() { 
+	function hesapla() {
 		$("#kpi").val(Number(($("#amount").val()/$("#reference").val()).toFixed(5)));
 	}
 	$("#unit_amount").change(unit_hesapla);
