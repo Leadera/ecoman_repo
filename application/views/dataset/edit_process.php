@@ -2,7 +2,7 @@
 	<div class="col-md-6 col-md-offset-3">
 		<?php echo form_open_multipart('edit_process/'.$companyID.'/'.$process['id']); ?>
 			<p class="lead">Edit Company Process</p>
-	    <div class="form-group">
+	    <!-- <div class="form-group">
 				<div class="row">
 					<div class="col-md-8">
 						<label for="min_rate_util">Minimum rate of utilization</label>
@@ -52,7 +52,7 @@
 						</select>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<div class="form-group">
 				<label for="comment">Comment</label>
 				<input class="form-control" id="comment" name="comment" placeholder="Comment"  value="<?php echo set_value('comment',$process['comment']); ?>">

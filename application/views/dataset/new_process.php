@@ -45,7 +45,7 @@
 					<?php endforeach ?>
 				</select>
 	    </div>
-	    <div class="form-group">
+<!-- 	    <div class="form-group">
 				<div class="row">
 					<div class="col-md-8">
 						<label for="min_rate_util">Minimum rate of utilization</label>
@@ -92,7 +92,7 @@
 						</select>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<div class="form-group">
 				<label for="comment">Comment</label>
 				<input class="form-control" id="comment" name="comment" placeholder="Comment">
@@ -108,19 +108,19 @@
 			<tr>
 				<th>Process Name</th>
 				<th>Used Flows</th>
-				<th>Minimum rate of utilization</th>
+<!-- 				<th>Minimum rate of utilization</th>
 				<th>Typical rate of utilization</th>
-				<th>Maximum rate of utilization</th>
+				<th>Maximum rate of utilization</th> -->
 				<th>Comment</th>
 				<th>Delete</th>
 			</tr>
 			<?php foreach ($cmpny_flow_prcss as $attribute): ?>
-				<tr>	
+				<tr>
 					<td><?php echo $attribute['prcessname']; ?></td>
 					<td><?php echo $attribute['flowname'].'('.$attribute['flow_type_name'].')'; ?></td>
-					<td><?php echo $attribute['min_rate_util']; ?> <?php echo $attribute['minrateu']; ?></td>
+<!-- 					<td><?php echo $attribute['min_rate_util']; ?> <?php echo $attribute['minrateu']; ?></td>
 					<td><?php echo $attribute['typ_rate_util']; ?> <?php echo $attribute['typrateu']; ?></td>
-					<td><?php echo $attribute['max_rate_util']; ?> <?php echo $attribute['maxrateu']; ?></td>
+					<td><?php echo $attribute['max_rate_util']; ?> <?php echo $attribute['maxrateu']; ?></td> -->
 					<td><?php echo $attribute['comment']; ?></td>
 					<td>
 						<a href="<?php echo base_url('edit_process/'.$companyID.'/'.$attribute['company_process_id']);?>" class="label label-warning" value="<?php echo $attribute['prcessid']; ?>"><span class="fa fa-edit"></span> Edit</button>

@@ -115,7 +115,7 @@ class Dataset extends CI_Controller {
 			$costUnit = $this->input->post('costUnit');
 			$quantity = $this->input->post('quantity');
 			$quantityUnit = $this->input->post('quantityUnit');
-			
+
 			$cf = $this->input->post('cf');
 			$availability = $this->input->post('availability');
 			$conc = $this->input->post('conc');
@@ -127,7 +127,7 @@ class Dataset extends CI_Controller {
 			$quality = $this->input->post('quality');
 			$oloc = $this->input->post('oloc');
 			//$odis = $this->input->post('odis');
-			//$otrasmean = $this->input->post('otrasmean');			
+			//$otrasmean = $this->input->post('otrasmean');
 			//$sdis = $this->input->post('sdis');
 			//$strasmean = $this->input->post('strasmean');
 			//$rtech = $this->input->post('rtech');
@@ -170,7 +170,7 @@ class Dataset extends CI_Controller {
 			if(!empty($ph)){
 				$flow['ph'] = $ph;
 			}
-			
+
 			$this->flow_model->register_flow_to_company($flow);
 
 			//redirect(base_url('new_flow/'.$data['companyID']), 'refresh'); // tablo olusurken ajax kullanýlabilir.
@@ -214,7 +214,7 @@ class Dataset extends CI_Controller {
 			$costUnit = $this->input->post('costUnit');
 			$quantity = $this->input->post('quantity');
 			$quantityUnit = $this->input->post('quantityUnit');
-			
+
 			$cf = $this->input->post('cf');
 			$availability = $this->input->post('availability');
 			$conc = $this->input->post('conc');
@@ -226,7 +226,7 @@ class Dataset extends CI_Controller {
 			$quality = $this->input->post('quality');
 			$oloc = $this->input->post('oloc');
 			//$odis = $this->input->post('odis');
-			//$otrasmean = $this->input->post('otrasmean');			
+			//$otrasmean = $this->input->post('otrasmean');
 			//$sdis = $this->input->post('sdis');
 			//$strasmean = $this->input->post('strasmean');
 			//$rtech = $this->input->post('rtech');
@@ -261,7 +261,7 @@ class Dataset extends CI_Controller {
 			if(!empty($ph)){
 				$flow['ph'] = $ph;
 			}
-			
+
 			$this->flow_model->update_flow_info($companyID,$flow_id,$flow_type_id,$flow);
 
 			redirect(base_url('new_flow/'.$companyID), 'refresh'); // tablo olusurken ajax kullanýlabilir.
@@ -302,15 +302,15 @@ class Dataset extends CI_Controller {
 		}
 		//echo "s";
 		//return false;
-	} 
+	}
 
 	function alpha_dash_space($str)
 	{
 	  return ( ! preg_match("/^([-a-z_ ])+$/i", $str)) ? FALSE : TRUE;
-	} 
+	}
 
 	public function new_component($companyID){
-		
+
 		$this->form_validation->set_rules('component_name', 'Component Name', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|required|xss_clean');
 
@@ -340,7 +340,7 @@ class Dataset extends CI_Controller {
 			);
 			$this->component_model->set_cmpny_flow_cmpnnt($cmpny_flow_cmpnnt);
 		}
-		
+
 		$data['units'] = $this->flow_model->get_unit_list();
 		$data['component_name'] = $this->component_model->get_cmpnnt($companyID);
 		$data['ctypes'] = $this->component_model->get_cmpnnt_type();
@@ -381,7 +381,7 @@ class Dataset extends CI_Controller {
 			$this->component_model->update_cmpny_flow_cmpnnt($cmpny_flow_cmpnnt,$id);
 			redirect('new_component/'.$companyID, 'refresh');
 		}
-		
+
 		$data['component'] = $this->component_model->get_cmpnnt_info($companyID,$id);
 		$data['units'] = $this->flow_model->get_unit_list();
 		$data['ctypes'] = $this->component_model->get_cmpnnt_type();
@@ -397,9 +397,9 @@ class Dataset extends CI_Controller {
 
 		$this->form_validation->set_rules('process','Process','required');
 		$this->form_validation->set_rules('usedFlows','Used Flows','required');
-		$this->form_validation->set_rules('min_rate_util','Minimum rate of utilization','trim|numeric|xss_clean');
-		$this->form_validation->set_rules('typ_rate_util','Typical rate of utilization','trim|numeric|xss_clean');
-		$this->form_validation->set_rules('max_rate_util','Maximum rate of utilization','trim|numeric|xss_clean');
+		// $this->form_validation->set_rules('min_rate_util','Minimum rate of utilization','trim|numeric|xss_clean');
+		// $this->form_validation->set_rules('typ_rate_util','Typical rate of utilization','trim|numeric|xss_clean');
+		// $this->form_validation->set_rules('max_rate_util','Maximum rate of utilization','trim|numeric|xss_clean');
 		$this->form_validation->set_rules('comment','Comment','trim|alpha_numeric|xss_clean');
 
 
@@ -413,16 +413,16 @@ class Dataset extends CI_Controller {
 			$process_id = $this->process_model->is_new_process($process_id,$processfamilyID);
 
 			$cmpny_prcss_id = $this->process_model->can_write_cmpny_prcss($companyID,$process_id);
-			
+
 			if($cmpny_prcss_id == false){
 				$cmpny_prcss = array(
 					'cmpny_id' => $companyID,
-					'min_rate_util' => $this->sifirla($this->input->post('min_rate_util')),
-					'min_rate_util_unit' => $this->sifirla($this->input->post('min_rate_util_unit')),					
-					'typ_rate_util' => $this->sifirla($this->input->post('typ_rate_util')),
-					'typ_rate_util_unit' => $this->sifirla($this->input->post('typ_rate_util_unit')),
-					'max_rate_util' => $this->sifirla($this->input->post('max_rate_util')),
-					'max_rate_util_unit' => $this->sifirla($this->input->post('max_rate_util_unit')),
+					// 'min_rate_util' => $this->sifirla($this->input->post('min_rate_util')),
+					// 'min_rate_util_unit' => $this->sifirla($this->input->post('min_rate_util_unit')),
+					// 'typ_rate_util' => $this->sifirla($this->input->post('typ_rate_util')),
+					// 'typ_rate_util_unit' => $this->sifirla($this->input->post('typ_rate_util_unit')),
+					// 'max_rate_util' => $this->sifirla($this->input->post('max_rate_util')),
+					// 'max_rate_util_unit' => $this->sifirla($this->input->post('max_rate_util_unit')),
 					'comment' => $this->input->post('comment'),
 					'prcss_id' => $process_id
 				);
@@ -456,21 +456,21 @@ class Dataset extends CI_Controller {
 
 	public function edit_process($companyID,$process_id){
 
-		$this->form_validation->set_rules('min_rate_util','Minimum rate of utilization','trim|numeric|xss_clean');
-		$this->form_validation->set_rules('typ_rate_util','Typical rate of utilization','trim|numeric|xss_clean');
-		$this->form_validation->set_rules('max_rate_util','Maximum rate of utilization','trim|numeric|xss_clean');
+		// $this->form_validation->set_rules('min_rate_util','Minimum rate of utilization','trim|numeric|xss_clean');
+		// $this->form_validation->set_rules('typ_rate_util','Typical rate of utilization','trim|numeric|xss_clean');
+		// $this->form_validation->set_rules('max_rate_util','Maximum rate of utilization','trim|numeric|xss_clean');
 		$this->form_validation->set_rules('comment','Comment','trim|alpha_numeric|xss_clean');
 
 		if ($this->form_validation->run() !== FALSE)
 		{
 			//cant change flow and process since they affect other tables on database and also need lots of control for now.
 			$cmpny_prcss = array(
-				'min_rate_util' => $this->sifirla($this->input->post('min_rate_util')),
-				'min_rate_util_unit' => $this->sifirla($this->input->post('min_rate_util_unit')),					
-				'typ_rate_util' => $this->sifirla($this->input->post('typ_rate_util')),
-				'typ_rate_util_unit' => $this->sifirla($this->input->post('typ_rate_util_unit')),
-				'max_rate_util' => $this->sifirla($this->input->post('max_rate_util')),
-				'max_rate_util_unit' => $this->sifirla($this->input->post('max_rate_util_unit')),
+				// 'min_rate_util' => $this->sifirla($this->input->post('min_rate_util')),
+				// 'min_rate_util_unit' => $this->sifirla($this->input->post('min_rate_util_unit')),
+				// 'typ_rate_util' => $this->sifirla($this->input->post('typ_rate_util')),
+				// 'typ_rate_util_unit' => $this->sifirla($this->input->post('typ_rate_util_unit')),
+				// 'max_rate_util' => $this->sifirla($this->input->post('max_rate_util')),
+				// 'max_rate_util_unit' => $this->sifirla($this->input->post('max_rate_util_unit')),
 				'comment' => $this->input->post('comment'),
 			);
 			$this->process_model->update_cmpny_flow_prcss($companyID,$process_id,$cmpny_prcss);
@@ -487,7 +487,7 @@ class Dataset extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
-	public function new_equipment($companyID){				
+	public function new_equipment($companyID){
 
 		$this->form_validation->set_rules('usedprocess','Used Process','required');
 		$this->form_validation->set_rules('equipment','Equipment Name','required');
@@ -543,7 +543,7 @@ class Dataset extends CI_Controller {
 	}
 	public function delete_flow($companyID,$id){
 		$cmpny_flow_prcss_id_list = $this->process_model->cmpny_flow_prcss_id_list($id);
-		$this->process_model->delete_cmpny_flow_process($id);	
+		$this->process_model->delete_cmpny_flow_process($id);
 
 		foreach ($cmpny_flow_prcss_id_list as $cmpny_flow_prcss_id) {
 			if(!$this->process_model->still_exist_this_cmpny_prcss($cmpny_flow_prcss_id['cmpny_prcss_id'])){
@@ -582,9 +582,9 @@ class Dataset extends CI_Controller {
 	}
 
 	public function delete_process($companyID,$company_process_id,$company_flow_id){
-		
+
 		$this->process_model->delete_company_flow_prcss($company_process_id,$company_flow_id);
-		
+
 		if(!$this->process_model->still_exist_this_cmpny_prcss($company_process_id))
 		{
 			$this->equipment_model->delete_cmpny_equipment($company_process_id);
