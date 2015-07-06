@@ -76,7 +76,7 @@
 
     <div class="content-container" style="margin-bottom: 20px;display: block;height: 52px;">
 
-      <ul id="homies" class="nav navbar-nav alt-nav">
+      <ul id="homies" class="nav navbar-nav alt-nav" style="display:none;">
         <li><a href="#" class="nav-info"></a></li>
         <li><a href="<?php echo base_url('contactus'); ?>"><i class="fa fa-envelope"></i> <?php echo lang("whoarewe"); ?></a></li>
         <li><a href="<?php echo base_url('whatwedo'); ?>"><i class="fa fa-question-circle"></i> <?php echo lang("whatwedo"); ?></a></li>
