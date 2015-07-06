@@ -1,12 +1,12 @@
 <script type="text/javascript" src="<?php echo asset_url('js/easy-ui-1.4.2.js'); ?>"></script>
-<?php 
+<?php
 /*foreach ($allocation as $rows => $row)
 {
 	echo "<table border='1'><tr>";
 	foreach ($row as $col => $cell)
 	{
 		echo "<td>" . $cell . "</td>";
-	}	
+	}
   echo "</tr></table>";
 }
 print_r($allocation[0]);*/
@@ -54,7 +54,7 @@ print_r($allocation[0]);*/
 				// temp += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><th style="text-align:center;">' + data.prcss_name + '</th></tr><tr><td> <b>EP Value:</b> ' + data.ep_def_value + '  <b>EP Range:</b> ' + data.ep_value_alt + ' - ' + data.ep_value_ust + '</td></tr><tr><td> <b>Cost Value:</b> ' + data.cost_def_value + '   <b>Cost Range:</b> ' + data.cost_value_alt.toFixed(2) + ' - ' + data.cost_value_ust.toFixed(2) + ' Euro</td></tr></table>';
 				// $("div."+prcss_id).html(temp);
 			}
-			
+
 		});
 	};
 
@@ -116,7 +116,7 @@ print_r($allocation[0]);*/
 				$degisken = 1;
 				$deneme_arrayi[$count] = $a['prcss_name'];
 				$count++;
-				for ($i=0; $i < $count-1; $i++) { 
+				for ($i=0; $i < $count-1; $i++) {
 					if($deneme_arrayi[$i] == $a['prcss_name']){
 					$degisken = 0;
 					break;
@@ -125,7 +125,7 @@ print_r($allocation[0]);*/
 				if($degisken == 1){
 					$process_adet++;
 					echo "<th style='width:200px;'>".$a['prcss_name']."</th>";
-					$tekrarsiz[$process_adet-1] = $a['prcss_id']; 
+					$tekrarsiz[$process_adet-1] = $a['prcss_id'];
 				}
 			}
 			?>
@@ -145,7 +145,7 @@ print_r($allocation[0]);*/
 							break;
 						}
 					}
-					
+
 					if($degisken == 1 && $a['flow_type_id'] == 1): ?>
 					<tr>
 						<td>
@@ -158,7 +158,7 @@ print_r($allocation[0]);*/
 								<button class="btn btn-success btn-xs pull-right" id="<?php echo $a['allocation_id']; ?>" onclick="is_candidate(<?php echo $a['allocation_id'];?>)">IS candidate
 								</button>
 							<?php endif ?>
-							
+
 						</td>
 						<?php for ($t=0; $t < $process_adet+1; $t++): ?>
 							<script type="text/javascript">
@@ -166,7 +166,7 @@ print_r($allocation[0]);*/
 							</script>
 							<td style="padding:0px !important;">
 								<div class="<?php echo $a['flow_id'].''.$tekrarsiz[$t-1]; ?>1">
-									<?php 
+									<?php
 										$bak = $a['flow_id'].'-'.$tekrarsiz[$t-1].'-1';
 										if(!empty($allocationveri[$bak])):
 									?>
@@ -209,7 +209,7 @@ print_r($allocation[0]);*/
 				$degisken = 1;
 				$deneme_arrayi[$count] = $a['prcss_name'];
 				$count++;
-				for ($i=0; $i < $count-1; $i++) { 
+				for ($i=0; $i < $count-1; $i++) {
 					if($deneme_arrayi[$i] == $a['prcss_name']){
 					$degisken = 0;
 					break;
@@ -218,7 +218,7 @@ print_r($allocation[0]);*/
 				if($degisken == 1){
 					$process_adet++;
 					echo "<th style='width:200px;'>".$a['prcss_name']."</th>";
-					$tekrarsiz[$process_adet-1] = $a['prcss_id']; 
+					$tekrarsiz[$process_adet-1] = $a['prcss_id'];
 				}
 			}
 			?>
@@ -271,7 +271,7 @@ print_r($allocation[0]);*/
 							</script>
 							<td style="padding:0px !important;">
 								<div class="<?php echo $a['flow_id'].''.$tekrarsiz[$t-1]; ?>2">
-									<?php 
+									<?php
 										$bak = $a['flow_id'].'-'.$tekrarsiz[$t-1].'-2';
 										if(!empty($allocationveri[$bak])):
 									?>
@@ -323,11 +323,11 @@ print_r($allocation[0]);*/
 				    <tr>
 				        <th data-options="field:'prcss_name',align:'center',width:150">Process</th>
 				        <th data-options="field:'ep_def_value',align:'center',width:80" formatter="formatPrice">Ep Value</th>
-				        <th data-options="field:'ep_value_alt',align:'center',width:100" formatter="formatPrice">Min Ep Value</th>
-				        <th data-options="field:'ep_value_ust',align:'center',width:100" formatter="formatPrice">Max Ep Value</th>
+				        <th data-options="field:'ep_value_alt',align:'center',width:100" formatter="formatPrice">Lower Ep Value</th>
+				        <th data-options="field:'ep_value_ust',align:'center',width:100" formatter="formatPrice">Upper Ep Value</th>
 				        <th data-options="field:'cost_def_value',align:'center',width:100" formatter="formatPrice">Cost Value</th>
-				        <th data-options="field:'cost_value_alt',align:'center',width:110" formatter="formatPrice">Min Cost Value</th>
-				        <th data-options="field:'cost_value_ust',align:'center',width:110" formatter="formatPrice">Max Cost Value</th>
+				        <th data-options="field:'cost_value_alt',align:'center',width:110" formatter="formatPrice">Lower Cost Value</th>
+				        <th data-options="field:'cost_value_ust',align:'center',width:110" formatter="formatPrice">Upper Cost Value</th>
 				        <th data-options="field:'comment',width:200,align:'center',editor:'text'">Comments / Remarks</th>
 				    </tr>
 				</thead>
@@ -505,15 +505,15 @@ print_r($allocation[0]);*/
 		.style("background-color", "white")
 		.style("color", "darkblue");
 
-	// add legend   
+	// add legend
 	var legend = svg.append("g")
 	  .attr("class", "legend")
         //.attr("x", w - 65)
         //.attr("y", 50)
 	  .attr("height", 100)
 	  .attr("width", 100)
-    .attr('transform', 'translate(-20,50)')    
-      
+    .attr('transform', 'translate(-20,50)')
+
     legend.selectAll('rect')
       .data(data)
       .enter()
