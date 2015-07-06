@@ -121,7 +121,12 @@ class Project extends CI_Controller{
 
 			$this->project_model->insert_project_contact_person($prj_cntct_prsnl);
 
-			redirect('myprojects', 'refresh');
+			$this->session->unset_userdata('project_id');
+			$id = $this->input->post('projectid');
+			$this->session->set_userdata('project_id', $last_inserted_project_id);
+			$prj = $this->project_model->get_project($last_inserted_project_id);
+			$this->session->set_userdata('project_name', $prj['name']);
+			redirect('project/'.$last_inserted_project_id, 'refresh');
 		}
 
 		$this->load->view('template/header');
