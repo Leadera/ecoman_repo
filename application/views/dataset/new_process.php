@@ -104,7 +104,7 @@
 	    </div>
 		<div class="col-md-8">
 			<p class="lead">Company processes</p>
-			<table class="table table-striped table-bordered">
+			<table class="table table-bordered">
 			<tr>
 				<th>Process Name</th>
 				<th>Used Flows</th>
@@ -114,9 +114,12 @@
 				<th>Comment</th>
 				<th>Delete</th>
 			</tr>
-			<?php foreach ($cmpny_flow_prcss as $attribute): ?>
+			<?php foreach ($cmpny_flow_prcss as $key=>$attribute): ?>
 				<tr>
-					<td><?php echo $attribute['prcessname']; ?></td>
+					<?php if($son !== $attribute['prcessname']): ?>
+						<td rowspan="<?php echo $cmpny_flow_prcss_count[$attribute['prcessname']]; ?>"><?php echo $attribute['prcessname']; ?></td>
+					<?php endif ?>
+
 					<td><?php echo $attribute['flowname'].'('.$attribute['flow_type_name'].')'; ?></td>
 <!-- 					<td><?php echo $attribute['min_rate_util']; ?> <?php echo $attribute['minrateu']; ?></td>
 					<td><?php echo $attribute['typ_rate_util']; ?> <?php echo $attribute['typrateu']; ?></td>
@@ -127,6 +130,7 @@
 						<a href="<?php echo base_url('delete_process/'.$companyID.'/'.$attribute['company_process_id'].'/'.$attribute['company_flow_id']);?>" class="label label-danger" value="<?php echo $attribute['prcessid']; ?>"><span class="fa fa-times"></span> Delete</button>
 					</td>
 				</tr>
+				<?php $son= $attribute['prcessname']; ?>
 				<?php endforeach ?>
 			</table>
 		</div>

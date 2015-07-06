@@ -443,6 +443,9 @@ class Dataset extends CI_Controller {
 		$data['process'] = $this->process_model->get_main_process();
 		$data['company_flows']=$this->flow_model->get_company_flow_list($companyID);
 		$data['cmpny_flow_prcss'] = $this->process_model->get_cmpny_flow_prcss($companyID);
+		$data['cmpny_flow_prcss_count'] = array_count_values(array_column($data['cmpny_flow_prcss'], 'prcessname'));
+
+
 		$data['companyID'] = $companyID;
 		$data['company_info'] = $this->company_model->get_company($companyID);
 		$data['processfamilys'] = $this->process_model->get_processfamily_list();
