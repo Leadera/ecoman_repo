@@ -29,4 +29,4 @@ $lang["isidentification"]    = "IS - Potential Identification";
 $lang["gis"]                 = "GIS";
 $lang["costbenefitanalysis"] = "Cost - Benefit Analysis";
 $lang["ecotracking"]         = "Eco Tracking";
-$lang["closeproject"]        = "Close This Project";
+$lang["closeproject"]        = "Close Project";

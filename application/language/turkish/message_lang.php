@@ -29,4 +29,4 @@ $lang["isidentification"]    = "Endüstriyel Simbiyoz";
 $lang["gis"]                 = "CBS";
 $lang["costbenefitanalysis"] = "Fayda - Maliyet Analizi";
 $lang["ecotracking"]         = "Firma Takibi";
-$lang["closeproject"]        = "Bu Projeyi Kapat";
+$lang["closeproject"]        = "Projeyi Kapat";

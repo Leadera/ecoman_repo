@@ -8,14 +8,15 @@
 					<tr>
 					<td style="padding: 10px 15px;">
 						<a href="<?php echo base_url('user/'.$com['user_name']) ?>" style="display:block;">
-							<div><b><?php echo $com['name']; ?> <?php echo $com['surname']; ?></b></div>
-							<div><span style="color:#999999; font-size:12px;"><?php echo $com['description']; ?></span></div>
+							<div><b><?php echo $com['name']; ?> <?php echo $com['surname']; ?></b>
+							<small style="color:gray;">- @<?php echo $com['user_name']; ?></small></div>
+						<div><span style="color:#999999; font-size:12px;"><?php echo $com['description']; ?></span></div>
 						</a>
 					</td>
 					</tr>
 				<?php endforeach ?>
 				</table>
-		</div>	
+		</div>
 		<div class="col-md-4">
 			<div class="well">
 				You are seeing all the consultants of the system. You can access their profile and contact with them.
