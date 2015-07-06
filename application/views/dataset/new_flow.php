@@ -16,7 +16,8 @@
 		}
 	</script>
 
-	<div class="col-md-4 borderli">
+
+	<div class="col-md-4 borderli" <?php if(validation_errors() == NULL ){echo "id='gizle'";} ?>>
 		<?php echo form_open_multipart('new_flow/'.$companyID); ?>
 			<p class="lead">Add flow</p>
 			<div class="form-group">
@@ -94,7 +95,7 @@
 		  	<div class="form-group">
 				  <label for="cf">Chemical formula</label>
 				  <input class="form-control" id="cf" name="cf" placeholder="Chemical formula">
-		  	</div>		  	
+		  	</div>
 
 				<div class="form-group">
 					<label for="availability">Availability</label>
@@ -115,11 +116,11 @@
 							<select id="concunit" class="info select-block" name="concunit">
 								<option value="">Please Select</option>
 								<option value="%">%</option>
-								<option value="kg/m3">kg/m3</option>								
+								<option value="kg/m3">kg/m3</option>
 							</select>
 						</div>
 					</div>
-				</div>				
+				</div>
 
 				<div class="form-group">
 					<div class="row">
@@ -133,11 +134,11 @@
 								<option value="">Please Select</option>
 								<option value="Pascal (Pa)">Pascal (Pa)</option>
 								<option value="bar (Bar)">bar (Bar)</option>
-								<option value="Standard atmosphere (atm)">Standard atmosphere (atm)</option>								
+								<option value="Standard atmosphere (atm)">Standard atmosphere (atm)</option>
 							</select>
 						</div>
 					</div>
-				</div>				
+				</div>
 
 				<div class="form-group">
 					<label for="ph">PH</label>
@@ -156,38 +157,38 @@
 				<div class="form-group">
 					<label for="quality">Quality</label>
 					<input class="form-control" id="quality" name="quality" placeholder="Quality">
-				</div>				
+				</div>
 
 				<div class="form-group">
 					<label for="oloc">Output location</label>
 					<input class="form-control" id="oloc" name="oloc" placeholder="Output location">
-				</div>				
+				</div>
 
 <!--					<div class="form-group">
 					<label for="odis">Output distance</label>
 					<input class="form-control" id="odis" name="odis" placeholder="Output distance">
-				</div>				
+				</div>
 
 				<div class="form-group">
 					<label for="otrasmean">Output transport mean</label>
 					<input class="form-control" id="otrasmean" name="otrasmean" placeholder="Output transport mean">
-				</div>				
+				</div>
 
 				<div class="form-group">
 					<label for="sdis">Supply distance</label>
 					<input class="form-control" id="sdis" name="sdis" placeholder="Supply distance">
-				</div>				
+				</div>
 
 				<div class="form-group">
 					<label for="strasmean">Supply transport mean</label>
 					<input class="form-control" id="strasmean" name="strasmean" placeholder="Supply transport mean">
 				</div>
-						
+
  				<div class="form-group">
 					<label for="rtech">Recycling technology</label>
 					<input class="form-control" id="rtech" name="rtech" placeholder="Recycling technology">
 				</div> -->
-				
+
 				<div class="form-group">
 					<label for="spot">Substitute potential</label>
 					<input class="form-control" id="spot" name="spot" placeholder="Substitute potential">
@@ -208,8 +209,11 @@
 		<span class="label label-default"><span style="color:red;">*</span> labels are required.</span>
 		</div>
 	<div class="col-md-8">
-		<p class="lead">Company flows</p>
-		<table class="table table-striped table-bordered" style="font-size:12px;">
+		<p class="lead pull-left">Company flows</p>
+		<?php if(validation_errors() == NULL ): ?>
+		<button id="ac" class="btn btn-warning" style="margin-left: 20px;">Add New Flow</button>
+		<?php endif ?>
+		<table class="table table-bordered" style="font-size:12px;">
 			<tr>
 				<th>Flow Name</th>
 				<th>Flow Type</th>
@@ -230,10 +234,15 @@
 				<th>Comment</th>
 				<th style="width:100px;">Delete</th>
 			</tr>
-			<?php foreach ($company_flows as $flow): ?>
-				<?php //print_r($flow); ?>
-				<tr>	
-					<td><?php echo $flow['flowname']; ?></td>
+			<?php foreach ($company_flows as $key=>$flow): ?>
+				<tr>
+					<?php if($company_flows[$key+1]['flowname'] == $company_flows[$key]['flowname']): ?>
+						<td rowspan="2"><?php echo $flow['flowname']; ?></td>
+					<?php elseif($company_flows[$key-1]['flowname'] == $company_flows[$key]['flowname']): ?>
+
+					<?php else: ?>
+						<td><?php echo $flow['flowname']; ?></td>
+					<?php endif ?>
 					<td><?php echo $flow['flowtype']; ?></td>
 					<td><?php echo $flow['flowfamily']; ?></td>
 					<td><?php echo $flow['qntty'].' '.$flow['qntty_unit_name']; ?></td>
@@ -256,8 +265,14 @@
 						<a href="<?php echo base_url('edit_flow/'.$companyID.'/'.$flow['flow_id'].'/'.$flow['flow_type_id']);?>" class="label label-warning"><span class="fa fa-edit"></span> Edit</button>
 						<a href="<?php echo base_url('delete_flow/'.$companyID.'/'.$flow['id']);?>" class="label label-danger" onclick="return confirm('Are you sure you want to delete this flow?');"><span class="fa fa-times"></span> Delete</button>
 					</td>
-			
+
 				</tr>
 			<?php endforeach ?>
 		</table>
 	</div>
+	<script type="text/javascript">
+		$( "#ac" ).click(function() {
+		  $( "#gizle" ).show( "slow" );
+		  $( "#ac" ).hide( "slow" );
+		});
+	</script>
