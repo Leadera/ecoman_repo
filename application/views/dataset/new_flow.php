@@ -208,7 +208,11 @@
 		</form>
 		<span class="label label-default"><span style="color:red;">*</span> labels are required.</span>
 		</div>
-	<div class="col-md-8">
+		<?php if(validation_errors() == NULL ): ?>
+			<div class="col-md-12" id="buyukbas">
+		<?php else: ?>
+			<div class="col-md-8" id="buyukbas">
+		<?php endif ?>
 		<p class="lead pull-left">Company flows</p>
 		<?php if(validation_errors() == NULL ): ?>
 		<button id="ac" class="btn btn-warning" style="margin-left: 20px;">Add New Flow</button>
@@ -272,6 +276,7 @@
 	</div>
 	<script type="text/javascript">
 		$( "#ac" ).click(function() {
+			$("#buyukbas").attr("class", "col-md-8");
 		  $( "#gizle" ).show( "slow" );
 		  $( "#ac" ).hide( "slow" );
 		});
