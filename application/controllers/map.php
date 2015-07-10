@@ -5,7 +5,8 @@ class Map extends CI_Controller {
 		parent::__construct();
 	}
 
-	public function index(){   
+	public function index(){  
+            //print_r($this->session->userdata['site_lang']);
             //print_r($this->session->userdata['user_in']);
             if(isset($this->session->userdata['user_in'])) {
                if(empty($this->session->userdata['user_in'])){
@@ -13,6 +14,17 @@ class Map extends CI_Controller {
 		} 
             } else {
                 redirect(base_url('login'),'refresh');
+            }
+            
+            if(isset($this->session->userdata['site_lang'])) {
+               if(empty($this->session->userdata['site_lang'])==null){
+			$data['site_lang'] = 'english';
+		} else {
+                    if($this->session->userdata['site_lang']=='english')  $data['site_lang'] = 'english';
+                    if($this->session->userdata['site_lang']=='turkish')  $data['site_lang'] = 'turkish';
+                } 
+            } else {
+                $data['site_lang'] = 'english';
             }
                 
             /*if(isset($this->session->userdata['project_id'])) {
@@ -33,7 +45,7 @@ class Map extends CI_Controller {
             }*/
 
             $this->load->view('template/header_map');
-            $this->load->view('map/index');
+            $this->load->view('map/index',$data);
             $this->load->view('template/footer_map');
 	}
         

@@ -15,8 +15,15 @@
 <!-- External lib: GeoExt 1.0 -->
 <script type="text/javascript" src="<?php echo asset_url('map/thirdPartyResources/geoext/1.1/script/GeoExt.js'); ?>"></script>
 
+<?php   if($site_lang==null || $site_lang=='') { ?>
+    <script type="text/javascript" src="<?php echo asset_url('map/lib/i18n/en_US.js'); ?>"></script>
+<?php  }else if($site_lang=='turkish'){ ?>
+    <script type="text/javascript" src="<?php echo asset_url('map/lib/i18n/tr_TR.js'); ?>"></script>
+<?php  }else { ?>
+    <script type="text/javascript" src="<?php echo asset_url('map/lib/i18n/en_US.js'); ?>"></script>
+<?php  } ?>
+    
 
-<script type="text/javascript" src="<?php echo asset_url('map/lib/i18n/tr_TR.js'); ?>"></script>
 <!-- External lib: geoext-viewer -->
 
 
