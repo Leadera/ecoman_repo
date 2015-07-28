@@ -30,3 +30,27 @@ $lang["gis"]                 = "GIS";
 $lang["costbenefitanalysis"] = "Cost - Benefit Analysis";
 $lang["ecotracking"]         = "Eco Tracking";
 $lang["closeproject"]        = "Close Project";
+
+$lang['slogan']              = "License-free web-based decision support software <br> for Cleaner Production and Industrial Symbiosis";
+$lang['username']            = "Username";
+$lang['password']            = "Password";
+$lang['forgotyourpassword']  = "Forgot your password?";
+$lang['userlogin']           = "User Login";
+
+$lang["userregister"]        = "User Register";
+$lang["selectimage"]         = "Select Image";
+$lang["change"]              = "Change";
+$lang["remove"]              = "Remove";
+$lang["email"]               = "E-mail";
+$lang["cellphone"]           = "Cell Phone";
+$lang["workphone"]           = "Work Phone";
+$lang["faxnumber"]           = "Fax Number";
+$lang["name"]                = "Name";
+$lang["surname"]             = "Surname";
+$lang["job"]                 = "Job";
+$lang["description"]         = "Description";
+
+$lang["consultantsdesc"]     = "You are seeing all the consultants of the system. You can access their profile and contact with them";
+$lang["mycompanydesc"] = "You are now seeing the companies created by you or the companies that you belong as a user.";
+$lang["editcompanydata"] = "Edit Company Data";
+$lang["editcompanyinfo"] = "Edit Company Info";

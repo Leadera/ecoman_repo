@@ -145,7 +145,7 @@ class Company extends CI_Controller{
 		}
 
 		if($cluster_id == null || $cluster_id == 0){
-			$data['cluster_name']['name'] = 'All Companies';
+			$data['cluster_name']['name'] = lang("allcompanies");
 			$data['companies'] = $this->company_model->get_companies();
 		}
 		else{

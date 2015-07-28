@@ -2,7 +2,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8">
-				<div class="swissheader">All Consultants</div>
+				<div class="swissheader"><?php echo lang("consultants"); ?></div>
 				<table class="table-hover" style="clear:both; width: 100%;">
 				<?php foreach ($users as $com): ?>
 					<tr>
@@ -19,7 +19,7 @@
 		</div>
 		<div class="col-md-4">
 			<div class="well">
-				You are seeing all the consultants of the system. You can access their profile and contact with them.
+				<?php echo lang("consultantsdesc"); ?>
 			</div>
 		</div>
 	</div>

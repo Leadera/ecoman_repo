@@ -50,8 +50,8 @@
 							</div>
 							<div class="col-md-3">
 								<?php if($com['have_permission']==1): ?>
-										<a class="btn btn-tuna" href="<?php echo base_url("new_flow/".$com['id']); ?>"><i class="fa fa-database"></i> Edit Company Data</a>
-										<a class="btn btn-tuna" href="<?php echo base_url("update_company/".$com['id']); ?>"><i class="fa fa-pencil-square-o"></i> Edit Company Info</a>
+										<a class="btn btn-tuna" href="<?php echo base_url("new_flow/".$com['id']); ?>"><i class="fa fa-database"></i> <?php echo lang("editcompanydata"); ?></a>
+										<a class="btn btn-tuna" href="<?php echo base_url("update_company/".$com['id']); ?>"><i class="fa fa-pencil-square-o"></i> <?php echo lang("editcompanyinfo"); ?></a>
 								<?php endif ?>
 							</div>
 						</div>

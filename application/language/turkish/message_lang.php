@@ -10,7 +10,7 @@ $lang["functionalities"]     = "Sistem Özellikleri";
 $lang["consultants"]         = "Danışmanlar";
 
 $lang["login"]               = "Giriş";
-$lang["register"]            = "Üyelik";
+$lang["register"]            = "Üye Ol";
 $lang["updateprofile"]       = "Profili Güncelle";
 $lang["logout"]              = "Çıkış";
 
@@ -30,3 +30,27 @@ $lang["gis"]                 = "CBS";
 $lang["costbenefitanalysis"] = "Fayda - Maliyet Analizi";
 $lang["ecotracking"]         = "Firma Takibi";
 $lang["closeproject"]        = "Projeyi Kapat";
+
+$lang['slogan']              = "Temiz üretim ve Endüstriyel Simbiyoz için ücretsiz web-tabanlı karar destek yazılımı";
+$lang['username']            = "Kullanıcı Adı";
+$lang['password']            = "Şifre";
+$lang['forgotyourpassword']  = "Şifrenizi mi unuttunuz?";
+$lang['userlogin']           = "Kullanıcı Girişi";
+
+$lang["userregister"]        = "Kullanıcı Kayıtı";
+$lang["selectimage"]         = "Resim Seç";
+$lang["change"]              = "Değiştir";
+$lang["remove"]              = "Sil";
+$lang["email"]               = "E-posta";
+$lang["cellphone"]           = "Tel No";
+$lang["workphone"]           = "İş No";
+$lang["faxnumber"]           = "Fax No";
+$lang["name"]                = "İsim";
+$lang["surname"]             = "Soyisim";
+$lang["job"]                 = "Görev";
+$lang["description"]         = "Açıklama";
+
+$lang["consultantsdesc"]     = "Sistemdeki tüm danışmaları görmektesiniz. Profillerine tıklayarak iletişim kurabilirsiniz";
+$lang["mycompanydesc"] = "Bu sayfada sizin tarafınızdan oluşturulmuş ya da kullanıcısı olduğunuz firmalar listelenir";
+$lang["editcompanydata"] = "Firma Verisini Düzenle";
+$lang["editcompanyinfo"] = "Firma Bilgisini Düzenle";
