@@ -379,8 +379,9 @@ function beginISPotentialByAllFlows() {
         }
         
         function getFlowCompanies(index,flowName, companyID) {
+            alert('test');
             $('#tt_grid_dynamic3').datagrid({  
-                      loadMsg :'Please wait while loading...',
+                      loadMsg :'There is no IS potential for the selected flow category. Please select another flow category',
                       rownumbers: "true",
                       pagination: "true",
                       idField:'id',
@@ -395,6 +396,12 @@ function beginISPotentialByAllFlows() {
                       }
                    });
                    $('#tt_grid_dynamic3').datagrid('getPanel').panel("setTitle",flowName);
+                   if($('#tt_grid_dynamic3').datagrid('getData')== null) {
+                   //if(true) {
+                       //alert('test2');
+                       
+                        $('#tt_grid_dynamic3').datagrid('loading');
+                   }
         }
         
         function getCompanyFlows(index,companyName) {
