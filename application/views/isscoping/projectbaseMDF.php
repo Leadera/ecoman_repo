@@ -84,7 +84,7 @@
             
             <div id="p" class="easyui-panel" title="Manual IS Potential Detection Settings" style="margin: auto 0;"
                  data-options="iconCls:'icon-save',collapsible:true,closable:true,fit:true">
-                     <table id="tt_grid2" data-options="fit:true" class="easyui-datagrid" title="Step 1: Company flow sets" 
+                     <table id="tt_grid2" data-options="fit:true" class="easyui-datagrid" title="Select a company and calculate IS potentials" 
                             style="height:440px" 
                            accesskey=""></table>
                 
