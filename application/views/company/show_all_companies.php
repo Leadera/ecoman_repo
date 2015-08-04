@@ -63,21 +63,21 @@
 		</div>
 		<div class="col-md-4">
 
-			<div class="well">You are seeing all companies in the system. You can access management pages if you have permission for the company.</div>
+			<div class="well"><?php echo lang("allcompaniesdesc"); ?></div>
 
 			<?php echo form_open_multipart('companies'); ?>
 			<div class="well" style="margin-top: 20px;">
-				<label for="cluster">Select Cluster</label>
+				<label for="cluster"><?php echo lang("selectcluster"); ?></label>
 				<select title="Choose at least one" class="select-block" id="cluster" name="cluster">
-					<option value="0">All of the Companies</option>
+					<option value="0"><?php echo lang("allcompanies"); ?></option>
 					<?php foreach ($clusters as $cluster): ?>
 						<option value="<?php echo $cluster['id']; ?>"><?php echo $cluster['name']; ?></option>
 					<?php endforeach ?>
 				</select>
-				<button type="submit" class="btn btn-primary btn-sm">Filter</button>
+				<button type="submit" class="btn btn-primary btn-sm"><?php echo lang("filter"); ?></button>
 			</div>
 			</form>
-			<a class="btn btn-default btn-sm" href="<?php echo base_url('cluster'); ?>">Add company to a cluster</a>
+			<a class="btn btn-default btn-sm" href="<?php echo base_url('cluster'); ?>"><?php echo lang("addtocluster"); ?></a>
 
 		</div>
 	</div>

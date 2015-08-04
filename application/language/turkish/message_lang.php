@@ -51,6 +51,27 @@ $lang["job"]                 = "Görev";
 $lang["description"]         = "Açıklama";
 
 $lang["consultantsdesc"]     = "Sistemdeki tüm danışmaları görmektesiniz. Profillerine tıklayarak iletişim kurabilirsiniz";
-$lang["mycompanydesc"] = "Bu sayfada sizin tarafınızdan oluşturulmuş ya da kullanıcısı olduğunuz firmalar listelenir";
-$lang["editcompanydata"] = "Firma Verisini Düzenle";
-$lang["editcompanyinfo"] = "Firma Bilgisini Düzenle";
+$lang["mycompanydesc"]       = "Bu sayfada sizin tarafınızdan oluşturulmuş ya da kullanıcısı olduğunuz firmalar listelenir";
+$lang["allcompaniesdesc"]    = "Sisteme kayıtlı tüm firmaları görüyorsunuz. Firma yönetim sayfalarına izniniz dahilinde giriş yapabilirsiniz.";
+$lang["editcompanydata"]     = "Firma Verisini Düzenle";
+$lang["editcompanyinfo"]     = "Firma Bilgisini Düzenle";
+
+$lang["selectcluster"] = "Küme Seç";
+$lang["filter"] = "Filtrele";
+$lang["addtocluster"] = "Bir kümeye firma ekle";
+
+$lang["openproject"]     = "Projeyi Aç";
+$lang["editprojectinfo"]     = "Projeyi Düzenle";
+$lang["myprojectsinfo"] = "Bu sayfada danışmanı ya da ilgili kişisi olduğunuz tüm projeleri görmektesiniz.";
+$lang["allprojectsinfo"] ="Sistemdeki tüm projeleri görmektesiniz. İzninizin bulunduğu projeleri düzenleyebilir ve açabilirsiniz.";
+
+$lang["companyname"] = "Firma İsmi";
+$lang["nacecode"] = "Nace Kodu";
+$lang["coordinates"] = "Kordinatlar";
+$lang["address"] = "Adres";
+$lang["companydescription"] = "Firma Hakkında Açıklama";
+$lang["selectonmap"] = "Harite Üzerinde Seç";
+$lang["createcompanyinfo"] = "Yazmaya başlarayak kod arayabilirsiniz.";
+$lang["createcompanyinfo2"] = "Logo hariç tüm bölümler zorunludur.";
+$lang["lat"] = "Enlem";
+$lang["long"] = "Boylam";

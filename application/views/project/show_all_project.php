@@ -4,7 +4,7 @@
 	<?php endif ?>
 	<div class="row">
 		<div class="col-md-8">
-				<div class="swissheader">All Projects</div>
+				<div class="swissheader"><?php echo lang("allprojects"); ?></div>
 						<!-- harita -->
 				<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 				<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
@@ -93,10 +93,10 @@
                 <?php else: ?>
                   <?php echo form_open('openproject'); ?>
                     <input type="hidden" name="projectid" value="<?php echo $pro['id']; ?>">
-                    <button type="submit" class="btn btn-tuna"><i class="fa fa-plus-square-o"></i> Open This Project</button>
+                    <button type="submit" class="btn btn-tuna"><i class="fa fa-plus-square-o"></i> <?php echo lang("openproject"); ?></button>
                   </form>
                 <?php endif ?>
-              <a class="btn btn-tuna" href="<?php echo base_url("update_project/".$pro['id']); ?>"><i class="fa fa-pencil-square-o"></i> Edit Project Info</a>
+              <a class="btn btn-tuna" href="<?php echo base_url("update_project/".$pro['id']); ?>"><i class="fa fa-pencil-square-o"></i> <?php echo lang("editprojectinfo"); ?></a>
             <?php endif ?>
             </div>
           </div>
@@ -108,7 +108,7 @@
 		</div>
 		<div class="col-md-4">
 			<div class="well">
-				You are now seeing all the projects at the system. You can only access and open the projects that you are involved.
+        <?php echo lang("allprojectsinfo"); ?>
 			</div>
 		</div>
 	</div>
