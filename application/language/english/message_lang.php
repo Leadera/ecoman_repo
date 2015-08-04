@@ -51,6 +51,28 @@ $lang["job"]                 = "Job";
 $lang["description"]         = "Description";
 
 $lang["consultantsdesc"]     = "You are seeing all the consultants of the system. You can access their profile and contact with them";
-$lang["mycompanydesc"] = "You are now seeing the companies created by you or the companies that you belong as a user.";
-$lang["editcompanydata"] = "Edit Company Data";
-$lang["editcompanyinfo"] = "Edit Company Info";
+$lang["mycompanydesc"]       = "You are now seeing the companies created by you or the companies that you belong as a user.";
+$lang["allcompaniesdesc"]    = "You are seeing all companies in the system. You can access management pages if you have permission for the company.";
+$lang["editcompanydata"]     = "Edit Company Data";
+$lang["editcompanyinfo"]     = "Edit Company Info";
+
+$lang["selectcluster"] = "Select Cluster";
+$lang["filter"] = "Filter";
+$lang["addtocluster"] = "Add company to a cluster";
+
+$lang["openproject"]     = "Open Project";
+$lang["editprojectinfo"]     = "Edit Project Info";
+$lang["myprojectsinfo"] = "You are seeing all the project that you work as a consultant or contact person.";
+$lang["allprojectsinfo"] ="You are now seeing all the projects at the system. You can only access and open the projects that you are involved.";
+
+$lang["companyname"] = "Company Name";
+$lang["nacecode"] = "Nace Code";
+$lang["coordinates"] = "Coordinates";
+$lang["address"] = "Address";
+$lang["companydescription"] = "Company Description";
+$lang["selectonmap"] = "Select on Map";
+$lang["createcompanyinfo"] = "You can search nace codes by typing it";
+$lang["createcompanyinfo2"] = "All fields are required expect logo";
+$lang["lat"] = "Lat";
+$lang["long"] = "Long";
+
