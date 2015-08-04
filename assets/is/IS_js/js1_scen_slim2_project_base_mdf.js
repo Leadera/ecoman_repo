@@ -313,7 +313,7 @@ function showMapPanelExpand() {
         }
         
         function getCompaniesISPotentials() {
-            
+            $('#tt_grid_dynamic').datagrid('loaded');
             checkedArray = $("#tt_tree").tree("getChecked");
             gridCheckedArray = $("#tt_grid").datagrid("getSelections");
             console.warn(checkedArray.length);
@@ -388,6 +388,11 @@ function showMapPanelExpand() {
                             console.warn('data notfound-->'+textStatus);
                             //$.messager.alert('Pick sub flow and company','Please select  a sub flow from flow tree!','warning');
                             $.messager.alert('Pick other options','There is no IS potentials for the selected company with this flow category. Please select another company and/or flow category','warning');
+                            /*$('#tt_grid_dynamic').datagrid({
+                                loadMsg:'No symbiosis detected'
+                            });*/
+                            $('#tt_grid_dynamic').datagrid('loading');
+                            
                         }
                     },
                     error: function(jqXHR , textStatus, errorThrown) {
@@ -531,6 +536,7 @@ function showMapPanelExpand() {
       $('#tt_grid_dynamic').datagrid({
                 singleSelect:true,
                 url:'../../../Proxy/SlimProxy.php',
+                loadMsg:'No symbiosis detected',
                 queryParams : { url:'ISPotentialsNew_json_test_by_project_prj'},
                 collapsible:true,
                 method:'get',
