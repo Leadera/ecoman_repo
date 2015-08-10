@@ -75,3 +75,23 @@ $lang["createcompanyinfo"] = "Yazmaya başlarayak kod arayabilirsiniz.";
 $lang["createcompanyinfo2"] = "Logo hariç tüm bölümler zorunludur.";
 $lang["lat"] = "Enlem";
 $lang["long"] = "Boylam";
+
+$lang["update"] = "Güncelle";
+$lang["cancel"] = "İptal";
+$lang["changepassword"] = "Şifre Değiştir";
+$lang["thisisconsultant"] = "Bu kullanıcı danışmandır";
+$lang["becomeconsultant"] = "Danışman ol";
+$lang["projectsasconsultant"] = "Danışman olduğu projeler";
+$lang["projectsasuser"] = "Kullanıcısı olduğu projeler";
+
+$lang["status"]               = "Durum";
+$lang["startdate"]            = "Başlangıç Tarihi";
+$lang["projectonmap"]         = "Harita üzerinde proje";
+$lang["projectcompanies"]     = "Projedeki firmalar";
+$lang["projectusers"]         = "Projedeki kullanıcılar";
+$lang["projectconsultants"]   = "Projedeki danışmanlar";
+$lang["alreadyopenproject"]   = "Hazırda bu proje üzerinde çalışmaktasınız";
+
+$lang["assigncompany"]   = "Firma ata";
+$lang["assignconsultant"]   = "Danışman ata";
+$lang["assigncontact"]   = "İrtibat kişisi ata";

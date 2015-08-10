@@ -1,8 +1,6 @@
-
 <?php echo $map['js']; ?>
-
 <div class="container">
-	<p class="lead">Update Company</p>
+	<p class="lead"><?php echo lang("editcompanyinfo"); ?></p>
 
 	<?php if(validation_errors() != NULL ): ?>
     <div class="alert">
@@ -24,22 +22,22 @@
 	    				<div class="fileinput-preview fileinput-exists thumbnail" ></div>
 	    				<div>
 	      					<span class="btn btn-primary btn-file btn-block">
-						        <span class="fileinput-new"><span class="fui-image"></span>  Select image</span>
-						        <span class="fileinput-exists"><span class="fui-gear"></span>  Change</span>
+						        <span class="fileinput-new"><span class="fui-image"></span> <?php echo lang("selectimage"); ?></span>
+						        <span class="fileinput-exists"><span class="fui-gear"></span> <?php echo lang("change"); ?></span>
 						        <input type="file" name="userfile">
 	      					</span>
-	      					<a href="#" class="btn btn-primary fileinput-exists" data-dismiss="fileinput"><span class="fui-trash"></span>  Remove</a>
+	      					<a href="#" class="btn btn-primary fileinput-exists" data-dismiss="fileinput"><span class="fui-trash"></span> <?php echo lang("remove"); ?></a>
 	    				</div>
 	  				</div>
 				</div>
       </div>
       <div class="col-md-8">
 				<div class="form-group">
-	    			<label for="companyName">Company Name</label>
-	    			<input type="text" class="form-control" id="companyName" placeholder="Enter Company Name" value="<?php echo set_value('companyName',$companies['name']); ?>" name="companyName">
+	    			<label for="companyName"><?php echo lang("companyname"); ?></label>
+	    			<input type="text" class="form-control" id="companyName" placeholder="<?php echo lang("companyname"); ?>" value="<?php echo set_value('companyName',$companies['name']); ?>" name="companyName">
 	 			</div>
 	 			<div class="form-group">
-					<label for="naceCode">Nace Code</label>
+					<label for="naceCode"><?php echo lang("nacecode"); ?></label>
 					<select id="selectize" name="naceCode">
 						<?php foreach ($all_nace_codes as $anc): ?>
 							<?php if($nace_code['code']==$anc['code']) {$d=TRUE;} else {$d=FALSE;} ?>
@@ -48,43 +46,43 @@
 					</select>
 	 			</div>
 				<div class="form-group">
-	    			<label for="email">E-mail</label>
-	    			<input type="text" class="form-control" id="email" placeholder="E-mail" value="<?php echo set_value('email',$companies['email']); ?>"  name="email">
+	    			<label for="email"><?php echo lang("email"); ?></label>
+	    			<input type="text" class="form-control" id="email" placeholder="<?php echo lang("email"); ?>" value="<?php echo set_value('email',$companies['email']); ?>"  name="email">
 	 			</div>
 <!-- 	 			<div class="form-group">
 	    			<label for="cellPhone">Cell Phone</label>
 	    			<input type="text" class="form-control" id="cellPhone" placeholder="Cell Phone" value="<?php echo set_value('cellPhone',$companies['phone_num_1']); ?>" name="cellPhone">
 	 			</div> -->
 	 			<div class="form-group">
-	    			<label for="workPhone">Work Phone</label>
-	    			<input type="text" class="form-control" id="workPhone" placeholder="Work Phone" value="<?php echo set_value('workPhone',$companies['phone_num_2']); ?>" name="workPhone">
+	    			<label for="workPhone"><?php echo lang("workphone"); ?></label>
+	    			<input type="text" class="form-control" id="workPhone" placeholder="<?php echo lang("workphone"); ?>" value="<?php echo set_value('workPhone',$companies['phone_num_2']); ?>" name="workPhone">
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="fax">Fax Phone</label>
-	    			<input type="text" class="form-control" id="fax" placeholder="Fax Number" value="<?php echo set_value('fax',$companies['fax_num']); ?>" name="fax">
+	    			<label for="fax"><?php echo lang("faxnumber"); ?></label>
+	    			<input type="text" class="form-control" id="fax" placeholder="<?php echo lang("faxnumber"); ?>" value="<?php echo set_value('fax',$companies['fax_num']); ?>" name="fax">
 	 			</div>
 				<div class="form-group">
-	    			<label for="coordinates">Coordinates</label><br>
-	    			<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-block" id="coordinates" >Select coordinates on Map</button>
+	    			<label for="coordinates"><?php echo lang("coordinates"); ?></label><br>
+	    			<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-block" id="coordinates" ><?php echo lang("selectonmap"); ?></button>
 	    			<div class="row" style="margin-top: 10px;">
 		    			<div class="col-md-6">
-		    				<input type="text" class="form-control" id="lat" placeholder="Lat" name="lat" style="color:#333333;" value="<?php echo set_value('lat',$companies['latitude']); ?>" readonly/>
+		    				<input type="text" class="form-control" id="lat" placeholder="<?php echo lang("lat"); ?>" name="lat" style="color:#333333;" value="<?php echo set_value('lat',$companies['latitude']); ?>" readonly/>
 		    			</div>
 		    			<div class="col-md-6">
-		    				<input type="text" class="form-control" id="long" placeholder="Long" name="long" style="color:#333333;" value="<?php echo set_value('long',$companies['longitude']); ?>" readonly/>
+		    				<input type="text" class="form-control" id="long" placeholder="<?php echo lang("long"); ?>" name="long" style="color:#333333;" value="<?php echo set_value('long',$companies['longitude']); ?>" readonly/>
 		    			</div>
 	    			</div>
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="address">Address</label>
-	    			<textarea class="form-control" rows="3" name="address" id="address" placeholder="Address"><?php echo set_value('address',$companies['address']); ?></textarea>
+	    			<label for="address"><?php echo lang("address"); ?></label>
+	    			<textarea class="form-control" rows="3" name="address" id="address" placeholder="<?php echo lang("address"); ?>"><?php echo set_value('address',$companies['address']); ?></textarea>
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="companyDescription">Company Info</label>
-	    			<textarea class="form-control" rows="3" name="companyDescription" id="companyDescription" placeholder="Company Description"><?php echo set_value('companyDescription',$companies['description']); ?></textarea>
+	    			<label for="companyDescription"><?php echo lang("description"); ?></label>
+	    			<textarea class="form-control" rows="3" name="companyDescription" id="companyDescription" placeholder="<?php echo lang("description"); ?>"><?php echo set_value('companyDescription',$companies['description']); ?></textarea>
 	 			</div>
-        <button type="submit" class="btn btn-inverse col-md-9">Update Company Info</button>
-        <a href="<?php echo base_url('company/'.$companies['id']); ?>" class="btn btn-warning col-md-2 col-md-offset-1">Cancel</a>
+        <button type="submit" class="btn btn-inverse col-md-9"><?php echo lang("update"); ?></button>
+        <a href="<?php echo base_url('company/'.$companies['id']); ?>" class="btn btn-warning col-md-2 col-md-offset-1"><?php echo lang("cancel"); ?></a>
 			</div>
 		</div>
 	</form>
@@ -92,7 +90,7 @@
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <button type="button" class="close" onclick="getCountryIdName();alert('test');" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <button type="button" class="close" onclick="getCountryIdName();" data-dismiss="modal" aria-hidden="true">&times;</button>
 	        <h4 class="modal-title" id="myModalLabel">Click Map</h4>
 	        <hr>
 	        <div class="row">

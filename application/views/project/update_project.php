@@ -1,5 +1,5 @@
 <div class="container">
-	<p class="lead">Update Project</p>
+	<p class="lead"><?php echo lang("editprojectinfo"); ?></p>
 
 	<!-- for Datepicker -->
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -15,11 +15,11 @@
 		<div class="row">
 			<div class="col-md-8">
 				<div class="form-group">
-	    			<label for="projectName">Project Name</label>
-	    			<input type="text" class="form-control" id="projectName" placeholder="Enter Project Name" value="<?php echo set_value('projectName',$projects['name']); ?>" name="projectName">
+	    			<label for="projectName"><?php echo lang("name"); ?></label>
+	    			<input type="text" class="form-control" id="projectName" placeholder="<?php echo lang("name"); ?>" value="<?php echo set_value('projectName',$projects['name']); ?>" name="projectName">
 	 			</div>
 	 			<div class="form-group">
-	 				<label for="datePicker">Start Date</label>
+	 				<label for="datePicker"><?php echo lang("startdate"); ?></label>
 	    			<div class="input-group">
 				    	<span class="input-group-btn">
 				      		<button class="btn" type="button" style="height: 38px; border: 1px solid;"><span class="fui-calendar"></span></button>
@@ -28,7 +28,7 @@
 				  	</div>
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="status">Status</label>
+	    			<label for="status"><?php echo lang("status"); ?></label>
 	    			<div>
 		    			<select id="status" class="info select-block" name="status">
 		  					<?php foreach ($project_status as $status): ?>
@@ -38,11 +38,11 @@
 					</div>
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="description">Description</label>
+	    			<label for="description"><?php echo lang("description"); ?></label>
 	    			<textarea class="form-control" rows="3" name="description" id="description" placeholder="Description" value=""><?php echo set_value('description',$projects['description']); ?></textarea>
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="assignedCompanies">Assign Company</label>
+	    			<label for="assignedCompanies"><?php echo lang("assigncompany"); ?></label>
 	    			<!--  <input type="text" id="companySearch" />	-->
 
 	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignCompany" name="assignCompany[]">
@@ -53,7 +53,7 @@
 					</select>
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="assignedConsultant">Assign Consultant</label>
+	    			<label for="assignedConsultant"><?php echo lang("assignconsultant"); ?></label>
 	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignConsultant" name="assignConsultant[]">
 
 						<?php foreach ($consultants as $consultant): ?>
@@ -62,7 +62,7 @@
 					</select>
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="assignContactPerson">Assign Contact Person</label>
+	    			<label for="assignContactPerson"><?php echo lang("assigncontact"); ?></label>
 	    			<select  class="select-block" id="assignContactPerson" name="assignContactPerson">
 	    			<?php foreach ($contactusers as $contacts): ?>
 	    			<?php foreach ($contacts as $contactuser): ?>
@@ -72,8 +72,8 @@
 					</select>
 	 			</div>
 	 			<br>
-				<button type="submit" class="btn btn-success col-md-9">Update Project Info</button>
-    		<a href="<?php echo base_url('project/'.$projects['id']); ?>" class="btn btn-warning col-md-2 col-md-offset-1">Cancel</a>
+				<button type="submit" class="btn btn-success col-md-9"><?php echo lang("update"); ?></button>
+    		<a href="<?php echo base_url('project/'.$projects['id']); ?>" class="btn btn-warning col-md-2 col-md-offset-1"><?php echo lang("cancel"); ?></a>
 			</div>
 			<div class="col-md-4">
 
