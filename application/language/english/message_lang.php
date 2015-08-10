@@ -96,3 +96,18 @@ $lang["assigncompany"]   = "Assign Companies";
 $lang["assignconsultant"]   = "Assign Consultants";
 $lang["assigncontact"]   = "Assign Contact Person";
 
+$lang["cpheading"]   = "Cleaner Production Potentials Identification";
+$lang["cpheading2"]   = "View and Edit Allocated Cleaner Production Potentials Identifications";
+$lang["companiesunder"]   = "Companies under";
+$lang["createallocation"]   = "Create allocation";
+$lang["datasetmanagement"]   = "Dataset management";
+$lang["viewcp"]   = "View CP Potentials Identifications";
+$lang["viewkpi"]   = "View and Edit KPI Calculation";
+$lang["viewcba"]   = "View Cost-Benefit Analysis";
+$lang["processname"]   = "Process name";
+$lang["flowname"]   = "Flow name";
+$lang["flowtype"]   = "Flow type";
+$lang["manage"]   = "Manage";
+$lang["editallocation"]   = "Edit allocation";
+$lang["deleteallocation"]   = "Delete allocation";
+

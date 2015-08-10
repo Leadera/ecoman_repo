@@ -95,3 +95,20 @@ $lang["alreadyopenproject"]   = "Hazırda bu proje üzerinde çalışmaktasını
 $lang["assigncompany"]   = "Firma ata";
 $lang["assignconsultant"]   = "Danışman ata";
 $lang["assigncontact"]   = "İrtibat kişisi ata";
+
+$lang["cpheading"]   = "Temiz üretim potansiyel belirleme";
+$lang["cpheading2"]   = "Tanımlanmış potansiyelleri görüntüleme ve düzenleme";
+$lang["companiesunder"]   = "Bu proje içindeki firmalar:";
+$lang["createallocation"]   = "Paylaştırma tanımla";
+$lang["datasetmanagement"]   = "Veriyönetimi";
+$lang["viewcp"]   = "Temiz üretim potansiyellerini görüntüle";
+$lang["viewkpi"]   = "KPI verilerini görüntüle";
+$lang["viewcba"]   = "Fayda-Maliyet analizlerini görüntüle";
+$lang["processname"]   = "İşlem adı";
+$lang["flowname"]   = "Akış adı";
+$lang["flowtype"]   = "Akış tipi";
+$lang["manage"]   = "Yönet";
+$lang["editallocation"]   = "Paylaştırmayı düzenle";
+$lang["deleteallocation"]   = "Paylaştırmayı sil";
+
+
