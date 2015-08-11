@@ -19,18 +19,18 @@
 		<div class="col-md-4 borderli">
 		<?php echo form_open_multipart('new_process/'.$companyID); ?>
 
-			<p class="lead">Add process and assign flow to process</p>
+			<p class="lead"><?php echo lang("addprocess"); ?></p>
 			<div class="form-group">
-	    	<label for="status">Process Name <span style="color:red;">*</span></label>
+	    	<label for="status"><?php echo lang("processname"); ?> <span style="color:red;">*</span></label>
 				<select id="selectize" onchange="getProcessId()" name="process">
-					<option value="">Please select a process</option>
+					<option value=""><?php echo lang("pleaseselect"); ?></option>
 					<?php foreach ($process as $pro): ?>
 						<option value="<?php echo $pro['id']; ?>"><?php echo $pro['name']; ?></option>
 					<?php endforeach ?>
 				</select>
  			</div>
  			<div class="form-group" id="process-family" style="display:none;">
-				<label for="processfamily">Process Family <span style="color:red;">*</span></label>
+				<label for="processfamily"><?php echo lang("processfamily"); ?> <span style="color:red;">*</span></label>
 				<select id="processfamily" class="info select-block" name="processfamily">
 					<?php foreach ($processfamilys as $processfamily): ?>
 						<option value="<?php echo $processfamily['id']; ?>"><?php echo $processfamily['name']; ?></option>
@@ -38,7 +38,7 @@
 				</select>
 			</div>
  			<div class="form-group">
-		    	<label for="description">Used Flows <span style="color:red;">*</span></label>
+		    	<label for="description"><?php echo lang("usedflows"); ?> <span style="color:red;">*</span></label>
 		    	<select multiple="multiple" class="select-block" id="usedFlows" name="usedFlows[]">
 			    	<?php foreach ($company_flows as $flow): ?>
 						<option value="<?php echo $flow['cmpny_flow_id']; ?>"><?php echo $flow['flowname'].'('.$flow['flowtype'].')'; ?></option>
@@ -94,25 +94,25 @@
 				</div>
 			</div> -->
 			<div class="form-group">
-				<label for="comment">Comment</label>
-				<input class="form-control" id="comment" name="comment" placeholder="Comment">
+				<label for="comment"><?php echo lang("comments"); ?></label>
+				<input class="form-control" id="comment" name="comment" placeholder="<?php echo lang("comments"); ?>">
 			</div>
-	    <button type="submit" class="btn btn-info">Add Process</button>
+	    <button type="submit" class="btn btn-info"><?php echo lang("addprocess"); ?></button>
 	    </form>
-	    			<span class="label label-default"><span style="color:red;">*</span> labels are required.</span>
+	    			<span class="label label-default"><span style="color:red;">*</span> <?php echo lang("labelarereq"); ?>.</span>
 
 	    </div>
 		<div class="col-md-8">
-			<p class="lead">Company processes</p>
+			<p class="lead"><?php echo lang("companyprocess"); ?></p>
 			<table class="table table-bordered">
 			<tr>
-				<th>Process Name</th>
-				<th>Used Flows</th>
+				<th><?php echo lang("processname"); ?></th>
+				<th><?php echo lang("usedflows"); ?></th>
 <!-- 				<th>Minimum rate of utilization</th>
 				<th>Typical rate of utilization</th>
 				<th>Maximum rate of utilization</th> -->
-				<th>Comment</th>
-				<th>Delete</th>
+				<th><?php echo lang("comments"); ?></th>
+				<th><?php echo lang("manage"); ?></th>
 			</tr>
 			<?php foreach ($cmpny_flow_prcss as $key=>$attribute): ?>
 				<tr>
@@ -126,8 +126,8 @@
 					<td><?php echo $attribute['max_rate_util']; ?> <?php echo $attribute['maxrateu']; ?></td> -->
 					<td><?php echo $attribute['comment']; ?></td>
 					<td>
-						<a href="<?php echo base_url('edit_process/'.$companyID.'/'.$attribute['company_process_id']);?>" class="label label-warning" value="<?php echo $attribute['prcessid']; ?>"><span class="fa fa-edit"></span> Edit</button>
-						<a href="<?php echo base_url('delete_process/'.$companyID.'/'.$attribute['company_process_id'].'/'.$attribute['company_flow_id']);?>" class="label label-danger" value="<?php echo $attribute['prcessid']; ?>"><span class="fa fa-times"></span> Delete</button>
+						<a href="<?php echo base_url('edit_process/'.$companyID.'/'.$attribute['company_process_id']);?>" class="label label-warning" value="<?php echo $attribute['prcessid']; ?>"><span class="fa fa-edit"></span> <?php echo lang("edit"); ?></button>
+						<a href="<?php echo base_url('delete_process/'.$companyID.'/'.$attribute['company_process_id'].'/'.$attribute['company_flow_id']);?>" class="label label-danger" value="<?php echo $attribute['prcessid']; ?>"><span class="fa fa-times"></span> <?php echo lang("delete"); ?></button>
 					</td>
 				</tr>
 				<?php $son= $attribute['prcessname']; ?>

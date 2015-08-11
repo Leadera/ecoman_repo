@@ -1,11 +1,11 @@
 	<div class="col-md-4 borderli">
-		<div class="lead">Add new Equipment and asign it to process</div>
+		<div class="lead"><?php echo lang("addequipment"); ?></div>
 			<?php echo form_open_multipart('new_equipment/'.$companyID); ?>
 			<div class="form-group">
-					<label for="status">Equipment Name <span style="color:red;">*</span></label>
+					<label for="status"><?php echo lang("equipmentname"); ?> <span style="color:red;">*</span></label>
 					<div>	    			
 				  	<select class="info select-block" name="equipment" id="equipment">
-			  			<option value="">Nothing Selected</option>
+			  			<option value=""><?php echo lang("pleaseselect"); ?></option>
 						<?php foreach ($equipmentName as $eqpmntName): ?>
 						<option value="<?php echo $eqpmntName['id']; ?>"><?php echo $eqpmntName['name']; ?></option>
 					<?php endforeach ?>
@@ -13,30 +13,31 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="status">Equipment Type Name <span style="color:red;">*</span></label>
+					<label for="status"><?php echo lang("equipmenttype"); ?> <span style="color:red;">*</span></label>
 					<div>	    			
 			  		<select  class="select-block" id="equipmentTypeName" name="equipmentTypeName">
-							<option value="">Nothing Selected</option>
+							<option value=""><?php echo lang("pleaseselect"); ?></option>
 						</select>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="status">Equipment Attribute Name <span style="color:red;">*</span></label>
+					<label for="status"><?php echo lang("equipmentattname"); ?> <span style="color:red;">*</span></label>
 					<div>	    			
 			  		<select  class="select-block" id="equipmentAttributeName" name="equipmentAttributeName">
-							<option value="">Nothing Selected</option>
+							<option value=""><?php echo lang("pleaseselect"); ?></option>
 						</select>
 					</div>
 				</div>
 				<div class="form-group">
 				<div class="row">
 					<div class="col-md-8">
-						<label for="eqpmnt_attrbt_val">Equipment Attribute Value <span style="color:red;">*</span></label>
-						<input class="form-control" id="eqpmnt_attrbt_val" name="eqpmnt_attrbt_val" placeholder="Equipment Attribute Value">
+						<label for="eqpmnt_attrbt_val"><?php echo lang("equipmentattvalue"); ?> <span style="color:red;">*</span></label>
+						<input class="form-control" id="eqpmnt_attrbt_val" name="eqpmnt_attrbt_val" placeholder="<?php echo lang("equipmentattvalue"); ?>">
 					</div>
 					<div class="col-md-4">
-						<label for="eqpmnt_attrbt_unit">Equipment Attribute Unit <span style="color:red;">*</span></label>
+						<label for="eqpmnt_attrbt_unit"><?php echo lang("equipmentattunit"); ?> <span style="color:red;">*</span></label>
 						<select id="eqpmnt_attrbt_unit" class="info select-block" name="eqpmnt_attrbt_unit">
+							<option value=""><?php echo lang("pleaseselect"); ?></option>
 							<?php foreach ($units as $unit): ?>
 								<option value="<?php echo $unit['id']; ?>"><?php echo $unit['name']; ?></option>
 							<?php endforeach ?>
@@ -45,28 +46,28 @@
 				</div>
 			</div>
 				<div class="form-group">
-			  	<label for="description">Used Processes <span style="color:red;">*</span></label>
+			  	<label for="description"><?php echo lang("usedprocess"); ?> <span style="color:red;">*</span></label>
 			  	<select class="select-block" id="usedprocess" name="usedprocess">
 			    	<?php foreach ($process as $prcss): ?>
 						<option value="<?php echo $prcss['processid']; ?>"><?php echo $prcss['prcessname']; ?></option>
 					<?php endforeach ?>
 				</select>
 				</div>
-			  <button type="submit" class="btn btn-info">Add Equipment</button>
+			  <button type="submit" class="btn btn-info"><?php echo lang("addequipment"); ?></button>
 			</form>
-			<span class="label label-default"><span style="color:red;">*</span> labels are required.</span>
+			<span class="label label-default"><span style="color:red;">*</span> <?php echo lang("labelarereq"); ?>.</span>
 
 		</div>
 		<div class="col-md-8">
-			<div class="lead">Company equipments</div>
+			<div class="lead"><?php echo lang("companyequipment"); ?></div>
 			<table class="table table-striped table-bordered">
 				<tr>
-					<th>Equipment Name</th>
-					<th>Equipment Type Name</th>
-					<th>Equipment Attribute Name</th>
-					<th>Equipment Attribute Value</th>
-					<th>Used Process</th>
-					<th>Delete</th>
+					<th><?php echo lang("equipmentname"); ?></th>
+					<th><?php echo lang("equipmenttype"); ?></th>
+					<th><?php echo lang("equipmentattname"); ?></th>
+					<th><?php echo lang("equipmentattvalue"); ?></th>
+					<th><?php echo lang("usedprocess"); ?></th>
+					<th><?php echo lang("manage"); ?></th>
 				</tr>
 				<?php foreach ($informations as $info): ?>
 				<tr>	
@@ -75,7 +76,7 @@
 						<td><?php echo $info['eqpmnt_type_attrbt_name']; ?></td>
 						<td><?php echo $info['eqpmnt_attrbt_val']; ?> <?php echo $info['unit']; ?></td>
 						<td><?php echo $info['prcss_name']; ?></td>
-						<td><a href="<?php echo base_url('delete_equipment/'.$companyID.'/'.$info['cmpny_eqpmnt_id']);?>" class="label label-danger" value="<?php echo $info['cmpny_eqpmnt_id']; ?>"><span class="fa fa-times"></span> Delete</button></td>
+						<td><a href="<?php echo base_url('delete_equipment/'.$companyID.'/'.$info['cmpny_eqpmnt_id']);?>" class="label label-danger" value="<?php echo $info['cmpny_eqpmnt_id']; ?>"><span class="fa fa-times"></span> <?php echo lang("delete"); ?></button></td>
 				</tr>
 				<?php endforeach ?>
 			</table>

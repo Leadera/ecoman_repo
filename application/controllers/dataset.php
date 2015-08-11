@@ -312,7 +312,7 @@ class Dataset extends CI_Controller {
 	public function new_component($companyID){
 
 		$this->form_validation->set_rules('component_name', 'Component Name', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|xss_clean');
 
 		if($this->form_validation->run() !== FALSE) {
 			$component_array = array(

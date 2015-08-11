@@ -3,18 +3,17 @@
 	<?php if(validation_errors() != NULL ): ?>
 	    <div class="alert alert-danger">
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
-				<div>Form couldn't be saved. Please fix the errors.</div>
 	      	<div class="popover-content">
 	      		<?php echo validation_errors(); ?>
 	      	</div>
 	    </div>
 	<?php endif ?>
 		<?php echo form_open_multipart('edit_flow/'.$companyID.'/'.$flow['flow_id'].'/'.$flow['flow_type_id']); ?>
-			<p class="lead">Edit Company Flow</p>
+			<p class="lead"><?php echo lang("editcompanyflow"); ?></p>
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-8">
-						<label for="quantity">Quantity (Annual) <span style="color:red;">*</span></label>
+						<label for="quantity"><?php echo lang("quantity"); ?> (<?php echo lang("annual"); ?>) <span style="color:red;">*</span></label>
 						<input class="form-control" id="quantity" name="quantity" placeholder="Enter Quantity of Flow" value="<?php echo set_value('quantity',$flow['qntty']); ?>">
 					</div>
 					<div class="col-md-4">

@@ -19,18 +19,18 @@
 
 	<div class="col-md-4 borderli" <?php if(validation_errors() == NULL ){echo "id='gizle'";} ?>>
 		<?php echo form_open_multipart('new_flow/'.$companyID); ?>
-			<p class="lead">Add flow</p>
+			<p class="lead"><?php echo lang("addflow"); ?></p>
 			<div class="form-group">
-				<label for="selectize">Flow Name <span style="color:red;">*</span></label>
+				<label for="selectize"><?php echo lang("flowname"); ?> <span style="color:red;">*</span></label>
 				<select id="selectize" onchange="getFlowId()" class="info select-block" name="flowname">
-					<option value="">Please select a flow</option>
+					<option value=""><?php echo lang("pleaseselect"); ?></option>
 					<?php foreach ($flownames as $flowname): ?>
 						<option value="<?php echo $flowname['id']; ?>"><?php echo $flowname['name']; ?></option>
 					<?php endforeach ?>
 				</select>
 		 	</div>
 			<div class="form-group">
-				<label for="flowtype">Flow Type <span style="color:red;">*</span></label>
+				<label for="flowtype"><?php echo lang("flowtype"); ?> <span style="color:red;">*</span></label>
 				<select id="flowtype" class="info select-block" name="flowtype">
 					<?php foreach ($flowtypes as $flowtype): ?>
 						<option value="<?php echo $flowtype['id']; ?>"><?php echo $flowtype['name']; ?></option>
@@ -38,7 +38,7 @@
 				</select>
 			</div>
 			<div class="form-group" id="flow-family" style="display:none;">
-				<label for="flowfamily">Flow Family <span style="color:red;">*</span></label>
+				<label for="flowfamily"><?php echo lang("flowfamily"); ?> <span style="color:red;">*</span></label>
 				<select id="flowfamily" class="info select-block" name="flowfamily">
 					<option value="">Nothing Selected</option>
 					<?php foreach ($flowfamilys as $flowfamily): ?>
@@ -49,13 +49,13 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-8">
-						<label for="quantity">Quantity (Annual) <span style="color:red;">*</span></label>
-						<input class="form-control" id="quantity" name="quantity" placeholder="Enter Quantity of Flow" value="<?php echo set_value('quantity'); ?>">
+						<label for="quantity"><?php echo lang("quantity"); ?> (<?php echo lang("annual"); ?>) <span style="color:red;">*</span></label>
+						<input class="form-control" id="quantity" name="quantity" placeholder="<?php echo lang("quantity"); ?>" value="<?php echo set_value('quantity'); ?>">
 					</div>
 					<div class="col-md-4">
-						<label for="quantity">Quantity Unit <span style="color:red;">*</span></label>
+						<label for="quantity"><?php echo lang("quantity"); ?> <?php echo lang("unit"); ?> <span style="color:red;">*</span></label>
 						<select id="quantityUnit" class="info select-block" name="quantityUnit">
-							<option value="">Please Select</option>
+							<option value=""><?php echo lang("pleaseselect"); ?></option>
 							<?php foreach ($units as $unit): ?>
 								<option value="<?php echo $unit['id']; ?>"><?php echo $unit['name']; ?></option>
 							<?php endforeach ?>
@@ -66,11 +66,11 @@
 		  	<div class="form-group">
 		    	<div class="row">
 						<div class="col-md-8">
-							<label for="cost">Cost (Annual) <span style="color:red;">*</span></label>
-		    			<input class="form-control" id="cost" name="cost" placeholder="Cost of flow (number)" value="<?php echo set_value('cost'); ?>">
+							<label for="cost"><?php echo lang("cost"); ?> (<?php echo lang("annual"); ?>) <span style="color:red;">*</span></label>
+		    			<input class="form-control" id="cost" name="cost" placeholder="<?php echo lang("cost"); ?>" value="<?php echo set_value('cost'); ?>">
 			    	</div>
 						<div class="col-md-4">
-							<label for="cost">Cost Unit <span style="color:red;">*</span></label>
+							<label for="cost"><?php echo lang("costunit"); ?> <span style="color:red;">*</span></label>
 							<select id="costUnit" class="info select-block" name="costUnit">
 								<option value="TL">TL</option>
 								<option value="Euro">Euro</option>
@@ -82,39 +82,39 @@
 		  	<div class="form-group">
 		  		<div class="row">
 						<div class="col-md-8">
-				  		<label for="ep">EP (Annual) <span style="color:red;">*</span></label>
+				  		<label for="ep">EP (<?php echo lang("annual"); ?>) <span style="color:red;">*</span></label>
 				    	<input class="form-control" id="ep" name="ep" placeholder="Enter EP" value="<?php echo set_value('ep'); ?>">
 				    </div>
 						<div class="col-md-4">
-							<label for="epUnit">EP Unit <span style="color:red;">*</span></label>
+							<label for="epUnit"><?php echo lang("epunit"); ?> <span style="color:red;">*</span></label>
 							<input type="text" class="form-control" id="epUnit" value="EP" name="epUnit" readonly>
 						</div>
 		  		</div>
 		  	</div>
 
 		  	<div class="form-group">
-				  <label for="cf">Chemical formula</label>
+				  <label for="cf"><?php echo lang("chemicalformula"); ?></label>
 				  <input class="form-control" id="cf" name="cf" placeholder="Chemical formula">
 		  	</div>
 
 				<div class="form-group">
-					<label for="availability">Availability</label>
+					<label for="availability"><?php echo lang("availability"); ?></label>
 					<select id="availability" class="info select-block" name="availability">
-						<option value="true">Available</option>
-						<option value="false">Not Available</option>
+						<option value="true"><?php echo lang("available"); ?></option>
+						<option value="false"><?php echo lang("notavailable"); ?></option>
 					</select>
 				</div>
 
 				<div class="form-group">
 					<div class="row">
 						<div class="col-md-8">
-							<label for="conc">Concentration</label>
-							<input class="form-control" id="conc" name="conc" placeholder="Concentration">
+							<label for="conc"><?php echo lang("concentration"); ?></label>
+							<input class="form-control" id="conc" name="conc" placeholder="<?php echo lang("concentration"); ?>">
 						</div>
 						<div class="col-md-4">
-							<label for="concunit">Concentration Unit</label>
+							<label for="concunit"><?php echo lang("concentration"); ?> <?php echo lang("unit"); ?></label>
 							<select id="concunit" class="info select-block" name="concunit">
-								<option value="">Please Select</option>
+								<option value=""><?php echo lang("pleaseselect"); ?></option>
 								<option value="%">%</option>
 								<option value="kg/m3">kg/m3</option>
 							</select>
@@ -125,13 +125,13 @@
 				<div class="form-group">
 					<div class="row">
 						<div class="col-md-8">
-							<label for="pres">Pressure</label>
-							<input class="form-control" id="pres" name="pres" placeholder="Pressure">
+							<label for="pres"><?php echo lang("pressure"); ?></label>
+							<input class="form-control" id="pres" name="pres" placeholder="<?php echo lang("pressure"); ?>">
 						</div>
 						<div class="col-md-4">
-							<label for="presunit">Pressure Unit</label>
+							<label for="presunit"><?php echo lang("presure"); ?> <?php echo lang("unit"); ?></label>
 							<select id="presunit" class="info select-block" name="presunit">
-								<option value="">Please Select</option>
+								<option value=""><?php echo lang("pleaseselect"); ?></option>
 								<option value="Pascal (Pa)">Pascal (Pa)</option>
 								<option value="bar (Bar)">bar (Bar)</option>
 								<option value="Standard atmosphere (atm)">Standard atmosphere (atm)</option>
@@ -141,12 +141,12 @@
 				</div>
 
 				<div class="form-group">
-					<label for="ph">PH</label>
-					<input class="form-control" id="ph" name="ph" placeholder="PH">
+					<label for="ph"><?php echo lang("ph"); ?></label>
+					<input class="form-control" id="ph" name="ph" placeholder="<?php echo lang("ph"); ?>">
 				</div>
 
 				<div class="form-group">
-					<label for="state">State</label>
+					<label for="state"><?php echo lang("state"); ?></label>
 					<select id="state" class="info select-block" name="state">
 						<option value="1">Solid</option>
 						<option value="2">Liquid</option>
@@ -155,13 +155,13 @@
 				</div>
 
 				<div class="form-group">
-					<label for="quality">Quality</label>
-					<input class="form-control" id="quality" name="quality" placeholder="Quality">
+					<label for="quality"><?php echo lang("quality"); ?></label>
+					<input class="form-control" id="quality" name="quality" placeholder="<?php echo lang("quality"); ?>">
 				</div>
 
 				<div class="form-group">
-					<label for="oloc">Output location</label>
-					<input class="form-control" id="oloc" name="oloc" placeholder="Output location">
+					<label for="oloc"><?php echo lang("outputlocation"); ?></label>
+					<input class="form-control" id="oloc" name="oloc" placeholder="<?php echo lang("outputlocation"); ?>">
 				</div>
 
 <!--					<div class="form-group">
@@ -190,53 +190,53 @@
 				</div> -->
 
 				<div class="form-group">
-					<label for="spot">Substitute potential</label>
-					<input class="form-control" id="spot" name="spot" placeholder="Substitute potential">
+					<label for="spot"><?php echo lang("substitute_potential"); ?></label>
+					<input class="form-control" id="spot" name="spot" placeholder="<?php echo lang("substitute_potential"); ?>">
 				</div>
 
 				<div class="form-group">
-					<label for="desc">Description</label>
-					<input class="form-control" id="desc" name="desc" placeholder="Description">
+					<label for="desc"><?php echo lang("description"); ?></label>
+					<input class="form-control" id="desc" name="desc" placeholder="<?php echo lang("description"); ?>">
 				</div>
 
 				<div class="form-group">
-					<label for="comment">Comment</label>
-					<input class="form-control" id="comment" name="comment" placeholder="Comment">
+					<label for="comment"><?php echo lang("comments"); ?></label>
+					<input class="form-control" id="comment" name="comment" placeholder="<?php echo lang("comments"); ?>">
 				</div>
 
-		  	<button type="submit" class="btn btn-info">Add Flow</button>
+		  	<button type="submit" class="btn btn-info"><?php echo lang("addflow"); ?></button>
 		</form>
-		<span class="label label-default"><span style="color:red;">*</span> labels are required.</span>
+		<span class="label label-default"><span style="color:red;">*</span> <?php echo lang("labelarereq"); ?></span>
 		</div>
 		<?php if(validation_errors() == NULL ): ?>
 			<div class="col-md-12" id="buyukbas">
 		<?php else: ?>
 			<div class="col-md-8" id="buyukbas">
 		<?php endif ?>
-		<p class="lead pull-left">Company flows</p>
+		<p class="lead pull-left"><?php echo lang("companyflows"); ?></p>
 		<?php if(validation_errors() == NULL ): ?>
-		<button id="ac" class="btn btn-warning" style="margin-left: 20px;">Add New Flow</button>
+		<button id="ac" class="btn btn-warning" style="margin-left: 20px;"><?php echo lang("addflow"); ?></button>
 		<?php endif ?>
 		<table class="table table-bordered" style="font-size:12px;">
 			<tr>
-				<th>Flow Name</th>
-				<th>Flow Type</th>
-				<th>Flow Family Name</th>
-				<th>Quantity</th>
-				<th>Cost</th>
-				<th>EP</th>
-				<th>Chemical Formula</th>
-				<th>Availability</th>
-				<th>Concentration</th>
-				<th>Pressure</th>
-				<th>PH</th>
-				<th>State</th>
-				<th>Quality</th>
-				<th>Output Location</th>
-				<th>Substitue Potential</th>
-				<th>Description</th>
-				<th>Comment</th>
-				<th style="width:100px;">Delete</th>
+				<th><?php echo lang("flowname"); ?></th>
+				<th><?php echo lang("flowtype"); ?></th>
+				<th><?php echo lang("flowfamily"); ?></th>
+				<th><?php echo lang("quantity"); ?></th>
+				<th><?php echo lang("cost"); ?></th>
+				<th><?php echo lang("ep"); ?></th>
+				<th><?php echo lang("chemicalformula"); ?></th>
+				<th><?php echo lang("availability"); ?></th>
+				<th><?php echo lang("concentration"); ?></th>
+				<th><?php echo lang("pressure"); ?></th>
+				<th><?php echo lang("ph"); ?></th>
+				<th><?php echo lang("state"); ?></th>
+				<th><?php echo lang("quality"); ?></th>
+				<th><?php echo lang("outputlocation"); ?></th>
+				<th><?php echo lang("substitute_potential"); ?></th>
+				<th><?php echo lang("description"); ?></th>
+				<th><?php echo lang("comments"); ?></th>
+				<th style="width:100px;"><?php echo lang("manage"); ?></th>
 			</tr>
 			<?php foreach ($company_flows as $key=>$flow): ?>
 				<tr>
@@ -266,8 +266,8 @@
 
 
 					<td>
-						<a href="<?php echo base_url('edit_flow/'.$companyID.'/'.$flow['flow_id'].'/'.$flow['flow_type_id']);?>" class="label label-warning"><span class="fa fa-edit"></span> Edit</button>
-						<a href="<?php echo base_url('delete_flow/'.$companyID.'/'.$flow['id']);?>" class="label label-danger" onclick="return confirm('Are you sure you want to delete this flow?');"><span class="fa fa-times"></span> Delete</button>
+						<a href="<?php echo base_url('edit_flow/'.$companyID.'/'.$flow['flow_id'].'/'.$flow['flow_type_id']);?>" class="label label-warning"><span class="fa fa-edit"></span> <?php echo lang("edit"); ?></button>
+						<a href="<?php echo base_url('delete_flow/'.$companyID.'/'.$flow['id']);?>" class="label label-danger" onclick="return confirm('Are you sure you want to delete this flow?');"><span class="fa fa-times"></span> <?php echo lang("delete"); ?></button>
 					</td>
 
 				</tr>

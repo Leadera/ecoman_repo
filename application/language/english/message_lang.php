@@ -205,7 +205,73 @@ $lang["opexold"]   = "OPEX old option";
 $lang["capexold"]   = "CAPEX old option";
 $lang["discountrate"]   = "Discount rate";
 $lang["option"]   = "Option";
+$lang["save"]   = "Save";
 
 //ecotracking
 $lang["ecoheading"]   = "Please select the company for Eco Tracking info";
 
+//dataset
+$lang["datasetservices"]   = "Dataset Services";
+$lang["gotocompany"]   = "Go to company page";
+$lang["flow"]   = "Flow";
+$lang["component"]   = "Component";
+$lang["product"]   = "Product";
+$lang["equipment"]   = "Equipment";
+$lang["flowfamily"]   = "Flow family";
+$lang["chemicalformula"]   = "Chemical formula";
+$lang["availability"]   = "Availability";
+$lang["concentration"]   = "Concentration";
+$lang["pressure"]   = "Pressure";
+$lang["ph"]   = "Ph";
+$lang["state"]   = "State";
+$lang["quality"]   = "Quality";
+$lang["outputlocation"]   = "Output location";
+$lang["substitute_potential"]   = "Substitute potential";
+$lang["addflow"]   = "Add flow";
+$lang["delete"]   = "Delete";
+$lang["annual"]   = "Annual";
+$lang["labelarereq"]   = "label are required";
+$lang["epunit"]   = "EP unit";
+
+$lang["addcomponent"]   = "Add component";
+$lang["componentname"]   = "Component name";
+$lang["connectedflow"]   = "Connected flow";
+$lang["componenttype"]   = "Component type";
+$lang["supplycost"]   = "Supply cost";
+$lang["supplycostunit"]   = "Supply cost unit";
+$lang["quantityunit"]   = "Quantity unit";
+$lang["outputcost"]   = "Output cost";
+$lang["outputcostunit"]   = "Output cost unit";
+$lang["companycomponents"]   = "Company components";
+
+$lang["addprocess"]   = "Add process";
+$lang["usedflows"]   = "Used flows";
+$lang["processfamily"]   = "Process family";
+$lang["companyprocess"]   = "Company processes";
+
+$lang["addequipment"]   = "Add equipment";
+$lang["usedprocess"]   = "Used processes";
+$lang["equipmentname"]   = "Equipment name";
+$lang["equipmenttype"]   = "Equipment type";
+$lang["equipmentattname"]   = "Equipment attribute name";
+$lang["equipmentattvalue"]   = "Equipment attribute value";
+$lang["equipmentattunit"]   = "Attribute unit";
+$lang["companyequipment"]   = "Company Equipment";
+
+$lang["addproduct"]   = "Add product";
+$lang["productname"]   = "Product name";
+$lang["quantities"]   = "Quantities";
+$lang["quantitiesunit"]   = "Quantities unit";
+$lang["unitcost"]   = "Unit cost";
+$lang["unitcostunit"]   = "Unit cost unit";
+$lang["timeperiod"]   = "Time period";
+$lang["daily"]   = "Daily";
+$lang["weekly"]   = "Weekly";
+$lang["monthly"]   = "Monthly";
+$lang["annually"]   = "Annually";
+$lang["companyproducts"]   = "Company products";
+
+$lang["editcomponent"]   = "Edit component";
+$lang["editprocess"]   = "Edit process";
+$lang["editproduct"]   = "Edit product";
+$lang["editflow"]   = "Edit flow";

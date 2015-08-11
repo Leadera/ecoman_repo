@@ -1,7 +1,7 @@
 	<?php //print_r($process); ?>
 	<div class="col-md-6 col-md-offset-3">
 		<?php echo form_open_multipart('edit_process/'.$companyID.'/'.$process['id']); ?>
-			<p class="lead">Edit Company Process</p>
+			<p class="lead"><?php echo lang("editprocess"); ?></p>
 	    <!-- <div class="form-group">
 				<div class="row">
 					<div class="col-md-8">
@@ -54,10 +54,10 @@
 				</div>
 			</div> -->
 			<div class="form-group">
-				<label for="comment">Comment</label>
-				<input class="form-control" id="comment" name="comment" placeholder="Comment"  value="<?php echo set_value('comment',$process['comment']); ?>">
+				<label for="comment"><?php echo lang("comments"); ?></label>
+				<input class="form-control" id="comment" name="comment" placeholder="<?php echo lang("comments"); ?>"  value="<?php echo set_value('comment',$process['comment']); ?>">
 			</div>
-	    <button type="submit" class="btn btn-info">Save New Process Data</button>
+	    <button type="submit" class="btn btn-info"><?php echo lang("savedata"); ?></button>
 	    </form>
-	    <span class="label label-default"><span style="color:red;">*</span> labels are required.</span>
+	    <span class="label label-default"><span style="color:red;">*</span> <?php echo lang("labelarereq"); ?>.</span>
 </div>

@@ -205,7 +205,73 @@ $lang["opexold"]   = "OPEX iyileştirme öncesi";
 $lang["capexold"]   = "CAPEX iyileştirme öncesi";
 $lang["discountrate"]   = "İndirim oranı";
 $lang["option"]   = "İyileştirme";
+$lang["save"]   = "Kaydet";
 
 //ecotracking
 $lang["ecoheading"]   = "Lütfen makine bilgisini anlık takip etmek istediğiniz firmayı seçiniz";
 
+//dataset
+$lang["datasetservices"]   = "veriyönetimi servisi";
+$lang["gotocompany"]   = "Firma sayfasına git";
+$lang["flow"]   = "Akış";
+$lang["component"]   = "Bileşen";
+$lang["product"]   = "Ürün";
+$lang["equipment"]   = "Ekipman";
+$lang["flowfamily"]   = "Akış ailesi";
+$lang["chemicalformula"]   = "Kimyasal formül";
+$lang["availability"]   = "Kullanılabilirlik";
+$lang["concentration"]   = "Konsantrasyon";
+$lang["pressure"]   = "Basınç";
+$lang["ph"]   = "Ph";
+$lang["state"]   = "Durum";
+$lang["quality"]   = "Kalite";
+$lang["outputlocation"]   = "Çıktı yeri";
+$lang["substitute_potential"]   = "Yedek potansiyel";
+$lang["addflow"]   = "Akış ekle";
+$lang["delete"]   = "Sil";
+$lang["annual"]   = "Yıllık";
+$lang["labelarereq"]   = "kısımlar girilmesi zorunludur";
+$lang["epunit"]   = "EP birimi";
+
+$lang["addcomponent"]   = "Bileşen ekle";
+$lang["componentname"]   = "Bileşen ismi";
+$lang["connectedflow"]   = "İlgili akış";
+$lang["componenttype"]   = "Bileşen tipi";
+$lang["supplycost"]   = "Tedarik maliyeti";
+$lang["supplycostunit"]   = "Tedarik maliyet birimi";
+$lang["quantityunit"]   = "Miktar birimi";
+$lang["outputcost"]   = "Çıktı maliyeti";
+$lang["outputcostunit"]   = "Çıktı maliyet birimi";
+$lang["companycomponents"]   = "Firmadaki bileşenler";
+
+$lang["addprocess"]   = "İşlem ekle";
+$lang["usedflows"]   = "Kullanılan akışlar";
+$lang["processfamily"]   = "İşlem ailesi";
+$lang["companyprocess"]   = "Firmadaki işlemler";
+
+$lang["addequipment"]   = "Ekipman ekle";
+$lang["usedprocess"]   = "Kullanılan işlemler";
+$lang["equipmentname"]   = "Ekipman ismi";
+$lang["equipmenttype"]   = "Ekipman ismi";
+$lang["equipmentattname"]   = "Ekipman nitelik ismi";
+$lang["equipmentattvalue"]   = "Ekipman nitelik değeri";
+$lang["equipmentattunit"]   = "Nitelik birimi";
+$lang["companyequipment"]   = "Firmadaki ekipmanlar";
+
+$lang["addproduct"]   = "Ürün ekle";
+$lang["productname"]   = "Ürün ismi";
+$lang["quantities"]   = "Miktarlar";
+$lang["quantitiesunit"]   = "Miktar birimi";
+$lang["unitcost"]   = "Birim başına maliyet";
+$lang["unitcostunit"]   = "Maliyet birimi";
+$lang["timeperiod"]   = "Zaman dilimi";
+$lang["daily"]   = "Günlük";
+$lang["weekly"]   = "Haftalık";
+$lang["monthly"]   = "Aylık";
+$lang["annually"]   = "Yıllık";
+$lang["companyproducts"]   = "Firmanın ürünleri";
+
+$lang["editcomponent"]   = "Bileşeni düzenle";
+$lang["editprocess"]   = "İşlemi düzenle";
+$lang["editproduct"]   = "Ürünü düzenle";
+$lang["editflow"]   = "Akışı düzenle";
