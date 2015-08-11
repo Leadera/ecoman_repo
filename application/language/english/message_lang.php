@@ -180,5 +180,32 @@ $lang["isoption"]   = "Is option";
 $lang["gotocp"]   = "Go to Cp Scoping";
 $lang["benchmark"]   = "Benchmark KPI";
 
+//CBA page
+$lang["cbaheading"]   = "Cost - Benefit Analysis, CP and IS Potentials";
+$lang["cbaheading2"]   = "Cost - Benefit Analysis Summary Table";
+$lang["cbaheading3"]   = "Cost - Benefit Analysis Graph";
+$lang["cbaheading4"]   = "Cost - Benefit Analysis";
+$lang["cbadesc"]   = "Please select a company to go to Cost - Benefit Analysis page";
+$lang["optionandprocess"]   = "Option and Process Name";
+$lang["year"]   = "Year";
+$lang["ecologicalbenefit"]   = "Ecological Benefit";
+$lang["marginalcost"]   = "Marginal Cost";
+$lang["newcons"]   = "Estimated new consumption";
+$lang["oldcost"]   = "Old Total Cost";
+$lang["oldcons"]   = "Old Total Consumption";
+$lang["oldep"]   = "Old Total EP";
+$lang["economiccostbenefit"]   = "Economic Cost/Benefit";
+$lang["anncostnew"]   = "Ann. costs new option";
+$lang["anncostold"]   = "Ann. costs old option";
+$lang["lifetimenew"]   = "Lifetime new option";
+$lang["opexnew"]   = "OPEX new option";
+$lang["capexnew"]   = "CAPEX new option";
+$lang["lifetimeold"]   = "Lifetime old option";
+$lang["opexold"]   = "OPEX old option";
+$lang["capexold"]   = "CAPEX old option";
+$lang["discountrate"]   = "Discount rate";
+$lang["option"]   = "Option";
 
+//ecotracking
+$lang["ecoheading"]   = "Please select the company for Eco Tracking info";
 

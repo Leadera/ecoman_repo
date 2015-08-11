@@ -179,3 +179,33 @@ $lang["filename"]   = "Dosya ismi";
 $lang["isoption"]   = "Seçenek mi";
 $lang["gotocp"]   = "Temiz üretim potansiyelleri sayfasına git";
 $lang["benchmark"]   = "Kıyaslama KPI'ı";
+
+//CBA sayfası
+$lang["cbaheading"]   = "Fayda - maliyet analizi, TÜ ve ES potansiyelleri";
+$lang["cbaheading2"]   = "Fayda - maliyet analizi özet tablosu";
+$lang["cbaheading3"]   = "Fayda - maliyet analizi grafiği";
+$lang["cbaheading4"]   = "Fayda - maliyet analizi";
+$lang["cbadesc"]   = "Lütfen fayda-maliyet analizini görmek istediğiniz firmayı seçin";
+$lang["optionandprocess"]   = "İyileştirme ve işlem";
+$lang["year"]   = "Yıl";
+$lang["ecologicalbenefit"]   = "Çevresel fayda";
+$lang["marginalcost"]   = "Marjinal maliyet";
+$lang["newcons"]   = "Tahmini yeni tüketim";
+$lang["oldcost"]   = "Eski toplam maliyet";
+$lang["oldcons"]   = "Eski toplam tüketim";
+$lang["oldep"]   = "Eski toplam EP";
+$lang["economiccostbenefit"]   = "Ekonomik fayda/maliyet";
+$lang["anncostnew"]   = "İyileştirme sonrası yıllık maliyet";
+$lang["anncostold"]   = "İyileştirme öncesi yıllık maliyet";
+$lang["lifetimenew"]   = "İyileştirme sonrası ömür";
+$lang["opexnew"]   = "OPEX iyileştirme sonrası";
+$lang["capexnew"]   = "CAPEX iyileştirme sonrası";
+$lang["lifetimeold"]   = "İyileştirme öncesi ömür";
+$lang["opexold"]   = "OPEX iyileştirme öncesi";
+$lang["capexold"]   = "CAPEX iyileştirme öncesi";
+$lang["discountrate"]   = "İndirim oranı";
+$lang["option"]   = "İyileştirme";
+
+//ecotracking
+$lang["ecoheading"]   = "Lütfen makine bilgisini anlık takip etmek istediğiniz firmayı seçiniz";
+

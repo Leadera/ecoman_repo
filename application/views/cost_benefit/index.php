@@ -2,7 +2,7 @@
 <div class="col-md-12"><div class="lead"><?php echo $company['name']; ?></div></div>
 <div class="col-md-6">
 <?php  $allocation = array_merge($allocation, $is);  //print_r($allocation); ?>
-	<p>Cost - Benefit Analysis, CP and IS Potentials</p>
+	<p><?php echo lang("cbaheading"); ?></p>
 	<?php if (!empty($allocation)): ?>
 			<?php $i=1; ?>
 			<?php foreach ($allocation as $a): ?>
@@ -14,7 +14,7 @@
 						<td>#</td><td><?php echo $i; ?></td>
 					</tr>
 					<tr>
-						<td width="250">Option</td>
+						<td width="250"><?php echo lang("option"); ?></td>
 						<td width="75%">
 						<?php //print_r($a); ?>
 							<b><?php if(!empty($a['prcss_name'])) {echo $a['prcss_name'];} else {echo "IS potential"; } ?></b> 
@@ -25,90 +25,90 @@
 						</td>
 					</tr>
 					<tr>
-						<td>Discount rate (%)</td>
+						<td><?php echo lang("discountrate"); ?> (%)</td>
 						<td><div class=" has-warning"><input type="text" name="disrate" id="disrate-<?php echo $i; ?>"  value="<?php echo $a['disrate']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
-						<tr><td>CAPEX old option (€/year)</td>								
+						<tr><td><?php echo lang("capexold"); ?> (€/<?php echo lang("year"); ?>)</td>								
 						<td><div class=" has-warning"><input type="text" name="capexold" id="capexold-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['capexold']; ?>" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
-						<td>OPEX old option (€/year)</td>
+						<td><?php echo lang("opexold"); ?> (€/<?php echo lang("year"); ?>)</td>
 						<td><input type="text" name="opexold" id="opexold-<?php echo $i; ?>" class="form-control"></td>
 					</tr>
 					<tr>
-						<td>Lifetime old option (yr)</td>
+						<td><?php echo lang("lifetimeold"); ?> (<?php echo lang("year"); ?>)</td>
 						<td><div class=" has-warning"><input type="text" name="ltold" id="ltold-<?php echo $i; ?>" value="<?php echo $a['ltold']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
-						<td>CAPEX new option (€/year)</td>
+						<td><?php echo lang("capexnew"); ?> (€/<?php echo lang("year"); ?>)</td>
 						<td><div class=" has-warning"><input type="text" name="capexnew" id="capexnew-<?php echo $i; ?>" value="<?php echo $a['capexnew']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
-						<td>OPEX new option (€/year)</td>
+						<td><?php echo lang("opexnew"); ?> (€/<?php echo lang("year"); ?>)</td>
 						<td><input type="text" name="opexnew" id="opexnew-<?php echo $i; ?>" class="form-control"></td>
 					</tr>
 					<tr>
-						<td>Lifetime new option (yr)</td>
+						<td><?php echo lang("lifetimenew"); ?> (<?php echo lang("year"); ?>)</td>
 						<td><div class=" has-warning"><input type="text" name="ltnew" id="ltnew-<?php echo $i; ?>" value="<?php echo $a['ltnew']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
-						<td>Ann. costs old option</td>
+						<td><?php echo lang("anncostold"); ?></td>
 						<td><input type="text" name="acold" id="acold-<?php echo $i; ?>" class="form-control"></td>
 					</tr>
 					<tr>
-						<td>Ann. costs new option</td>
+						<td><?php echo lang("anncostnew"); ?></td>
 						<td><input type="text" name="acnew" id="acnew-<?php echo $i; ?>" class="form-control"></td>
 					</tr>
 					<tr>
-						<td>Economic Cost/Benefit</td>
+						<td><?php echo lang("economiccostbenefit"); ?></td>
 						<td><input type="text" name="eco" id="eco-<?php echo $i; ?>" class="form-control"></td>
 					</tr>
 					<tr>
-						<td>Unit</td>
-						<td>Euro/Year</td>
+						<td><?php echo lang("unit"); ?></td>
+						<td>Euro/<?php echo lang("year"); ?></td>
 					</tr>
 					<tr>
-						<td>Old Consumption</td><td><input type="text" name="oldcons" id="oldcons-<?php echo $i; ?>" class="form-control" value="<?php echo $a['qntty']; ?>"></td>
+						<td><?php echo lang("oldcons"); ?></td><td><input type="text" name="oldcons" id="oldcons-<?php echo $i; ?>" class="form-control" value="<?php echo $a['qntty']; ?>"></td>
 					</tr>
 					<tr>
-						<td>Old Total Cost</td><td><input type="text" name="oldcost" id="oldcost-<?php echo $i; ?>" class="form-control" value="<?php echo $a['cost']; ?>"></td>
+						<td><?php echo lang("oldcost"); ?></td><td><input type="text" name="oldcost" id="oldcost-<?php echo $i; ?>" class="form-control" value="<?php echo $a['cost']; ?>"></td>
 					</tr>
 					<tr>
-						<td>Old Total EP</td><td><input type="text" name="oldep" id="oldep-<?php echo $i; ?>" class="form-control" value="<?php echo $a['ep']; ?>"></td>
+						<td><?php echo lang("oldep"); ?></td><td><input type="text" name="oldep" id="oldep-<?php echo $i; ?>" class="form-control" value="<?php echo $a['ep']; ?>"></td>
 					</tr>
 					<tr>
-						<td>Estimated new consumption</td>
+						<td><?php echo lang("newcons"); ?></td>
 						<td><div class=" has-warning"><input type="text" name="newcons" id="newcons-<?php echo $i; ?>" value="<?php echo $a['newcons']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
-						<td>Unit</td>
-						<td><?php echo $a['qntty_unit']; ?>/year</td>
+						<td><?php echo lang("unit"); ?></td>
+						<td><?php echo $a['qntty_unit']; ?>/<?php echo lang("year"); ?></td>
 					</tr>
 					<tr>
-						<td>€/ Unit</td>
+						<td>€/ <?php echo lang("unit"); ?></td>
 						<td><input type="text" name="euunit" id="euunit-<?php echo $i; ?>" class="form-control" value="<?php echo ($a['cost']/$a['qntty']); ?>" ></td>
 					</tr>
 					<tr>
-						<td>EIP/ Unit</td>
+						<td>EIP/ <?php echo lang("unit"); ?></td>
 						<td><input type="text" name="eipunit" id="eipunit-<?php echo $i; ?>" class="form-control" value="<?php echo ($a['ep']/$a['qntty']); ?>" ></td>
 					</tr>
 					<tr>
-						<td>Ecological Benefit</td>
+						<td><?php echo lang("ecologicalbenefit"); ?></td>
 						<td><input type="text" name="ecoben" id="ecoben-<?php echo $i; ?>" class="form-control"></td>
 					</tr>
 					<tr>
-						<td>Unit</td>
-						<td>EIP/year</td>
+						<td><?php echo lang("unit"); ?></td>
+						<td>EIP/<?php echo lang("year"); ?></td>
 					</tr>
 					<tr>
-						<td>Marginal costs</td>
+						<td><?php echo lang("marginalcost"); ?></td>
 						<td><input type="text" name="marcos" id="marcos-<?php echo $i; ?>" class="form-control"></td>	
 					</tr>
 					<tr>
-						<td>Unit</td><td>¢/EIP</td>
+						<td><?php echo lang("unit"); ?></td><td>¢/EIP</td>
 					</tr>
 				</table>
-				<input type="submit" value="Save" class="btn btn-block btn-info" style="margin-top:20px;"/>
+				<input type="submit" value="<?php echo lang("save"); ?>" class="btn btn-block btn-info" style="margin-top:20px;"/>
 				<script type="text/javascript">
 					$('#form-<?php echo $i; ?> input').keydown(function(e){
 						
@@ -218,12 +218,12 @@
 		<?php endif ?>
 </div>
 <div class="col-md-6" id="sag4">
-	<p>Cost - Benefit Analysis Summary Table</p>
+	<p><?php echo lang("cbaheading2"); ?></p>
 	<?php //print_r($allocation); ?>
 		<?php if (!empty($allocation)): ?>
 			<table class="table" style="font-size:12px;">
 				<tr>
-					<th>Option and Process Name</th><th>Marginal Cost</th><th>Ecological Benefit</th>
+					<th><?php echo lang("optionandprocess"); ?></th><th><?php echo lang("marginalcost"); ?></th><th><?php echo lang("ecologicalbenefit"); ?></th>
 				</tr>
 			<?php foreach ($allocation as $a): ?>
 				<tr>
@@ -234,7 +234,7 @@
 			<?php endforeach ?>
 			</table>
 		<?php endif ?>
-			<p>Cost - Benefit Analysis Graph</p>
+			<p><?php echo lang("cbaheading3"); ?></p>
 	<div id="rect-demo-ana">
     <div id="rect-demo"></div>
   </div>
