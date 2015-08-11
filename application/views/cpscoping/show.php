@@ -42,13 +42,13 @@ print_r($allocation[0]);*/
 				veri = veri +1;
 				if(veri == process_adet){
 					tuna_graph(list);
-					$('#graph_text').text("* You wont be able to see every range on the graph, if one of them is really huge.");
+					$('#graph_text').text("* <?php echo lang('cpscopinggraphinfo1'); ?>");
 					clearTimeout(timer);
 				}
 				else{
-					$('#graph_text').text("Please wait for graph to appear until all analysis data are calculated in the table. ("+veri+"/"+process_adet+")");
+					$('#graph_text').text("<?php echo lang('cpscopinggraphinfo2'); ?> ("+veri+"/"+process_adet+")");
 	       	clearTimeout(timer);
-	       	timer = setTimeout(function() { tuna_graph(list); 					$('#graph_text').text("* You wont be able to see every range on the graph, if one of them are really huge."); }, 7000);
+	       	timer = setTimeout(function() { tuna_graph(list); 					$('#graph_text').text("* <?php echo lang('cpscopinggraphinfo1'); ?>"); }, 7000);
 				}
 				// var temp = "";
 				// temp += '<table style="width:100%; min-width:150px; font-size:13px; text-align:center;" frame="void"><tr><th style="text-align:center;">' + data.prcss_name + '</th></tr><tr><td> <b>EP Value:</b> ' + data.ep_def_value + '  <b>EP Range:</b> ' + data.ep_value_alt + ' - ' + data.ep_value_ust + '</td></tr><tr><td> <b>Cost Value:</b> ' + data.cost_def_value + '   <b>Cost Range:</b> ' + data.cost_value_alt.toFixed(2) + ' - ' + data.cost_value_ust.toFixed(2) + ' Euro</td></tr></table>';
@@ -70,12 +70,12 @@ print_r($allocation[0]);*/
 		      		if(!(data.control == 1)){
 		      			$("#"+id).removeClass();
 		    			$("#"+id).addClass("btn btn-success btn-xs pull-right");
-		    			$("#"+id).html("Selected");
+		    			$("#"+id).html("<?php echo lang('selected'); ?>");
 		    			buton_durum = 1;
 		    		}else{
 		    			$("#"+id).removeClass();
 		    			$("#"+id).addClass("btn btn-default btn-xs pull-right");
-		    			$("#"+id).html("Dropped");
+		    			$("#"+id).html("<?php echo lang('dropped'); ?>");
 		    			buton_durum = 0;
 		    		}
 		    		$.ajax({
@@ -93,22 +93,22 @@ print_r($allocation[0]);*/
 	};
 </script>
 		<div class="col-md-12" style="margin-bottom: 10px;">
-			<a class="btn btn-inverse btn-sm" href="<?php echo base_url('kpi_calculation/'.$this->uri->segment(2).'/'.$this->uri->segment(3)); ?>">Go to KPI Calculation Page</a>
-			<a href="<?php echo base_url('new_flow/'.$this->uri->segment(3)); ?>/" class="btn btn-inverse btn-sm" id="cpscopinga">Go to Dataset Management Page</a>
+			<a class="btn btn-inverse btn-sm" href="<?php echo base_url('kpi_calculation/'.$this->uri->segment(2).'/'.$this->uri->segment(3)); ?>"><?php echo lang("gotokpi"); ?></a>
+			<a href="<?php echo base_url('new_flow/'.$this->uri->segment(3)); ?>/" class="btn btn-inverse btn-sm" id="cpscopinga"><?php echo lang("gotodataset"); ?></a>
 		</div>
 		<div class="col-md-4" id="sol4">
-			<p>Cost and Environmental impact graph of processes</p>
+			<p><?php echo lang("cpscopingheading1"); ?></p>
 			<div class="label label-info" id="graph_text"></div>
 		  <div id="rect-demo-ana">
 		    <div id="rect-demo"></div>
 	    </div>
 		</div>
 		<div class="col-md-8">
-			<p>CP Potentials Identifications</p>
+			<p><?php echo lang("cpscopingheading2"); ?></p>
 			<table class="table table-bordered">
 			<tr>
-			<th style="width:150px;">Input Flows</th>
-			<th style="width:150px;">Total</th>
+			<th style="width:150px;"><?php echo lang("inputflows"); ?></th>
+			<th style="width:150px;"><?php echo lang("total"); ?></th>
 			<?php $deneme_arrayi = array(); $tekrarsiz = array(); $tekrarsiz[-1] = "0"; $count = 0; $process_adet=0; ?>
 			<?php foreach ($allocation as $a): ?>
 			<?php
@@ -152,10 +152,10 @@ print_r($allocation[0]);*/
 							<b><?php echo $a['flow_name']; ?></b>
 							<?php if ($active[$a['allocation_id']] == 0): ?>
 								<button class="btn btn-default btn-xs pull-right" id="<?php echo $a['allocation_id']; ?>" onclick="is_candidate(<?php echo $a['allocation_id'];?>)">
-									Select as IS candidate
+									<?php echo lang("selectascandidate"); ?>
 								</button>
 							<?php else: ?>
-								<button class="btn btn-success btn-xs pull-right" id="<?php echo $a['allocation_id']; ?>" onclick="is_candidate(<?php echo $a['allocation_id'];?>)">IS candidate
+								<button class="btn btn-success btn-xs pull-right" id="<?php echo $a['allocation_id']; ?>" onclick="is_candidate(<?php echo $a['allocation_id'];?>)"><?php echo lang("selectedcandidate"); ?>
 								</button>
 							<?php endif ?>
 
@@ -200,8 +200,8 @@ print_r($allocation[0]);*/
 			<!-- Output Table -->
 			<table class="table table-bordered">
 			<tr>
-			<th style="width:150px;">Output Flows</th>
-			<th style="width:150px;">Total</th>
+			<th style="width:150px;"><?php echo lang("outputflows"); ?></th>
+			<th style="width:150px;"><?php echo lang("total"); ?></th>
 			<?php $deneme_arrayi = array(); $tekrarsiz = array(); $tekrarsiz[-1] = "0"; $count = 0; $process_adet=0; ?>
 			<?php foreach ($allocation as $a): ?>
 			<?php
@@ -255,10 +255,10 @@ print_r($allocation[0]);*/
 							<?php
 							if($id != 0){
 							if ($active[$id] == 0): ?>
-								<button class="btn btn-default btn-xs pull-right" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)">Select as IS candidate
+								<button class="btn btn-default btn-xs pull-right" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)"><?php echo lang("selectascandidate"); ?>
 								</button>
 							<?php else: ?>
-								<button class="btn btn-success btn-xs pull-right" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)">IS Candidate
+								<button class="btn btn-success btn-xs pull-right" id="<?php echo $id; ?>" onclick="is_candidate(<?php echo $id;?>)"><?php echo lang("selectedcandidate"); ?>
 								</button>
 							<?php endif ?>
 
@@ -321,22 +321,22 @@ print_r($allocation[0]);*/
 			    ">
 				<thead>
 				    <tr>
-				        <th data-options="field:'prcss_name',align:'center',width:150">Process</th>
-				        <th data-options="field:'ep_def_value',align:'center',width:80" formatter="formatPrice">Ep Value</th>
-				        <th data-options="field:'ep_value_alt',align:'center',width:100" formatter="formatPrice">Lower Ep Value</th>
-				        <th data-options="field:'ep_value_ust',align:'center',width:100" formatter="formatPrice">Upper Ep Value</th>
-				        <th data-options="field:'cost_def_value',align:'center',width:100" formatter="formatPrice">Cost Value</th>
-				        <th data-options="field:'cost_value_alt',align:'center',width:110" formatter="formatPrice">Lower Cost Value</th>
-				        <th data-options="field:'cost_value_ust',align:'center',width:110" formatter="formatPrice">Upper Cost Value</th>
-				        <th data-options="field:'comment',width:200,align:'center',editor:'text'">Comments / Remarks</th>
+				        <th data-options="field:'prcss_name',align:'center',width:150"><?php echo lang("process"); ?></th>
+				        <th data-options="field:'ep_def_value',align:'center',width:80" formatter="formatPrice"><?php echo lang("ep"); ?></th>
+				        <th data-options="field:'ep_value_alt',align:'center',width:100" formatter="formatPrice"><?php echo lang("lowerepvalue"); ?></th>
+				        <th data-options="field:'ep_value_ust',align:'center',width:100" formatter="formatPrice"><?php echo lang("upperepvalue"); ?></th>
+				        <th data-options="field:'cost_def_value',align:'center',width:100" formatter="formatPrice"><?php echo lang("cost"); ?></th>
+				        <th data-options="field:'cost_value_alt',align:'center',width:110" formatter="formatPrice"><?php echo lang("lowercostvalue"); ?></th>
+				        <th data-options="field:'cost_value_ust',align:'center',width:110" formatter="formatPrice"><?php echo lang("uppercostvalue"); ?></th>
+				        <th data-options="field:'comment',width:200,align:'center',editor:'text'"><?php echo lang("comments"); ?></th>
 				    </tr>
 				</thead>
 			</table>
     <div id="tb">
-    		<p style="float:left;">Cost and Environmental impact data of processes</p>
-        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()">Save All Changes</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()">Cancel All Changes</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges()">See Changes</a>
+    		<p style="float:left;"><?php echo lang("cpscopingheading3"); ?></p>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()"><?php echo lang("saveallchanges"); ?></a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()"><?php echo lang("cancelallchanges"); ?></a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges()"><?php echo lang("seechanges"); ?></a>
     </div>
     <script type="text/javascript">
     function formatPrice(input){

@@ -111,3 +111,74 @@ $lang["manage"]   = "Manage";
 $lang["editallocation"]   = "Edit allocation";
 $lang["deleteallocation"]   = "Delete allocation";
 
+$lang["pleaseselect"]   = "Please select";
+$lang["alloheading1"]   = "Please select a process then a flow to allocate";
+$lang["alloheading2"]   = "There is no flow info for this company";
+$lang["alloheading3"]   = "There is no product info for this company";
+$lang["alloheading4"]   = "Please fill all the boxes";
+$lang["alloheading5"]   = "Check other allocations of selected flow";
+$lang["alloheading6"]   = "There is no previously recorded allocation of selected flow with flow type.";
+$lang["selectprocess"]   = "Select process";
+$lang["selectflow"]   = "Select flow";
+$lang["selectflowtype"]   = "Select flow type";
+$lang["amount"]   = "Amount";
+$lang["cost"]   = "Cost";
+$lang["companyproducts"]   = "Company products";
+$lang["companyflows"]   = "Company flows";
+$lang["quantity"]   = "Quantity";
+$lang["period"]   = "Period";
+$lang["allocation"]   = "Allocation";
+$lang["amountunit"]   = "Amount unit";
+$lang["accuracyrate"]   = "Accuracy rate";
+$lang["costunit"]   = "Cost unit";
+$lang["environmentalimpact"]   = "Environmental impact";
+$lang["ep"]   = "EP";
+$lang["kpi"]   = "Kpi";
+$lang["kpiunit"]   = "Kpi unit";
+$lang["reference"]   = "Reference";
+$lang["unit"]   = "Unit";
+$lang["number"]   = "Number";
+$lang["percentage"]   = "Percentage";
+$lang["process"]   = "Process";
+$lang["accuratei"]   = "Example: </br> Amount=10kg </br> Accuracy rate=90% </br> means the amount varies by 10% or +/- 5%, </br> thus between  9.5kg and 10.5kg";
+$lang["savedata"]   = "Save data";
+
+//cpscoping allocation show page
+$lang["gotokpi"]   = "Go to KPI Calculation Page";
+$lang["gotodataset"]   = "Go to Dataset Management Page";
+$lang["cpscopingheading1"]   = "Cost and environmental impact graph of processes";
+$lang["cpscopingheading2"]   = "CP potentials identifications";
+$lang["cpscopingheading3"]   = "Cost and environmental impact data of processes";
+$lang["lowerepvalue"]   = "Lower EP value";
+$lang["upperepvalue"]   = "Upper EP value";
+$lang["lowercostvalue"]   = "Lower cost value";
+$lang["uppercostvalue"]   = "Upper cost value";
+$lang["comments"]   = "Comments";
+$lang["saveallchanges"]   = "Save all changes";
+$lang["cancelallchanges"]   = "Cancel all changes";
+$lang["seechanges"]   = "See changes";
+$lang["inputflows"]   = "Input flows";
+$lang["outputflows"]   = "Output flows";
+$lang["total"]   = "Total";
+$lang["cpscopinggraphinfo1"]   = "You wont be able to see every range on the graph, if one of them is really huge";
+$lang["cpscopinggraphinfo2"]   = "Please wait for graph to appear until all analysis data are calculated in the table";
+$lang["selected"]   = "Selected";
+$lang["dropped"]   = "Dropped";
+$lang["selectascandidate"]   = "Set IS candidate";
+$lang["selectedcandidate"]   = "Candidate";
+
+//KPI page
+$lang["edit"]   = "Edit";
+$lang["kpiheading1"]   = "KPI View and Edit Table";
+$lang["kpiheading2"]   = "KPIs vs Benchmark KPIs Comparison Graph";
+$lang["documentupload"]   = "Document Upload";
+$lang["searchdocument"]   = "Search for Documents";
+$lang["uploadeddocument"]   = "Uploaded Documents";
+$lang["savefile"]   = "Save file";
+$lang["filename"]   = "File name";
+$lang["isoption"]   = "Is option";
+$lang["gotocp"]   = "Go to Cp Scoping";
+$lang["benchmark"]   = "Benchmark KPI";
+
+
+

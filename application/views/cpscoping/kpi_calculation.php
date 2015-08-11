@@ -69,8 +69,8 @@
 				        legend: { position: 'top', maxLines: 30 },
 				        bar: { groupWidth: '75%' },
 				        isStacked: true,
-				        vAxis: {title: "% (Percentage)"},
-				        hAxis: {title: 'Process Name - Flow Name - Flow Type Name', titleTextStyle: {color: 'green'}},
+				        vAxis: {title: "% (<?php echo lang('percentage'); ?>)"},
+				        hAxis: {title: '<?php echo lang("processname"); ?> - <?php echo lang("flowname"); ?> - <?php echo lang("flowtypename"); ?>', titleTextStyle: {color: 'green'}},
 				        
 				    };
 				    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
@@ -110,8 +110,8 @@
 </script>
 <?php if (!empty($kpi_values)): ?>
 	<div class="col-md-12" style="margin-bottom: 10px;">
-		<a class="btn btn-inverse btn-sm" href="<?php echo base_url('cpscoping/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/show'); ?>">Go to CP Scoping Page</a>
-		<a href="<?php echo base_url('new_flow/'.$this->uri->segment(3)); ?>/" class="btn btn-inverse btn-sm" id="cpscopinga">Go to Dataset Management Page</a>
+		<a class="btn btn-inverse btn-sm" href="<?php echo base_url('cpscoping/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/show'); ?>"><?php echo lang("gotocp"); ?></a>
+		<a href="<?php echo base_url('new_flow/'.$this->uri->segment(3)); ?>/" class="btn btn-inverse btn-sm" id="cpscopinga"><?php echo lang("gotodataset"); ?></a>
 	</div>
 	<div class="col-md-8" id="8lik">
 
@@ -218,29 +218,28 @@
 			    ">
 				<thead>
 				    <tr>
-				        <th data-options="field:'allocation_name',align:'left',width:250">Allocation Name</th>
+				        <th data-options="field:'allocation_name',align:'left',width:250"><?php echo lang("allocation"); ?></th>
 <!-- 				    <th data-options="field:'flow_name',align:'center',width:110">Flow</th>
 				        <th data-options="field:'flow_type_name',align:'center',width:80">Flow Type</th> -->
 				        <th data-options="field:'kpi',align:'center',width:100">KPI</th>
-				        <th data-options="field:'benchmark_kpi',width:100,align:'center',editor:{type:'numberbox',options:{precision:5}}">Benchmark KPI</th>
-				        <th data-options="field:'unit_kpi',align:'center',width:100">KPI Unit</th>
-				        <th data-options="field:'best_practice',width:200,align:'center',editor:'text'">Comments / Remarks</th>
-				        <th data-options="field:'option',width:80,align:'center',editor:{type:'checkbox',options:{on:'Option',off:'Not An Option'}}" formatter="formatOption">Is Option?</th>
-				        <th data-options="field:'allocation_id',width:100,align:'center'" formatter="formatDetail">Edit Allocation</th>
+				        <th data-options="field:'benchmark_kpi',width:100,align:'center',editor:{type:'numberbox',options:{precision:5}}"><?php echo lang("benchmark"); ?></th>
+				        <th data-options="field:'unit_kpi',align:'center',width:100"><?php echo lang("kpiunit"); ?></th>
+				        <th data-options="field:'best_practice',width:200,align:'center',editor:'text'"><?php echo lang("comments"); ?></th>
+				        <th data-options="field:'option',width:80,align:'center',editor:{type:'checkbox',options:{on:'Option',off:'Not An Option'}}" formatter="formatOption"><?php echo lang("isoption"); ?>?</th>
+				        <th data-options="field:'allocation_id',width:100,align:'center'" formatter="formatDetail"><?php echo lang("editallocation"); ?></th>
 				    </tr>
 				</thead>
 			</table>
     <div id="tb">
-    			<p style="float:left;">KPI View and Edit Table</p>
-
-        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()">Save All Changes</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()">Cancel All Changes</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges()">See Changes</a>
+    		<p style="float:left;"><?php echo lang("kpiheading1"); ?></p>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()"><?php echo lang("saveallchanges"); ?></a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()"><?php echo lang("cancelallchanges"); ?></a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges()"><?php echo lang("seechanges"); ?></a>
     </div>
     <script>
 			function formatDetail(value,row){
 				var href = 'cpscoping/edit_allocation/'+value;
-				return '<a class="label label-info" href="<?php echo base_url("' + href + '"); ?>">Edit</a>';
+				return '<a class="label label-info" href="<?php echo base_url("' + href + '"); ?>"><?php echo lang("edit"); ?></a>';
 			}
 			function formatOption(val,row){
 			    if (val == "Option"){
@@ -317,16 +316,16 @@
 	</div>
 
 	<div class="col-md-4">
-		<p>KPIs vs Benchmark KPIs Comparison Graph</p>
+		<p><?php echo lang("kpiheading2"); ?></p>
 <!-- 		<div class="label label-danger">After a save, you should reload the page to see updated graph.</div> -->		
 		<div id="chart_div" style="border:2px solid #f0f0f0;"></div>
 		<hr>
-		<p>Search for Documents</p>
+		<p><?php echo lang("searchdocument"); ?></p>
 		<?php echo form_open_multipart('search_result/'.$this->uri->segment(2).'/'.$this->uri->segment(3)); ?>
-		  <input style="margin-bottom:10px;" type="text" class="form-control" id="search" placeholder="Please enter search term" name="search">
+		  <input style="margin-bottom:10px;" type="text" class="form-control" id="search" placeholder="" name="search">
 	  </form>
 	  <hr>
-	  <p>Document Upload</p>
+	  <p><?php echo lang("documentupload"); ?></p>
 	  <div class="form-group">
 		  	<?php if(validation_errors() != NULL ): ?>
 			    <div class="alert">
@@ -338,17 +337,17 @@
 			    </div>
 			<?php endif ?>
 			<?php echo form_open_multipart('cpscoping/file_upload/'.$this->uri->segment('2').'/'.$this->uri->segment('3')); ?>
-			    <input type="text" class="form-control" id="file_name" placeholder="file_name" name="file_name">
+			    <input type="text" class="form-control" id="file_name" placeholder="<?php echo lang("filename"); ?>" name="file_name">
 			    <input type="file" name="userfile" id="userfile" size="20" />
 					<br/>
-			    <button type="submit" class="btn btn-info btn-sm">Save File</button>
+			    <button type="submit" class="btn btn-info btn-sm"><?php echo lang("savefile"); ?></button>
 		    </form>
 		    <hr>
-		    <p>Uploaded Documents</p>
+		    <p><?php echo lang("uploadeddocument"); ?></p>
 		    <table class="table table-bordered">
 		    	<tr>
 		    		<th>Index</th>
-		    		<th>File Name</th>
+		    		<th><?php echo lang("filename"); ?></th>
 		    	</tr>
 			    <?php $sayac = 1;foreach ($cp_files as $file): ?>
 			    	<tr>
@@ -454,8 +453,8 @@
 				        legend: { position: 'top', maxLines: 30 },
 				        bar: { groupWidth: '75%' },
 				        isStacked: true,
-				        vAxis: {title: "% (Percentage)"},
-				        hAxis: {title: 'Process Name - Flow Name - Flow Type Name', titleTextStyle: {color: 'green'}},
+				        vAxis: {title: "% (<?php echo lang('percentage'); ?>)"},
+				        hAxis: {title: '<?php echo lang("processname"); ?> - <?php echo lang("flowname"); ?> - <?php echo lang("flowtype"); ?>', titleTextStyle: {color: 'green'}},
 				        
 				    };
 				    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
