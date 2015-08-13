@@ -14,6 +14,8 @@ class Cpscoping extends CI_Controller {
 		if(empty($temp)){
 			redirect(base_url('login'),'refresh');
 		}
+				$this->config->set_item('language', $this->session->userdata('site_lang'));
+
 	}
 
 	public function index(){

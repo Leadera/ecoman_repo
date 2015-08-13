@@ -4,7 +4,7 @@
 <?php echo $map['js']; ?>
 
 <div class="container">
-	<p class="lead">Create Project</p>
+	<p class="lead"><?php echo lang("createproject"); ?></p>
 
 	<?php if(validation_errors() != NULL ): ?>
 	    <div class="alert">
@@ -17,11 +17,11 @@
 		<div class="row">
 			<div class="col-md-8">
 				<div class="form-group">
-	    			<label for="projectName">Project Name</label>
-	    			<input type="text" class="form-control" id="projectName" placeholder="Enter Project Name" value="<?php echo set_value('projectName'); ?>" name="projectName">
+	    			<label for="projectName"><?php echo lang("name"); ?></label>
+	    			<input type="text" class="form-control" id="projectName" placeholder="<?php echo lang("name"); ?>" value="<?php echo set_value('projectName'); ?>" name="projectName">
 	 			</div>
 	 			<div class="form-group">
-	 				<label for="datePicker">Start Date</label>
+	 				<label for="datePicker"><?php echo lang("startdate"); ?></label>
 	    			<div class="input-group">
 				    	<span class="input-group-btn">
 				      		<button class="btn" type="button" style="height: 38px; border: 1px solid;"><span class="fui-calendar"></span></button>
@@ -30,7 +30,7 @@
 				  	</div>
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="status">Status</label>
+	    			<label for="status"><?php echo lang("status"); ?></label>
 	    			<div>
 		    			<select id="status" class="info select-block" name="status">
 		  					<?php foreach ($project_status as $status): ?>
@@ -40,18 +40,18 @@
 					</div>
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="description">Description</label>
-	    			<textarea class="form-control" rows="3" name="description" id="description" placeholder="Description" ><?php echo set_value('description'); ?></textarea>
+	    			<label for="description"><?php echo lang("description"); ?></label>
+	    			<textarea class="form-control" rows="3" name="description" id="description" placeholder="<?php echo lang("description"); ?>" ><?php echo set_value('description'); ?></textarea>
 	 			</div>
 				<div class="form-group">
-				<label for="coordinates">Coordinates</label>
-				<button type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-block btn-inverse" id="coordinates" >Select Coordinates on Map</button><br>
+				<label for="coordinates"><?php echo lang("coordinates"); ?></label>
+				<button type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-block btn-inverse" id="coordinates" ><?php echo lang("selectonmap"); ?></button><br>
 				<div class="row">
             <div class="col-md-4">
-            <input type="text" class="form-control" id="lat" placeholder="Lat" name="lat" style="color:#333333;" value="<?php /*echo set_value('lat');*/ ?>" readonly/>
+            <input type="text" class="form-control" id="lat" placeholder="<?php echo lang("lat"); ?>" name="lat" style="color:#333333;" value="<?php /*echo set_value('lat');*/ ?>" readonly/>
             </div>
             <div class="col-md-4">
-            <input type="text" class="form-control" id="long" placeholder="Long" name="long" style="color:#333333;" value="<?php /*echo set_value('long');*/ ?>" readonly/>
+            <input type="text" class="form-control" id="long" placeholder="<?php echo lang("long"); ?>" name="long" style="color:#333333;" value="<?php /*echo set_value('long');*/ ?>" readonly/>
             </div>
             <div class="col-md-4">
             <input type="text" class="form-control" id="zoomlevel" placeholder="Zoom Level" name="zoomlevel" style="color:#333333;" value="<?php /*echo set_value('long');*/ ?>" />
@@ -60,7 +60,7 @@
  			</div>
 
 	 			<div class="form-group">
-	    			<label for="assignedCompanies">Assign Company</label>
+	    			<label for="assignedCompanies"><?php echo lang("assigncompany"); ?></label>
 	    			<!--  <input type="text" id="companySearch" />	-->
 	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignCompany" name="assignCompany[]">
 
@@ -70,7 +70,7 @@
 					</select>
 	 			</div>
 	 			<div class="form-group">
-	    			<label for="assignedConsultant">Assign Consultant</label>
+	    			<label for="assignedConsultant"><?php echo lang("assignconsultant"); ?></label>
 	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignConsultant" name="assignConsultant[]">
 
 						<?php foreach ($consultants as $consultant): ?>
@@ -80,12 +80,12 @@
 	 			</div>
         <?php $mevcut = $this->session->userdata('user_in'); ?>
 	 			<div class="form-group">
-    			<label for="assignContactPerson">Assign Contact Person</label>
+    			<label for="assignContactPerson"><?php echo lang("assigncontact"); ?></label>
     			<select  class="select-block" id="assignContactPerson" name="assignContactPerson">
             <option value="<?php echo $mevcut['id']; ?>">Creator of the project (<?php echo $mevcut['username']; ?>)</option>
 					</select>
 	 			</div>
-        <button type="submit" class="btn btn-block btn-primary">Create Project</button>
+        <button type="submit" class="btn btn-block btn-primary"><?php echo lang("createproject"); ?></button>
 
 			</div>
 			<div class="col-md-4">

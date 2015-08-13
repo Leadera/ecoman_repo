@@ -6,6 +6,8 @@ class User extends CI_Controller {
 		$this->load->model('user_model');
 		$this->load->model('company_model');
 		$this->load->library('form_validation');
+				$this->config->set_item('language', $this->session->userdata('site_lang'));
+
 	}
 
 	public function user_register(){

@@ -12,6 +12,8 @@ class Company extends CI_Controller{
 		$this->load->model('equipment_model');
 		$this->load->model('product_model');
 		$this->load->library('form_validation');
+				$this->config->set_item('language', $this->session->userdata('site_lang'));
+
 	}
 
 	public function new_company(){

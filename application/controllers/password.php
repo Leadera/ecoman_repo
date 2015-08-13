@@ -5,6 +5,8 @@ class Password extends CI_Controller{
 		parent::__construct();
 		$this->load->model('password_model');
 		$this->load->library('form_validation');
+				$this->config->set_item('language', $this->session->userdata('site_lang'));
+
 	}
 
 	public function send_email_for_change_pass(){

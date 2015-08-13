@@ -6,6 +6,8 @@ class Cluster extends CI_Controller{
 		$this->load->model('cluster_model');
 		$this->load->model('company_model');
 		$this->load->library('form_validation');
+				$this->config->set_item('language', $this->session->userdata('site_lang'));
+
 	}
 
 	public function cluster_to_match_company(){

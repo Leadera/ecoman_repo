@@ -12,6 +12,8 @@ class Dataset extends CI_Controller {
 		$this->load->model('component_model');
 		$this->load->library('form_validation');
 
+		$this->config->set_item('language', $this->session->userdata('site_lang'));
+
 		$kullanici = $this->session->userdata('user_in');
 		if($this->user_model->can_edit_company($kullanici['id'],$this->uri->segment(2)) == FALSE && $this->uri->segment(1) != "get_equipment_type" && $this->uri->segment(1) != "get_equipment_attribute"&& $this->uri->segment(1) != "get_sub_process"){
 			redirect(base_url(''), 'refresh');

@@ -12,8 +12,8 @@
 				<?php endif ?>
 			</div>
 			<?php if($have_permission): ?>
-			<a class="btn btn-inverse btn-block" style="margin-bottom: 10px;" href="<?php echo base_url("new_flow/".$companies['id']); ?>"><i class="fa fa-database"></i> Edit Company Data</a>
-			<a class="btn btn-inverse btn-block" style="margin-bottom: 10px;" href="<?php echo base_url("update_company/".$companies['id']); ?>"><i class="fa fa-pencil-square-o"></i> Edit Company Info</a>
+			<a class="btn btn-inverse btn-block" style="margin-bottom: 10px;" href="<?php echo base_url("new_flow/".$companies['id']); ?>"><i class="fa fa-database"></i> <?php echo lang("editcompanydata"); ?></a>
+			<a class="btn btn-inverse btn-block" style="margin-bottom: 10px;" href="<?php echo base_url("update_company/".$companies['id']); ?>"><i class="fa fa-pencil-square-o"></i> <?php echo lang("editcompanyinfo"); ?></a>
 			<button class="btn btn-block btn-inverse" style="width:100%; margin-bottom: 10px;" onclick="$('#target').toggle();">Add New User</button>
 
 			<div id="target" class="well" style="display: none">
@@ -35,7 +35,7 @@
 			</div>
 			<?php endif ?>
 			<div class="form-group" style="margin-bottom:20px;">
-				<div class="swissheader" style="font-size:15px;">Company project</div>
+				<div class="swissheader" style="font-size:15px;"><?php echo lang("companyprojects"); ?></div>
 				<ul class="nav nav-list">
 				<?php foreach ($prjname as $prj): ?>
 					<li><a style="text-transform:capitalize;" href="<?php echo base_url('project/'.$prj['proje_id']); ?>"> <?php echo $prj["name"]; ?></a></li>
@@ -44,7 +44,7 @@
 			</div>
 
 			<div class="form-group">
-				<div class="swissheader" style="font-size:15px;">Company users</div>
+				<div class="swissheader" style="font-size:15px;"><?php echo lang("companyusers"); ?></div>
 				<ul class="nav nav-list">
 				<?php foreach ($cmpnyperson as $cmpprsn): ?>
 					<li><a style="text-transform:capitalize;" href="<?php echo base_url('user/'.$cmpprsn["user_name"]); ?>"> <?php echo $cmpprsn["name"].' '.$cmpprsn["surname"]; ?></a></li>
@@ -58,7 +58,7 @@
 			<table class="table table-bordered">
 				<tr>
 					<td style="width:150px;">
-					Company Info
+					<?php echo lang("description"); ?>
 					</td>
 					<td>
 					<?php echo $companies['description']; ?>
@@ -66,7 +66,7 @@
 				</tr>
 				<tr>
 					<td>
-					E-mail
+					<?php echo lang("email"); ?>
 					</td>
 					<td>
 					<?php echo $companies['email']; ?>
@@ -82,7 +82,7 @@
 				</tr> -->
 				<tr>
 					<td>
-					Work Phone
+					<?php echo lang("workphone"); ?>
 					</td>
 					<td>
 					<?php echo $companies['phone_num_2']; ?>
@@ -90,7 +90,7 @@
 				</tr>
 				<tr>
 					<td>
-					Fax Phone
+					<?php echo lang("faxnumber"); ?>
 					</td>
 					<td>
 					<?php echo $companies['fax_num']; ?>
@@ -108,7 +108,7 @@
 				</tr>
 				<tr>
 					<td>
-					Address
+					<?php echo lang("address"); ?>
 					</td>
 					<td>
 					<?php echo $companies['address']; ?>
@@ -116,7 +116,7 @@
 				</tr>
 				<tr>
 					<td>
-					Company on map
+					<?php echo lang("seeonmap"); ?>
 					</td>
 					<td>
 					<?php echo $map['html']; ?>
@@ -128,14 +128,14 @@
 
 				<table class="table table-bordered">
 					<tr class="success">
-						<th colspan="5">Company Flows</th>
+						<th colspan="5"><?php echo lang("companyflows"); ?></th>
 					</tr>
 					<tr>
-						<th>Flow Name</th>
-						<th>Flow Type</th>
-						<th>Quantity</th>
-						<th>Cost</th>
-						<th>EP</th>
+						<th><?php echo lang("name"); ?></th>
+						<th><?php echo lang("flowtype"); ?></th>
+						<th><?php echo lang("quantity"); ?></th>
+						<th><?php echo lang("cost"); ?></th>
+						<th><?php echo lang("ep"); ?></th>
 					</tr>
 					<?php foreach ($company_flows as $flows): ?>
 						<tr>
@@ -150,12 +150,12 @@
 
 				<table class="table table-bordered">
 					<tr class="success">
-						<th colspan="3">Company Process</th>
+						<th colspan="3"><?php echo lang("companyprocess"); ?></th>
 					</tr>
 					<tr>
-						<th>Process Name</th>
-						<th>Flow Name</th>
-						<th>Flow Type</th>
+						<th><?php echo lang("name"); ?></th>
+						<th><?php echo lang("flowname"); ?></th>
+						<th><?php echo lang("flowtype"); ?></th>
 					</tr>
 					<?php foreach ($company_prcss as $prcss): ?>
 						<tr>
@@ -168,11 +168,11 @@
 
 				<table class="table table-bordered">
 					<tr class="success">
-						<th colspan="2">Company Component</th>
+						<th colspan="2"><?php echo lang("companycomponents"); ?></th>
 					</tr>
 					<tr>
-						<th>Flow Name</th>
-						<th>Component Name</th>
+						<th><?php echo lang("flowname"); ?></th>
+						<th><?php echo lang("name"); ?></th>
 					</tr>
 					<?php foreach ($company_component as $cmpnnt): ?>
 						<tr>
@@ -184,13 +184,13 @@
 
 				<table class="table table-bordered">
 					<tr class="success">
-						<th colspan="4">Company Equipment</th>
+						<th colspan="4"><?php echo lang("companyequipment"); ?></th>
 					</tr>
 					<tr>
-						<th>Equipment Name</th>
-						<th>Equipment Type Name</th>
-						<th>Equipment Attribute Name</th>
-						<th>Used Process</th>
+						<th><?php echo lang("equipmentname"); ?></th>
+						<th><?php echo lang("equipmenttype"); ?></th>
+						<th><?php echo lang("equipmentattname"); ?></th>
+						<th><?php echo lang("usedprocess"); ?></th>
 					</tr>
 					<?php foreach ($company_equipment as $eqpmnt): ?>
 						<tr>
@@ -204,10 +204,10 @@
 
 				<table class="table table-bordered">
 					<tr class="success">
-						<th>Company Product</th>
+						<th><?php echo lang("companyproducts"); ?></th>
 					</tr>
 					<tr>
-						<th>Product Name</th>
+						<th><?php echo lang("name"); ?></th>
 					</tr>
 					<?php foreach ($company_product as $prdct): ?>
 						<tr>

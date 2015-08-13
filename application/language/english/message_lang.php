@@ -270,10 +270,12 @@ $lang["weekly"]   = "Weekly";
 $lang["monthly"]   = "Monthly";
 $lang["annually"]   = "Annually";
 $lang["companyproducts"]   = "Company products";
-$lang["available"]   = "Uygun";
-$lang["notavailable"]   = "Uygun değil";
+$lang["available"]   = "Available";
+$lang["notavailable"]   = "Notavailable";
 
 $lang["editcomponent"]   = "Edit component";
 $lang["editprocess"]   = "Edit process";
 $lang["editproduct"]   = "Edit product";
 $lang["editflow"]   = "Edit flow";
+$lang["companyprojects"]   = "Company projects";
+$lang["companyusers"]   = "Company users";

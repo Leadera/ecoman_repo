@@ -4,6 +4,8 @@ class Search extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('search_model','',TRUE);
+				$this->config->set_item('language', $this->session->userdata('site_lang'));
+
 	}
 
 	public function search_pro($term = FALSE){

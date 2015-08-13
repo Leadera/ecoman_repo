@@ -45,7 +45,7 @@
 	    			<label for="assignedCompanies"><?php echo lang("assigncompany"); ?></label>
 	    			<!--  <input type="text" id="companySearch" />	-->
 
-	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignCompany" name="assignCompany[]">
+	    			<select multiple="multiple"  class="select-block" id="assignCompany" name="assignCompany[]">
 
 						<?php foreach ($companies as $company): ?>
 							<option value="<?php echo $company['id']; ?>" <?php if(in_array($company['id'], $companyIDs)) echo 'selected';?> ><?php echo $company['name']; ?></option>
@@ -54,7 +54,7 @@
 	 			</div>
 	 			<div class="form-group">
 	    			<label for="assignedConsultant"><?php echo lang("assignconsultant"); ?></label>
-	    			<select multiple="multiple"  title="Choose at least one" class="select-block" id="assignConsultant" name="assignConsultant[]">
+	    			<select multiple="multiple" class="select-block" id="assignConsultant" name="assignConsultant[]">
 
 						<?php foreach ($consultants as $consultant): ?>
 							<option value="<?php echo $consultant['id']; ?>" <?php if(in_array($consultant['id'], $consultantIDs)) echo 'selected';?>><?php echo $consultant['name'].' '.$consultant['surname'].' ('.$consultant['user_name'].')'; ?></option>
