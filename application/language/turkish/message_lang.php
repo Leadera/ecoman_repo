@@ -270,6 +270,8 @@ $lang["weekly"]   = "Haftalık";
 $lang["monthly"]   = "Aylık";
 $lang["annually"]   = "Yıllık";
 $lang["companyproducts"]   = "Firmanın ürünleri";
+$lang["available"]   = "Kullanılabilir";
+$lang["notavailable"]   = "Kullanılamaz";
 
 $lang["editcomponent"]   = "Bileşeni düzenle";
 $lang["editprocess"]   = "İşlemi düzenle";

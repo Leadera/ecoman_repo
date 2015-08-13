@@ -9,15 +9,15 @@
 	    </div>
 	<?php endif ?>
 		<?php echo form_open_multipart('edit_flow/'.$companyID.'/'.$flow['flow_id'].'/'.$flow['flow_type_id']); ?>
-			<p class="lead"><?php echo lang("editcompanyflow"); ?></p>
+			<p class="lead"><?php echo lang("editflow"); ?></p>
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-8">
 						<label for="quantity"><?php echo lang("quantity"); ?> (<?php echo lang("annual"); ?>) <span style="color:red;">*</span></label>
-						<input class="form-control" id="quantity" name="quantity" placeholder="Enter Quantity of Flow" value="<?php echo set_value('quantity',$flow['qntty']); ?>">
+						<input class="form-control" id="quantity" name="quantity" placeholder="<?php echo lang("quantity"); ?>" value="<?php echo set_value('quantity',$flow['qntty']); ?>">
 					</div>
 					<div class="col-md-4">
-						<label for="quantityUnit">Quantity Unit <span style="color:red;">*</span></label>
+						<label for="quantityUnit"><?php echo lang("quantity"); ?> <?php echo lang("unit"); ?> <span style="color:red;">*</span></label>
 						<select id="quantityUnit" class="info select-block" name="quantityUnit">
 							<?php foreach ($units as $unit): ?>
 								<?php if($flow['qntty_unit_id']==$unit['id']) {$deger = TRUE;}else{$deger=False;} ?>
@@ -30,11 +30,11 @@
 		  	<div class="form-group">
 		    	<div class="row">
 						<div class="col-md-8">
-							<label for="cost">Cost (Annual) <span style="color:red;">*</span></label>
-		    			<input class="form-control" id="cost" name="cost" placeholder="Cost of flow (number)" value="<?php echo set_value('cost',$flow['cost']); ?>">
+							<label for="cost"><?php echo lang("cost"); ?> (<?php echo lang("annual"); ?>) <span style="color:red;">*</span></label>
+		    			<input class="form-control" id="cost" name="cost" placeholder="<?php echo lang("cost"); ?>" value="<?php echo set_value('cost',$flow['cost']); ?>">
 			    	</div>
 						<div class="col-md-4">
-							<label for="cost">Cost Unit <span style="color:red;">*</span></label>
+							<label for="cost"><?php echo lang("costunit"); ?> <span style="color:red;">*</span></label>
 							<select id="costUnit" class="info select-block" name="costUnit">
 								<?php $edeger = FALSE; ?>
 								<?php $ddeger = FALSE; ?>
@@ -52,41 +52,41 @@
 		  	<div class="form-group">
 		  		<div class="row">
 						<div class="col-md-8">
-				  		<label for="ep">EP (Annual) <span style="color:red;">*</span></label>
-				    	<input class="form-control" id="ep" name="ep" placeholder="Enter EP" value="<?php echo set_value('ep',$flow['ep']); ?>">
+				  		<label for="ep">EP (<?php echo lang("annual"); ?>) <span style="color:red;">*</span></label>
+				    	<input class="form-control" id="ep" name="ep" placeholder="EP" value="<?php echo set_value('ep',$flow['ep']); ?>">
 				    </div>
 						<div class="col-md-4">
-							<label for="epUnit">EP Unit <span style="color:red;">*</span></label>
+							<label for="epUnit"><?php echo lang("epunit"); ?> <span style="color:red;">*</span></label>
 							<input type="text" class="form-control" id="epUnit" value="EP" name="epUnit" readonly>
 						</div>
 		  		</div>
 		  	</div>
 
 		  	<div class="form-group">
-				  <label for="cf">Chemical formula</label>
-				  <input class="form-control" id="cf" name="cf" placeholder="Chemical formula" value="<?php echo set_value('chemical_formula',$flow['chemical_formula']); ?>">
+				  <label for="cf"><?php echo lang("chemicalformula"); ?></label>
+				  <input class="form-control" id="cf" name="cf" placeholder="<?php echo lang("chemicalformula"); ?>" value="<?php echo set_value('chemical_formula',$flow['chemical_formula']); ?>">
 		  	</div>		  	
 
 				<div class="form-group">
-					<label for="availability">Availability</label>
+					<label for="availability"><?php echo lang("availability"); ?></label>
 					<select id="availability" class="info select-block" name="availability">
 						<?php $aa = FALSE; ?>
 						<?php $na = FALSE; ?>
 						<?php if($flow['availability']=="t") {$aa = TRUE;} ?>
 						<?php if($flow['availability']=="f") {$na = TRUE;} ?>
-						<option value="true" <?php echo set_select('availability', 'true', $aa); ?>>Available</option>
-						<option value="false" <?php echo set_select('availability', 'false', $na); ?>>Not Available</option>
+						<option value="true" <?php echo set_select('availability', 'true', $aa); ?>><?php echo lang("available"); ?></option>
+						<option value="false" <?php echo set_select('availability', 'false', $na); ?>><?php echo lang("notavailable"); ?></option>
 					</select>
 				</div>
 
 				<div class="form-group">
 					<div class="row">
 						<div class="col-md-8">
-							<label for="conc">Concentration</label>
-							<input class="form-control" id="conc" name="conc" placeholder="Concentration" value="<?php echo set_value('conc',$flow['concentration']); ?>">
+							<label for="conc"><?php echo lang("concentration"); ?></label>
+							<input class="form-control" id="conc" name="conc" placeholder="<?php echo lang("concentration"); ?>" value="<?php echo set_value('conc',$flow['concentration']); ?>">
 						</div>
 						<div class="col-md-4">
-							<label for="concunit">Concentration Unit</label>
+							<label for="concunit"><?php echo lang("concentration"); ?> <?php echo lang("unit"); ?></label>
 							<select id="concunit" class="info select-block" name="concunit">
 								<?php $bir = FALSE; ?>
 								<?php $iki = FALSE; ?>
@@ -102,11 +102,11 @@
 				<div class="form-group">
 					<div class="row">
 						<div class="col-md-8">
-							<label for="pres">Pressure</label>
-							<input class="form-control" id="pres" name="pres" placeholder="Pressure" value="<?php echo set_value('pres',$flow['pression']); ?>">
+							<label for="pres"><?php echo lang("pressure"); ?></label>
+							<input class="form-control" id="pres" name="pres" placeholder="<?php echo lang("pressure"); ?>" value="<?php echo set_value('pres',$flow['pression']); ?>">
 						</div>
 						<div class="col-md-4">
-							<label for="presunit">Pressure Unit</label>
+							<label for="presunit"><?php echo lang("presure"); ?> <?php echo lang("unit"); ?></label>
 							<select id="presunit" class="info select-block" name="presunit">
 								<?php $biri = FALSE; ?>
 								<?php $ikii = FALSE; ?>
@@ -123,12 +123,12 @@
 				</div>				
 
 				<div class="form-group">
-					<label for="ph">PH</label>
-					<input class="form-control" id="ph" name="ph" placeholder="PH" value="<?php echo set_value('ph',$flow['ph']); ?>">
+					<label for="ph"><?php echo lang("ph"); ?></label>
+					<input class="form-control" id="ph" name="ph" placeholder="<?php echo lang("ph"); ?>" value="<?php echo set_value('ph',$flow['ph']); ?>">
 				</div>
 
 				<div class="form-group">
-					<label for="state">State</label>
+					<label for="state"><?php echo lang("state"); ?></label>
 					<select id="state" class="info select-block" name="state">
 						<?php $x = FALSE; ?>
 						<?php $y = FALSE; ?>
@@ -143,13 +143,13 @@
 				</div>
 
 				<div class="form-group">
-					<label for="quality">Quality</label>
-					<input class="form-control" id="quality" name="quality" placeholder="Quality" value="<?php echo set_value('quality',$flow['quality']); ?>">
+					<label for="quality"><?php echo lang("quality"); ?></label>
+					<input class="form-control" id="quality" name="quality" placeholder="<?php echo lang("quality"); ?>" value="<?php echo set_value('quality',$flow['quality']); ?>">
 				</div>				
 
 				<div class="form-group">
-					<label for="oloc">Output location</label>
-					<input class="form-control" id="oloc" name="oloc" placeholder="Output location" value="<?php echo set_value('output_location',$flow['output_location']); ?>">
+					<label for="oloc"><?php echo lang("outputlocation"); ?></label>
+					<input class="form-control" id="oloc" name="oloc" placeholder="<?php echo lang("outputlocation"); ?>" value="<?php echo set_value('output_location',$flow['output_location']); ?>">
 				</div>				
 
 <!--					<div class="form-group">
@@ -178,21 +178,21 @@
 				</div> -->
 				
 				<div class="form-group">
-					<label for="spot">Substitute potential</label>
-					<input class="form-control" id="spot" name="spot" placeholder="Substitute potential" value="<?php echo set_value('substitute_potential',$flow['substitute_potential']); ?>">
+					<label for="spot"><?php echo lang("substitute_potential"); ?></label>
+					<input class="form-control" id="spot" name="spot" placeholder="<?php echo lang("substitute_potential"); ?>" value="<?php echo set_value('substitute_potential',$flow['substitute_potential']); ?>">
 				</div>
 
 				<div class="form-group">
-					<label for="desc">Description</label>
-					<input class="form-control" id="desc" name="desc" placeholder="Description" value="<?php echo set_value('description',$flow['description']); ?>">
+					<label for="desc"><?php echo lang("description"); ?></label>
+					<input class="form-control" id="desc" name="desc" placeholder="<?php echo lang("description"); ?>" value="<?php echo set_value('description',$flow['description']); ?>">
 				</div>
 
 				<div class="form-group">
-					<label for="comment">Comment</label>
-					<input class="form-control" id="comment" name="comment" placeholder="Comment" value="<?php echo set_value('comment',$flow['comment']); ?>">
+					<label for="comment"><?php echo lang("comments"); ?></label>
+					<input class="form-control" id="comment" name="comment" placeholder="<?php echo lang("comments"); ?>" value="<?php echo set_value('comment',$flow['comment']); ?>">
 				</div>
 
-		  	<button type="submit" class="btn btn-info">Save new data</button>
+		  	<button type="submit" class="btn btn-info"><?php echo lang("savedata"); ?></button>
 		</form>
-		<span class="label label-default"><span style="color:red;">*</span> labels are required.</span>
+		<span class="label label-default"><span style="color:red;">*</span> <?php echo lang("labelarereq"); ?>.</span>
 		</div>
