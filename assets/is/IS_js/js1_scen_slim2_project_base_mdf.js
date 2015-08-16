@@ -433,32 +433,42 @@ function showMapPanelExpand() {
         $("#tt_tree").tree({
                     onCheck: function(node, checked) {
                             //alert('on check test');  
-                            //$("#tt_tree").tree('expand', node.target);
+                            $("#tt_tree").tree('expand', node.target);
+                            
+                            console.log($("#tt_tree").tree('getChildren', node.target));
+                            //$("#tt_tree").tree('collapse', node.target);
                             //alert('on check test2'); 
-                            /*if(checked) {
-                                if(node.attributes.notroot) {
+                            if(checked) {
+                                //alert('on check test2');
+                                /*if(node.attributes.notroot) {
                                     $('#tt_grid').datagrid("hideColumn",node.text);
                                     $('#tt_grid').datagrid("showColumn",node.text);
                                     console.error($('#tt_grid').datagrid('getColumnFields'));
-                                }
+                                }*/
                                 if(node.children) {
+                                    //alert('on check test3');
                                     $.each(node.children, function( index, obj ) {
-                                    $('#tt_grid').datagrid("hideColumn",obj.text);
-                                    $('#tt_grid').datagrid("showColumn",obj.text);
+                                    //console.log(obj);
+                                    //$("#tt_tree").tree("check", obj.target);
+                                    //$('#tt_grid').datagrid("hideColumn",obj.text);
+                                    //$('#tt_grid').datagrid("showColumn",obj.text);
                                   });
                                 }
                             } else {
-                                if(node.attributes.notroot) {
+                                /*if(node.attributes.notroot) {
                                     $('#tt_grid').datagrid("hideColumn",node.text);
-                                }
+                                }*/
                                 if(node.children) {
-                                    $.each(node.children, function( index, obj ) {
-                                    $('#tt_grid').datagrid("hideColumn",obj.text);
+                                  $.each(node.children, function( index, obj ) {
+                                      $("#tt_tree").tree("check", obj.target);
+                                    //$('#tt_grid').datagrid("hideColumn",obj.text);
                                   });
                                 } 
-                            }*/
+                            }
                     },
                     onClick: function(node){
+                    alert('on click  test');
+                    $("#tt_tree").tree('expand', node.target);
                     var parentnode=$("#tt_tree").tree("getParent", node.target);
                     var roots=$("#tt_tree").tree("getRoots");
                     var treeValue;
@@ -497,7 +507,7 @@ function showMapPanelExpand() {
                 },
                 onCollapse: function(node){
                     
-                    var root=$("#tt_tree").tree("getRoot");
+                    /*var root=$("#tt_tree").tree("getRoot");
                     var parent=$("#tt_tree").tree("getParent",node.target);
                     //alert('test');
                     if(parent) {
@@ -506,7 +516,7 @@ function showMapPanelExpand() {
                         var selections = $('#tt_grid').datagrid("getSelections");
                         for(var i=0; i<selections.length; i++){
                         }
-                    }
+                    }*/
                     
                 },
                 onDblClick: function(node){
@@ -710,6 +720,11 @@ function showMapPanelExpand() {
     
     //new company flow table
     $('#tt_grid').datagrid({
+       url :'../../../Proxy/SlimProxy.php',
+       queryParams : { url : 'flowsAndCompanies_json_test_MDF_manual',
+                       //flows : JSON.stringify(arrayLeaf),
+                       prj_id : $('#prj_id').val()
+                   },
         sortName : 'company',
         collapsible:true,
         //idField:'id',
@@ -807,13 +822,13 @@ function showMapPanelExpand() {
             
             });
     //$('#tt_grid2').datagrid('loadData', data);
-    $('#tt_grid').datagrid({
+    /*$('#tt_grid').datagrid({
        url :'../../../Proxy/SlimProxy.php',
        queryParams : { url : 'flowsAndCompanies_json_test_MDF_manual',
                        //flows : JSON.stringify(arrayLeaf),
                        prj_id : $('#prj_id').val()
                    }
-    });
+    });*/
     
     
     /*$('#tt_grid_scenarios').datagrid({
