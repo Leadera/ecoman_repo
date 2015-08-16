@@ -379,7 +379,7 @@ function beginISPotentialByAllFlows() {
         }
         
         function getFlowCompanies(index,flowName, companyID) {
-            alert('test');
+            //alert('test');
             $('#tt_grid_dynamic3').datagrid({  
                       loadMsg :'There is no IS potential for the selected flow category. Please select another flow category',
                       rownumbers: "true",
