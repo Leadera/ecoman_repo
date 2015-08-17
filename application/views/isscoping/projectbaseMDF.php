@@ -24,7 +24,12 @@
             <div id="cc2" class="easyui-layout" data-options="fit:true">
                 <!--<div data-options="region:'north',split:true,border:false" style="height:50px"></div>-->
                 <div data-options="region:'north',split:true,border:true,collapsed:true" style="width:100%;height:400px">
-                      <div id="p" class="easyui-panel" title="IS Companies Location" data-options="" style="margin: auto 0;height:400px">  
+                      <div id="p" class="easyui-panel" title="IS Companies Location" data-options="iconCls:'icon-ok',tools:[
+				{
+                                        text : 'Close Map',
+					iconCls:'icon-remove',
+					handler:function(){closeMapPanel();event.preventDefault();}
+				}]" style="margin: auto 0;height:400px">  
                           <a href="#" name="add" onclick="event.preventDefault();" 
                                ></a>  
                           <iframe src="../IS_OpenLayers/mapDefault.php" id="myFrame" width="100%" marginwidth="0" 
@@ -34,7 +39,7 @@
                                 scrolling="auto">
                             </iframe>
                         </div>
-                </div>
+                </div>  
                 
                 <div data-options="region:'west',split:true,border:true" style="width:50%;height:200px">
                     <table id="tt_grid_dynamic2" class="easyui-datagrid" title="Step 2: Select flow from selected company" style=""

@@ -28,7 +28,12 @@
                 
                 
                 <div data-options="region:'north',split:true,border:true,collapsed:true" style="width:100%;height:400px">
-                      <div id="p" class="easyui-panel" title="IS Companies Location" data-options="" style="margin: auto 0;height:400px">  
+                      <div id="p" class="easyui-panel" title="IS Companies Location" data-options="iconCls:'icon-ok',tools:[
+				{
+                                        text : 'Close Map',
+					iconCls:'icon-remove',
+					handler:function(){closeMapPanel();event.preventDefault();}
+				}]" style="margin: auto 0;height:400px">  
                           <a href="#" name="add" onclick="event.preventDefault();" 
                                ></a>  
                           <iframe src="../IS_OpenLayers/mapDefault.php" id="myFrame" width="100%" marginwidth="0" 
