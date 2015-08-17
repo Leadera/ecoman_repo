@@ -6,7 +6,8 @@
     queryParams : {
         row : JSON.stringify($('#tt_grid_dynamic4').datagrid('getRows')),
         text : $('#tt_text').textbox('getText'),
-        consultant_id : document.getElementById('consultant_id').value
+        consultant_id : document.getElementById('consultant_id').value,
+        prj_id : document.getElementById('prj_id').value
         //'row='+JSON.stringify($('#tt_grid_dynamic5').datagrid('getRows'))+'&text='+$('#tt_textAuto').textbox('getText')
     },
     onSubmit:function(){
