@@ -31,7 +31,7 @@
                       <div id="p" class="easyui-panel" title="IS Companies Location" data-options="iconCls:'icon-ok',tools:[
 				{
                                         text : 'Close Map',
-					iconCls:'icon-remove',
+					iconCls:'icon-remove',  
 					handler:function(){closeMapPanel();event.preventDefault();}
 				}]" style="margin: auto 0;height:400px">  
                           <a href="#" name="add" onclick="event.preventDefault();" 
