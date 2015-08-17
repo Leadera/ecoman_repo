@@ -184,7 +184,8 @@
                 url : '../../../Proxy/SlimProxy.php',
                 queryParams : {
                         url : 'ISScenariosCns_scn',  
-                        consultant_id : parseInt(document.getElementById('consultant_id').value)
+                        consultant_id : parseInt(document.getElementById('consultant_id').value),
+                        prj_id : parseInt(document.getElementById('prj_id').value)
                 },
                 method:'get',
                 idField:'id',
