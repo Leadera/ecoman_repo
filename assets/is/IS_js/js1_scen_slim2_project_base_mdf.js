@@ -637,7 +637,7 @@ function showMapPanelExpand() {
                         rownumbers:true,
                         loadMsg:'',
                         height:'auto',
-                        columns:[[
+                        columns:[[    
                             {field:'company',title:'Company',width:200},
                             {field:'potential_energy',title:'Potential Energy',width:200},
                             {field:'potential_energy_unit',title:'Potential Energy Unit',width:200},

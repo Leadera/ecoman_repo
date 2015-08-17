@@ -592,7 +592,7 @@ function beginISPotentialByAllFlows() {
                         width:'50%',
                         height:300
                 });
-
+    
                 panelWest.panel('resize', {
                         //width:'10%',
                         width:'50%',

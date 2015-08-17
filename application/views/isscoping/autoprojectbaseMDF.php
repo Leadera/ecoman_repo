@@ -25,7 +25,7 @@
             
             
             <div id="cc2" class="easyui-layout" data-options="fit:true">
-                
+                   
                 
                 <div data-options="region:'north',split:true,border:true,collapsed:true" style="width:100%;height:400px">
                       <div id="p" class="easyui-panel" title="IS Companies Location" data-options="iconCls:'icon-ok',tools:[

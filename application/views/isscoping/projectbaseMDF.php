@@ -38,7 +38,7 @@
                                 align="middle" 
                                 scrolling="auto">
                             </iframe>
-                        </div>
+                        </div>   
                 </div>  
                 
                 <div data-options="region:'west',split:true,border:true" style="width:50%;height:200px">
