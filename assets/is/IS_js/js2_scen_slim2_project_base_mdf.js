@@ -563,6 +563,7 @@ function beginISPotentialByAllFlows() {
     
     
       $('#tt_grid_dynamic2').datagrid({
+        fit : true,
         columns:[[
             //{field:'cmpny_id',title:'ID',width:10},   
             {field:'flow',title:'Flow Category',width:100},
@@ -580,6 +581,24 @@ function beginISPotentialByAllFlows() {
             detailFormatter:function(index,row){
                 return '<div style="padding:2px"><table class="ddv"></table></div>';
             },
+            onCollapseRow: function (index, row) {
+                //alert('oncollapse row');
+                var panelWest = $('#cc2').layout('panel','west');
+                var panelCenter = $('#cc2').layout('panel','center');
+                panelCenter.panel('open');
+
+                panelCenter.panel('resize', {
+                        //width:'10%',
+                        width:'50%',
+                        height:300
+                });
+
+                panelWest.panel('resize', {
+                        //width:'10%',
+                        width:'50%',
+                        height:300
+                });
+            },
             onExpandRow: function(index,row){
                 var ddv = $(this).datagrid('getRowDetail',index).find('table.ddv');
                 //console.error(row.company_id);
@@ -590,6 +609,7 @@ function beginISPotentialByAllFlows() {
                     queryParams : { url:'getFlowDetailsMan_prj',
                                     items : JSON.stringify(regArr)},
                     //fitColumns:true,
+                    //fit : true,
                     singleSelect:true,
                     rownumbers:true,
                     loadMsg:'',
@@ -625,6 +645,14 @@ function beginISPotentialByAllFlows() {
 
                     ]],
                     onResize:function(){
+                        var panelWest = $('#cc2').layout('panel','west');
+                            var panelCenter = $('#cc2').layout('panel','center');
+                            panelCenter.panel('close');
+                            panelWest.panel('resize', {
+                                    //width:'10%',
+                                    width:'100%',
+                                    height:300
+                            });
                         $('#tt_grid_dynamic2').datagrid('fixDetailRowHeight',index);
                     },
                     onLoadSuccess:function(){

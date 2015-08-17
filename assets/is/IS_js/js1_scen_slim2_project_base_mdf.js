@@ -554,12 +554,74 @@ function showMapPanelExpand() {
                 toolbar:'#tb5',
                 remoteSort:false,
                 multiSort:false,
+                columns:
+                        [[
+                            //{field:'sirket_id',title:'ID',width:300},
+                            //{field: 'ck',title: 'From Company',checkbox:true},
+                            {field: 'company',title: 'From Company',width:100},
+                            {field: 'flow',title: 'Flow',width:100/*,sortable:true*/},
+                            {field: 'qntty',title: 'Quantity',width:100},
+                            {field: 'qnttyunit',title: 'Unit',width:100},
+                            {field: 'fromflowtype',title: 'Flow Type',width:100},
+                            {field: 'tocompany',title: ' To Company',width:100},
+                            {field: 'qntty2',title: 'Quantity',width:100},
+                            {field: 'qntty2unit',title: 'Unit',width:100},
+                            {field: 'toflowtype',title: 'Flow Type',width:100},
+                        ]],
+                fit:true,
+                fitColumns : true,
                 view: detailview,
                 detailFormatter:function(index,row){
                     return '<div style="padding:2px"><table class="ddv"></table></div>';
                 },
-                onExpandRow: function(index,row){
+                onCollapseRow: function (index, row) {
+                    //alert('oncollapse row');
+                    var panelWest = $('#cc2').layout('panel','west');
+                    var panelCenter = $('#cc2').layout('panel','center');
+                    panelCenter.panel('open');
+                    
+                    panelCenter.panel('resize', {
+                            //width:'10%',
+                            width:'50%',
+                            height:300
+                    });
+                    
+                    panelWest.panel('resize', {
+                            //width:'10%',
+                            width:'50%',
+                            height:300
+                    });
+                },
+                onExpandRow: function(index,row){         
+                    //alert('test'); 
+                    var panelWest = $('#cc2').layout('panel','west');
+                    var panelCenter = $('#cc2').layout('panel','center');
+                    //console.log(panelCenter);
+                    //panelobj.panel('close');
+                    /*panelCenter.panel('resize', {
+                            width:'7%',
+                            //width:100,
+                            height:300
+                    });*/
+                    
+                    //panelCenter.panel('close');
+                    
+                    /*panelWest.panel('resize', {
+                            //width:'10%',
+                            width:'100%',
+                            height:300
+                    });*/
+                    //$('#tt_grid_dynamic').datagrid('fixDetailRowHeight',index);
+                    
+                    //$('#ccTable').layout('resize');
+                    //$('#tt_grid_dynamic').datagrid('resize');
+
+                    //resize
+                    var rowExpander = $(this).datagrid('getExpander');
+                    console.warn(rowExpander);
                     var ddv = $(this).datagrid('getRowDetail',index).find('table.ddv');
+                    console.warn(ddv);
+                    console.warn($(this).datagrid('getRowDetail',index));
                     console.error(row.id);
                     var strReq = row.id;
                     var splitArr =strReq.split(",");
@@ -569,27 +631,28 @@ function showMapPanelExpand() {
                         url:'../../../Proxy/SlimProxy.php',
                         queryParams : { url:'getFlowDetails_prj',
                                         items : JSON.stringify(regArr)},
-                        //fitColumns:true,
+                        fitColumns:true,
+                        //fit : true,
                         singleSelect:true,
                         rownumbers:true,
                         loadMsg:'',
                         height:'auto',
                         columns:[[
-                            {field:'company',title:'Company',width:100},
-                            {field:'potential_energy',title:'Potential Energy',width:100},
-                            {field:'potential_energy_unit',title:'Potential Energy Unit',width:100},
-                            {field:'supply_cost',title:'Supply Cost',width:100},
-                            {field:'supply_cost_unit',title:'Supply Cost Unit',width:100},
-                            {field:'transport_id',title:'Transport',width:100},
-                            {field:'entry_date',title:'Entry Date',width:100},
-                            {field:'concentration',title:'Concentration',width:100},
-                            {field:'pression',title:'Press.',width:100},
-                            {field:'state_id',title:'State',width:100},
-                            {field:'min_flow_rate',title:'Min Flow Rate',width:100},
-                            {field:'min_flow_rate_unit',title:'Min Flow Rate Unit',width:100},
-                            {field:'max_flow_rate',title:'Max Flow Rate',width:100},
-                            {field:'max_flow_rate_unit',title:'Max Flow Rate Unit',width:100},
-                            {field:'substitute_potential',title:'Substitute Potential',width:100},
+                            {field:'company',title:'Company',width:200},
+                            {field:'potential_energy',title:'Potential Energy',width:200},
+                            {field:'potential_energy_unit',title:'Potential Energy Unit',width:200},
+                            {field:'supply_cost',title:'Supply Cost',width:200},
+                            {field:'supply_cost_unit',title:'Supply Cost Unit',width:200},
+                            {field:'transport_id',title:'Transport',width:200},
+                            {field:'entry_date',title:'Entry Date',width:200},
+                            {field:'concentration',title:'Concentration',width:200},
+                            {field:'pression',title:'Press.',width:200},
+                            {field:'state_id',title:'State',width:200},
+                            {field:'min_flow_rate',title:'Min Flow Rate',width:200},
+                            {field:'min_flow_rate_unit',title:'Min Flow Rate Unit',width:200},
+                            {field:'max_flow_rate',title:'Max Flow Rate',width:200},
+                            {field:'max_flow_rate_unit',title:'Max Flow Rate Unit',width:200},
+                            {field:'substitute_potential',title:'Substitute Potential',width:200},
                             {field:'quality',title:'Quality',width:100},
                             {field:'ep_unit_id',title:'Ep Unit',width:100},
                             {field:'comment',title:'Comment',width:100},
@@ -600,10 +663,19 @@ function showMapPanelExpand() {
                                             var link = '<a href="#" onclick="event.preventDefault();window.open(\'new_flow/'+row.id+'\', \'_blank\')" class="easyui-linkbutton" iconCls="icon-back" plain="true">Dataset Management</a>';
                                             return link;
                                     }
-                            }
+                            }   
                             
                         ]],
                         onResize:function(){
+                            //alert('on resize');
+                            var panelWest = $('#cc2').layout('panel','west');
+                            var panelCenter = $('#cc2').layout('panel','center');
+                            panelCenter.panel('close');
+                            panelWest.panel('resize', {
+                                    //width:'10%',
+                                    width:'100%',
+                                    height:300
+                            });
                             $('#tt_grid_dynamic').datagrid('fixDetailRowHeight',index);
                         },
                         onLoadSuccess:function(){
@@ -613,23 +685,9 @@ function showMapPanelExpand() {
                         }
                     });
                     $('#tt_grid_dynamic').datagrid('fixDetailRowHeight',index);
+                    
                 },
-                columns:
-                        [[
-                            //{field:'sirket_id',title:'ID',width:300},
-                            //{field: 'ck',title: 'From Company',checkbox:true},
-                            {field: 'company',title: 'From Company'},
-                            {field: 'flow',title: 'Flow'/*,sortable:true*/},
-                            {field: 'qntty',title: 'Quantity'},
-                            {field: 'qnttyunit',title: 'Unit'},
-                            {field: 'fromflowtype',title: 'Flow Type'},
-                            {field: 'tocompany',title: ' To Company'},
-                            {field: 'qntty2',title: 'Quantity'},
-                            {field: 'qntty2unit',title: 'Unit'},
-                            {field: 'toflowtype',title: 'Flow Type'},
-                        ]],
-                fit:true,
-                fitColumns : true,
+                
                
     });
     
@@ -857,6 +915,7 @@ function showMapPanelExpand() {
     $('#p2').panel('collapse');*/
     
     $('#tt_grid_dynamic5').datagrid({
+        fit : true,
         columns:[[
             {field:'company1',title:'Company',width:100},
             {field:'qntty1',title:'Quantity',width:100},

@@ -54,9 +54,11 @@
                 
                 <!--<div data-options="region:'north',split:true,border:false" style="height:50px"></div>-->
                 <div data-options="region:'west',split:true,border:true" style="width:50%;height:300px">
-                    <table  id="tt_grid_dynamic"  title="Step 3: Select IS potentials from table " style="height:300px">
+                    <!--<div id="ccTable" class="easyui-layout" data-options="fit:true">-->
+                        <table  id="tt_grid_dynamic"  title="Step 3: Select IS potentials from table " style="height:300px">
                         
-                    </table>
+                        </table>
+                    <!--</div>-->
                 </div>
                 <!--<div data-options="region:'east',split:true,border:false" style="width:50%"></div>-->
                 <div data-options="region:'center',border:true,split:true" style="width:50%;height:300px">
