@@ -28,21 +28,37 @@
                    
                 
                 <div data-options="region:'north',split:true,border:true,collapsed:true" style="width:100%;height:400px">
-                      <div id="p" class="easyui-panel" title="IS Companies Location" data-options="iconCls:'icon-ok',tools:[
+                      <!--<div id="p" class="easyui-panel" title="IS Companies Location" data-options="iconCls:'icon-ok',tools:[
 				{
                                         text : 'Close Map',
 					iconCls:'icon-remove',  
 					handler:function(){closeMapPanel();event.preventDefault();}
-				}]" style="margin: auto 0;height:400px">  
-                          <a href="#" name="add" onclick="event.preventDefault();" 
-                               ></a>  
+				}]" style="margin: auto 0;height:400px">  -->
+                          <div id="p" class="easyui-panel" title="IS Companies Location" 
+                               data-options="iconCls:'icon-ok',tools:'#tt',toolbar:'#tbclosemap'" style="margin: auto 0;height:400px">
+                          
+                          
                           <iframe src="../IS_OpenLayers/mapDefault.php" id="myFrame" width="100%" marginwidth="0" 
                                 height="100%" 
                                 marginheight="0" 
                                 align="middle" 
                                 scrolling="auto">
                             </iframe>
+                            <div id="tt">
+                                <a href="javascript:void(0)" onclick="event.preventDefault();closeMapPanel()" 
+                                   class="icon-remove" ></a>
+                            </div>
                         </div>
+                        
+                </div>
+                <div id="tbclosemap" style="padding:5px;height:auto">
+                    <div style="margin-bottom:5px">
+                        <!--<a href="#" onclick="deleteISPotential();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">Remove row</a>-->
+                        
+                        <a href="#" onclick="closeMapPanel();event.preventDefault();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Close Map</a>
+                        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">Save</a>
+                        
+                    </div>
                 </div>
                 
                 <!--<div data-options="region:'south',split:true,border:true"  style="width:100%;">
