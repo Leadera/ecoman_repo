@@ -48,8 +48,25 @@
 </head>
 <body>
 
+    <input id='latitude' type="hidden" value=<?php echo $projects['latitude'] ?>>
+    <input id='longitude' type="hidden" value=<?php echo $projects['longitude'] ?>>
+    <input type ="hidden" value='<?php echo $project_id; ?>' id ='prj_id' name='prj_id'></input>
 
 <script>
+    
+    /*var lonLat= new OpenLayers.LonLat(parseFloat('6.1468505859375'), 
+                                  parseFloat('46.195517406488484 ')).transform(new  OpenLayers.Projection("EPSG:4326"), 
+                                  new OpenLayers.Projection("EPSG:900913"))*/
+    
+    /*var lonLat= new OpenLayers.LonLat(parseFloat('6.1468505859375'), 
+                                  parseFloat('46.195517406488484 ')).transform(new  OpenLayers.Projection("EPSG:4326"), 
+                                  new OpenLayers.Projection("EPSG:900913"))*/
+    var lonLat = new OpenLayers.LonLat(parseFloat(document.getElementById('longitude').value), 
+                                  parseFloat(document.getElementById('latitude').value)).
+                                          transform(new  OpenLayers.Projection("EPSG:4326"), 
+                                  new OpenLayers.Projection("EPSG:900913"));
+    
+    
 Ext.namespace("Ostim");
 Ext.namespace("Ostim.options");
 Ext.namespace("Ostim.options.wfs");
@@ -64,8 +81,10 @@ Ostim.options.bookmarks =
 				name: 'Ostim Teknoloji',
 				desc: 'Ostim Teknoloji Yerleşkesi',
 				layers: ['OpenStreetMap', 'Ostim Enerji ve Çevre Kümelenmesi', 'Ostim Savunma Kümelenmesi', 'Ostim Medikal Kümelenmesi', 'Ostim Kauçuk Kümelenmesi', 'Ostim İş ve İş Makinaları Kümelenmesi', 'Anadolu Raylı Sistemler Kümelenmesi'],
-				x: 3645188.674212186,
-				y: 4862142.814161345,
+				/*x: 3645188.674212186,
+				y: 4862142.814161345,*/
+                                  /*x: 46.195517406488484,
+                                  y: 6.1468505859375,*/
 				zoom: 17
 			}
 		];
@@ -272,10 +291,14 @@ Ostim.layout = {
 							maxResolution: 'auto',
 							xy_precision: 5,
 							//zoom: 6,
+                                                        center : ''+lonLat.lon+','+ lonLat.lat+'',
                                                         //center: '545465.505, 6854552.133',
-                                                        center : '3645188.674212186, 4862142.814161345',
+                                                        //OSTIM
+                                                        //center : '3645188.674212186, 4862142.814161345',
+                                                        //center : '6.1468505859375 ,46.195517406488484 ',
                                                         //center : '4449868.515107782, 3861543.6706226687',
-                                                        zoom: 17,
+                                                        //zoom: 17,
+                                                        zoom: 12,
 							theme: null,
                                                         //allOverlays: true,
 						},
@@ -425,6 +448,35 @@ Ostim.layout = {
                                                                     }
                                                                 }
                                                             }
+                                                        ),
+                                                        new OpenLayers.Layer.WMS(
+                                                            "Project Companies",
+                                                            'http://88.249.18.205:8445/geoserver/ecoman/wms?',
+                                                            {layers: "ecoman:view_gis_project_firms", 
+                                                                transparent: true, 
+                                                                format: 'image/png',
+                                                             //cql_filter : "IN('company_id."+from_company+"','company_id."+to_company+"')"
+                                                             cql_filter : "id=<?php echo $project_id; ?>"
+                                                            },
+                                                            {singleTile: true, 
+                                                             opacity: 0.9, 
+                                                             isBaseLayer: false, 
+                                                             visibility: true, 
+                                                             noLegend: false, 
+                                                             featureInfoFormat: 'application/vnd.ogc.gml', 
+                                                             transitionEffect: 'resize'
+                                                               ,
+                                                           metadata: {
+                                                                    wfs: {
+                                                                        protocol: 'fromWMSLayer',
+                                                                        featurePrefix: 'ecoman:view_gis_project_firms',
+                                                                        //featureNS: 'http://rdinfo.geonovum.nl',
+                                                                        featureNS: 'http://88.249.18.205:8445/geoserver/ecoman',
+                                                                        downloadFormats: Ostim.options.wfs.downloadFormats,
+                                                                        
+                                                                    }
+                                                                }
+                                                            }
                                                         )
                                                            
     
@@ -459,7 +511,7 @@ Ostim.layout = {
                                                                              }
                                                                          }*/
                                                      }},
-                            {type: "featureinfo", options: {  
+                            /*{type: "featureinfo", options: {  
                                 popupWindow: {
                                     width: 360,
                                     height: 200,
@@ -477,7 +529,7 @@ Ostim.layout = {
                                         maxFeatures: 10
                                     }
                                 }
-                            }},
+                            }},*/
 							{type: "-"} ,
 							{type: "pan"},
 							{type: "zoomin"},
@@ -544,7 +596,7 @@ Ostim.layout = {
 
 					// Options for OLEditor
 					olEditorOptions: {
-						activeControls: ['UploadFeature', 'DownloadFeature', 'Separator', 'Navigation', 'SnappingSettings', 'CADTools', 'Separator', 'DeleteAllFeatures', 'DeleteFeature', 'DragFeature', 'SelectFeature', 'Separator', 'DrawHole', 'ModifyFeature', 'Separator'],
+						activeControls: [/*'UploadFeature', 'DownloadFeature',*/ 'Separator', 'Navigation', 'SnappingSettings', 'CADTools', 'Separator',/* 'DeleteAllFeatures', 'DeleteFeature', */'DragFeature',/* 'SelectFeature', 'Separator', 'DrawHole', 'ModifyFeature', 'Separator'*/],
 						featureTypes: ['text', 'regular', 'polygon', 'path', 'point'],
 						language: 'en',
 						DownloadFeature: {

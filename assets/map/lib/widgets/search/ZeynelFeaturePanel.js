@@ -917,7 +917,8 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
             activeItem : 'flowcard',
             layout: "card",
             //items: this.cardPanels,
-            /*items :[ {
+            
+           items :[ {
 			 id:'processcard'
 			,bodyStyle:'border-bottom:none'
 			,xtype:'examplegrid2'
@@ -934,7 +935,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
 			,bodyStyle:'border-bottom:none'
 			,xtype:'examplegrid3'
 			,autoScroll:true
-		}]*/
+		}]
         });
         
         this.setCompanyNameToProcessGridTitle(this.mainPanel.getComponent('flowcard'),this);
@@ -1022,9 +1023,33 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
             //console.log('setCompanyIDToService companyID-->'+scope.featureID);
             dataGrid.featureID = scope.featureID;
             console.log('datagrid store url-->'+dataGrid.getStore().url);
-            //dataGrid.getStore().url = '../../../slim_rest/index.php/companyFlows_json_test?id='+scope.featureID;
-            dataGrid.getStore().proxy.setUrl('../../../slim_rest/index.php/companyFlows_json_test?companyid='+scope.featureID);
-            //dataGrid.getStore().getProxy().url('../../../slim_rest/index.php/companyFlows_json_test?id='+scope.featureID);
+            
+            /*
+            dataGrid.getStore().url = '../../../slim_rest/index.php/companyFlows_json_test?companyid='+scope.featureID;
+            dataGrid.getStore().load();
+            */
+            
+            //dataGrid.getStore().proxy.setUrl('../../../slim_rest/index.php/companyFlows_json_test?companyid='+scope.featureID);
+            
+            /*
+            var storeZeynel=dataGrid.getStore();
+            storeZeynel.proxy.setUrl('../../../slim_rest/index.php/companyFlows_json_test?companyid='+dataGrid.featureID);
+            console.log('storeZeynel url2-->'+storeZeynel.url);
+            storeZeynel.load();
+            */
+            
+            
+            dataGrid.getStore().proxy.setUrl('../../../slim_rest/index.php/companyFlows_json_test?companyid='+dataGrid.featureID);
+             dataGrid.getStore().load();
+             
+            
+            
+            /*
+             dataGrid.getStore().getProxy().url('../../../slim_rest/index.php/companyFlows_json_test?companyid='+scope.featureID);
+             dataGrid.getStore().load();
+             */
+            
+            
             /*var flowGridmask2 = new Ext.LoadMask(dataGrid.getEl(), 
                                                 {msg:__('Grid loading'),
                                                 removeMask: false,
@@ -1033,7 +1058,8 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
             
             flowGridmask2.show();*/
             console.log('datagrid store url2-->'+dataGrid.getStore().url);
-            dataGrid.getStore().load();
+            
+            //dataGrid.getStore().load();
             
             
             console.log('datagrid featureID-->'+dataGrid.featureID);
@@ -1116,10 +1142,11 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                     downloadMenuItems.push(item);
                 }
             }
-
+            // zeynel dağlı
+            //download ad to menu
             if (downloadMenuItems.length > 0) {
                 /* Add to toolbar. */
-               /* tbarItems.push({
+                /*tbarItems.push({
                     itemId: 'download',
                     text: __('Download'),
                     cls: 'x-btn-text-icon',
