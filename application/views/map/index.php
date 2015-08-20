@@ -226,7 +226,7 @@ Ostim.layout = {
                     ]
 				},
                                 
-                                {
+                                /*{
                                     title:'GeoServer Servisler',
                                     xtype:'hr_capabilitiesviewpanel',
                                     useArrows:true,
@@ -235,21 +235,21 @@ Ostim.layout = {
                                     hropts:{
                                         preload: false
                                     }
-                                },
+                                },*/
                                 
-                                {
+                                /*{
                                     xtype: 'hr_bookmarkspanel',
                                     id: 'hr-bookmarks',
                                     border: true,
                                     /** The map contexts to show links for in the BookmarksPanel. */
-                                    hropts: Ostim.options.bookmarks
-                                }
+                                    /*hropts: Ostim.options.bookmarks
+                                }*/
 			]
 		},
                 
                 
                 
-                {
+                /*{
                     xtype: 'hr_htmlpanel',
                     region: "east",
                     border: true,
@@ -261,7 +261,7 @@ Ostim.layout = {
                     title: 'Ostim Harita Uygulaması',
                     collapsible: true,
                     split	: true,
-                },
+                },*/
                 
 		{
 			xtype: 'panel',
