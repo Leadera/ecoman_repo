@@ -2,6 +2,7 @@
 $lang["profiles"]             = "Profiles";
 $lang["companies"]            = "Companies";
 $lang["projects"]             = "Projects";
+$lang["projectcompanies"]     = "Project Companies";
 $lang["analysis"]             = "Analysis";
 $lang["search"]               = "Search";
 $lang["whoarewe"]             = "Who are we?";

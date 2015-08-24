@@ -1,6 +1,7 @@
 <?php
 $lang["profiles"]            = "Profiller";
 $lang["companies"]           = "Firmalar";
+$lang["projectcompanies"]    = "Projedeki Firmalar";
 $lang["projects"]            = "Projeler";
 $lang["analysis"]            = "Analizler";
 $lang["search"]              = "Ara";
