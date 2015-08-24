@@ -10,6 +10,11 @@
 	<?php endif ?>
 		<?php echo form_open_multipart('edit_flow/'.$companyID.'/'.$flow['flow_id'].'/'.$flow['flow_type_id']); ?>
 			<p class="lead"><?php echo lang("editflow"); ?></p>
+			<div class="well">
+				<div><?php echo lang("flowname"); ?>: <?php echo $flow['flowname']; ?></div>
+				<div><?php echo lang("flowtype"); ?>: <?php echo $flow['flowtype']; ?></div>
+				<div><?php echo lang("flowfamily"); ?>: <?php echo $flow['flowfamily']; ?></div>
+			</div>
 			<div class="form-group">
 				<label for="charactertype"><?php echo lang("charactertype"); ?></label>
 				<select id="charactertype" class="info select-block" name="charactertype">
