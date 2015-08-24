@@ -59,6 +59,7 @@ class Flow_model extends CI_Model {
 		$this->db->join('t_unit as unit1','unit1.id = t_cmpny_flow.qntty_unit_id');
 		$this->db->where('cmpny_id',$companyID);
 		$this->db->order_by("t_flow.name", "asc");
+		$this->db->order_by("t_flow_type.name", "asc");
 		$query = $this->db->get();
 		return $query->result_array();
 	}

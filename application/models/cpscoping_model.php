@@ -156,6 +156,7 @@ class Cpscoping_model extends CI_Model {
     $this->db->where('t_cp_company_project.prjct_id',$prjct_id);
     $this->db->where('t_cp_company_project.cmpny_id',$cmpny_id);
     $this->db->order_by("t_prcss.name", "asc"); 
+    $this->db->order_by("t_flow.name", "asc"); 
     return $this->db->get()->result_array();
   }
 
