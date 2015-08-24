@@ -24,7 +24,7 @@ class User_model extends CI_Model {
   	$this->db->where('psswrd',$password);
         
   	$query = $this->db->get();
-        print_r($this->db->last_query());
+        //print_r($this->db->last_query());
         //$this->db->get_compiled_select();
   	if($query -> num_rows() == 1)
   	{
