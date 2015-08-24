@@ -232,6 +232,10 @@ $lang["delete"]   = "Sil";
 $lang["annual"]   = "Yıllık";
 $lang["labelarereq"]   = "kısımlar girilmesi zorunludur";
 $lang["epunit"]   = "EP birimi";
+$lang["charactertype"] = "Akış Niteliği Tipi";
+$lang["recycling"] = "Geri dönüştürülüyor";
+$lang["emission"] = "Emisyon";
+$lang["waste"] = "Atık";
 
 $lang["addcomponent"]   = "Bileşen ekle";
 $lang["componentname"]   = "Bileşen ismi";

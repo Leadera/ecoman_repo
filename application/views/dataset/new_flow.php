@@ -47,6 +47,15 @@
 				</select>
 			</div>
 			<div class="form-group">
+				<label for="charactertype"><?php echo lang("charactertype"); ?></label>
+				<select id="charactertype" class="info select-block" name="charactertype">
+						<option value=""><?php echo lang("pleaseselect"); ?></option>
+						<option value="Recycling"><?php echo lang("recycling"); ?></option>
+						<option value="Emission"><?php echo lang("emission"); ?></option>
+						<option value="Waste"><?php echo lang("waste"); ?></option>
+				</select>
+			</div>
+			<div class="form-group">
 				<div class="row">
 					<div class="col-md-8">
 						<label for="quantity"><?php echo lang("quantity"); ?> (<?php echo lang("annual"); ?>) <span style="color:red;">*</span></label>
@@ -222,6 +231,7 @@
 				<th><?php echo lang("flowname"); ?></th>
 				<th><?php echo lang("flowtype"); ?></th>
 				<th><?php echo lang("flowfamily"); ?></th>
+				<th><?php echo lang("charactertype"); ?></th>
 				<th><?php echo lang("quantity"); ?></th>
 				<th><?php echo lang("cost"); ?></th>
 				<th><?php echo lang("ep"); ?></th>
@@ -249,6 +259,7 @@
 					<?php endif ?>
 					<td><?php echo $flow['flowtype']; ?></td>
 					<td><?php echo $flow['flowfamily']; ?></td>
+					<td><?php echo $flow['character_type']; ?></td>
 					<td><?php echo $flow['qntty'].' '.$flow['qntty_unit_name']; ?></td>
 					<td><?php echo $flow['cost'].' '.$flow['cost_unit']; ?></td>
 					<td><?php echo $flow['ep'].' '.$flow['ep_unit']; ?></td>

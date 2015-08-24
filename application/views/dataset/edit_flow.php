@@ -11,6 +11,20 @@
 		<?php echo form_open_multipart('edit_flow/'.$companyID.'/'.$flow['flow_id'].'/'.$flow['flow_type_id']); ?>
 			<p class="lead"><?php echo lang("editflow"); ?></p>
 			<div class="form-group">
+				<label for="charactertype"><?php echo lang("charactertype"); ?></label>
+				<select id="charactertype" class="info select-block" name="charactertype">
+							<?php $xdeger = FALSE; ?>
+								<?php $ydeger = FALSE; ?>
+								<?php $zdeger = FALSE; ?>
+								<?php if($flow['character_type']=="Recycling") {$xdeger = TRUE;} ?>
+								<?php if($flow['character_type']=="Emission") {$ydeger = TRUE;} ?>
+								<?php if($flow['character_type']=="Waste") {$zdeger = TRUE;} ?>
+								<option value="Recycling" <?php echo set_select('charactertype', 'Recycling', $xdeger); ?>><?php echo lang("recycling"); ?></option>
+								<option value="Emission" <?php echo set_select('charactertype', 'Emission', $ydeger); ?>><?php echo lang("emission"); ?></option>
+								<option value="Waste" <?php echo set_select('charactertype', 'Waste', $zdeger); ?>><?php echo lang("waste"); ?></option>
+				</select>
+			</div>
+			<div class="form-group">
 				<div class="row">
 					<div class="col-md-8">
 						<label for="quantity"><?php echo lang("quantity"); ?> (<?php echo lang("annual"); ?>) <span style="color:red;">*</span></label>

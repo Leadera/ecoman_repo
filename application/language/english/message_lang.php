@@ -232,6 +232,10 @@ $lang["delete"]   = "Delete";
 $lang["annual"]   = "Annual";
 $lang["labelarereq"]   = "label are required";
 $lang["epunit"]   = "EP unit";
+$lang["charactertype"] = "Flow Character";
+$lang["recycling"] = "Recycling";
+$lang["emission"] = "Emission";
+$lang["waste"] = "Waste";
 
 $lang["addcomponent"]   = "Add component";
 $lang["componentname"]   = "Component name";

@@ -96,6 +96,7 @@ class Dataset extends CI_Controller {
 	{
 		$this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean|strip_tags|callback__alpha_dash_space');
 		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|required|xss_clean|strip_tags|callback_flow_varmi');
+		$this->form_validation->set_rules('charactertype', 'Flow Character Type', 'trim|xss_clean|strip_tags');
 		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|xss_clean|strip_tags|numeric');
 		$this->form_validation->set_rules('quantityUnit', 'Quantity Unit', 'trim|required|xss_clean|strip_tags');
 		$this->form_validation->set_rules('cost', 'Cost', 'trim|required|xss_clean|strip_tags|numeric');
@@ -109,6 +110,7 @@ class Dataset extends CI_Controller {
 		if($this->form_validation->run() !== FALSE) {
 
 			$flowID = $this->input->post('flowname');
+			$charactertype = $this->input->post('charactertype');
 			$flowtypeID = $this->input->post('flowtype');
 			$flowfamilyID = $this->input->post('flowfamily');
 			$ep = $this->input->post('ep');
@@ -145,6 +147,7 @@ class Dataset extends CI_Controller {
 			$flow = array(
 				'cmpny_id'=>$companyID,
 				'flow_id'=>$flowID,
+				'character_type'=>$charactertype,
 				'qntty'=>$this->sifirla($quantity),
 				'qntty_unit_id'=>$this->sifirla($quantityUnit),
 				'cost' =>$this->sifirla($cost),
@@ -198,6 +201,7 @@ class Dataset extends CI_Controller {
 
 	public function edit_flow($companyID,$flow_id,$flow_type_id)
 	{
+		$this->form_validation->set_rules('charactertype', 'Character Type', 'trim|xss_clean|strip_tags');
 		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|xss_clean|strip_tags|numeric');
 		$this->form_validation->set_rules('quantityUnit', 'Quantity Unit', 'trim|required|xss_clean|strip_tags');
 		$this->form_validation->set_rules('cost', 'Cost', 'trim|required|xss_clean|strip_tags|numeric');
@@ -210,6 +214,7 @@ class Dataset extends CI_Controller {
 
 		if($this->form_validation->run() !== FALSE) {
 
+			$charactertype = $this->input->post('charactertype');
 			$ep = $this->input->post('ep');
 			$epUnit = $this->input->post('epUnit');
 			$cost = $this->input->post('cost');
@@ -237,6 +242,7 @@ class Dataset extends CI_Controller {
 			$comment = $this->input->post('comment');
 
 			$flow = array(
+				'character_type'=>$charactertype,
 				'qntty'=>$this->sifirla($quantity),
 				'qntty_unit_id'=>$this->sifirla($quantityUnit),
 				'cost' =>$this->sifirla($cost),
