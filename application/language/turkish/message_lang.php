@@ -284,3 +284,5 @@ $lang["editproduct"]   = "Ürünü düzenle";
 $lang["editflow"]   = "Akışı düzenle";
 $lang["companyprojects"]   = "Firmanın projeleri";
 $lang["companyusers"]   = "Firmadaki kullanıcılar";
+
+$lang["nocharacter"]   = "Nitelik yok";

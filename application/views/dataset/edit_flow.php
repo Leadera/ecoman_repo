@@ -18,6 +18,7 @@
 			<div class="form-group">
 				<label for="charactertype"><?php echo lang("charactertype"); ?></label>
 				<select id="charactertype" class="info select-block" name="charactertype">
+					<option value=""><?php echo lang("nocharacter"); ?></option>
 							<?php $xdeger = FALSE; ?>
 								<?php $ydeger = FALSE; ?>
 								<?php $zdeger = FALSE; ?>

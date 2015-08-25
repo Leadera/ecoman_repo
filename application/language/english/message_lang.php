@@ -284,3 +284,5 @@ $lang["editproduct"]   = "Edit product";
 $lang["editflow"]   = "Edit flow";
 $lang["companyprojects"]   = "Company projects";
 $lang["companyusers"]   = "Company users";
+
+$lang["nocharacter"]   = "No character";
