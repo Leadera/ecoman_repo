@@ -286,3 +286,6 @@ $lang["companyprojects"]   = "Firmanın projeleri";
 $lang["companyusers"]   = "Firmadaki kullanıcılar";
 
 $lang["nocharacter"]   = "Nitelik yok";
+$lang["nameofref"]   = "Referans ismi";
+$lang["kpidef"]   = "KPI açıklaması";
+

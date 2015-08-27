@@ -286,3 +286,5 @@ $lang["companyprojects"]   = "Company projects";
 $lang["companyusers"]   = "Company users";
 
 $lang["nocharacter"]   = "No character";
+$lang["nameofref"]   = "Name of reference";
+$lang["kpidef"]   = "KPI definition";

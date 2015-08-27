@@ -94,9 +94,11 @@ class Cpscoping extends CI_Controller {
 
 		$this->form_validation->set_rules('reference', 'Reference', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('unit_reference', 'Unit Reference', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('nameofref', 'Name of reference', 'trim|xss_clean');
 		
 		$this->form_validation->set_rules('kpi', 'Kpi', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('unit_kpi', ' Unit Kpi', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('kpidef', ' KPI definition', 'trim|xss_clean');
 		//$this->form_validation->set_rules('kpi_error', 'Kpi Error', 'required|trim|integer|xss_clean');
 		
 		if ($this->form_validation->run() !== FALSE){
@@ -119,6 +121,8 @@ class Cpscoping extends CI_Controller {
 			$unit_reference = $this->input->post('unit_reference');
 			$kpi = $this->input->post('kpi');
 			$unit_kpi = $this->input->post('unit_kpi');
+			$kpidef = $this->input->post('kpidef');
+			$nameofref = $this->input->post('nameofref');
 			//$kpi_error = $this->input->post('kpi_error');
 
 			$array_allocation = array(
@@ -140,7 +144,9 @@ class Cpscoping extends CI_Controller {
 				'reference' => $reference,
 				'unit_reference' => $unit_reference,
 				'kpi' => $kpi,
-				'unit_kpi' => $unit_kpi
+				'unit_kpi' => $unit_kpi,
+				'kpidef' => $kpidef,
+				'nameofref' => $nameofref
 			);
 			$this->cpscoping_model->set_cp_allocation($array_allocation);
 			$allocation_array = array(
@@ -259,6 +265,8 @@ class Cpscoping extends CI_Controller {
 		
 		$this->form_validation->set_rules('kpi', 'Kpi', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('unit_kpi', ' Unit Kpi', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('nameofref', ' Name of reference', 'trim|xss_clean|max_length[50]');
+		$this->form_validation->set_rules('kpidef', ' KPI definition', 'trim|xss_clean|max_length[250]');
 
 
 		if ($this->form_validation->run() !== FALSE){
@@ -279,6 +287,8 @@ class Cpscoping extends CI_Controller {
 			$unit_reference = $this->input->post('unit_reference');
 			$kpi = $this->input->post('kpi');
 			$unit_kpi = $this->input->post('unit_kpi');
+			$nameofref = $this->input->post('nameofref');
+			$kpidef = $this->input->post('kpidef');
 			//$kpi_error = $this->input->post('kpi_error');
 
 			$array_allocation = array(
@@ -297,6 +307,8 @@ class Cpscoping extends CI_Controller {
 				'reference' => $reference,
 				'unit_reference' => $unit_reference,
 				'kpi' => $kpi,
+				'kpidef' => $kpidef,
+				'nameofref' => $nameofref,
 				'unit_kpi' => $unit_kpi
 			);
 			$this->cpscoping_model->update_cp_allocation($array_allocation,$allocation_id);

@@ -215,12 +215,13 @@ function aatf() {
 			</div>
 			<hr>
 			<div class="form-group clearfix row">
-				<label class="control-label col-md-6"><?php echo lang("reference"); ?></label>
-				<label class="control-label col-md-6"><?php echo lang("unit"); ?></label>
-				<div class="col-md-6">
+				<label class="control-label col-md-3"><?php echo lang("reference"); ?></label>
+				<label class="control-label col-md-3"><?php echo lang("unit"); ?></label>
+				<label class="control-label col-md-6"><?php echo lang("nameofref"); ?></label>
+				<div class="col-md-3">
 					<input type="text" class="form-control" value="<?php echo set_value('reference'); ?>" id="reference" placeholder="<?php echo lang("number"); ?>" name="reference">
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-3">
 					<select name="unit_reference" id="unit_reference" class="btn-group select select-block">
 						<option value=""><?php echo lang("pleaseselect"); ?></option>
 						<?php foreach ($unit_list as $u): ?>
@@ -228,16 +229,23 @@ function aatf() {
 						<?php endforeach ?>
 					</select>
 				</div>
+				<div class="col-md-6">
+					<input type="text" class="form-control" value="<?php echo set_value('nameofref'); ?>" id="nameofref" placeholder="<?php echo lang("nameofref"); ?>" name="nameofref">
+				</div>
 			</div>
 			<hr>
 			<div class="form-group clearfix row">
-				<label class="control-label col-md-6"><?php echo lang("kpi"); ?></label>
-				<label class="control-label col-md-6"><?php echo lang("kpiunit"); ?></label>
-				<div class="col-md-6">
+				<label class="control-label col-md-3"><?php echo lang("kpi"); ?></label>
+				<label class="control-label col-md-3"><?php echo lang("kpiunit"); ?></label>
+				<label class="control-label col-md-6"><?php echo lang("kpidef"); ?></label>
+				<div class="col-md-3">
 					<input type="text" class="form-control" id="kpi" placeholder="" name="kpi" readonly>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-3">
 					<input type="text" class="form-control" id="unit_kpi" placeholder="" name="unit_kpi" readonly>
+				</div>				
+				<div class="col-md-6">
+					<input type="text" class="form-control" id="kpidef" placeholder="<?php echo lang("kpidef"); ?>" name="kpidef">
 				</div>
 
 			</div>
