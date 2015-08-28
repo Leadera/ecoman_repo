@@ -228,7 +228,15 @@
 			<?php foreach ($allocation as $a): ?>
 				<tr>
 					<td>
-					<?php if(empty($a['cmpny_from_name'])) {echo $a['best']."-".$a['prcss_name'];} else {echo $a['flow_name']." input IS potential from ".$a['cmpny_from_name']; } ?></td>
+					<?php 
+					if(empty($a['cmpny_from_name'])) {
+						echo "<div style='font-size:13px; margin-bottom:5px;' class='label label-default'>".$a['prcss_name']." - ".$a['flow_name']." - ".$a['flow_type_name']."</div>";
+						echo "<div><br>".$a['best']."</div>";
+					}
+					else {
+						echo $a['flow_name']." input IS potential from ".$a['cmpny_from_name']; 
+					} ?>
+					</td>
 					<td><?php echo $a['marcos']; ?></td>
 					<td><?php echo $a['ecoben']; ?></td></tr>
 			<?php endforeach ?>

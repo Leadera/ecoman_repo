@@ -92,7 +92,6 @@ class Cpscoping_model extends CI_Model {
   	return $this->db->get()->row_array();
   }*/
 
-
   public function get_cost_benefit_info($cmpny_id,$prjct_id){
     $this->db->select('*,
         t_cp_allocation.id as cp_id,
@@ -108,20 +107,20 @@ class Cpscoping_model extends CI_Model {
         t_cp_allocation.best_practice as best
         ');
     $this->db->from('t_cp_company_project');
-    $this->db->join('t_cp_allocation','t_cp_allocation.id = t_cp_company_project.allocation_id');
+    $this->db->join('t_cp_allocation','t_cp_allocation.id = t_cp_company_project.allocation_id', 'left');
     $this->db->join('t_flow','t_flow.id = t_cp_allocation.flow_id');
     $this->db->join('t_flow_type','t_flow_type.id = t_cp_allocation.flow_type_id');
     $this->db->join('t_cmpny_prcss','t_cmpny_prcss.id = t_cp_allocation.prcss_id');
     $this->db->join('t_prcss','t_prcss.id = t_cmpny_prcss.prcss_id');
-    $this->db->join('t_cmpny_flow','t_cmpny_flow.flow_id = t_cp_allocation.flow_id and t_cmpny_flow.cmpny_id = t_cp_company_project.cmpny_id');
+    $this->db->join('t_cmpny_flow','t_cmpny_flow.flow_id = t_cp_allocation.flow_id and t_cmpny_flow.cmpny_id = t_cp_company_project.cmpny_id and t_cmpny_flow.flow_type_id = t_cp_allocation.flow_type_id', 'left');
     $this->db->join('t_unit','t_unit.id = t_cmpny_flow.qntty_unit_id');
-    $this->db->join('t_costbenefit_temp','t_costbenefit_temp.cp_id = t_cp_allocation.id', 'left');
+    $this->db->join('t_costbenefit_temp','t_costbenefit_temp.cp_id = t_cp_allocation.id','left');
+    $this->db->where_not_in('t_cp_allocation.best_practice',"");
     $this->db->where('t_cp_company_project.prjct_id',$prjct_id);
     $this->db->where('t_cp_company_project.cmpny_id',$cmpny_id);
-    $this->db->order_by("t_cp_allocation.id", "asc"); 
+    $this->db->order_by("t_prcss.name", "asc"); 
     return $this->db->get()->result_array();
   }
-
 
   public function get_cost_benefit_info_is($cmpny_id,$prjct_id){
     $this->db->select('*,
