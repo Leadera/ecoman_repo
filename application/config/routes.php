@@ -97,6 +97,7 @@ $route['cpscoping/comment_save/(:any)/(:any)'] = "cpscoping/comment_save/$1/$2";
 $route['cpscoping/allocated_table/(:any)/(:any)/(:any)/(:any)/(:any)'] = "cpscoping/get_already_allocated_allocation_except_given/$1/$2/$3/$4/$5";
 $route['cpscoping/edit_allocation/(:any)'] = "cpscoping/edit_allocation/$1";
 $route['cpscoping/file_upload/(:any)/(:any)'] = "cpscoping/cp_scoping_file_upload/$1/$2";
+$route['cpscoping/file_delete/(:any)/(:any)'] = "cpscoping/file_delete/$1/$2";
 $route['cpscoping/is_candidate_insert/(:any)/(:any)'] = "cpscoping/cp_is_candidate_insert/$1/$2";
 $route['cpscoping/is_candidate_control/(:any)'] = "cpscoping/cp_is_candidate_control/$1";
 $route['cpscoping/cost_ep/(:any)/(:any)/(:any)'] = "cpscoping/cost_ep_value/$1/$2/$3";

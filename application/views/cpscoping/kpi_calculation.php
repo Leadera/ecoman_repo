@@ -349,6 +349,7 @@
 		    	<tr>
 		    		<th>Index</th>
 		    		<th><?php echo lang("filename"); ?></th>
+		    		<th><?php echo lang("manage"); ?></th>
 		    	</tr>
 			    <?php $sayac = 1;foreach ($cp_files as $file): ?>
 			    	<tr>
@@ -356,7 +357,7 @@
 			    			<?php echo $sayac; $sayac++; ?>
 			    		</td>
 			    		<td>
-			    			<button onclick="open_document(<?php echo $file['id']; ?>)" id="<?php echo $file['id']; ?>"
+			    			<a href="<?php echo base_url("assets/cp_scoping_files/".$file['file_name']); ?>" id="<?php echo $file['id']; ?>"
 		    						style="width:100%;background-color: Transparent;
 									    background-repeat:no-repeat;
 									    border: none;
@@ -364,7 +365,10 @@
 									    overflow: hidden;
 									    outline:none;">
 								<?php echo $file['file_name']; ?>
-							</button>
+							</a>
+			    		</td>
+			    		<td>
+			    			<a onclick="return confirm('Are you sure?')" href="<?php echo base_url("cpscoping/file_delete/".$file['file_name']."/".$this->uri->segment(2)."/".$this->uri->segment(3)); ?>"><?php echo lang("delete"); ?></a>
 			    		</td>
 			    	</tr>
 			    <?php endforeach ?>

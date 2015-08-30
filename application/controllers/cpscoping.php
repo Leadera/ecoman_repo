@@ -633,7 +633,7 @@ class Cpscoping extends CI_Controller {
 			ini_set('upload_max_filesize','20M'); 
 			$config['upload_path'] = './assets/cp_scoping_files/';
 			$config['allowed_types'] = $eklenti;
-			$config['max_size']	= '500000';
+			$config['max_size']	= '5000000';
 			$config['file_name']	= $f_name.'.'.$eklenti;
 			$this->load->library('upload', $config);
 
@@ -652,6 +652,17 @@ class Cpscoping extends CI_Controller {
 				redirect(base_url('kpi_calculation/'.$prjct_id.'/'.$cmpny_id),'refresh');
 			}
 		}
+		redirect(base_url('kpi_calculation/'.$prjct_id.'/'.$cmpny_id),'refresh');
+	}
+
+	public function file_delete($filename,$prjct_id,$cmpny_id){
+		unlink("assets/cp_scoping_files/".$filename);
+		$cp_scoping_files = array(
+			'prjct_id' => $prjct_id,
+			'cmpny_id' => $cmpny_id,
+			'file_name' => $filename
+		);
+		$this->cpscoping_model->delete_cp_scoping_file($cp_scoping_files);
 		redirect(base_url('kpi_calculation/'.$prjct_id.'/'.$cmpny_id),'refresh');
 	}
 

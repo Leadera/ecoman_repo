@@ -223,6 +223,10 @@ class Cpscoping_model extends CI_Model {
     $this->db->insert('t_cp_scoping_files',$cp_scoping_files);
   }
 
+  public function delete_cp_scoping_file($cp_scoping_files){
+    $this->db->delete('t_cp_scoping_files',$cp_scoping_files);
+  }
+
   public function get_cp_scoping_files($project_id,$cmpny_id){
     $this->db->select('*');
     $this->db->from('t_cp_scoping_files');
