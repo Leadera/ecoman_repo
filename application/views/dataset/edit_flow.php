@@ -60,10 +60,10 @@
 								<?php $ddeger = FALSE; ?>
 								<?php $tdeger = FALSE; ?>
 								<?php if($flow['cost_unit_id']=="Euro") {$edeger = TRUE;} ?>
-								<?php if($flow['cost_unit_id']=="Dolar") {$ddeger = TRUE;} ?>
+								<?php if($flow['cost_unit_id']=="Dollar") {$ddeger = TRUE;} ?>
 								<?php if($flow['cost_unit_id']=="TL") {$tdeger = TRUE;} ?>
 								<option value="Euro" <?php echo set_select('costUnit', 'Euro', $edeger); ?>>Euro</option>
-								<option value="Dolar" <?php echo set_select('costUnit', 'Dolar', $ddeger); ?>>Dolar</option>
+								<option value="Dollar" <?php echo set_select('costUnit', 'Dollar', $ddeger); ?>>Dollar</option>
 								<option value="TL" <?php echo set_select('costUnit', 'TL', $tdeger); ?>>TL</option>
 							</select>
 						</div>

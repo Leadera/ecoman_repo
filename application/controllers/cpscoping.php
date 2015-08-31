@@ -529,11 +529,9 @@ class Cpscoping extends CI_Controller {
 					$error_ep = 100-$array[$index]['error_ep'];
 					$allocation_env_impact = $array[$index]['allocation_env_impact'];
 
-
-
-					if($unit == "Dolar"){
-						$cost_value_alt += ($array[$index]['cost'] * ((100-$error_cost)/100)) * number_format(($doviz_array['dolar'] / $doviz_array['euro']),4);
-						$cost_value_ust += ($array[$index]['cost'] * ((100+$error_cost)/100)) * number_format(($doviz_array['dolar'] / $doviz_array['euro']),4);
+					if($unit == "Dollar"){
+						$cost_value_alt += ($array[$index]['cost'] * ((100-$error_cost)/100)) * number_format(($doviz_array['dollar'] / $doviz_array['euro']),4);
+						$cost_value_ust += ($array[$index]['cost'] * ((100+$error_cost)/100)) * number_format(($doviz_array['dollar'] / $doviz_array['euro']),4);
 					}else if($unit == "TL"){
 						$cost_value_alt += ($array[$index]['cost'] * ((100-$error_cost/2)/100)) * $doviz_array['euro'];
 						$cost_value_ust += ($array[$index]['cost'] * ((100+$error_cost/2)/100)) * $doviz_array['euro'];
@@ -582,7 +580,7 @@ class Cpscoping extends CI_Controller {
 		  			foreach ($value->find('span') as $sp) {
 		  				$sayac++;
 		  				if($sayac == 8){
-		  					$array_temp['dolar'] = str_replace(',', '.', $sp->plaintext);
+		  					$array_temp['dollar'] = str_replace(',', '.', $sp->plaintext);
 		  				}else if($sayac == 13){
 		  					$array_temp['euro'] = str_replace(',', '.', $sp->plaintext);
 		  				}

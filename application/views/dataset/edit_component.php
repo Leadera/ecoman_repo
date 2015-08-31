@@ -53,10 +53,10 @@
 							<?php $ddeger = FALSE; ?>
 							<?php $tdeger = FALSE; ?>
 							<?php if($component['supply_cost_unit']=="Euro") {$edeger = TRUE;} ?>
-							<?php if($component['supply_cost_unit']=="Dolar") {$ddeger = TRUE;} ?>
+							<?php if($component['supply_cost_unit']=="Dollar") {$ddeger = TRUE;} ?>
 							<?php if($component['supply_cost_unit']=="TL") {$tdeger = TRUE;} ?>
 							<option value="Euro" <?php echo set_select('costUnit', 'Euro', $edeger); ?>>Euro</option>
-							<option value="Dolar" <?php echo set_select('costUnit', 'Dolar', $ddeger); ?>>Dolar</option>
+							<option value="Dollar" <?php echo set_select('costUnit', 'Dollar', $ddeger); ?>>Dollar</option>
 							<option value="TL" <?php echo set_select('costUnit', 'TL', $tdeger); ?>>TL</option>
 						</select>
 					</div>
@@ -76,10 +76,10 @@
 							<?php $ddeger = FALSE; ?>
 							<?php $tdeger = FALSE; ?>
 							<?php if($component['output_cost_unit']=="Euro") {$edeger = TRUE;} ?>
-							<?php if($component['output_cost_unit']=="Dolar") {$ddeger = TRUE;} ?>
+							<?php if($component['output_cost_unit']=="Dollar") {$ddeger = TRUE;} ?>
 							<?php if($component['output_cost_unit']=="TL") {$tdeger = TRUE;} ?>
 							<option value="Euro" <?php echo set_select('ocostunit', 'Euro', $edeger); ?>>Euro</option>
-							<option value="Dolar" <?php echo set_select('ocostunit', 'Dolar', $ddeger); ?>>Dolar</option>
+							<option value="Dollar" <?php echo set_select('ocostunit', 'Dollar', $ddeger); ?>>Dollar</option>
 							<option value="TL" <?php echo set_select('ocostunit', 'TL', $tdeger); ?>>TL</option>
 						</select>
 					</div>

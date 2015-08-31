@@ -36,10 +36,10 @@
 								<?php $ddeger = FALSE; ?>
 								<?php $tdeger = FALSE; ?>
 								<?php if($product['ucostu']=="Euro") {$edeger = TRUE;} ?>
-								<?php if($product['ucostu']=="Dolar") {$ddeger = TRUE;} ?>
+								<?php if($product['ucostu']=="Dollar") {$ddeger = TRUE;} ?>
 								<?php if($product['ucostu']=="TL") {$tdeger = TRUE;} ?>
 								<option value="Euro" <?php echo set_select('ucostu', 'Euro', $edeger); ?>>Euro</option>
-								<option value="Dolar" <?php echo set_select('ucostu', 'Dolar', $ddeger); ?>>Dolar</option>
+								<option value="Dollar" <?php echo set_select('ucostu', 'Dollar', $ddeger); ?>>Dollar</option>
 								<option value="TL" <?php echo set_select('ucostu', 'TL', $tdeger); ?>>TL</option>
 							</select>
 						</div>

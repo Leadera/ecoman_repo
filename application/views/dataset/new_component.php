@@ -58,7 +58,7 @@
 						<select id="costUnit" class="info select-block" name="costUnit">
 							<option value="TL">TL</option>
 							<option value="Euro">Euro</option>
-							<option value="Dolar">Dolar</option>
+							<option value="Dollar">Dollar</option>
 						</select>
 					</div>
 				</div>
@@ -75,7 +75,7 @@
 						<select id="ocostunit" class="info select-block" name="ocostunit">
 							<option value="TL">TL</option>
 							<option value="Euro">Euro</option>
-							<option value="Dolar">Dolar</option>
+							<option value="Dollar">Dollar</option>
 						</select>
 					</div>
 				</div>
