@@ -113,7 +113,8 @@
 		<a class="btn btn-inverse btn-sm" href="<?php echo base_url('cpscoping/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/show'); ?>"><?php echo lang("gotocp"); ?></a>
 		<a href="<?php echo base_url('new_flow/'.$this->uri->segment(3)); ?>/" class="btn btn-inverse btn-sm" id="cpscopinga"><?php echo lang("gotodataset"); ?></a>
 	</div>
-	<div class="col-md-8" id="8lik">
+
+	<div class="col-md-12" id="8lik">
 
 		<?php /*
 
@@ -313,14 +314,12 @@
         }
     </script>
     <div id="alerts" style="margin-top: 20px;font-size: 13px;color: darkgrey;"></div>
-
-	</div>
-
-	<div class="col-md-4">
+    <hr>
+<div class="col-md-6">
 		<p><?php echo lang("kpiheading2"); ?></p>
 <!-- 		<div class="label label-danger">After a save, you should reload the page to see updated graph.</div> -->		
 		<div id="chart_div" style="border:2px solid #f0f0f0;"></div>
-		<hr>
+		</div><div class="col-md-6">
 		<p><?php echo lang("searchdocument"); ?></p>
 		<?php echo form_open_multipart('search_result/'.$this->uri->segment(2).'/'.$this->uri->segment(3)); ?>
 		  <input style="margin-bottom:10px;" type="text" class="form-control" id="search" placeholder="" name="search">
@@ -376,6 +375,9 @@
 		</div>
 	</div>
 
+	</div>
+
+
 
 <?php else: ?>
 	<div class="container">
@@ -414,9 +416,10 @@
 							flow_array[index] = data['allocation'][i].flow_name;
 							flow_type_array[index] = data['allocation'][i].flow_type_name;
 
-							kpi[index] = 100-data['allocation'][i].kpi/data['allocation'][i].benchmark_kpi*100;
+							kpi[index] = data['allocation'][i].kpi/data['allocation'][i].benchmark_kpi*100;
 							//console.log(kpi[index]);
-							kpi2[index] = 100-Math.abs(kpi[index]);
+							//kpi2[index] = 100-Math.abs(kpi[index]);
+							kpi2[index] = 0;
 							index++;
 						}
 					}
@@ -429,37 +432,41 @@
 		          	}
 
 		          	newData[0][0] = 'Genre';
-		          	newData[0][1] = 'Fair Value';
-		          	newData[0][2] = 'Error Value';
+		          	newData[0][1] = '';
+		          	newData[0][2] = 'Difference with normal';
 		          	newData[0][3] = { role: 'annotation' };
 		          	newData[0][4] = { role: 'style' };
-
 
 		          	for(var i = 1 ; i < index+1 ; i++){
 		          		newData[i][0] = prcss_array[i-1]+"-"+flow_array[i-1]+"-"+flow_type_array[i-1];
 		          		if(kpi[i-1]<0){
-		          			newData[i][1] = 100;
+		          			newData[i][1] = 0;
 		          		}else{
 		          		newData[i][1] = kpi2[i-1];
 		          		}
 		          		newData[i][2] = Math.abs(kpi[i-1]);
 		          		newData[i][3] = '';
-		          		if(kpi[i-1]<0){
-		          			newData[i][4] = 'red';
-		          		}else{
+		          		console.log(kpi[i-1]);
+		          		if(kpi[i-1]<100){
 		          			newData[i][4] = 'green';
-		          	}
+		          		}
+		          		else if(kpi[i-1]=="100"){
+		          			newData[i][4] = 'yellow';
+		          		}
+		          		else{
+		          			newData[i][4] = 'red';
+		          		}
 		          	}
 
 		          	var data2 = google.visualization.arrayToDataTable(newData);
 
 		          	var options = {
+		          	legend: { position: "none" },
 				        height: 600,
-				        legend: { position: 'top', maxLines: 30 },
 				        bar: { groupWidth: '75%' },
 				        isStacked: true,
-				        vAxis: {title: "% (<?php echo lang('percentage'); ?>)"},
-				        hAxis: {title: '<?php echo lang("processname"); ?> - <?php echo lang("flowname"); ?> - <?php echo lang("flowtype"); ?>', titleTextStyle: {color: 'green'}},
+				        vAxis: {title: "KPI in [%] of benchmark"},
+				        hAxis: {title: 'Process and KPI definition', titleTextStyle: {color: 'green'}},
 				        
 				    };
 				    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));

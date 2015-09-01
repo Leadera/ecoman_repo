@@ -1,6 +1,6 @@
 body {
     font-size: 14px;
-    font-family: 'Roboto', arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, arial, sans-serif;
 }
 
 .altbaslik {
@@ -351,7 +351,7 @@ td {
 }
 
 .nav-info {
-    width: 142px;
+    width: 150px;
     color: rgb(201, 201, 201);
     text-align: right;
 }
