@@ -261,6 +261,9 @@ Ostim.i18n.dict = {
      */
      'Company flow grid title': 'Flow Data',
      'Company process grid title': 'Process Data',
+     'Company Eco-Tracking grid title': 'Eco-Tracking Data',
      'Get flow grid': 'Display Company Flows',
-     'Get process grid': 'Display Company Processes'
+     'Get process grid': 'Display Company Processes',
+     'Get equipment grid': 'Display Company Equipment',
+     'Get eco-tracking grid': 'Display Company Eco-Tracking Data'
 };

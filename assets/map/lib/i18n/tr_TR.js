@@ -319,6 +319,9 @@ Ostim.i18n.dict = {
      */
      'Company flow grid title': 'Üretim Akış Bilgileri',
      'Company process grid title': 'Üretim Proses Bilgileri',
+     'Company Eco-Tracking grid title': 'Eco-Tracking Data',
      'Get flow grid': 'Şirket Akış Bilgilerini Görüntüle',
-     'Get process grid': 'Şirket Proses Bilgilerini Görüntüle'
+     'Get process grid': 'Şirket Proses Bilgilerini Görüntüle',
+     'Get equipment grid': 'Şirket Ekipman Bilgilerini Görüntüle',
+     'Get eco-tracking grid': 'Şirket Eco-Tracking Bilgilerini Görüntüle'
 };

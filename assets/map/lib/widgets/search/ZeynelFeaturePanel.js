@@ -473,6 +473,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
         
         
         Ext.ns('Example');
+        //  popup flow grid 
         Example.Grid = Ext.extend(Ext.grid.GridPanel, {
         //featureID: null,
 	initComponent:function() {
@@ -551,7 +552,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
 
         Ext.reg('examplegrid', Example.Grid);
         
-
+        // popup process grid 
         Example.Grid2 = Ext.extend(Ext.grid.GridPanel, {
         
         //featureID: null,
@@ -569,7 +570,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                             url : '../../../slim_rest/index.php/companyFlows_json_test'  
                          })*/
 			 ,store:new Ext.data.JsonStore({
-				 id: 'flowgrid'
+				 id: 'id'
                                 ,restful: true
 				,totalProperty:'totalCount'
 				,root:'rows'
@@ -639,10 +640,10 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
 	} // eo function initComponent
         
 });
-
+        
         Ext.reg('examplegrid2', Example.Grid2); 
             
-            
+        // popup equipment grid    
         Example.GridEquipment = Ext.extend(Ext.grid.GridPanel, {
         //featureID: null,
 	initComponent:function() {
@@ -712,6 +713,85 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
 });
 
         Ext.reg('examplegrid3', Example.GridEquipment);
+        
+        // popup eco-tracking grid
+        Example.GridEcotracking = Ext.extend(Ext.grid.GridPanel, {
+        //featureID: null,
+	initComponent:function() {
+		var config = {
+                         title : 'Grid Eco-Tracking' 
+                         ,height:200
+                         ,layout: 'auto'
+                         /*,proxy : new Ext.data.HttpProxy({
+                            url : '../../../slim_rest/index.php/companyFlows_json_test'  
+                         })*/
+			 ,store:new Ext.data.JsonStore({
+				 id: 'flowgrid'
+                                ,restful: true
+				,totalProperty:'totalCount'
+				,root:'rows'
+				,url:'../../../slim2_ecoman/map.php/getEcotracking_map?id='+this.featureID
+                                //,url:'../../../slim_rest/index.php/companyFlows_json_test'
+                                ,proxy : this.proxy
+				,fields:[
+                                    {name: 'id'},
+                                    {name: 'company_name', allowBlank: true},
+                                    {name: 'powera', allowBlank: true},
+                                    {name: 'powerb', allowBlank: true},
+                                    {name: 'powerc', allowBlank: true},
+                                    {name: 'date', allowBlank: true},
+                                    
+				]
+                                
+			})
+			,columns:[{header: "ID", width: 40, sortable: true, dataIndex: 'id'},
+                                  {header: "Company", width: 100, sortable: true, dataIndex: 'company_name', editor: new Ext.form.TextField({})},
+                                  {header: "Power A", width: 50, sortable: true, dataIndex: 'powera', editor: new Ext.form.TextField({})},
+                                  {header: "Power B", width: 50, sortable: true, dataIndex: 'powerb', editor: new Ext.form.TextField({})},
+                                  {header: "Power C", width: 50, sortable: true, dataIndex: 'powerc', editor: new Ext.form.TextField({})},
+                                  {header: "Date", width: 50, sortable: true, dataIndex: 'date', editor: new Ext.form.TextField({})},
+                              ]
+                        ,reader :new Ext.data.JsonReader({
+                                totalProperty: 'total',
+                                successProperty: 'success',
+                                idProperty: 'id2',
+                                root: 'rows',
+                                messageProperty: 'message'  // <-- New "messageProperty" meta-data
+                            }, [
+                                {name: 'id'},
+                                {name: 'company_name', allowBlank: true},
+                                {name: 'powera', allowBlank: true},
+                                {name: 'powerb', allowBlank: true},
+                                {name: 'powerc', allowBlank: true},
+                                {name: 'date', allowBlank: true},
+                            ])
+			,viewConfig: {
+                            forceFit: true,
+                            emptyText: __('No features found'),
+                            //deferEmptyText: false
+                        }
+		}; // eo config object
+
+		// apply config
+                Ext.apply(this, Ext.apply(this.initialConfig, config));
+
+
+		// call parent
+		Example.GridEcotracking.superclass.initComponent.apply(this, arguments);
+
+		// load the store at the latest possible moment
+		/*this.on({
+			afterlayout:{scope:this, single:true, fn:function() {
+				//this.store.load({params:{start:0, limit:30}});
+                                this.store.load();
+			}}
+		});*/
+
+	} // eo function initComponent
+
+});
+
+        Ext.reg('examplegrid4', Example.GridEcotracking);
         
         
         /**
@@ -935,6 +1015,12 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
 			,bodyStyle:'border-bottom:none'
 			,xtype:'examplegrid3'
 			,autoScroll:true
+		},
+                {
+			 id:'ecotrackingcard'
+			,bodyStyle:'border-bottom:none'
+			,xtype:'examplegrid4'
+			,autoScroll:true
 		}]
         });
         
@@ -970,7 +1056,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
             //console.log('ZeynelFeatureInfo getFeatureID()');
             if(index==0) {
                 scope.featureID = feature.data['cmpny_id'];
-                scope.featureCompanyName = feature.data['company_name'];
+                scope.featureCompanyName = feature.data['cmpny_name'];
                 //console.log(this.featureID);
                 //console.log(this.featureCompanyName);
             } else{
@@ -979,40 +1065,11 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
             
           });
     },
-            
-    /** private: setCompanyNameToGridTitle (dataGrid)
-     *  :param featureArray: extjs grid panel
-     *  activate the displaypanel of choice
-     */
-    setCompanyNameToFlowGridTitle: function (dataGrid, scope) {
-        //console.log('ZeynelFeaturePanel setCompanyNameToFlowGridTitle()');
-        //console.log('featureCompanyName-->'+scope.featureCompanyName);
-        if(scope.featureCompanyName!=null) {
-            //console.log('setCompanyNameToFlowGridTitle companyname-->'+scope.featureCompanyName);
-            dataGrid.setTitle(scope.featureCompanyName+'  '+__('Company flow grid title'));
-            //dataGrid.title = this.featureCompanyName+' Üretim Akış Bilgileri';
-        }
-    },
-            
-    /** private: setCompanyNameToProcessGridTitle (dataGrid, scope)
-     *  :param dataGrid: extjs grid panel
-     *  :param scope: global scope
-     *  activate the displaypanel of choice
-     */
-    setCompanyNameToProcessGridTitle: function (dataGrid, scope) {
-        console.log('ZeynelFeaturePanel setCompanyNameToProcessGridTitle()');
-        //console.log('featureCompanyName-->'+scope.featureCompanyName);
-        if(scope.featureCompanyName!=null) {
-            //console.log('setCompanyNameToFlowGridTitle companyname-->'+scope.featureCompanyName);
-            dataGrid.setTitle(scope.featureCompanyName+'  '+__('Company process grid title'));
-            //dataGrid.title = this.featureCompanyName+' Üretim Akış Bilgileri';
-        }
-    },
-            
+    
     /** private: setCompanyIDToService (dataGrid, scope)
      *  :param dataGrid: extjs grid panel
      *  :param scope: global scope
-     *  activate the displaypanel of choice
+     *  @author Zeynel Dağlı
      */
     setCompanyIDToService: function (dataGrid, scope) {
         console.log('ZeynelFeaturePanel setCompanyIDToService()');
@@ -1065,6 +1122,66 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
             console.log('datagrid featureID-->'+dataGrid.featureID);
         }
     },
+            
+    /** private: setCompanyNameToGridTitle (dataGrid)
+     *  :param featureArray: extjs grid panel
+     *  activate the displaypanel of choice
+     */
+    setCompanyNameToFlowGridTitle: function (dataGrid, scope) {
+        //console.log('ZeynelFeaturePanel setCompanyNameToFlowGridTitle()');
+        //console.log('featureCompanyName-->'+scope.featureCompanyName);
+        if(scope.featureCompanyName!=null) {
+            //console.log('setCompanyNameToFlowGridTitle companyname-->'+scope.featureCompanyName);
+            dataGrid.setTitle(scope.featureCompanyName+'  '+__('Company flow grid title'));
+            //dataGrid.title = this.featureCompanyName+' Üretim Akış Bilgileri';
+        }
+    },
+            
+    /** private: setCompanyNameToProcessGridTitle (dataGrid, scope)
+     *  :param dataGrid: extjs grid panel
+     *  :param scope: global scope
+     *  activate the displaypanel of choice
+     */
+    setCompanyNameToProcessGridTitle: function (dataGrid, scope) {
+        console.log('ZeynelFeaturePanel setCompanyNameToProcessGridTitle()');
+        //console.log('featureCompanyName-->'+scope.featureCompanyName);
+        if(scope.featureCompanyName!=null) {
+            //console.log('setCompanyNameToFlowGridTitle companyname-->'+scope.featureCompanyName);
+            dataGrid.setTitle(scope.featureCompanyName+'  '+__('Company process grid title'));
+            //dataGrid.title = this.featureCompanyName+' Üretim Akış Bilgileri';
+        }
+    },
+    
+    /** private: setCompanyNameToProcessGridTitle (dataGrid, scope)
+     *  :param dataGrid: extjs grid panel
+     *  :param scope: global scope
+     *  activate the displaypanel of choice
+     */
+    setCompanyNameToProcessGridTitle: function (dataGrid, scope) {
+        console.log('ZeynelFeaturePanel setCompanyNameToProcessGridTitle()');
+        //console.log('featureCompanyName-->'+scope.featureCompanyName);
+        if(scope.featureCompanyName!=null) {
+            //console.log('setCompanyNameToFlowGridTitle companyname-->'+scope.featureCompanyName);
+            dataGrid.setTitle(scope.featureCompanyName+'  '+__('Company process grid title'));
+            //dataGrid.title = this.featureCompanyName+' Üretim Akış Bilgileri';
+        }
+    },
+    
+    /** private: setCompanyNameToProcessGridTitle (dataGrid, scope)
+     *  :param dataGrid: extjs grid panel
+     *  :param scope: global scope
+     *  activate the displaypanel of choice
+     *  @author Zeynel Dağlı
+     */
+    setCompanyNameToEcotrackingGridTitle: function (dataGrid, scope) {
+        console.log('ZeynelFeaturePanel setCompanyNameToEcotrackingGridTitle()');
+        //console.log('featureCompanyName-->'+scope.featureCompanyName);
+        if(scope.featureCompanyName!=null) {
+            //console.log('setCompanyNameToFlowGridTitle companyname-->'+scope.featureCompanyName);
+            dataGrid.setTitle(scope.featureCompanyName+'  '+__('Company Eco-Tracking grid title'));
+            //dataGrid.title = this.featureCompanyName+' Üretim Akış Bilgileri';
+        }
+    },
     
     /** private: activateDisplayPanel (name)
      *  :param name: Detail, Table
@@ -1081,6 +1198,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
             return;
         }
         // Show displaypanel.
+        //console.log('acivate test');
         this.mainPanel.getLayout().setActiveItem("grd_"+name);
         //this.mainPanel.getLayout().setActiveItem("test");
     },
@@ -1111,7 +1229,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                     continue;
                 }
 
-                item = {
+                /*item = {
                     text: __('as') + ' ' + exportFormatConfig.name,
                     cls: 'x-btn',
                     iconCls: 'icon-table-export',
@@ -1121,7 +1239,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                         this.exportData(evt.exportFormatConfig);
                     }
                 };
-                downloadMenuItems.push(item);
+                downloadMenuItems.push(item);*/
             }
 
             if (this.downloadInfo && this.downloadInfo.downloadFormats) {
@@ -1146,7 +1264,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
             //download ad to menu
             if (downloadMenuItems.length > 0) {
                 /* Add to toolbar. */
-                /*tbarItems.push({
+                tbarItems.push({
                     itemId: 'download',
                     text: __('Download'),
                     cls: 'x-btn-text-icon',
@@ -1158,7 +1276,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                         },
                         items: downloadMenuItems
                     })
-                });*/
+                });
             }
         }
 
@@ -1277,8 +1395,8 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                                                 removeMask: false,
                                                 store: activeItem.getStore()}
                                         );
-                //activeItem.getStore().proxy.setUrl('../../../slim2_ecoman/map.php/getProcess_map?id='+this.featureID);
-                activeItem.getStore().proxy.setUrl('../../../slim2_ecoman/map.php/getProcess_map');
+                activeItem.getStore().proxy.setUrl('../../../slim2_ecoman/map.php/getProcess_map?id='+this.featureID);
+                //activeItem.getStore().proxy.setUrl('../../../slim2_ecoman/map.php/getProcess_map');
                 activeItem.getStore().load();
                 console.log('feature company nameee--->'+this.featureCompanyName);
                 console.log('feature company ideeeee--->'+this.featureID);
@@ -1299,7 +1417,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
         tbarItems.push('->');
         tbarItems.push({
             itemId: 'EquipmentButton',
-            text: __('Get equipment grid'),
+            text: __('Get process grid'),
             cls: 'x-btn-text-icon',
             iconCls: 'icon-table-clear',
             tooltip: __('Remove all results'),
@@ -1313,8 +1431,8 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                                                 removeMask: false,
                                                 store: activeItem.getStore()}
                                         );
-                //activeItem.getStore().proxy.setUrl('../../../slim2_ecoman/map.php/getEquipment_map?id='+this.featureID);
-                activeItem.getStore().proxy.setUrl('../../../slim2_ecoman/map.php/getEquipment_map');
+                activeItem.getStore().proxy.setUrl('../../../slim2_ecoman/map.php/getEquipment_map?id='+this.featureID);
+                //activeItem.getStore().proxy.setUrl('../../../slim2_ecoman/map.php/getEquipment_map');
                 activeItem.getStore().load();
                 console.log('feature company name equipment--->'+this.featureCompanyName);
                 console.log('feature company id equipment--->'+this.featureID);
@@ -1326,12 +1444,49 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
             }
         });
         
+        /**
+        * zeynel dağlı
+        * firma eco-tracking gösteren toolbar
+        *  button
+        * @since 01-09-2015
+        */
+       tbarItems.push('->');
+        tbarItems.push({
+            itemId: 'EcotrackingButton',
+            text: __('Get eco-tracking grid'),
+            cls: 'x-btn-text-icon',
+            iconCls: 'icon-table-clear',
+            tooltip: __('Remove all results'),
+            scope: this,
+            handler: function () {
+                this.mainPanel.getLayout().setActiveItem('ecotrackingcard')
+                //var activeItem = this.mainPanel.getLayout().getItem('processcard');
+                var activeItem = this.mainPanel.getComponent('ecotrackingcard');
+                var flowGridmask = new Ext.LoadMask(activeItem.getEl(), 
+                                                {msg:__('Grid loading'),
+                                                removeMask: false,
+                                                store: activeItem.getStore()}
+                                        );
+                activeItem.getStore().proxy.setUrl('../../../slim2_ecoman/map.php/getEcotracking_map?id='+this.featureID);
+                //activeItem.getStore().proxy.setUrl('../../../slim2_ecoman/map.php/getEquipment_map');
+                activeItem.getStore().load();
+                //console.log('feature company name equipment--->'+this.featureCompanyName);
+                //console.log('feature company id equipment--->'+this.featureID);
+                
+                this.setCompanyNameToEcotrackingGridTitle(activeItem, this);
+                flowGridmask.show();
+                //console.warn(activeItem.featureID);
+
+            }
+        });
         
-        tbarItems.push('->');
+        
+        
+        /*tbarItems.push('->');
         // zeynel dağlı
         // flowgrid toolbar clear butonu
         tbarItems.push({
-            itemId: 'clear',
+           /* itemId: 'clear',
             text: __('Clear'),
             cls: 'x-btn-text-icon',
             iconCls: 'icon-table-clear',
@@ -1347,7 +1502,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                 if(this.layerTest  instanceof OpenLayers.Layer.WMS) {
                     this.map.removeLayer(this.layerTest);
                 }*/
-                this.layerTest.destroy();
+                /*this.layerTest.destroy();
                 //console.warn(this.flowGrid);
                 //this.flowGrid.view.refresh.defer(1, ,this.flowGrid.view);
                 
@@ -1378,11 +1533,11 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                 /*this.flowGrid.store.removeAll(true);
                 this.store.removeAll(true);
                 this.flowGrid.store = [];*/
-                this.flowGrid.destroy();
+                /*this.flowGrid.destroy();
                 //this.flowGrid.reload();
 
             }
-        });
+        });*/
         
         
         
@@ -1960,11 +2115,12 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
 
     /** private: method[exportData]
      * Callback handler function for exporting and downloading the data to specified format.
+     * zeynel dağlı dosya indirme işlemleri burada yapılıyor
      */
     exportData: function (config) {
-
+        alert('export data');
         var store = this.store;
-
+        console.debug(store);
         // Create the filename for download
         var featureType = this.featureType ? this.featureType : 'heron';
         config.fileName = featureType + config.fileExt;
@@ -1982,6 +2138,14 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
         // Always use Base64 encoding
         config.encoding = 'base64';
         var data = Ostim.data.DataExporter.formatStore(store, config);
+        /**
+         * zeynel dağlı
+         * file download test
+         */
+        //var data = Ext.ux.Exporter.exportGrid(this.mainPanel.activeItem);
+        //var data = Ext.ux.Exporter.exportGrid(Example.Grid, Example.Grid.config);
+        //console.debug(Example.Grid);
+        //var data = Ext.ux.Exporter.exportGrid('examplegrid');
         Ostim.data.DataExporter.download(data, config);
     },
 
@@ -1989,7 +2153,7 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
      * Callback handler function for direct downloading the data in specified format.
      */
     downloadData: function (downloadFormat, fileExt) {
-
+        //alert('download data');
         var downloadInfo = this.downloadInfo;
         downloadInfo.params.outputFormat = downloadFormat;
         downloadInfo.params.filename = downloadInfo.params.typename + fileExt;
