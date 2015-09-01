@@ -1410,14 +1410,14 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
         
         /**
         * zeynel dağlı
-        * firma proseslerini gösteren toolbar
+        * firma equipment gösteren toolbar
         *  button
         * @since 10-12-2014
         */
         tbarItems.push('->');
         tbarItems.push({
             itemId: 'EquipmentButton',
-            text: __('Get process grid'),
+            text: __('Get equipment grid'),
             cls: 'x-btn-text-icon',
             iconCls: 'icon-table-clear',
             tooltip: __('Remove all results'),
