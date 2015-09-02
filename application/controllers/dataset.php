@@ -94,18 +94,30 @@ class Dataset extends CI_Controller {
 
 	public function new_flow($companyID)
 	{
+	
 		$this->form_validation->set_rules('flowname', 'Flow Name', 'trim|required|xss_clean|strip_tags|callback__alpha_dash_space');
 		$this->form_validation->set_rules('flowtype', 'Flow Type', 'trim|required|xss_clean|strip_tags|callback_flow_varmi');
-		$this->form_validation->set_rules('charactertype', 'Flow Character Type', 'trim|xss_clean|strip_tags');
-		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|xss_clean|strip_tags|numeric|max_length[14]');
 		$this->form_validation->set_rules('quantityUnit', 'Quantity Unit', 'trim|required|xss_clean|strip_tags');
-		$this->form_validation->set_rules('cost', 'Cost', 'trim|required|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('cost', 'Cost', 'trim|required|xss_clean|strip_tags|numeric|max_length[14]');
 		$this->form_validation->set_rules('costUnit', 'Cost Unit', 'trim|required|xss_clean|strip_tags');
-		$this->form_validation->set_rules('ep', 'EP', 'trim|required|xss_clean|strip_tags|numeric');
-		$this->form_validation->set_rules('epUnit', 'EP Unit', 'trim|required|xss_clean|strip_tags');
+		$this->form_validation->set_rules('ep', 'EP', 'trim|xss_clean|strip_tags|numeric|max_length[25]');
+		$this->form_validation->set_rules('epUnit', 'EP Unit', 'trim|xss_clean|strip_tags');
+
+		$this->form_validation->set_rules('charactertype', 'Flow Character Type', 'trim|xss_clean|strip_tags|max_length[50]');
+		$this->form_validation->set_rules('availability', 'Availability', 'trim|xss_clean');
+		$this->form_validation->set_rules('cf', 'Chemical Formula', 'trim|xss_clean|max_length[30]');
 		$this->form_validation->set_rules('conc', 'Concentration', 'trim|xss_clean|strip_tags|numeric');
-		$this->form_validation->set_rules('pres', 'Pressure', 'trim|xss_clean|strip_tags|numeric');
-		$this->form_validation->set_rules('ph', 'PH', 'trim|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('concunit', 'Concentration Unti', 'trim|xss_clean');
+		$this->form_validation->set_rules('pres', 'Pressure', 'trim|xss_clean|strip_tags|numeric|max_length[14]');
+		$this->form_validation->set_rules('presunit', 'Pressure Unit', 'trim|xss_clean');
+		$this->form_validation->set_rules('ph', 'PH', 'trim|xss_clean|strip_tags|numeric|max_length[14]');
+		$this->form_validation->set_rules('state', 'State', 'trim|xss_clean');
+		$this->form_validation->set_rules('quality', 'Quality', 'trim|xss_clean|max_length[150]');
+		$this->form_validation->set_rules('oloc', 'Output Location', 'trim|xss_clean');
+		$this->form_validation->set_rules('spot', 'Substitution Potential', 'trim|xss_clean');
+		$this->form_validation->set_rules('desc', 'Description', 'trim|xss_clean|max_length[500]');
+		$this->form_validation->set_rules('comment', 'Comment', 'trim|xss_clean');
 
 		if($this->form_validation->run() !== FALSE) {
 
@@ -201,16 +213,27 @@ class Dataset extends CI_Controller {
 
 	public function edit_flow($companyID,$flow_id,$flow_type_id)
 	{
-		$this->form_validation->set_rules('charactertype', 'Character Type', 'trim|xss_clean|strip_tags');
 		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|xss_clean|strip_tags|numeric');
 		$this->form_validation->set_rules('quantityUnit', 'Quantity Unit', 'trim|required|xss_clean|strip_tags');
 		$this->form_validation->set_rules('cost', 'Cost', 'trim|required|xss_clean|strip_tags|numeric');
 		$this->form_validation->set_rules('costUnit', 'Cost Unit', 'trim|required|xss_clean|strip_tags');
-		$this->form_validation->set_rules('ep', 'EP', 'trim|required|xss_clean|strip_tags|numeric');
-		$this->form_validation->set_rules('epUnit', 'EP Unit', 'trim|required|xss_clean|strip_tags');
+		$this->form_validation->set_rules('ep', 'EP', 'trim|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('epUnit', 'EP Unit', 'trim|xss_clean|strip_tags');
+
+		$this->form_validation->set_rules('charactertype', 'Flow Character Type', 'trim|xss_clean|strip_tags|max_length[50]');
+		$this->form_validation->set_rules('availability', 'Availability', 'trim|xss_clean');
+		$this->form_validation->set_rules('cf', 'Chemical Formula', 'trim|xss_clean|max_length[100]');
 		$this->form_validation->set_rules('conc', 'Concentration', 'trim|xss_clean|strip_tags|numeric');
-		$this->form_validation->set_rules('pres', 'Pressure', 'trim|xss_clean|strip_tags|numeric');
-		$this->form_validation->set_rules('ph', 'PH', 'trim|xss_clean|strip_tags|numeric');
+		$this->form_validation->set_rules('concunit', 'Concentration Unti', 'trim|xss_clean');
+		$this->form_validation->set_rules('pres', 'Pressure', 'trim|xss_clean|strip_tags|numeric|max_length[14]');
+		$this->form_validation->set_rules('presunit', 'Pressure Unit', 'trim|xss_clean');
+		$this->form_validation->set_rules('ph', 'PH', 'trim|xss_clean|strip_tags|numeric|max_length[14]');
+		$this->form_validation->set_rules('state', 'State', 'trim|xss_clean');
+		$this->form_validation->set_rules('quality', 'Quality', 'trim|xss_clean|max_length[150]');
+		$this->form_validation->set_rules('oloc', 'Output Location', 'trim|xss_clean');
+		$this->form_validation->set_rules('spot', 'Substitution Potential', 'trim|xss_clean');
+		$this->form_validation->set_rules('desc', 'Description', 'trim|xss_clean|max_length[500]');
+		$this->form_validation->set_rules('comment', 'Comment', 'trim|xss_clean');
 
 		if($this->form_validation->run() !== FALSE) {
 

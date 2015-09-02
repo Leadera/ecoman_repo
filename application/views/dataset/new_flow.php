@@ -16,7 +16,6 @@
 		}
 	</script>
 
-
 	<div class="col-md-4 borderli" <?php if(validation_errors() == NULL ){echo "id='gizle'";} ?>>
 		<?php echo form_open_multipart('new_flow/'.$companyID); ?>
 			<p class="lead"><?php echo lang("addflow"); ?></p>
@@ -25,7 +24,7 @@
 				<select id="selectize" onchange="getFlowId()" class="info select-block" name="flowname">
 					<option value=""><?php echo lang("pleaseselect"); ?></option>
 					<?php foreach ($flownames as $flowname): ?>
-						<option value="<?php echo $flowname['id']; ?>"><?php echo $flowname['name']; ?></option>
+						<option value="<?php echo $flowname['id']; ?>" <?php echo set_select('flowname', $flowname['id']); ?>><?php echo $flowname['name']; ?></option>
 					<?php endforeach ?>
 				</select>
 		 	</div>
@@ -33,7 +32,7 @@
 				<label for="flowtype"><?php echo lang("flowtype"); ?> <span style="color:red;">*</span></label>
 				<select id="flowtype" class="info select-block" name="flowtype">
 					<?php foreach ($flowtypes as $flowtype): ?>
-						<option value="<?php echo $flowtype['id']; ?>"><?php echo $flowtype['name']; ?></option>
+						<option value="<?php echo $flowtype['id']; ?>" <?php echo set_select('flowtype', $flowtype['id']); ?>><?php echo $flowtype['name']; ?></option>
 					<?php endforeach ?>
 				</select>
 			</div>
@@ -42,17 +41,17 @@
 				<select id="flowfamily" class="info select-block" name="flowfamily">
 					<option value="">Nothing Selected</option>
 					<?php foreach ($flowfamilys as $flowfamily): ?>
-						<option value="<?php echo $flowfamily['id']; ?>"><?php echo $flowfamily['name']; ?></option>
+						<option value="<?php echo $flowfamily['id']; ?>" <?php echo set_select('flowfamily', $flowfamily['id']); ?>><?php echo $flowfamily['name']; ?></option>
 					<?php endforeach ?>
 				</select>
 			</div>
 			<div class="form-group">
 				<label for="charactertype"><?php echo lang("charactertype"); ?></label>
 				<select id="charactertype" class="info select-block" name="charactertype">
-						<option value=""><?php echo lang("pleaseselect"); ?></option>
-						<option value="Recycling"><?php echo lang("recycling"); ?></option>
-						<option value="Emission"><?php echo lang("emission"); ?></option>
-						<option value="Waste"><?php echo lang("waste"); ?></option>
+						<option value="" <?php echo set_select('charactertype', ''); ?>><?php echo lang("pleaseselect"); ?></option>
+						<option value="Recycling" <?php echo set_select('charactertype', 'Recycling'); ?>><?php echo lang("recycling"); ?></option>
+						<option value="Emission" <?php echo set_select('charactertype', 'Emission'); ?>><?php echo lang("emission"); ?></option>
+						<option value="Waste" <?php echo set_select('charactertype', 'Waste'); ?>><?php echo lang("waste"); ?></option>
 				</select>
 			</div>
 			<div class="form-group">
@@ -66,7 +65,7 @@
 						<select id="quantityUnit" class="info select-block" name="quantityUnit">
 							<option value=""><?php echo lang("pleaseselect"); ?></option>
 							<?php foreach ($units as $unit): ?>
-								<option value="<?php echo $unit['id']; ?>"><?php echo $unit['name']; ?></option>
+								<option value="<?php echo $unit['id']; ?>" <?php echo set_select('quantityUnit', $unit['id']); ?>><?php echo $unit['name']; ?></option>
 							<?php endforeach ?>
 						</select>
 					</div>
@@ -81,9 +80,9 @@
 						<div class="col-md-4">
 							<label for="cost"><?php echo lang("costunit"); ?> <span style="color:red;">*</span></label>
 							<select id="costUnit" class="info select-block" name="costUnit">
-								<option value="TL">TL</option>
-								<option value="Euro">Euro</option>
-								<option value="Dollar">Dollar</option>
+								<option value="TL" <?php echo set_select('costUnit', 'TL'); ?>>TL</option>
+								<option value="Euro" <?php echo set_select('costUnit', 'Euro'); ?>>Euro</option>
+								<option value="Dollar" <?php echo set_select('costUnit', 'Dollar'); ?>>Dollar</option>
 							</select>
 						</div>
 		  		</div>
@@ -91,11 +90,11 @@
 		  	<div class="form-group">
 		  		<div class="row">
 						<div class="col-md-8">
-				  		<label for="ep">EP (<?php echo lang("annual"); ?>) <span style="color:red;">*</span></label>
-				    	<input class="form-control" id="ep" name="ep" placeholder="Enter EP" value="<?php echo set_value('ep'); ?>">
+				  		<label for="ep">EP (<?php echo lang("annual"); ?>)</label>
+				    	<input class="form-control" id="ep" name="ep" placeholder="EP (<?php echo lang("annual"); ?>) " value="<?php echo set_value('ep'); ?>">
 				    </div>
 						<div class="col-md-4">
-							<label for="epUnit"><?php echo lang("epunit"); ?> <span style="color:red;">*</span></label>
+							<label for="epUnit"><?php echo lang("epunit"); ?></label>
 							<input type="text" class="form-control" id="epUnit" value="EP" name="epUnit" readonly>
 						</div>
 		  		</div>
@@ -103,14 +102,14 @@
 
 		  	<div class="form-group">
 				  <label for="cf"><?php echo lang("chemicalformula"); ?></label>
-				  <input class="form-control" id="cf" name="cf" placeholder="Chemical formula">
+				  <input class="form-control" id="cf" name="cf" placeholder="<?php echo lang("chemicalformula"); ?>" value="<?php echo set_value('cf'); ?>">
 		  	</div>
 
 				<div class="form-group">
 					<label for="availability"><?php echo lang("availability"); ?></label>
 					<select id="availability" class="info select-block" name="availability">
-						<option value="true"><?php echo lang("available"); ?></option>
-						<option value="false"><?php echo lang("notavailable"); ?></option>
+						<option value="true" <?php echo set_select('availability', 'true'); ?>><?php echo lang("available"); ?></option>
+						<option value="false" <?php echo set_select('availability', 'false'); ?>><?php echo lang("notavailable"); ?></option>
 					</select>
 				</div>
 
@@ -118,14 +117,14 @@
 					<div class="row">
 						<div class="col-md-8">
 							<label for="conc"><?php echo lang("concentration"); ?></label>
-							<input class="form-control" id="conc" name="conc" placeholder="<?php echo lang("concentration"); ?>">
+							<input class="form-control" id="conc" name="conc" placeholder="<?php echo lang("concentration"); ?>" value="<?php echo set_value('conc'); ?>">
 						</div>
 						<div class="col-md-4">
 							<label for="concunit"><?php echo lang("concentration"); ?> <?php echo lang("unit"); ?></label>
 							<select id="concunit" class="info select-block" name="concunit">
-								<option value=""><?php echo lang("pleaseselect"); ?></option>
-								<option value="%">%</option>
-								<option value="kg/m3">kg/m3</option>
+								<option value="" <?php echo set_select('concunit', ''); ?>><?php echo lang("pleaseselect"); ?></option>
+								<option value="%" <?php echo set_select('concunit', '%'); ?>>%</option>
+								<option value="kg/m3" <?php echo set_select('concunit', 'kg/m3'); ?>>kg/m3</option>
 							</select>
 						</div>
 					</div>
@@ -135,15 +134,15 @@
 					<div class="row">
 						<div class="col-md-8">
 							<label for="pres"><?php echo lang("pressure"); ?></label>
-							<input class="form-control" id="pres" name="pres" placeholder="<?php echo lang("pressure"); ?>">
+							<input class="form-control" id="pres" name="pres" placeholder="<?php echo lang("pressure"); ?>" value="<?php echo set_value('pres'); ?>">
 						</div>
 						<div class="col-md-4">
 							<label for="presunit"><?php echo lang("presure"); ?> <?php echo lang("unit"); ?></label>
 							<select id="presunit" class="info select-block" name="presunit">
 								<option value=""><?php echo lang("pleaseselect"); ?></option>
-								<option value="Pascal (Pa)">Pascal (Pa)</option>
-								<option value="bar (Bar)">bar (Bar)</option>
-								<option value="Standard atmosphere (atm)">Standard atmosphere (atm)</option>
+								<option value="Pascal (Pa)" <?php echo set_select('presunit', 'Pascal (Pa)'); ?>>Pascal (Pa)</option>
+								<option value="bar (Bar)" <?php echo set_select('presunit', 'bar (Bar)'); ?>>bar (Bar)</option>
+								<option value="Standard atmosphere (atm)"  <?php echo set_select('presunit', 'Standard atmosphere (atm)'); ?>>Standard atmosphere (atm)</option>
 							</select>
 						</div>
 					</div>
@@ -151,26 +150,26 @@
 
 				<div class="form-group">
 					<label for="ph"><?php echo lang("ph"); ?></label>
-					<input class="form-control" id="ph" name="ph" placeholder="<?php echo lang("ph"); ?>">
+					<input class="form-control" id="ph" name="ph" placeholder="<?php echo lang("ph"); ?>" value="<?php echo set_value('ph'); ?>">
 				</div>
 
 				<div class="form-group">
 					<label for="state"><?php echo lang("state"); ?></label>
 					<select id="state" class="info select-block" name="state">
-						<option value="1">Solid</option>
-						<option value="2">Liquid</option>
-						<option value="3">Gas</option>
+						<option value="1" <?php echo set_select('state', '1'); ?>>Solid</option>
+						<option value="2" <?php echo set_select('state', '2'); ?>>Liquid</option>
+						<option value="3" <?php echo set_select('state', '3'); ?>>Gas</option>
 					</select>
 				</div>
 
 				<div class="form-group">
 					<label for="quality"><?php echo lang("quality"); ?></label>
-					<input class="form-control" id="quality" name="quality" placeholder="<?php echo lang("quality"); ?>">
+					<input class="form-control" id="quality" name="quality" placeholder="<?php echo lang("quality"); ?>" value="<?php echo set_value('quality'); ?>">
 				</div>
 
 				<div class="form-group">
 					<label for="oloc"><?php echo lang("outputlocation"); ?></label>
-					<input class="form-control" id="oloc" name="oloc" placeholder="<?php echo lang("outputlocation"); ?>">
+					<input class="form-control" id="oloc" name="oloc" placeholder="<?php echo lang("outputlocation"); ?>" value="<?php echo set_value('oloc'); ?>">
 				</div>
 
 <!--					<div class="form-group">
@@ -200,17 +199,17 @@
 
 				<div class="form-group">
 					<label for="spot"><?php echo lang("substitute_potential"); ?></label>
-					<input class="form-control" id="spot" name="spot" placeholder="<?php echo lang("substitute_potential"); ?>">
+					<input class="form-control" id="spot" name="spot" value="<?php echo set_value('spot'); ?>" placeholder="<?php echo lang("substitute_potential"); ?>">
 				</div>
 
 				<div class="form-group">
 					<label for="desc"><?php echo lang("description"); ?></label>
-					<input class="form-control" id="desc" name="desc" placeholder="<?php echo lang("description"); ?>">
+					<input class="form-control" id="desc" name="desc" value="<?php echo set_value('desc'); ?>" placeholder="<?php echo lang("description"); ?>">
 				</div>
 
 				<div class="form-group">
 					<label for="comment"><?php echo lang("comments"); ?></label>
-					<input class="form-control" id="comment" name="comment" placeholder="<?php echo lang("comments"); ?>">
+					<input class="form-control" id="comment" name="comment" value="<?php echo set_value('comment'); ?>" placeholder="<?php echo lang("comments"); ?>">
 				</div>
 
 		  	<button type="submit" class="btn btn-info"><?php echo lang("addflow"); ?></button>

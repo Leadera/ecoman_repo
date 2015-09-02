@@ -72,11 +72,11 @@
 		  	<div class="form-group">
 		  		<div class="row">
 						<div class="col-md-8">
-				  		<label for="ep">EP (<?php echo lang("annual"); ?>) <span style="color:red;">*</span></label>
+				  		<label for="ep">EP (<?php echo lang("annual"); ?>)</label>
 				    	<input class="form-control" id="ep" name="ep" placeholder="EP" value="<?php echo set_value('ep',$flow['ep']); ?>">
 				    </div>
 						<div class="col-md-4">
-							<label for="epUnit"><?php echo lang("epunit"); ?> <span style="color:red;">*</span></label>
+							<label for="epUnit"><?php echo lang("epunit"); ?></label>
 							<input type="text" class="form-control" id="epUnit" value="EP" name="epUnit" readonly>
 						</div>
 		  		</div>
