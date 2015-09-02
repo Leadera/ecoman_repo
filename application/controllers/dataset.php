@@ -189,7 +189,7 @@ class Dataset extends CI_Controller {
 			}
 
 			$this->flow_model->register_flow_to_company($flow);
-
+			redirect(current_url());
 			//redirect(base_url('new_flow/'.$data['companyID']), 'refresh'); // tablo olusurken ajax kullanılabilir.
 			//şuan sayfa yenileniyor her seferinde database'den satırlar ekleniyor.
 
