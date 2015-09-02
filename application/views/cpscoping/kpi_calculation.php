@@ -411,7 +411,7 @@
 			url: '<?php echo base_url('kpi_calculation_chart'); ?>/'+prjct_id+'/'+cmpny_id,
 			success: function(data){
 				if(data['allocation'].length != 0){
-					console.log(data['allocation']);
+					//console.log(data['allocation']);
 					for(var i = 0 ; i < data['allocation'].length ; i++){
 						if(data['allocation'][i].benchmark_kpi != 0){
 							prcss_array[index] = data['allocation'][i].prcss_name;
@@ -452,7 +452,7 @@
 		          			newData[i][2] = Math.abs(Math.round(kpi[i-1]));
 		          		
 		          		newData[i][3] = '';
-		          		console.log(kpi[i-1]);
+		          		//console.log(kpi[i-1]);
 		          		if(kpi[i-1]<100){
 		          			newData[i][4] = 'green';
 		          		}
