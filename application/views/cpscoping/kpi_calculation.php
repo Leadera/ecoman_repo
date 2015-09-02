@@ -441,10 +441,13 @@
 		          		newData[i][0] = prcss_array[i-1]+"-"+flow_array[i-1]+"-"+flow_type_array[i-1];
 		          		if(kpi[i-1]<0){
 		          			newData[i][1] = 0;
-		          		}else{
+		          		}
+		          		else{
 		          		newData[i][1] = kpi2[i-1];
 		          		}
-		          		newData[i][2] = Math.abs(kpi[i-1]);
+		          		
+		          			newData[i][2] = Math.abs(Math.round(kpi[i-1]));
+		          		
 		          		newData[i][3] = '';
 		          		console.log(kpi[i-1]);
 		          		if(kpi[i-1]<100){
@@ -465,7 +468,7 @@
 				        height: 600,
 				        bar: { groupWidth: '75%' },
 				        isStacked: true,
-				        vAxis: {title: "[%] of benchmark"},
+				        vAxis: {title: "[%] of benchmark" ,viewWindow: {max: 410}},
 				        hAxis: {title: 'Process and KPI definition', titleTextStyle: {color: 'green'}},
 				        
 				    };

@@ -94,7 +94,7 @@ class Cpscoping extends CI_Controller {
 
 		$this->form_validation->set_rules('reference', 'Reference', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('unit_reference', 'Unit Reference', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('nameofref', 'Name of reference', 'trim|xss_clean');
+		$this->form_validation->set_rules('nameofref', 'Name of reference', 'trim|required|xss_clean');
 		
 		$this->form_validation->set_rules('kpi', 'Kpi', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('unit_kpi', ' Unit Kpi', 'required|trim|xss_clean');
