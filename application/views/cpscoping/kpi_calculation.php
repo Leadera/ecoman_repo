@@ -464,16 +464,17 @@
 		          	var data2 = google.visualization.arrayToDataTable(newData);
 
 		          	var options = {
-		          	legend: { position: "none" },
-				        height: 600,
-				        bar: { groupWidth: '75%' },
-				        isStacked: true,
-				        vAxis: {title: "[%] of benchmark" ,viewWindow: {max: 410}},
-				        hAxis: {title: 'Process and KPI definition', titleTextStyle: {color: 'green'}},
-				        
-				    };
-				    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-				    chart.draw(data2, options);
+			          	title: 'red: "Exceed Benchmark-KPI" \n yellow: "Equal to Benchmark-KPI" \n green: "Better than Benchmark-KPI"',  
+			          	titleTextStyle: {color: '#d0d0d0',bold: 'false'},
+			          	legend: { position: "none",  },
+					        height: 600,
+					        bar: { groupWidth: '75%' },
+					        isStacked: true,
+					        vAxis: {title: "[%] of benchmark" ,viewWindow: {max: 370}},
+					        hAxis: {title: 'Process and KPI definition', titleTextStyle: {color: 'green'}},				        
+					    	};
+					    	var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+					    	chart.draw(data2, options);
 				}
 			}
 		});
