@@ -436,7 +436,7 @@
 
 		          	newData[0][0] = 'Genre';
 		          	newData[0][1] = '';
-		          	newData[0][2] = 'Difference with normal';
+		          	newData[0][2] = 'Company performance relative to benchmark';
 		          	newData[0][3] = { role: 'annotation' };
 		          	newData[0][4] = { role: 'style' };
 
