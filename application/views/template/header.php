@@ -175,6 +175,9 @@
     To use the extended features of this web site, please register.
   </p> -->
   <script type="text/javascript">
+
+  var project_durum = <?php if($this->session->userdata('project_id')){echo "true";}else{ echo "false";} ?>
+
     $( document ).ready(function() {
       var pathname = window.location.pathname;
       console.log(pathname);
@@ -189,12 +192,17 @@
         $('.content-container ul.nav').hide();
         $('#companies').fadeIn('slow');
       }
-      else if ((pathname.toLowerCase().indexOf("project") >= 0)){
+      else if ((pathname.toLowerCase().indexOf("project") >= 0) && (project_durum==false)){
         $('#l3').css('background-color', '#15474A');
         $('.content-container ul.nav').hide();
         $('#projects').fadeIn('slow');
       }
-      else if ((pathname.toLowerCase().indexOf("cpscoping") >= 0) || (pathname.toLowerCase().indexOf("isscoping") >= 0) || (pathname.toLowerCase().indexOf("cost_benefit") >= 0) || (pathname.toLowerCase().indexOf("kpi_calculation") >= 0) || (pathname.toLowerCase().indexOf("ecotracking") >= 0)){
+      else if ((pathname.toLowerCase().indexOf("myproject") >= 0) || (pathname.toLowerCase().indexOf("newproject") >= 0)|| (pathname.toLowerCase().indexOf("projects") >= 0)){
+        $('#l3').css('background-color', '#15474A');
+        $('.content-container ul.nav').hide();
+        $('#projects').fadeIn('slow');
+      }
+      else if ((pathname.toLowerCase().indexOf("cpscoping") >= 0) || (pathname.toLowerCase().indexOf("isscoping") >= 0) || (pathname.toLowerCase().indexOf("cost_benefit") >= 0) || (pathname.toLowerCase().indexOf("kpi_calculation") >= 0) || (pathname.toLowerCase().indexOf("ecotracking") >= 0) || (project_durum==true)){
         $('#l4').css('background-color', '#84BFC3');
         $('.content-container ul.nav').hide();
         $('#analysis').fadeIn('slow');
