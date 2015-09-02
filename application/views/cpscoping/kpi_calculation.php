@@ -401,6 +401,7 @@
 		var prcss_array = new Array();
 		var flow_array = new Array();
 		var flow_type_array = new Array();
+		var nameofref = new Array();
 		var kpi = new Array();
 		var kpi2 = new Array();
 		var index = 0;
@@ -410,11 +411,13 @@
 			url: '<?php echo base_url('kpi_calculation_chart'); ?>/'+prjct_id+'/'+cmpny_id,
 			success: function(data){
 				if(data['allocation'].length != 0){
+					console.log(data['allocation']);
 					for(var i = 0 ; i < data['allocation'].length ; i++){
 						if(data['allocation'][i].benchmark_kpi != 0){
 							prcss_array[index] = data['allocation'][i].prcss_name;
 							flow_array[index] = data['allocation'][i].flow_name;
 							flow_type_array[index] = data['allocation'][i].flow_type_name;
+							nameofref[index] = data['allocation'][i].nameofref;
 
 							kpi[index] = data['allocation'][i].kpi/data['allocation'][i].benchmark_kpi*100;
 							//console.log(kpi[index]);
@@ -438,7 +441,7 @@
 		          	newData[0][4] = { role: 'style' };
 
 		          	for(var i = 1 ; i < index+1 ; i++){
-		          		newData[i][0] = prcss_array[i-1]+"-"+flow_array[i-1]+"-"+flow_type_array[i-1];
+		          		newData[i][0] = prcss_array[i-1]+" ("+flow_array[i-1]+"-"+flow_type_array[i-1]+" / "+nameofref[i-1]+")";
 		          		if(kpi[i-1]<0){
 		          			newData[i][1] = 0;
 		          		}
