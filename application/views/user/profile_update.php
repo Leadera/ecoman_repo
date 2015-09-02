@@ -76,7 +76,7 @@
 						<label for="jobDescription"><?php echo lang("description"); ?></label>
 						<textarea class="form-control" rows="3" name="description" id="description" placeholder="<?php echo lang("description"); ?>"><?php echo set_value('description',$description); ?></textarea>
 				</div>
-				<button type="submit" class="btn btn-inverse col-md-9"><?php echo lang("update"); ?></button>
+				<button type="submit" class="btn btn-inverse col-md-9"><?php echo lang("save"); ?></button>
 				<a href="<?php echo base_url('user/'.$user_name); ?>" class="btn btn-warning col-md-2 col-md-offset-1"><?php echo lang("cancel"); ?></a>
 			</div>
 		</div>

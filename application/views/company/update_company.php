@@ -81,7 +81,7 @@
 	    			<label for="companyDescription"><?php echo lang("description"); ?></label>
 	    			<textarea class="form-control" rows="3" name="companyDescription" id="companyDescription" placeholder="<?php echo lang("description"); ?>"><?php echo set_value('companyDescription',$companies['description']); ?></textarea>
 	 			</div>
-        <button type="submit" class="btn btn-inverse col-md-9"><?php echo lang("update"); ?></button>
+        <button type="submit" class="btn btn-inverse col-md-9"><?php echo lang("save"); ?></button>
         <a href="<?php echo base_url('company/'.$companies['id']); ?>" class="btn btn-warning col-md-2 col-md-offset-1"><?php echo lang("cancel"); ?></a>
 			</div>
 		</div>
