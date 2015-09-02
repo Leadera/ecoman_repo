@@ -465,7 +465,7 @@
 				        height: 600,
 				        bar: { groupWidth: '75%' },
 				        isStacked: true,
-				        vAxis: {title: "KPI in [%] of benchmark"},
+				        vAxis: {title: "[%] of benchmark"},
 				        hAxis: {title: 'Process and KPI definition', titleTextStyle: {color: 'green'}},
 				        
 				    };
