@@ -35,6 +35,7 @@
 								<option value="TL">TL</option>
 								<option value="Euro">Euro</option>
 								<option value="Dollar">Dollar</option>
+								<option value="CHF">CHF</option>
 							</select>
 						</div>
 					</div>

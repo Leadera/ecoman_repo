@@ -83,6 +83,7 @@
 								<option value="TL" <?php echo set_select('costUnit', 'TL'); ?>>TL</option>
 								<option value="Euro" <?php echo set_select('costUnit', 'Euro'); ?>>Euro</option>
 								<option value="Dollar" <?php echo set_select('costUnit', 'Dollar'); ?>>Dollar</option>
+								<option value="CHF" <?php echo set_select('costUnit', 'CHF'); ?>>CHF</option>
 							</select>
 						</div>
 		  		</div>

@@ -35,12 +35,15 @@
 								<?php $edeger = FALSE; ?>
 								<?php $ddeger = FALSE; ?>
 								<?php $tdeger = FALSE; ?>
+								<?php $cdeger = FALSE; ?>
 								<?php if($product['ucostu']=="Euro") {$edeger = TRUE;} ?>
 								<?php if($product['ucostu']=="Dollar") {$ddeger = TRUE;} ?>
 								<?php if($product['ucostu']=="TL") {$tdeger = TRUE;} ?>
+								<?php if($product['ucostu']=="CHF") {$cdeger = TRUE;} ?>
 								<option value="Euro" <?php echo set_select('ucostu', 'Euro', $edeger); ?>>Euro</option>
 								<option value="Dollar" <?php echo set_select('ucostu', 'Dollar', $ddeger); ?>>Dollar</option>
 								<option value="TL" <?php echo set_select('ucostu', 'TL', $tdeger); ?>>TL</option>
+								<option value="CHF" <?php echo set_select('ucostu', 'CHF', $cdeger); ?>>CHF</option>
 							</select>
 						</div>
 					</div>

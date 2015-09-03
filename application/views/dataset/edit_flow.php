@@ -59,12 +59,15 @@
 								<?php $edeger = FALSE; ?>
 								<?php $ddeger = FALSE; ?>
 								<?php $tdeger = FALSE; ?>
+								<?php $cdeger = FALSE; ?>
 								<?php if($flow['cost_unit_id']=="Euro") {$edeger = TRUE;} ?>
 								<?php if($flow['cost_unit_id']=="Dollar") {$ddeger = TRUE;} ?>
 								<?php if($flow['cost_unit_id']=="TL") {$tdeger = TRUE;} ?>
+								<?php if($flow['cost_unit_id']=="CHF") {$cdeger = TRUE;} ?>
 								<option value="Euro" <?php echo set_select('costUnit', 'Euro', $edeger); ?>>Euro</option>
 								<option value="Dollar" <?php echo set_select('costUnit', 'Dollar', $ddeger); ?>>Dollar</option>
 								<option value="TL" <?php echo set_select('costUnit', 'TL', $tdeger); ?>>TL</option>
+								<option value="CHF" <?php echo set_select('costUnit', 'CHF', $cdeger); ?>>CHF</option>
 							</select>
 						</div>
 		  		</div>

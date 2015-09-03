@@ -183,8 +183,9 @@ function aatf() {
 					<select name="unit_cost" id="unit_cost" class="btn-group select select-block">
 						<option value=""><?php echo lang("pleaseselect"); ?></option>
 						<option value="Euro" <?php echo set_select('unit_cost', 'Euro'); ?>>Euro</option>
-						<option value="Dolar" <?php echo set_select('unit_cost', 'Dolar'); ?>>Dolar</option>
+						<option value="Dollar" <?php echo set_select('unit_cost', 'Dolar'); ?>>Dollar</option>
 						<option value="TL" <?php echo set_select('unit_cost', 'TL'); ?>>TL</option>
+						<option value="CHF" <?php echo set_select('unit_cost', 'CHF'); ?>>CHF</option>
 					</select>
 				</div>
 				<div class="col-md-3">

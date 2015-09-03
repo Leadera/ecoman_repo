@@ -95,12 +95,15 @@
 						<?php $edeger = FALSE; ?>
 						<?php $ddeger = FALSE; ?>
 						<?php $tdeger = FALSE; ?>
+						<?php $cdeger = FALSE; ?>
 						<?php if($allocation['unit_cost']=="Euro") {$edeger = TRUE;} ?>
-						<?php if($allocation['unit_cost']=="Dolar") {$ddeger = TRUE;} ?>
+						<?php if($allocation['unit_cost']=="Dollar") {$ddeger = TRUE;} ?>
 						<?php if($allocation['unit_cost']=="TL") {$tdeger = TRUE;} ?>
+						<?php if($allocation['unit_cost']=="CHF") {$cdeger = TRUE;} ?>
 						<option value="Euro" <?php echo set_select('unit_cost', 'Euro', $edeger); ?>>Euro</option>
-						<option value="Dolar" <?php echo set_select('unit_cost', 'Dolar', $ddeger); ?>>Dolar</option>
+						<option value="Dollar" <?php echo set_select('unit_cost', 'Dollar', $ddeger); ?>>Dollar</option>
 						<option value="TL" <?php echo set_select('unit_cost', 'TL', $tdeger); ?>>TL</option>
+						<option value="CHF" <?php echo set_select('unit_cost', 'CHF', $tdeger); ?>>CHF</option>
 					</select>
 				</div>
 				<div class="col-md-3">
