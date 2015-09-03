@@ -101,7 +101,7 @@ print_r($allocation[0]);*/
 		<div class="col-md-4" id="sol4">
 			<p><?php echo lang("cpscopingheading1"); ?></p>
 			<div class="label label-info" id="graph_text"></div>
-		  <div id="rect-demo-ana">
+		  <div id="rect-demo-ana" style="border:2px solid #f0f0f0;">
 		    <div id="rect-demo"></div>
 	    </div>
 		</div>
@@ -430,7 +430,7 @@ print_r($allocation[0]);*/
 
 	//Tuna Graph
 	var data = list;
-	console.log(data);
+	//console.log(data);
 
 	var margin = {
 	            "top": 10,
@@ -491,11 +491,11 @@ print_r($allocation[0]);*/
 	  append("svg:rect").
 	  attr("x", function(datum,index) { return x(datum.cost_value_alt); }).
 	  attr("y", function(datum,index) { return y(datum.ep_value_ust); }).
-	  attr("height", function(datum,index) { return Math.abs(y(datum.ep_value_alt))-Math.abs(y(datum.ep_value_ust))+(height*0.02); }).
+	  attr("height", function(datum,index) { return Math.abs(y(datum.ep_value_alt))-Math.abs(y(datum.ep_value_ust)); }).
 	  attr("width", function(datum, index) { 
 	  	//console.log("tuna");
 	  	//console.log(Math.abs(x(datum.cost_value_ust)-x(datum.cost_value_alt)));
-	  	return Math.abs(x(datum.cost_value_ust)-x(datum.cost_value_alt))+(width*0.03); }).
+	  	return Math.abs(x(datum.cost_value_ust)-x(datum.cost_value_alt)); }).
 	  attr("fill",function(datum,index) { return datum.color; })
 	  .style("opacity", '0.8')
   	.on("mouseover", function(datum,index){return tooltip.style("visibility", "visible").html("<span style='color:blue !important;'>"+datum.prcss_name+"</span><br>EP Range:"+datum.ep_value_alt+" - "+datum.ep_value_ust+"<br>Cost Range:"+datum.cost_value_alt+" - "+datum.cost_value_ust);})
@@ -527,14 +527,12 @@ print_r($allocation[0]);*/
     legend.selectAll('rect')
       .data(data)
       .enter()
-      .append("rect")
-	  .attr("x", 9)
-      .attr("y", function(d, i){ return 420 + (i *  20);})
-	  .attr("width", 10)
-	  .attr("height", 10)
-	  .style("fill", function(datum,index) { return datum.color; })
-    .style("opacity", '0.9')
-
+      .append("circle")
+      .attr("r", 7)
+      .attr("cx", 1)
+      .attr("cy", function(d, i){ return 425 + (i *  20);})
+	  	.style("fill", function(datum,index) { return datum.color; })
+    	.style("opacity", '0.9')
 
     legend.selectAll('text')
       .data(data)
@@ -544,6 +542,17 @@ print_r($allocation[0]);*/
 	  .style("font-size", "12px")
     .attr("y", function(d, i){ return i *  20 + 429;})
 	  .text(function(datum,index) { return datum.prcss_name; });
+
+	  svg.call(
+	  	d3.behavior.zoom()
+	  	.x(x).y(y).on("zoom", zoom)
+	  	);
+ 
+		function zoom() {
+		  svg.select(".x.axis").call(xAxis);
+		  svg.select(".y.axis").call(yAxis);
+		  svg.selectAll('rect').attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+		}
 
 	}
 </script>

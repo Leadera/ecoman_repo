@@ -243,7 +243,7 @@
 			</table>
 		<?php endif ?>
 			<p><?php echo lang("cbaheading3"); ?></p>
-	<div id="rect-demo-ana">
+	<div id="rect-demo-ana" style="border:2px solid #f0f0f0;">
     <div id="rect-demo"></div>
   </div>
 </div>
