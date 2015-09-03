@@ -12,7 +12,7 @@ $lang["consultants"]          = "Consultants";
 
 $lang["login"]                = "Login";
 $lang["register"]             = "Register";
-$lang["updateprofile"]        = "Update Profile";
+$lang["updateprofile"]        = "Edit Profile";
 $lang["logout"]               = "Logout";
 
 $lang["allcompanies"]         = "All Companies";

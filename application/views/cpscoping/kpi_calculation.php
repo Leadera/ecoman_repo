@@ -473,7 +473,7 @@
 					        height: 600,
 					        bar: { groupWidth: '75%' },
 					        isStacked: true,
-					        vAxis: {title: "[%] of benchmark" ,viewWindow: {max: 370}},
+					        vAxis: {title: "[%] of Benchmark KPI" ,viewWindow: {max: 370}},
 					        hAxis: {title: 'Process and KPI definition', titleTextStyle: {color: 'green'}},				        
 					    	};
 					    	var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
