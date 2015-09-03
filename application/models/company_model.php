@@ -55,6 +55,29 @@ class Company_model extends CI_Model {
     return $query->result_array();
   }
 
+  /**
+   * returns all companies that user have permission on
+   * @param  [type] $user_id [user id]
+   * @return [type]          [companies information array]
+   */
+  public function get_all_companies_i_have_rights($user_id){
+    $this->db->select('DISTINCT ON (t_cmpny.id) *',False);
+    $this->db->from('t_cmpny');
+    $this->db->join('t_cmpny_prsnl', 't_cmpny_prsnl.cmpny_id = t_cmpny.id');
+   
+    $this->db->join('t_prj_cmpny', 't_prj_cmpny.cmpny_id = t_cmpny.id');
+    $this->db->join('t_prj_cnsltnt', 't_prj_cnsltnt.prj_id = t_prj_cmpny.prj_id');
+
+    $this->db->where('t_cmpny_prsnl.user_id', $user_id);
+    $this->db->or_where('t_prj_cnsltnt.cnsltnt_id', $user_id);
+
+    $this->db->order_by("t_cmpny.id", "asc");
+    $this->db->order_by("t_cmpny.name", "asc");
+
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
   public function get_project_companies($project_id){
     $this->db->select('*');
     $this->db->from('t_cmpny');

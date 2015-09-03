@@ -60,7 +60,7 @@ class Project extends CI_Controller{
 
 		$data['map'] = $this->googlemaps->create_map();
 
-		$data['companies']=$this->company_model->get_companies();
+		$data['companies']=$this->company_model->get_all_companies_i_have_rights($kullanici['id']);
 		$data['consultants']=$this->user_model->get_consultants();
 		$data['project_status']=$this->project_model->get_active_project_status();
 

@@ -195,7 +195,7 @@ class Company extends CI_Controller{
 
 	public function show_my_companies(){
 		$kullanici = $this->session->userdata('user_in');
-		$data['companies'] = $this->company_model->get_my_companies($kullanici['id']);
+		$data['companies'] = $this->company_model->get_all_companies_i_have_rights($kullanici['id']);
 
 		//print_r($data['companies']);
 		$this->load->view('template/header');
