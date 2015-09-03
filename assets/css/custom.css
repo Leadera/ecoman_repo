@@ -429,3 +429,7 @@ td {
 #gizle{
     display: none;
 }
+
+pre p{
+    font-size:12px;
+}
