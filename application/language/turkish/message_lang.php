@@ -5,8 +5,8 @@ $lang["projectcompanies"]     = "Projedeki Firmalar";
 $lang["projects"]             = "Projeler";
 $lang["analysis"]             = "Analizler";
 $lang["search"]               = "Ara";
-$lang["whoarewe"]             = "Ne yapıyoruz?";
-$lang["whatwedo"]             = "Biz kimiz?";
+$lang["whoarewe"]             = "Biz kimiz?";
+$lang["whatwedo"]             = "Ne yapıyoruz?";
 $lang["functionalities"]      = "Sistem Özellikleri";
 $lang["consultants"]          = "Danışmanlar";
 
