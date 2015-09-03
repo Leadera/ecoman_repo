@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8">
-				<div class="swissheader">Companies belongs to the opened project</div>
+				<div class="swissheader"><?php echo lang("projectcompanies"); ?></div>
 				<!-- harita -->
 				<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 				<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
@@ -20,7 +20,11 @@
   			var bounds = new L.LatLngBounds(planes);
 
         var map = L.map('map').setView([41.83683, 19.33594], 4);
-        map.fitBounds(bounds);
+        map.fitWorld().zoomIn();
+
+        map.on('resize', function(e) {
+				    map.fitWorld({reset: true}).zoomIn();
+				});
         mapLink = 
             '<a href="http://openstreetmap.org">OpenStreetMap</a>';
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -45,8 +49,8 @@
 									<div><span style="color:#999999; font-size:12px;"><?php echo $com['description']; ?></span></div>
 								</div>
 								<div class="col-md-3">
-									<a class="btn btn-tuna" href="<?php echo base_url("new_flow/".$com['id']); ?>"><i class="fa fa-database"></i> Edit Company Data</a>
-									<a class="btn btn-tuna" href="<?php echo base_url("update_company/".$com['id']); ?>"><i class="fa fa-pencil-square-o"></i> Edit Company Info</a>
+									<a class="btn btn-tuna" href="<?php echo base_url("new_flow/".$com['id']); ?>"><i class="fa fa-database"></i> <?php echo lang("editcompanydata"); ?></a>
+									<a class="btn btn-tuna" href="<?php echo base_url("update_company/".$com['id']); ?>"><i class="fa fa-pencil-square-o"></i> <?php echo lang("editcompanyinfo"); ?></a>
 								</div>
 							</div>
 							</a>
