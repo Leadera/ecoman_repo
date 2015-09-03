@@ -51,15 +51,14 @@
 				<div class="form-group">
 					<label for="tper"><?php echo lang("timeperiod"); ?></label>
 					<select id="tper" class="info select-block" name="tper">
-						
-								<?php $bir = FALSE; ?>
-								<?php $iki = FALSE; ?>
-								<?php $uc = FALSE; ?>
-								<?php $dort = FALSE; ?>
-								<?php if($product['tper']=="Daily") {$bir = TRUE;} ?>
-								<?php if($product['tper']=="Weekly") {$iki = TRUE;} ?>
-								<?php if($product['tper']=="Monthly") {$uc = TRUE;} ?>
-								<?php if($product['tper']=="Annually") {$dort = TRUE;} ?>
+						<?php $bir = FALSE; ?>
+						<?php $iki = FALSE; ?>
+						<?php $uc = FALSE; ?>
+						<?php $dort = FALSE; ?>
+						<?php if($product['tper']=="Daily") {$bir = TRUE;} ?>
+						<?php if($product['tper']=="Weekly") {$iki = TRUE;} ?>
+						<?php if($product['tper']=="Monthly") {$uc = TRUE;} ?>
+						<?php if($product['tper']=="Annually") {$dort = TRUE;} ?>
 						<option value="Daily" <?php echo set_select('tper', 'Daily', $bir); ?>><?php echo lang("daily"); ?></option>
 						<option value="Weekly" <?php echo set_select('tper', 'Weekly', $iki); ?>><?php echo lang("weekly"); ?></option>
 						<option value="Monthly" <?php echo set_select('tper', 'Monthly', $uc); ?>><?php echo lang("monthly"); ?></option>

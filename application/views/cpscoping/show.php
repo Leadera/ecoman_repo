@@ -443,7 +443,7 @@ print_r($allocation[0]);*/
 
 	// Set the scales
   var x = d3.scale.linear()
-      .domain([-1000, d3.max(data, function(d) { return d.cost_value_ust+100; })])
+      .domain([d3.min(data, function(d) { return d.cost_value_alt; })-1000, d3.max(data, function(d) { return d.cost_value_ust+100; })])
       .range([0,width]).nice();
 
   var y = d3.scale.linear()
@@ -491,8 +491,11 @@ print_r($allocation[0]);*/
 	  append("svg:rect").
 	  attr("x", function(datum,index) { return x(datum.cost_value_alt); }).
 	  attr("y", function(datum,index) { return y(datum.ep_value_ust); }).
-	  attr("height", function(datum,index) { return y(datum.ep_value_alt)-y(datum.ep_value_ust)+(height*0.02); }).
-	  attr("width", function(datum, index) { return x(datum.cost_value_ust)-x(datum.cost_value_alt)+(width*0.03); }).
+	  attr("height", function(datum,index) { return Math.abs(y(datum.ep_value_alt))-Math.abs(y(datum.ep_value_ust))+(height*0.02); }).
+	  attr("width", function(datum, index) { 
+	  	//console.log("tuna");
+	  	//console.log(Math.abs(x(datum.cost_value_ust)-x(datum.cost_value_alt)));
+	  	return Math.abs(x(datum.cost_value_ust)-x(datum.cost_value_alt))+(width*0.03); }).
 	  attr("fill",function(datum,index) { return datum.color; })
 	  .style("opacity", '0.9')
   	.on("mouseover", function(datum,index){return tooltip.style("visibility", "visible").html(datum.prcss_name+"<br>EP Range:"+datum.ep_value_alt+"-"+datum.ep_value_ust+"<br>Cost Range:"+datum.cost_value_alt+"-"+datum.cost_value_ust);})

@@ -103,7 +103,7 @@
 						<option value="Euro" <?php echo set_select('unit_cost', 'Euro', $edeger); ?>>Euro</option>
 						<option value="Dollar" <?php echo set_select('unit_cost', 'Dollar', $ddeger); ?>>Dollar</option>
 						<option value="TL" <?php echo set_select('unit_cost', 'TL', $tdeger); ?>>TL</option>
-						<option value="CHF" <?php echo set_select('unit_cost', 'CHF', $tdeger); ?>>CHF</option>
+						<option value="CHF" <?php echo set_select('unit_cost', 'CHF', $cdeger); ?>>CHF</option>
 					</select>
 				</div>
 				<div class="col-md-3">
