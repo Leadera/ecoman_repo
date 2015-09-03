@@ -497,9 +497,9 @@ print_r($allocation[0]);*/
 	  	//console.log(Math.abs(x(datum.cost_value_ust)-x(datum.cost_value_alt)));
 	  	return Math.abs(x(datum.cost_value_ust)-x(datum.cost_value_alt))+(width*0.03); }).
 	  attr("fill",function(datum,index) { return datum.color; })
-	  .style("opacity", '0.9')
-  	.on("mouseover", function(datum,index){return tooltip.style("visibility", "visible").html(datum.prcss_name+"<br>EP Range:"+datum.ep_value_alt+"-"+datum.ep_value_ust+"<br>Cost Range:"+datum.cost_value_alt+"-"+datum.cost_value_ust);})
-		.on("mousemove", function(datum,index){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").html(datum.prcss_name+"<br>EP Range:"+datum.ep_value_alt+"-"+datum.ep_value_ust+"<br>Cost Range:"+datum.cost_value_alt+"-"+datum.cost_value_ust);})
+	  .style("opacity", '0.8')
+  	.on("mouseover", function(datum,index){return tooltip.style("visibility", "visible").html("<span style='color:blue !important;'>"+datum.prcss_name+"</span><br>EP Range:"+datum.ep_value_alt+" - "+datum.ep_value_ust+"<br>Cost Range:"+datum.cost_value_alt+" - "+datum.cost_value_ust);})
+		.on("mousemove", function(datum,index){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").html("<span style='color:blue !important;'>"+datum.prcss_name+"</span><br>EP Range: "+datum.ep_value_alt+" - "+datum.ep_value_ust+"<br>Cost Range: "+datum.cost_value_alt+" - "+datum.cost_value_ust);})
 		.on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
 		var tooltip = d3.select("body")
@@ -508,7 +508,12 @@ print_r($allocation[0]);*/
 		.style("z-index", "10")
 		.style("visibility", "hidden")
 		.style("background-color", "white")
-		.style("color", "darkblue");
+		.style("padding", "10px")
+		.style("border", "1px solid #d0d0d0")
+		.style("border-radius", "2px")
+		.style("font-size", "12px")
+		.style("max-width", "300px")
+		.style("color", "#444");
 
 	// add legend
 	var legend = svg.append("g")
@@ -524,7 +529,7 @@ print_r($allocation[0]);*/
       .enter()
       .append("rect")
 	  .attr("x", 9)
-      .attr("y", function(d, i){ return 410 + (i *  20);})
+      .attr("y", function(d, i){ return 420 + (i *  20);})
 	  .attr("width", 10)
 	  .attr("height", 10)
 	  .style("fill", function(datum,index) { return datum.color; })
@@ -536,7 +541,8 @@ print_r($allocation[0]);*/
       .enter()
       .append("text")
 	  .attr("x", 22)
-    .attr("y", function(d, i){ return i *  20 + 419;})
+	  .style("font-size", "12px")
+    .attr("y", function(d, i){ return i *  20 + 429;})
 	  .text(function(datum,index) { return datum.prcss_name; });
 
 	}

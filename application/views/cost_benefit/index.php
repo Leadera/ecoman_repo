@@ -287,11 +287,9 @@
 
 	function tuna_graph(){
 	//console.log(list);
-
 	//Tuna Graph
 	var data = <?php echo json_encode($tuna_array); ?>;
-	console.log(data);
-
+	//console.log(data);
 	var margin = {
 	            "top": 10,
 	            "right": 30,
@@ -300,7 +298,6 @@
 	        };
 	var width = $('#sag4').width()-80;
 	var height = 500;
-
 	// Set the scales
   var x = d3.scale.linear()
           .domain([0, d3.max(data, function(d) { return d.xmin+d.xmax; })])
@@ -316,6 +313,7 @@
 	// Create the SVG 'canvas'
   var svg = d3.select("#rect-demo-ana").append("svg")
           .attr("class", "chart")
+          .attr("mousewheel.zoom", null)
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom).append("g")
           .attr("transform", "translate(" + margin.left + "," + margin.right + ")");
@@ -333,7 +331,7 @@
 	svg.append("text")
 		.attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom - 305) + ")")
 		.style("text-anchor", "middle")
-		.text("Ecological Benefit");
+		.text("<?php echo lang('ecologicalbenefit'); ?>");
 
 	//y axis label
 	svg.append("text")
@@ -342,7 +340,7 @@
 		.attr("x", 0 - (height / 2))
 		.attr("dy", "1em")
 		.style("text-anchor", "middle")
-		.text("Marginal Cost");
+		.text("<?php echo lang('marginalcost'); ?>");
 
 	svg.selectAll("rect").
 		data(data).
@@ -350,9 +348,9 @@
 		append("svg:rect").
 		attr("x", function(datum,index) { return x(datum.xmin); }).
 		attr("y", function(datum,index) { return y(datum.ymax); }).
-		attr("height", function(datum,index) { return y(datum.ymin)-y(datum.ymax); }).
-		attr("width", function(datum, index) { return x(datum.xmax); }).
-		attr("fill", function(d, i) { return d.color; })
+		attr("height", function(datum,index) { return y(datum.ymin)-y(datum.ymax)+(height*0.0001); }).
+		attr("width", function(datum, index) { return x(datum.xmax)+(width*0.0001); })
+		.attr("fill", function(d, i) { return d.color; })
 		.style("opacity", '0.5')
 		.on("mouseover", function(datum,index){return tooltip.style("visibility", "visible").html(datum.name);})
 		.on("mousemove", function(datum,index){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").html(datum.name);})
@@ -364,7 +362,12 @@
 		.style("z-index", "10")
 		.style("visibility", "hidden")
 		.style("background-color", "white")
-		.style("color", "darkblue");
+		.style("padding", "10px")
+		.style("border", "1px solid #d0d0d0")
+		.style("border-radius", "2px")
+		.style("font-size", "12px")
+		.style("max-width", "200px")
+		.style("color", "#444");
 
 		// add legend   
 		var legend = svg.append("g")
@@ -378,21 +381,31 @@
     legend.selectAll('rect')
       .data(data)
       .enter()
-      .append("rect")
-	  .attr("x", 9)
-      .attr("y", function(d, i){ return 520 + (i *  20);})
-	  .attr("width", 10)
-	  .attr("height", 10)
-	  .style("fill", function(datum,index) { return datum.color; })
-	 	.style("opacity", '0.5')
-
+      .append("circle")
+      .attr("r", 7)
+      .attr("cx", 1)
+      .attr("cy", function(d, i){ return 555 + (i *  19);})
+		  .style("fill", function(datum,index) { return datum.color; })
+		 	.style("opacity", '0.5')
       
     legend.selectAll('text')
       .data(data)
       .enter()
       .append("text")
-	  .attr("x", 22)
-    .attr("y", function(d, i){ return i *  20 + 539;})
+		.style("font-size", "12px")
+	  .attr("x", 16)
+    .attr("y", function(d, i){ return i *  19 + 559;})
 	  .text(function(datum,index) { return datum.name; });
+
+	  svg.call(
+	  	d3.behavior.zoom()
+	  	.x(x).y(y).on("zoom", zoom)
+	  	);
+ 
+		function zoom() {
+		  svg.select(".x.axis").call(xAxis);
+		  svg.select(".y.axis").call(yAxis);
+		  svg.selectAll('rect').attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+		}
 	}
 </script>
