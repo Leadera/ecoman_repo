@@ -978,6 +978,9 @@ Ostim.widgets.search.ZeynelInfoPanel = Ext.extend(Ext.Panel, {
             //console.warn('store set edildi');
             
             
+              console.debug(featureSet);
+             // zeynel dağlı
+             // zeynelfeturepanel info panel içerisine yerleştiriliyor
              var panel = new Ostim.widgets.search.ZeynelFeaturePanel({
                  /**
                   * zeynel dağlı

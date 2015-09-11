@@ -348,9 +348,9 @@ Ostim.widgets.search.FormSearchPanel = Ext.extend(GeoExt.form.FormPanel, {
             this.searchState = null;
             return;
         }
-
+        console.log("onSearchComplete searchState=searchcomplete");
         this.searchState = "searchcomplete";
-
+        console.log(action.response);
         var result = {
             olResponse: action.response
         };
@@ -432,7 +432,7 @@ Ostim.widgets.search.FormSearchPanel = Ext.extend(GeoExt.form.FormPanel, {
      */
     onSearchCompleteAction: function (result) {
         var features = result.olResponse.features;
-
+        console.log(features);
         // Safeguard
         if (!features || features.length == 0) {
             return;

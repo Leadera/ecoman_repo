@@ -40,7 +40,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo asset_url('map/resources/css/default-theme-easyui.css'); ?>"/>
 <link rel="stylesheet" href="<?php echo asset_url('map/ux/oleditor/ole/client/theme/geosilk/geosilk.css'); ?>" type="text/css" />
 <!--<script type="text/javascript" src="../../script/Ostim.js"></script>-->
-<!--<script type="text/javascript" src="<?php echo asset_url('map/DefaultOptionsWorld.js'); ?>"></script>-->
+<!--<script type="text/javascript" src="<?php echo asset_url('map/DefaultOptionsWorld.js'); ?>"></script>
 <!--<script type="text/javascript" src="../featureinfopanel/Config.js"></script>-->
 <!--<script type="text/javascript" src="Config.js"></script>-->
 
@@ -203,6 +203,58 @@ Ostim.layout = {
                                     outputTarget: "hr-menu-left-container"
                                 },
                             */
+                            // search panel test
+                            // zeynel dağlı
+                            /*{
+                                    xtype: 'hr_formsearchpanel',
+                                    title: __('Search'),
+                                    bodyStyle: 'padding: 6px',
+                                    style: {
+                                        fontFamily: 'Verdana, Arial, Helvetica, sans-serif',
+                                        fontSize: '12px'
+                                    },
+                                    border: true,
+
+                                    protocol: new OpenLayers.Protocol.WFS({
+                                       
+                                        version: "1.1.0",
+                                        url: ['http://88.249.18.205:8445/geoserver/wfs?', 'http://88.249.18.205:8445/geoserver/wfs?'],
+                                        srsName: "EPSG:4326",
+                                        featureType: "view_gis_project_firms",
+                                        
+                                    }),
+                                    items: [
+                                        {
+                                            xtype: "textfield",
+                                            //name: "name__like",
+                                            name: "prj_name__like",
+                                            value: 'hu',
+                                            //fieldLabel: "  name"
+                                            fieldLabel: "  ad"
+                                        },
+                                        {
+                                            xtype: "label",
+                                            html: 'Type name of an NL hockeyclub. Wildcard autoattached and case insenitive match.<br/>',
+                                            style: {
+                                                fontSize: '10px',
+                                                color: '#CCCCCC'
+                                            }
+                                        }
+                                    ],
+
+                                    hropts: {
+                                        onSearchCompleteZoom: 11,
+                                        autoWildCardAttach: true,
+                                        caseInsensitiveMatch: true,
+                                        logicalOperator: OpenLayers.Filter.Logical.AND,
+                                        // Optional: make these layers visible when search completes
+                                        layerOpts: [
+                                            //{ layerOn: 'Hockeyclubs', layerOpacity: 0.9 },
+                                            { layerOn: 'Project Companies', layerOpacity: 0.9 },
+                                            { layerOn: 'OpenStreetMap', layerOpacity: 1.0 }
+                                        ]
+                                    }
+                                },*/
 				{
 					xtype: 'hr_layertreepanel',
                                         border: true,
@@ -339,7 +391,7 @@ Ostim.layout = {
                                                             "Ostim Enerji ve Çevre Kümelenmesi",
                                                             'http://88.249.18.205:8445/geoserver/ecoman/wms?',
                                                             {layers: "ecoman:GIS_company", transparent: true, format: 'image/png'},
-                                                            {singleTile: true, opacity: 0.9, isBaseLayer: false, visibility: true, noLegend: false, featureInfoFormat: 'application/vnd.ogc.gml', transitionEffect: 'resize'
+                                                            {singleTile: false, opacity: 0.9, isBaseLayer: false, visibility: true, noLegend: false, featureInfoFormat: 'application/vnd.ogc.gml', transitionEffect: 'resize'
                                                                ,
                                                            metadata: {
                                                                     wfs: {
@@ -353,7 +405,7 @@ Ostim.layout = {
                                                                 }
                                                             }
                                                         ),
-                                                        new OpenLayers.Layer.WMS(
+                                                        /*new OpenLayers.Layer.WMS(
                                                             "Ostim Savunma Kümelenmesi",
                                                             'http://88.249.18.205:8445/geoserver/ecoman/wms?',
                                                             {layers: "ecoman:GIS_Savunma", transparent: true, format: 'image/png'},
@@ -370,8 +422,8 @@ Ostim.layout = {
                                                                     }
                                                                 }
                                                             }
-                                                        ),
-                                                        new OpenLayers.Layer.WMS(
+                                                        ),*/
+                                                        /*new OpenLayers.Layer.WMS(
                                                             "Ostim Medikal Kümelenmesi",
                                                             'http://88.249.18.205:8445/geoserver/ecoman/wms?',
                                                             {layers: "ecoman:GIS_Medical", transparent: true, format: 'image/png'},
@@ -388,8 +440,8 @@ Ostim.layout = {
                                                                     }
                                                                 }
                                                             }
-                                                        ),
-                                                        new OpenLayers.Layer.WMS(
+                                                        ),*/
+                                                        /*new OpenLayers.Layer.WMS(
                                                             "Ostim Kauçuk Kümelenmesi",
                                                             'http://88.249.18.205:8445/geoserver/ecoman/wms?',
                                                             {layers: "ecoman:GIS_Kaucuk", transparent: true, format: 'image/png'},
@@ -406,8 +458,8 @@ Ostim.layout = {
                                                                     }
                                                                 }
                                                             }
-                                                        ),
-                                                        new OpenLayers.Layer.WMS(
+                                                        ),*/
+                                                        /*new OpenLayers.Layer.WMS(
                                                             "Ostim İş ve İş Makinaları Kümelenmesi",
                                                             'http://88.249.18.205:8445/geoserver/ecoman/wms?',
                                                             {layers: "ecoman:GIS_isim", transparent: true, format: 'image/png'},
@@ -424,8 +476,8 @@ Ostim.layout = {
                                                                     }
                                                                 }
                                                             }
-                                                        ),
-                                                        new OpenLayers.Layer.WMS(
+                                                        ),*/
+                                                        /*new OpenLayers.Layer.WMS(
                                                             "Anadolu Raylı Sistemler Kümelenmesi",
                                                             'http://88.249.18.205:8445/geoserver/ecoman/wms?',
                                                             {layers: "ecoman:GIs_Arus", transparent: true, format: 'image/png'},
@@ -448,7 +500,7 @@ Ostim.layout = {
                                                                     }
                                                                 }
                                                             }
-                                                        ),
+                                                        ),*/
                                                         new OpenLayers.Layer.WMS(
                                                             "Project Companies",
                                                             'http://88.249.18.205:8445/geoserver/ecoman/wms?',
@@ -511,7 +563,11 @@ Ostim.layout = {
                                                                              }
                                                                          }*/
                                                      }},
-                            /*{type: "featureinfo", options: {  
+                            /**
+                             * company info toolbar button
+                             * zeynel dağlı
+                             */
+                            {type: "featureinfo", options: {  
                                 popupWindow: {
                                     width: 360,
                                     height: 200,
@@ -523,13 +579,13 @@ Ostim.layout = {
                                         columnCapitalize: true,
 
                                         // Export to download file. Option values are 'CSV', 'XLS', default is no export (results in no export menu).
-                                        exportFormats: ['CSV', 'XLS', 'GMLv2', 'Shapefile', 'GeoJSON', 'WellKnownText'],
+                                        //exportFormats: ['CSV', 'XLS', 'GMLv2', 'Shapefile', 'GeoJSON', 'WellKnownText'],
                                         // Export to download file. Option values are 'CSV', 'XLS', default is no export (results in no export menu).
                                         // exportFormats: ['CSV', 'XLS'],
                                         maxFeatures: 10
                                     }
                                 }
-                            }},*/
+                            }},
 							{type: "-"} ,
 							{type: "pan"},
 							{type: "zoomin"},
@@ -636,8 +692,8 @@ Ostim.layout = {
 						}
 					}
 				}
-			}
-                                                        
+			},
+                            
 						]
 					}
 				},
