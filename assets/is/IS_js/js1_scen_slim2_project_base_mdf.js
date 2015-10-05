@@ -156,6 +156,10 @@ function showMapPanelExpand() {
         function selectAllCompanies() {
             $('#tt_grid').datagrid('selectAll');
         }
+        
+        function unselectAllCompanies() {
+            $('#tt_grid').datagrid('unselectAll');
+        }
 
         function search_by_company() {
             
