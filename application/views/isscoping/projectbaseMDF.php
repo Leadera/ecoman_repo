@@ -97,7 +97,7 @@
             
             <div id="p" class="easyui-panel" title="Manual IS Potential Detection Settings" style="margin: auto 0;"
                  data-options="iconCls:'icon-save',collapsible:true,closable:true,fit:true">
-                     <table id="tt_grid2" data-options="fit:true" class="easyui-datagrid" title="Select a company and calculate IS potentials" 
+                     <table id="tt_grid2" data-options="fit:true" class="easyui-datagrid" title="Step 1: Select a company for witch flow matching is required" 
                             style="height:440px" 
                            accesskey=""></table>
                 
@@ -105,7 +105,7 @@
             
         </div>
         <div data-options="region:'east',split:true" title="IS potential" style="width:30%;">
-            <table id="tt_grid_dynamic4" class="easyui-datagrid" title="IS potentials" style="height:100%"
+            <table id="tt_grid_dynamic4" class="easyui-datagrid" title="Step 4: IS potentials" style="height:100%"
                 data-options="singleSelect:false,
                             collapsible:true,
                             /*url:'datagrid_data1.json',*/
@@ -123,7 +123,7 @@
     <div id="tb" style="padding:5px;height:auto">
         <div style="margin-bottom:5px">
             <!--<a href="#" onclick="addRow();" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add Potential IS</a>-->
-            <a href="#specificFlow" onclick="beginISPotential();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Begin Manual IS Process</a>
+            <a href="#specificFlow" onclick="beginISPotential();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Get flows details for this company</a>
             <!--<a href="#" onclick="beginISPotentialByAllFlows();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Process By All Flows</a>-->
             <!--<a href="#" onclick="beginISPotentialByFlows();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Process By Selected Flows</a>-->
             <!--<a href="#" onclick="openIsScenarios();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Table management</a>-->
@@ -149,7 +149,7 @@
 
     <div id="tb2" style="padding:5px;height:auto">
         <div style="margin-bottom:5px">
-            <a href="#" name="specificFlow" onclick="event.preventDefault();beginFlowPotential();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Get specific flow info</a>
+            <a href="#" name="specificFlow" onclick="event.preventDefault();beginFlowPotential();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Create flow matching</a>
             <!--<a href="#" onclick="addRow();" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add Potential IS</a>-->
             <a href="#" id="printGridPotentials2" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
         </div>
