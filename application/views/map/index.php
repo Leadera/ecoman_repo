@@ -569,8 +569,8 @@ Ostim.layout = {
                              */
                             {type: "featureinfo", options: {  
                                 popupWindow: {
-                                    width: 360,
-                                    height: 200,
+                                    width: 560,
+                                    height: 500,
                                     featureInfoPanel: {
                                         showTopToolbar: true,
                                         displayPanels: ['Table'],
