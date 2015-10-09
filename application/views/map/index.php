@@ -381,12 +381,12 @@ Ostim.layout = {
                                                                     {layers: "GEONETWORK:esri_cities_12764", transparent: true, format: 'image/png'},
                                                                     {singleTile: true, opacity: 0.9, isBaseLayer: false, visibility: false, noLegend: false, featureInfoFormat: "application/vnd.ogc.gml"}
                                                             ),*/
-                                                        new OpenLayers.Layer.WMS(
+                                                        /*new OpenLayers.Layer.WMS(
                                                                 "World Cities (FAO)",
                                                                 'http://data.fao.org/geoserver/ows?',
                                                                 {layers: "GEONETWORK:esri_cities_12764", transparent: true, format: 'image/png'},
                                                                 {singleTile: true, opacity: 0.9, isBaseLayer: false, visibility: true, noLegend: false, featureInfoFormat: 'application/vnd.ogc.gml', transitionEffect: 'resize'}
-                                                        ),
+                                                        ),*/
                                                         new OpenLayers.Layer.WMS(
                                                             "Ostim Enerji ve Çevre Kümelenmesi",
                                                             'http://88.249.18.205:8445/geoserver/ecoman/wms?',
