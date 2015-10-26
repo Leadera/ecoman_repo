@@ -880,7 +880,7 @@ Ostim.widgets.ToolbarBuilder.defs = {
             iconCls: "icon-find",
             pressed: false,
             enableToggle: false,
-//            toggleGroup: "toolGroup",
+            toggleGroup: "toolGroup",
 
             searchWindowDefault: {
                 title: __('Search'),
@@ -891,6 +891,29 @@ Ostim.widgets.ToolbarBuilder.defs = {
                 height: 400
             }
         },
+        
+        /*
+         * 
+         * @param {type} searchWindowId
+         * @returns {undefined}
+         * @author Zeynel dağlı
+         * public fonksiyon taratılarak 'searchcenterflow' arama panelinin
+         * toolbar açılma işleminde 'searchcenter' panelinin kapatılması denemesi
+         */
+        depressButton : function (searchWindowId) {
+            var searchWindowId = searchWindowId;
+            alert('test depressButton()');
+            alert(this.options.searchWindowId);
+            alert(searchWindowId);
+            //var sc = Ext.getCmp(this.options.searchWindowId);
+            var sc = Ext.getCmp(searchWindowId);
+            console.debug(sc);
+            /*if (sc && sc.pressed) {
+                sc.toggle();
+            }*/
+            //sc.toggle();
+            sc.hide();
+        },
 
         // Instead of an internal "type".
         // provide a create factory function.
@@ -899,6 +922,7 @@ Ostim.widgets.ToolbarBuilder.defs = {
             var searchWindow, searchWindowId = options.id;
 
             var pressButton = function () {
+                console.log(searchWindowId);
                 var sc = Ext.getCmp(searchWindowId);
                 if (sc && !sc.pressed) {
                     sc.toggle();
@@ -912,7 +936,10 @@ Ostim.widgets.ToolbarBuilder.defs = {
                 }
             };
             var showSearchWindow = function () {
+                console.log(searchWindow);
+                console.log(" showSearchWindow() 1");
                 if (!searchWindow) {
+                    console.log(searchWindow);
                     var windowOptions = options.searchWindowDefault;
                     Ext.apply(windowOptions, options.searchWindow);
                     searchWindow = new Ext.Window(windowOptions);
@@ -950,6 +977,105 @@ Ostim.widgets.ToolbarBuilder.defs = {
             }
         }
     },
+    
+     // zeynel dağlı 
+     searchcenterflow: {
+
+        /* Options to be passed to your create function. */
+        options: {
+            id: "searchcenterflow",
+            tooltip: __('Search'),
+            iconCls: "icon-find",
+            pressed: false,
+            enableToggle: false,
+            toggleGroup: "toolGroup",
+
+            searchWindowDefault: {
+                title: __('Search'),
+                layout: "fit",
+                closeAction: "hide",
+                x: 100,
+                width: 400,
+                height: 400
+            }
+        },
+
+        // Instead of an internal "type".
+        // provide a create factory function.
+        // MapPanel and options (see below) are always passed
+        create: function (mapPanel, options) {
+            var searchWindow, searchWindowFlowId = options.id;
+
+            var pressButtonFlow = function () {
+                console.log(searchWindowFlowId);
+                var scFlow = Ext.getCmp(searchWindowFlowId);
+                if (scFlow && !scFlow.pressed) {
+                    scFlow.toggle();
+                }
+            };
+
+            var depressButtonFlow = function () {
+                console.log(searchWindowFlowId);
+                var scFlow = Ext.getCmp(searchWindowFlowId);
+                if (scFlow && scFlow.pressed) {
+                    scFlow.toggle();
+                }
+            };
+            var showSearchWindowFlow = function () {
+                console.log(searchWindowFlowId);
+                console.log(" showSearchWindowFlow() ");
+                if (!searchWindow) {
+                    //console.log(searchWindowDefault);
+                    var windowOptionsFlow = options.searchWindowDefault;
+                    Ext.apply(windowOptionsFlow, options.searchWindow);
+                    searchWindow = new Ext.Window(windowOptionsFlow);
+                    searchWindow.on('hide', depressButtonFlow);
+                    searchWindow.on('show', pressButtonFlow);
+                }
+                searchWindow.show();
+            };
+
+            var toggleSearchWindowFlow = function () {
+                //console.log(mapPanel.toolbars[0].items.items[14]);
+                //mapPanel.toolbars[0].items.items[14].show = false;
+                if (searchWindow && searchWindow.isVisible()) {
+                    //Ostim.widgets.ToolbarBuilder.searchWindow.hide();
+                    searchWindow.hide();
+                } else {
+                    /*
+                    * @author Zeynel dağlı
+                    * public fonksiyon taratılarak 'searchcenterflow' arama panelinin
+                    * toolbar açılma işleminde 'searchcenter' panelinin kapatılması denemesi
+                    */
+                    /*console.debug(Ostim.widgets.ToolbarBuilder.defs.searchcenter.depressButton('searchcenter'));
+                    Ostim.widgets.ToolbarBuilder.defs.searchcenter.depressButton('searchcenter');*/
+                    showSearchWindowFlow();
+                }
+            };
+            if (options.show) {
+                options.pressed = true;
+            }
+            if (options.pressed || options.show) {
+                showSearchWindow();
+            }
+
+            // A trivial handler
+            // Handler to create Window with FeatSelSearchPanel
+            options.handler = function () {
+                toggleSearchWindowFlow();
+            };
+
+            // Provide an ExtJS Action object (invokes handler on click)
+            if (options.enableToggle) {
+                return new GeoExt.Action(options)
+            } else {
+                return new Ext.Action(options);
+            }
+        }
+    },
+    
+    
+   
 
     printdialog: {
 
