@@ -71,7 +71,107 @@ Ext.namespace("Ostim");
 Ext.namespace("Ostim.options");
 Ext.namespace("Ostim.options.wfs");
 
-
+Ostim.searchPanelConfigFlow = {
+    xtype: 'hr_searchcenterpanelflow',
+    id: 'hr-searchcenterpanelflow',
+    height: 600,
+    border: true,
+    hropts: {
+        searchPanel: {
+            xtype: 'hr_formsearchpanelflow',
+            header: false,
+            border: false,
+            protocol: new OpenLayers.Protocol.WFS({
+                version: "1.1.0",
+                url: ['http://88.249.18.205:8445/geoserver/wfs?', 'http://88.249.18.205:8445/geoserver/wfs?'],
+                //srsName: "EPSG:4326",
+                srsName: "EPSG:900913",
+                featureType: "view_gis_flow_prcss",
+                geometryName : "geom",
+                //featureNS: "ecoman"
+            }),
+            downloadFormats: [],
+            items: [
+                {
+                    xtype: "textfield",
+                    name: "process_name__like",
+                    value: 'process name..',
+                    fieldLabel: "  Process"
+                },
+                
+                {
+                    xtype: "textfield",
+                    name: "flow_name__like",
+                    value: 'flow name..',
+                    fieldLabel: "  Flow"
+                },
+//                
+                {
+                    xtype: "label",
+                    id: "helplabelflow",
+                    html: 'Map Search Panel<br/>Any single letter will also yield results. <br/>Search for process or flow name...</a>',
+                    style: {
+                        fontSize: '10px',
+                        color: '#AAAAAA'
+                    }
+                }
+            ],
+            hropts: {
+                onSearchCompleteZoom: 10,
+                autoWildCardAttach: true,
+                caseInsensitiveMatch: true,
+                logicalOperator: OpenLayers.Filter.Logical.OR,
+                statusPanelOpts: {
+                    html: '&nbsp;',
+                    height: 'auto',
+                    preventBodyReset: true,
+                    bodyCfg: {
+                        style: {
+                            padding: '6px',
+                            border: '0px'
+                        }
+                    },
+                    style: {
+                        marginTop: '2px',
+                        paddingTop: '2px',
+                        fontFamily: 'Verdana, Arial, Helvetica, sans-serif',
+                        fontSize: '11px',
+                        color: '#0000C0'
+                    }
+                }
+            }
+        },
+        resultPanel: {
+            xtype: 'hr_featuregridpanelflow',
+            id: 'hr-featuregridpanelflow',
+            header: false,
+            border: false,
+            columns: [
+                {
+                    header: "Name",
+                    width: 100,
+                    dataIndex: "name"
+                },
+                {
+                    header: "Process",
+                    width: 100,
+                    dataIndex: "process_name"
+                },
+                {
+                    header: "Flow",
+                    width: 100,
+                    dataIndex: "flow_name"
+                }
+            ],
+            exportFormats: ['CSV', 'XLS','WellKnownText'],
+            hropts: {
+                zoomOnRowDoubleClick: true,
+                zoomOnFeatureSelect: false,
+                zoomLevelPointSelect: 8
+            }
+        }
+    }
+};
 
 
 Ostim.options.bookmarks =
@@ -693,6 +793,25 @@ Ostim.layout = {
 					}
 				}
 			},
+                        // search panel
+                        // zeynel dağlı
+                             {
+                                    type: "searchcenterflow",
+                                    // Options for SearchPanel window
+                                    options: {
+                                        show: false,
+                                        toggleGroup: "toolGroup",
+                                        searchWindow: {
+                                            x: 100,
+                                            y: undefined,
+                                            width: 320,
+                                            height: 400,
+                                            items: [
+                                                Ostim.searchPanelConfigFlow
+                                            ]
+                                        }
+                                    }
+                                }
                             
 						]
 					}
