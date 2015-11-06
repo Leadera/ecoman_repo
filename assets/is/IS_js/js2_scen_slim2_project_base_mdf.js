@@ -364,7 +364,9 @@ function beginISPotentialByAllFlows() {
                 $('#tt_grid_dynamic4').datagrid('appendRow',{id:''+$('#tt_grid2').datagrid('getSelections')[0].id+','
                                                                   +$('#tt_grid_dynamic3').datagrid('getSelections')[0].id+','
                                                                   +$('#tt_grid_dynamic2').datagrid('getSelections')[0].id+','
-                                                                  +$('#tt_grid_dynamic3').datagrid('getSelections')[0].flowID+'',
+                                                                  +$('#tt_grid_dynamic3').datagrid('getSelections')[0].flowID+','
+                                                                  +$('#tt_grid_dynamic3').datagrid('getSelections')[0].unit_id+','
+                                                                  +$('#tt_grid_dynamic3').datagrid('getSelections')[0].flow_type_id+'',
                     company1:$('#tt_grid2').datagrid('getSelections')[0].company,
                     qntty1:$('#tt_grid_dynamic2').datagrid('getSelections')[0].qntty,
                     flow1:$('#tt_grid_dynamic2').datagrid('getSelections')[0].flow,
