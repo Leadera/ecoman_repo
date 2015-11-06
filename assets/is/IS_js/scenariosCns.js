@@ -337,6 +337,7 @@
                             {field: 'qnttyunit',title: 'Unit'},
                             {field: 'fromflowtype',title: 'Flow Type'},
                             {field: 'tocompany',title: ' To Company'},
+                            {field: 'flowto',title: 'Flow'/*,sortable:true*/},
                             {field: 'qntty2',title: 'Quantity'},
                             {field: 'qntty2unit',title: 'Unit'},
                             {field: 'toflowtype',title: 'Flow Type'},

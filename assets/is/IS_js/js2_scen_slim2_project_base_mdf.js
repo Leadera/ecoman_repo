@@ -2,7 +2,8 @@
      $.messager.progress();
      $('#ff').form({
     ajax : true,
-    url:'../../../slim2_ecoman/index.php/insertIS',
+    //url:'../../../slim2_ecoman/index.php/insertIS',
+    url:'../../../slim2_ecoman/index.php/insertISManual',
     queryParams : {
         row : JSON.stringify($('#tt_grid_dynamic4').datagrid('getRows')),
         text : $('#tt_text').textbox('getText'),
@@ -298,7 +299,8 @@ function beginISPotentialByAllFlows() {
         
         function submitForm(){
             $.ajax({
-                url: '../../../slim2_ecoman/index.php/insertIS',
+                //url: '../../../slim2_ecoman/index.php/insertIS',
+                url:'../../../slim2_ecoman/index.php/insertISManual',
                 type: 'POST',
                 dataType : 'json',
                 data: 'row='+JSON.stringify($('#tt_grid_dynamic4').datagrid('getRows'))+'&text='+$('#tt_text').textbox('getText'),
@@ -361,7 +363,8 @@ function beginISPotentialByAllFlows() {
             if($('#tt_grid_dynamic2').datagrid('getSelections').length==1 && $('#tt_grid_dynamic3').datagrid('getSelections').length==1 && $('#tt_grid2').datagrid('getSelections').length==1) {
                 $('#tt_grid_dynamic4').datagrid('appendRow',{id:''+$('#tt_grid2').datagrid('getSelections')[0].id+','
                                                                   +$('#tt_grid_dynamic3').datagrid('getSelections')[0].id+','
-                                                                  +$('#tt_grid_dynamic2').datagrid('getSelections')[0].id+'',
+                                                                  +$('#tt_grid_dynamic2').datagrid('getSelections')[0].id+','
+                                                                  +$('#tt_grid_dynamic3').datagrid('getSelections')[0].flowID+'',
                     company1:$('#tt_grid2').datagrid('getSelections')[0].company,
                     qntty1:$('#tt_grid_dynamic2').datagrid('getSelections')[0].qntty,
                     flow1:$('#tt_grid_dynamic2').datagrid('getSelections')[0].flow,
