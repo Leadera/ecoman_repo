@@ -504,11 +504,11 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                                 
 			})
 			,columns:[{header: "ID", width: 40, sortable: true, dataIndex: 'id'},
-                                  {header: "Akış", width: 100, sortable: true, dataIndex: 'flow', editor: new Ext.form.TextField({})},
-                                  {header: "Miktar", width: 50, sortable: true, dataIndex: 'qntty', editor: new Ext.form.TextField({})},
-                                  {header: "Birim", width: 50, sortable: true, dataIndex: 'unit', editor: new Ext.form.TextField({})},
-                                  {header: "Kalite", width: 50, sortable: true, dataIndex: 'quality', editor: new Ext.form.TextField({})},
-                                  {header: "Akış Tipi", width: 50, sortable: true, dataIndex: 'flowtype', editor: new Ext.form.TextField({})},
+                                  {header: "Flow", width: 100, sortable: true, dataIndex: 'flow', editor: new Ext.form.TextField({})},
+                                  {header: "Quantity", width: 50, sortable: true, dataIndex: 'qntty', editor: new Ext.form.TextField({})},
+                                  {header: "Unit", width: 50, sortable: true, dataIndex: 'unit', editor: new Ext.form.TextField({})},
+                                  {header: "Quality", width: 50, sortable: true, dataIndex: 'quality', editor: new Ext.form.TextField({})},
+                                  {header: "Flow Type", width: 50, sortable: true, dataIndex: 'flowtype', editor: new Ext.form.TextField({})},
                               ]
                         ,reader :new Ext.data.JsonReader({
                                 totalProperty: 'total',
