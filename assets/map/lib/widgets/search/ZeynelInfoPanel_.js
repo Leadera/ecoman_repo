@@ -844,7 +844,8 @@ Ostim.widgets.search.ZeynelInfoPanel = Ext.extend(Ext.Panel, {
          if(this.featureCountCondition!=null && this.featureCountCondition<numerator) {
                 Ext.MessageBox.show({
                     title: String.format('Info for Feature count "{0}"', featureSet.length),
-                    msg: String.format('Lütfen sadece "{0}" feature seçiniz', this.featureCountCondition),
+                   // msg: String.format('Please select only one feature... "{0}" feature seçiniz', this.featureCountCondition),
+                    msg: String.format('Please select only one feature...', this.featureCountCondition),
                     buttons: Ext.Msg.OK,
 
                     icon: Ext.MessageBox.INFO,
@@ -885,10 +886,10 @@ Ostim.widgets.search.ZeynelInfoPanel = Ext.extend(Ext.Panel, {
             } else if(this.featureTypeCondition==null || (this.featureTypeCondition!=null && this.featureTypeCondition==featureType)) {
                 featureTitle = this.getFeatureTitle(feature, featureType);
                 featureSetKey = featureType + featureTitle;
-                console.warn(feature);
-                console.warn('Feature Title--->'+featureTitle);
-                console.warn('Feature Type--->'+featureType);
-                console.log(featureTitle);
+                //console.warn(feature);
+                //console.warn('Feature Title--->'+featureTitle);
+                //console.warn('Feature Type--->'+featureType);
+                //console.log(featureTitle);
                 if (!featureSets[featureSetKey]) {
                     featureSet = {
                         featureType: featureType,
