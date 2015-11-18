@@ -163,7 +163,7 @@ Ostim.searchPanelConfigFlow = {
                     dataIndex: "flow_name"
                 }
             ],
-            exportFormats: ['CSV', 'XLS','WellKnownText'],
+            exportFormats: ['CSV', 'XLS','WellKnownText','GeoJSON'],
             hropts: {
                 zoomOnRowDoubleClick: true,
                 zoomOnFeatureSelect: false,
