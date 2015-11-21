@@ -79,6 +79,14 @@ class Cpscoping_model extends CI_Model {
   	return $this->db->get()->result_array();
   }
 
+  public function get_allocation_id_from_ids2($company_id,$project_id){
+    $this->db->select('*');
+    $this->db->from('t_cp_company_project');
+    $this->db->where('cmpny_id',$company_id);
+    $this->db->where('prjct_id',$project_id);
+    return $this->db->get()->result_array();
+  }
+
   /*public function get_allocation_from_fname_pname($flow_id,$process_id,$input_output){
   	$this->db->select('t_prcss.name as prcss_name, t_flow.name as flow_name, t_flow_type.name as flow_type_name,amount,unit_amount,allocation_amount,importance_amount,cost,unit_cost,allocation_cost,importance_cost,env_impact,unit_env_impact,allocation_env_impact,importance_env_impact');
   	$this->db->from('t_cp_allocation');

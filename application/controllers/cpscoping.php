@@ -7,6 +7,7 @@ class Cpscoping extends CI_Controller {
 		$this->load->model('project_model');		
 		$this->load->model('product_model');		
 		$this->load->model('process_model');
+		$this->load->model('company_model');
 		$this->load->model('cpscoping_model');
 		$this->load->model('flow_model');
 		$this->load->library('form_validation');
@@ -188,6 +189,18 @@ class Cpscoping extends CI_Controller {
  
 		$this->load->view('template/header');
 		$this->load->view('cpscoping/allocation',$data);
+		$this->load->view('template/footer');
+	}
+
+	public function allocationlist($project_id,$company_id){
+		$data['allocationlar'] = $this->cpscoping_model->get_allocation_values($company_id,$project_id);
+		//print_r($data['allocationlar']);
+		$data['companyID'] = $company_id;
+		$data['company_info'] = $this->company_model->get_company($company_id);
+
+		$this->load->view('template/header');
+		$this->load->view('dataset/dataSetLeftSide',$data);
+		$this->load->view('dataset/allocationlist',$data);
 		$this->load->view('template/footer');
 	}
 

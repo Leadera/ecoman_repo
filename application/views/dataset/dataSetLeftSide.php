@@ -1,3 +1,8 @@
+<?php $project_id = $this->session->userdata('project_id');
+	if(empty($project_id)){
+		$project_id = 0;
+	}
+ ?>
 <div class="col-md-12">
 	<?php if(validation_errors() != NULL ): ?>
 	<div class="alert alert-danger">
@@ -21,6 +26,7 @@
 			<li <?php if ($this->uri->segment(1) == "new_process"){ echo "class='btn-inverse'"; } ?>><a class="" href="<?php echo base_url('new_process/'.$companyID); ?>"><?php echo lang("process"); ?></a></li>
 			<li <?php if ($this->uri->segment(1) == "new_equipment"){ echo "class='btn-inverse'"; } ?>><a class="" href="<?php echo base_url('new_equipment/'.$companyID); ?>"><?php echo lang("equipment"); ?></a></li>
 			<li <?php if ($this->uri->segment(1) == "new_product"){ echo "class='btn-inverse'"; } ?>><a class="" href="<?php echo base_url('new_product/'.$companyID); ?>"><?php echo lang("product"); ?></a></li>
+			<li <?php if ($this->uri->segment(1) == "allocationlist"){ echo "class='btn-inverse'"; } ?>><a class="" href="<?php echo base_url('allocationlist/'.$project_id.'/'.$companyID); ?>"><?php echo lang("allocation"); ?></a></li>
 			</ul>
 	</div>
 </div>

@@ -150,7 +150,9 @@ $route['addUsertoCompany/(:any)'] = "company/addUsertoCompany/$1";
 $route['search'] = "search/search_pro";
 $route['search/(:any)'] = "search/search_pro/$1";
 
+// Dataset
 $route['flow_and_component'] = "dataset/flow_and_component";
+$route['allocationlist/(:any)/(:any)'] = "cpscoping/allocationlist/$1/$2";
 $route['new_flow/(:any)'] = "dataset/new_flow/$1";
 $route['edit_flow/(:any)/(:any)/(:any)'] = "dataset/edit_flow/$1/$2/$3";
 $route['edit_component/(:any)/(:any)'] = "dataset/edit_component/$1/$2";
