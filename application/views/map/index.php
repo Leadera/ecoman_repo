@@ -94,6 +94,12 @@ Ostim.searchPanelConfigFlow = {
             items: [
                 {
                     xtype: "textfield",
+                    name: "name__like",
+                    value: 'company name..',
+                    fieldLabel: "  Company"
+                },
+                {
+                    xtype: "textfield",
                     name: "process_name__like",
                     value: 'process name..',
                     fieldLabel: "  Process"
@@ -161,6 +167,54 @@ Ostim.searchPanelConfigFlow = {
                     header: "Flow",
                     width: 100,
                     dataIndex: "flow_name"
+                }
+                ,
+                {
+                    header: "Potential energy",
+                    width: 100,
+                    dataIndex: "potential_energy"
+                }
+                ,
+                {
+                    header: "Supply cost",
+                    width: 100,
+                    dataIndex: "supply_cost"
+                }
+                ,
+                {
+                    header: "Supply cost un.",
+                    width: 100,
+                    dataIndex: "supply_cost_unit"
+                }
+                ,
+                {
+                    header: "Min. Flow rate",
+                    width: 100,
+                    dataIndex: "min_flow_rate"
+                }
+                ,
+                {
+                    header: "Max. Flow rate",
+                    width: 100,
+                    dataIndex: "max_flow_rate"
+                }
+                ,
+                {
+                    header: "Entry date",
+                    width: 100,
+                    dataIndex: "entry_date"
+                }
+                ,
+                {
+                    header: "Concentration",
+                    width: 100,
+                    dataIndex: "concentration"
+                }
+                ,
+                {
+                    header: "Press.",
+                    width: 100,
+                    dataIndex: "pression"
                 }
             ],
             exportFormats: ['CSV', 'XLS','WellKnownText','GeoJSON'],
