@@ -82,7 +82,7 @@
 					</tr>
 					<tr>
 						<td><?php echo lang("unit"); ?></td>
-						<td><?php echo $a['qntty_unit']; ?>/<?php echo lang("year"); ?></td>
+						<td><input type="hidden" name="unit2" value="<?php echo $a['qntty_unit']; ?>/<?php echo lang('year'); ?>" > <?php echo $a['qntty_unit']; ?>/<?php echo lang("year"); ?></td>
 					</tr>
 					<tr>
 						<td>€/ <?php echo lang("unit"); ?></td>
@@ -105,7 +105,7 @@
 						<td><input type="text" name="marcos" id="marcos-<?php echo $i; ?>" class="form-control"></td>	
 					</tr>
 					<tr>
-						<td><?php echo lang("unit"); ?></td><td>¢/EIP</td>
+						<td><?php echo lang("unit"); ?></td><td>$/EIP</td>
 					</tr>
 				</table>
 				<input type="submit" value="<?php echo lang("save"); ?>" class="btn btn-block btn-info" style="margin-top:20px;"/>

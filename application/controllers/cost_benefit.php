@@ -52,7 +52,8 @@ class Cost_benefit extends CI_Controller {
 		$this->form_validation->set_rules('disrate', 'Discount rate', 'required|numeric|trim|xss_clean');		
 		$this->form_validation->set_rules('ecoben', 'Ecological Benefit', 'required|numeric|trim|xss_clean');		
 		$this->form_validation->set_rules('marcos', 'Marginal Cost', 'required|numeric|trim|xss_clean');
-		$this->form_validation->set_rules('newcons', 'Estimated new consumption', 'required|numeric|trim|xss_clean');
+		$this->form_validation->set_rules('newcons', 'Estimated new consumption', 'required|numeric|trim|xss_clean');		
+
 		if ($this->form_validation->run() !== FALSE){
 			$capexold = $this->input->post('capexold');
 			$ltold = $this->input->post('ltold');
@@ -62,7 +63,22 @@ class Cost_benefit extends CI_Controller {
 			$newcons = $this->input->post('newcons');
 			$ecoben = $this->input->post('ecoben');
 			$marcos = $this->input->post('marcos');
-			$this->cost_benefit_model->set_cba($capexold,$ltold,$capexnew,$ltnew,$disrate,$newcons,$marcos,$ecoben,$id,$cp_or_is);
+
+
+			$opexold = $this->input->post('opexold');
+			$opexnew = $this->input->post('opexnew');
+			$anncostold = $this->input->post('acold');
+			$anncostnew = $this->input->post('acnew');
+			$ecocosben = $this->input->post('eco');
+			$unit1 = "Euro/Year";
+			$oldtotalcons = $this->input->post('oldcons');
+			$oldtotalcost = $this->input->post('oldcost');
+			$oldtotalep = $this->input->post('oldep');
+			$unit2 = $this->input->post('unit2');
+			$ecobenunit = "EIP/Year";
+			$marcosunit = "$/EIP";
+
+			$this->cost_benefit_model->set_cba($capexold,$ltold,$capexnew,$ltnew,$disrate,$newcons,$marcos,$ecoben,$id,$cp_or_is,$opexold,$opexnew,$anncostold,$anncostnew,$ecocosben,$unit1,$oldtotalcons,$oldtotalcost,$oldtotalep,$unit2,$ecobenunit,$marcosunit);
 		}
 		redirect('cost_benefit/'.$prjct_id.'/'.$cmpny_id);
 	}

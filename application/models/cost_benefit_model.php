@@ -27,7 +27,7 @@ class Cost_benefit_model extends CI_Model {
     }
   }
 
-  public function set_cba($capexold,$ltold,$capexnew,$ltnew,$disrate,$newcons,$marcos,$ecoben,$id,$cp_or_is){
+  public function set_cba($capexold,$ltold,$capexnew,$ltnew,$disrate,$newcons,$marcos,$ecoben,$id,$cp_or_is,$opexold,$opexnew,$anncostold,$anncostnew,$ecocosben,$unit1,$oldtotalcons,$oldtotalcost,$oldtotalep,$unit2,$ecobenunit,$marcosunit){
     $flag = $this->is_cb_exist($id);
     if($cp_or_is=="is"){
       $data = array(
@@ -39,6 +39,18 @@ class Cost_benefit_model extends CI_Model {
                 'ecoben' => $ecoben,
                 'marcos' => $marcos,
                 'newcons' => $newcons,
+                'opexold' => $opexold,
+                'opexnew' => $opexnew,
+                'anncostold' => $anncostold,
+                'anncostnew' => $anncostnew,
+                'ecocosben' => $ecocosben,
+                'unit1' => $unit1,
+                'oldtotalcons' => $oldtotalcons,
+                'oldtotalcost' => $oldtotalcost,
+                'oldtotalep' => $oldtotalep,
+                'unit2' => $unit2,
+                'ecobenunit' => $ecobenunit,
+                'marcosunit' => $marcosunit,
                 'is_id' => $id
               );
 
@@ -59,6 +71,18 @@ class Cost_benefit_model extends CI_Model {
                 'ecoben' => $ecoben,
                 'marcos' => $marcos,
                 'newcons' => $newcons,
+                'opexold' => $opexold,
+                'opexnew' => $opexnew,
+                'anncostold' => $anncostold,
+                'anncostnew' => $anncostnew,
+                'ecocosben' => $ecocosben,
+                'unit1' => $unit1,
+                'oldtotalcons' => $oldtotalcons,
+                'oldtotalcost' => $oldtotalcost,
+                'oldtotalep' => $oldtotalep,
+                'unit2' => $unit2,
+                'ecobenunit' => $ecobenunit,
+                'marcosunit' => $marcosunit,
                 'cp_id' => $id
       );
       if($flag){
