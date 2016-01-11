@@ -9,6 +9,10 @@ $lang["whoarewe"]             = "Biz kimiz?";
 $lang["whatwedo"]             = "Ne yapıyoruz?";
 $lang["functionalities"]      = "Sistem Özellikleri";
 $lang["consultants"]          = "Danışmanlar";
+$lang["reporting"]            = "Raporlama";
+
+$lang["createreport"]         = "Rapor Oluştur";
+$lang["allreports"]           = "Tüm Raporlar";
 
 $lang["login"]                = "Giriş";
 $lang["register"]             = "Üye Ol";

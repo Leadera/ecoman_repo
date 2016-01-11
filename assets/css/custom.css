@@ -389,6 +389,14 @@ td {
 #projects a{
     color:white;
 }
+#reporting{
+    background-color: #AE573E;
+    color:white;
+    width: 100%;
+}
+#reporting a{
+    color:white;
+}
 #analysis{
     background-color: #84BFC3;
     color:white;

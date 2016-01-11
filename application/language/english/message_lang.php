@@ -9,6 +9,10 @@ $lang["whoarewe"]             = "Who are we?";
 $lang["whatwedo"]             = "What we do?";
 $lang["functionalities"]      = "Functionalities";
 $lang["consultants"]          = "Consultants";
+$lang["reporting"]            = "Reporting";
+
+$lang["createreport"]         = "Create Report";
+$lang["allreports"]           = "All Reports";
 
 $lang["login"]                = "Login";
 $lang["register"]             = "Register";

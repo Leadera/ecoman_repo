@@ -75,6 +75,7 @@
         <li class="navtus" data-rel="companies"><a id="l2" href="#" ><i class="fa fa-building-o"></i> <?php echo lang("companies"); ?></a></li>
         <li class="navtus" data-rel="projects"><a id="l3" href="#" ><i class="fa fa-globe"></i> <?php echo lang("projects"); ?></a></li>
         <li class="navtus" data-rel="analysis"><a id="l4" href="#" ><i class="fa fa-recycle"></i> <?php echo lang("analysis"); ?></a></li>
+        <li class="navtus" data-rel="reporting"><a id="l5" href="#" style="color:white;"><i class="fa fa-pie-chart"></i> <?php echo lang("reporting"); ?></a></li>
       </ul>
     </nav>
 
@@ -168,6 +169,14 @@
       <?php endif ?>
     </ul>
 
+    <ul id="reporting" class="nav navbar-nav alt-nav" style="display:none;">
+      <li><a href="#" class="nav-info"></a></li>
+      <?php if ($this->session->userdata('user_in') !== FALSE): ?>
+      <li><a href="<?php echo base_url('createreport'); ?>"><i class="fa fa-globe"></i> <?php echo lang("createreport"); ?></a></li>
+      <?php endif ?>
+      <li><a href="<?php echo base_url('allreports'); ?>"><i class="fa fa-globe"></i> <?php echo lang("allreports"); ?></a></li>
+    </ul>
+
 
   </div>
   <div class="clearfix" style="margin-bottom: 10px;"></div>
@@ -207,6 +216,11 @@
         $('.content-container ul.nav').hide();
         $('#analysis').fadeIn('slow');
       }
+      else if ((pathname.toLowerCase().indexOf("allreports") >= 0) || (pathname.toLowerCase().indexOf("createreport") >= 0)){
+        $('#l5').css('background-color', '#AE573E');
+        $('.content-container ul.nav').hide();
+        $('#reporting').fadeIn('slow');
+      }
       else {
         $('.content-container ul.nav').hide();
         $('#homies').fadeIn('slow');
@@ -228,6 +242,9 @@
       }
       else if($(this).data('rel') == "analysis"){
         $('#l4').css('background-color', '#84BFC3');
+      }
+      else if($(this).data('rel') == "reporting"){
+        $('#l5').css('background-color', '#AE573E');
       }
       $(this).siblings().find("a").css( "background-color", "#2D8B42" );
     });
