@@ -49,7 +49,7 @@
 
     $.each(names, function (i, name) {
 
-        $.getJSON('http://localhost:8090/ecoman_repo/ecotracking/json/131/1',    function (data) {
+        $.getJSON('<?php echo base_url(); ?>ecotracking/json/131/1',function (data) {
 
             seriesOptions[i] = {
                 name: name,
