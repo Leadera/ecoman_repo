@@ -60,9 +60,9 @@
         <div class="form-group">
           <div class="input-group" style="display:block;">
             <input name="term" class="form-control" id="navbarInput-01" type="search" placeholder="<?php echo lang("search"); ?>">
-            <span class="input-group-btn">
-              <button type="submit" class="btn"><span class="fui-search"></span></button>
-            </span>
+            
+              <button type="submit" class="btn"><span style="color:black;" class="fui-search"></span></button>
+            
           </div>
         </div>
       </form>

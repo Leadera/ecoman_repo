@@ -5,7 +5,7 @@
 	$(function () {
     var seriesOptions = [],
         seriesCounter = 0,
-        names = ['MSFT', 'AAPL', 'GOOG'];
+        names = ['AAPL'];
 
     /**
      * Create the chart when all data is loaded
@@ -49,7 +49,7 @@
 
     $.each(names, function (i, name) {
 
-        $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=' + name.toLowerCase() + '-c.json&callback=?',    function (data) {
+        $.getJSON('http://localhost:8090/ecoman_repo/ecotracking/json/131/1',    function (data) {
 
             seriesOptions[i] = {
                 name: name,

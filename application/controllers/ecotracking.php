@@ -27,6 +27,28 @@ class Ecotracking extends CI_Controller{
 		$this->load->view('template/footer');
 	}
 
+	public function json($company_id,$machine_id){
+		header("Content-Type: application/json", true);
+		/* Return JSON */
+		$data['veriler'] = $this->ecotracking_model->get($company_id,$machine_id);
+		//print_r($data);
+
+		$numItems = count($data['veriler']);
+		$i = 0;
+		$defer="[";
+		foreach ($data['veriler'] as $d) {
+			$date1000=strtotime($d['date'])*1000;
+			if(++$i === $numItems) {
+				$defer.="[".$date1000.",".$d['powera']."]";
+			}else{
+			$defer.="[".$date1000.",".$d['powera']."],";
+			}
+		}
+		$defer.="]";
+
+		echo $defer;
+	}
+
 	
 }
 ?>

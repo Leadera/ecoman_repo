@@ -69,6 +69,7 @@ $route['mapHeader'] = "map/mapHeader";
 
 //Ecotracking
 $route['ecotracking/(:any)/(:any)/(:any)/(:any)/(:any)'] = "ecotracking/save/$1/$2/$3/$4/$5";
+$route['ecotracking/json/(:any)/(:any)'] = "ecotracking/json/$1/$2";
 $route['ecotracking/(:any)/(:any)'] = "ecotracking/show/$1/$2";
 $route['ecotracking'] = "ecotracking/index";
 
