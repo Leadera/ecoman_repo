@@ -211,15 +211,15 @@
         $('.content-container ul.nav').hide();
         $('#projects').fadeIn('slow');
       }
+            else if ((pathname.toLowerCase().indexOf("report") >= 0) || (pathname.toLowerCase().indexOf("allreports") >= 0) ){
+        $('#l5').css('background-color', '#AE573E');
+        $('.content-container ul.nav').hide();
+        $('#reporting').fadeIn('slow');
+      }
       else if ((pathname.toLowerCase().indexOf("cpscoping") >= 0) || (pathname.toLowerCase().indexOf("isscoping") >= 0) || (pathname.toLowerCase().indexOf("cost_benefit") >= 0) || (pathname.toLowerCase().indexOf("kpi_calculation") >= 0) || (pathname.toLowerCase().indexOf("ecotracking") >= 0) || (project_durum==true)){
         $('#l4').css('background-color', '#84BFC3');
         $('.content-container ul.nav').hide();
         $('#analysis').fadeIn('slow');
-      }
-      else if ((pathname.toLowerCase().indexOf("report") >= 0) || (pathname.toLowerCase().indexOf("allreports") >= 0)){
-        $('#l5').css('background-color', '#AE573E');
-        $('.content-container ul.nav').hide();
-        $('#reporting').fadeIn('slow');
       }
       else {
         $('.content-container ul.nav').hide();
