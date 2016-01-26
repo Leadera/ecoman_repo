@@ -1,0 +1,1 @@
+Buraya tekil rapor gösterim içeriği html vs js konulabilir.

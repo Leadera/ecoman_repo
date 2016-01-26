@@ -47,6 +47,8 @@ $route['admin/newProcess'] = "admin/newProcess";
 $route['admin/newEquipment'] = "admin/newEquipment";
 
 //Report
+$route['report/(:any)'] = "reporting/show_single/$1";
+$route['allreports'] = "reporting/show_all";
 $route['admin/report'] = "admin/report";
 
 //IS scoping

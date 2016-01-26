@@ -216,7 +216,7 @@
         $('.content-container ul.nav').hide();
         $('#analysis').fadeIn('slow');
       }
-      else if ((pathname.toLowerCase().indexOf("allreports") >= 0) || (pathname.toLowerCase().indexOf("createreport") >= 0)){
+      else if ((pathname.toLowerCase().indexOf("report") >= 0) || (pathname.toLowerCase().indexOf("allreports") >= 0)){
         $('#l5').css('background-color', '#AE573E');
         $('.content-container ul.nav').hide();
         $('#reporting').fadeIn('slow');

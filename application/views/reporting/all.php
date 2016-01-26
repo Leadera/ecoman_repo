@@ -1,0 +1,1 @@
+Buraya tüm açık raporların listesi için html vs js gelebilir.
