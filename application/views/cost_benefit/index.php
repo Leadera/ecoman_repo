@@ -1,25 +1,18 @@
-
-
-
-
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <div class="col-md-12">
 	<div class="lead"><?php echo $company['name']; ?></div>
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg td{font-family:Arial, sans-serif;font-size:11px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:11px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
 .tg .tg-yw4l{vertical-align:top}
+.tg .tg-yw4l input{font-size: 11px;}
 </style>
+
 <?php  $allocation = array_merge($allocation, $is);  //print_r($allocation); ?>
 	<p><?php echo lang("cbaheading"); ?></p>
 	<?php if (!empty($allocation)): ?>
-			<?php $i=1; ?>
-			<?php foreach ($allocation as $a): ?>
-				<?php if(!empty($a['cp_id'])){$iid=$a['cp_id']; $tip="cp";}else{$iid=$a['is_id'];$tip="is";} ?>
- 				<?php $attributes = array('id' => 'form-'.$i); ?>
-				<?php echo form_open('cba/save/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/'.$iid.'/'.$tip, $attributes); ?>
-<table class="tg costtable">
+        <table class="tg costtable">
   <tr>
     <th class="tg-yw4l">Option</th>
     <th class="tg-yw4l">Yearly CAPEX / rest value (€/yr)</th>
@@ -41,7 +34,7 @@
     <th class="tg-yw4l">EIP/ Unit</th>
     <th class="tg-yw4l">EIP</th>
     <th class="tg-yw4l">Annual costs (€/yr)</th>
-    <th class="tg-yw4l">Type</th>
+    <th class="tg-yw4l">Flow Name</th>
     <th class="tg-yw4l">Differences of energy and material flows</th>
     <th class="tg-yw4l">Unit</th>
     <th class="tg-yw4l">Reduction OPEX (€)</th>
@@ -50,6 +43,12 @@
     <th class="tg-yw4l">Marginal costs (€/EIP)</th>
     <th class="tg-yw4l">Pay pack time  of Investment (yrs)</th>
   </tr>
+			<?php $i=1; ?>
+			<?php foreach ($allocation as $a): ?>
+				<?php if(!empty($a['cp_id'])){$iid=$a['cp_id']; $tip="cp";}else{$iid=$a['is_id'];$tip="is";} ?>
+ 				<?php $attributes = array('id' => 'form-'.$i); ?>
+				<?php echo form_open('cba/save/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/'.$iid.'/'.$tip, $attributes); ?>
+
   <tr>
     <td class="tg-yw4l" rowspan="7">							
     <span class="text-info">
@@ -59,70 +58,51 @@
     <td class="tg-yw4l" rowspan="7">
     	<div class=" has-warning"><input type="text" name="capexold" id="capexold-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['capexold']; ?>" placeholder="You should fill this field."></div>
     </td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l" rowspan="7"></td>
+    <td class="tg-yw4l">flow-name-1</td>
+    <td class="tg-yw4l">flow-value-1</td>
+    <td class="tg-yw4l">flow-unit-1</td>
+    <td class="tg-yw4l">flow-specost-1</td>
+    <td class="tg-yw4l">flow-opex-1</td>
+    <td class="tg-yw4l">flow-eipunit-1</td>
+    <td class="tg-yw4l">flow-eip-1</td>
+    <td class="tg-yw4l" rowspan="7">annual-cost-1</td>
     <td class="tg-yw4l" rowspan="7">
     	<div class=" has-warning"><input type="text" name="ltold" id="ltold-<?php echo $i; ?>" value="<?php echo $a['ltold']; ?>" class="form-control" placeholder="You should fill this field."></div>
     </td>
-    <td class="tg-yw4l" rowspan="7"></td>
+    <td class="tg-yw4l" rowspan="7">
+        <div class=" has-warning"><input type="text" name="investment" id="investment-<?php echo $i; ?>" value="<?php echo $a['investment']; ?>" class="form-control" placeholder="You should fill this field."></div>
+    </td>
     <td class="tg-yw4l" rowspan="7">
     	<div class=" has-warning"><input type="text" name="disrate" id="disrate-<?php echo $i; ?>"  value="<?php echo $a['disrate']; ?>" class="form-control" placeholder="You should fill this field."></div>
     </td>
     <td class="tg-yw4l" rowspan="7">
-    	<div class=" has-warning"><input type="text" name="capexnew" id="capexnew-<?php echo $i; ?>" value="<?php echo $a['capexnew']; ?>" class="form-control" placeholder="You should fill this field.">
+    	capex-1
     </td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l" rowspan="7"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l" rowspan="7"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l" rowspan="7"></td>
-    <td class="tg-yw4l" rowspan="7"></td>
+    <td class="tg-yw4l">flow-name-2</td>
+    <td class="tg-yw4l">flow-value-2</td>
+    <td class="tg-yw4l">flow-unit-2</td>
+    <td class="tg-yw4l">flow-specost-2</td>
+    <td class="tg-yw4l">flow-opex-2</td>
+    <td class="tg-yw4l">flow-eipunit-2</td>
+    <td class="tg-yw4l">flow-eip-2</td>
+    <td class="tg-yw4l" rowspan="7">annual-cost-2</td>
+    <td class="tg-yw4l">flow-name-3</td>
+    <td class="tg-yw4l">flow-value-3</td>
+    <td class="tg-yw4l">flow-unit-3</td>
+    <td class="tg-yw4l">flow-opex-3</td>
+    <td class="tg-yw4l" rowspan="7">ecoben-1</td>
+    <td class="tg-yw4l">ecoben-eip-1</td>
+    <td class="tg-yw4l" rowspan="7">marcos-1</td>
+    <td class="tg-yw4l" rowspan="7">payback-1</td>
   </tr>
   <tr>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-  </tr>
-  <tr>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l">flow-name-1-2</td>
+    <td class="tg-yw4l">flow-value-1-2</td>
+    <td class="tg-yw4l">flow-unit-1-2</td>
+    <td class="tg-yw4l">flow-specost-1-2</td>
+    <td class="tg-yw4l">flow-opex-1-2</td>
+    <td class="tg-yw4l">flow-eipunit-1-2</td>
+    <td class="tg-yw4l">flow-eip-1-2</td>
     <td class="tg-yw4l"></td>
     <td class="tg-yw4l"></td>
     <td class="tg-yw4l"></td>
@@ -137,6 +117,13 @@
     <td class="tg-yw4l"></td>
   </tr>
   <tr>
+    <td class="tg-yw4l">flow-name-1-3</td>
+    <td class="tg-yw4l">flow-value-1-3</td>
+    <td class="tg-yw4l">flow-unit-1-3</td>
+    <td class="tg-yw4l">flow-specost-1-3</td>
+    <td class="tg-yw4l">flow-opex-1-3</td>
+    <td class="tg-yw4l">flow-eipunit-1-3</td>
+    <td class="tg-yw4l">flow-eip-1-3</td>
     <td class="tg-yw4l"></td>
     <td class="tg-yw4l"></td>
     <td class="tg-yw4l"></td>
@@ -144,6 +131,62 @@
     <td class="tg-yw4l"></td>
     <td class="tg-yw4l"></td>
     <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">flow-name-1-4</td>
+    <td class="tg-yw4l">flow-value-1-4</td>
+    <td class="tg-yw4l">flow-unit-1-4</td>
+    <td class="tg-yw4l">flow-specost-1-4</td>
+    <td class="tg-yw4l">flow-opex-1-4</td>
+    <td class="tg-yw4l">flow-eipunit-1-4</td>
+    <td class="tg-yw4l">flow-eip-1-4</td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">flow-name-1-5</td>
+    <td class="tg-yw4l">flow-value-1-5</td>
+    <td class="tg-yw4l">flow-unit-1-5</td>
+    <td class="tg-yw4l">flow-specost-1-5</td>
+    <td class="tg-yw4l">flow-opex-1-5</td>
+    <td class="tg-yw4l">flow-eipunit-1-5</td>
+    <td class="tg-yw4l">flow-eip-1-5</td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">flow-name-1-6</td>
+    <td class="tg-yw4l">flow-value-1-6</td>
+    <td class="tg-yw4l">flow-unit-1-6</td>
+    <td class="tg-yw4l">flow-specost-1-6</td>
+    <td class="tg-yw4l">flow-opex-1-6</td>
+    <td class="tg-yw4l">flow-eipunit-1-6</td>
+    <td class="tg-yw4l">flow-eip-1-6</td>
     <td class="tg-yw4l"></td>
     <td class="tg-yw4l"></td>
     <td class="tg-yw4l"></td>
@@ -159,33 +202,12 @@
   </tr>
   <tr>
     <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-  </tr>
-  <tr>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l">Maintenance</td>
+    <td class="tg-yw4l">maintan-1</td>
+    <td class="tg-yw4l">SUM</td>
+    <td class="tg-yw4l">sum-1</td>
+    <td class="tg-yw4l">SUM</td>
+    <td class="tg-yw4l">sum-2</td>
     <td class="tg-yw4l"></td>
     <td class="tg-yw4l"></td>
     <td class="tg-yw4l"></td>
@@ -199,35 +221,16 @@
     <td class="tg-yw4l"></td>
     <td class="tg-yw4l"></td>
   </tr>
-  <tr>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-  </tr>
-</table>
-<hr>
+
 
 <?php $i++; ?>
 				</form>
 				<script type="text/javascript">	$( document ).ready(calculate);</script>
 			<?php endforeach ?>
-		<?php endif ?>
+
+        </table>
+                <?php endif ?>
+<hr>
 </div>
 
 
