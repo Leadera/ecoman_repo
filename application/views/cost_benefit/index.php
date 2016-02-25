@@ -5,16 +5,22 @@
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{font-family:Arial, sans-serif;font-size:11px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
 .tg th{font-family:Arial, sans-serif;font-size:11px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg .tg-yw4l{vertical-align:top}
-.tg .tg-yw4l input{font-size: 11px;}
+.tg .tg-yw4l{vertical-align:top;}
+.tg .tg-yw4l input{font-size: 11px; height: 28px;}
 </style>
 
 <?php  $allocation = array_merge($allocation, $is);  //print_r($allocation); ?>
 	<p><?php echo lang("cbaheading"); ?></p>
 	<?php if (!empty($allocation)): ?>
+
+			<?php $i=1; ?>
+			<?php foreach ($allocation as $a): ?>
+				<?php if(!empty($a['cp_id'])){$iid=$a['cp_id']; $tip="cp";}else{$iid=$a['is_id'];$tip="is";} ?>
+ 				<?php $attributes = array('id' => 'form-'.$i); ?>
+				<?php echo form_open('cba/save/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/'.$iid.'/'.$tip, $attributes); ?>
         <table class="tg costtable">
   <tr>
-    <th class="tg-yw4l">Option</th>
+    <th class="tg-yw4l"><div style="width: 100px;">Option</div></th>
     <th class="tg-yw4l">Yearly CAPEX / rest value (€/yr)</th>
     <th class="tg-yw4l" colspan="2">Annual energy and material flows</th>
     <th class="tg-yw4l">unit</th>
@@ -43,12 +49,6 @@
     <th class="tg-yw4l">Marginal costs (€/EIP)</th>
     <th class="tg-yw4l">Pay pack time  of Investment (yrs)</th>
   </tr>
-			<?php $i=1; ?>
-			<?php foreach ($allocation as $a): ?>
-				<?php if(!empty($a['cp_id'])){$iid=$a['cp_id']; $tip="cp";}else{$iid=$a['is_id'];$tip="is";} ?>
- 				<?php $attributes = array('id' => 'form-'.$i); ?>
-				<?php echo form_open('cba/save/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/'.$iid.'/'.$tip, $attributes); ?>
-
         <tr>
         <td class="tg-yw4l" rowspan="7">							
         <span class="text-info">
@@ -459,12 +459,12 @@
         <td class="tg-yw4l">sum-3-1</td>
         <td class="tg-yw4l">sum-3-2</td>
     </tr>
+</table>
 
     <?php $i++; ?>
 	</form>
 	<script type="text/javascript">	$( document ).ready(calculate);</script>
     <?php endforeach ?>
-</table>
 <?php endif ?>
 <hr>
 </div>
@@ -601,6 +601,9 @@
 					});
 
 					function calculate(){
+
+                        //OPEX NEW
+                        $("#flow-opex-1-<?php echo $i; ?>").val($("#flow-specost-1-<?php echo $i; ?>").val()*$("#flow-value-1-<?php echo $i; ?>").val());
 
 						//OPEX OLD calculation
 						$("#opexold-<?php echo $i; ?>").val($("#oldcons-<?php echo $i; ?>").val()*$("#euunit-<?php echo $i; ?>").val());
