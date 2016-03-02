@@ -22,5 +22,18 @@ class Reporting extends CI_Controller{
 		$this->load->view('reporting/all',$data);
 		$this->load->view('template/footer');
 	}
+        
+        public function create(){
+		//burada php kodu kullanabilirsiniz. data arrayinin içini doldurabilirsiniz.
+		$loginData = $this->session->userdata('user_in');
+		if(empty($loginData)){
+			redirect(base_url('login'),'refresh');
+		}
+                $data['userID'] = $this->session->userdata['user_in']['id'];
+                $data['userName'] = $this->session->userdata['user_in']['username'];
+		$this->load->view('template/header_admin_test');
+		$this->load->view('admin/reportTest',$data); 
+		$this->load->view('template/footer_admin');
+	}
 }
 ?>

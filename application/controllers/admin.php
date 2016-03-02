@@ -23,6 +23,19 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/report',$data); 
 		$this->load->view('template/footer_admin');
 	}
+        
+        public function reportTest(){  
+            //print_r($this->session->userdata['user_in']['id']);
+                $loginData = $this->session->userdata('user_in');
+		if(empty($loginData)){
+			redirect(base_url('login'),'refresh');
+		}
+                $data['userID'] = $this->session->userdata['user_in']['id'];
+                $data['userName'] = $this->session->userdata['user_in']['username'];
+		$this->load->view('template/header_admin_test');
+		$this->load->view('admin/reportTest',$data); 
+		$this->load->view('template/footer_admin');
+	}
 
 	public function newFlow(){
                 //print_r($this->session->userdata['user_in']);

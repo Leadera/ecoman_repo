@@ -50,6 +50,9 @@ $route['admin/newEquipment'] = "admin/newEquipment";
 $route['report/(:any)'] = "reporting/show_single/$1";
 $route['allreports'] = "reporting/show_all";
 $route['admin/report'] = "admin/report";
+$route['admin/reportTest'] = "admin/reportTest";
+$route['admin/reportTest'] = "admin/reportTest";
+$route['createreport'] = "reporting/create";
 
 //IS scoping
 $route['isscoping'] = "isscoping/index";
