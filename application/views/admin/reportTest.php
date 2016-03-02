@@ -547,12 +547,12 @@
                                                 <li><a class="ajax-link" href="/ecoman/users"><i class="icon-user"></i><span class="hidden-tablet">Consultants</span></a></li>
                                                 <li><a class="ajax-link" href="/ecoman/user/<?php echo $userName; ?>"><i class="icon-user"></i><span class="hidden-tablet">My Profile</span></a></li>
                                                 <li><a class="ajax-link" href="/ecoman/profile_update"><i class="icon-edit"></i><span class="hidden-tablet">Edit Profile</span></a></li>
-                                                <li><a class="ajax-link" href="/ecoman/profile_update<?php echo $userName; ?>"><i class="icon-edit"></i><span class="hidden-tablet">Edit Profile</span></a></li>
+                                                
                                                 
 						<li><a class="ajax-link" href="/ecoman/mycompanies"><i class="icon-calendar"></i><span class="hidden-tablet">My Companies</span></a></li>
                                                 <li><a class="ajax-link" href="/ecoman/projectcompanies"><i class="icon-calendar"></i><span class="hidden-tablet">Project Companies</span></a></li>
                                                 <li><a class="ajax-link" href="/ecoman/companies"><i class="icon-calendar"></i><span class="hidden-tablet">All Companies</span></a></li>
-                                                <li><a class="ajax-link" href="/ecoman/newcompany"><i class="icon-calendar"></i><span class="hidden-tablet">Create Company</span></a></li>
+                                                <li><a class="ajax-link" href="/ecoman/newcompany"><i class="icon-edit"></i><span class="hidden-tablet">Create Company</span></a></li>
                                                 
                                                 
                                                 <li><a class="ajax-link" href="/ecoman/myprojects"><i class="icon-globe"></i><span class="hidden-tablet">My Projects</span></a></li>
