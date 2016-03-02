@@ -485,7 +485,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="#">Profile</a></li>
 						<li class="divider"></li>
-						<li><a href="../logout">Logout</a></li>
+						<li><a href="/ecoman/logout">Logout</a></li>
 					</ul>
 				</div>
                                 <div style="clear:both;"></div>
@@ -560,8 +560,12 @@
                                                 <li><a class="ajax-link" href="/ecoman/newproject"><i class="icon-edit"></i><span class="hidden-tablet">Create Project</span></a></li>
                                                 
                                                 
-						<li><a class="ajax-link" href="newEquipment"><i class="icon-edit"></i><span class="hidden-tablet"> Analysis</span></a></li>
-						<li><a class="ajax-link" href="#"><i class="icon-ban-circle"></i><span class="hidden-tablet"> Log Out</span></a></li>
+						<li><a class="ajax-link" href="/ecoman/cpscoping"><i class="icon-th"></i><span class="hidden-tablet">CP-Potential Identiification</span></a></li>
+                                                <li><a class="ajax-link" href="/ecoman/cost_benefit"><i class="icon-th"></i><span class="hidden-tablet"> Cost-Benefit</span></a></li>
+                                                <li><a class="ajax-link" href="/ecoman/ecotracking"><i class="icon-th"></i><span class="hidden-tablet"> Eco-Tracking</span></a></li>
+                                                
+                           
+						<li><a class="ajax-link" href="/ecoman/logout"><i class="icon-ban-circle"></i><span class="hidden-tablet"> Log Out</span></a></li>
 						<!--<li><a class="ajax-link" href="#"><i class="icon-font"></i><span class="hidden-tablet">Logs</span></a></li>
 						<li><a class="ajax-link" href="#"><i class="icon-picture"></i><span class="hidden-tablet"> Admin Reports</span></a></li>
 						<li class="nav-header hidden-tablet">Secondary Menu</li>
@@ -592,10 +596,10 @@
 			<div>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Main Page</a> <span class="divider">/</span>
+						<a href="/ecoman">Main Page</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Reports</a>
+						<a href="/ecoman/createreport">Reports</a>
 					</li>
 				</ul>
 			</div>

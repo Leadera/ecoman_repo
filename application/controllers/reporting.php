@@ -18,9 +18,9 @@ class Reporting extends CI_Controller{
 
 	public function show_all(){
 		//burada php kodu kullanabilirsiniz. data arrayinin içini doldurabilirsiniz.
-		$this->load->view('template/header');
-		$this->load->view('reporting/all',$data);
-		$this->load->view('template/footer');
+		$this->load->view('template/header_admin_test');
+		$this->load->view('admin/reportTest',$data);
+		$this->load->view('template/footer_admin');
 	}
         
         public function create(){
