@@ -427,17 +427,17 @@
                                     padding-top: 26px;
                                     padding-bottom: 26px;
                                     font-size: 29px;
-                                    font-weight: 700;
-                                    color:#fff;" class="navbar-brand" href="http://88.249.18.205:8090/ecoman_zeynel/" style="color:white;">CELERO</a>
+                                    font-weight: 700; 
+                                    color:#fff;" class="navbar-brand" href="<?php echo base_url(''); ?>" style="color:white;">CELERO</a>
                                 </div>
                                 <div style="float:left;">
                                     <ul class="nav navbar-nav navbar-left ust-nav" style="margin-left: 37px;
                                                                                           font-size: 20px;
                                                                                           font-weight: bold;">
-                                        <li class="navtus" data-rel="profiles"><a style="border:0px;font-size:18px;" id="l1" href="/users"><span style="margin-top:4px;" class="icon16 icon-white icon-user"></span> Profiles</a></li>
-                                        <li class="navtus" data-rel="companies"><a style="border:0px;font-size:18px;" id="l2" href="/companies"><span style="margin-top:4px;" class="icon16 icon-white icon-calendar"></span> Companies</a></li>
-                                        <li class="navtus" data-rel="projects"><a style="border:0px;font-size:18px;" id="l3" href="/projects"><span style="margin-top:4px;" class="icon16 icon-white icon-globe"></span> Projects</a></li>
-                                        <li class="navtus" data-rel="analysis"><a style="border:0px;font-size:18px;" id="l4" href="/cost_benefit" style="background-color: rgb(132, 191, 195);"><span style="margin-top:4px;" class="icon16 icon-white icon-th"></span> Analysis</a></li>
+                                        <li class="navtus" data-rel="profiles"><a style="border:0px;font-size:18px;" id="l1" href="<?php echo base_url('users'); ?>"><span style="margin-top:4px;" class="icon16 icon-white icon-user"></span> Profiles</a></li>
+                                        <li class="navtus" data-rel="companies"><a style="border:0px;font-size:18px;" id="l2" href="<?php echo base_url('companies'); ?>"><span style="margin-top:4px;" class="icon16 icon-white icon-calendar"></span> Companies</a></li>
+                                        <li class="navtus" data-rel="projects"><a style="border:0px;font-size:18px;" id="l3" href="<?php echo base_url('projects'); ?>"><span style="margin-top:4px;" class="icon16 icon-white icon-globe"></span> Projects</a></li>
+                                        <li class="navtus" data-rel="analysis"><a style="border:0px;font-size:18px;" id="l4" href="<?php echo base_url('cost_benefit'); ?>" style="background-color: rgb(132, 191, 195);"><span style="margin-top:4px;" class="icon16 icon-white icon-th"></span> Analysis</a></li>
                                         
                                     </ul>
                                 </div>  
@@ -446,12 +446,12 @@
                                             background: #F5F4CB;
                                             margin-top: -26px;
                                             margin-left: -11px;">
-                                    <ul class="nav navbar-nav navbar-left ust-nav" style="
+                                    <ul class="nav navbar-nav navbar-left ust-nav" style=" 
                                                                                           font-size: 20px;
                                                                                           font-weight: bold;
-                                                                                          margin: 25px 0px 25px 0px;">
+                                                                                          margin: 25px 0px 25px 0px;">  
                                         
-                                        <li class="navtus" data-rel="reporting"><a style="border:0px;font-size:18px;color:black;" id="l5" href="/allreports" ><span style="margin-top:4px;" class="icon16 icon-black icon-list-alt"></span> Reporting</a></li>
+                                        <li class="navtus" data-rel="reporting"><a style="border:0px;font-size:18px;color:black;" id="l5" href="<?php echo base_url('allreports'); ?>" ><span style="margin-top:4px;" class="icon16 icon-black icon-list-alt"></span> Reporting</a></li>
                                     </ul>
                                 </div> 
                                 
@@ -483,9 +483,9 @@
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Profile</a></li>
+						<li><a href="<?php echo base_url('user'); ?>/<?php echo $userName; ?>">Profile</a></li>
 						<li class="divider"></li>
-						<li><a href="/logout">Logout</a></li>
+						<li><a href="<?php echo base_url('logout'); ?>">Logout</a></li>
 					</ul>
 				</div>
                                 <div style="clear:both;"></div>
@@ -510,13 +510,13 @@
             <div>
                 <div style="float:left;
                             margin: 17px 20px 16px 179px;">
-                    <a style="border:0px;font-size:18px;" id="l1" href="ecoman/createreport">
+                    <a style="border:0px;font-size:18px;" id="l1" href="<?php echo base_url('createreport'); ?>">
                         <span style="margin-top:4px;" class="icon16 icon-black icon-picture"></span> Create Report
                     </a>
                 </div>
                 <div style="float:left;
                             margin: 17px 20px 16px 20px;">
-                                <a style="border:0px;font-size:18px;" id="l1" href="/allreports">
+                                <a style="border:0px;font-size:18px;" id="l1" href="<?php echo base_url('allreports'); ?>">
                                     <span style="margin-top:4px;" class="icon16 icon-white icon-list-alt"></span> All Reports
                                 </a>
                 </div>
@@ -542,30 +542,30 @@
 				<div class="well nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li class="nav-header hidden-tablet">Main Menu</li>
-						<li><a class="ajax-link" href="index.html"><i class="icon-home"></i><span class="hidden-tablet"> Main Page</span></a></li>
+						<li><a class="ajax-link" href="<?php echo base_url(); ?>"><i class="icon-home"></i><span class="hidden-tablet"> Main Page</span></a></li>
                                                 
-                                                <li><a class="ajax-link" href="/users"><i class="icon-user"></i><span class="hidden-tablet">Consultants</span></a></li>
-                                                <li><a class="ajax-link" href="/user/<?php echo $userName; ?>"><i class="icon-user"></i><span class="hidden-tablet">My Profile</span></a></li>
-                                                <li><a class="ajax-link" href="/profile_update"><i class="icon-edit"></i><span class="hidden-tablet">Edit Profile</span></a></li>
-                                                
-                                                
-						<li><a class="ajax-link" href="/mycompanies"><i class="icon-calendar"></i><span class="hidden-tablet">My Companies</span></a></li>
-                                                <li><a class="ajax-link" href="/projectcompanies"><i class="icon-calendar"></i><span class="hidden-tablet">Project Companies</span></a></li>
-                                                <li><a class="ajax-link" href="/companies"><i class="icon-calendar"></i><span class="hidden-tablet">All Companies</span></a></li>
-                                                <li><a class="ajax-link" href="/newcompany"><i class="icon-edit"></i><span class="hidden-tablet">Create Company</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('users'); ?>"><i class="icon-user"></i><span class="hidden-tablet">Consultants</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('user'); ?>/<?php echo $userName; ?>"><i class="icon-user"></i><span class="hidden-tablet">My Profile</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('profile_update'); ?>"><i class="icon-edit"></i><span class="hidden-tablet">Edit Profile</span></a></li>
                                                 
                                                 
-                                                <li><a class="ajax-link" href="/myprojects"><i class="icon-globe"></i><span class="hidden-tablet">My Projects</span></a></li>
-                                                <li><a class="ajax-link" href="/projects"><i class="icon-globe"></i><span class="hidden-tablet">All Projects</span></a></li>
-                                                <li><a class="ajax-link" href="/newproject"><i class="icon-edit"></i><span class="hidden-tablet">Create Project</span></a></li>
+						<li><a class="ajax-link" href="<?php echo base_url('mycompanies'); ?>"><i class="icon-calendar"></i><span class="hidden-tablet">My Companies</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('projectcompanies'); ?>"><i class="icon-calendar"></i><span class="hidden-tablet">Project Companies</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('companies'); ?>"><i class="icon-calendar"></i><span class="hidden-tablet">All Companies</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('newcompany'); ?>"><i class="icon-edit"></i><span class="hidden-tablet">Create Company</span></a></li>
                                                 
                                                 
-						<li><a class="ajax-link" href="/cpscoping"><i class="icon-th"></i><span class="hidden-tablet">CP-Potential Identiification</span></a></li>
-                                                <li><a class="ajax-link" href="/cost_benefit"><i class="icon-th"></i><span class="hidden-tablet"> Cost-Benefit</span></a></li>
-                                                <li><a class="ajax-link" href="/ecotracking"><i class="icon-th"></i><span class="hidden-tablet"> Eco-Tracking</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('myprojects'); ?>"><i class="icon-globe"></i><span class="hidden-tablet">My Projects</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('projects'); ?>"><i class="icon-globe"></i><span class="hidden-tablet">All Projects</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('newproject'); ?>"><i class="icon-edit"></i><span class="hidden-tablet">Create Project</span></a></li>
+                                                
+                                                
+						<li><a class="ajax-link" href="<?php echo base_url('cpscoping'); ?>"><i class="icon-th"></i><span class="hidden-tablet">CP-Potential Identiification</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('cost_benefit'); ?>"><i class="icon-th"></i><span class="hidden-tablet"> Cost-Benefit</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('ecotracking'); ?>"><i class="icon-th"></i><span class="hidden-tablet"> Eco-Tracking</span></a></li>
                                                 
                            
-						<li><a class="ajax-link" href="/logout"><i class="icon-ban-circle"></i><span class="hidden-tablet"> Log Out</span></a></li>
+						<li><a class="ajax-link" href="<?php echo base_url('logout'); ?>"><i class="icon-ban-circle"></i><span class="hidden-tablet"> Log Out</span></a></li>
 						<!--<li><a class="ajax-link" href="#"><i class="icon-font"></i><span class="hidden-tablet">Logs</span></a></li>
 						<li><a class="ajax-link" href="#"><i class="icon-picture"></i><span class="hidden-tablet"> Admin Reports</span></a></li>
 						<li class="nav-header hidden-tablet">Secondary Menu</li>
@@ -599,7 +599,7 @@
 						<a href="/ecoman">Main Page</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="/createreport">Reports</a>
+						<a href="<?php echo base_url('createreport'); ?>">Reports</a>
 					</li>
 				</ul>
 			</div>
