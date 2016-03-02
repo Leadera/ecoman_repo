@@ -614,23 +614,23 @@
 					<div>Total users count</div>
 					<div id='totalUsers'></div>
 					<span id ='totalUsers_by_today' class="notification"></span>
-				</a>
+				</a> 
 
-				<a data-rel="tooltip" title=" new pro members." class="well span3 top-block" href="#">
+				<a data-rel="tooltip" title="" class="well span3 top-block" href="#">
 					<span class="icon32 icon-color icon-inbox"></span>
 					<div>Total projects count</div>
 					<div id='totalProjects'></div>
-					<span id='totalProjects_by_today' class="notification green">4</span>
+					<span id='totalProjects_by_today' class="notification green"></span>
 				</a>
 
-				<a data-rel="tooltip" title="$34 new sales." class="well span3 top-block" href="#">
+				<a data-rel="tooltip" title="" class="well span3 top-block" href="#">
 					<span class="icon32 icon-color icon-cart"></span>
 					<div>Total IS projects count</div>
 					<div id="totalISProjects"></div>
 					<span class="notification yellow"></span>
 				</a>
 				
-				<a data-rel="tooltip" title="12 new messages." class="well span3 top-block" href="#">
+				<a data-rel="tooltip" title="" class="well span3 top-block" href="#">
 					<span class="icon32 icon-color icon-wrench"></span>
 					<div>Total products</div>
 					<div id="totalProducts"></div>
