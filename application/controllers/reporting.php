@@ -18,8 +18,10 @@ class Reporting extends CI_Controller{
 
 	public function show_all(){
 		//burada php kodu kullanabilirsiniz. data arrayinin içini doldurabilirsiniz.
+                $data['userID'] = $this->session->userdata['user_in']['id']; 
+                $data['userName'] = $this->session->userdata['user_in']['username'];
 		$this->load->view('template/header_admin_test');
-		$this->load->view('admin/reportTest',$data);
+		$this->load->view('admin/reportAllTest',$data);
 		$this->load->view('template/footer_admin');
 	}
         
