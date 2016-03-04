@@ -107,16 +107,16 @@
             <div class="  "><input type="text" name="flow-specost-2" id="flow-specost-2-<?php echo $i; ?>"  value="<?php echo $a['flow-specost-2']; ?>" class="form-control" placeholder="flow-specost-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-opex-2" id="flow-opex-2-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2']; ?>" class="form-control" placeholder="flow-opex-2"></div>
+            <div class="  "><input type="text" name="flow-opex-2" id="flow-opex-2-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2']; ?>" class="form-control" placeholder="flow-opex-2" disabled></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-eipunit-2" id="flow-eipunit-2-<?php echo $i; ?>"  value="<?php echo $a['flow-eipunit-2']; ?>" class="form-control" placeholder="flow-eipunit-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-eip-2" id="flow-eip-2-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2']; ?>" class="form-control" placeholder="flow-eip-2"></div>
+            <div class="  "><input type="text" name="flow-eip-2" id="flow-eip-2-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2']; ?>" class="form-control" placeholder="flow-eip-2" disabled></div>
         </td>
         <td class="tg-yw4l" rowspan="7">
-            <div class="  "><input type="text" name="annual-cost-2" id="annual-cost-2-<?php echo $i; ?>"  value="<?php echo $a['annual-cost-2']; ?>" class="form-control" placeholder="annual-cost-2"></div>
+            <div class="  "><input type="text" name="annual-cost-2" id="annual-cost-2-<?php echo $i; ?>"  value="<?php echo $a['annual-cost-2']; ?>" class="form-control" placeholder="annual-cost-2" disabled></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-name-3" id="flow-name-3-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3']; ?>" class="form-control" placeholder="flow-name-3"></div>
@@ -131,16 +131,16 @@
             <div class="  "><input type="text" name="flow-opex-3" id="flow-opex-3-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3']; ?>" class="form-control" placeholder="flow-opex-3"></div>
         </td>
         <td class="tg-yw4l" rowspan="7">            
-            <div class="  "><input type="text" name="ecoben-1" id="ecoben-1-<?php echo $i; ?>"  value="<?php echo $a['ecoben-1']; ?>" class="form-control" placeholder="ecoben-1"></div>
+            <div class="  "><input type="text" name="ecoben-1" id="ecoben-1-<?php echo $i; ?>"  value="<?php echo $a['ecoben-1']; ?>" class="form-control" placeholder="ecoben-1" disabled></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="ecoben-eip-1" id="ecoben-eip-1-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1']; ?>" class="form-control" placeholder="ecoben-eip-1"></div>
         </td>
         <td class="tg-yw4l" rowspan="7">
-            <div class="  "><input type="text" name="marcos-1" id="marcos-1-<?php echo $i; ?>"  value="<?php echo $a['marcos-1']; ?>" class="form-control" placeholder="marcos-1"></div>
+            <div class="  "><input type="text" name="marcos-1" id="marcos-1-<?php echo $i; ?>"  value="<?php echo $a['marcos-1']; ?>" class="form-control" placeholder="marcos-1" disabled></div>
         </td>
         <td class="tg-yw4l" rowspan="7">
-            <div class="  "><input type="text" name="payback-1" id="payback-1-<?php echo $i; ?>"  value="<?php echo $a['payback-1']; ?>" class="form-control" placeholder="payback-1"></div>
+            <div class="  "><input type="text" name="payback-1" id="payback-1-<?php echo $i; ?>"  value="<?php echo $a['payback-1']; ?>" class="form-control" placeholder="payback-1" disabled></div>
         </td>
     </tr>
     <tr>
@@ -178,13 +178,13 @@
             <div class="  "><input type="text" name="flow-specost-2-2" id="flow-specost-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-specost-2-2']; ?>" class="form-control" placeholder="flow-specost-2-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-opex-2-2" id="flow-opex-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-2']; ?>" class="form-control" placeholder="flow-opex-2-2"></div>
+            <div class="  "><input type="text" name="flow-opex-2-2" id="flow-opex-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-2']; ?>" class="form-control" placeholder="flow-opex-2-2" disabled></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-eipunit-2-2" id="flow-eipunit-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-eipunit-2-2']; ?>" class="form-control" placeholder="flow-eipunit-2-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-eip-2-2" id="flow-eip-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-2']; ?>" class="form-control" placeholder="flow-eip-2-2"></div>
+            <div class="  "><input type="text" name="flow-eip-2-2" id="flow-eip-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-2']; ?>" class="form-control" placeholder="flow-eip-2-2" disabled></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-name-3-2" id="flow-name-3-2-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-2']; ?>" class="form-control" placeholder="flow-name-3-2"></div>
@@ -237,13 +237,13 @@
             <div class="  "><input type="text" name="flow-specost-2-3" id="flow-specost-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-specost-2-3']; ?>" class="form-control" placeholder="flow-specost-2-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-opex-2-3" id="flow-opex-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-3']; ?>" class="form-control" placeholder="flow-opex-2-3"></div>
+            <div class="  "><input type="text" name="flow-opex-2-3" id="flow-opex-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-3']; ?>" class="form-control" placeholder="flow-opex-2-3" disabled></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-eipunit-2-3" id="flow-eipunit-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-eipunit-2-3']; ?>" class="form-control" placeholder="flow-eipunit-2-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-eip-2-3" id="flow-eip-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-3']; ?>" class="form-control" placeholder="flow-eip-2-3"></div>
+            <div class="  "><input type="text" name="flow-eip-2-3" id="flow-eip-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-3']; ?>" class="form-control" placeholder="flow-eip-2-3" disabled></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-name-3-3" id="flow-name-3-3-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-3']; ?>" class="form-control" placeholder="flow-name-3-3"></div>
@@ -296,13 +296,13 @@
             <div class="  "><input type="text" name="flow-specost-2-4" id="flow-specost-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-specost-2-4']; ?>" class="form-control" placeholder="flow-specost-2-4"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-opex-2-4" id="flow-opex-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-4']; ?>" class="form-control" placeholder="flow-opex-2-4"></div>
+            <div class="  "><input type="text" name="flow-opex-2-4" id="flow-opex-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-4']; ?>" class="form-control" placeholder="flow-opex-2-4" disabled></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-eipunit-2-4" id="flow-eipunit-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-eipunit-2-4']; ?>" class="form-control" placeholder="flow-eipunit-2-4"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-eip-2-4" id="flow-eip-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-4']; ?>" class="form-control" placeholder="flow-eip-2-4"></div>
+            <div class="  "><input type="text" name="flow-eip-2-4" id="flow-eip-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-4']; ?>" class="form-control" placeholder="flow-eip-2-4" disabled></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-name-3-4" id="flow-name-3-4-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-4']; ?>" class="form-control" placeholder="flow-name-3-4"></div>
@@ -355,13 +355,13 @@
             <div class="  "><input type="text" name="flow-specost-2-5" id="flow-specost-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-specost-2-5']; ?>" class="form-control" placeholder="flow-specost-2-5"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-opex-2-5" id="flow-opex-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-5']; ?>" class="form-control" placeholder="flow-opex-2-5"></div>
+            <div class="  "><input type="text" name="flow-opex-2-5" id="flow-opex-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-5']; ?>" class="form-control" placeholder="flow-opex-2-5" disabled></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-eipunit-2-5" id="flow-eipunit-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-eipunit-2-5']; ?>" class="form-control" placeholder="flow-eipunit-2-5"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-eip-2-5" id="flow-eip-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-5']; ?>" class="form-control" placeholder="flow-eip-2-5"></div>
+            <div class="  "><input type="text" name="flow-eip-2-5" id="flow-eip-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-5']; ?>" class="form-control" placeholder="flow-eip-2-5" disabled></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-name-3-5" id="flow-name-3-5-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-5']; ?>" class="form-control" placeholder="flow-name-3-5"></div>
@@ -414,13 +414,13 @@
             <div class="  "><input type="text" name="flow-specost-2-6" id="flow-specost-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-specost-2-6']; ?>" class="form-control" placeholder="flow-specost-2-6"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-opex-2-6" id="flow-opex-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-6']; ?>" class="form-control" placeholder="flow-opex-2-6"></div>
+            <div class="  "><input type="text" name="flow-opex-2-6" id="flow-opex-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-6']; ?>" class="form-control" placeholder="flow-opex-2-6" disabled></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-eipunit-2-6" id="flow-eipunit-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-eipunit-2-6']; ?>" class="form-control" placeholder="flow-eipunit-2-6"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-eip-2-6" id="flow-eip-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-6']; ?>" class="form-control" placeholder="flow-eip-2-6"></div>
+            <div class="  "><input type="text" name="flow-eip-2-6" id="flow-eip-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-6']; ?>" class="form-control" placeholder="flow-eip-2-6" disabled></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-name-3-6" id="flow-name-3-6-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-6']; ?>" class="form-control" placeholder="flow-name-3-6"></div>
@@ -448,16 +448,16 @@
         <td class="tg-yw4l"><div class="  "><input type="text" name="sum-2" id="sum-2-<?php echo $i; ?>"  value="<?php echo $a['sum-2']; ?>" class="form-control" placeholder="sum-2" disabled></div></td>
         <td class="tg-yw4l"></td>
         <td class="tg-yw4l">Maintenance</td>
-        <td class="tg-yw4l">maintan-1-2</td>
+        <td class="tg-yw4l"><div class="  "><input type="text" name="maintan-1-2" id="maintan-1-2-<?php echo $i; ?>"  value="<?php echo set_value('maintan-1-2', '0'); ?>" class="form-control" placeholder="maintan-1-2"></div></td>
         <td class="tg-yw4l">SUM</td>
-        <td class="tg-yw4l">sum-1-1</td>
+        <td class="tg-yw4l"><div class=""><input type="text" name="sum-1-1" id="sum-1-1-<?php echo $i; ?>"  value="<?php echo $a['sum-1-1']; ?>" class="form-control" placeholder="sum-1-1" disabled></div></td>
         <td class="tg-yw4l">SUM</td>
-        <td class="tg-yw4l">sum-2-1</td>
+        <td class="tg-yw4l"><div class=""><input type="text" name="sum-2-1" id="sum-2-1-<?php echo $i; ?>"  value="<?php echo $a['sum-2-1']; ?>" class="form-control" placeholder="sum-2-1" disabled></div></td>
         <td class="tg-yw4l"></td>
         <td class="tg-yw4l"></td>
         <td class="tg-yw4l">SUM</td>
-        <td class="tg-yw4l">sum-3-1</td>
-        <td class="tg-yw4l">sum-3-2</td>
+        <td class="tg-yw4l"><div class=""><input type="text" name="sum-3-1" id="sum-3-1-<?php echo $i; ?>"  value="<?php echo $a['sum-3-1']; ?>" class="form-control" placeholder="sum-3-1" disabled></div></td>
+        <td class="tg-yw4l"><div class=""><input type="text" name="sum-3-2" id="sum-3-2-<?php echo $i; ?>"  value="<?php echo $a['sum-3-2']; ?>" class="form-control" placeholder="sum-3-2" disabled></div></td>
     </tr>
 </table>
 
@@ -658,6 +658,100 @@
                                 )-(1)))
                         );
 
+                        //OPEX old-2-1
+                        $("#flow-opex-2-<?php echo $i; ?>").val($("#flow-specost-2-<?php echo $i; ?>").val()*$("#flow-value-2-<?php echo $i; ?>").val());
+
+                        //OPEX old-2-2
+                        $("#flow-opex-2-2-<?php echo $i; ?>").val($("#flow-specost-2-2-<?php echo $i; ?>").val()*$("#flow-value-2-2-<?php echo $i; ?>").val());
+
+                        //OPEX old-2-3
+                        $("#flow-opex-2-3-<?php echo $i; ?>").val($("#flow-specost-2-3-<?php echo $i; ?>").val()*$("#flow-value-2-3-<?php echo $i; ?>").val());
+
+                        //OPEX old-2-4
+                        $("#flow-opex-2-4-<?php echo $i; ?>").val($("#flow-specost-2-4-<?php echo $i; ?>").val()*$("#flow-value-2-4-<?php echo $i; ?>").val());
+
+                        //OPEX old-2-5
+                        $("#flow-opex-2-5-<?php echo $i; ?>").val($("#flow-specost-2-5-<?php echo $i; ?>").val()*$("#flow-value-2-5-<?php echo $i; ?>").val());
+
+                        //OPEX old-2-6
+                        $("#flow-opex-2-6-<?php echo $i; ?>").val($("#flow-specost-2-6-<?php echo $i; ?>").val()*$("#flow-value-2-6-<?php echo $i; ?>").val());
+
+                        //flow eip-2
+                        $("#flow-eip-2-<?php echo $i; ?>").val($("#flow-eipunit-2-<?php echo $i; ?>").val()*$("#flow-value-2-<?php echo $i; ?>").val());
+                        //flow eip-2-2
+                        $("#flow-eip-2-2-<?php echo $i; ?>").val($("#flow-eipunit-2-2-<?php echo $i; ?>").val()*$("#flow-value-2-2-<?php echo $i; ?>").val());
+                        //flow eip-2-3
+                        $("#flow-eip-2-3-<?php echo $i; ?>").val($("#flow-eipunit-2-3-<?php echo $i; ?>").val()*$("#flow-value-2-3-<?php echo $i; ?>").val());
+                        //flow eip-2-4
+                        $("#flow-eip-2-4-<?php echo $i; ?>").val($("#flow-eipunit-2-4-<?php echo $i; ?>").val()*$("#flow-value-2-4-<?php echo $i; ?>").val());
+                        //flow eip-2-5
+                        $("#flow-eip-2-5-<?php echo $i; ?>").val($("#flow-eipunit-2-5-<?php echo $i; ?>").val()*$("#flow-value-2-5-<?php echo $i; ?>").val());
+                        //flow eip-2-6
+                        $("#flow-eip-2-6-<?php echo $i; ?>").val($("#flow-eipunit-2-6-<?php echo $i; ?>").val()*$("#flow-value-2-6-<?php echo $i; ?>").val());
+
+                         //sum-2
+                        $("#sum-1-1-<?php echo $i; ?>").val(parseInt($("#flow-opex-2-<?php echo $i; ?>").val())+parseInt($("#flow-opex-2-2-<?php echo $i; ?>").val())+parseInt($("#flow-opex-2-3-<?php echo $i; ?>").val())+parseInt($("#flow-opex-2-4-<?php echo $i; ?>").val())+parseInt($("#flow-opex-2-5-<?php echo $i; ?>").val())+parseInt($("#flow-opex-2-6-<?php echo $i; ?>").val())+parseInt($("#maintan-1-2-<?php echo $i; ?>").val()));
+
+                         //eip2-1
+                        $("#sum-2-1-<?php echo $i; ?>").val(parseInt($("#flow-eip-2-<?php echo $i; ?>").val())+parseInt($("#flow-eip-2-2-<?php echo $i; ?>").val())+parseInt($("#flow-eip-2-3-<?php echo $i; ?>").val())+parseInt($("#flow-eip-2-4-<?php echo $i; ?>").val())+parseInt($("#flow-eip-2-5-<?php echo $i; ?>").val())+parseInt($("#flow-eip-2-6-<?php echo $i; ?>").val()));
+
+                        //annual-cost-2
+                        $("#annual-cost-2-<?php echo $i; ?>").val(parseInt($("#sum-1-1-<?php echo $i; ?>").val())+parseInt($("#capex-1-<?php echo $i; ?>").val()));
+
+                        //difference-1
+                        $("#flow-value-3-<?php echo $i; ?>").val(parseInt($("#flow-value-1-<?php echo $i; ?>").val())-parseInt($("#flow-value-2-<?php echo $i; ?>").val()));
+                        //difference-2
+                        $("#flow-value-3-2-<?php echo $i; ?>").val(parseInt($("#flow-value-1-2-<?php echo $i; ?>").val())-parseInt($("#flow-value-2-2-<?php echo $i; ?>").val()));
+                        //difference-3
+                        $("#flow-value-3-3-<?php echo $i; ?>").val(parseInt($("#flow-value-1-3-<?php echo $i; ?>").val())-parseInt($("#flow-value-2-3-<?php echo $i; ?>").val()));                        
+                        //difference-4
+                        $("#flow-value-3-4-<?php echo $i; ?>").val(parseInt($("#flow-value-1-4-<?php echo $i; ?>").val())-parseInt($("#flow-value-2-4-<?php echo $i; ?>").val()));                        
+                        //difference-5
+                        $("#flow-value-3-5-<?php echo $i; ?>").val(parseInt($("#flow-value-1-5-<?php echo $i; ?>").val())-parseInt($("#flow-value-2-5-<?php echo $i; ?>").val()));                        
+                        //difference-6
+                        $("#flow-value-3-6-<?php echo $i; ?>").val(parseInt($("#flow-value-1-6-<?php echo $i; ?>").val())-parseInt($("#flow-value-2-6-<?php echo $i; ?>").val()));
+
+
+                        //opex_dif-1
+                        $("#flow-opex-3-<?php echo $i; ?>").val(parseInt($("#flow-opex-1-<?php echo $i; ?>").val())-parseInt($("#flow-opex-2-<?php echo $i; ?>").val()));
+                        //opex_dif-2
+                        $("#flow-opex-3-2-<?php echo $i; ?>").val(parseInt($("#flow-opex-1-2-<?php echo $i; ?>").val())-parseInt($("#flow-opex-2-2-<?php echo $i; ?>").val()));
+                        //opex_dif-3
+                        $("#flow-opex-3-3-<?php echo $i; ?>").val(parseInt($("#flow-opex-1-3-<?php echo $i; ?>").val())-parseInt($("#flow-opex-2-3-<?php echo $i; ?>").val()));                        
+                        //opex_dif-4
+                        $("#flow-opex-3-4-<?php echo $i; ?>").val(parseInt($("#flow-opex-1-4-<?php echo $i; ?>").val())-parseInt($("#flow-opex-2-4-<?php echo $i; ?>").val()));                        
+                        //opex_dif-5
+                        $("#flow-opex-3-5-<?php echo $i; ?>").val(parseInt($("#flow-opex-1-5-<?php echo $i; ?>").val())-parseInt($("#flow-opex-2-5-<?php echo $i; ?>").val()));                        
+                        //opex_dif-6
+                        $("#flow-opex-3-6-<?php echo $i; ?>").val(parseInt($("#flow-opex-1-6-<?php echo $i; ?>").val())-parseInt($("#flow-opex-2-6-<?php echo $i; ?>").val()));
+
+                        //opex_dif-1
+                        $("#ecoben-eip-1-<?php echo $i; ?>").val(parseInt($("#flow-eip-1-<?php echo $i; ?>").val())-parseInt($("#flow-eip-2-<?php echo $i; ?>").val()));
+                        //opex_dif-2
+                        $("#ecoben-eip-1-2-<?php echo $i; ?>").val(parseInt($("#flow-eip-1-2-<?php echo $i; ?>").val())-parseInt($("#flow-eip-2-2-<?php echo $i; ?>").val()));
+                        //opex_dif-3
+                        $("#ecoben-eip-1-3-<?php echo $i; ?>").val(parseInt($("#flow-eip-1-3-<?php echo $i; ?>").val())-parseInt($("#flow-eip-2-3-<?php echo $i; ?>").val()));                        
+                        //opex_dif-4
+                        $("#ecoben-eip-1-4-<?php echo $i; ?>").val(parseInt($("#flow-eip-1-4-<?php echo $i; ?>").val())-parseInt($("#flow-eip-2-4-<?php echo $i; ?>").val()));                        
+                        //opex_dif-5
+                        $("#ecoben-eip-1-5-<?php echo $i; ?>").val(parseInt($("#flow-eip-1-5-<?php echo $i; ?>").val())-parseInt($("#flow-eip-2-5-<?php echo $i; ?>").val()));                        
+                        //opex_dif-6
+                        $("#ecoben-eip-1-6-<?php echo $i; ?>").val(parseInt($("#flow-eip-1-6-<?php echo $i; ?>").val())-parseInt($("#flow-eip-2-6-<?php echo $i; ?>").val()));
+
+                        //sum-3-1
+                        $("#sum-3-1-<?php echo $i; ?>").val(parseInt($("#flow-opex-3-<?php echo $i; ?>").val())+parseInt($("#flow-opex-3-2-<?php echo $i; ?>").val())+parseInt($("#flow-opex-3-3-<?php echo $i; ?>").val())+parseInt($("#flow-opex-3-4-<?php echo $i; ?>").val())+parseInt($("#flow-opex-3-5-<?php echo $i; ?>").val())+parseInt($("#flow-opex-3-6-<?php echo $i; ?>").val()));
+
+                        //sum-3-2
+                        $("#sum-3-2-<?php echo $i; ?>").val(parseInt($("#ecoben-eip-1-<?php echo $i; ?>").val())+parseInt($("#ecoben-eip-1-2-<?php echo $i; ?>").val())+parseInt($("#ecoben-eip-1-3-<?php echo $i; ?>").val())+parseInt($("#ecoben-eip-1-4-<?php echo $i; ?>").val())+parseInt($("#ecoben-eip-1-5-<?php echo $i; ?>").val())+parseInt($("#ecoben-eip-1-6-<?php echo $i; ?>").val()));
+
+                        //ecoben-1
+                        $("#ecoben-1-<?php echo $i; ?>").val(parseInt($("#annual-cost-2-<?php echo $i; ?>").val())-parseInt($("#annual-cost-1-<?php echo $i; ?>").val()));
+
+                        //marcos-1
+                        $("#marcos-1-<?php echo $i; ?>").val(parseInt($("#ecoben-1-<?php echo $i; ?>").val())/parseInt($("#sum-3-2-<?php echo $i; ?>").val()));
+
+                        //payback-1
+                        $("#payback-1-<?php echo $i; ?>").val((parseInt($("#ltold-<?php echo $i; ?>").val())*parseInt($("#capex-1-<?php echo $i; ?>").val()))/(parseInt($("#sum-1-<?php echo $i; ?>").val())-parseInt($("#sum-1-1-<?php echo $i; ?>").val())));
                         //------------------------------
 
 						//OPEX OLD calculation
