@@ -2,9 +2,9 @@
 <div class="col-md-12">
 	<div class="lead"><?php echo $company['name']; ?></div>
 <style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:11px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:11px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg  {border-collapse:collapse;border-spacing:0; width: 100%;}
+.tg td{font-family:Arial, sans-serif;font-size:11px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal; color:#999;}
+.tg th{font-family:Arial, sans-serif;font-size:11px;font-weight:700;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal; color:#000;}
 .tg .tg-yw4l{vertical-align:top;}
 .tg .tg-yw4l input{font-size: 11px; height: 28px;}
 </style>
@@ -51,401 +51,401 @@
   </tr>
         <tr>
         <td class="tg-yw4l" rowspan="7">							
-        <span class="text-info">
+        <span class="text-info" style="font-weight: 600;">
         	<?php if(empty($a['cmpny_from_name'])) {echo $a['best'];} else {echo $a['flow_name']." input IS potential from ".$a['cmpny_from_name']; } ?>
         </span>
         </td>
         <td class="tg-yw4l" rowspan="7">
-        	<div class=" has-warning"><input type="text" name="capexold" id="capexold-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['capexold']; ?>" placeholder="You should fill this field."></div>
+        	<div class="  "><input type="text" name="capexold" id="capexold-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['capexold']; ?>" placeholder="You should fill this field."></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-name-1" id="flow-name-1-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-name-1']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-name-1" id="flow-name-1-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-name-1']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-value-1" id="flow-value-1-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-value-1']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-value-1" id="flow-value-1-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-value-1']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-unit-1" id="flow-unit-1-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-unit-1']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-unit-1" id="flow-unit-1-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-unit-1']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-specost-1" id="flow-specost-1-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-specost-1']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-specost-1" id="flow-specost-1-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-specost-1']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-opex-1" id="flow-opex-1-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-opex-1']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-opex-1" id="flow-opex-1-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-opex-1']; ?>" placeholder="Fill" disabled></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eipunit-1" id="flow-eipunit-1-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-eipunit-1']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-eipunit-1" id="flow-eipunit-1-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-eipunit-1']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eip-1" id="flow-eip-1-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-eip-1']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-eip-1" id="flow-eip-1-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-eip-1']; ?>" placeholder="Fill"  disabled></div>
         </td>
         <td class="tg-yw4l" rowspan="7">
-            <div class=" has-warning"><input type="text" name="annual-cost-1" id="annual-cost-1-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['annual-cost-1']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="annual-cost-1" id="annual-cost-1-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['annual-cost-1']; ?>" placeholder="Fill" disabled></div>
         </td>
         <td class="tg-yw4l" rowspan="7">
-        	<div class=" has-warning"><input type="text" name="ltold" id="ltold-<?php echo $i; ?>" value="<?php echo $a['ltold']; ?>" class="form-control" placeholder="You should fill this field."></div>
+        	<div class="  "><input type="text" name="ltold" id="ltold-<?php echo $i; ?>" value="<?php echo $a['ltold']; ?>" class="form-control" placeholder="You should fill this field."></div>
         </td>
         <td class="tg-yw4l" rowspan="7">
-            <div class=" has-warning"><input type="text" name="investment" id="investment-<?php echo $i; ?>" value="<?php echo $a['investment']; ?>" class="form-control" placeholder="You should fill this field."></div>
+            <div class="  "><input type="text" name="investment" id="investment-<?php echo $i; ?>" value="<?php echo $a['investment']; ?>" class="form-control" placeholder="You should fill this field."></div>
         </td>
         <td class="tg-yw4l" rowspan="7">
-        	<div class=" has-warning"><input type="text" name="disrate" id="disrate-<?php echo $i; ?>"  value="<?php echo $a['disrate']; ?>" class="form-control" placeholder="You should fill this field."></div>
+        	<div class="  "><input type="text" name="disrate" id="disrate-<?php echo $i; ?>"  value="<?php echo $a['disrate']; ?>" class="form-control" placeholder="You should fill this field."></div>
         </td>
         <td class="tg-yw4l" rowspan="7">
-        	<div class=" has-warning"><input type="text" name="capex-1" id="capex-1-<?php echo $i; ?>"  value="<?php echo $a['capex-1']; ?>" class="form-control" placeholder="capex-1"></div>
+        	<div class="  "><input type="text" name="capex-1" id="capex-1-<?php echo $i; ?>"  value="<?php echo $a['capex-1']; ?>" class="form-control" placeholder="capex-1" disabled></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-name-2" id="flow-name-2-<?php echo $i; ?>"  value="<?php echo $a['flow-name-2']; ?>" class="form-control" placeholder="flow-name-2"></div>
+            <div class="  "><input type="text" name="flow-name-2" id="flow-name-2-<?php echo $i; ?>"  value="<?php echo $a['flow-name-2']; ?>" class="form-control" placeholder="flow-name-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-value-2" id="flow-value-2-<?php echo $i; ?>"  value="<?php echo $a['flow-value-2']; ?>" class="form-control" placeholder="flow-value-2"></div>
+            <div class="  "><input type="text" name="flow-value-2" id="flow-value-2-<?php echo $i; ?>"  value="<?php echo $a['flow-value-2']; ?>" class="form-control" placeholder="flow-value-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-unit-2" id="flow-unit-2-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-2']; ?>" class="form-control" placeholder="flow-unit-2"></div>
+            <div class="  "><input type="text" name="flow-unit-2" id="flow-unit-2-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-2']; ?>" class="form-control" placeholder="flow-unit-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-specost-2" id="flow-specost-2-<?php echo $i; ?>"  value="<?php echo $a['flow-specost-2']; ?>" class="form-control" placeholder="flow-specost-2"></div>
+            <div class="  "><input type="text" name="flow-specost-2" id="flow-specost-2-<?php echo $i; ?>"  value="<?php echo $a['flow-specost-2']; ?>" class="form-control" placeholder="flow-specost-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-opex-2" id="flow-opex-2-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2']; ?>" class="form-control" placeholder="flow-opex-2"></div>
+            <div class="  "><input type="text" name="flow-opex-2" id="flow-opex-2-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2']; ?>" class="form-control" placeholder="flow-opex-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eipunit-2" id="flow-eipunit-2-<?php echo $i; ?>"  value="<?php echo $a['flow-eipunit-2']; ?>" class="form-control" placeholder="flow-eipunit-2"></div>
+            <div class="  "><input type="text" name="flow-eipunit-2" id="flow-eipunit-2-<?php echo $i; ?>"  value="<?php echo $a['flow-eipunit-2']; ?>" class="form-control" placeholder="flow-eipunit-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eip-2" id="flow-eip-2-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2']; ?>" class="form-control" placeholder="flow-eip-2"></div>
+            <div class="  "><input type="text" name="flow-eip-2" id="flow-eip-2-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2']; ?>" class="form-control" placeholder="flow-eip-2"></div>
         </td>
         <td class="tg-yw4l" rowspan="7">
-            <div class=" has-warning"><input type="text" name="annual-cost-2" id="annual-cost-2-<?php echo $i; ?>"  value="<?php echo $a['annual-cost-2']; ?>" class="form-control" placeholder="annual-cost-2"></div>
+            <div class="  "><input type="text" name="annual-cost-2" id="annual-cost-2-<?php echo $i; ?>"  value="<?php echo $a['annual-cost-2']; ?>" class="form-control" placeholder="annual-cost-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-name-3" id="flow-name-3-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3']; ?>" class="form-control" placeholder="flow-name-3"></div>
+            <div class="  "><input type="text" name="flow-name-3" id="flow-name-3-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3']; ?>" class="form-control" placeholder="flow-name-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-value-3" id="flow-value-3-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3']; ?>" class="form-control" placeholder="flow-value-3"></div>
+            <div class="  "><input type="text" name="flow-value-3" id="flow-value-3-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3']; ?>" class="form-control" placeholder="flow-value-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-unit-3" id="flow-unit-3-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-3']; ?>" class="form-control" placeholder="flow-unit-3"></div>
+            <div class="  "><input type="text" name="flow-unit-3" id="flow-unit-3-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-3']; ?>" class="form-control" placeholder="flow-unit-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-opex-3" id="flow-opex-3-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3']; ?>" class="form-control" placeholder="flow-opex-3"></div>
+            <div class="  "><input type="text" name="flow-opex-3" id="flow-opex-3-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3']; ?>" class="form-control" placeholder="flow-opex-3"></div>
         </td>
         <td class="tg-yw4l" rowspan="7">            
-            <div class=" has-warning"><input type="text" name="ecoben-1" id="ecoben-1-<?php echo $i; ?>"  value="<?php echo $a['ecoben-1']; ?>" class="form-control" placeholder="ecoben-1"></div>
+            <div class="  "><input type="text" name="ecoben-1" id="ecoben-1-<?php echo $i; ?>"  value="<?php echo $a['ecoben-1']; ?>" class="form-control" placeholder="ecoben-1"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="ecoben-eip-1" id="ecoben-eip-1-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1']; ?>" class="form-control" placeholder="ecoben-eip-1"></div>
-        </td>
-        <td class="tg-yw4l" rowspan="7">
-            <div class=" has-warning"><input type="text" name="marcos-1" id="marcos-1-<?php echo $i; ?>"  value="<?php echo $a['marcos-1']; ?>" class="form-control" placeholder="marcos-1"></div>
+            <div class="  "><input type="text" name="ecoben-eip-1" id="ecoben-eip-1-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1']; ?>" class="form-control" placeholder="ecoben-eip-1"></div>
         </td>
         <td class="tg-yw4l" rowspan="7">
-            <div class=" has-warning"><input type="text" name="payback-1" id="payback-1-<?php echo $i; ?>"  value="<?php echo $a['payback-1']; ?>" class="form-control" placeholder="payback-1"></div>
+            <div class="  "><input type="text" name="marcos-1" id="marcos-1-<?php echo $i; ?>"  value="<?php echo $a['marcos-1']; ?>" class="form-control" placeholder="marcos-1"></div>
+        </td>
+        <td class="tg-yw4l" rowspan="7">
+            <div class="  "><input type="text" name="payback-1" id="payback-1-<?php echo $i; ?>"  value="<?php echo $a['payback-1']; ?>" class="form-control" placeholder="payback-1"></div>
         </td>
     </tr>
     <tr>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-name-1-2" id="flow-name-1-2-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-name-1-2']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-name-1-2" id="flow-name-1-2-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-name-1-2']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-value-1-2" id="flow-value-1-2-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-value-1-2']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-value-1-2" id="flow-value-1-2-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-value-1-2']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-unit-1-2" id="flow-unit-1-2-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-unit-1-2']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-unit-1-2" id="flow-unit-1-2-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-unit-1-2']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-specost-1-2" id="flow-specost-1-2-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-specost-1-2']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-specost-1-2" id="flow-specost-1-2-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-specost-1-2']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-opex-1-2" id="flow-opex-1-2-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-opex-1-2']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-opex-1-2" id="flow-opex-1-2-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-opex-1-2']; ?>" placeholder="Fill" disabled></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eipunit-1-2" id="flow-eipunit-1-2-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-eipunit-1-2']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-eipunit-1-2" id="flow-eipunit-1-2-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-eipunit-1-2']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eip-1-2" id="flow-eip-1-2-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-eip-1-2']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-eip-1-2" id="flow-eip-1-2-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-eip-1-2']; ?>" placeholder="Fill" disabled></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-name-2-2" id="flow-name-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-name-2-2']; ?>" class="form-control" placeholder="flow-name-2-2"></div>
+            <div class="  "><input type="text" name="flow-name-2-2" id="flow-name-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-name-2-2']; ?>" class="form-control" placeholder="flow-name-2-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-value-2-2" id="flow-value-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-value-2-2']; ?>" class="form-control" placeholder="flow-value-2-2"></div>
+            <div class="  "><input type="text" name="flow-value-2-2" id="flow-value-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-value-2-2']; ?>" class="form-control" placeholder="flow-value-2-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-unit-2-2" id="flow-unit-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-2-2']; ?>" class="form-control" placeholder="flow-unit-2-2"></div>
+            <div class="  "><input type="text" name="flow-unit-2-2" id="flow-unit-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-2-2']; ?>" class="form-control" placeholder="flow-unit-2-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-specost-2-2" id="flow-specost-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-specost-2-2']; ?>" class="form-control" placeholder="flow-specost-2-2"></div>
+            <div class="  "><input type="text" name="flow-specost-2-2" id="flow-specost-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-specost-2-2']; ?>" class="form-control" placeholder="flow-specost-2-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-opex-2-2" id="flow-opex-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-2']; ?>" class="form-control" placeholder="flow-opex-2-2"></div>
+            <div class="  "><input type="text" name="flow-opex-2-2" id="flow-opex-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-2']; ?>" class="form-control" placeholder="flow-opex-2-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eipunit-2-2" id="flow-eipunit-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-eipunit-2-2']; ?>" class="form-control" placeholder="flow-eipunit-2-2"></div>
+            <div class="  "><input type="text" name="flow-eipunit-2-2" id="flow-eipunit-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-eipunit-2-2']; ?>" class="form-control" placeholder="flow-eipunit-2-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eip-2-2" id="flow-eip-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-2']; ?>" class="form-control" placeholder="flow-eip-2-2"></div>
+            <div class="  "><input type="text" name="flow-eip-2-2" id="flow-eip-2-2-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-2']; ?>" class="form-control" placeholder="flow-eip-2-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-name-3-2" id="flow-name-3-2-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-2']; ?>" class="form-control" placeholder="flow-name-3-2"></div>
+            <div class="  "><input type="text" name="flow-name-3-2" id="flow-name-3-2-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-2']; ?>" class="form-control" placeholder="flow-name-3-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-value-3-2" id="flow-value-3-2-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-2']; ?>" class="form-control" placeholder="flow-value-3-2"></div>
+            <div class="  "><input type="text" name="flow-value-3-2" id="flow-value-3-2-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-2']; ?>" class="form-control" placeholder="flow-value-3-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-unit-3-2" id="flow-unit-3-2-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-3-2']; ?>" class="form-control" placeholder="flow-unit-3-2"></div>
+            <div class="  "><input type="text" name="flow-unit-3-2" id="flow-unit-3-2-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-3-2']; ?>" class="form-control" placeholder="flow-unit-3-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-opex-3-2" id="flow-opex-3-2-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-2']; ?>" class="form-control" placeholder="flow-opex-3-2"></div>
+            <div class="  "><input type="text" name="flow-opex-3-2" id="flow-opex-3-2-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-2']; ?>" class="form-control" placeholder="flow-opex-3-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="ecoben-eip-1-2" id="ecoben-eip-1-2-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-2']; ?>" class="form-control" placeholder="ecoben-eip-1-2"></div>
-        </td>
-    </tr>
-    <tr>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-name-1-3" id="flow-name-1-3-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-name-1-3']; ?>" placeholder="Fill"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-value-1-3" id="flow-value-1-3-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-value-1-3']; ?>" placeholder="Fill"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-unit-1-3" id="flow-unit-1-3-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-unit-1-3']; ?>" placeholder="Fill"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-specost-1-3" id="flow-specost-1-3-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-specost-1-3']; ?>" placeholder="Fill"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-opex-1-3" id="flow-opex-1-3-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-opex-1-3']; ?>" placeholder="Fill"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eipunit-1-3" id="flow-eipunit-1-3-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-eipunit-1-3']; ?>" placeholder="Fill"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eip-1-3" id="flow-eip-1-3-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-eip-1-3']; ?>" placeholder="Fill"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-name-2-3" id="flow-name-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-name-2-3']; ?>" class="form-control" placeholder="flow-name-2-3"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-value-2-3" id="flow-value-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-value-2-3']; ?>" class="form-control" placeholder="flow-value-2-3"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-unit-2-3" id="flow-unit-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-2-3']; ?>" class="form-control" placeholder="flow-unit-2-3"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-specost-2-3" id="flow-specost-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-specost-2-3']; ?>" class="form-control" placeholder="flow-specost-2-3"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-opex-2-3" id="flow-opex-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-3']; ?>" class="form-control" placeholder="flow-opex-2-3"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eipunit-2-3" id="flow-eipunit-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-eipunit-2-3']; ?>" class="form-control" placeholder="flow-eipunit-2-3"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eip-2-3" id="flow-eip-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-3']; ?>" class="form-control" placeholder="flow-eip-2-3"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-name-3-3" id="flow-name-3-3-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-3']; ?>" class="form-control" placeholder="flow-name-3-3"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-value-3-3" id="flow-value-3-3-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-3']; ?>" class="form-control" placeholder="flow-value-3-3"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-unit-3-3" id="flow-unit-3-3-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-3-3']; ?>" class="form-control" placeholder="flow-unit-3-3"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-opex-3-3" id="flow-opex-3-3-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-3']; ?>" class="form-control" placeholder="flow-opex-3-3"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="ecoben-eip-1-3" id="ecoben-eip-1-3-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-3']; ?>" class="form-control" placeholder="ecoben-eip-1-3"></div>
+            <div class="  "><input type="text" name="ecoben-eip-1-2" id="ecoben-eip-1-2-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-2']; ?>" class="form-control" placeholder="ecoben-eip-1-2"></div>
         </td>
     </tr>
     <tr>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-name-1-4" id="flow-name-1-4-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-name-1-4']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-name-1-3" id="flow-name-1-3-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-name-1-3']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-value-1-4" id="flow-value-1-4-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-value-1-4']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-value-1-3" id="flow-value-1-3-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-value-1-3']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-unit-1-4" id="flow-unit-1-4-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-unit-1-4']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-unit-1-3" id="flow-unit-1-3-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-unit-1-3']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-specost-1-4" id="flow-specost-1-4-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-specost-1-4']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-specost-1-3" id="flow-specost-1-3-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-specost-1-3']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-opex-1-4" id="flow-opex-1-4-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-opex-1-4']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-opex-1-3" id="flow-opex-1-3-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-opex-1-3']; ?>" placeholder="Fill" disabled></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eipunit-1-4" id="flow-eipunit-1-4-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-eipunit-1-4']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-eipunit-1-3" id="flow-eipunit-1-3-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-eipunit-1-3']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eip-1-4" id="flow-eip-1-4-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-eip-1-4']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-eip-1-3" id="flow-eip-1-3-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-eip-1-3']; ?>" placeholder="Fill" disabled></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-name-2-3" id="flow-name-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-name-2-4']; ?>" class="form-control" placeholder="flow-name-2-4"></div>
+            <div class="  "><input type="text" name="flow-name-2-3" id="flow-name-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-name-2-3']; ?>" class="form-control" placeholder="flow-name-2-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-value-2-3" id="flow-value-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-value-2-4']; ?>" class="form-control" placeholder="flow-value-2-4"></div>
+            <div class="  "><input type="text" name="flow-value-2-3" id="flow-value-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-value-2-3']; ?>" class="form-control" placeholder="flow-value-2-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-unit-2-4" id="flow-unit-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-2-4']; ?>" class="form-control" placeholder="flow-unit-2-4"></div>
+            <div class="  "><input type="text" name="flow-unit-2-3" id="flow-unit-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-2-3']; ?>" class="form-control" placeholder="flow-unit-2-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-specost-2-4" id="flow-specost-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-specost-2-4']; ?>" class="form-control" placeholder="flow-specost-2-4"></div>
+            <div class="  "><input type="text" name="flow-specost-2-3" id="flow-specost-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-specost-2-3']; ?>" class="form-control" placeholder="flow-specost-2-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-opex-2-4" id="flow-opex-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-4']; ?>" class="form-control" placeholder="flow-opex-2-4"></div>
+            <div class="  "><input type="text" name="flow-opex-2-3" id="flow-opex-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-3']; ?>" class="form-control" placeholder="flow-opex-2-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eipunit-2-4" id="flow-eipunit-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-eipunit-2-4']; ?>" class="form-control" placeholder="flow-eipunit-2-4"></div>
+            <div class="  "><input type="text" name="flow-eipunit-2-3" id="flow-eipunit-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-eipunit-2-3']; ?>" class="form-control" placeholder="flow-eipunit-2-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eip-2-4" id="flow-eip-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-4']; ?>" class="form-control" placeholder="flow-eip-2-4"></div>
+            <div class="  "><input type="text" name="flow-eip-2-3" id="flow-eip-2-3-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-3']; ?>" class="form-control" placeholder="flow-eip-2-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-name-3-4" id="flow-name-3-4-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-4']; ?>" class="form-control" placeholder="flow-name-3-4"></div>
+            <div class="  "><input type="text" name="flow-name-3-3" id="flow-name-3-3-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-3']; ?>" class="form-control" placeholder="flow-name-3-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-value-3-4" id="flow-value-3-4-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-4']; ?>" class="form-control" placeholder="flow-value-3-4"></div>
+            <div class="  "><input type="text" name="flow-value-3-3" id="flow-value-3-3-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-3']; ?>" class="form-control" placeholder="flow-value-3-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-unit-3-4" id="flow-unit-3-4-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-3-4']; ?>" class="form-control" placeholder="flow-unit-3-4"></div>
+            <div class="  "><input type="text" name="flow-unit-3-3" id="flow-unit-3-3-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-3-3']; ?>" class="form-control" placeholder="flow-unit-3-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-opex-3-4" id="flow-opex-3-4-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-4']; ?>" class="form-control" placeholder="flow-opex-3-4"></div>
+            <div class="  "><input type="text" name="flow-opex-3-3" id="flow-opex-3-3-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-3']; ?>" class="form-control" placeholder="flow-opex-3-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="ecoben-eip-1-4" id="ecoben-eip-1-4-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-4']; ?>" class="form-control" placeholder="ecoben-eip-1-4"></div>
-        </td>
-    </tr>
-    <tr>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-name-1-5" id="flow-name-1-5-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-name-1-5']; ?>" placeholder="Fill"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-value-1-5" id="flow-value-1-5-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-value-1-5']; ?>" placeholder="Fill"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-unit-1-5" id="flow-unit-1-5-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-unit-1-5']; ?>" placeholder="Fill"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-specost-1-5" id="flow-specost-1-5-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-specost-1-5']; ?>" placeholder="Fill"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-opex-1-5" id="flow-opex-1-5-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-opex-1-5']; ?>" placeholder="Fill"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eipunit-1-5" id="flow-eipunit-1-5-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-eipunit-1-5']; ?>" placeholder="Fill"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eip-1-5" id="flow-eip-1-5-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-eip-1-5']; ?>" placeholder="Fill"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-name-2-5" id="flow-name-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-name-2-5']; ?>" class="form-control" placeholder="flow-name-2-5"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-value-2-5" id="flow-value-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-value-2-5']; ?>" class="form-control" placeholder="flow-value-2-5"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-unit-2-5" id="flow-unit-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-2-5']; ?>" class="form-control" placeholder="flow-unit-2-5"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-specost-2-5" id="flow-specost-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-specost-2-5']; ?>" class="form-control" placeholder="flow-specost-2-5"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-opex-2-5" id="flow-opex-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-5']; ?>" class="form-control" placeholder="flow-opex-2-5"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eipunit-2-5" id="flow-eipunit-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-eipunit-2-5']; ?>" class="form-control" placeholder="flow-eipunit-2-5"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eip-2-5" id="flow-eip-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-5']; ?>" class="form-control" placeholder="flow-eip-2-5"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-name-3-5" id="flow-name-3-5-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-5']; ?>" class="form-control" placeholder="flow-name-3-5"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-value-3-5" id="flow-value-3-5-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-5']; ?>" class="form-control" placeholder="flow-value-3-5"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-unit-3-5" id="flow-unit-3-5-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-3-5']; ?>" class="form-control" placeholder="flow-unit-3-5"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-opex-3-5" id="flow-opex-3-5-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-5']; ?>" class="form-control" placeholder="flow-opex-3-5"></div>
-        </td>
-        <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="ecoben-eip-1-5" id="ecoben-eip-1-5-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-5']; ?>" class="form-control" placeholder="ecoben-eip-1-5"></div>
+            <div class="  "><input type="text" name="ecoben-eip-1-3" id="ecoben-eip-1-3-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-3']; ?>" class="form-control" placeholder="ecoben-eip-1-3"></div>
         </td>
     </tr>
     <tr>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-name-1-6" id="flow-name-1-6-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-name-1-6']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-name-1-4" id="flow-name-1-4-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-name-1-4']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-value-1-6" id="flow-value-1-6-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-value-1-6']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-value-1-4" id="flow-value-1-4-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-value-1-4']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-unit-1-6" id="flow-unit-1-6-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-unit-1-6']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-unit-1-4" id="flow-unit-1-4-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-unit-1-4']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-specost-1-6" id="flow-specost-1-6-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-specost-1-6']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-specost-1-4" id="flow-specost-1-4-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-specost-1-4']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-opex-1-6" id="flow-opex-1-6-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-opex-1-6']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-opex-1-4" id="flow-opex-1-4-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-opex-1-4']; ?>" placeholder="Fill" disabled></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eipunit-1-6" id="flow-eipunit-1-6-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-eipunit-1-6']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-eipunit-1-4" id="flow-eipunit-1-4-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-eipunit-1-4']; ?>" placeholder="Fill"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eip-1-6" id="flow-eip-1-6-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['flow-eip-1-6']; ?>" placeholder="Fill"></div>
+            <div class="  "><input type="text" name="flow-eip-1-4" id="flow-eip-1-4-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-eip-1-4']; ?>" placeholder="Fill" disabled></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-name-2-6" id="flow-name-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-name-2-6']; ?>" class="form-control" placeholder="flow-name-2-6"></div>
+            <div class="  "><input type="text" name="flow-name-2-3" id="flow-name-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-name-2-4']; ?>" class="form-control" placeholder="flow-name-2-4"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-value-2-6" id="flow-value-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-value-2-6']; ?>" class="form-control" placeholder="flow-value-2-6"></div>
+            <div class="  "><input type="text" name="flow-value-2-3" id="flow-value-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-value-2-4']; ?>" class="form-control" placeholder="flow-value-2-4"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-unit-2-6" id="flow-unit-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-2-6']; ?>" class="form-control" placeholder="flow-unit-2-6"></div>
+            <div class="  "><input type="text" name="flow-unit-2-4" id="flow-unit-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-2-4']; ?>" class="form-control" placeholder="flow-unit-2-4"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-specost-2-6" id="flow-specost-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-specost-2-6']; ?>" class="form-control" placeholder="flow-specost-2-6"></div>
+            <div class="  "><input type="text" name="flow-specost-2-4" id="flow-specost-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-specost-2-4']; ?>" class="form-control" placeholder="flow-specost-2-4"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-opex-2-6" id="flow-opex-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-6']; ?>" class="form-control" placeholder="flow-opex-2-6"></div>
+            <div class="  "><input type="text" name="flow-opex-2-4" id="flow-opex-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-4']; ?>" class="form-control" placeholder="flow-opex-2-4"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eipunit-2-6" id="flow-eipunit-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-eipunit-2-6']; ?>" class="form-control" placeholder="flow-eipunit-2-6"></div>
+            <div class="  "><input type="text" name="flow-eipunit-2-4" id="flow-eipunit-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-eipunit-2-4']; ?>" class="form-control" placeholder="flow-eipunit-2-4"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-eip-2-6" id="flow-eip-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-6']; ?>" class="form-control" placeholder="flow-eip-2-6"></div>
+            <div class="  "><input type="text" name="flow-eip-2-4" id="flow-eip-2-4-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-4']; ?>" class="form-control" placeholder="flow-eip-2-4"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-name-3-6" id="flow-name-3-6-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-6']; ?>" class="form-control" placeholder="flow-name-3-6"></div>
+            <div class="  "><input type="text" name="flow-name-3-4" id="flow-name-3-4-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-4']; ?>" class="form-control" placeholder="flow-name-3-4"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-value-3-6" id="flow-value-3-6-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-6']; ?>" class="form-control" placeholder="flow-value-3-6"></div>
+            <div class="  "><input type="text" name="flow-value-3-4" id="flow-value-3-4-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-4']; ?>" class="form-control" placeholder="flow-value-3-4"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-unit-3-6" id="flow-unit-3-6-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-3-6']; ?>" class="form-control" placeholder="flow-unit-3-6"></div>
+            <div class="  "><input type="text" name="flow-unit-3-4" id="flow-unit-3-4-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-3-4']; ?>" class="form-control" placeholder="flow-unit-3-4"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="flow-opex-3-6" id="flow-opex-3-6-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-6']; ?>" class="form-control" placeholder="flow-opex-3-6"></div>
+            <div class="  "><input type="text" name="flow-opex-3-4" id="flow-opex-3-4-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-4']; ?>" class="form-control" placeholder="flow-opex-3-4"></div>
         </td>
         <td class="tg-yw4l">
-            <div class=" has-warning"><input type="text" name="ecoben-eip-1-6" id="ecoben-eip-1-6-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-6']; ?>" class="form-control" placeholder="ecoben-eip-1-6"></div>
+            <div class="  "><input type="text" name="ecoben-eip-1-4" id="ecoben-eip-1-4-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-4']; ?>" class="form-control" placeholder="ecoben-eip-1-4"></div>
+        </td>
+    </tr>
+    <tr>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-name-1-5" id="flow-name-1-5-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-name-1-5']; ?>" placeholder="Fill"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-value-1-5" id="flow-value-1-5-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-value-1-5']; ?>" placeholder="Fill"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-unit-1-5" id="flow-unit-1-5-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-unit-1-5']; ?>" placeholder="Fill"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-specost-1-5" id="flow-specost-1-5-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-specost-1-5']; ?>" placeholder="Fill"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-opex-1-5" id="flow-opex-1-5-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-opex-1-5']; ?>" placeholder="Fill" disabled></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-eipunit-1-5" id="flow-eipunit-1-5-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-eipunit-1-5']; ?>" placeholder="Fill"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-eip-1-5" id="flow-eip-1-5-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-eip-1-5']; ?>" placeholder="Fill" disabled></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-name-2-5" id="flow-name-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-name-2-5']; ?>" class="form-control" placeholder="flow-name-2-5"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-value-2-5" id="flow-value-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-value-2-5']; ?>" class="form-control" placeholder="flow-value-2-5"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-unit-2-5" id="flow-unit-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-2-5']; ?>" class="form-control" placeholder="flow-unit-2-5"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-specost-2-5" id="flow-specost-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-specost-2-5']; ?>" class="form-control" placeholder="flow-specost-2-5"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-opex-2-5" id="flow-opex-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-5']; ?>" class="form-control" placeholder="flow-opex-2-5"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-eipunit-2-5" id="flow-eipunit-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-eipunit-2-5']; ?>" class="form-control" placeholder="flow-eipunit-2-5"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-eip-2-5" id="flow-eip-2-5-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-5']; ?>" class="form-control" placeholder="flow-eip-2-5"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-name-3-5" id="flow-name-3-5-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-5']; ?>" class="form-control" placeholder="flow-name-3-5"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-value-3-5" id="flow-value-3-5-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-5']; ?>" class="form-control" placeholder="flow-value-3-5"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-unit-3-5" id="flow-unit-3-5-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-3-5']; ?>" class="form-control" placeholder="flow-unit-3-5"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-opex-3-5" id="flow-opex-3-5-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-5']; ?>" class="form-control" placeholder="flow-opex-3-5"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="ecoben-eip-1-5" id="ecoben-eip-1-5-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-5']; ?>" class="form-control" placeholder="ecoben-eip-1-5"></div>
+        </td>
+    </tr>
+    <tr>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-name-1-6" id="flow-name-1-6-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-name-1-6']; ?>" placeholder="Fill"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-value-1-6" id="flow-value-1-6-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-value-1-6']; ?>" placeholder="Fill"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-unit-1-6" id="flow-unit-1-6-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-unit-1-6']; ?>" placeholder="Fill"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-specost-1-6" id="flow-specost-1-6-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-specost-1-6']; ?>" placeholder="Fill"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-opex-1-6" id="flow-opex-1-6-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-opex-1-6']; ?>" placeholder="Fill" disabled></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-eipunit-1-6" id="flow-eipunit-1-6-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-eipunit-1-6']; ?>" placeholder="Fill"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-eip-1-6" id="flow-eip-1-6-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['flow-eip-1-6']; ?>" placeholder="Fill" disabled></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-name-2-6" id="flow-name-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-name-2-6']; ?>" class="form-control" placeholder="flow-name-2-6"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-value-2-6" id="flow-value-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-value-2-6']; ?>" class="form-control" placeholder="flow-value-2-6"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-unit-2-6" id="flow-unit-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-2-6']; ?>" class="form-control" placeholder="flow-unit-2-6"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-specost-2-6" id="flow-specost-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-specost-2-6']; ?>" class="form-control" placeholder="flow-specost-2-6"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-opex-2-6" id="flow-opex-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-2-6']; ?>" class="form-control" placeholder="flow-opex-2-6"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-eipunit-2-6" id="flow-eipunit-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-eipunit-2-6']; ?>" class="form-control" placeholder="flow-eipunit-2-6"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-eip-2-6" id="flow-eip-2-6-<?php echo $i; ?>"  value="<?php echo $a['flow-eip-2-6']; ?>" class="form-control" placeholder="flow-eip-2-6"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-name-3-6" id="flow-name-3-6-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-6']; ?>" class="form-control" placeholder="flow-name-3-6"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-value-3-6" id="flow-value-3-6-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-6']; ?>" class="form-control" placeholder="flow-value-3-6"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-unit-3-6" id="flow-unit-3-6-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-3-6']; ?>" class="form-control" placeholder="flow-unit-3-6"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="flow-opex-3-6" id="flow-opex-3-6-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-6']; ?>" class="form-control" placeholder="flow-opex-3-6"></div>
+        </td>
+        <td class="tg-yw4l">
+            <div class="  "><input type="text" name="ecoben-eip-1-6" id="ecoben-eip-1-6-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-6']; ?>" class="form-control" placeholder="ecoben-eip-1-6"></div>
         </td>
     </tr>
     <tr>
         <td class="tg-yw4l"></td>
         <td class="tg-yw4l">Maintenance</td>
-        <td class="tg-yw4l">maintan-1</td>
+        <td class="tg-yw4l"><div class="  "><input type="text" name="maintan-1" id="maintan-1-<?php echo $i; ?>"  value="<?php echo set_value('maintan-1', '0'); ?>" class="form-control" placeholder="maintan-1"></div></td>
         <td class="tg-yw4l">SUM</td>
-        <td class="tg-yw4l">sum-1</td>
+        <td class="tg-yw4l"><div class="  "><input type="text" name="sum-1" id="sum-1-<?php echo $i; ?>"  value="<?php echo $a['sum-1']; ?>" class="form-control" placeholder="sum-1" disabled></div></td>
         <td class="tg-yw4l">SUM</td>
-        <td class="tg-yw4l">sum-2</td>
+        <td class="tg-yw4l"><div class="  "><input type="text" name="sum-2" id="sum-2-<?php echo $i; ?>"  value="<?php echo $a['sum-2']; ?>" class="form-control" placeholder="sum-2" disabled></div></td>
         <td class="tg-yw4l"></td>
         <td class="tg-yw4l">Maintenance</td>
         <td class="tg-yw4l">maintan-1-2</td>
@@ -497,10 +497,10 @@
 					</tr>
 					<tr>
 						<td><?php echo lang("discountrate"); ?> (%)</td>
-						<td><div class=" has-warning"><input type="text" name="disrate" id="disrate-<?php echo $i; ?>"  value="<?php echo $a['disrate']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
+						<td><div class="  "><input type="text" name="disrate" id="disrate-<?php echo $i; ?>"  value="<?php echo $a['disrate']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
 						<tr><td><?php echo lang("capexold"); ?> (€/<?php echo lang("year"); ?>)</td>								
-						<td><div class=" has-warning"><input type="text" name="capexold" id="capexold-<?php echo $i; ?>" class="form-control has-warning" value="<?php echo $a['capexold']; ?>" placeholder="You should fill this field."></div></td>
+						<td><div class="  "><input type="text" name="capexold" id="capexold-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['capexold']; ?>" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
 						<td><?php echo lang("opexold"); ?> (€/<?php echo lang("year"); ?>)</td>
@@ -508,11 +508,11 @@
 					</tr>
 					<tr>
 						<td><?php echo lang("lifetimeold"); ?> (<?php echo lang("year"); ?>)</td>
-						<td><div class=" has-warning"><input type="text" name="ltold" id="ltold-<?php echo $i; ?>" value="<?php echo $a['ltold']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
+						<td><div class="  "><input type="text" name="ltold" id="ltold-<?php echo $i; ?>" value="<?php echo $a['ltold']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
 						<td><?php echo lang("capexnew"); ?> (€/<?php echo lang("year"); ?>)</td>
-						<td><div class=" has-warning"><input type="text" name="capexnew" id="capexnew-<?php echo $i; ?>" value="<?php echo $a['capexnew']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
+						<td><div class="  "><input type="text" name="capexnew" id="capexnew-<?php echo $i; ?>" value="<?php echo $a['capexnew']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
 						<td><?php echo lang("opexnew"); ?> (€/<?php echo lang("year"); ?>)</td>
@@ -520,7 +520,7 @@
 					</tr>
 					<tr>
 						<td><?php echo lang("lifetimenew"); ?> (<?php echo lang("year"); ?>)</td>
-						<td><div class=" has-warning"><input type="text" name="ltnew" id="ltnew-<?php echo $i; ?>" value="<?php echo $a['ltnew']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
+						<td><div class="  "><input type="text" name="ltnew" id="ltnew-<?php echo $i; ?>" value="<?php echo $a['ltnew']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
 						<td><?php echo lang("anncostold"); ?></td>
@@ -549,7 +549,7 @@
 					</tr>
 					<tr>
 						<td><?php echo lang("newcons"); ?></td>
-						<td><div class=" has-warning"><input type="text" name="newcons" id="newcons-<?php echo $i; ?>" value="<?php echo $a['newcons']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
+						<td><div class="  "><input type="text" name="newcons" id="newcons-<?php echo $i; ?>" value="<?php echo $a['newcons']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
 						<td><?php echo lang("unit"); ?></td>
@@ -581,7 +581,8 @@
 				</table>
 				<input type="submit" value="<?php echo lang("save"); ?>" class="btn btn-block btn-info" style="margin-top:20px;"/>
 				<script type="text/javascript">
-					$('#form-<?php echo $i; ?> input').keydown(function(e){
+
+				/*	$('#form-<?php echo $i; ?> input').keydown(function(e){
 						
 						// Allow: backspace, delete, tab, escape, enter and .
 						if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
@@ -598,12 +599,66 @@
 						}
 
 						//console.log("x<?php echo $i; ?>");
-					});
+					});*/
 
 					function calculate(){
 
-                        //OPEX NEW
+                        //OPEX old-1
                         $("#flow-opex-1-<?php echo $i; ?>").val($("#flow-specost-1-<?php echo $i; ?>").val()*$("#flow-value-1-<?php echo $i; ?>").val());
+
+                        //OPEX old-2
+                        $("#flow-opex-1-2-<?php echo $i; ?>").val($("#flow-specost-1-2-<?php echo $i; ?>").val()*$("#flow-value-1-2-<?php echo $i; ?>").val());
+
+                        //OPEX old-3
+                        $("#flow-opex-1-3-<?php echo $i; ?>").val($("#flow-specost-1-3-<?php echo $i; ?>").val()*$("#flow-value-1-3-<?php echo $i; ?>").val());
+
+                        //OPEX old-4
+                        $("#flow-opex-1-4-<?php echo $i; ?>").val($("#flow-specost-1-4-<?php echo $i; ?>").val()*$("#flow-value-1-4-<?php echo $i; ?>").val());
+
+                        //OPEX old-5
+                        $("#flow-opex-1-5-<?php echo $i; ?>").val($("#flow-specost-1-5-<?php echo $i; ?>").val()*$("#flow-value-1-5-<?php echo $i; ?>").val());
+
+                        //OPEX old-6
+                        $("#flow-opex-1-6-<?php echo $i; ?>").val($("#flow-specost-1-6-<?php echo $i; ?>").val()*$("#flow-value-1-6-<?php echo $i; ?>").val());
+
+                        //sum-1
+                        $("#sum-1-<?php echo $i; ?>").val(parseInt($("#flow-opex-1-<?php echo $i; ?>").val())+parseInt($("#flow-opex-1-2-<?php echo $i; ?>").val())+parseInt($("#flow-opex-1-3-<?php echo $i; ?>").val())+parseInt($("#flow-opex-1-4-<?php echo $i; ?>").val())+parseInt($("#flow-opex-1-5-<?php echo $i; ?>").val())+parseInt($("#flow-opex-1-6-<?php echo $i; ?>").val())+parseInt($("#maintan-1-<?php echo $i; ?>").val()));
+
+                        //flow eip-1
+                        $("#flow-eip-1-<?php echo $i; ?>").val($("#flow-eipunit-1-<?php echo $i; ?>").val()*$("#flow-value-1-<?php echo $i; ?>").val());
+                        //flow eip-2
+                        $("#flow-eip-1-2-<?php echo $i; ?>").val($("#flow-eipunit-1-2-<?php echo $i; ?>").val()*$("#flow-value-1-2-<?php echo $i; ?>").val());
+                        //flow eip-3
+                        $("#flow-eip-1-3-<?php echo $i; ?>").val($("#flow-eipunit-1-3-<?php echo $i; ?>").val()*$("#flow-value-1-3-<?php echo $i; ?>").val());
+                        //flow eip-4
+                        $("#flow-eip-1-4-<?php echo $i; ?>").val($("#flow-eipunit-1-4-<?php echo $i; ?>").val()*$("#flow-value-1-4-<?php echo $i; ?>").val());
+                        //flow eip-5
+                        $("#flow-eip-1-5-<?php echo $i; ?>").val($("#flow-eipunit-1-5-<?php echo $i; ?>").val()*$("#flow-value-1-5-<?php echo $i; ?>").val());
+                        //flow eip-6
+                        $("#flow-eip-1-6-<?php echo $i; ?>").val($("#flow-eipunit-1-6-<?php echo $i; ?>").val()*$("#flow-value-1-6-<?php echo $i; ?>").val());
+
+                        //sum-2
+                        $("#sum-2-<?php echo $i; ?>").val(parseInt($("#flow-eip-1-<?php echo $i; ?>").val())+parseInt($("#flow-eip-1-2-<?php echo $i; ?>").val())+parseInt($("#flow-eip-1-3-<?php echo $i; ?>").val())+parseInt($("#flow-eip-1-4-<?php echo $i; ?>").val())+parseInt($("#flow-eip-1-5-<?php echo $i; ?>").val())+parseInt($("#flow-eip-1-6-<?php echo $i; ?>").val()));
+
+                        //annual-cost-1
+                        $("#annual-cost-1-<?php echo $i; ?>").val(parseInt($("#sum-1-<?php echo $i; ?>").val())+parseInt($("#capexold-<?php echo $i; ?>").val()));
+
+                        //Ann. costs old option calculation
+                        //D3*(J3*(1+J3)^F3)/((1+J3)^F3-1)+E3
+                        //capexold*(Discount*(1+Discount)^Lifetimeold)/(((1+Discount)^Lifetimeold)-1)+opexold
+                        $("#capex-1-<?php echo $i; ?>").val( 
+                            parseFloat($("#investment-<?php echo $i; ?>").val()*( 
+                                $("#disrate-<?php echo $i; ?>").val()/100 * 
+                                    Math.pow(
+                                        ((1)+parseFloat($("#disrate-<?php echo $i; ?>").val()/100)),$("#ltold-<?php echo $i; ?>").val()
+                                    ))/(parseFloat(
+                                    Math.pow(
+                                        ((1)+parseFloat($("#disrate-<?php echo $i; ?>").val()/100)),$("#ltold-<?php echo $i; ?>").val()
+                                    )
+                                )-(1)))
+                        );
+
+                        //------------------------------
 
 						//OPEX OLD calculation
 						$("#opexold-<?php echo $i; ?>").val($("#oldcons-<?php echo $i; ?>").val()*$("#euunit-<?php echo $i; ?>").val());
@@ -613,21 +668,7 @@
 
 
 
-						//Ann. costs old option calculation
-						//D3*(J3*(1+J3)^F3)/((1+J3)^F3-1)+E3
-						//capexold*(Discount*(1+Discount)^Lifetimeold)/(((1+Discount)^Lifetimeold)-1)+opexold
-						$("#acold-<?php echo $i; ?>").val( 
-							parseFloat($("#capexold-<?php echo $i; ?>").val()*( 
-								$("#disrate-<?php echo $i; ?>").val()/100 * 
-									Math.pow(
-										((1)+parseFloat($("#disrate-<?php echo $i; ?>").val()/100)),$("#ltold-<?php echo $i; ?>").val()
-									))/(parseFloat(
-									Math.pow(
-										((1)+parseFloat($("#disrate-<?php echo $i; ?>").val()/100)),$("#ltold-<?php echo $i; ?>").val()
-									)
-								)-(1)))
-							+ parseFloat($("#opexold-<?php echo $i; ?>").val())
-						);
+
 
 						/*
 						console.log(
