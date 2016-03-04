@@ -12,43 +12,43 @@
 <?php  $allocation = array_merge($allocation, $is);  //print_r($allocation); ?>
 	<p><?php echo lang("cbaheading"); ?></p>
 	<?php if (!empty($allocation)): ?>
-
-			<?php $i=1; ?>
-			<?php foreach ($allocation as $a): ?>
-				<?php if(!empty($a['cp_id'])){$iid=$a['cp_id']; $tip="cp";}else{$iid=$a['is_id'];$tip="is";} ?>
- 				<?php $attributes = array('id' => 'form-'.$i); ?>
-				<?php echo form_open('cba/save/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/'.$iid.'/'.$tip, $attributes); ?>
-        <table class="tg costtable">
-  <tr>
-    <th class="tg-yw4l"><div style="width: 100px;">Option</div></th>
-    <th class="tg-yw4l">Yearly CAPEX / rest value (€/yr)</th>
-    <th class="tg-yw4l" colspan="2">Annual energy and material flows</th>
-    <th class="tg-yw4l">unit</th>
-    <th class="tg-yw4l">Specific costs (€/unit)</th>
-    <th class="tg-yw4l">OPEX (€)</th>
-    <th class="tg-yw4l">EIP/ Unit</th>
-    <th class="tg-yw4l">EIP</th>
-    <th class="tg-yw4l">Annual costs (€/yr)</th>
-    <th class="tg-yw4l">Lifetime (yr)</th>
-    <th class="tg-yw4l">Investment (€)</th>
-    <th class="tg-yw4l">Discount rate (%) not for the existing process</th>
-    <th class="tg-yw4l">Yearly CAPEX  (€/yr)</th>
-    <th class="tg-yw4l" colspan="2">Annual energy and material flows</th>
-    <th class="tg-yw4l">unit</th>
-    <th class="tg-yw4l">Specific costs (€/unit)</th>
-    <th class="tg-yw4l">OPEX (€)</th>
-    <th class="tg-yw4l">EIP/ Unit</th>
-    <th class="tg-yw4l">EIP</th>
-    <th class="tg-yw4l">Annual costs (€/yr)</th>
-    <th class="tg-yw4l">Flow Name</th>
-    <th class="tg-yw4l">Differences of energy and material flows</th>
-    <th class="tg-yw4l">Unit</th>
-    <th class="tg-yw4l">Reduction OPEX (€)</th>
-    <th class="tg-yw4l">Economic Benefit (€)</th>
-    <th class="tg-yw4l">Ecological  Benefit (EIP)</th>
-    <th class="tg-yw4l">Marginal costs (€/EIP)</th>
-    <th class="tg-yw4l">Pay pack time  of Investment (yrs)</th>
-  </tr>
+	<?php $i=1; ?>
+	<?php foreach ($allocation as $a): ?>
+		<?php if(!empty($a['cp_id'])){$iid=$a['cp_id']; $tip="cp";}else{$iid=$a['is_id'];$tip="is";} ?>
+			<?php $attributes = array('id' => 'form-'.$i); ?>
+		<?php echo form_open('cba/save/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/'.$iid.'/'.$tip, $attributes); ?>
+    <table class="tg costtable">
+        <tr>
+            <th class="tg-yw4l"><div style="width: 100px;">Option</div></th>
+            <th class="tg-yw4l">Yearly CAPEX / rest value (€/yr)</th>
+            <th class="tg-yw4l" colspan="2">Annual energy and material flows</th>
+            <th class="tg-yw4l">unit</th>
+            <th class="tg-yw4l">Specific costs (€/unit)</th>
+            <th class="tg-yw4l">OPEX (€)</th>
+            <th class="tg-yw4l">EIP/ Unit</th>
+            <th class="tg-yw4l">EIP</th>
+            <th class="tg-yw4l">Annual costs (€/yr)</th>
+            <th class="tg-yw4l">Lifetime (yr)</th>
+            <th class="tg-yw4l">Investment (€)</th>
+            <th class="tg-yw4l">Discount rate (%) not for the existing process</th>
+            <th class="tg-yw4l">Yearly CAPEX  (€/yr)</th>
+            <th class="tg-yw4l" colspan="2">Annual energy and material flows</th>
+            <th class="tg-yw4l">unit</th>
+            <th class="tg-yw4l">Specific costs (€/unit)</th>
+            <th class="tg-yw4l">OPEX (€)</th>
+            <th class="tg-yw4l">EIP/ Unit</th>
+            <th class="tg-yw4l">EIP</th>
+            <th class="tg-yw4l">Annual costs (€/yr)</th>
+            <th class="tg-yw4l">Flow Name</th>
+            <th class="tg-yw4l">Differences of energy and material flows</th>
+            <th class="tg-yw4l">Unit</th>
+            <th class="tg-yw4l">Reduction OPEX (€)</th>
+            <th class="tg-yw4l">Economic Benefit (€)</th>
+            <th class="tg-yw4l">Ecological  Benefit (EIP)</th>
+            <th class="tg-yw4l">Marginal costs (€/EIP)</th>
+            <th class="tg-yw4l">Pay pack time  of Investment (yrs)</th>
+            <th class="tg-yw4l">Save</th>
+        </tr>
         <tr>
         <td class="tg-yw4l" rowspan="7">							
         <span class="text-info" style="font-weight: 600;">
@@ -122,25 +122,28 @@
             <div class="  "><input type="text" name="flow-name-3" id="flow-name-3-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3']; ?>" class="form-control" placeholder="flow-name-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-value-3" id="flow-value-3-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3']; ?>" class="form-control" placeholder="flow-value-3"></div>
+            <div class="  "><input type="text" name="flow-value-3" id="flow-value-3-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3']; ?>" class="form-control" placeholder="flow-value-3" disabled></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-unit-3" id="flow-unit-3-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-3']; ?>" class="form-control" placeholder="flow-unit-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-opex-3" id="flow-opex-3-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3']; ?>" class="form-control" placeholder="flow-opex-3"></div>
+            <div class="  "><input type="text" name="flow-opex-3" id="flow-opex-3-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3']; ?>" class="form-control" placeholder="flow-opex-3" disabled></div>
         </td>
         <td class="tg-yw4l" rowspan="7">            
             <div class="  "><input type="text" name="ecoben-1" id="ecoben-1-<?php echo $i; ?>"  value="<?php echo $a['ecoben-1']; ?>" class="form-control" placeholder="ecoben-1" disabled></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="ecoben-eip-1" id="ecoben-eip-1-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1']; ?>" class="form-control" placeholder="ecoben-eip-1"></div>
+            <div class="  "><input type="text" name="ecoben-eip-1" id="ecoben-eip-1-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1']; ?>" class="form-control" placeholder="ecoben-eip-1" disabled></div>
         </td>
         <td class="tg-yw4l" rowspan="7">
             <div class="  "><input type="text" name="marcos-1" id="marcos-1-<?php echo $i; ?>"  value="<?php echo $a['marcos-1']; ?>" class="form-control" placeholder="marcos-1" disabled></div>
         </td>
         <td class="tg-yw4l" rowspan="7">
             <div class="  "><input type="text" name="payback-1" id="payback-1-<?php echo $i; ?>"  value="<?php echo $a['payback-1']; ?>" class="form-control" placeholder="payback-1" disabled></div>
+        </td>
+        <td class="tg-yw4l" rowspan="7">
+            <input type="submit" value="Save" class="btn btn-block btn-info" style="width: 100px;">
         </td>
     </tr>
     <tr>
@@ -190,16 +193,16 @@
             <div class="  "><input type="text" name="flow-name-3-2" id="flow-name-3-2-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-2']; ?>" class="form-control" placeholder="flow-name-3-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-value-3-2" id="flow-value-3-2-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-2']; ?>" class="form-control" placeholder="flow-value-3-2"></div>
+            <div class="  "><input type="text" name="flow-value-3-2" id="flow-value-3-2-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-2']; ?>" class="form-control" placeholder="flow-value-3-2" disabled></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-unit-3-2" id="flow-unit-3-2-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-3-2']; ?>" class="form-control" placeholder="flow-unit-3-2"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-opex-3-2" id="flow-opex-3-2-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-2']; ?>" class="form-control" placeholder="flow-opex-3-2"></div>
+            <div class="  "><input type="text" name="flow-opex-3-2" id="flow-opex-3-2-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-2']; ?>" class="form-control" placeholder="flow-opex-3-2" disabled></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="ecoben-eip-1-2" id="ecoben-eip-1-2-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-2']; ?>" class="form-control" placeholder="ecoben-eip-1-2"></div>
+            <div class="  "><input type="text" name="ecoben-eip-1-2" id="ecoben-eip-1-2-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-2']; ?>" class="form-control" placeholder="ecoben-eip-1-2" disabled></div>
         </td>
     </tr>
     <tr>
@@ -249,16 +252,16 @@
             <div class="  "><input type="text" name="flow-name-3-3" id="flow-name-3-3-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-3']; ?>" class="form-control" placeholder="flow-name-3-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-value-3-3" id="flow-value-3-3-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-3']; ?>" class="form-control" placeholder="flow-value-3-3"></div>
+            <div class="  "><input type="text" name="flow-value-3-3" id="flow-value-3-3-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-3']; ?>" class="form-control" placeholder="flow-value-3-3" disabled></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-unit-3-3" id="flow-unit-3-3-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-3-3']; ?>" class="form-control" placeholder="flow-unit-3-3"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-opex-3-3" id="flow-opex-3-3-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-3']; ?>" class="form-control" placeholder="flow-opex-3-3"></div>
+            <div class="  "><input type="text" name="flow-opex-3-3" id="flow-opex-3-3-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-3']; ?>" class="form-control" placeholder="flow-opex-3-3" disabled></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="ecoben-eip-1-3" id="ecoben-eip-1-3-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-3']; ?>" class="form-control" placeholder="ecoben-eip-1-3"></div>
+            <div class="  "><input type="text" name="ecoben-eip-1-3" id="ecoben-eip-1-3-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-3']; ?>" class="form-control" placeholder="ecoben-eip-1-3" disabled></div>
         </td>
     </tr>
     <tr>
@@ -308,16 +311,16 @@
             <div class="  "><input type="text" name="flow-name-3-4" id="flow-name-3-4-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-4']; ?>" class="form-control" placeholder="flow-name-3-4"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-value-3-4" id="flow-value-3-4-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-4']; ?>" class="form-control" placeholder="flow-value-3-4"></div>
+            <div class="  "><input type="text" name="flow-value-3-4" id="flow-value-3-4-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-4']; ?>" class="form-control" placeholder="flow-value-3-4" disabled></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-unit-3-4" id="flow-unit-3-4-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-3-4']; ?>" class="form-control" placeholder="flow-unit-3-4"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-opex-3-4" id="flow-opex-3-4-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-4']; ?>" class="form-control" placeholder="flow-opex-3-4"></div>
+            <div class="  "><input type="text" name="flow-opex-3-4" id="flow-opex-3-4-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-4']; ?>" class="form-control" placeholder="flow-opex-3-4" disabled></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="ecoben-eip-1-4" id="ecoben-eip-1-4-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-4']; ?>" class="form-control" placeholder="ecoben-eip-1-4"></div>
+            <div class="  "><input type="text" name="ecoben-eip-1-4" id="ecoben-eip-1-4-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-4']; ?>" class="form-control" placeholder="ecoben-eip-1-4" disabled></div>
         </td>
     </tr>
     <tr>
@@ -367,16 +370,16 @@
             <div class="  "><input type="text" name="flow-name-3-5" id="flow-name-3-5-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-5']; ?>" class="form-control" placeholder="flow-name-3-5"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-value-3-5" id="flow-value-3-5-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-5']; ?>" class="form-control" placeholder="flow-value-3-5"></div>
+            <div class="  "><input type="text" name="flow-value-3-5" id="flow-value-3-5-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-5']; ?>" class="form-control" placeholder="flow-value-3-5" disabled></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-unit-3-5" id="flow-unit-3-5-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-3-5']; ?>" class="form-control" placeholder="flow-unit-3-5"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-opex-3-5" id="flow-opex-3-5-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-5']; ?>" class="form-control" placeholder="flow-opex-3-5"></div>
+            <div class="  "><input type="text" name="flow-opex-3-5" id="flow-opex-3-5-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-5']; ?>" class="form-control" placeholder="flow-opex-3-5" disabled></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="ecoben-eip-1-5" id="ecoben-eip-1-5-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-5']; ?>" class="form-control" placeholder="ecoben-eip-1-5"></div>
+            <div class="  "><input type="text" name="ecoben-eip-1-5" id="ecoben-eip-1-5-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-5']; ?>" class="form-control" placeholder="ecoben-eip-1-5" disabled></div>
         </td>
     </tr>
     <tr>
@@ -426,36 +429,36 @@
             <div class="  "><input type="text" name="flow-name-3-6" id="flow-name-3-6-<?php echo $i; ?>"  value="<?php echo $a['flow-name-3-6']; ?>" class="form-control" placeholder="flow-name-3-6"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-value-3-6" id="flow-value-3-6-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-6']; ?>" class="form-control" placeholder="flow-value-3-6"></div>
+            <div class="  "><input type="text" name="flow-value-3-6" id="flow-value-3-6-<?php echo $i; ?>"  value="<?php echo $a['flow-value-3-6']; ?>" class="form-control" placeholder="flow-value-3-6" disabled></div>
         </td>
         <td class="tg-yw4l">
             <div class="  "><input type="text" name="flow-unit-3-6" id="flow-unit-3-6-<?php echo $i; ?>"  value="<?php echo $a['flow-unit-3-6']; ?>" class="form-control" placeholder="flow-unit-3-6"></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="flow-opex-3-6" id="flow-opex-3-6-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-6']; ?>" class="form-control" placeholder="flow-opex-3-6"></div>
+            <div class="  "><input type="text" name="flow-opex-3-6" id="flow-opex-3-6-<?php echo $i; ?>"  value="<?php echo $a['flow-opex-3-6']; ?>" class="form-control" placeholder="flow-opex-3-6" disabled></div>
         </td>
         <td class="tg-yw4l">
-            <div class="  "><input type="text" name="ecoben-eip-1-6" id="ecoben-eip-1-6-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-6']; ?>" class="form-control" placeholder="ecoben-eip-1-6"></div>
+            <div class="  "><input type="text" name="ecoben-eip-1-6" id="ecoben-eip-1-6-<?php echo $i; ?>"  value="<?php echo $a['ecoben-eip-1-6']; ?>" class="form-control" placeholder="ecoben-eip-1-6" disabled></div>
         </td>
     </tr>
     <tr>
         <td class="tg-yw4l"></td>
-        <td class="tg-yw4l">Maintenance</td>
+        <td class="tg-yw4l" style="font-weight:bold; color:black;">Maintenance</td>
         <td class="tg-yw4l"><div class="  "><input type="text" name="maintan-1" id="maintan-1-<?php echo $i; ?>"  value="<?php echo set_value('maintan-1', '0'); ?>" class="form-control" placeholder="maintan-1"></div></td>
-        <td class="tg-yw4l">SUM</td>
+        <td class="tg-yw4l" style="font-weight:bold; color:black;">SUM</td>
         <td class="tg-yw4l"><div class="  "><input type="text" name="sum-1" id="sum-1-<?php echo $i; ?>"  value="<?php echo $a['sum-1']; ?>" class="form-control" placeholder="sum-1" disabled></div></td>
-        <td class="tg-yw4l">SUM</td>
+        <td class="tg-yw4l" style="font-weight:bold; color:black;">SUM</td>
         <td class="tg-yw4l"><div class="  "><input type="text" name="sum-2" id="sum-2-<?php echo $i; ?>"  value="<?php echo $a['sum-2']; ?>" class="form-control" placeholder="sum-2" disabled></div></td>
         <td class="tg-yw4l"></td>
-        <td class="tg-yw4l">Maintenance</td>
+        <td class="tg-yw4l" style="font-weight:bold; color:black;">Maintenance</td>
         <td class="tg-yw4l"><div class="  "><input type="text" name="maintan-1-2" id="maintan-1-2-<?php echo $i; ?>"  value="<?php echo set_value('maintan-1-2', '0'); ?>" class="form-control" placeholder="maintan-1-2"></div></td>
-        <td class="tg-yw4l">SUM</td>
+        <td class="tg-yw4l" style="font-weight:bold; color:black;">SUM</td>
         <td class="tg-yw4l"><div class=""><input type="text" name="sum-1-1" id="sum-1-1-<?php echo $i; ?>"  value="<?php echo $a['sum-1-1']; ?>" class="form-control" placeholder="sum-1-1" disabled></div></td>
-        <td class="tg-yw4l">SUM</td>
+        <td class="tg-yw4l" style="font-weight:bold; color:black;">SUM</td>
         <td class="tg-yw4l"><div class=""><input type="text" name="sum-2-1" id="sum-2-1-<?php echo $i; ?>"  value="<?php echo $a['sum-2-1']; ?>" class="form-control" placeholder="sum-2-1" disabled></div></td>
         <td class="tg-yw4l"></td>
         <td class="tg-yw4l"></td>
-        <td class="tg-yw4l">SUM</td>
+        <td class="tg-yw4l" style="font-weight:bold; color:black;">SUM</td>
         <td class="tg-yw4l"><div class=""><input type="text" name="sum-3-1" id="sum-3-1-<?php echo $i; ?>"  value="<?php echo $a['sum-3-1']; ?>" class="form-control" placeholder="sum-3-1" disabled></div></td>
         <td class="tg-yw4l"><div class=""><input type="text" name="sum-3-2" id="sum-3-2-<?php echo $i; ?>"  value="<?php echo $a['sum-3-2']; ?>" class="form-control" placeholder="sum-3-2" disabled></div></td>
     </tr>
@@ -760,10 +763,6 @@
 						//OPEX NEW calculation
 						$("#opexnew-<?php echo $i; ?>").val($("#newcons-<?php echo $i; ?>").val()*$("#euunit-<?php echo $i; ?>").val());
 
-
-
-
-
 						/*
 						console.log(
 							Math.pow(
@@ -777,7 +776,7 @@
 						//Ann. costs new option calculation
 						//D3*(J3*(1+J3)^F3)/((1+J3)^F3-1)+E3
 						//capexold*(Discount*(1+Discount)^Lifetimeold)/(((1+Discount)^Lifetimeold)-1)+opexold
-						$("#acnew-<?php echo $i; ?>").val( 
+						/*$("#acnew-<?php echo $i; ?>").val( 
 							parseFloat($("#capexnew-<?php echo $i; ?>").val()*( 
 								$("#disrate-<?php echo $i; ?>").val()/100 * 
 									Math.pow(
@@ -806,7 +805,7 @@
 						else{
 							$("#marcos-<?php echo $i; ?>").val(-$("#eco-<?php echo $i; ?>").val()/$("#ecoben-<?php echo $i; ?>").val()*100);
 							$("#marcos-<?php echo $i; ?>").val(toFixed($("#marcos-<?php echo $i; ?>").val(),2));
-						}
+						}*/
 
 					}
 
