@@ -251,7 +251,7 @@
                         
                     }  
                 },
-                {field:'flow_details',title:'Flow Details',width:100,align:'center',
+                /*{field:'flow_details',title:'Flow Details',width:100,align:'center',
                     formatter:function(value,row,index){
                         //console.log('row satır id bilgileri'+row.id);
 
@@ -263,7 +263,7 @@
                         return y;
                         
                     }
-                },
+                },*/ 
                 {field:'edit',title:'Edit',width:50,align:'center',
                     formatter:function(value,row,index){
                         //console.log('row satır id bilgileri'+row.id);
