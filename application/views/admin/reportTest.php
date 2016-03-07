@@ -129,7 +129,7 @@
             $('#ff').form({
                 ajax : true,
                 //url:'../../../../slim2_ecoman_admin/',
-                url: '../../../../slim2_ecoman_admin/report.php/insertReport_rpt',
+                url: '../../../slim2_ecoman_admin/report.php/insertReport_rpt',
                 queryParams : {
                     //url : 'insertReport_rpt',
                     attr : attrStr,
@@ -181,7 +181,8 @@
     function submitFormFlowFamily(){  
             console.log($('#flowFamily').val()); 
             $.ajax({
-                url: '../../../../slim2_ecoman_admin/report.php/insertReport',
+                //url: '../../../../slim2_ecoman_admin/report.php/insertReport',
+                url: '../../../slim2_ecoman_admin/report.php/insertReport',
                 type: 'POST',
                 dataType : 'json',
                 data: 'flow='+$('#flowFamily').val(),
@@ -390,7 +391,7 @@
                 }
             });
             
-            $.ajax({
+            $.ajax({ 
                 //url: '../slim_2/index.php/columnflows_json_test',
                 url: '../../../../Proxy/SlimProxyAdmin.php',
                 type: 'GET',
