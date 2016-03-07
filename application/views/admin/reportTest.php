@@ -432,7 +432,7 @@
                                 </div>
                                 <div style="float:left;">
                                     <ul class="nav navbar-nav navbar-left ust-nav" style="margin-left: 37px;
-                                                                                          font-size: 20px;
+                                                                                          font-size: 20px;  
                                                                                           font-weight: bold;">
                                         <li class="navtus" data-rel="profiles"><a style="border:0px;font-size:18px;" id="l1" href="<?php echo base_url('users'); ?>"><span style="margin-top:4px;" class="icon16 icon-white icon-user"></span> Profiles</a></li>
                                         <li class="navtus" data-rel="companies"><a style="border:0px;font-size:18px;" id="l2" href="<?php echo base_url('companies'); ?>"><span style="margin-top:4px;" class="icon16 icon-white icon-calendar"></span> Companies</a></li>
@@ -443,7 +443,8 @@
                                 </div>  
                                 <div style="float:left;
                                             height: 87px;
-                                            background: #F5F4CB;
+                                            //background: #F5F4CB;
+                                            background: #00bdef;
                                             margin-top: -26px;
                                             margin-left: -11px;">
                                     <ul class="nav navbar-nav navbar-left ust-nav" style=" 
@@ -451,7 +452,7 @@
                                                                                           font-weight: bold;
                                                                                           margin: 25px 0px 25px 0px;">  
                                         
-                                        <li class="navtus" data-rel="reporting"><a style="border:0px;font-size:18px;color:black;" id="l5" href="<?php echo base_url('allreports'); ?>" ><span style="margin-top:4px;" class="icon16 icon-black icon-list-alt"></span> Reporting</a></li>
+                                        <li class="navtus" data-rel="reporting"><a style="border:0px;font-size:18px;color:white;" id="l5" href="<?php echo base_url('allreports'); ?>" ><span style="margin-top:4px;" class="icon16 icon-white icon-list-alt"></span> Reporting</a></li>
                                     </ul>
                                 </div> 
                                 
@@ -505,19 +506,19 @@
 		</div>
 	</div>
 	<!-- topbar ends -->
-        <!--<div style="background: #00bdef; height:52px;margin-bottom: 20px;"></div>-->
-        <div style="background: #F5F4CB; height:52px;margin-bottom: 20px;">
+        <div style="background: #00bdef; height:52px;margin-bottom: 20px;">
+        <!--<div style="background: #F5F4CB; height:52px;margin-bottom: 20px;">-->
             <div>
                 <div style="float:left;
                             margin: 17px 20px 16px 179px;">
-                    <a style="border:0px;font-size:18px;" id="l1" href="<?php echo base_url('createreport'); ?>">
+                    <a style="border:0px;font-size:18px;color:#b30000" id="l1" href="<?php echo base_url('createreport'); ?>">
                         <span style="margin-top:4px;" class="icon16 icon-black icon-picture"></span> Create Report
                     </a>
                 </div>
                 <div style="float:left;
                             margin: 17px 20px 16px 20px;">
-                                <a style="border:0px;font-size:18px;" id="l1" href="<?php echo base_url('allreports'); ?>">
-                                    <span style="margin-top:4px;" class="icon16 icon-white icon-list-alt"></span> All Reports
+                                <a style="border:0px;font-size:18px;color:#fff" id="l1" href="<?php echo base_url('allreports'); ?>">
+                                    <span style="margin-top:4px;" class="icon16 icon-black icon-list-alt"></span> All Reports
                                 </a>
                 </div>
                 <div style="clear:both;"></div>
