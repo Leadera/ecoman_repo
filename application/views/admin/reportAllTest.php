@@ -1,91 +1,6 @@
 <script>
-    function updateReport() {
-        if(false) {
-            
-        }  else {
-            $.messager.progress();
-        var checkedArray = Array("");
-        checkedArray = $("#tt_tree").tree("getChecked");
-        console.log(checkedArray);
-        var attrStr="";
-        $.each(checkedArray, function( index, obj ) {
-            
-            attrStr+=obj.id+','
-            //attrStr='6,7,';
-          });
-        var row = $('#tt_grid').datagrid('getSelected');
-        console.log(attrStr);
-        $('#ff').form({
-            ajax : true,
-            //url:'../../../../slim2_ecoman_admin/',
-            url: '../../../../slim2_ecoman_admin/report.php/updateReport_rpt',
-            queryParams : {
-                //url : 'insertReport_rpt',
-                attr : attrStr,
-                name : $('#tt_textReportName').textbox('getText'),
-                consultant_id : document.getElementById('consultant_id').value,
-                company_id : $('#company_dropdown').combobox('getValue'),
-                id : row.id
-                //'row='+JSON.stringify($('#tt_grid_dynamic5').datagrid('getRows'))+'&text='+$('#tt_textReportName').textbox('getText')
-            },
-            onSubmit:function(){
-                var isValid = $(this).form('validate');
-                if (!isValid){
-                        $.messager.progress('close');
-                }
-                //$.messager.alert('is valid ');
-                return isValid;	// return false will stop the form submission
-            },
-            success:function(data){
-                var jsonObj = $.parseJSON(data);
-                if(jsonObj['found']==true)
-                {
-                    if(jsonObj["id"]>0) {
-                         noty({text: 'Report updated succesfully', type: 'success'});
-                         $('#tt_grid').datagrid('reload');
-                         $.messager.progress('close');
-                     } else {
-                         noty({text: 'Report name has been inserted before, please enter another report name', type: 'warning'});
-                         $('#tt_grid').datagrid('reload');
-                         $.messager.progress('close');
-                     }
-
-                } else if(data["found"]==false){
-                    //$.messager.alert('Save Error', 'Error occured');
-                    noty({text: 'Report could not be  updated ', type: 'error'}); 
-                    $.messager.progress('close');	// hide progress bar while submit successfully
-                }
-
-            }
-            });
-            $('#ff').submit();
-        } 
-    }
     
-    
-    function resetFormReport() {
-        $('#tt_tree').tree({
-                url: '../../../../Proxy/SlimProxyAdmin.php',
-                queryParams : { url:'reportAttributes_rpt' },
-                method:'get',
-                animate:true,
-                checkbox:true,
-                cascadeCheck : false,
-            });
-         $("#tt_tree").tree('reload');
-         $("#tt_textReportName").textbox('setText', '');
-         $("#company_dropdown").combobox('select', '');
-         $("#saveReport").linkbutton({
-            //text: 'Update Report'
-            disabled: false
-        });
-        $("#updateReport").linkbutton({
-            //text: 'Update Report'
-            disabled: true
-        });
-    }
-    
-     function reportEditView(report_name, report_id, company_name, company_id) {
+    function reportEditView(report_name, report_id, company_name, company_id) {
          console.log(report_name);
          console.log(report_id);
          console.log(company_name);
@@ -112,247 +27,32 @@
         });
      }
     
-     function saveReport() {
-        var checkedArray = Array("");
-        checkedArray = $("#tt_tree").tree("getChecked");
-        if(typeof checkedArray !== 'undefined' && checkedArray.length > 0) {
-             
-        
-            console.log(checkedArray);
-            var attrStr="";
-            $.each(checkedArray, function( index, obj ) {
-
-                attrStr+=obj.id+','
-                //attrStr='6,7,';
-              });
-            console.log(attrStr);
-            $('#ff').form({
-                ajax : true,
-                //url:'../../../../slim2_ecoman_admin/',
-                url: '../../../../slim2_ecoman_admin/report.php/insertReport_rpt',
-                queryParams : {
-                    //url : 'insertReport_rpt',
-                    attr : attrStr,
-                    name : $('#tt_textReportName').textbox('getText'),
-                    consultant_id : document.getElementById('consultant_id').value,
-                    company_id : $('#company_dropdown').combobox('getValue'),
-                    //'row='+JSON.stringify($('#tt_grid_dynamic5').datagrid('getRows'))+'&text='+$('#tt_textReportName').textbox('getText')
-                },
-                onSubmit:function(){
-                    $.messager.progress();
-                    var isValid = $(this).form('validate');
-                    if (!isValid){
-                            $.messager.progress('close');
-                    }
-                    //$.messager.alert('is valid ');
-                    return isValid;	// return false will stop the form submission
-                },
-                success:function(data){
-                    var jsonObj = $.parseJSON(data);
-                    if(jsonObj['found']==true)
-                    {
-                        if(jsonObj["id"]>0) {
-                             noty({text: 'Report inserted succesfully', type: 'success'});
-                             $('#tt_grid').datagrid('reload');
-                             $.messager.progress('close');
-                         } else {
-                             noty({text: 'Report has been inserted before, please enter another report name', type: 'warning'});
-                             $('#tt_grid').datagrid('reload');
-                             $.messager.progress('close');
-                         }
-
-                    } else if(data["found"]==false){
-                        //$.messager.alert('Save Error', 'Error occured');
-                        noty({text: 'Report could not be  inserted ', type: 'error'}); 
-                        $.messager.progress('close');	// hide progress bar while submit successfully
-                    }
-
-                }
-                });
-                $('#ff').submit();
+    function saveReport() {
+        //alert($('#reportType_dropdown').combobox('getValue'));
+        //alert($('#company_dropdown').combobox('getValue'));
+        if($('#reportType_dropdown').combobox('getValue')>0 && $('#company_dropdown').combobox('getValue') > 0) {
+            if($('#reportType_dropdown').combobox('getValue')==2) {
+                document.getElementById('myFrame').setAttribute('src','http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?company_id='+$('#company_dropdown').combobox('getValue')+'&Rapor_ID=3');
+            } else if ($('#reportType_dropdown').combobox('getValue')==3) {
+                document.getElementById('myFrame').setAttribute('src','http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?company_id='+$('#company_dropdown').combobox('getValue')+'&Rapor_ID=5');
+            } else if($('#reportType_dropdown').combobox('getValue')==1){ 
+                document.getElementById('myFrame').setAttribute('src','http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?company_id='+$('#company_dropdown').combobox('getValue')+'&Rapor_ID=4');
+            } else if($('#reportType_dropdown').combobox('getValue')==4) {
+                document.getElementById('myFrame').setAttribute('src','http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?company_id='+$('#company_dropdown').combobox('getValue')+'&Rapor_ID=6');
+            } else if($('#reportType_dropdown').combobox('getValue')==5) {
+                document.getElementById('myFrame').setAttribute('src','http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?company_id='+$('#company_dropdown').combobox('getValue')+'&Rapor_ID=7');
+            }
+            
+            
+            //document.getElementById('myFrame').setAttribute('src','http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?company_id=132&Rapor_ID=3');
         }  else {
-                noty({text: 'Please select report property from report attributes tree', type: 'warning'});
+                noty({text: 'Please select report type and company', type: 'warning'});
         }
-         
-        
     }
-    
-    
-    function submitFormFlowFamily(){  
-            console.log($('#flowFamily').val()); 
-            $.ajax({
-                url: '../../../../slim2_ecoman_admin/report.php/insertReport',
-                type: 'POST',
-                dataType : 'json',
-                data: 'flow='+$('#flowFamily').val(),
-                success: function(data, textStatus, jqXHR) {
-                  console.warn('success text status-->'+textStatus);
-                  if(data["found"]==true) {
-                      //$.messager.alert('Success','Success inserted Flow family!','info');
-                      if(data["id"]>0) {
-                          noty({text: 'Report inserted succesfully', type: 'success'});
-                          $('#tt_tree').tree('reload');
-                      } else {
-                          noty({text: 'Report has been inserted before, please enter another report name', type: 'warning'});
-                          $('#tt_tree').tree('reload');
-                      }
-                      
-                  } else if(data["found"]==false) {         
-                      //$.messager.alert('Insert failed','Failed to insert Flow Family !','error');
-                      noty({text: 'Report could not be  inserted ', type: 'error'});  
-                      $('#tt_tree').tree('reload');
-                  }   
-                },
-                error: function(jqXHR , textStatus, errorThrown) {
-                  //console.warn('error text status-->'+textStatus);
-                  noty({text: 'Report could not be  inserted ', type: 'error'});  
-                }
-            });
-        }
-    
-    
+
     jQuery(document).ready(function() {
         
-        
-         $('#tt_grid').datagrid({
-            url :'../../../Proxy/SlimProxyAdmin.php',
-            queryParams : { url : 'getReports_rpt',
-                            //flows : JSON.stringify(arrayLeaf),
-                            //prj_id : $('#prj_id').val()
-                        },
-            sortName : 'r_date',
-            collapsible:true,
-            idField:'id',
-            //toolbar:'#tb',
-            rownumbers: "true",
-            pagination: "true",
-            remoteSort : true,
-            multiSort : true,
-            singleSelect : true,
-            scroll : true,
-            columns:[[
-                  {field:'report_name',title:'Report Name',width:100,sortable:true},
-                  {field:'r_date',title:'Report Date',width:100,sortable:true},
-                  {field:'company_name',title:'Company',width:100,sortable:true},
-                  {field:'company_id',title:'Company ID',width:100,sortable:true,hidden:true},
-                  {field:'user_name',title:'User Name',width:100},
-                  {field:'name',title:'Name',width:100},
-                  {field:'surname',title:'Surname',width:100},
-                  {field:'report',title:'Report',width:100,align:'center',
-                    formatter:function(value,row,index){
-                        //console.log('row satır id bilgileri'+row.id);
-
-                        var x = '<a href="#add" class="easyui-linkbutton" \n\
-                                    iconCls="icon-save" \n\
-                                    onclick="document.getElementById(\'myFrame\').setAttribute(\'src\',\n\
-                                    \'http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?Configuration_ID='+row.id+'&Rapor_ID=1\')"> See Report</a>';
-                        //return e+d;
-                        return x;        
-                        
-                    }  
-                },
-                {field:'flow_details',title:'Flow Details',width:100,align:'center',
-                    formatter:function(value,row,index){
-                        //console.log('row satır id bilgileri'+row.id);
-
-                        var y = '<a href="#add" class="easyui-linkbutton" \n\
-                                    iconCls="icon-save" \n\
-                                    onclick="document.getElementById(\'myFrame\').setAttribute(\'src\',\n\
-                                    \'http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?Configuration_ID='+row.id+'&Rapor_ID=2\')"> See Flow Details</a>';
-                        //return e+d;
-                        return y;
-                        
-                    }
-                },
-                {field:'edit',title:'Edit',width:50,align:'center',
-                    formatter:function(value,row,index){
-                        //console.log('row satır id bilgileri'+row.id);
-                        //console.log('row satır name bilgileri'+row.report_name);
-                        var x = '<a href="" class="easyui-linkbutton" \n\
-                                    iconCls="icon-save" \n\
-                                    onclick="reportEditView(\''+row.report_name+'\','+row.id+', \''+row.company_name+'\', '+row.company_id+' );event.preventDefault();"> Edit</a>';
-                        //return e+d;
-                        return x;
-                        
-                    }
-                },
-                
-
-                  ]],
-                });
-            //$('#tt_grid2').datagrid('loadData', data);
-            $('#tt_grid').datagrid({
-               url :'../../../Proxy/SlimProxyAdmin.php',
-               queryParams : { url : 'getReports_rpt',
-                               //flows : JSON.stringify(arrayLeaf),
-                               //prj_id : $('#prj_id').val()
-                           }
-            });
-        
-        
- 
-          $('#tt_tree').tree({
-                url: '../../../../Proxy/SlimProxyAdmin.php',
-                queryParams : { url:'reportAttributes_rpt' },
-                method:'get',
-                animate:true,
-                checkbox:true,
-                cascadeCheck : false,
-            });
-            
-            
-            var treeValue;
-            var parentnode;
-        $("#tt_tree").tree({
-                    onCheck: function(node, checked) {
-                        var parentnode=$("#tt_tree").tree("getParent", node.target);
-                        if(parentnode) {
-                            $("#tt_tree").tree('check',parentnode.target);
-                            
-                        } /*else {
-                            //console.log('parent node bulunamadı');
-                        }*/
-                       
-                    },
-                    onClick: function(node){
-                    console.log(node);
-                    console.log(node.attributes.notroot);
-                    /*parentnode=$("#tt_tree").tree("getParent", node.target);
-                    console.log(parentnode);
-                    if(parentnode==null) {
-                        console.log('parent node null');
-                    } else {
-                        console.log('parent node null değil');
-                    }
-                    var roots=$("#tt_tree").tree("getRoots");
-                    console.log(parentnode.attributes);*/
-                    /*if() {
-                        
-                    } else {
-                        
-                    }*/
-                    var treeValue;
-                    if(node.state==undefined) {
-                            var de=parentnode.text;
-                            var test_array=de.split("/");
-                            treeValue=test_array[1];
-                    } else {
-                            //treeValue=parentnode.text;
-                    }
-    
-                    //var imagepath=parentnode.text+"/"+node.text;
-                },
-                onDblClick: function(node){
-                var deneme="test";
-                    var parent=$("#tt_tree").tree("getParent",node.target);
-                    if(parent) {
-                    
-                    } else {
-                    }
-                }
-            });
-            
-            $.ajax({
+        $.ajax({
                 url: '../../../../Proxy/SlimProxyAdmin.php',
                 type: 'GET',
                 dataType : 'json',
@@ -362,9 +62,8 @@
                   //console.warn(data);
                   $('#totalProjects').html(data['totalProjects']);
                 }
-            }); 
-            
-            $.ajax({
+            });  
+        $.ajax({
                 //url: '../slim_2/index.php/columnflows_json_test',
                 url: '../../../../Proxy/SlimProxyAdmin.php',
                 type: 'GET',
@@ -376,8 +75,7 @@
                   $('#totalUsers').html(data['totalUsers']);
                 }
             }); 
-            
-            $.ajax({
+        $.ajax({
                 //url: '../slim_2/index.php/columnflows_json_test',
                 url: '../../../../Proxy/SlimProxyAdmin.php',
                 type: 'GET',
@@ -388,9 +86,8 @@
                   //console.warn(data);
                   $('#totalISProjects').html(data['totalISProjects']);
                 }
-            });
-            
-            $.ajax({
+            });  
+        $.ajax({
                 //url: '../slim_2/index.php/columnflows_json_test',
                 url: '../../../../Proxy/SlimProxyAdmin.php',
                 type: 'GET',
@@ -402,13 +99,8 @@
                   $('#totalProducts').html(data['totalProducts']);
                 }
             });
-            
-            
 
-            
-                    
-             
-        });
+    });
     
     
 </script>
@@ -637,8 +329,125 @@
 					<span class="notification red"></span>
 				</a>
 			</div>
+                         
+                        <div class="row-fluid sortable">  
+                             <div class="box span12">
+					<div class="box-header well" data-original-title>
+						<h2><i class="icon-user"></i>Reports</h2>  
+						<div class="box-icon">
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+							<!--<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>-->
+						</div>
+					</div>
+					
+                                        <div class="box-content" style='padding: 0px;'>
+                                                <div id="p2" class="easyui-panel" style="height:250px;" title="Pick  report type and company" 
+                                                     style="margin: auto 0;height:480px;"
+                                                    data-options="iconCls:'icon-save',collapsible:true,closable:true">
+                                                      <form id="ff" method="post">
+                                                        <div style="padding:10px 60px 20px 60px">
+                                                            <div style="margin-bottom: 4px;margin-left: -8px;">
+                                                                <label style="margin-right:18px;">Report Type:</label>
+                                                                <input class="easyui-combobox" 
+                                                                    name="reportType_dropdown" id="reportType_dropdown"
+                                                                    data-options="
+
+                                                                            url :'../../../../Proxy/SlimProxyAdmin.php?url=getReportTypes_rpt',
+                                                                            //queryParams : { url : 'getCompanies_rpt'},
+                                                                            method:'get',
+                                                                            valueField:'id',
+                                                                            textField:'text',
+                                                                            panelHeight:'auto',
+                                                                            /*icons:[{
+                                                                                iconCls:'icon-eye-open'
+                                                                            }],*/
+                                                                            required:true,
+                                                                    ">
+                                                            </div>
+                                                            
+                                                            <div style="margin-left:-8px;">
+                                                                <label style="margin-right: 17px;
+                                                                                padding-bottom: 3px;">Company:</label>
+                                                                <input class="easyui-combobox" 
+                                                                    name="company_dropdown" id="company_dropdown"
+                                                                    data-options="
+
+                                                                            url :'../../../../Proxy/SlimProxyAdmin.php?url=getCompanies_rpt',
+                                                                            //queryParams : { url : 'getCompanies_rpt'},
+                                                                            method:'get',
+                                                                            valueField:'id',
+                                                                            textField:'text',
+                                                                            panelHeight:'auto',
+                                                                            /*icons:[{
+                                                                                iconCls:'icon-eye-open'
+                                                                            }],*/
+                                                                            required:true,
+                                                                    ">
+                                                            </div>
+
+                                                        </div>
+
+
+
+                                                    <div data-options="region:'south',border:false" style="text-align:left;padding:5px 0 0;">
+                                                        <!--<input type="submit" value="Save IS potentials table">-->
+                                                        <a class="easyui-linkbutton" id="saveReport" name="saveReport"
+                                                           style='margin-left: 50px;'
+                                                           data-options="iconCls:'icon-ok'" 
+                                                           href="javascript:void(0)" 
+                                                           onclick="saveReport();" style="">See Report</a>
+                                                        <!--<a class="easyui-linkbutton" id="updateReport" name="updateReport"
+                                                           style='margin-left: 7px;'
+                                                           data-options="iconCls:'icon-ok',disabled:true" 
+                                                           href="javascript:void(0)" 
+                                                           onclick="updateReport();" style="">Update Report</a>-->
+                                                        <!--<a class="easyui-linkbutton" 
+                                                           style='margin-left: 7px;'
+                                                           data-options="iconCls:'icon-ok'" 
+                                                           href="javascript:void(0)" 
+                                                           onclick="resetFormReport();" style="">Reset Form</a>-->
+                                                        <!--<a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="submitForm();" style="">Save IS potentials table</a>-->
+                                                        <!--<a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="windowManualISQuitWithoutSaving();" style="">Quit without saving</a>-->
+                                                    </div>
+                                                    </form>  
+
+                                               </div>
+                                        </div>
+					
+				</div><!--/span-->
+                        </div>
                         
-                        
+                        <!-- zeynel dağlı jasper report -->
+                        <div class="row-fluid sortable">
+                            <div class="box span12">
+                                    <div class="box-header well" data-original-title>
+                                            <h2><i class="icon-th"></i>  Report</h2>
+                                            <div class="box-icon">
+                                                    <!--<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>-->
+                                                    <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+                                                    <!--<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>-->
+                                            </div>
+                                    </div>
+                                    <div class="box-content" style="padding: 0px;">
+                                        <div class="row-fluid" >
+                                            
+                                            <div class="span12">
+                                                <a href="#" name="add" onclick="event.preventDefault();" 
+                                                    ></a>  
+                                               <iframe src="" id="myFrame" width="100%" marginwidth="0" 
+                                                     height="100%" 
+                                                     marginheight="0" 
+                                                     align="middle" 
+                                                     scrolling="auto">
+                                                 </iframe>
+						
+                                                
+                                            </div>
+                                        
+                                    </div>                   
+                                  </div>
+                            </div><!--/span-->
+			</div>
                        
                         
                         
