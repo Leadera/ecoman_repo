@@ -46,7 +46,7 @@ $route['admin/newFlow'] = "admin/newFlow";
 $route['admin/newProcess'] = "admin/newProcess";
 $route['admin/newEquipment'] = "admin/newEquipment";
 $route['admin/reports'] = "admin/reports";
-
+ 
 //Report
 $route['report/(:any)'] = "reporting/show_single/$1";
 $route['allreports'] = "reporting/show_all";
@@ -55,7 +55,9 @@ $route['admin/reportTest'] = "admin/reportTest";
 $route['admin/reportTest'] = "admin/reportTest";
 $route['admin/clusters'] = "admin/clusters";
 $route['admin/industrialZones'] = "admin/industrialZones";
-$route['createreport'] = "reporting/create";
+$route['admin/consultants'] = "admin/consultants";
+$route['admin/employees'] = "admin/employees";
+$route['createreport'] = "reporting/create"; 
 
 //IS scoping
 $route['isscoping'] = "isscoping/index";

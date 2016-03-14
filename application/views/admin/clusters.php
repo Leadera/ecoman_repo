@@ -347,6 +347,21 @@
 			<!-- left menu starts -->
 			<div class="span2 main-menu-span">
 				<div class="well nav-collapse sidebar-nav">
+                                    
+                                          <ul class="nav nav-tabs nav-stacked main-menu">
+                                                <li class="nav-header hidden-tablet">Admin Menu</li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('admin/newFlow'); ?>"><i class="icon-edit"></i><span class="hidden-tablet">Flows</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('admin/newProcess'); ?>"><i class="icon-edit"></i><span class="hidden-tablet">Processes</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('admin/newEquipment'); ?>"><i class="icon-edit"></i><span class="hidden-tablet">Equipments</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('admin/industrialZones'); ?>"><i class="icon-edit"></i><span class="hidden-tablet">Industrial Zones</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('admin/clusters'); ?>"><i class="icon-edit"></i><span class="hidden-tablet">Clusters</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('admin/employees'); ?>"><i class="icon-edit"></i><span class="hidden-tablet">Cluster Emp.</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('admin/consultants'); ?>"><i class="icon-edit"></i><span class="hidden-tablet">Ind. Zone Consultants</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('admin/newEquipment'); ?>"><i class="icon-edit"></i><span class="hidden-tablet">Equipments</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('admin/reports'); ?>"><i class="icon-edit"></i><span class="hidden-tablet">Reports</span></a></li>
+
+                                        </ul>
+                                    
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li class="nav-header hidden-tablet">Main Menu</li>
 						<li><a class="ajax-link" href="<?php echo base_url(); ?>"><i class="icon-home"></i><span class="hidden-tablet"> Main Page</span></a></li>
@@ -572,37 +587,7 @@
                             </div><!--/span-->
 			</div>
                         
-                        <!-- zeynel dağlı jasper report -->
-                        <div class="row-fluid sortable">
-                            <div class="box span12">
-                                    <div class="box-header well" data-original-title>
-                                            <h2><i class="icon-th"></i>  Report</h2>
-                                            <div class="box-icon">
-                                                    <!--<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>-->
-                                                    <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-                                                    <!--<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>-->
-                                            </div>
-                                    </div>
-                                    <div class="box-content" style="padding: 0px;">
-                                        <div class="row-fluid" >
-                                            
-                                            <div class="span12">
-                                                <a href="#" name="add" onclick="event.preventDefault();" 
-                                                    ></a>  
-                                               <iframe src="" id="myFrame" width="100%" marginwidth="0" 
-                                                     height="100%" 
-                                                     marginheight="0" 
-                                                     align="middle" 
-                                                     scrolling="auto">
-                                                 </iframe>
-						
-                                                
-                                            </div>
-                                        
-                                    </div>                   
-                                  </div>
-                            </div><!--/span-->
-			</div>
+                        
                         
                         
 		

@@ -126,6 +126,30 @@ class Admin extends CI_Controller {
             $this->load->view('admin/reports',$data); 
             $this->load->view('template/footer_admin'); 
         }
+        
+        public function consultants() {
+            $loginData = $this->session->userdata('user_in');
+            if(empty($loginData)){
+                    redirect(base_url('login'),'refresh');
+            }
+            $data['userID'] = $this->session->userdata['user_in']['id'];
+            $data['userName'] = $this->session->userdata['user_in']['username'];
+            $this->load->view('template/header_admin'); 
+            $this->load->view('admin/consultants',$data); 
+            $this->load->view('template/footer_admin'); 
+        }
+        
+        public function employees() {  
+            $loginData = $this->session->userdata('user_in');
+            if(empty($loginData)){
+                    redirect(base_url('login'),'refresh');
+            }
+            $data['userID'] = $this->session->userdata['user_in']['id'];
+            $data['userName'] = $this->session->userdata['user_in']['username'];
+            $this->load->view('template/header_admin'); 
+            $this->load->view('admin/employees',$data); 
+            $this->load->view('template/footer_admin'); 
+        }
 
 }
 
