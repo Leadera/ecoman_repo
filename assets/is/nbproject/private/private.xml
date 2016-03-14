@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="70">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="72">
         <file>
             <url>postgre_json_test2.html</url>
             <bookmark id="38">
@@ -18,70 +18,47 @@
             <url>IS_js/js2_scen_slim2_project_base_mdf.js</url>
             <bookmark id="44">
                 <name/>
-                <line>258</line>
+                <line>259</line>
+                <key/>
+            </bookmark>
+            <bookmark id="72">
+                <name/>
+                <line>299</line>
                 <key/>
             </bookmark>
             <bookmark id="55">
                 <name/>
-                <line>342</line>
+                <line>344</line>
                 <key/>
             </bookmark>
             <bookmark id="63">
                 <name/>
-                <line>360</line>
+                <line>362</line>
                 <key/>
             </bookmark>
             <bookmark id="67">
                 <name/>
-                <line>381</line>
+                <line>387</line>
                 <key/>
             </bookmark>
             <bookmark id="58">
                 <name/>
-                <line>398</line>
+                <line>404</line>
                 <key/>
             </bookmark>
             <bookmark id="46">
                 <name/>
-                <line>407</line>
-                <key/>
-            </bookmark>
-            <bookmark id="66">
-                <name/>
-                <line>423</line>
+                <line>413</line>
                 <key/>
             </bookmark>
             <bookmark id="59">
                 <name/>
-                <line>436</line>
+                <line>442</line>
                 <key/>
             </bookmark>
             <bookmark id="53">
                 <name/>
-                <line>721</line>
-                <key/>
-            </bookmark>
-        </file>
-        <file>
-            <url>IS_js/js1_scen_slim2_project_base_mdf.js</url>
-            <bookmark id="65">
-                <name/>
-                <line>547</line>
-                <key/>
-            </bookmark>
-            <bookmark id="69">
-                <name/>
-                <line>573</line>
-                <key/>
-            </bookmark>
-            <bookmark id="64">
-                <name/>
-                <line>573</line>
-                <key/>
-            </bookmark>
-            <bookmark id="70">
-                <name/>
-                <line>917</line>
+                <line>728</line>
                 <key/>
             </bookmark>
         </file>
@@ -120,6 +97,34 @@
             <bookmark id="49">
                 <name/>
                 <line>416</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>IS_js/js1_scen_slim2_project_base_mdf.js</url>
+            <bookmark id="71">
+                <name/>
+                <line>541</line>
+                <key/>
+            </bookmark>
+            <bookmark id="65">
+                <name/>
+                <line>551</line>
+                <key/>
+            </bookmark>
+            <bookmark id="69">
+                <name/>
+                <line>577</line>
+                <key/>
+            </bookmark>
+            <bookmark id="64">
+                <name/>
+                <line>577</line>
+                <key/>
+            </bookmark>
+            <bookmark id="70">
+                <name/>
+                <line>921</line>
                 <key/>
             </bookmark>
         </file>
