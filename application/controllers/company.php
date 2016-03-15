@@ -107,6 +107,7 @@ class Company extends CI_Controller{
 			redirect('company/'.$last_id, 'refresh');
 		}
 		$data['all_nace_codes'] = $this->company_model->get_all_nace_codes();
+                $data['countries'] = $this->company_model->get_countries();
 
 		$this->load->view('template/header');
 		$this->load->view('company/create_company',$data);

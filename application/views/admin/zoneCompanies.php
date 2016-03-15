@@ -36,12 +36,14 @@
         $('#ff').form({
             ajax : true,
             //url:'../../../../slim2_ecoman_admin/',
-            url: '../../../../slim2_ecoman_admin/report.php/updateIndustrialZonesClusters_rpt',
+            url: '../../../../slim2_ecoman_admin/report.php/updateCompanyClusters_rpt',
             queryParams : {
                 //url : 'insertReport_rpt',
-                cluster_name : $('#tt_textReportName').textbox('getText'),
+                //cluster_name : $('#tt_textReportName').textbox('getText'),
                 //consultant_id : document.getElementById('consultant_id').value,
-                industrial_zone_id : $('#company_dropdown').combobox('getValue'),
+                
+                industrial_zone_id : $('#zone_dropdown').combobox('getValue'),
+                cluster_id : $('#cluster_dropdown').combobox('getValue'),
                 id : row.id
                 //'row='+JSON.stringify($('#tt_grid_dynamic5').datagrid('getRows'))+'&text='+$('#tt_textReportName').textbox('getText')
             },
@@ -67,8 +69,9 @@
     
     function resetFormReport() {
         
-         $("#tt_textReportName").textbox('setText', '');
          $("#company_dropdown").combobox('select', '');
+         $("#cluster_dropdown").combobox('select', '');
+         $("#zone_dropdown").combobox('select', '');
          $("#saveReport").linkbutton({
             //text: 'Update Report'
             disabled: false
@@ -79,10 +82,11 @@
         });
     }
     
-     function reportEditView(report_name, report_id, company_name, company_id) {
+     function reportEditView(company_id, zone_id, cluster_id) {
          
-         $("#tt_textReportName").textbox('setText', report_name);
          $("#company_dropdown").combobox('select', company_id);
+         $("#zone_dropdown").combobox('select', zone_id);
+         $("#cluster_dropdown").combobox('select', cluster_id);
          $("#saveReport").linkbutton({
             //text: 'Update Report'
             disabled: true
@@ -169,7 +173,7 @@
         
          $('#tt_grid').datagrid({
             url :'../../../Proxy/SlimProxyAdmin.php',
-            queryParams : { url : 'getIndustrialZonesClusters_rpt',
+            queryParams : { url : 'getCompaniesGrid_rpt',
                             //flows : JSON.stringify(arrayLeaf),
                             //prj_id : $('#prj_id').val()
                         },
@@ -180,12 +184,17 @@
             rownumbers: "true",
             pagination: "true",
             remoteSort : true,
-            multiSort : true,
+            multiSort : true,  
             singleSelect : true,
             scroll : true,
-            columns:[[
-                  {field:'cluster_name',title:'Cluster Name',width:200,sortable:true},
-                  {field:'industrial_zone_name',title:'Industrial Zone NAme',width:300,sortable:true},
+            columns:[[ 
+                {field:'id',title:'ID ',width:200,sortable:true},
+                 {field:'company_name',title:'Company ',width:200,sortable:true},
+                 {field:'address',title:'Address ',width:100,sortable:true},
+                 {field:'phone_num_1',title:'Phone ',width:100,sortable:true},
+                  {field:'industrial_zone_name',title:'Industrial Zone ',width:200,sortable:true},
+                  {field:'cluster_name',title:'Cluster ',width:100,sortable:true},
+                  
                 
                 {field:'edit',title:'Edit',width:50,align:'center',
                     formatter:function(value,row,index){
@@ -193,7 +202,7 @@
                         //console.log('row satır name bilgileri'+row.report_name);
                         var x = '<a href="" class="easyui-linkbutton" \n\
                                     iconCls="icon-save" \n\
-                                    onclick="reportEditView(\''+row.cluster_name+'\','+row.id+', \''+row.industrial_zone_name+'\', '+row.industrial_zone_id+' );event.preventDefault();"> Edit</a>';
+                                    onclick="reportEditView('+row.id+','+row.industrial_zone_id+', '+row.cluster_id+');event.preventDefault();"> Edit</a>';
                         //return e+d;
                         return x;
                         
@@ -219,7 +228,7 @@
             //$('#tt_grid2').datagrid('loadData', data);
             $('#tt_grid').datagrid({
                url :'../../../Proxy/SlimProxyAdmin.php',
-               queryParams : { url : 'getIndustrialZonesClusters_rpt',
+               queryParams : { url : 'getCompaniesGrid_rpt',
                                //flows : JSON.stringify(arrayLeaf),
                                //prj_id : $('#prj_id').val()
                            }
@@ -522,6 +531,26 @@
                                                                     data-options="
 
                                                                             url :'../../../../Proxy/SlimProxyAdmin.php?url=getZones_rpt',
+                                                                            //queryParams : { url : 'getZones_rpt'},
+                                                                            method:'get',
+                                                                            valueField:'id',
+                                                                            textField:'text',
+                                                                            panelHeight:'auto',
+                                                                            /*icons:[{
+                                                                                iconCls:'icon-eye-open'
+                                                                            }],*/
+                                                                            required:true,
+                                                                    ">
+                                                            </div>
+                                                            
+                                                            <div style="margin-left:-8px;">
+                                                                <label style="margin-right: 17px;
+                                                                                padding-bottom: 3px;">Cluster:</label>
+                                                                <input class="easyui-combobox" 
+                                                                    name="cluster_dropdown" id="cluster_dropdown"
+                                                                    data-options="
+
+                                                                            url :'../../../../Proxy/SlimProxyAdmin.php?url=getClusters_rpt',
                                                                             //queryParams : { url : 'getZones_rpt'},
                                                                             method:'get',
                                                                             valueField:'id',

@@ -109,6 +109,13 @@ class Company_model extends CI_Model {
     $query = $this->db->get();
     return $query->result_array();
   }
+  
+  public function get_countries(){
+    $this->db->select('gis_world.id,gis_world.country_name');
+    $this->db->from('gis_world');
+    $query = $this->db->get();
+    return $query->result_array();
+  }
 
   public function get_company_proj($id){
     $this->db->select('t_prj.name,t_prj.id as proje_id');

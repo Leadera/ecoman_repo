@@ -14,7 +14,7 @@ $.ajax({
                       
                   })
                   console.log(options);
-                    $('#selectize2').html(options);
+                    //$('#selectize2').html(options);
                   //$('#totalProjects').html(data['totalProjects']);
                 }
             }); 
@@ -77,9 +77,9 @@ $.ajax({
                                 <label for="country">Country</label>
 					<select id="selectize2" name="country">
 						<option value="">Nothing Selected</option>
-						<?php /*foreach ($all_nace_codes as $anc): ?>
-							<option value="<?php echo $anc['code']; ?>"><?php echo $anc['code']; ?> - <?php echo $anc['name_tr']; ?></option>
-						<?php endforeach*/ ?>
+						<?php foreach ($countries as $anc): ?>
+							<option value="<?php echo $anc['id']; ?>"><?php echo $anc['country_name']; ?> - <?php echo $anc['name_tr']; ?></option>
+						<?php endforeach?>
 					</select>
 					<small></small>
 	 			</div>
