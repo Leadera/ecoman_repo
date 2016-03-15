@@ -1,5 +1,5 @@
 <script> 
-$.ajax({
+/*$.ajax({
                 url: '../../../../Proxy/SlimProxyAdmin.php',
                 type: 'GET',
                 dataType : 'json',
@@ -17,7 +17,7 @@ $.ajax({
                     //$('#selectize2').html(options);
                   //$('#totalProjects').html(data['totalProjects']);
                 }
-            }); 
+            }); */
 
 </script>
 
@@ -76,9 +76,9 @@ $.ajax({
                                <div class="form-group">
                                 <label for="country">Country</label>
 					<select id="selectize2" name="country">
-						<option value="">Nothing Selected</option>
+						<!--<option value="">Nothing Selected</option>-->
 						<?php foreach ($countries as $anc): ?>
-							<option value="<?php echo $anc['id']; ?>"><?php echo $anc['country_name']; ?> - <?php echo $anc['name_tr']; ?></option>
+							<option value="<?php echo $anc['id']; ?>"><?php echo $anc['country_name']; ?> </option>
 						<?php endforeach?>
 					</select>
 					<small></small>
