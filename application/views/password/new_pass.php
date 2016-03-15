@@ -4,6 +4,15 @@
 			    <div class="alert">
 					<button type="button" class="close" data-dismiss="alert">&times;</button>
 			    	<p><?php echo validation_errors(); ?></p>
+                                
+			    </div>
+		 	<?php endif ?>
+    
+                        <?php if($success!=''): ?>
+			    <div class="alert">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+			    	<p><?php echo $success; ?></p>
+                                
 			    </div>
 		 	<?php endif ?>
 

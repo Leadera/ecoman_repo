@@ -150,6 +150,211 @@ class Admin extends CI_Controller {
             $this->load->view('admin/employees',$data); 
             $this->load->view('template/footer_admin'); 
         }
+        
+        public function rpEmployeesList() { 
+            $loginData = $this->session->userdata('user_in');
+            if(empty($loginData)){
+                    redirect(base_url('login'),'refresh');
+            }
+            $data['userID'] = $this->session->userdata['user_in']['id'];
+            $data['userName'] = $this->session->userdata['user_in']['username'];
+            $this->load->view('template/header_admin'); 
+            $this->load->view('admin/rpEmployeesList',$data); 
+            $this->load->view('template/footer_admin'); 
+        
+        }
+        
+        public function rpCompaniesList() { 
+            $loginData = $this->session->userdata('user_in');
+            if(empty($loginData)){
+                    redirect(base_url('login'),'refresh');
+            }
+            $data['userID'] = $this->session->userdata['user_in']['id'];
+            $data['userName'] = $this->session->userdata['user_in']['username'];
+            $this->load->view('template/header_admin'); 
+            $this->load->view('admin/rpCompaniesList',$data); 
+            $this->load->view('template/footer_admin'); 
+        
+        }
+        
+         public function rpCompaniesInfoList() { 
+            $loginData = $this->session->userdata('user_in');
+            if(empty($loginData)){
+                    redirect(base_url('login'),'refresh');
+            }
+            $data['userID'] = $this->session->userdata['user_in']['id'];
+            $data['userName'] = $this->session->userdata['user_in']['username'];
+            $this->load->view('template/header_admin'); 
+            $this->load->view('admin/rpCompaniesInfoList',$data); 
+            $this->load->view('template/footer_admin'); 
+        
+        }
+        
+        public function rpCompaniesProjectsList() { 
+            $loginData = $this->session->userdata('user_in');
+            if(empty($loginData)){
+                    redirect(base_url('login'),'refresh');
+            }
+            $data['userID'] = $this->session->userdata['user_in']['id'];
+            $data['userName'] = $this->session->userdata['user_in']['username'];
+            $this->load->view('template/header_admin'); 
+            $this->load->view('admin/rpCompaniesProjectsList',$data); 
+            $this->load->view('template/footer_admin'); 
+        
+        }
+        
+        public function rpCompaniesProjectDetailsList() { 
+            $loginData = $this->session->userdata('user_in');
+            if(empty($loginData)){
+                    redirect(base_url('login'),'refresh');
+            }
+            $data['userID'] = $this->session->userdata['user_in']['id'];
+            $data['userName'] = $this->session->userdata['user_in']['username'];
+            $this->load->view('template/header_admin'); 
+            $this->load->view('admin/rpCompaniesProjectDetailsList',$data); 
+            $this->load->view('template/footer_admin'); 
+        
+        }
+        
+        public function rpCompaniesNotInClustersList() { 
+            $loginData = $this->session->userdata('user_in');
+            if(empty($loginData)){
+                    redirect(base_url('login'),'refresh');
+            }
+            $data['userID'] = $this->session->userdata['user_in']['id'];
+            $data['userName'] = $this->session->userdata['user_in']['username'];
+            $this->load->view('template/header_admin'); 
+            $this->load->view('admin/rpCompaniesNotInClustersList',$data); 
+            $this->load->view('template/footer_admin'); 
+        
+        }
+        
+        public function rpCompaniesWasteEmissionList() { 
+            $loginData = $this->session->userdata('user_in');
+            if(empty($loginData)){
+                    redirect(base_url('login'),'refresh');
+            }
+            $data['userID'] = $this->session->userdata['user_in']['id'];
+            $data['userName'] = $this->session->userdata['user_in']['username'];
+            $this->load->view('template/header_admin'); 
+            $this->load->view('admin/rpCompaniesWasteEmissionList',$data); 
+            $this->load->view('template/footer_admin'); 
+        
+        }
+        
+        public function rpCompaniesProductionList() { 
+            $loginData = $this->session->userdata('user_in');
+            if(empty($loginData)){
+                    redirect(base_url('login'),'refresh');
+            }
+            $data['userID'] = $this->session->userdata['user_in']['id'];
+            $data['userName'] = $this->session->userdata['user_in']['username'];
+            $this->load->view('template/header_admin'); 
+            $this->load->view('admin/rpCompaniesProductionList',$data); 
+            $this->load->view('template/footer_admin'); 
+        
+        }
+        
+        public function rpCompaniesProcessesList() { 
+            $loginData = $this->session->userdata('user_in');
+            if(empty($loginData)){
+                    redirect(base_url('login'),'refresh');
+            }
+            $data['userID'] = $this->session->userdata['user_in']['id'];
+            $data['userName'] = $this->session->userdata['user_in']['username'];
+            $this->load->view('template/header_admin'); 
+            $this->load->view('admin/rpCompaniesProcessesList',$data); 
+            $this->load->view('template/footer_admin'); 
+        
+        }
+        
+        public function rpConsultantsList() { 
+            $loginData = $this->session->userdata('user_in');
+            if(empty($loginData)){
+                    redirect(base_url('login'),'refresh');
+            }
+            $data['userID'] = $this->session->userdata['user_in']['id'];
+            $data['userName'] = $this->session->userdata['user_in']['username'];
+            $this->load->view('template/header_admin'); 
+            $this->load->view('admin/rpConsultantsList',$data); 
+            $this->load->view('template/footer_admin'); 
+        
+        }
+        
+        public function rpCompaniesInClustersList() { 
+            $loginData = $this->session->userdata('user_in');
+            if(empty($loginData)){
+                    redirect(base_url('login'),'refresh');
+            }
+            $data['userID'] = $this->session->userdata['user_in']['id'];
+            $data['userName'] = $this->session->userdata['user_in']['username'];
+            $this->load->view('template/header_admin'); 
+            $this->load->view('admin/rpCompaniesInClustersList',$data); 
+            $this->load->view('template/footer_admin'); 
+        
+        }
+        
+        public function rpEquipmentList() { 
+            $loginData = $this->session->userdata('user_in');
+            if(empty($loginData)){
+                    redirect(base_url('login'),'refresh');
+            }
+            $data['userID'] = $this->session->userdata['user_in']['id'];
+            $data['userName'] = $this->session->userdata['user_in']['username'];
+            $this->load->view('template/header_admin'); 
+            $this->load->view('admin/rpEquipmentList',$data); 
+            $this->load->view('template/footer_admin'); 
+        
+        }
+        
+        
+        public function zoneEmployees() { 
+            $loginData = $this->session->userdata('user_in');
+            if(empty($loginData)){
+                    redirect(base_url('login'),'refresh');
+            }
+            $data['userID'] = $this->session->userdata['user_in']['id'];
+            $data['userName'] = $this->session->userdata['user_in']['username'];
+            $this->load->view('template/header_admin'); 
+            $this->load->view('admin/zoneEmployees',$data); 
+            $this->load->view('template/footer_admin'); 
+        
+        }
+        
+        public function zoneCompanies() { 
+            $loginData = $this->session->userdata('user_in');
+            if(empty($loginData)){
+                    redirect(base_url('login'),'refresh');
+            }
+            $data['userID'] = $this->session->userdata['user_in']['id'];
+            $data['userName'] = $this->session->userdata['user_in']['username'];
+            $this->load->view('template/header_admin'); 
+            $this->load->view('admin/zoneCompanies',$data); 
+            $this->load->view('template/footer_admin'); 
+        
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
 }
 

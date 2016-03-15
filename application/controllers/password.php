@@ -60,7 +60,7 @@ class Password extends CI_Controller{
 						'message' => $message,
 						'email' => $email
 					);
-				$this->sendMAil($send_email);
+				$mailCheck = $this->sendMAil($send_email);
 
 				$rnd_str = array(
 					'random_string' => null,
@@ -138,15 +138,21 @@ class Password extends CI_Controller{
 					'message' => $message,
 					'email' => $email
 				);
-				$this->sendMAil($send_email);
+				$mailCheck = $this->sendMAil($send_email);
 
 				$rnd_str = array(
 					'random_string' => null,
 					'click_control' => 0
 				);
-				$this->password_model->set_random_string_zero($rnd_string,$rnd_str);
-
-				redirect('login','refresh');
+                                
+                                if($mailCheck) {
+                                    $message = 'Your mail has been sent.';
+                                } else {
+                                     $message = 'Your mail has not been sent.You could not change password';
+                                }
+                                $this->password_model->set_random_string_zero($rnd_string,$rnd_str);
+                                $data['success'] = $message;
+				//redirect('login','refresh');
 			}
 		}
 
@@ -177,12 +183,14 @@ class Password extends CI_Controller{
 		$this->email->message($data['message']);
 		if($this->email->send())
 		{
-			echo 'Email sent.';
+			//echo 'Email sent.';
+                    return true;
 		}
 		else
 		{
-			echo 'olmadi';
-			exit();
+			//echo 'olmadi';
+			//exit();
+                    return false;
 		}
 	}
 

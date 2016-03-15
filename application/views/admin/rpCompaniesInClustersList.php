@@ -1,97 +1,25 @@
-<?php  ?>
 <script>
-    
-    function submitFormProcessFamily(){   
-            console.log($('#processFamily').val()); 
-            $.ajax({
-                url: '../../../../slim2_ecoman_admin/index.php/insertProcessFamily',
-                type: 'POST',
-                dataType : 'json',
-                data: 'processFamily='+$('#processFamily').val(),
-                success: function(data, textStatus, jqXHR) {
-                  console.warn('success text status-->'+textStatus);
-                  if(data["found"]==true) {
-                      //$.messager.alert('Success','Success inserted Flow family!','info');
-                      if(data["id"]>0) {
-                          noty({text: 'Process Family inserted succesfully', type: 'success'});
-                          $('#tt_tree_process').tree('reload');
-                      } else {
-                          noty({text: 'Process Family has been inserted before, please enter another Process Family', type: 'warning'});
-                          $('#tt_tree_process').tree('reload');
-                      }
-                  } else if(data["found"]==false) {         
-                      //$.messager.alert('Insert failed','Failed to insert Flow Family !','error');
-                      noty({text: 'Process Family could not be  inserted ', type: 'error'});  
-                      $('#tt_tree_process').tree('reload');
-                  }   
-                },
-                error: function(jqXHR , textStatus, errorThrown) {
-                  //console.warn('error text status-->'+textStatus);
-                  noty({text: 'Process Family could not be  inserted ', type: 'error'});  
-                }
-            });
+   function saveReport() {
+        //alert($('#reportType_dropdown').combobox('getValue'));
+        //alert($('#company_dropdown').combobox('getValue'));
+        if($('#company_dropdown').combobox('getValue') > 0) { 
+            document.getElementById('myFrame').setAttribute('src','http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?IndustrialZoneId='+$('#company_dropdown').combobox('getValue')+'&Rapor_ID=9');
+            //document.getElementById('myFrame').setAttribute('src','http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?company_id=132&Rapor_ID=3');
+        }  else {
+                noty({text: 'Please select industrial zone', type: 'warning'});
         }
+    }
     
     
-    jQuery(document).ready(function() { 
- 
-          $('#tt_tree_process').tree({
-                url: '../../../../Proxy/SlimProxyAdmin.php',
-                queryParams : { url:'processFamilies' },
-                method:'get',
-                animate:true,
-                checkbox:false
-            });
-            
-            
-            var treeValue;
-            var parentnode;
-        $("#tt_tree_process").tree({
-                    onClick: function(node){
-                    console.log(node);
-                    console.log(node.attributes.notroot);
-                    /*parentnode=$("#tt_tree").tree("getParent", node.target);
-                    console.log(parentnode);
-                    if(parentnode==null) {
-                        console.log('parent node null');
-                    } else {
-                        console.log('parent node null de�il');
-                    }
-                    var roots=$("#tt_tree").tree("getRoots");
-                    console.log(parentnode.attributes);*/
-                    /*if() {
-                        
-                    } else {
-                        
-                    }*/
-                    var treeValue;
-                    if(node.state==undefined) {
-                            var de=parentnode.text;
-                            var test_array=de.split("/");
-                            treeValue=test_array[1];
-                    } else {
-                            treeValue=parentnode.text;
-                    }
-    
-                    var imagepath=parentnode.text+"/"+node.text;
-                },
-                onDblClick: function(node){
-                var deneme="test";
-                    var parent=$("#tt_tree_process").tree("getParent",node.target);
-                    if(parent) {
-                    
-                    } else {
-                    }
-                }
-            });
-            
+    jQuery(document).ready(function() {
+        
             $.ajax({
                 url: '../../../../Proxy/SlimProxyAdmin.php',
                 type: 'GET',
                 dataType : 'json',
                 data: { url:'totalProjects' },
                 success: function(data, textStatus, jqXHR) {
-                  console.warn('success text status-->'+textStatus);
+                  //console.warn('success text status-->'+textStatus);
                   //console.warn(data);
                   $('#totalProjects').html(data['totalProjects']);
                 }
@@ -104,7 +32,7 @@
                 dataType : 'json',
                 data: { url:'totalUsers' },
                 success: function(data, textStatus, jqXHR) {
-                  console.warn('success text status-->'+textStatus);
+                  //console.warn('success text status-->'+textStatus);
                   //console.warn(data);
                   $('#totalUsers').html(data['totalUsers']);
                 }
@@ -117,7 +45,7 @@
                 dataType : 'json',
                 data: { url:'totalISProjects' },
                 success: function(data, textStatus, jqXHR) {
-                  console.warn('success text status-->'+textStatus);
+                  //console.warn('success text status-->'+textStatus);
                   //console.warn(data);
                   $('#totalISProjects').html(data['totalISProjects']);
                 }
@@ -130,12 +58,14 @@
                 dataType : 'json',
                 data: { url:'totalProducts' },
                 success: function(data, textStatus, jqXHR) {
-                  console.warn('success text status-->'+textStatus);
+                  //console.warn('success text status-->'+textStatus);
                   //console.warn(data);
                   $('#totalProducts').html(data['totalProducts']);
                 }
             });
             
+            
+
             
                     
              
@@ -143,7 +73,7 @@
     
     
 </script>
-
+<input type ="hidden" value='<?php echo $userID; ?>' id ='consultant_id' name='consultant_id'></input>
 <!-- topbar starts -->
 	<div class="navbar">
 		<div class="navbar-inner">
@@ -157,15 +87,15 @@
 				
 				<!-- theme selector starts -->
 				<div class="btn-group pull-right theme-container" >
-					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> 
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 						<i class="icon-tint"></i><span class="hidden-phone"> Change Theme/ Skin</span>
 						<span class="caret"></span>
-					</a> 
-					<ul class="dropdown-menu" id="themes">
+					</a>
+					<ul class="dropdown-menu" id="themes"> 
 						<li><a data-value="classic" href="#"><i class="icon-blank"></i>Classic</a></li>
 						<li><a data-value="cerulean" href="#"><i class="icon-blank"></i>Cerulean</a></li>
 						<li><a data-value="cyborg" href="#"><i class="icon-blank"></i>Cyborg</a></li>
-						<li><a data-value="redy" href="#"><i class="icon-blank"></i>Redy</a></li>
+					 	<li><a data-value="redy" href="#"><i class="icon-blank"></i>Redy</a></li>
 						<li><a data-value="journal" href="#"><i class="icon-blank"></i>Journal</a></li>
 						<li><a data-value="simplex" href="#"><i class="icon-blank"></i>Simplex</a></li>
 						<li><a data-value="slate" href="#"><i class="icon-blank"></i>Slate</a></li>
@@ -193,9 +123,9 @@
 					<ul class="nav">
 						<li><a href="../../ecoman">Main Page</a></li>
 						<li>
-							<form class="navbar-search pull-left">
+							<!--<form class="navbar-search pull-left">-->
 								<input placeholder="Search" class="search-query span2" name="query" type="text">
-							</form>
+							<!--</form>-->
 						</li>
 					</ul>
 				</div><!--/.nav-collapse -->
@@ -209,7 +139,8 @@
 			<!-- left menu starts -->
 			<div class="span2 main-menu-span">
 				<div class="well nav-collapse sidebar-nav">
-					 <ul class="nav nav-tabs nav-stacked main-menu">
+                                    
+                                        <ul class="nav nav-tabs nav-stacked main-menu">
                                             <li class="nav-header hidden-tablet">Admin Menu</li>
                                             <li><a class="ajax-link" href="<?php echo base_url('admin/newFlow'); ?>"><i class="icon-edit"></i><span class="hidden-tablet">Flows</span></a></li>
                                             <li><a class="ajax-link" href="<?php echo base_url('admin/newProcess'); ?>"><i class="icon-edit"></i><span class="hidden-tablet">Processes</span></a></li>
@@ -223,8 +154,7 @@
 
                                     </ul>
                                     
-                                    
-                                    <ul class="nav nav-tabs nav-stacked main-menu">
+					<ul class="nav nav-tabs nav-stacked main-menu">
                                             <li class="nav-header hidden-tablet">Main Menu</li>
                                             <li><a class="ajax-link" href="<?php echo base_url(); ?>"><i class="icon-home"></i><span class="hidden-tablet"> Main Page</span></a></li>
 
@@ -261,7 +191,7 @@
                                             <li><a href="#"><i class="icon-ban-circle"></i><span class="hidden-tablet"> Error Logs</span></a></li>-->
 
                                     </ul>
-					<!--<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox">Ajax Men�</label>-->
+					<!--<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox">Ajax Menü</label>-->
 				</div><!--/.well -->
 			</div><!--/span-->
 			<!-- left menu ends -->
@@ -283,7 +213,7 @@
 						<a href="#">Main Page</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Processes</a>
+						<a href="#">Reports</a>
 					</li>
 				</ul>
 			</div>
@@ -322,49 +252,105 @@
 				</a>
 			</div>
                         
-                        <!-- zeynel da�l� flow tree ve form -->
+                        
+                        <div class="row-fluid sortable">
+                            
+                                
+                                <div class="box 12">
+					<div class="box-header well" data-original-title>
+						<h2><i class="icon-user"></i> Pick an industrial zone</h2>
+						<div class="box-icon">
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+							<!--<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>-->
+						</div>
+					</div>
+					
+                                        <div class="box-content" style='padding: 0px;'>
+                                                <div id="p2" class="easyui-panel" style="height:250px;" title="Pick an industrial zone" 
+                                                     style="margin: auto 0;height:480px;"
+                                                    data-options="iconCls:'icon-save',collapsible:true,closable:true">
+                                                      <form id="ff" method="post">
+                                                        <div style="padding:10px 60px 20px 60px">
+                                                            
+                                                            
+                                                            <div style="margin-left:-8px;">
+                                                                <label style="margin-right: 17px;
+                                                                                padding-bottom: 3px;">Industrial Zone:</label>
+                                                                <input class="easyui-combobox" 
+                                                                    name="company_dropdown" id="company_dropdown"
+                                                                    data-options="
+
+                                                                            url :'../../../../Proxy/SlimProxyAdmin.php?url=getZones_rpt',
+                                                                            //queryParams : { url : 'getCompanies_rpt'},
+                                                                            method:'get',
+                                                                            valueField:'id',
+                                                                            textField:'text',
+                                                                            panelHeight:'auto',
+                                                                            /*icons:[{
+                                                                                iconCls:'icon-eye-open'
+                                                                            }],*/
+                                                                            required:true,
+                                                                    ">
+                                                            </div>
+
+                                                        </div>
+
+
+
+                                                    <div data-options="region:'south',border:false" style="text-align:left;padding:5px 0 0;">
+                                                        <!--<input type="submit" value="Save IS potentials table">-->
+                                                        <a class="easyui-linkbutton" id="saveReport" name="saveReport"
+                                                           style='margin-left: 50px;'
+                                                           data-options="iconCls:'icon-ok'" 
+                                                           href="javascript:void(0)" 
+                                                           onclick="saveReport();" style="">See Report</a>
+                                                        <!--<a class="easyui-linkbutton" id="updateReport" name="updateReport"
+                                                           style='margin-left: 7px;'
+                                                           data-options="iconCls:'icon-ok',disabled:true" 
+                                                           href="javascript:void(0)" 
+                                                           onclick="updateReport();" style="">Update Report</a>
+                                                        <a class="easyui-linkbutton" 
+                                                           style='margin-left: 7px;'
+                                                           data-options="iconCls:'icon-ok'" 
+                                                           href="javascript:void(0)" 
+                                                           onclick="resetFormReport();" style="">Reset Form</a>-->
+                                                        <!--<a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="submitForm();" style="">Save IS potentials table</a>-->
+                                                        <!--<a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="windowManualISQuitWithoutSaving();" style="">Quit without saving</a>-->
+                                                    </div>
+                                                    </form>  
+
+                                               </div>
+                                        </div>
+					
+				</div><!--/span-->
+                        </div>
+                        
+                        
+                        
+                        <!-- zeynel dağlı jasper report -->
                         <div class="row-fluid sortable">
                             <div class="box span12">
                                     <div class="box-header well" data-original-title>
-                                            <h2><i class="icon-th"></i>  Insert Process Family</h2>
+                                            <h2><i class="icon-th"></i>  Report</h2>
                                             <div class="box-icon">
-                                                    <a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+                                                    <!--<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>-->
                                                     <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-                                                    <a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+                                                    <!--<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>-->
                                             </div>
                                     </div>
-                                    <div class="box-content">
-                                        <div class="row-fluid">
-                                            <div class="span4">
-                                                <div class="easyui-panel" title="Process Family" style="width:400px;height:auto;" data-options="">
-                                                        <ul id="tt_tree_process" class="easyui-tree" ></ul>
-                                                </div>
-                                                <!--<div id="ft" style="padding:5px;">
-                                                    Footer Content.
-                                                </div>-->
-                                                
-                                            </div>
-                                            <div class="span6">
-                                                <form class="form-horizontal" style='padding-left:82px;'>
-						  <fieldset>
-							<legend>Add new  process family</legend>
-							<div class="control-group">
-							  <label class="control-label" for="typeahead">Process Family </label>
-							  <div class="controls">
-								<input type="text"  name='processFamily' class="span6 typeahead" id="processFamily"  data-provide="typeahead" data-items="8" 
-                                                                       data-source='["Main","energy"]'>
-								<p class="help-block">Start typing to activate auto complete!</p>
-							  </div>
-							</div>
-							
-          
-							
-							<div class="form-actions">
-							  <button type="submit" onclick='event.preventDefault();submitFormProcessFamily();' class="btn btn-primary">Save changes</button>
-							  <button type="reset" class="btn">Cancel</button>
-							</div>
-						  </fieldset>
-						</form> 
+                                    <div class="box-content" style="padding: 0px;">
+                                        <div class="row-fluid" >
+                                            
+                                            <div class="span12">
+                                                <a href="#" name="add" onclick="event.preventDefault();" 
+                                                    ></a>  
+                                               <iframe src="" id="myFrame" width="100%" marginwidth="0" 
+                                                     height="100%" 
+                                                     marginheight="0" 
+                                                     align="middle" 
+                                                     scrolling="auto">
+                                                 </iframe>
+						
                                                 
                                             </div>
                                         
@@ -383,7 +369,7 @@
 
 		<div class="modal hide fade" id="myModal">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">�</button>
+				<button type="button" class="close" data-dismiss="modal">×</button>
 				<h3>Settings</h3>
 			</div>
 			<div class="modal-body">
@@ -396,7 +382,7 @@
 		</div>
 
 		<footer>
-			<p class="pull-left">&copy; <a href="" target="_blank">CELERO</a> 2015</p>
+			<p class="pull-left">&copy; <a href="" target="_blank">ECOMAN</a> 2015</p>
 			<p class="pull-right">Powered by: <a href=""></a></p>
 		</footer>
 		

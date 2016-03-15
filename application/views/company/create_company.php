@@ -1,3 +1,27 @@
+<script> 
+$.ajax({
+                url: '../../../../Proxy/SlimProxyAdmin.php',
+                type: 'GET',
+                dataType : 'json',
+                data: { url:'getCountries_rpt' },
+                success: function(data, textStatus, jqXHR) {
+                  //console.warn('success text status-->'+textStatus);
+                  console.warn(data);
+                  var options ='<option>Please Select..</option>';
+                  $.each(data , function(key, value) {
+                      //console.log(key);
+                      options+='<option >'+value.desc+'</option>';
+                      
+                  })
+                  console.log(options);
+                    $('#selectize2').html(options);
+                  //$('#totalProjects').html(data['totalProjects']);
+                }
+            }); 
+
+</script>
+
+
 <?php echo $map['js']; ?>
 <div class="container">
 	<p class="lead"><?php echo lang("createcompany"); ?></p>
@@ -39,7 +63,7 @@
 	    			<input type="text" class="form-control" id="companyName" placeholder="<?php echo lang("companyname"); ?>" value="<?php echo set_value('companyName'); ?>" name="companyName">
 	 			</div>
 	 			<div class="form-group">
-	    		<label for="naceCode"><?php echo lang("nacecode"); ?></label>
+                                <label for="naceCode"><?php echo lang("nacecode"); ?></label>
 					<select id="selectize" name="naceCode">
 						<option value="">Nothing Selected</option>
 						<?php foreach ($all_nace_codes as $anc): ?>
@@ -48,6 +72,20 @@
 					</select>
 					<small><?php echo lang("createcompanyinfo"); ?></small>
 	 			</div>
+                            
+                               <div class="form-group">
+                                <label for="country">Country</label>
+					<select id="selectize2" name="country">
+						<option value="">Nothing Selected</option>
+						<?php /*foreach ($all_nace_codes as $anc): ?>
+							<option value="<?php echo $anc['code']; ?>"><?php echo $anc['code']; ?> - <?php echo $anc['name_tr']; ?></option>
+						<?php endforeach*/ ?>
+					</select>
+					<small></small>
+	 			</div>
+                            
+                                
+                            
 				<div class="form-group">
 	    			<label for="email"><?php echo lang("email"); ?></label>
 	    			<input type="text" class="form-control" id="email" placeholder="<?php echo lang("email"); ?>" value="<?php echo set_value('email'); ?>"  name="email">

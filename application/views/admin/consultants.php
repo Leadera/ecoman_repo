@@ -1,18 +1,18 @@
 <script>
     
-    function deleteEditView(report_name, report_id) {
+    function deleteEditView(consultant_id) {
          
          $.messager.progress();
          $.ajax({
-                url: '../../../../slim2_ecoman_admin/report.php/deleteIndustrialZonesClusters_rpt',
+                url: '../../../../slim2_ecoman_admin/report.php/deleteIndustrialZonesConsultants_rpt',
                 type: 'POST',
                 dataType : 'json',
-                data: { url:'deleteIndustrialZonesClusters_rpt',
-                id : report_id,
-                name : report_name},
+                data: { url:'deleteIndustrialZonesConsultants_rpt',
+                id : consultant_id
+                },
                 success: function(data, textStatus, jqXHR) {
                     
-                             noty({text: 'Cluster deleted succesfully', type: 'success'});
+                             noty({text: 'Consultant deleted succesfully', type: 'success'});
                              $('#tt_grid').datagrid('reload');
                              $.messager.progress('close');
                          
@@ -36,10 +36,14 @@
         $('#ff').form({
             ajax : true,
             //url:'../../../../slim2_ecoman_admin/',
-            url: '../../../../slim2_ecoman_admin/report.php/updateIndustrialZonesClusters_rpt',
+            url: '../../../../slim2_ecoman_admin/report.php/updateIndustrialZonesConsultants_rpt',
             queryParams : {
                 //url : 'insertReport_rpt',
-                cluster_name : $('#tt_textReportName').textbox('getText'),
+                name : $('#tt_textReportName').textbox('getText'),
+                surname : $('#tt_textSurname').textbox('getText'),
+                email : $('#tt_textEmail').textbox('getText'),
+                fax_num : $('#tt_textFaxNum').textbox('getText'),
+                phone_num_1 : $('#tt_textPhoneNum1').textbox('getText'),
                 //consultant_id : document.getElementById('consultant_id').value,
                 industrial_zone_id : $('#company_dropdown').combobox('getValue'),
                 id : row.id
@@ -54,7 +58,7 @@
                 return isValid;	// return false will stop the form submission
             },
             success:function(data){
-                noty({text: 'Cluster updated succesfully', type: 'success'});
+                noty({text: 'Consultant updated succesfully', type: 'success'});
                          $('#tt_grid').datagrid('reload');
                          $.messager.progress('close');
 
@@ -68,6 +72,11 @@
     function resetFormReport() {
         
          $("#tt_textReportName").textbox('setText', '');
+         $("#tt_textSurname").textbox('setText', '');
+         $("#tt_textEmail").textbox('setText', '');
+         $("#tt_textFaxNum").textbox('setText', '');
+         $("#tt_textPhoneNum1").textbox('setText', '');
+         $("#tt_textFaxNum").textbox('setText', '');
          $("#company_dropdown").combobox('select', '');
          $("#saveReport").linkbutton({
             //text: 'Update Report'
@@ -79,10 +88,14 @@
         });
     }
     
-     function reportEditView(report_name, report_id, company_name, company_id) {
+     function reportEditView(name, surname, email, fax_num, phone_num_1, industrial_zone_id) {
          
-         $("#tt_textReportName").textbox('setText', report_name);
-         $("#company_dropdown").combobox('select', company_id);
+         $("#tt_textReportName").textbox('setText', name);
+         $("#tt_textSurname").textbox('setText', surname);
+         $("#tt_textEmail").textbox('setText', email);
+         $("#tt_textFaxNum").textbox('setText', fax_num);
+         $("#tt_textPhoneNum1").textbox('setText', phone_num_1);
+         $("#company_dropdown").combobox('select', industrial_zone_id);
          $("#saveReport").linkbutton({
             //text: 'Update Report'
             disabled: true
@@ -98,12 +111,15 @@
             $('#ff').form({
                 ajax : true,
                 //url:'../../../../slim2_ecoman_admin/',
-                url: '../../../slim2_ecoman_admin/report.php/insertIndustrialZonesClusters_rpt',
+                url: '../../../slim2_ecoman_admin/report.php/insertIndustrialZonesConsultants_rpt',
                 queryParams : {
                     //url : 'insertReport_rpt',
                     //attr : attrStr,
-                    cluster_name : $('#tt_textReportName').textbox('getText'),
-                    consultant_id : document.getElementById('consultant_id').value,
+                    name : $('#tt_textReportName').textbox('getText'),
+                    surname : $('#tt_textSurname').textbox('getText'),
+                    email : $('#tt_textEmail').textbox('getText'),
+                    fax_num : $('#tt_textFaxNum').textbox('getText'),
+                    phone_num_1 : $('#tt_textPhoneNum1').textbox('getText'),
                     industrial_zone_id : $('#company_dropdown').combobox('getValue'),
                     //'row='+JSON.stringify($('#tt_grid_dynamic5').datagrid('getRows'))+'&text='+$('#tt_textReportName').textbox('getText')
                 },
@@ -118,7 +134,7 @@
                 },
                 success:function(data){
                    
-                             noty({text: 'Cluster inserted succesfully', type: 'success'});
+                             noty({text: 'Consultant inserted succesfully', type: 'success'});
                              $('#tt_grid').datagrid('reload');
                              $.messager.progress('close');
                          
@@ -136,7 +152,7 @@
             console.log($('#flowFamily').val()); 
             $.ajax({
                 //url: '../../../../slim2_ecoman_admin/report.php/insertReport',
-                url: '../../../slim2_ecoman_admin/report.php/insertIndustrialZonesClusters_rpt',
+                url: '../../../slim2_ecoman_admin/report.php/insertIndustrialZonesConsultants_rpt',
                 type: 'POST',
                 dataType : 'json',
                 data: 'flow='+$('#flowFamily').val(),
@@ -145,15 +161,14 @@
                   if(data["found"]==true) {
                       //$.messager.alert('Success','Success inserted Flow family!','info');
                       if(data["id"]>0) {
-                          noty({text: 'Cluster inserted succesfully', type: 'success'});
+                          noty({text: 'Consultant inserted succesfully', type: 'success'});
                       } else {
-                          noty({text: 'Cluster has been inserted before, please enter another cluster name', type: 'warning'});
-                          $('#tt_tree').tree('reload');
+                          noty({text: 'Consultant has been inserted before, please enter another cluster name', type: 'warning'});
                       }
                       
                   } else if(data["found"]==false) {         
                       //$.messager.alert('Insert failed','Failed to insert Flow Family !','error');
-                      noty({text: 'Cluster could not be  inserted ', type: 'error'});  
+                      noty({text: 'Consultant could not be  inserted ', type: 'error'});  
                   }   
                 },
                 error: function(jqXHR , textStatus, errorThrown) {
@@ -169,7 +184,7 @@
         
          $('#tt_grid').datagrid({
             url :'../../../Proxy/SlimProxyAdmin.php',
-            queryParams : { url : 'getIndustrialZonesClusters_rpt',
+            queryParams : { url : 'getIndustrialZonesConsultants_rpt',
                             //flows : JSON.stringify(arrayLeaf),
                             //prj_id : $('#prj_id').val()
                         },
@@ -184,16 +199,20 @@
             singleSelect : true,
             scroll : true,
             columns:[[
-                  {field:'cluster_name',title:'Cluster Name',width:200,sortable:true},
-                  {field:'industrial_zone_name',title:'Industrial Zone NAme',width:300,sortable:true},
-                
+                  {field:'name',title:'Name',width:100,sortable:true},
+                  {field:'surname',title:'Surname',width:100,sortable:true},
+                  {field:'email',title:'Email',width:100,sortable:true},
+                  {field:'phone_num_1',title:'Phone',width:100,sortable:true},
+                  {field:'fax_num',title:'Fax',width:100,sortable:true},
+                  {field:'industrial_zone_name',title:'Industrial Zone',width:300,sortable:true},
+                //name, surname, email, fax_num, phone_num_1, industrial_zone_id
                 {field:'edit',title:'Edit',width:50,align:'center',
                     formatter:function(value,row,index){
                         //console.log('row satır id bilgileri'+row.id);
                         //console.log('row satır name bilgileri'+row.report_name);
                         var x = '<a href="" class="easyui-linkbutton" \n\
                                     iconCls="icon-save" \n\
-                                    onclick="reportEditView(\''+row.cluster_name+'\','+row.id+', \''+row.industrial_zone_name+'\', '+row.industrial_zone_id+' );event.preventDefault();"> Edit</a>';
+                                    onclick="reportEditView(\''+row.name+'\',\''+row.surname+'\', \''+row.email+'\', \''+row.fax_num+'\',\''+row.phone_num_1+'\',  '+row.industrial_zone_id+');event.preventDefault();"> Edit</a>';
                         //return e+d;
                         return x;
                         
@@ -206,7 +225,7 @@
                         //console.log('row satır name bilgileri'+row.report_name);
                         var x = '<a href="" class="easyui-linkbutton" \n\
                                     iconCls="icon-save" \n\
-                                    onclick="deleteEditView(\''+row.cluster_name+'\','+row.id+', \''+row.industrial_zone_name+'\', '+row.industrial_zone_id+' );event.preventDefault();"> Delete</a>';
+                                    onclick="deleteEditView('+row.id+');event.preventDefault();"> Delete</a>';
                         //return e+d;
                         return x;
                         
@@ -219,7 +238,7 @@
             //$('#tt_grid2').datagrid('loadData', data);
             $('#tt_grid').datagrid({
                url :'../../../Proxy/SlimProxyAdmin.php',
-               queryParams : { url : 'getIndustrialZonesClusters_rpt',
+               queryParams : { url : 'getIndustrialZonesConsultants_rpt',
                                //flows : JSON.stringify(arrayLeaf),
                                //prj_id : $('#prj_id').val()
                            }
@@ -466,7 +485,7 @@
                                 
                                 <div class="box span12">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-user"></i> Save Cluster Employees</h2>
+						<h2><i class="icon-user"></i> Save Industrial Zone Consultants</h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
 							<!--<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>-->
@@ -474,34 +493,37 @@
 					</div>
 					
                                         <div class="box-content" style='padding: 0px;'>
-                                                <div id="p2" class="easyui-panel" style="height:250px;" title="Write a employee and pick an industrial zone and cluster" 
+                                                <div id="p2" class="easyui-panel"  title="Write consultant info" 
                                                      style="margin: auto 0;height:480px;"
                                                     data-options="iconCls:'icon-save',collapsible:true,closable:true">
                                                       <form id="ff" method="post">
                                                         <div style="padding:10px 60px 20px 60px">
+                                                            
+                                                            
+                                                            
                                                             <div style="margin-bottom: 4px;margin-left: -8px;">
-                                                                <label style="margin-right:18px;">Employee Name:</label>
-                                                                <input id="tt_textReportName" class="easyui-textbox" type="text" name="name" data-options="required:true"></input>
+                                                                <label style="margin-right:18px;">Consultant Name:</label>
+                                                                <input id="tt_textReportName" class="easyui-textbox" type="text" name="tt_textReportName" data-options="required:true"></input>
+                                                            </div>
+                
+                                                            <div style="margin-bottom: 4px;margin-left: -8px;">
+                                                                <label style="margin-right:18px;">Consultant Surname:</label>
+                                                                <input id="tt_textSurname" class="easyui-textbox" type="text" name="tt_textSurname" data-options="required:true"></input>
+                                                            </div>
+                
+                                                            <div style="margin-bottom: 4px;margin-left: -8px;">
+                                                                <label style="margin-right:18px;">Email:</label>
+                                                                <input id="tt_textEmail" class="easyui-textbox" type="text" name="tt_textEmail" data-options="required:true"></input>
+                                                            </div>
+                
+                                                            <div style="margin-bottom: 4px;margin-left: -8px;">
+                                                                <label style="margin-right:18px;">Phone:</label>
+                                                                <input id="tt_textPhoneNum1" class="easyui-textbox" type="text" name="tt_textPhoneNum1" data-options="required:true"></input>
                                                             </div>
                                                             
-                                                            <div style="margin-left:-8px;">
-                                                                <label style="margin-right: 17px;
-                                                                                padding-bottom: 3px;">Industrial Zones:</label>
-                                                                <input class="easyui-combobox" 
-                                                                    name="role_dropdown" id="company_dropdown"
-                                                                    data-options="
-
-                                                                            url :'../../../../Proxy/SlimProxyAdmin.php?url=getClusterEmployeeRoles_rpt',
-                                                                            //queryParams : { url : 'getClusterEmployeeRoles_rpt'},
-                                                                            method:'get',
-                                                                            valueField:'id',
-                                                                            textField:'text',
-                                                                            panelHeight:'auto',
-                                                                            /*icons:[{
-                                                                                iconCls:'icon-eye-open'
-                                                                            }],*/
-                                                                            required:true,
-                                                                    ">
+                                                            <div style="margin-bottom: 4px;margin-left: -8px;">
+                                                                <label style="margin-right:18px;">Fax:</label>
+                                                                <input id="tt_textFaxNum" class="easyui-textbox" type="text" name="tt_textFaxNum" data-options="required:false"></input>
                                                             </div>
                                                             
                                                             <div style="margin-left:-8px;">
@@ -522,27 +544,7 @@
                                                                             }],*/
                                                                             required:true,
                                                                     ">
-                                                            </div>
-                                                            
-                                                            <div style="margin-left:-8px;">
-                                                                <label style="margin-right: 17px;
-                                                                                padding-bottom: 3px;">Clusters:</label>
-                                                                <input class="easyui-combobox" 
-                                                                    name="cluster_dropdown" id="company_dropdown"
-                                                                    data-options="
-
-                                                                            url :'../../../../Proxy/SlimProxyAdmin.php?url=getClusters_rpt',
-                                                                            //queryParams : { url : 'getClusters_rpt'},
-                                                                            method:'get',
-                                                                            valueField:'id',
-                                                                            textField:'text',
-                                                                            panelHeight:'auto',
-                                                                            /*icons:[{
-                                                                                iconCls:'icon-eye-open'
-                                                                            }],*/
-                                                                            required:true,
-                                                                    ">
-                                                            </div>  
+                                                            </div> 
 
                                                         </div>
 
@@ -582,7 +584,7 @@
                         <div class="row-fluid sortable">
                             <div class="box span12">
                                     <div class="box-header well" data-original-title>
-                                            <h2><i class="icon-th"></i>  Clusters Employees</h2>
+                                            <h2><i class="icon-th"></i>  Industrial Zone Consultants</h2>
                                             <div class="box-icon">
                                                     <!--<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>-->
                                                     <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
@@ -594,11 +596,11 @@
                                             
                                             <div class="span12">
                                                 <div id="p2" class="easyui-panel"  
-                                                     title="Clusters Employees" 
+                                                     title="Industrial Zone Consultants" 
                                                      style="margin: auto 0;height:350px;"
                                                     data-options="iconCls:'icon-save',collapsible:true,closable:true">
                                                     <table id="tt_grid" data-options="" 
-                                                           title="Employees" 
+                                                           title="Consultants" 
                                                                contenteditable="" style="height:440px;" 
                                                       accesskey="">
                                                     </table>

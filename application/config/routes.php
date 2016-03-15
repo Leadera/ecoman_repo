@@ -51,12 +51,31 @@ $route['admin/reports'] = "admin/reports";
 $route['report/(:any)'] = "reporting/show_single/$1";
 $route['allreports'] = "reporting/show_all";
 $route['admin/report'] = "admin/report";
+
+$route['admin/rpEmployeesList'] = "admin/rpEmployeesList";
+$route['admin/rpCompaniesList'] = "admin/rpCompaniesList";
+$route['admin/rpCompaniesInfoList'] = "admin/rpCompaniesInfoList";
+$route['admin/rpCompaniesProjectsList'] = "admin/rpCompaniesProjectsList";
+$route['admin/rpCompaniesProjectDetailsList'] = "admin/rpCompaniesProjectDetailsList";
+$route['admin/rpCompaniesNotInClustersList'] = "admin/rpCompaniesNotInClustersList";
+$route['admin/rpCompaniesWasteEmissionList'] = "admin/rpCompaniesWasteEmissionList";
+$route['admin/rpCompaniesProductionList'] = "admin/rpCompaniesProductionList";
+$route['admin/rpCompaniesProcessesList'] = "admin/rpCompaniesProcessesList";
+$route['admin/rpConsultantsList'] = "admin/rpConsultantsList";
+$route['admin/rpCompaniesInClustersList'] = "admin/rpCompaniesInClustersList";
+$route['admin/rpEquipmentList'] = "admin/rpEquipmentList";
+
+
+
+
 $route['admin/reportTest'] = "admin/reportTest";
 $route['admin/reportTest'] = "admin/reportTest";
 $route['admin/clusters'] = "admin/clusters";
 $route['admin/industrialZones'] = "admin/industrialZones";
 $route['admin/consultants'] = "admin/consultants";
 $route['admin/employees'] = "admin/employees";
+$route['admin/zoneEmployees'] = "admin/zoneEmployees";
+$route['admin/zoneCompanies'] = "admin/zoneCompanies";
 $route['createreport'] = "reporting/create"; 
 
 //IS scoping
