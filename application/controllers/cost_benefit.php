@@ -45,7 +45,8 @@ class Cost_benefit extends CI_Controller {
 
 	//cost-benefit analysis form saving
 	public function save($prjct_id,$cmpny_id,$id,$cp_or_is){
-		if ($this->form_validation->run() !== FALSE){
+
+		
 			$capexold = $this->input->post('capexold');
 			$flow_name_1 = $this->input->post('flow-name-1');
 			$flow_value_1 = $this->input->post('flow-value-1');
@@ -120,8 +121,8 @@ class Cost_benefit extends CI_Controller {
 			$flow_opex_1_4 = $this->input->post('flow-opex-1-4');
 			$flow_eipunit_1_4 = $this->input->post('flow-eipunit-1-4');
 			$flow_eip_1_4 = $this->input->post('flow-eip-1-4');
-			$flow_name_2_3 = $this->input->post('flow-name-2-3');
-			$flow_value_2_3 = $this->input->post('flow-value-2-3');
+			$flow_name_2_4 = $this->input->post('flow-name-2-4');
+			$flow_value_2_4 = $this->input->post('flow-value-2-4');
 			$flow_unit_2_4 = $this->input->post('flow-unit-2-4');
 			$flow_specost_2_4 = $this->input->post('flow-specost-2-4');
 			$flow_opex_2_4 = $this->input->post('flow-opex-2-4');
@@ -179,7 +180,7 @@ class Cost_benefit extends CI_Controller {
 			$sum_3_1 = $this->input->post('sum-3-1');
 			$sum_3_2 = $this->input->post('sum-3-2');
 
-			$this->cost_benefit_model->set_cba($capexold,
+			$this->cost_benefit_model->set_cba($id,$capexold,
 $flow_name_1,
 $flow_value_1,
 $flow_unit_1,
@@ -253,8 +254,8 @@ $flow_specost_1_4,
 $flow_opex_1_4,
 $flow_eipunit_1_4,
 $flow_eip_1_4,
-$flow_name_2_3,
-$flow_value_2_3,
+$flow_name_2_4,
+$flow_value_2_4,
 $flow_unit_2_4,
 $flow_specost_2_4,
 $flow_opex_2_4,
@@ -311,7 +312,6 @@ $sum_1_1,
 $sum_2_1,
 $sum_3_1,
 $sum_3_2);
-		}
 		redirect('cost_benefit/'.$prjct_id.'/'.$cmpny_id);
 	}
 
