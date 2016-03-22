@@ -126,6 +126,7 @@ class Cpscoping_model extends CI_Model {
     $this->db->where_not_in('t_cp_allocation.best_practice',"");
     $this->db->where('t_cp_company_project.prjct_id',$prjct_id);
     $this->db->where('t_cp_company_project.cmpny_id',$cmpny_id);
+    $this->db->where('t_cp_allocation.option','1');
     $this->db->order_by("t_prcss.name", "asc"); 
     return $this->db->get()->result_array();
   }
