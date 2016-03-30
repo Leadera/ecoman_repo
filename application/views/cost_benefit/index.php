@@ -498,7 +498,7 @@
                     } ?>
                     </td>
                     <td><?php echo $a['marcos-1']; ?></td>
-                    <td><?php echo $a['ecoben-1']; ?></td></tr>
+                    <td><?php echo $a['sum-3-2']; ?></td></tr>
             <?php endforeach ?>
             </table>
         <?php endif ?>
@@ -872,10 +872,10 @@
 			$tuna_array[$t]['ymax']= 0;
 		}
 
-		$toplameco+=$a['ecoben-1'];
-		$tuna_array[$t]['xmax']= intval($a['ecoben-1']);
+		$toplameco+=$a['sum-3-2'];
+		$tuna_array[$t]['xmax']= intval($a['sum-3-2']);
 
-		$eksieco = $toplameco - $a['ecoben-1'];
+		$eksieco = $toplameco - $a['sum-3-2'];
 		$tuna_array[$t]['xmin']= $eksieco;
 
 		if($a['marcos-1']>0){
