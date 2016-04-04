@@ -71,8 +71,8 @@
 <div id="container" style="height: 400px; min-width: 310px"></div>
 
 <div class="container">
-	<p>Dizayn Makina Eco Tracking Page</p>
-	<a class="btn btn-info pull-right" href="http://212.156.205.183:8081/olcum/">Instant Tracking Data</a>
+	<p>Eco Tracking Page</p>
+	<a class="btn btn-info pull-right" disabled>Instant Tracking Data</a>
 	<p>Daily consumption values for Machine 1</p>
 	<table class="table table-hover">
 		<tr>
