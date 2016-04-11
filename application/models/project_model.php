@@ -81,7 +81,7 @@ class Project_model extends CI_Model {
   }
 
   public function get_prj_companies($prj_id){
-    $this->db->select('t_cmpny.name,t_cmpny.id');
+    $this->db->select('t_cmpny.name,t_cmpny.id,latitude,longitude');
     $this->db->from('t_cmpny');
     $this->db->join('t_prj_cmpny', 't_prj_cmpny.cmpny_id = t_cmpny.id');
     $this->db->where('t_prj_cmpny.prj_id', $prj_id);
