@@ -135,6 +135,7 @@ class Cpscoping_model extends CI_Model {
     
     $data = $this->db->get()->result_array();
     //print_r($this->db->last_query());
+    //print_r($data);
     return $data;
   }
 
@@ -155,7 +156,9 @@ class Cpscoping_model extends CI_Model {
     $this->db->join('t_unit','t_unit.id = t_cmpny_flow.qntty_unit_id');
     $this->db->join('t_costbenefit_temp','t_costbenefit_temp.is_id = t_is_prj_details.id', 'left');
     $this->db->where('t_is_prj_details.cmpny_to_id',$cmpny_id);
-    return $this->db->get()->result_array();
+    $data = $this->db->get()->result_array();
+    //print_r($data);
+    return $data;
   }
 
 
