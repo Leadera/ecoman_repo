@@ -41,6 +41,12 @@
                 document.getElementById('myFrame').setAttribute('src','http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?company_id='+$('#company_dropdown').combobox('getValue')+'&Rapor_ID=6');
             } else if($('#reportType_dropdown').combobox('getValue')==5) {
                 document.getElementById('myFrame').setAttribute('src','http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?company_id='+$('#company_dropdown').combobox('getValue')+'&Rapor_ID=7');
+            } else if($('#reportType_dropdown').combobox('getValue')==6) {
+                document.getElementById('myFrame').setAttribute('src','http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?company_id='+$('#company_dropdown').combobox('getValue')+'&Rapor_ID=17&project_id='+$('#project_id').val()+'');
+            } else if($('#reportType_dropdown').combobox('getValue')==7) {
+                document.getElementById('myFrame').setAttribute('src','http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?Rapor_ID=18&project_id='+$('#project_id').val()+'');
+            } else if($('#reportType_dropdown').combobox('getValue')==8) {
+                document.getElementById('myFrame').setAttribute('src','http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?company_id='+$('#company_dropdown').combobox('getValue')+'&Rapor_ID=19&project_id='+$('#project_id').val()+'');
             }
             
             
@@ -105,6 +111,7 @@
     
 </script>
 <input type ="hidden" value='<?php echo $userID; ?>' id ='consultant_id' name='consultant_id'></input>
+<input type ="hidden" value='<?php echo $project_id; ?>' id ='project_id' name='project_id'></input>
 <!-- topbar starts -->
 	<div class="navbar" style="background: #2D8B42;margin-bottom: 0px;">
 		<div class="navbar-inner" style="background: #2D8B42; height:76px;">

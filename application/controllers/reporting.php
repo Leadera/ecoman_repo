@@ -17,11 +17,15 @@ class Reporting extends CI_Controller{
 	}
 
 	public function show_all(){
+                $loginData = $this->session->userdata('user_in');
+		if(empty($loginData)){
+			redirect(base_url('login'),'refresh');
+		}
                 $project_id = $this->session->userdata('project_id');
-                //print_r($project_id);
 		//burada php kodu kullanabilirsiniz. data arrayinin içini doldurabilirsiniz.
                 $data['userID'] = $this->session->userdata['user_in']['id']; 
                 $data['userName'] = $this->session->userdata['user_in']['username'];
+                $data['project_id'] = $this->session->userdata('project_id');
 		$this->load->view('template/header_admin_test');
 		$this->load->view('admin/reportAllTest',$data);
 		$this->load->view('template/footer_admin');
