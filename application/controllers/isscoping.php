@@ -24,7 +24,7 @@ class Isscoping extends CI_Controller {
                  redirect(base_url('company'), 'refresh');
              }
 
-            $this->load->view('template/header');
+            $this->load->view('template/header_IS');
             $this->load->view('isscoping/index');
             $this->load->view('template/footer');
 	}
@@ -50,7 +50,7 @@ class Isscoping extends CI_Controller {
                  redirect(base_url('company'), 'refresh');
              }
 
-            $this->load->view('template/header');
+            $this->load->view('template/header_IS');
             $this->load->view('isscoping/auto',$data); 
             $this->load->view('template/footer');
 	}
@@ -88,7 +88,7 @@ class Isscoping extends CI_Controller {
                 
                 $data['userID'] = $this->session->userdata['user_in']['id'];
                 $data['project_id'] = $this->session->userdata['project_id'];
-		$this->load->view('template/header');
+		$this->load->view('template/header_IS');
 		$this->load->view('isscoping/autoprojectbaseMDF',$data); 
 		$this->load->view('template/footer');
 	}
@@ -126,7 +126,7 @@ class Isscoping extends CI_Controller {
                 
                 $data['userID'] = $this->session->userdata['user_in']['id'];
                 $data['project_id'] = $this->session->userdata['project_id'];
-		$this->load->view('template/header');
+		$this->load->view('template/header_IS');
 		$this->load->view('isscoping/autoprojectbaseMDF_test',$data); 
 		$this->load->view('template/footer');
 	}
@@ -164,7 +164,7 @@ class Isscoping extends CI_Controller {
                 
                 $data['userID'] = $this->session->userdata['user_in']['id'];
                 $data['project_id'] = $this->session->userdata['project_id'];
-		$this->load->view('template/header');
+		$this->load->view('template/header_IS');
 		$this->load->view('isscoping/autoprojectbase',$data); 
 		$this->load->view('template/footer');
 	}
@@ -199,7 +199,7 @@ class Isscoping extends CI_Controller {
             
             $data['userID'] = $this->session->userdata['user_in']['id'];
             $data['project_id'] = $this->session->userdata['project_id'];
-            $this->load->view('template/header');
+            $this->load->view('template/header_IS');
             $this->load->view('isscoping/projectbaseMDF',$data); 
             $this->load->view('template/footer');
 	}
@@ -234,7 +234,7 @@ class Isscoping extends CI_Controller {
             
             $data['userID'] = $this->session->userdata['user_in']['id'];
             $data['project_id'] = $this->session->userdata['project_id'];
-            $this->load->view('template/header');
+            $this->load->view('template/header_IS');
             $this->load->view('isscoping/projectbase',$data); 
             $this->load->view('template/footer');
 	}
@@ -284,7 +284,7 @@ class Isscoping extends CI_Controller {
                 
                 $data['userID'] = $this->session->userdata['user_in']['id'];
                 $data['project_id'] = $this->session->userdata['project_id'];
-		$this->load->view('template/header');
+		$this->load->view('template/header_IS');
 		$this->load->view('isscoping/isscenarios',$data); 
 		$this->load->view('template/footer');
 	}
@@ -322,8 +322,8 @@ class Isscoping extends CI_Controller {
                 
                 $data['userID'] = $this->session->userdata['user_in']['id'];
                 $data['project_id'] = $this->session->userdata['project_id'];
-		$this->load->view('template/header');
+		$this->load->view('template/header_IS');
 		$this->load->view('isscoping/isscenariosCns',$data); 
-		$this->load->view('template/footer');
+		$this->load->view('template/footer');  
 	}
 }

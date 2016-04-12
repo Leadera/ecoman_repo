@@ -12,9 +12,9 @@
      * @returns {undefined}
      */
     function createChart() {
-
+        console.warn(seriesOptions);
         $('#container').highcharts('StockChart', {
-
+            
             rangeSelector: {
                 selected: 4
             },
@@ -46,11 +46,11 @@
             series: seriesOptions
         });
     }
-
+    console.warn(names);
     $.each(names, function (i, name) {
-
         $.getJSON('<?php echo base_url(); ?>ecotracking/json/131/1',function (data) {
-
+            //console.warn(name);
+            //console.warn(data);
             seriesOptions[i] = {
                 name: name,
                 data: data

@@ -26,7 +26,9 @@ class Cpscoping_model extends CI_Model {
   	$this->db->join('t_cmpny_prcss','t_cmpny_prcss.id = t_cp_allocation.prcss_id');
   	$this->db->join('t_prcss','t_prcss.id = t_cmpny_prcss.prcss_id');
   	$this->db->where('t_cp_allocation.id',$allocation_id);
-  	return $this->db->get()->row_array();
+  	$data = $this->db->get()->row_array();
+        //print_r($this->db->last_query());
+        return $data;
   }
 
   public function get_allocation_from_allocation_id_output($allocation_id){
@@ -76,7 +78,9 @@ class Cpscoping_model extends CI_Model {
   	$this->db->from('t_cp_company_project');
   	$this->db->where('cmpny_id',$company_id);
   	$this->db->where('prjct_id',$project_id);
-  	return $this->db->get()->result_array();
+  	$data = $this->db->get()->result_array();
+        //print_r($this->db->last_query());
+        return $data;
   }
 
   public function get_allocation_id_from_ids2($company_id,$project_id){
@@ -128,7 +132,10 @@ class Cpscoping_model extends CI_Model {
     $this->db->where('t_cp_company_project.cmpny_id',$cmpny_id);
     $this->db->where('t_cp_allocation.option','1');
     $this->db->order_by("t_prcss.name", "asc"); 
-    return $this->db->get()->result_array();
+    
+    $data = $this->db->get()->result_array();
+    //print_r($this->db->last_query());
+    return $data;
   }
 
   public function get_cost_benefit_info_is($cmpny_id,$prjct_id){

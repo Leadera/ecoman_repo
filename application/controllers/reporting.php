@@ -17,6 +17,8 @@ class Reporting extends CI_Controller{
 	}
 
 	public function show_all(){
+                $project_id = $this->session->userdata('project_id');
+                //print_r($project_id);
 		//burada php kodu kullanabilirsiniz. data arrayinin içini doldurabilirsiniz.
                 $data['userID'] = $this->session->userdata['user_in']['id']; 
                 $data['userName'] = $this->session->userdata['user_in']['username'];

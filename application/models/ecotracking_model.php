@@ -24,7 +24,10 @@ class Ecotracking_model extends CI_Model {
   	$this->db->where('company_id',$company_id);
   	$this->db->where('machine_id',$machine_id);
     $this->db->order_by("date", "asc"); 
-  	return $this->db->get()->result_array();
+  	$data = $this->db->get()->result_array();
+        //print_r($this->db->last_query());
+        //print_r($data);
+        return $data;
   }
 
 }
