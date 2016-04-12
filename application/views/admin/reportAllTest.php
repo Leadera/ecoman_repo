@@ -47,7 +47,7 @@
                 document.getElementById('myFrame').setAttribute('src','http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?Rapor_ID=18&project_id='+$('#project_id').val()+'');
             } else if($('#reportType_dropdown').combobox('getValue')==8) {
                 document.getElementById('myFrame').setAttribute('src','http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?company_id='+$('#company_dropdown').combobox('getValue')+'&Rapor_ID=19&project_id='+$('#project_id').val()+'');
-            } else if($('#reportType_dropdown').combobox('getValue')==8) {
+            } else if($('#reportType_dropdown').combobox('getValue')==9) {
                 document.getElementById('myFrame').setAttribute('src','http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?company_id='+$('#company_dropdown').combobox('getValue')+'&Rapor_ID=20&project_id='+$('#project_id').val()+'');
             }
             
