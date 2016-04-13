@@ -102,7 +102,7 @@
 					</td>
 					<td>
 					<?php
-							echo $nacecode['code'].'-'.$nacecode['name_tr'];
+							echo $nacecode['code'];
 					?>
 					</td>
 				</tr>

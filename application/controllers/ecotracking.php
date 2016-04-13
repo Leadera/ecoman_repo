@@ -15,6 +15,7 @@ class Ecotracking extends CI_Controller{
 
 	public function show($company_id,$machine_id){
 		$data['veriler'] = $this->ecotracking_model->get($company_id,$machine_id);
+		$data['company_id']=$company_id;
 		$this->load->view('template/header');
 		$this->load->view('ecotracking/show',$data);
 		$this->load->view('template/footer');

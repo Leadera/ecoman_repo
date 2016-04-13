@@ -1,11 +1,21 @@
+<?php 
+  $mid = $this->uri->segment(3);
+if(empty($veriler)):
+    echo "<center>No tracking data available for this machine</center>";
+else:
+ ?>
 <script src="https://code.highcharts.com"></script>
 <script src="https://code.highcharts.com/stock/highstock.js"></script>
 <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script>
+    var cid = <?php echo $company_id; ?>;
+    var mid = <?php echo $mid; ?>;
+</script>
 <script type="text/javascript">
 	$(function () {
     var seriesOptions = [],
         seriesCounter = 0,
-        names = ['AAPL'];
+        names = ['Tracking'];
 
     /**
      * Create the chart when all data is loaded
@@ -48,7 +58,7 @@
     }
     console.warn(names);
     $.each(names, function (i, name) {
-        $.getJSON('<?php echo base_url(); ?>ecotracking/json/131/1',function (data) {
+        $.getJSON('<?php echo base_url(); ?>ecotracking/json/'+cid+'/'+mid+'',function (data) {
             //console.warn(name);
             //console.warn(data);
             seriesOptions[i] = {
@@ -85,3 +95,4 @@
 		<?php endforeach ?>
 	</table>
 </div>
+<?php endif ?>

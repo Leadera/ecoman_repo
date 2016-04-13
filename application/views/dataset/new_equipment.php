@@ -76,7 +76,8 @@
 						<td><?php echo $info['eqpmnt_type_attrbt_name']; ?></td>
 						<td><?php echo $info['eqpmnt_attrbt_val']; ?> <?php echo $info['unit']; ?></td>
 						<td><?php echo $info['prcss_name']; ?></td>
-						<td><a href="<?php echo base_url('delete_equipment/'.$companyID.'/'.$info['cmpny_eqpmnt_id']);?>" class="label label-danger" value="<?php echo $info['cmpny_eqpmnt_id']; ?>"><span class="fa fa-times"></span> <?php echo lang("delete"); ?></button></td>
+						<td><a href="<?php echo base_url('ecotracking/'.$companyID.'/'.$info['cmpny_eqpmnt_id']);?>" class="label label-info"> Tracking Data</a>
+						<a href="<?php echo base_url('delete_equipment/'.$companyID.'/'.$info['cmpny_eqpmnt_id']);?>" class="label label-danger" value="<?php echo $info['cmpny_eqpmnt_id']; ?>"><span class="fa fa-times"></span> <?php echo lang("delete"); ?></a></td>
 				</tr>
 				<?php endforeach ?>
 			</table>

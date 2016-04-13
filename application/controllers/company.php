@@ -244,7 +244,7 @@ class Company extends CI_Controller{
 		$data['prjname'] = $this->company_model->get_company_proj($term);
 		$data['cmpnyperson'] = $this->company_model->get_company_workers($term);
 		//$data['users_without_company']= $this->user_model->users_without_company();
-		if(empty($data['nacecode'])){$data['nacecode']['code']="";$data['nacecode']['name_tr']="";}
+		if(empty($data['nacecode'])){$data['nacecode']['code']="";}
 
 		//kullanıcının company'i editleme hakkı varmı kontrolü
 		$kullanici = $this->session->userdata('user_in');

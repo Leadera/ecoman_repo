@@ -67,7 +67,7 @@
 					<select id="selectize" name="naceCode">
 						<option value="">Nothing Selected</option>
 						<?php foreach ($all_nace_codes as $anc): ?>
-							<option value="<?php echo $anc['code']; ?>"><?php echo $anc['code']; ?> - <?php echo $anc['name_tr']; ?></option>
+							<option value="<?php echo $anc['code']; ?>"><?php echo $anc['code']; ?></option>
 						<?php endforeach ?>
 					</select>
 					<small><?php echo lang("createcompanyinfo"); ?></small>

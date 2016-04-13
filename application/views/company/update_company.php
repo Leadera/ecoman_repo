@@ -41,7 +41,7 @@
 					<select id="selectize" name="naceCode">
 						<?php foreach ($all_nace_codes as $anc): ?>
 							<?php if($nace_code['code']==$anc['code']) {$d=TRUE;} else {$d=FALSE;} ?>
-							<option value="<?php echo $anc['code']; ?>" <?php echo set_select('naceCode', $anc['code'], $d); ?> ><?php echo $anc['code']; ?> - <?php echo $anc['name_tr']; ?></option>
+							<option value="<?php echo $anc['code']; ?>" <?php echo set_select('naceCode', $anc['code'], $d); ?> ><?php echo $anc['code']; ?></option>
 						<?php endforeach ?>
 					</select>
 	 			</div>
