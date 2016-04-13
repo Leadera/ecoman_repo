@@ -380,6 +380,14 @@ class Cpscoping extends CI_Controller {
 		echo json_encode($allocated_processler);
 	}
 
+	public function get_only_given_full($flow_id,$flow_type_id,$cmpny_id,$process_id){
+		$result = $this->flow_model->get_company_flow($cmpny_id,$flow_id,$flow_type_id);
+		//print_r($result);
+		//print json mode data
+		header("Content-Type: application/json", true);
+		echo json_encode($result);
+	}
+
 	public function get_allo_from_fname_pname($flow_id,$process_id,$cmpny_id,$input_output,$prjct_id){
 		if($process_id != 0){
 			$kontrol = array();

@@ -122,6 +122,7 @@ $route['kpi_calculation/(:any)/(:any)'] = "cpscoping/kpi_calculation/$1/$2";
 $route['search_result/(:any)/(:any)'] = "cpscoping/search_result/$1/$2";
 
 //CP
+$route['cpscoping/full_get/(:any)/(:any)/(:any)/(:any)'] = "cpscoping/get_only_given_full/$1/$2/$3/$4";
 $route['cpscoping/deneme'] = "cpscoping/deneme";
 $route['cpscoping/comment_save/(:any)/(:any)'] = "cpscoping/comment_save/$1/$2";
 $route['cpscoping/allocated_table/(:any)/(:any)/(:any)/(:any)/(:any)'] = "cpscoping/get_already_allocated_allocation_except_given/$1/$2/$3/$4/$5";

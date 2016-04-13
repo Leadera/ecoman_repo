@@ -287,3 +287,38 @@ $('[data-toggle="tooltip"]').tooltip({
     }
 });
 </script>
+<script type="text/javascript">
+$('#flow_type_name').change(function(b){
+	 		var cmpny_id = "<?php echo $this->uri->segment(3); ?>";
+
+	var e = document.getElementById("prcss_name");
+	var prcss_name = e.options[e.selectedIndex].value;
+	var b = document.getElementById("flow_type_name");
+	var flow_type_name = b.options[b.selectedIndex].value;
+	var a = document.getElementById("flow_name");
+	var flow_name = a.options[a.selectedIndex].value;
+		console.log(prcss_name+" "+flow_name+" "+flow_type_name);
+		//get other allocation data for a selected flow and flow type
+		$.ajax({
+			type: "POST",
+			dataType:'json',
+			url: '<?php echo base_url('cpscoping/full_get'); ?>/'+flow_name+'/'+flow_type_name+'/'+cmpny_id+'/'+prcss_name,
+			success: function(data)
+			{
+				document.getElementById('amount').value=data.qntty;
+				document.getElementById('cost').value=data.cost;
+				document.getElementById('env_impact').value=data.ep;
+
+				document.getElementById('allocation_amount').value="100";
+				document.getElementById('allocation_cost').value="100";
+				document.getElementById('allocation_env_impact').value="100";
+
+				$('#unit_amount').val(data.qntty_unit_name).change();
+				$('#unit_cost').val(data.cost_unit).change();
+
+			}
+		});
+
+});
+
+</script>
