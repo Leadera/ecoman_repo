@@ -316,9 +316,61 @@ $('#flow_type_name').change(function(b){
 				$('#unit_amount').val(data.qntty_unit_name).change();
 				$('#unit_cost').val(data.cost_unit).change();
 
+				var old_aa = $('#allocation_amount').val();
+				var old_aa2 = $('#amount').val();
+
+				var old_cc = $('#allocation_cost').val();
+				var old_cc2 = $('#cost').val();
+
+				var old_ee = $('#allocation_env_impact').val();
+				var old_ee2 = $('#env_impact').val();
+
+				$( "#allocation_amount" ).change(function() {
+				  var oran1=$('#allocation_amount').val()/old_aa;
+				  alert("alert"+oran1);
+				  $('#amount').val((old_aa2*oran1).toFixed(2));
+				});
+
+				$( "#amount" ).change(function() {
+				  var oran2=$('#amount').val()/old_aa2;
+				  alert(oran2);
+				  $('#allocation_amount').val((old_aa*oran2).toFixed(2));
+				});
+
+
+				$( "#allocation_cost" ).change(function() {
+				  var oran3=$('#allocation_cost').val()/old_cc;
+				  alert("alert"+oran3);
+				  $('#cost').val((old_cc2*oran3).toFixed(2));
+				});
+
+				$( "#cost" ).change(function() {
+				  var oran4=$('#cost').val()/old_cc2;
+				  alert(oran4);
+				  $('#allocation_cost').val((old_cc*oran4).toFixed(2));
+				});
+
+
+				$( "#allocation_env_impact" ).change(function() {
+				  var oran5=$('#allocation_env_impact').val()/old_ee;
+				  alert("alert"+oran5);
+				  $('#env_impact').val((old_ee2*oran5).toFixed(2));
+				});
+
+				$( "#env_impact" ).change(function() {
+				  var oran6=$('#env_impact').val()/old_ee2;
+				  alert(oran6);
+				  $('#allocation_env_impact').val((old_ee*oran6).toFixed(2));
+				});
 			}
 		});
 
 });
+
+</script>
+
+<script type="text/javascript">
+
+
 
 </script>
