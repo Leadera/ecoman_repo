@@ -28,6 +28,7 @@
      }
     
     function saveReport() {
+        //alert($('#project_id').val());
         //alert($('#reportType_dropdown').combobox('getValue'));
         //alert($('#company_dropdown').combobox('getValue'));
         if($('#reportType_dropdown').combobox('getValue')>0 && $('#company_dropdown').combobox('getValue') > 0) {  
@@ -49,7 +50,7 @@
                 document.getElementById('myFrame').setAttribute('src','http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?company_id='+$('#company_dropdown').combobox('getValue')+'&Rapor_ID=19&project_id='+$('#project_id').val()+'');
             } else if($('#reportType_dropdown').combobox('getValue')==9) {
                 document.getElementById('myFrame').setAttribute('src','http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?company_id='+$('#company_dropdown').combobox('getValue')+'&Rapor_ID=20&project_id='+$('#project_id').val()+'');
-            }
+            }      
             
             
             //document.getElementById('myFrame').setAttribute('src','http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?company_id=132&Rapor_ID=3');

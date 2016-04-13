@@ -22,6 +22,7 @@ class Reporting extends CI_Controller{
 			redirect(base_url('login'),'refresh');
 		}
                 $project_id = $this->session->userdata('project_id');
+                //print_r($project_id);
 		//burada php kodu kullanabilirsiniz. data arrayinin içini doldurabilirsiniz.
                 $data['userID'] = $this->session->userdata['user_in']['id']; 
                 $data['userName'] = $this->session->userdata['user_in']['username'];
