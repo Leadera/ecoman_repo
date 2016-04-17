@@ -1019,3 +1019,27 @@
 		}
 	}
 </script>
+<?php $k=1; ?>
+<?php foreach ($allocation as $b): ?>
+<?php // echo $b['flow_name']; ?>
+<script type="text/javascript">
+    var flownamedef= "<?php echo $b['flow_name']; ?>";
+    var qntty_unit= "<?php echo $b['qntty_unit']; ?>";
+    var amount= "<?php echo $b['amount']; ?>";
+    var cost= "<?php echo $b['cost']; ?>";
+    var env_impact= "<?php echo $b['env_impact']; ?>";
+    var k= <?php echo $k; ?>;
+    //alert(document.getElementById('flow-name-1-'+k).value);
+    if(document.getElementById('flow-name-1-'+k).value==""){
+        document.getElementById('flow-name-1-'+k).value = flownamedef;
+        document.getElementById('flow-unit-1-'+k).value = qntty_unit;
+        document.getElementById('flow-value-1-'+k).value = amount;
+        document.getElementById('flow-specost-1-'+k).value = cost/amount;
+        document.getElementById('flow-eipunit-1-'+k).value = env_impact/amount;
+        //alert(flownamedef);
+        //alert("flow_name-1-"+k);
+        
+    }
+</script>
+<?php $k=$k+1; ?>
+<?php endforeach ?>

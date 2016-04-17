@@ -26,7 +26,7 @@ class Cost_benefit extends CI_Controller {
 		// 		$data['cost_benefit'][] = $this->cpscoping_model->get_allocation_from_allocation_id($allo_id['allocation_id']);
 		// 	}
 		// }
-                //print_r('test');
+        //print_r('test');
 		$data['company']=$this->company_model->get_company($cmpny_id);
 		$data['allocation']=$this->cpscoping_model->get_cost_benefit_info($cmpny_id,$prjct_id);
 		$data['is']=$this->cpscoping_model->get_cost_benefit_info_is($cmpny_id,$prjct_id);
