@@ -4,6 +4,8 @@ class Ecotracking extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->model('ecotracking_model');
+		$this->load->model('company_model');
+		$this->load->model('equipment_model');
 				$this->config->set_item('language', $this->session->userdata('site_lang'));
 
 	}
@@ -22,9 +24,16 @@ class Ecotracking extends CI_Controller{
 	}
 
 	public function index(){
-
+		$project_id = $this->session->userdata('project_id');
+		$data['companies'] = $this->company_model->get_project_companies($project_id);
+		//print_r($data['companies']);
+		foreach ($data['companies'] as $company) {
+			//echo $company['id'];
+			$data['informations'][] = $this->equipment_model->all_information_of_equipment($company['id']);
+		}
+		//print_r($data['informations']);
 		$this->load->view('template/header');
-		$this->load->view('ecotracking/index');
+		$this->load->view('ecotracking/index',$data);
 		$this->load->view('template/footer');
 	}
 

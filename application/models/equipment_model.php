@@ -52,7 +52,7 @@ class Equipment_model extends CI_Model {
   }
 
   public function all_information_of_equipment($companyID){
-    $this->db->select('t_cmpny_eqpmnt.eqpmnt_attrbt_val,t_cmpny_eqpmnt.id as cmpny_eqpmnt_id, t_eqpmnt.name as eqpmnt_name, t_eqpmnt_type.name as eqpmnt_type_name, t_eqpmnt_type_attrbt.attribute_name as eqpmnt_type_attrbt_name, t_prcss.name as prcss_name,unit1.name as unit');
+    $this->db->select('t_cmpny.name as fathername, t_cmpny_eqpmnt.cmpny_id as companyfatherid, t_cmpny_eqpmnt.eqpmnt_attrbt_val,t_cmpny_eqpmnt.id as cmpny_eqpmnt_id, t_eqpmnt.name as eqpmnt_name, t_eqpmnt_type.name as eqpmnt_type_name, t_eqpmnt_type_attrbt.attribute_name as eqpmnt_type_attrbt_name, t_prcss.name as prcss_name,unit1.name as unit');
     $this->db->from('t_cmpny_prcss_eqpmnt_type');
     $this->db->join('t_cmpny_eqpmnt','t_cmpny_eqpmnt.id = t_cmpny_prcss_eqpmnt_type.cmpny_eqpmnt_type_id','left');
     $this->db->join('t_eqpmnt','t_eqpmnt.id = t_cmpny_eqpmnt.eqpmnt_id','left');
@@ -61,6 +61,7 @@ class Equipment_model extends CI_Model {
     $this->db->join('t_cmpny_prcss','t_cmpny_prcss.id = t_cmpny_prcss_eqpmnt_type.cmpny_prcss_id','left');
     $this->db->join('t_prcss','t_prcss.id = t_cmpny_prcss.prcss_id','left');
     $this->db->join('t_unit as unit1','unit1.id = t_cmpny_eqpmnt.eqpmnt_attrbt_unit','left');
+    $this->db->join('t_cmpny', 't_cmpny.id = t_cmpny_eqpmnt.cmpny_id','left');
     $this->db->where('t_cmpny_eqpmnt.cmpny_id',$companyID);
     $query = $this->db->get()->result_array();
     return $query;
