@@ -30,7 +30,7 @@
 
   <div style="background-image: linear-gradient(to top, #0F6E1E 0%, #1F9832 100%);
               text-align: center;
-              color:#ffffff; ">ECOMAN
+              color:#ffffff; ">CELERO
       
       <div class="clearfix"></div>
   </div>
