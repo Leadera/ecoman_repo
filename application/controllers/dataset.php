@@ -431,7 +431,7 @@ class Dataset extends CI_Controller {
 		// $this->form_validation->set_rules('min_rate_util','Minimum rate of utilization','trim|numeric|xss_clean');
 		// $this->form_validation->set_rules('typ_rate_util','Typical rate of utilization','trim|numeric|xss_clean');
 		// $this->form_validation->set_rules('max_rate_util','Maximum rate of utilization','trim|numeric|xss_clean');
-		$this->form_validation->set_rules('comment','Comment','trim|alpha_numeric|xss_clean');
+		$this->form_validation->set_rules('comment','Comment','trim|xss_clean');
 
 
 		if ($this->form_validation->run() !== FALSE)
@@ -493,7 +493,7 @@ class Dataset extends CI_Controller {
 		// $this->form_validation->set_rules('min_rate_util','Minimum rate of utilization','trim|numeric|xss_clean');
 		// $this->form_validation->set_rules('typ_rate_util','Typical rate of utilization','trim|numeric|xss_clean');
 		// $this->form_validation->set_rules('max_rate_util','Maximum rate of utilization','trim|numeric|xss_clean');
-		$this->form_validation->set_rules('comment','Comment','trim|alpha_numeric|xss_clean');
+		$this->form_validation->set_rules('comment','Comment','trim|xss_clean');
 
 		if ($this->form_validation->run() !== FALSE)
 		{

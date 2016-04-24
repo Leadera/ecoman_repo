@@ -79,17 +79,17 @@ class Cpscoping extends CI_Controller {
 		$this->form_validation->set_rules('flow_type_name', 'Flow Type Name', 'required|trim|xss_clean');
 		
 		$this->form_validation->set_rules('amount', 'Amount', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('allocation_amount', 'Amount Allocation', 'required|trim|integer|max_length[3]|greater_than[0]|xss_clean');
+		$this->form_validation->set_rules('allocation_amount', 'Amount Allocation', 'required|trim|max_length[7]|greater_than[0]|xss_clean');
 		$this->form_validation->set_rules('error_amount', 'Amount Error Rate', 'required|trim|integer|max_length[3]|greater_than[0]|xss_clean');
 		$this->form_validation->set_rules('unit_amount', 'Unit Amount', 'required|trim|xss_clean');
 
 		$this->form_validation->set_rules('cost', 'Cost', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('allocation_cost', 'Cost Allocation', 'required|trim|integer|max_length[3]|greater_than[0]|xss_clean');
+		$this->form_validation->set_rules('allocation_cost', 'Cost Allocation', 'required|trim|max_length[7]|greater_than[0]|xss_clean');
 		$this->form_validation->set_rules('error_cost', 'Cost Error Rate', 'required|trim|integer|max_length[3]|greater_than[0]|xss_clean');
 		$this->form_validation->set_rules('unit_cost', 'Unit Cost', 'required|trim|xss_clean');
 		
 		$this->form_validation->set_rules('env_impact', 'Env. Impact', 'required|trim|xss_clean');
-		$this->form_validation->set_rules('allocation_env_impact', 'Env. Impact Allocation', 'required|integer|trim|max_length[3]|greater_than[0]|xss_clean');
+		$this->form_validation->set_rules('allocation_env_impact', 'Env. Impact Allocation', 'required|trim|max_length[7]|greater_than[0]|xss_clean');
 		$this->form_validation->set_rules('error_ep', 'Env. Impact Rate', 'required|trim|integer|max_length[3]|greater_than[0]|xss_clean');
 		$this->form_validation->set_rules('unit_env_impact', 'Unit Env. Impact', 'required|trim|xss_clean');
 
