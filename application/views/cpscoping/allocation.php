@@ -136,7 +136,7 @@ function aatf() {
 						<th><?php echo lang("name"); ?></th><th><?php echo lang("quantity"); ?></th><th><?php echo lang("cost"); ?></th><th><?php echo lang("period"); ?></th>
 					</tr>
 				<?php foreach ($product as $p ): ?>
-					<tr><td><?php echo $p['name']; ?></td><td><?php echo $p['quantities']; ?></td><td><?php echo $p['ucost']; ?> <?php echo $p['ucostu']; ?></td><td><?php echo $p['tper']; ?></td></tr>
+					<tr><td><?php echo $p['name']; ?></td><td><?php echo $p['quantities']; ?> <?php echo $p['qunit']; ?></td><td><?php echo $p['ucost']; ?> <?php echo $p['ucostu']; ?></td><td><?php echo $p['tper']; ?></td></tr>
 				<?php endforeach ?>
 				</table>
 			<?php else: ?>

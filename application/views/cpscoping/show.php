@@ -447,7 +447,7 @@ print_r($allocation[0]);*/
       .range([0,width]).nice();
 
   var y = d3.scale.linear()
-      .domain([d3.min(data, function(d) { return d.ep_value_alt; })-1000, d3.max(data, function(d) { return d.ep_value_ust; })])
+      .domain([d3.min(data, function(d) { return d.ep_value_alt; })-100, d3.max(data, function(d) { return d.ep_value_ust; })])
       .range([height, 0]).nice();
 
   var xAxis = d3.svg.axis().scale(x).orient("bottom");
@@ -497,7 +497,7 @@ print_r($allocation[0]);*/
 	  	//console.log(Math.abs(x(datum.cost_value_ust)-x(datum.cost_value_alt)));
 	  	return Math.abs(x(datum.cost_value_ust)-x(datum.cost_value_alt)); }).
 	  attr("fill",function(datum,index) { return datum.color; })
-	  .style("opacity", '0.8')
+	  .style("opacity", '0.9')
   	.on("mouseover", function(datum,index){return tooltip.style("visibility", "visible").html("<span style='color:blue !important;'>"+datum.prcss_name+"</span><br>EP Range:"+datum.ep_value_alt+" - "+datum.ep_value_ust+"<br>Cost Range:"+datum.cost_value_alt+" - "+datum.cost_value_ust);})
 		.on("mousemove", function(datum,index){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").html("<span style='color:blue !important;'>"+datum.prcss_name+"</span><br>EP Range: "+datum.ep_value_alt+" - "+datum.ep_value_ust+"<br>Cost Range: "+datum.cost_value_alt+" - "+datum.cost_value_ust);})
 		.on("mouseout", function(){return tooltip.style("visibility", "hidden");});
