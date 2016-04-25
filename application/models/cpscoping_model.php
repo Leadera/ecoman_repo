@@ -116,7 +116,8 @@ class Cpscoping_model extends CI_Model {
         t_cp_allocation.unit_reference as unit_reference,
         t_flow.name as flow_name,
         t_flow_type.name as flow_type_name,
-        t_cp_allocation.best_practice as best
+        t_cp_allocation.best_practice as best,
+        t_cp_allocation.marcos as marcos
         ');
     $this->db->from('t_cp_company_project');
     $this->db->join('t_cp_allocation','t_cp_allocation.id = t_cp_company_project.allocation_id', 'left');
@@ -131,7 +132,7 @@ class Cpscoping_model extends CI_Model {
     $this->db->where('t_cp_company_project.prjct_id',$prjct_id);
     $this->db->where('t_cp_company_project.cmpny_id',$cmpny_id);
     $this->db->where('t_cp_allocation.option','1');
-    $this->db->order_by("t_prcss.name", "asc"); 
+    $this->db->order_by("t_cp_allocation.marcos", "asc"); 
     
     $data = $this->db->get()->result_array();
     //print_r($this->db->last_query());
