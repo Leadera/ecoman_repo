@@ -243,7 +243,7 @@ class Company extends CI_Controller{
 		$data['nacecode'] = $this->company_model->get_nace_code($term);
 		$data['prjname'] = $this->company_model->get_company_proj($term);
 		$data['cmpnyperson'] = $this->company_model->get_company_workers($term);
-		//$data['users_without_company']= $this->user_model->users_without_company();
+		$data['users_without_company']= $this->user_model->get_consultants();
 		if(empty($data['nacecode'])){$data['nacecode']['code']="";}
 
 		//kullanıcının company'i editleme hakkı varmı kontrolü
