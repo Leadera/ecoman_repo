@@ -8,7 +8,7 @@
 .tg .tg-yw4l{vertical-align:top;}
 .tg .tg-yw4l input{font-size: 11px; height: 28px;}
 </style>
-
+<?php //print_r($allocation); ?>
 <?php  $allocation = array_merge($allocation, $is);  //print_r($allocation); ?>
 	<p><?php echo lang("cbaheading"); ?></p>
 	<?php if (!empty($allocation)): ?>
@@ -20,32 +20,32 @@
     <table class="tg costtable">
         <tr>
             <th class="tg-yw4l"><div style="width: 100px;">Option</div></th>
-            <th class="tg-yw4l">Yearly CAPEX / rest value (€/yr)</th>
+            <th class="tg-yw4l">Yearly CAPEX / rest value (<?php echo $a['unit_cost']; ?>/yr)</th>
             <th class="tg-yw4l" colspan="2">Annual energy and material flows</th>
             <th class="tg-yw4l">unit</th>
-            <th class="tg-yw4l">Specific costs (€/unit)</th>
-            <th class="tg-yw4l">OPEX (€)</th>
-            <th class="tg-yw4l">EIP/ Unit</th>
-            <th class="tg-yw4l">EIP</th>
-            <th class="tg-yw4l">Annual costs (€/yr)</th>
+            <th class="tg-yw4l">Specific costs (<?php echo $a['unit_cost']; ?>/unit)</th>
+            <th class="tg-yw4l">OPEX (<?php echo $a['unit_cost']; ?>)</th>
+            <th class="tg-yw4l">EP/ Unit</th>
+            <th class="tg-yw4l">EP</th>
+            <th class="tg-yw4l">Annual costs (<?php echo $a['unit_cost']; ?>/yr)</th>
             <th class="tg-yw4l">Lifetime (yr)</th>
-            <th class="tg-yw4l">Investment (€)</th>
+            <th class="tg-yw4l">Investment (<?php echo $a['unit_cost']; ?>)</th>
             <th class="tg-yw4l">Discount rate (%) not for the existing process</th>
-            <th class="tg-yw4l">Yearly CAPEX  (€/yr)</th>
+            <th class="tg-yw4l">Yearly CAPEX  (<?php echo $a['unit_cost']; ?>/yr)</th>
             <th class="tg-yw4l" colspan="2">Annual energy and material flows</th>
             <th class="tg-yw4l">unit</th>
-            <th class="tg-yw4l">Specific costs (€/unit)</th>
-            <th class="tg-yw4l">OPEX (€)</th>
-            <th class="tg-yw4l">EIP/ Unit</th>
-            <th class="tg-yw4l">EIP</th>
-            <th class="tg-yw4l">Annual costs (€/yr)</th>
+            <th class="tg-yw4l">Specific costs (<?php echo $a['unit_cost']; ?>/unit)</th>
+            <th class="tg-yw4l">OPEX (<?php echo $a['unit_cost']; ?>)</th>
+            <th class="tg-yw4l">EP/ Unit</th>
+            <th class="tg-yw4l">EP</th>
+            <th class="tg-yw4l">Annual costs (<?php echo $a['unit_cost']; ?>/yr)</th>
             <th class="tg-yw4l">Flow Name</th>
             <th class="tg-yw4l">Differences of energy and material flows</th>
             <th class="tg-yw4l">Unit</th>
-            <th class="tg-yw4l">Reduction OPEX (€)</th>
-            <th class="tg-yw4l">Economic Benefit (€)</th>
-            <th class="tg-yw4l">Ecological  Benefit (EIP)</th>
-            <th class="tg-yw4l">Marginal costs (€/EIP)</th>
+            <th class="tg-yw4l">Reduction OPEX (<?php echo $a['unit_cost']; ?>)</th>
+            <th class="tg-yw4l">Economic Benefit (<?php echo $a['unit_cost']; ?>)</th>
+            <th class="tg-yw4l">Ecological  Benefit (EP)</th>
+            <th class="tg-yw4l">Marginal costs (<?php echo $a['unit_cost']; ?>/EP)</th>
             <th class="tg-yw4l">Pay pack time  of Investment (yrs)</th>
             <th class="tg-yw4l">Save</th>
         </tr>
@@ -528,11 +528,11 @@
 						<td><?php echo lang("discountrate"); ?> (%)</td>
 						<td><div class="  "><input type="text" name="disrate" id="disrate-<?php echo $i; ?>"  value="<?php echo $a['disrate']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
-						<tr><td><?php echo lang("capexold"); ?> (€/<?php echo lang("year"); ?>)</td>								
+						<tr><td><?php echo lang("capexold"); ?> (<?php echo $a['unit_cost']; ?>/<?php echo lang("year"); ?>)</td>								
 						<td><div class="  "><input type="text" name="capexold" id="capexold-<?php echo $i; ?>" class="form-control  " value="<?php echo $a['capexold']; ?>" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
-						<td><?php echo lang("opexold"); ?> (€/<?php echo lang("year"); ?>)</td>
+						<td><?php echo lang("opexold"); ?> (<?php echo $a['unit_cost']; ?>/<?php echo lang("year"); ?>)</td>
 						<td><input type="text" name="opexold" id="opexold-<?php echo $i; ?>" class="form-control"></td>
 					</tr>
 					<tr>
@@ -540,11 +540,11 @@
 						<td><div class="  "><input type="text" name="ltold" id="ltold-<?php echo $i; ?>" value="<?php echo $a['ltold']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
-						<td><?php echo lang("capexnew"); ?> (€/<?php echo lang("year"); ?>)</td>
+						<td><?php echo lang("capexnew"); ?> (<?php echo $a['unit_cost']; ?>/<?php echo lang("year"); ?>)</td>
 						<td><div class="  "><input type="text" name="capexnew" id="capexnew-<?php echo $i; ?>" value="<?php echo $a['capexnew']; ?>" class="form-control" placeholder="You should fill this field."></div></td>
 					</tr>
 					<tr>
-						<td><?php echo lang("opexnew"); ?> (€/<?php echo lang("year"); ?>)</td>
+						<td><?php echo lang("opexnew"); ?> (<?php echo $a['unit_cost']; ?>/<?php echo lang("year"); ?>)</td>
 						<td><input type="text" name="opexnew" id="opexnew-<?php echo $i; ?>" class="form-control"></td>
 					</tr>
 					<tr>
@@ -585,11 +585,11 @@
 						<td><input type="hidden" name="unit2" value="<?php echo $a['qntty_unit']; ?>/<?php echo lang('year'); ?>" > <?php echo $a['qntty_unit']; ?>/<?php echo lang("year"); ?></td>
 					</tr>
 					<tr>
-						<td>€/ <?php echo lang("unit"); ?></td>
+						<td><?php echo $a['unit_cost']; ?>/ <?php echo lang("unit"); ?></td>
 						<td><input type="text" name="euunit" id="euunit-<?php echo $i; ?>" class="form-control" value="<?php echo ($a['cost']/$a['qntty']); ?>" ></td>
 					</tr>
 					<tr>
-						<td>EIP/ <?php echo lang("unit"); ?></td>
+						<td>EP/ <?php echo lang("unit"); ?></td>
 						<td><input type="text" name="eipunit" id="eipunit-<?php echo $i; ?>" class="form-control" value="<?php echo ($a['ep']/$a['qntty']); ?>" ></td>
 					</tr>
 					<tr>
@@ -598,14 +598,14 @@
 					</tr>
 					<tr>
 						<td><?php echo lang("unit"); ?></td>
-						<td>EIP/<?php echo lang("year"); ?></td>
+						<td>EP/<?php echo lang("year"); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo lang("marginalcost"); ?></td>
 						<td><input type="text" name="marcos" id="marcos-<?php echo $i; ?>" class="form-control"></td>	
 					</tr>
 					<tr>
-						<td><?php echo lang("unit"); ?></td><td>$/EIP</td>
+						<td><?php echo lang("unit"); ?></td><td>$/EP</td>
 					</tr>
 				</table>
 				<input type="submit" value="<?php echo lang("save"); ?>" class="btn btn-block btn-info" style="margin-top:20px;"/> -->

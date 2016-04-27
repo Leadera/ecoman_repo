@@ -98,14 +98,15 @@ print_r($allocation[0]);*/
 			<a class="btn btn-inverse btn-sm" href="<?php echo base_url('kpi_calculation/'.$this->uri->segment(2).'/'.$this->uri->segment(3)); ?>"><?php echo lang("gotokpi"); ?></a>
 			<a href="<?php echo base_url('new_flow/'.$this->uri->segment(3)); ?>/" class="btn btn-inverse btn-sm" id="cpscopinga"><?php echo lang("gotodataset"); ?></a>
 		</div>
-		<div class="col-md-4" id="sol4">
+		<div class="col-md-12" id="sol4">
 			<p><?php echo lang("cpscopingheading1"); ?></p>
 			<div class="label label-info" id="graph_text"></div>
-		  <div id="rect-demo-ana" style="border:2px solid #f0f0f0;">
-		    <div id="rect-demo"></div>
-	    </div>
+		  	<div id="rect-demo-ana" style="border:2px solid #f0f0f0;">
+		    	<div id="rect-demo"></div>
+	    	</div>
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-12">
+			<hr>
 			<p><?php echo lang("cpscopingheading2"); ?></p>
 			<table class="table table-bordered">
 			<tr>
