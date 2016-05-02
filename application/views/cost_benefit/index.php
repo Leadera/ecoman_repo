@@ -687,6 +687,8 @@
                                 )-(1)))
                         );
 
+                        if(isNaN($("#capex-1-<?php echo $i; ?>").val())){$("#capex-1-<?php echo $i; ?>").val("0");}
+
                         //OPEX old-2-1
                         $("#flow-opex-2-<?php echo $i; ?>").val($("#flow-specost-2-<?php echo $i; ?>").val()*$("#flow-value-2-<?php echo $i; ?>").val());
 
