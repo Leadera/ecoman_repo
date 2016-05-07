@@ -441,3 +441,14 @@ td {
 pre p{
     font-size:12px;
 }
+
+.helpheader{
+    padding: 10px;
+    font-weight: 600;
+    color: #009688;
+}
+
+.helpbody{
+    padding: 10px;
+    border-bottom: 1px solid #d0d0d0;
+}
