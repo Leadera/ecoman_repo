@@ -3,13 +3,21 @@
 <link rel="stylesheet" type="text/css" href="<?php echo asset_url('is/themes/icon.css'); ?>">
   
 <script type="text/javascript" src="<?php echo asset_url('is/jquery.easyui.min.js'); ?>"></script>
-<!--<script type="text/javascript" src="<?php echo asset_url('is/locale/easyui-lang-tr.js'); ?>"></script>-->
+<?php if($language == 'turkish') { ?>
+    <script type="text/javascript" src="<?php echo asset_url('is/locale/easyui-lang-tr.js'); ?>"></script>
+<?php }  ?>
 <!--<script type="text/javascript" src="<?php echo asset_url('is/locale_IS/IS_lang_tr.js'); ?>"></script>-->
 
 <script src="<?php echo asset_url('is/print/jQuery.print.js'); ?>"></script> 
 <script src="<?php echo asset_url('is/src/datagrid-filter.js'); ?>"></script>
 <script type="text/javascript" src="http://www.jeasyui.com/easyui/datagrid-detailview.js"></script>
-<script src="<?php echo asset_url('is/IS_js/js1_scen_slim2_project_base_mdf.js'); ?>"></script>
+
+
+<?php if($language == 'turkish') { ?>
+    <script src="<?php echo asset_url('is/IS_js/js1_scen_slim2_project_base_mdf_tr.js'); ?>"></script>
+<?php } else { ?>
+    <script src="<?php echo asset_url('is/IS_js/js1_scen_slim2_project_base_mdf.js'); ?>"></script>
+<?php }  ?>
 
 <!-- Zeynel Dağlı
     02-02-2015
@@ -55,8 +63,8 @@
                     <div style="margin-bottom:5px">
                         <!--<a href="#" onclick="deleteISPotential();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">Remove row</a>-->
                         
-                        <a href="#" onclick="closeMapPanel();event.preventDefault();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Close Map</a>
-                        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">Save</a>
+                        <a href="#" onclick="closeMapPanel();event.preventDefault();" class="easyui-linkbutton" iconCls="icon-remove" plain="true"><?php echo lang("closemap"); ?></a>
+                        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'"><?php echo lang("save"); ?></a>
                         
                     </div>
                 </div>
@@ -76,14 +84,14 @@
                 <!--<div data-options="region:'north',split:true,border:false" style="height:50px"></div>-->
                 <div data-options="region:'west',split:true,border:true" style="width:50%;height:300px">
                     <!--<div id="ccTable" class="easyui-layout" data-options="fit:true">-->
-                        <table  id="tt_grid_dynamic"  title="Step 3: Select IS potentials from table " style="height:300px">
+                        <table  id="tt_grid_dynamic"  title="Step 3: <?php echo lang("ispotentials"); ?> " style="height:300px">
                         
                         </table>
                     <!--</div>-->
                 </div>
                 <!--<div data-options="region:'east',split:true,border:false" style="width:50%"></div>-->
                 <div data-options="region:'center',border:true,split:true" style="width:50%;height:300px">
-                    <table id="tt_grid_dynamic5" class="easyui-datagrid" title="Step 4: Save IS potential(s)" style="height:300px"
+                    <table id="tt_grid_dynamic5" class="easyui-datagrid" title="Step 4: <?php echo lang("savetable"); ?>" style="height:300px"
                         data-options="singleSelect:false,
                                     collapsible:true,
                                     /*url:'datagrid_data1.json',*/
@@ -100,15 +108,15 @@
             
         </div>
         <!--<div data-options="region:'east',split:true" title="East" style="width:100px;"></div>-->
-        <div data-options="region:'west',split:true" title="Step 1: Flows" style="width:150px;">
+        <div data-options="region:'west',split:true" title="Step 1: <?php echo lang("flows"); ?>" style="width:150px;">
             <ul id="tt_tree" class="easyui-tree" ></ul>
             
         </div>
-        <div data-options="region:'center',title:'Industrial Symbiosis Potentials Analysis Settings',iconCls:'icon-ok'">
+        <div data-options="region:'center',title:'<?php echo lang("ispotentialssettings"); ?>',iconCls:'icon-ok'">
             
-            <div id="p" class="easyui-panel" title="Company/Flow Panel" style="margin: auto 0;"
+            <div id="p" class="easyui-panel" title="<?php echo lang("companyflowpanel"); ?>" style="margin: auto 0;"
                  data-options="iconCls:'icon-save',collapsible:true,closable:true,fit:true">
-                     <table id="tt_grid" data-options="fit:true" class="easyui-datagrid" title="Step 2: Select a company and calculate IS potentials" 
+                     <table id="tt_grid" data-options="fit:true" class="easyui-datagrid" title="Step 2: <?php echo lang("selectcompanycalculate"); ?>" 
                             style="height:440px" 
                            accesskey=""></table>
                 
@@ -122,19 +130,19 @@
     <div id="tb" style="padding:5px;height:auto">                   
                 <div style="margin-bottom:5px">
                     <!--<a href="#" onclick="loadData();" class="easyui-linkbutton" iconCls="icon-add" plain="true"></a>-->
-                    <a href="#add" onclick="getColumnsDynamic();getCompaniesISPotentials();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Calculate IS Potentials</a>
-                    <a href="#" onclick="event.preventDefault();saveAutoPotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true">Save a table with relevant IS potentials</a>
+                    <a href="#add" onclick="getColumnsDynamic();getCompaniesISPotentials();" class="easyui-linkbutton" iconCls="icon-edit" plain="true"><?php echo lang("selectcompanycalculate"); ?><?php echo lang("calculateispotentials"); ?></a>
+                    <a href="#" onclick="event.preventDefault();saveAutoPotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true"><?php echo lang("savetable"); ?></a>
                     
-                    <a href="#" onclick="event.preventDefault();selectAllCompanies();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Select all companies</a>
-                    <a href="#" onclick="event.preventDefault();unselectAllCompanies();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Unselect all companies</a>
+                    <a href="#" onclick="event.preventDefault();selectAllCompanies();" class="easyui-linkbutton" iconCls="icon-edit" plain="true"><?php echo lang("selectcompanycalculate"); ?><?php echo lang("selectallcompanies"); ?></a>
+                    <a href="#" onclick="event.preventDefault();unselectAllCompanies();" class="easyui-linkbutton" iconCls="icon-edit" plain="true"><?php echo lang("selectcompanycalculate"); ?><?php echo lang("unselectallcompanies"); ?></a>
                     <!--<a href="#" onclick="openIsScenarios();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Table management</a>-->
-                    <a href="#" id="printGrid" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
+                    <a href="#" id="printGrid" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true"><?php echo lang("print"); ?></a>
 
                 </div>     
                     
                  
                  <div>
-                    <label style="margin-right:7px;">IS Scenario Type:</label>
+                    <label style="margin-right:7px;"><?php echo lang("isscenariotype"); ?>:</label>
                     <input class="easyui-combobox" 
                        name="IS_search" id="IS_search"
                        data-options="
@@ -173,15 +181,15 @@
     <div id="tb5" style="padding:5px;height:auto">
         <div  style="margin-bottom:5px">
 
-            <a href="#" name="add" onclick="event.preventDefault();addRowAuto();" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add Potential IS</a>
-            <a href="#" onclick="event.preventDefault();deleteAllAutoPotential();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Clear all</a>
-            <a href="#" id="printTest" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
+            <a href="#" name="add" onclick="event.preventDefault();addRowAuto();" class="easyui-linkbutton" iconCls="icon-add" plain="true"><?php echo lang("addpotentialis"); ?></a>
+            <a href="#" onclick="event.preventDefault();deleteAllAutoPotential();" class="easyui-linkbutton" iconCls="icon-remove" plain="true"><?php echo lang("clearall"); ?></a>
+            <a href="#" id="printTest" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true"><?php echo lang("print"); ?></a>
 
         </div>
     </div>
     
     
-    <div id="saveWindowAuto" class="easyui-window" IS_synergy ="test" title="Save IS Scenario" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:500px;height:300px;padding:10px;">
+    <div id="saveWindowAuto" class="easyui-window" IS_synergy ="test" title="<?php echo lang("savetable"); ?>" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:500px;height:300px;padding:10px;">
         <div class="easyui-layout" data-options="fit:true">
             <!--<div data-options="region:'east',split:true" style="width:100px"></div>-->
             <div data-options="region:'center'" style="padding:10px;">
@@ -195,11 +203,11 @@
                 <form id="ff" method="post">
                 <div style="padding:10px 60px 20px 60px">
                     <div style="margin-bottom: 4px;margin-left: -8px;">
-                        <label style="margin-right:18px;">IS Scenario Name:</label>
+                        <label style="margin-right:18px;"><?php echo lang("isscenarioname"); ?>:</label>
                         <input id="tt_textAuto" class="easyui-textbox" type="text" name="name" data-options="required:true"></input>
                     </div>
                     <div style="margin-left:-8px;">
-                        <label style="margin-right:27px;">IS Scenario Type:</label>
+                        <label style="margin-right:27px;"><?php echo lang("isscenariotype"); ?>:</label>
                         <input class="easyui-combobox" 
                             name="IS" id="IS"
                             data-options="
@@ -215,7 +223,7 @@
                     </div>
                     <div style="margin-left:-8px;">
                         <label style="margin-right: 17px;
-                                        padding-bottom: 3px;">IS Scenario Status:</label>
+                                        padding-bottom: 3px;"><?php echo lang("isscenariostatus"); ?>:</label>
                         <input class="easyui-combobox" 
                             name="IS_status" id="IS_status"
                             data-options="
@@ -239,9 +247,9 @@
             </div>
             <div data-options="region:'south',border:false" style="text-align:right;padding:5px 0 0;">
                 <!--<input type="submit" value="Save IS potentials table">-->
-                <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="saveISScenarioAuto();" style="">Save IS potentials table</a>
+                <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="saveISScenarioAuto();" style=""><?php echo lang("addpotentialis"); ?></a>
                 <!--<a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="submitForm();" style="">Save IS potentials table</a>-->
-                <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="windowManualISQuitWithoutSaving();" style="">Quit without saving</a>
+                <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="windowManualISQuitWithoutSaving();" style=""><?php echo lang("quit"); ?></a>
             </div>
             </form>
         </div>
@@ -253,10 +261,10 @@
     <div id="tb6" style="padding:5px;height:auto">
         <div style="margin-bottom:5px">
             <!--<a href="#" onclick="deleteISPotential();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">Remove row</a>-->
-            <a href="#" onclick="event.preventDefault();saveAutoPotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true">Save a table with relevant IS potentials</a>
-            <a href="#" onclick="closeMapPanel();event.preventDefault();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Close Map</a>
-            <a href="#" onclick="event.preventDefault();deleteAllISPotentialAuto();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Clear all</a>
-            <a href="#" id="printGridPotentials" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true">Print</a>
+            <a href="#" onclick="event.preventDefault();saveAutoPotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true"><?php echo lang("savetable"); ?></a>
+            <a href="#" onclick="closeMapPanel();event.preventDefault();" class="easyui-linkbutton" iconCls="icon-remove" plain="true"><?php echo lang("closemap"); ?></a>
+            <a href="#" onclick="event.preventDefault();deleteAllISPotentialAuto();" class="easyui-linkbutton" iconCls="icon-remove" plain="true"><?php echo lang("clearall"); ?></a>
+            <a href="#" id="printGridPotentials" onclick="/*javascript:window.print();*/" class="easyui-linkbutton" data-options="iconCls:'icon-print'" plain="true"><?php echo lang("print"); ?></a>
         </div>
     </div>
 
