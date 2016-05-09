@@ -38,22 +38,22 @@
       <!--<ul class="nav navbar-nav navbar-left">-->
       <ul class="list-inline pull-left">
              <li class="head-li">
-                 <a href="<?php echo base_url('projects'); ?>"><i class="fa fa-globe"></i>Projects</a>
+                 <a href="<?php echo base_url('projects'); ?>"><i class="fa fa-globe"></i><?php echo lang("projects"); ?> </a>
              </li>
              <li class="head-li">
-                 <a href="<?php echo base_url('cpscoping'); ?>"><i class="fa fa-bar-chart"></i> Cleaner Production</a>
+                 <a href="<?php echo base_url('cpscoping'); ?>"><i class="fa fa-bar-chart"></i><?php echo lang("cleanerproduction"); ?> </a>
              </li>
              <li class="head-li">
-                 <a href="<?php echo base_url('isScopingPrjBaseMDF'); ?>"><i class="fa fa-sitemap"></i>Industrial Symbiosis</a>
+                 <a href="<?php echo base_url('isScopingPrjBaseMDF'); ?>"><i class="fa fa-sitemap"></i><?php echo lang("industrialsimbiosis"); ?></a>
              </li>
-                <li class="head-li">You are working on: <a href="<?php echo base_url('project/'.$this->session->userdata('project_id')); ?>"><?php echo $this->session->userdata('project_name'); ?></a>
+                <li class="head-li"><?php echo lang("workingon"); ?>: <a href="<?php echo base_url('project/'.$this->session->userdata('project_id')); ?>"><?php echo $this->session->userdata('project_name'); ?></a>
              </li>
             
       </ul>
       <ul class="list-inline pull-right">
-        <li><a href="<?php echo base_url('whatwedo'); ?>"><i class="fa fa-question-circle"></i> What We Do</a></li>
-        <li><a href="<?php echo base_url('functionalities'); ?>"><i class="fa fa-dashboard"></i> Functionalities</a></li>
-        <li><a href="<?php echo base_url('contactus'); ?>"><i class="fa fa-envelope"></i> Contact Us</a></li>
+        <li><a href="<?php echo base_url('whatwedo'); ?>"><i class="fa fa-question-circle"></i><?php echo lang("whatwedo"); ?> </a></li>
+        <li><a href="<?php echo base_url('functionalities'); ?>"><i class="fa fa-dashboard"></i><?php echo lang("functionalities"); ?> </a></li>
+        <li><a href="<?php echo base_url('contactus'); ?>"><i class="fa fa-envelope"></i><?php echo lang("contactus"); ?> </a></li>
         <?php
           //print_r($this->session->userdata('user_in'));
           if ($this->session->userdata('user_in') !== FALSE):
@@ -62,7 +62,7 @@
           <li class="head-li"><a href="<?php echo base_url('user/'.$tmp['username']); ?>" style="text-transform: capitalize;"><i class="fa fa-user"></i>
  <?php echo $tmp['username']; ?></a></li>
           <li class="head-li"><a href="<?php echo base_url('logout'); ?>"><i class="fa fa-sign-out"></i>
- Logout</a></li>
+ <?php echo lang("logout"); ?></a></li>
         <?php else: ?>
           <li class="head-li"><a href="<?php echo base_url('login'); ?>"><i class="fa fa-sign-in"></i>
  Login</a></li>
