@@ -287,6 +287,7 @@ class Isscoping extends CI_Controller {
                 
                 $data['userID'] = $this->session->userdata['user_in']['id'];
                 $data['project_id'] = $this->session->userdata['project_id'];
+                $data['language'] = $this->session->userdata('site_lang');
 		$this->load->view('template/header_IS');
 		$this->load->view('isscoping/isscenarios',$data); 
 		$this->load->view('template/footer');

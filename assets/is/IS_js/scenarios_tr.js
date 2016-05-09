@@ -183,9 +183,8 @@
                 collapsible:true,
                 url : '../../../Proxy/SlimProxy.php',
                 queryParams : {
-                        url : 'ISScenariosCns_scn',  
-                        consultant_id : parseInt(document.getElementById('consultant_id').value),
-                        prj_id : parseInt(document.getElementById('prj_id').value)
+                        url : 'ISScenarios',
+                        userID : $('#userID').val()
                 },
                 method:'get',
                 idField:'id',
@@ -225,7 +224,7 @@
                                 formatter:function(value,row,index){
                                     if (row.editing){
                                         var s = '<a href="#" onclick="saverow(this)">Kaydet</a> ';
-                                        var c = '<a href="#" onclick="cancelrow(this)">İptal et</a>';
+                                        var c = '<a href="#" onclick="cancelrow(this)">İptal</a>';
                                         return s+c;
                                     } else {
                                         //var e = '<a href="#" onclick="editrow(this)">Edit</a> ';
@@ -233,13 +232,12 @@
                                         console.log(row);
                                         
                                         //var x = '<button onclick="document.getElementById(\'myFrame\').setAttribute(\'src\',\'../IS_OpenLayers/map.php?to_company='+arrSplit[1]+'&from_company='+arrSplit[0]+'&prj_id='+document.getElementById('prj_id').value+'\')"> See on Map</button>';
-                                        var x = '<a href="#add" class="easyui-linkbutton" iconCls="icon-save" onclick="showMapPanelExpand();document.getElementById(\'myFrame\').setAttribute(\'src\',\'../IS_OpenLayers/map_prj.php?prj_id='+row.id+'\')"> Haritada Göster</a>';
+                                        var x = '<a href="#add" class="easyui-linkbutton" iconCls="icon-save" onclick="showMapPanelExpand();document.getElementById(\'myFrame\').setAttribute(\'src\',\'../IS_OpenLayers/map_prj.php?prj_id='+row.id+'\')">  Haritada Göster</a>';
                                         //return e+d;
                                         return x;
                                     }
                                 }
                             }
-                            
                         ]],
                         onBeforeEdit:function(index,row){
 					row.editing = true;
@@ -281,7 +279,7 @@
                                             },
                                             error: function(jqXHR , textStatus, errorThrown) {
                                               console.warn('error text status-->'+textStatus);
-                                              $.messager.alert('Güncelleme başarısız','Güncelleme başarısız!','error');
+                                              $.messager.alert('Güncelleme Başarısız','Güncelleme başarısız!','error');
                                             }
                                         });
                                     }
@@ -315,11 +313,8 @@
         
         $('#tt_grid_scenarios_details').datagrid({
                 singleSelect:true,
-                //url:'../../../Proxy/SlimProxy.php',
-                url : '../../../slim2_ecoman/prj.php/getFlowDetailsCns_prj',
-                queryParams : { url:'getFlowDetailsCns_prj',
-                                consultant_id : document.getElementById('consultant_id').value 
-                        },
+                url:'../../../Proxy/SlimProxy.php',
+                queryParams : { url:'getScenarioDetails_scn'},
                 collapsible:true,
                 method:'get',
                 idField:'id',
@@ -337,7 +332,6 @@
                             {field: 'qnttyunit',title: 'Birim'},
                             {field: 'fromflowtype',title: 'Akış Tipi'},
                             {field: 'tocompany',title: ' Firmaya'},
-                            {field: 'flowto',title: 'Akış'/*,sortable:true*/},
                             {field: 'qntty2',title: 'Miktar'},
                             {field: 'qntty2unit',title: 'Birim'},
                             {field: 'toflowtype',title: 'Akış Tipi'},
@@ -353,13 +347,12 @@
                             var regArr = {'from':splitArr[0],'to':splitArr[1],'flow':splitArr[2]};
                             $('#tt_grid_scenarios_details_edit').datagrid({
    
-                            //url:'../../../Proxy/SlimProxy.php',
-                            url : '../../../slim2_ecoman/prj.php/getFlowDetailsCns_prj',
-                            queryParams : { url:'getFlowDetailsCns_prj',
+                            url:'../../../Proxy/SlimProxy.php',
+                            queryParams : { url:'getFlowDetails_prj',
                                             items : JSON.stringify(regArr),
                                            }, 
                             });
-                        }, 
+                        },
                
         });
         
@@ -420,8 +413,9 @@
                     
                     
         $('#tt_grid_scenarios_details_edit').datagrid({
-                        //url:'../../../Proxy/SlimProxy.php',
-                        //queryParams : { url:'getFlowDetails_prj',},
+                        url:'../../../Proxy/SlimProxy.php',
+                        queryParams : { url:'getFlowDetails_prj',
+                                        /*items : JSON.stringify(regArr)*/},
                         //fitColumns:true,
                         singleSelect:false,
                         multiSelect : false,
@@ -589,6 +583,8 @@
                                     formatter:function(value,row,index){
                                             //var link = '<a href="new_flow/'+row.id+'" onclick="" class="easyui-linkbutton" iconCls="icon-back" plain="true">Dataset Management</a>';
                                             var link = '<a href="#" onclick="event.preventDefault();window.open(\'new_flow/'+row.id+'\', \'_blank\');" class="easyui-linkbutton" iconCls="icon-back" plain="true">Dataset Yönetimi</a>';
+                                            
+                                            
                                             return link
                                     }
                             }
@@ -634,7 +630,7 @@
                             } 
                             else {
                                 row.editing = false;
-                                $.messager.confirm('Onayla','Are you sure? Company Flow data will be updated...',function(r){
+                                $.messager.confirm('Confirm','Are you sure? Company Flow data will be updated...',function(r){
                                     if (r){
 
                                         console.log(row);

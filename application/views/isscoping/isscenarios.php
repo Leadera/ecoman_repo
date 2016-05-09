@@ -4,11 +4,18 @@
   
 <script type="text/javascript" src="<?php echo asset_url('is/jquery.easyui.min.js'); ?>"></script>
 <!--<script type="text/javascript" src="<?php echo asset_url('is/locale/easyui-lang-tr.js'); ?>"></script>-->
-<!--<script type="text/javascript" src="<?php echo asset_url('is/locale_IS/IS_lang_tr.js'); ?>"></script>-->
+<?php if($language == 'turkish') { ?>
+    <script type="text/javascript" src="<?php echo asset_url('is/locale/easyui-lang-tr.js'); ?>"></script>
+<?php }  ?>
 <script type="text/javascript" src="http://www.jeasyui.com/easyui/datagrid-detailview.js"></script>
 
 <!--<script src="<?php /*echo asset_url('is/src/datagrid-filter.js');*/ ?>"></script>-->
-<script src="<?php echo asset_url('is/IS_js/scenarios.js'); ?>"></script>
+
+<?php if($language == 'turkish') { ?>
+    <script src="<?php echo asset_url('is/IS_js/scenarios_tr.js'); ?>"></script>
+<?php } else { ?>
+    <script src="<?php echo asset_url('is/IS_js/scenarios.js'); ?>"></script>
+<?php }  ?>
 
 <!-- Zeynel Dağlı
     02-02-2015
@@ -52,14 +59,14 @@
                 
             </div>-->
             
-            <div id="p2" class="easyui-panel" title="IS Projects Panel" style="margin: auto 0;height:480px;"
+            <div id="p2" class="easyui-panel" title="<?php echo lang("isprojectspanel"); ?>" style="margin: auto 0;height:480px;"
                  data-options="iconCls:'icon-save',collapsible:true,closable:true">
-                   <table id="tt_grid_scenarios" data-options="fit:true"  title="IS Scenarios" style=""> 
+                   <table id="tt_grid_scenarios" data-options="fit:true"  title="<?php echo lang("isscenarios"); ?>" style=""> 
                 </table>  
                 
             </div>
             
-            <div id="p" class="easyui-panel" title="IS Companies Location" 
+            <div id="p" class="easyui-panel" title="<?php echo lang("isscompanieslocation"); ?>" 
                  data-options="collapsed:true"   
                  style="margin: auto 0;height:400px">  
                 <a href="#" name="add" onclick="event.preventDefault();" 
@@ -72,16 +79,16 @@
                   </iframe>
             </div>
             
-            <div id="p3" class="easyui-panel" title="IS Project Details" style="margin: auto 0;height:300px;"
+            <div id="p3" class="easyui-panel" title="<?php echo lang("isprojectdetails"); ?>" style="margin: auto 0;height:300px;"
                  data-options="iconCls:'icon-save',collapsible:true,closable:true">
-                   <table id="tt_grid_scenarios_details" data-options="fit:true"   title="IS Scenario Details" style=""> 
+                   <table id="tt_grid_scenarios_details" data-options="fit:true"   title="<?php echo lang("isscenariodetails"); ?>" style=""> 
                 </table>  
                 
             </div>
             
-            <div id="p4" class="easyui-panel" title="IS Project Edit Details" style="margin: auto 0;height:200px;"
+            <div id="p4" class="easyui-panel" title="<?php echo lang("isprojecteditdetails"); ?>" style="margin: auto 0;height:200px;"
                  data-options="iconCls:'icon-save',collapsible:true,closable:true">
-                   <table id="tt_grid_scenarios_details_edit" data-options="fit:true"   title="IS Scenario Details" style=""> 
+                   <table id="tt_grid_scenarios_details_edit" data-options="fit:true"   title="<?php echo lang("isscenariodetails"); ?>" style=""> 
                 </table>  
                 
             </div>
@@ -94,10 +101,10 @@
              <div id="tb" style="padding:5px;height:auto">
                 <div style="margin-bottom:5px">
                     <!--<a href="#" onclick="loadData();" class="easyui-linkbutton" iconCls="icon-add" plain="true"></a>-->
-                    <a href="#" name="del" onclick="getColumnsDynamic();getCompaniesISPotentials();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Scenario Details</a>
-                    <a href="<?php echo base_url('isScopingPrjBaseMDF'); ?>" onclick="" class="easyui-linkbutton" iconCls="icon-back" plain="true">GoTo IS Manual Page</a>
-                    <a href="<?php echo base_url('isScopingAutoPrjBaseMDF'); ?>" onclick="" class="easyui-linkbutton" iconCls="icon-back" plain="true">GoTo IS Auto Page</a>
-                    <a href="#" onclick="closeMapPanel();event.preventDefault();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Close Map</a>
+                    <a href="#" name="del" onclick="getColumnsDynamic();getCompaniesISPotentials();" class="easyui-linkbutton" iconCls="icon-edit" plain="true"><?php echo lang("isscenariodetails"); ?></a>
+                    <a href="<?php echo base_url('isScopingPrjBaseMDF'); ?>" onclick="" class="easyui-linkbutton" iconCls="icon-back" plain="true"><?php echo lang("gotoismanualpage"); ?></a>
+                    <a href="<?php echo base_url('isScopingAutoPrjBaseMDF'); ?>" onclick="" class="easyui-linkbutton" iconCls="icon-back" plain="true"><?php echo lang("gotoisautopage"); ?></a>
+                    <a href="#" onclick="closeMapPanel();event.preventDefault();" class="easyui-linkbutton" iconCls="icon-remove" plain="true"><?php echo lang("closemap"); ?></a>
                     <!--<a href="#" onclick="saveAutoPotentials();" class="easyui-linkbutton" iconCls="icon-save" plain="true">Save a table with relevant IS potentials</a>
                     <a href="#" onclick="selectAllCompanies();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Select all companies</a>
                     <a href="#" onclick="openIsScenarios();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">IS Table management</a>
@@ -108,7 +115,7 @@
                  
                  <div id="tb_scenario_details" style="padding:5px;height:auto">
                 <div style="margin-bottom:5px">
-                    Scenario Name : <input id="tt_scenario_name" class="easyui-textbox" style="width:400px" data-options="
+                    <?php echo lang("isscenarioname"); ?> : <input id="tt_scenario_name" class="easyui-textbox" style="width:400px" data-options="
                             //readonly : true,
                             prompt: 'Scenario name will be displayed here!',
                             iconWidth: 22,
