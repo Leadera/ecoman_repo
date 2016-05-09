@@ -76,7 +76,8 @@
         <li class="navtus" data-rel="projects"><a id="l3" href="#" ><i class="fa fa-globe"></i> <?php echo lang("projects"); ?></a></li>
         <li class="navtus" data-rel="analysis"><a id="l4" href="#" ><i class="fa fa-recycle"></i> <?php echo lang("analysis"); ?></a></li>
         <li class="navtus" data-rel="reporting"><a id="l5" href="#" style="color:white;"><i class="fa fa-pie-chart"></i> <?php echo lang("reporting"); ?></a></li>
-      </ul>
+        <li ><a id="l5" href="<?php echo base_url('help'); ?>" style="color:white;"><i class="fa fa-question-circle"></i> <?php echo lang("help"); ?></a></li>
+      </ul> 
     </nav>
 
     <div class="content-container" style="margin-bottom: 20px;display: block;height: 52px;">
@@ -176,6 +177,7 @@
       <?php endif ?>
       <li><a href="<?php echo base_url('allreports'); ?>"><i class="fa fa-globe"></i> <?php echo lang("allreports"); ?></a></li>
     </ul>
+
 
 
   </div>

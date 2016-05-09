@@ -10,6 +10,8 @@ $lang["whatwedo"]             = "Ne yapıyoruz?";
 $lang["functionalities"]      = "Sistem Özellikleri";
 $lang["consultants"]          = "Danışmanlar";
 $lang["reporting"]            = "Raporlama";
+$lang["help"]            	  = "Yardım";
+$lang["usermanual"]           = "Yardım Kitapcığını İndir";
 
 $lang["createreport"]         = "Rapor Oluştur";
 $lang["allreports"]           = "Tüm Raporlar";
