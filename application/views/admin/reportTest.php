@@ -41,18 +41,18 @@
                 if(jsonObj['found']==true)
                 {
                     if(jsonObj["id"]>0) {
-                         noty({text: 'Report updated succesfully', type: 'success'});
+                         noty({text: '<?php echo lang("notyreportupdated"); ?>', type: 'success'});
                          $('#tt_grid').datagrid('reload');
                          $.messager.progress('close');
                      } else {
-                         noty({text: 'Report name has been inserted before, please enter another report name', type: 'warning'});
+                         noty({text: '<?php echo lang("notyreportinsertedbefore"); ?>', type: 'warning'});
                          $('#tt_grid').datagrid('reload');
                          $.messager.progress('close');
                      }
 
                 } else if(data["found"]==false){
                     //$.messager.alert('Save Error', 'Error occured');
-                    noty({text: 'Report could not be  updated ', type: 'error'}); 
+                    noty({text: '<?php echo lang("notyreportnotupdated"); ?>', type: 'error'}); 
                     $.messager.progress('close');	// hide progress bar while submit successfully
                 }
 
@@ -152,18 +152,18 @@
                     if(jsonObj['found']==true)
                     {
                         if(jsonObj["id"]>0) {
-                             noty({text: 'Report inserted succesfully', type: 'success'});
+                             noty({text: '<?php echo lang("notyreportinserted"); ?>', type: 'success'});
                              $('#tt_grid').datagrid('reload');
                              $.messager.progress('close');
                          } else {
-                             noty({text: 'Report has been inserted before, please enter another report name', type: 'warning'});
+                             noty({text: '<?php echo lang("notyreportinsertedbefore"); ?>', type: 'warning'});
                              $('#tt_grid').datagrid('reload');
                              $.messager.progress('close');
                          }
 
                     } else if(data["found"]==false){
                         //$.messager.alert('Save Error', 'Error occured');
-                        noty({text: 'Report could not be  inserted ', type: 'error'}); 
+                        noty({text: '<?php echo lang("notyreportnotinserted"); ?>', type: 'error'}); 
                         $.messager.progress('close');	// hide progress bar while submit successfully
                     }
 
@@ -171,7 +171,7 @@
                 });
                 $('#ff').submit();
         }  else {
-                noty({text: 'Please select report property from report attributes tree', type: 'warning'});
+                noty({text: '<?php echo lang("notyselectreportattribute"); ?>', type: 'warning'});
         }
          
         
@@ -191,22 +191,22 @@
                   if(data["found"]==true) {
                       //$.messager.alert('Success','Success inserted Flow family!','info');
                       if(data["id"]>0) {
-                          noty({text: 'Report inserted succesfully', type: 'success'});
+                          noty({text: '<?php echo lang("notyreportinserted"); ?>', type: 'success'});
                           $('#tt_tree').tree('reload');
                       } else {
-                          noty({text: 'Report has been inserted before, please enter another report name', type: 'warning'});
+                          noty({text: '<?php echo lang("notyreportinsertedbefore"); ?>', type: 'warning'});
                           $('#tt_tree').tree('reload');
                       }
                       
                   } else if(data["found"]==false) {         
                       //$.messager.alert('Insert failed','Failed to insert Flow Family !','error');
-                      noty({text: 'Report could not be  inserted ', type: 'error'});  
+                      noty({text: '<?php echo lang("notyreportnotinserted"); ?>', type: 'error'});  
                       $('#tt_tree').tree('reload');
                   }   
                 },
                 error: function(jqXHR , textStatus, errorThrown) {
                   //console.warn('error text status-->'+textStatus);
-                  noty({text: 'Report could not be  inserted ', type: 'error'});  
+                  noty({text: '<?php echo lang("notyreportnotinserted"); ?>', type: 'error'});  
                 }
             });
         }
@@ -232,21 +232,21 @@
             singleSelect : true,
             scroll : true,
             columns:[[
-                  {field:'report_name',title:'Report Name',width:100,sortable:true},
-                  {field:'r_date',title:'Report Date',width:100,sortable:true},
-                  {field:'company_name',title:'Company',width:100,sortable:true},
-                  {field:'company_id',title:'Company ID',width:100,sortable:true,hidden:true},
-                  {field:'user_name',title:'User Name',width:100},
-                  {field:'name',title:'Name',width:100},
-                  {field:'surname',title:'Surname',width:100},
-                  {field:'report',title:'Report',width:100,align:'center',
+                  {field:'report_name',title:'<?php echo lang("report"); ?>',width:100,sortable:true},
+                  {field:'r_date',title:'<?php echo lang("reportdate"); ?>',width:100,sortable:true},
+                  {field:'company_name',title:'<?php echo lang("company"); ?>',width:100,sortable:true},
+                  {field:'company_id',title:'<?php echo lang("company"); ?> ID',width:100,sortable:true,hidden:true},
+                  {field:'user_name',title:'<?php echo lang("username"); ?>',width:100},
+                  {field:'name',title:'<?php echo lang("name"); ?>',width:100},
+                  {field:'surname',title:'<?php echo lang("surname"); ?>',width:100},
+                  {field:'report',title:'<?php echo lang("report"); ?>',width:100,align:'center',
                     formatter:function(value,row,index){
                         //console.log('row satır id bilgileri'+row.id);
 
                         var x = '<a href="#add" class="easyui-linkbutton" \n\
                                     iconCls="icon-save" \n\
                                     onclick="document.getElementById(\'myFrame\').setAttribute(\'src\',\n\
-                                    \'http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?Configuration_ID='+row.id+'&Rapor_ID=1\')"> See Report</a>';
+                                    \'http://88.249.18.205:8445/jasperPhpEcoman/master/index.php?Configuration_ID='+row.id+'&Rapor_ID=1\')"><?php echo lang("seereport"); ?></a>';
                         //return e+d;
                         return x;        
                         
@@ -271,7 +271,7 @@
                         //console.log('row satır name bilgileri'+row.report_name);
                         var x = '<a href="" class="easyui-linkbutton" \n\
                                     iconCls="icon-save" \n\
-                                    onclick="reportEditView(\''+row.report_name+'\','+row.id+', \''+row.company_name+'\', '+row.company_id+' );event.preventDefault();"> Edit</a>';
+                                    onclick="reportEditView(\''+row.report_name+'\','+row.id+', \''+row.company_name+'\', '+row.company_id+' );event.preventDefault();"><?php echo lang("edit"); ?></a>';
                         //return e+d;
                         return x;
                         
@@ -435,10 +435,10 @@
                                     <ul class="nav navbar-nav navbar-left ust-nav" style="margin-left: 37px;
                                                                                           font-size: 20px;  
                                                                                           font-weight: bold;">
-                                        <li class="navtus" data-rel="profiles"><a style="border:0px;font-size:18px;" id="l1" href="<?php echo base_url('users'); ?>"><span style="margin-top:4px;" class="icon16 icon-white icon-user"></span> Profiles</a></li>
-                                        <li class="navtus" data-rel="companies"><a style="border:0px;font-size:18px;" id="l2" href="<?php echo base_url('companies'); ?>"><span style="margin-top:4px;" class="icon16 icon-white icon-calendar"></span> Companies</a></li>
-                                        <li class="navtus" data-rel="projects"><a style="border:0px;font-size:18px;" id="l3" href="<?php echo base_url('projects'); ?>"><span style="margin-top:4px;" class="icon16 icon-white icon-globe"></span> Projects</a></li>
-                                        <li class="navtus" data-rel="analysis"><a style="border:0px;font-size:18px;" id="l4" href="<?php echo base_url('cost_benefit'); ?>" style="background-color: rgb(132, 191, 195);"><span style="margin-top:4px;" class="icon16 icon-white icon-th"></span> Analysis</a></li>
+                                        <li class="navtus" data-rel="profiles"><a style="border:0px;font-size:18px;" id="l1" href="<?php echo base_url('users'); ?>"><span style="margin-top:4px;" class="icon16 icon-white icon-user"></span> <?php echo lang("profiles"); ?></a></li>
+                                        <li class="navtus" data-rel="companies"><a style="border:0px;font-size:18px;" id="l2" href="<?php echo base_url('companies'); ?>"><span style="margin-top:4px;" class="icon16 icon-white icon-calendar"></span> <?php echo lang("companies"); ?></a></li>
+                                        <li class="navtus" data-rel="projects"><a style="border:0px;font-size:18px;" id="l3" href="<?php echo base_url('projects'); ?>"><span style="margin-top:4px;" class="icon16 icon-white icon-globe"></span> <?php echo lang("projects"); ?></a></li>
+                                        <li class="navtus" data-rel="analysis"><a style="border:0px;font-size:18px;" id="l4" href="<?php echo base_url('cost_benefit'); ?>" style="background-color: rgb(132, 191, 195);"><span style="margin-top:4px;" class="icon16 icon-white icon-th"></span> <?php echo lang("analysis"); ?></a></li>
                                         
                                     </ul>
                                 </div>  
@@ -453,7 +453,7 @@
                                                                                           font-weight: bold;
                                                                                           margin: 25px 0px 25px 0px;">  
                                         
-                                        <li class="navtus" data-rel="reporting"><a style="border:0px;font-size:18px;color:white;" id="l5" href="<?php echo base_url('allreports'); ?>" ><span style="margin-top:4px;" class="icon16 icon-white icon-list-alt"></span> Reporting</a></li>
+                                        <li class="navtus" data-rel="reporting"><a style="border:0px;font-size:18px;color:white;" id="l5" href="<?php echo base_url('allreports'); ?>" ><span style="margin-top:4px;" class="icon16 icon-white icon-list-alt"></span> <?php echo lang("reporting"); ?></a></li>
                                     </ul>
                                 </div> 
                                 
@@ -485,9 +485,9 @@
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="<?php echo base_url('user'); ?>/<?php echo $userName; ?>">Profile</a></li>
+						<li><a href="<?php echo base_url('user'); ?>/<?php echo $userName; ?>"><?php echo lang("profiles"); ?></a></li>
 						<li class="divider"></li>
-						<li><a href="<?php echo base_url('logout'); ?>">Logout</a></li>
+						<li><a href="<?php echo base_url('logout'); ?>"><?php echo lang("logout"); ?></a></li>
 					</ul>
 				</div>
                                 <div style="clear:both;"></div>
@@ -513,13 +513,13 @@
                 <div style="float:left;
                             margin: 17px 20px 16px 179px;">
                     <a style="border:0px;font-size:18px;color:#b30000" id="l1" href="<?php echo base_url('createreport'); ?>">
-                        <span style="margin-top:4px;" class="icon16 icon-black icon-picture"></span> Create Report
+                        <span style="margin-top:4px;" class="icon16 icon-black icon-picture"></span> <?php echo lang('createreport'); ?>
                     </a>
                 </div>
                 <div style="float:left;
                             margin: 17px 20px 16px 20px;">
                                 <a style="border:0px;font-size:18px;color:#fff" id="l1" href="<?php echo base_url('allreports'); ?>">
-                                    <span style="margin-top:4px;" class="icon16 icon-black icon-list-alt"></span> All Reports
+                                    <span style="margin-top:4px;" class="icon16 icon-black icon-list-alt"></span> <?php echo lang('allreports'); ?>
                                 </a>
                 </div>
                 <div style="clear:both;"></div>
@@ -543,34 +543,33 @@
 			<div class="span2 main-menu-span">
 				<div class="well nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
-						<li class="nav-header hidden-tablet">Main Menu</li>
-						<li><a class="ajax-link" href="<?php echo base_url(); ?>"><i class="icon-home"></i><span class="hidden-tablet"> Main Page</span></a></li>
+						<li class="nav-header hidden-tablet"><?php echo lang("mainmenu"); ?></li>
+						<li><a class="ajax-link" href="<?php echo base_url(); ?>"><i class="icon-home"></i><span class="hidden-tablet"> <?php echo lang("mainpage"); ?></span></a></li>
                                                 
-                                                <li><a class="ajax-link" href="<?php echo base_url('users'); ?>"><i class="icon-user"></i><span class="hidden-tablet">Consultants</span></a></li>
-                                                <li><a class="ajax-link" href="<?php echo base_url('user'); ?>/<?php echo $userName; ?>"><i class="icon-user"></i><span class="hidden-tablet">My Profile</span></a></li>
-                                                <li><a class="ajax-link" href="<?php echo base_url('profile_update'); ?>"><i class="icon-edit"></i><span class="hidden-tablet">Edit Profile</span></a></li>
-                                                
-                                                
-						<li><a class="ajax-link" href="<?php echo base_url('mycompanies'); ?>"><i class="icon-calendar"></i><span class="hidden-tablet">My Companies</span></a></li>
-                                                <li><a class="ajax-link" href="<?php echo base_url('projectcompanies'); ?>"><i class="icon-calendar"></i><span class="hidden-tablet">Project Companies</span></a></li>
-                                                <li><a class="ajax-link" href="<?php echo base_url('companies'); ?>"><i class="icon-calendar"></i><span class="hidden-tablet">All Companies</span></a></li>
-                                                <li><a class="ajax-link" href="<?php echo base_url('newcompany'); ?>"><i class="icon-edit"></i><span class="hidden-tablet">Create Company</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('users'); ?>"><i class="icon-user"></i><span class="hidden-tablet"><?php echo lang("consultants"); ?></span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('user'); ?>/<?php echo $userName; ?>"><i class="icon-user"></i><span class="hidden-tablet"><?php echo lang("myprofile"); ?></span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('profile_update'); ?>"><i class="icon-edit"></i><span class="hidden-tablet"><?php echo lang("updateprofile"); ?></span></a></li>
                                                 
                                                 
-                                                <li><a class="ajax-link" href="<?php echo base_url('myprojects'); ?>"><i class="icon-globe"></i><span class="hidden-tablet">My Projects</span></a></li>
-                                                <li><a class="ajax-link" href="<?php echo base_url('projects'); ?>"><i class="icon-globe"></i><span class="hidden-tablet">All Projects</span></a></li>
-                                                <li><a class="ajax-link" href="<?php echo base_url('newproject'); ?>"><i class="icon-edit"></i><span class="hidden-tablet">Create Project</span></a></li>
+						<li><a class="ajax-link" href="<?php echo base_url('mycompanies'); ?>"><i class="icon-calendar"></i><span class="hidden-tablet"><?php echo lang("mycompanies"); ?></span></a></li>
+                                                <!--<li><a class="ajax-link" href="<?php echo base_url('projectcompanies'); ?>"><i class="icon-calendar"></i><span class="hidden-tablet"><?php echo lang("myprofile"); ?>Project Companies</span></a></li>-->
+                                                <li><a class="ajax-link" href="<?php echo base_url('companies'); ?>"><i class="icon-calendar"></i><span class="hidden-tablet"><?php echo lang("allcompanies"); ?></span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('newcompany'); ?>"><i class="icon-edit"></i><span class="hidden-tablet"><?php echo lang("createcompany"); ?></span></a></li>
                                                 
                                                 
-						<li><a class="ajax-link" href="<?php echo base_url('cpscoping'); ?>"><i class="icon-th"></i><span class="hidden-tablet">CP-Potential Identiification</span></a></li>
-                                                <li><a class="ajax-link" href="<?php echo base_url('cost_benefit'); ?>"><i class="icon-th"></i><span class="hidden-tablet"> Cost-Benefit</span></a></li>
-                                                <li><a class="ajax-link" href="<?php echo base_url('ecotracking'); ?>"><i class="icon-th"></i><span class="hidden-tablet"> Eco-Tracking</span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('myprojects'); ?>"><i class="icon-globe"></i><span class="hidden-tablet"><?php echo lang("myprojects"); ?></span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('projects'); ?>"><i class="icon-globe"></i><span class="hidden-tablet"><?php echo lang("allprojects"); ?></span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('newproject'); ?>"><i class="icon-edit"></i><span class="hidden-tablet"><?php echo lang("createproject"); ?></span></a></li>
                                                 
-                                                <li><a class="ajax-link" href="<?php echo base_url('isScopingPrjBaseMDF'); ?>"><i class="icon-th"></i><span class="hidden-tablet"> IS</span></a></li>
-                                                <li><a class="ajax-link" href="<?php echo base_url('map'); ?>"><i class="icon-th"></i><span class="hidden-tablet"> GIS</span></a></li>
                                                 
+						<li><a class="ajax-link" href="<?php echo base_url('cpscoping'); ?>"><i class="icon-th"></i><span class="hidden-tablet"><?php echo lang("cpidentification"); ?></span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('cost_benefit'); ?>"><i class="icon-th"></i><span class="hidden-tablet"><?php echo lang("costbenefitanalysis"); ?> </span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('ecotracking'); ?>"><i class="icon-th"></i><span class="hidden-tablet"><?php echo lang("ecotracking"); ?> </span></a></li>
+                                                
+                                                <li><a class="ajax-link" href="<?php echo base_url('isScopingPrjBaseMDF'); ?>"><i class="icon-th"></i><span class="hidden-tablet"><?php echo lang("industrialsimbiosis"); ?> </span></a></li>
+                                                <li><a class="ajax-link" href="<?php echo base_url('map'); ?>"><i class="icon-th"></i><span class="hidden-tablet"><?php echo lang("gis"); ?> </span></a></li>
                            
-						<li><a class="ajax-link" href="<?php echo base_url('logout'); ?>"><i class="icon-ban-circle"></i><span class="hidden-tablet"> Log Out</span></a></li>
+						<li><a class="ajax-link" href="<?php echo base_url('logout'); ?>"><i class="icon-ban-circle"></i><span class="hidden-tablet"><?php echo lang("logout"); ?> </span></a></li>
 						<!--<li><a class="ajax-link" href="#"><i class="icon-font"></i><span class="hidden-tablet">Logs</span></a></li>
 						<li><a class="ajax-link" href="#"><i class="icon-picture"></i><span class="hidden-tablet"> Admin Reports</span></a></li>
 						<li class="nav-header hidden-tablet">Secondary Menu</li>
@@ -601,10 +600,10 @@
 			<div>
 				<ul class="breadcrumb">
 					<li>
-						<a href="/ecoman">Main Page</a> <span class="divider">/</span>
+						<a href="/ecoman"><?php echo lang("mainpage"); ?></a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="<?php echo base_url('createreport'); ?>">Reports</a>
+						<a href="<?php echo base_url('createreport'); ?>"><?php echo lang("createreport"); ?></a>
 					</li>
 				</ul>
 			</div>
@@ -616,28 +615,28 @@
 			<div class="sortable row-fluid">
                             <a  id='toplam_anket_link' data-rel="" title="" class="well span3 top-block" href="#">
 					<span class="icon32 icon-red icon-user"></span>
-					<div>Total users count</div>
+					<div><?php echo lang("totaluserscount"); ?></div>
 					<div id='totalUsers'></div>
 					<span id ='totalUsers_by_today' class="notification"></span>
 				</a> 
 
 				<a data-rel="tooltip" title="" class="well span3 top-block" href="#">
 					<span class="icon32 icon-color icon-inbox"></span>
-					<div>Total projects count</div>
+					<div><?php echo lang("totalprojectscount"); ?></div>
 					<div id='totalProjects'></div>
 					<span id='totalProjects_by_today' class="notification green"></span>
 				</a>
 
 				<a data-rel="tooltip" title="" class="well span3 top-block" href="#">
 					<span class="icon32 icon-color icon-cart"></span>
-					<div>Total IS projects count</div>
+					<div><?php echo lang("totalisprojectscount"); ?></div>
 					<div id="totalISProjects"></div>
 					<span class="notification yellow"></span>
 				</a>
 				
 				<a data-rel="tooltip" title="" class="well span3 top-block" href="#">
 					<span class="icon32 icon-color icon-wrench"></span>
-					<div>Total products</div>
+					<div><?php echo lang("totalproducts"); ?></div>
 					<div id="totalProducts"></div>
 					<span class="notification red"></span>
 				</a>
@@ -647,7 +646,7 @@
                         <div class="row-fluid sortable">
                             <div class="box span4">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-user"></i>Report Attributes</h2>
+						<h2><i class="icon-user"></i><?php echo lang("reportattr"); ?></h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
 							<!--<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>-->
@@ -664,7 +663,7 @@
                                 
                                 <div class="box span8">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-user"></i> Save Report</h2>
+						<h2><i class="icon-user"></i><?php echo lang("savereport"); ?> </h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
 							<!--<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>-->
@@ -672,19 +671,19 @@
 					</div>
 					
                                         <div class="box-content" style='padding: 0px;'>
-                                                <div id="p2" class="easyui-panel" style="height:250px;" title="Write a report name and pick a company" 
+                                                <div id="p2" class="easyui-panel" style="height:250px;" title="<?php echo lang("notywritereportnameandcompany"); ?>" 
                                                      style="margin: auto 0;height:480px;"
                                                     data-options="iconCls:'icon-save',collapsible:true,closable:true">
                                                       <form id="ff" method="post">
                                                         <div style="padding:10px 60px 20px 60px">
                                                             <div style="margin-bottom: 4px;margin-left: -8px;">
-                                                                <label style="margin-right:18px;">Report Name:</label>
+                                                                <label style="margin-right:18px;"><?php echo lang("report"); ?>:</label>
                                                                 <input id="tt_textReportName" class="easyui-textbox" type="text" name="name" data-options="required:true"></input>
                                                             </div>
                                                             
                                                             <div style="margin-left:-8px;">
                                                                 <label style="margin-right: 17px;
-                                                                                padding-bottom: 3px;">Company:</label>
+                                                                                padding-bottom: 3px;"><?php echo lang("company"); ?>:</label>
                                                                 <input class="easyui-combobox" 
                                                                     name="company_dropdown" id="company_dropdown"
                                                                     data-options="
@@ -712,17 +711,17 @@
                                                            style='margin-left: 50px;'
                                                            data-options="iconCls:'icon-ok'" 
                                                            href="javascript:void(0)" 
-                                                           onclick="saveReport();" style="">Save Report</a>
+                                                           onclick="saveReport();" style=""><?php echo lang("savereport"); ?></a>
                                                         <a class="easyui-linkbutton" id="updateReport" name="updateReport"
                                                            style='margin-left: 7px;'
                                                            data-options="iconCls:'icon-ok',disabled:true" 
                                                            href="javascript:void(0)" 
-                                                           onclick="updateReport();" style="">Update Report</a>
+                                                           onclick="updateReport();" style=""><?php echo lang("updatereport"); ?></a>
                                                         <a class="easyui-linkbutton" 
                                                            style='margin-left: 7px;'
                                                            data-options="iconCls:'icon-ok'" 
                                                            href="javascript:void(0)" 
-                                                           onclick="resetFormReport();" style="">Reset Form</a>
+                                                           onclick="resetFormReport();" style=""><?php echo lang("resetform"); ?></a>
                                                         <!--<a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="submitForm();" style="">Save IS potentials table</a>-->
                                                         <!--<a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="windowManualISQuitWithoutSaving();" style="">Quit without saving</a>-->
                                                     </div>
@@ -740,7 +739,7 @@
                         <div class="row-fluid sortable">
                             <div class="box span12">
                                     <div class="box-header well" data-original-title>
-                                            <h2><i class="icon-th"></i>  Reports Datagrid</h2>
+                                            <h2><i class="icon-th"></i><?php echo lang("allreports"); ?> </h2>
                                             <div class="box-icon">
                                                     <!--<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>-->
                                                     <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
@@ -752,11 +751,11 @@
                                             
                                             <div class="span12">
                                                 <div id="p2" class="easyui-panel"  
-                                                     title="Reports already prepared" 
+                                                     title="<?php echo lang("reportsalreadyprepared"); ?>" 
                                                      style="margin: auto 0;height:350px;"
                                                     data-options="iconCls:'icon-save',collapsible:true,closable:true">
                                                     <table id="tt_grid" data-options="" 
-                                                           title="Company Report Sets" 
+                                                           title="<?php echo lang("companyreportsets"); ?>" 
                                                                contenteditable="" style="height:440px;" 
                                                       accesskey="">
                                                     </table>
@@ -774,7 +773,7 @@
                         <div class="row-fluid sortable">
                             <div class="box span12">
                                     <div class="box-header well" data-original-title>
-                                            <h2><i class="icon-th"></i>  Report</h2>
+                                            <h2><i class="icon-th"></i><?php echo lang("report"); ?>  </h2>
                                             <div class="box-icon">
                                                     <!--<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>-->
                                                     <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
@@ -816,11 +815,11 @@
 				<h3>Settings</h3>
 			</div>
 			<div class="modal-body">
-				<p>Here settings can be configured...</p> 
+				<p><?php echo lang("totalproducts"); ?>Here settings can be configured...</p> 
 			</div>
 			<div class="modal-footer">
-				<a href="#" class="btn" data-dismiss="modal">Close</a>
-				<a href="#" class="btn btn-primary">Save changes</a>
+				<a href="#" class="btn" data-dismiss="modal"><?php echo lang("totalproducts"); ?>Close</a>
+				<a href="#" class="btn btn-primary"><?php echo lang("totalproducts"); ?>Save changes</a>
 			</div>
 		</div>
 

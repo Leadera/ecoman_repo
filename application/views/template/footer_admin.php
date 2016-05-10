@@ -67,7 +67,9 @@
 	<!-- application script for Charisma demo -->
 	<script src="<?php echo asset_url('admin/charisma.js'); ?>"></script>
         <script language="JavaScript" type="text/javascript" src="<?php echo asset_url('is/jquery.easyui.min.js'); ?>"></script>
-
+        <?php if($language == 'turkish') { ?>
+            <script type="text/javascript" src="<?php echo asset_url('is/locale/easyui-lang-tr.js'); ?>"></script>
+      <?php }  ?>
 
     </body>
 </html>

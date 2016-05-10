@@ -56,13 +56,7 @@
       <script src="<?php echo asset_url('admin/jquery-ui-1.8.21.custom.min.js'); ?>"></script>
       <script src="<?php echo asset_url('js/bootstrap.min.js'); ?>"></script>
       <script type="text/javascript" src="<?php echo asset_url('is/jquery.easyui.min.js'); ?>"></script>-->
-      <?php   if($this->session->userdata['site_lang']==null || $this->session->userdata['site_lang']=='') { ?>
-        <script type="text/javascript" src="<?php echo asset_url('is/locale/easyui-lang-en.js'); ?>"></script>
-      <?php  }else if($this->session->userdata['site_lang']=='turkish'){ ?>
-            <script type="text/javascript" src="<?php echo asset_url('is/locale/easyui-lang-tr.js'); ?>"></script>
-      <?php  }else { ?>
-            <script type="text/javascript" src="<?php echo asset_url('is/locale/easyui-lang-en.js'); ?>"></script>
-      <?php  } ?>
+      
       <!--[if lt IE 9]><script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.0.8/es5-shim.min.js"></script><![endif]-->
       <?php if($this->uri->segment(1)!="isscoping" and $this->uri->segment(1)!="isscopingauto"
         and $this->uri->segment(1)!="isScopingAutoPrjBase"
