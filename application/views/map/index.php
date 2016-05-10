@@ -14,24 +14,25 @@
 
 <!-- External lib: GeoExt 1.0 -->
 <script type="text/javascript" src="<?php echo asset_url('map/thirdPartyResources/geoext/1.1/script/GeoExt.js'); ?>"></script>
+<?php   /*echo $site_lang;*/ ?>
+<?php   /*echo $language;*/ ?>
 
-<?php   if($site_lang==null || $site_lang=='') { ?>
-    <script type="text/javascript" src="<?php echo asset_url('map/lib/i18n/en_US.js'); ?>"></script>
-<?php  }else if($site_lang=='turkish'){ ?>
+    
+<?php if($language == 'turkish') { ?>
     <script type="text/javascript" src="<?php echo asset_url('map/lib/i18n/tr_TR.js'); ?>"></script>
-<?php  }else { ?>
+<?php } else { ?>
     <script type="text/javascript" src="<?php echo asset_url('map/lib/i18n/en_US.js'); ?>"></script>
-<?php  } ?>
+<?php }  ?>
     
 
 <!-- External lib: geoext-viewer -->
+<script type="text/javascript" src="<?php echo asset_url('map/ux/oleditor/ole/ole.js'); ?>"></script>
 
 
-<script type="text/javascript" src="<?php echo asset_url('map/ux/oleditor/ole/client/lib/Editor/Lang/en.js'); ?>"></script>
 <!--<script type="text/javascript" src="/openlayers-editor/justs.ole.git/client/lib/Editor/Lang/en.js"></script>-->
 <!--<script type="text/javascript" src="/openlayers-editor/justs.ole.git/client/lib/loader.js"></script>-->
 <!--<script type="text/javascript" src="../../ux/oleditor/ole/client/lib/loader.js"></script>-->
-<script type="text/javascript" src="<?php echo asset_url('map/ux/oleditor/ole/ole.min.js'); ?>"></script>
+
 
 
 
@@ -806,9 +807,13 @@ Ostim.layout = {
 
 					// Options for OLEditor
 					olEditorOptions: {
-						activeControls: [/*'UploadFeature', 'DownloadFeature',*/ 'Separator', 'Navigation', 'SnappingSettings', 'CADTools', 'Separator',/* 'DeleteAllFeatures', 'DeleteFeature', */'DragFeature',/* 'SelectFeature', 'Separator', 'DrawHole', 'ModifyFeature', 'Separator'*/],
+						activeControls: [/*'UploadFeature', 'DownloadFeature',*/ 'Separator', /*'Navigation',*/ 'SnappingSettings', 'CADTools', 'Separator',/* 'DeleteAllFeatures', 'DeleteFeature', */'DragFeature',/* 'SelectFeature', 'Separator', 'DrawHole', 'ModifyFeature', 'Separator'*/],
 						featureTypes: ['text', 'regular', 'polygon', 'path', 'point'],
-						language: 'en',
+                                                <?php if($language == 'turkish') {  ?>
+                                                    language: 'tr',
+                                                <?php } else { ?>
+                                                    language: 'en',
+                                                <?php }  ?>
 						DownloadFeature: {
 							url: Ostim.globals.serviceUrl,
 							formats: [

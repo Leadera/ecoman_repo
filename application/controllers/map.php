@@ -36,7 +36,8 @@ class Map extends CI_Controller {
                 $data['site_lang'] = 'english';
             }  
              $data['project_id'] = $this->session->userdata['project_id'];
-             $data['projects'] = $this->project_model->get_project($this->session->userdata['project_id']);   
+             $data['projects'] = $this->project_model->get_project($this->session->userdata['project_id']);
+             $data['language'] = $this->session->userdata('site_lang');
              //print_r($data['projects']);
             /*if(isset($this->session->userdata['project_id'])) {
                 if($this->session->userdata['project_id']==null || $this->session->userdata['project_id']==''){
