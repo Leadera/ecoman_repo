@@ -398,7 +398,7 @@
 		</div>
 
 		<footer>
-			<p class="pull-left">&copy; <a href="" target="_blank">ECOMAN</a> 2015</p>
+			<p class="pull-left">&copy; <a href="" target="_blank">Celero</a> 2015</p>
 			<p class="pull-right">Powered by: <a href=""></a></p>
 		</footer>
 		

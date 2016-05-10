@@ -53,7 +53,7 @@
   <body <?php /*if($this->uri->segment(1)=="isscoping" or $this->uri->segment(1)=="isscopingauto"){echo 'class="easyui-layout"';}*/ ?>>
 
     <nav class="navbar navbar-default navbar-lg" style="margin-bottom:0px;">
-      <a class="navbar-brand" href="<?php echo base_url(); ?>" style="color:white;">ECOMAN</a>
+      <a class="navbar-brand" href="<?php echo base_url(); ?>" style="color:white;">Celero</a>
       <?php echo lang("msg_first_name"); ?>
 
       <form class="navbar-form navbar-right" action="<?php echo base_url('search'); ?>" method="post" role="search" style="display: table;">
