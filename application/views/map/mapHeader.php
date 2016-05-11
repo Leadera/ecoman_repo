@@ -31,7 +31,13 @@
   <div style="background-image: linear-gradient(to top, #0F6E1E 0%, #1F9832 100%);
               text-align: center;
               color:#ffffff; ">CELERO
-      
+      <div style="float:right;height: 21px;margin-top: -15px;">
+          <ul class="nav navbar-nav navbar-right">
+                <li><a href='<?php echo base_url('language/switch/turkish'); ?>' style="padding-right: 0px; border-right: 0px;border-left: 0px; "><img src="<?php echo asset_url('images/Turkey.png'); ?>"></a></li>
+                <li><a href='<?php echo base_url('language/switch/english'); ?>' style="border-right: 0px;border-left: 0px;"><img src="<?php echo asset_url('images/United-States.png'); ?>"></a></li>
+            </ul>
+          
+      </div>
       <div class="clearfix"></div>
   </div>
     <div style="background-color: rgb(240, 240, 240); ">
