@@ -424,8 +424,12 @@
 				</a>
 				<a class="brand" href=""> <img style="height: 60px;width: 164px;" alt="CELERO logo" src="../assets/images/anasayfa.png" /> <span>CELERO</span></a>
 				
-				<!-- theme selector starts -->
+				<!-- theme selector starts --> 
 				<div class="btn-group pull-right theme-container" >
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <li><a href='<?php echo base_url('language/switch/turkish'); ?>' style="padding-right: 0px; border-right: 0px;border-left: 0px; "><img src="<?php echo asset_url('images/Turkey.png'); ?>"></a></li>
+                                            <li><a href='<?php echo base_url('language/switch/english'); ?>' style="border-right: 0px;border-left: 0px;"><img src="<?php echo asset_url('images/United-States.png'); ?>"></a></li>
+                                        </ul>
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 						<i class="icon-tint"></i><span class="hidden-phone"> Change Theme/ Skin</span>
 						<span class="caret"></span>
