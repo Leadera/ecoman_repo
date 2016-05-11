@@ -323,5 +323,27 @@ Ostim.i18n.dict = {
      'Get flow grid': 'Şirket Akış Bilgilerini Görüntüle',
      'Get process grid': 'Şirket Proses Bilgilerini Görüntüle',
      'Get equipment grid': 'Şirket Ekipman Bilgilerini Görüntüle',
-     'Get eco-tracking grid': 'Şirket Eco-Tracking Bilgilerini Görüntüle'
+     'Get eco-tracking grid': 'Şirket Eco-Tracking Bilgilerini Görüntüle',
+     
+     'Min Rate': 'Min.Oran',
+     'Min Rate Unit': 'Min.Oran.Brm',
+     'Type Rate': 'Tip Oran',
+     'Type Rate Unit': 'Tip Oran Bir.',
+     'Max Rate': 'Mak.Oran',
+     'Max Rate Unit': 'Mak.Oran.Bir.',
+     
+     'Flow': 'Akış',
+     'Quantity': 'Miktar',
+     'Unit': 'Birim',
+     'Quality': 'Kalite',
+     'Flow Type': 'Akış Tipi',
+     
+     'Equipment Name': 'Ekipman',
+     'Equipment Type Name': 'Ekipman Tipi',
+     
+     'Company': 'Firma',
+     'Power A': 'Güç A',
+     'Power B': 'Güç B',
+     'Power C': 'Güç C',
+     'Date': 'Tarih,'
 };

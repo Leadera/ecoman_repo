@@ -504,11 +504,11 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                                 
 			})
 			,columns:[{header: "ID", width: 40, sortable: true, dataIndex: 'id'},
-                                  {header: "Flow", width: 100, sortable: true, dataIndex: 'flow', editor: new Ext.form.TextField({})},
-                                  {header: "Quantity", width: 50, sortable: true, dataIndex: 'qntty', editor: new Ext.form.TextField({})},
-                                  {header: "Unit", width: 50, sortable: true, dataIndex: 'unit', editor: new Ext.form.TextField({})},
-                                  {header: "Quality", width: 50, sortable: true, dataIndex: 'quality', editor: new Ext.form.TextField({})},
-                                  {header: "Flow Type", width: 50, sortable: true, dataIndex: 'flowtype', editor: new Ext.form.TextField({})},
+                                  {header: __('Flow'), width: 100, sortable: true, dataIndex: 'flow', editor: new Ext.form.TextField({})},
+                                  {header: __('Quantity'), width: 50, sortable: true, dataIndex: 'qntty', editor: new Ext.form.TextField({})},
+                                  {header: __('Unit'), width: 50, sortable: true, dataIndex: 'unit', editor: new Ext.form.TextField({})},
+                                  {header: __('Quality'), width: 50, sortable: true, dataIndex: 'quality', editor: new Ext.form.TextField({})},
+                                  {header: __('Flow Type'), width: 50, sortable: true, dataIndex: 'flowtype', editor: new Ext.form.TextField({})},
                               ]
                         ,reader :new Ext.data.JsonReader({
                                 totalProperty: 'total',
@@ -591,12 +591,12 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
 			})
 			,columns:[{header: "ID", width: 40, sortable: true, dataIndex: 'id'},
                                   {header: "Process", width: 100, sortable: true, dataIndex: 'process_name', editor: new Ext.form.TextField({})},
-                                  {header: "Min.Rate", width: 50, sortable: true, dataIndex: 'min_rate_util', editor: new Ext.form.TextField({})},
-                                  {header: "Min.Rate.Un", width: 50, sortable: true, dataIndex: 'min_rate_util_unit', editor: new Ext.form.TextField({})},
-                                  {header: "Type.Rate", width: 50, sortable: true, dataIndex: 'typ_rate_util', editor: new Ext.form.TextField({})},
-                                  {header: "Type.Rate.Un", width: 50, sortable: true, dataIndex: 'typ_rate_util_unit', editor: new Ext.form.TextField({})},
-                                  {header: "Max.Rate", width: 50, sortable: true, dataIndex: 'max_rate_util', editor: new Ext.form.TextField({})},
-                                  {header: "Max.Rate.Un", width: 50, sortable: true, dataIndex: 'max_rate_util_unit', editor: new Ext.form.TextField({})},
+                                  {header: __('Min Rate'), width: 50, sortable: true, dataIndex: 'min_rate_util', editor: new Ext.form.TextField({})},
+                                  {header: __('Min Rate Unit'), width: 50, sortable: true, dataIndex: 'min_rate_util_unit', editor: new Ext.form.TextField({})},
+                                  {header: __('Type Rate'), width: 50, sortable: true, dataIndex: 'typ_rate_util', editor: new Ext.form.TextField({})},
+                                  {header: __('Type Rate Unit'), width: 50, sortable: true, dataIndex: 'typ_rate_util_unit', editor: new Ext.form.TextField({})},
+                                  {header: __('Max Rate'), width: 50, sortable: true, dataIndex: 'max_rate_util', editor: new Ext.form.TextField({})},
+                                  {header: __('Max Rate Unit'), width: 50, sortable: true, dataIndex: 'max_rate_util_unit', editor: new Ext.form.TextField({})},
                               ]
                         ,reader :new Ext.data.JsonReader({
                                 totalProperty: 'total',
@@ -671,8 +671,8 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                                 
 			})
 			,columns:[{header: "ID", width: 40, sortable: true, dataIndex: 'id'},
-                                  {header: "Equipment Name", width: 100, sortable: true, dataIndex: 'equipment_name', editor: new Ext.form.TextField({})},
-                                  {header: "Equipment Type Name", width: 50, sortable: true, dataIndex: 'equipment_type_name', editor: new Ext.form.TextField({})},
+                                  {header: __('Equipment Name'), width: 100, sortable: true, dataIndex: 'equipment_name', editor: new Ext.form.TextField({})},
+                                  {header: __('Equipment Type Name'), width: 50, sortable: true, dataIndex: 'equipment_type_name', editor: new Ext.form.TextField({})},
                                   
                               ]
                         ,reader :new Ext.data.JsonReader({
@@ -745,11 +745,11 @@ Ostim.widgets.search.ZeynelFeaturePanel = Ext.extend(Ext.Panel, {
                                 
 			})
 			,columns:[{header: "ID", width: 40, sortable: true, dataIndex: 'id'},
-                                  {header: "Company", width: 100, sortable: true, dataIndex: 'company_name', editor: new Ext.form.TextField({})},
-                                  {header: "Power A", width: 50, sortable: true, dataIndex: 'powera', editor: new Ext.form.TextField({})},
-                                  {header: "Power B", width: 50, sortable: true, dataIndex: 'powerb', editor: new Ext.form.TextField({})},
-                                  {header: "Power C", width: 50, sortable: true, dataIndex: 'powerc', editor: new Ext.form.TextField({})},
-                                  {header: "Date", width: 50, sortable: true, dataIndex: 'date', editor: new Ext.form.TextField({})},
+                                  {header: __('Company'), width: 100, sortable: true, dataIndex: 'company_name', editor: new Ext.form.TextField({})},
+                                  {header: __('Power A'), width: 50, sortable: true, dataIndex: 'powera', editor: new Ext.form.TextField({})},
+                                  {header: __('Power B'), width: 50, sortable: true, dataIndex: 'powerb', editor: new Ext.form.TextField({})},
+                                  {header: __('Power C'), width: 50, sortable: true, dataIndex: 'powerc', editor: new Ext.form.TextField({})},
+                                  {header: __('Date'), width: 50, sortable: true, dataIndex: 'date', editor: new Ext.form.TextField({})},
                               ]
                         ,reader :new Ext.data.JsonReader({
                                 totalProperty: 'total',

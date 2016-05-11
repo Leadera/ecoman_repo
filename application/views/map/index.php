@@ -96,27 +96,57 @@ Ostim.searchPanelConfigFlow = {
                 {
                     xtype: "textfield",
                     name: "name__like",
-                    value: 'company name..',
-                    fieldLabel: "  Company"
+                    <?php if($language == 'turkish') {  ?>
+                        value: 'firma adı...',
+                    <?php } else { ?>
+                        value: 'company name..',
+                    <?php }  ?>
+                    <?php if($language == 'turkish') {  ?>
+                        fieldLabel: "  Firma"
+                    <?php } else { ?>
+                        fieldLabel: "  Company"
+                    <?php }  ?>
+                    
                 },
                 {
                     xtype: "textfield",
                     name: "process_name__like",
-                    value: 'process name..',
-                    fieldLabel: "  Process"
+                    <?php if($language == 'turkish') {  ?>
+                        value: 'proses adı..',
+                    <?php } else { ?>
+                        value: 'process name..',
+                    <?php }  ?>
+                    <?php if($language == 'turkish') {  ?>
+                        fieldLabel: "  Proses",
+                    <?php } else { ?>
+                        fieldLabel: "  Process",
+                    <?php }  ?>
                 },
                 
                 {
                     xtype: "textfield",
                     name: "flow_name__like",
-                    value: 'flow name..',
-                    fieldLabel: "  Flow"
+                    <?php if($language == 'turkish') {  ?>
+                        value: 'akış',
+                    <?php } else { ?>
+                        value: 'flow name..',
+                    <?php }  ?>
+                    <?php if($language == 'turkish') {  ?>
+                        fieldLabel: "  Akış"
+                    <?php } else { ?>
+                        fieldLabel: "  Flow"
+                    <?php }  ?>
                 },
 //                
                 {
                     xtype: "label",
                     id: "helplabelflow",
-                    html: 'Map Search Panel<br/>Any single letter will also yield results. <br/>Search for process or flow name...</a>',
+                    <?php if($language == 'turkish') {  ?>
+                        html: 'Harita Arama Paneli<br/>Arama küçük büyük harf duyarlıdır.<br/>Firma, proses veya hammadde akış"larına göre arama yapabilirsiniz......</a>',
+                    <?php } else { ?>
+                        html: 'Map Search Panel<br/>Any single letter will also yield results. <br/>Search for process or flow name...</a>',
+                    <?php }  ?>
+                    
                     style: {
                         fontSize: '10px',
                         color: '#AAAAAA'
@@ -155,65 +185,109 @@ Ostim.searchPanelConfigFlow = {
             border: false,
             columns: [
                 {
-                    header: "Name",
+                    <?php if($language == 'turkish') {  ?>
+                        header: "İsim",
+                    <?php } else { ?>
+                        header: "Name",
+                    <?php }  ?>
                     width: 100,
                     dataIndex: "name"
                 },
                 {
-                    header: "Process",
+                    <?php if($language == 'turkish') {  ?>
+                        header: "Proses",
+                    <?php } else { ?>
+                        header: "Process",
+                    <?php }  ?>
                     width: 100,
                     dataIndex: "process_name"
                 },
                 {
-                    header: "Flow",
+                    <?php if($language == 'turkish') {  ?>
+                        header: "Akış",
+                    <?php } else { ?>
+                        header: "Flow",
+                    <?php }  ?>
                     width: 100,
                     dataIndex: "flow_name"
                 }
                 ,
                 {
-                    header: "Potential energy",
+                    <?php if($language == 'turkish') {  ?>
+                        header: "Potansiyel enerji",
+                    <?php } else { ?>
+                        header: "Potential energy",
+                    <?php }  ?>
                     width: 100,
                     dataIndex: "potential_energy"
                 }
                 ,
                 {
-                    header: "Supply cost",
+                    <?php if($language == 'turkish') {  ?>
+                        header: "Tedarik Mal.",
+                    <?php } else { ?>
+                        header: "Supply cost",
+                    <?php }  ?>
                     width: 100,
                     dataIndex: "supply_cost"
                 }
                 ,
                 {
-                    header: "Supply cost un.",
+                    <?php if($language == 'turkish') {  ?>
+                        header: "Tedarik Mal.Bir.",
+                    <?php } else { ?>
+                        header: "Supply cost un.",
+                    <?php }  ?>
                     width: 100,
                     dataIndex: "supply_cost_unit"
                 }
                 ,
                 {
-                    header: "Min. Flow rate",
+                    <?php if($language == 'turkish') {  ?>
+                        header: "Min. Akış Oranı",
+                    <?php } else { ?>
+                        header: "Min. Flow rate",
+                    <?php }  ?>
                     width: 100,
                     dataIndex: "min_flow_rate"
                 }
                 ,
                 {
-                    header: "Max. Flow rate",
+                    <?php if($language == 'turkish') {  ?>
+                        header: "Mak. Akış Oranı",
+                    <?php } else { ?>
+                        header: "Max. Flow rate",
+                    <?php }  ?>
                     width: 100,
                     dataIndex: "max_flow_rate"
                 }
                 ,
                 {
-                    header: "Entry date",
+                    <?php if($language == 'turkish') {  ?>
+                        header: "Envanter Tar.",
+                    <?php } else { ?>
+                        header: "Entry date",
+                    <?php }  ?>
                     width: 100,
                     dataIndex: "entry_date"
                 }
                 ,
                 {
-                    header: "Concentration",
+                    <?php if($language == 'turkish') {  ?>
+                        header: "Karışım",
+                    <?php } else { ?>
+                        header: "Concentration",
+                    <?php }  ?>
                     width: 100,
                     dataIndex: "concentration"
                 }
                 ,
                 {
-                    header: "Press.",
+                    <?php if($language == 'turkish') {  ?>
+                        header: "Basınç",
+                    <?php } else { ?>
+                        header: "Press.",
+                    <?php }  ?>
                     width: 100,
                     dataIndex: "pression"
                 }

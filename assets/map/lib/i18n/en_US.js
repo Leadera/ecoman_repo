@@ -265,5 +265,28 @@ Ostim.i18n.dict = {
      'Get flow grid': 'Display Company Flows',
      'Get process grid': 'Display Company Processes',
      'Get equipment grid': 'Display Company Equipment',
-     'Get eco-tracking grid': 'Display Company Eco-Tracking Data'
+     'Get eco-tracking grid': 'Display Company Eco-Tracking Data',
+     
+     'Min Rate': 'Min.Rate',
+     'Min Rate Unit': 'Min.Rate.Un',
+     'Type Rate': 'Type.Rate',
+     'Type Rate Unit': 'Type.Rate.Un',
+     'Max Rate': 'Max.Rate',
+     'Max Rate Unit': 'Max.Rate.Un',
+     
+     'Flow': 'Flow',
+     'Quantity': 'Quantity',
+     'Unit': 'Unit',
+     'Quality': 'Quality',
+     'Flow Type': 'Flow Type',
+     
+     'Equipment Name': 'Equipment Name',
+     'Equipment Type Name': 'Equipment Type Name',
+     
+     'Company': 'Company',
+     'Power A': 'Power A',
+     'Power B': 'Power B',
+     'Power C': 'Power C',
+     'Date': 'Date',
+
 };
