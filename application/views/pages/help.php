@@ -1,6 +1,6 @@
 <?php $this->load->view('template/header'); ?>
 <div class="container" >
-	<?php if($this->session->userdata('site_lang') != "english"): ?>
+	<?php if($this->session->userdata('site_lang') == "turkish"): ?>
 	<div class="col-md-10">
 		<div class="swissheader"><?php echo lang("help"); ?></div>
 

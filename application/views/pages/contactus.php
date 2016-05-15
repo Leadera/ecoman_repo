@@ -12,7 +12,7 @@
 
 <div><b>Dirk Hengevoss</b>, <a href="mailto:dirk.hengevoss@fhnw.ch">dirk.hengevoss@fhnw.ch</a>, University of Applied Sciences and Arts Northwestern Switzerland</div>
 
-<div><b>Guillaume Massard,</b> <a href="mailto:guillaume.massard@sofiesonline.com">guillaume.massard@sofiesonline.com</a>, SOFIES SA, Switzerland</div>
+<div><b>Guillaume Massard,</b> <a href="mailto:guillaume.massard@unil.ch">guillaume.massard@unil.ch</a>, Université de Lausanne, Switzerland</div>
 
 <div><b>Murat Özbayoğlu,</b> <a href="mailto:mozbayoglu@etu.edu.tr">mozbayoglu@etu.edu.tr</a>,TOBB University of Economics and Technology, 06560, Ankara, Turkey</div>
 
